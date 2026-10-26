@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="pregnant-person-dark-title">
+<title id="pregnant-person-dark-title">Pregnant person (dark skin tone)</title>
+<desc>Pregnant person in side view.</desc>
+<defs><radialGradient id="pregnant-person-dark-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9f8578"/><stop offset="0.55" stop-color="#6B4430"/><stop offset="1" stop-color="#5a3928"/></radialGradient><radialGradient id="pregnant-person-dark-hair" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#6d6865"/><stop offset="0.55" stop-color="#1E1612"/><stop offset="1" stop-color="#19120f"/></radialGradient><linearGradient id="pregnant-person-dark-dress" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9377cc"/><stop offset="0.25" stop-color="#cebfec"/><stop offset="0.6" stop-color="#9C7FD9"/><stop offset="1" stop-color="#7a63a9"/></linearGradient></defs>
+<path d="M110 196L108 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="18"/><path d="M110 196L108 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="13"/><path d="M110 196L108 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.86" opacity="0.4" transform="translate(-2.34 -2.34)"/>
+<path d="M136 196L140 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="18"/><path d="M136 196L140 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="13"/><path d="M136 196L140 228" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.86" opacity="0.4" transform="translate(-2.34 -2.34)"/>
+<ellipse cx="103" cy="233" rx="12" ry="6" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<ellipse cx="145" cy="233" rx="12" ry="6" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<rect x="116" y="68" width="14" height="18" fill="#5e3c2a"/>
+<path d="M106 84Q96 92 96 106Q94 118 84 128Q58 148 70 174Q80 188 92 198L152 198Q146 170 148 140Q150 108 142 84Z" fill="url(#pregnant-person-dark-dress)" stroke="#614f87" stroke-width="3" stroke-linejoin="round"/>
+<path d="M126 94Q118 122 100 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="17"/><path d="M126 94Q118 122 100 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="12"/><path d="M126 94Q118 122 100 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.64" opacity="0.4" transform="translate(-2.16 -2.16)"/>
+<circle cx="97" cy="148" r="7.5" fill="url(#pregnant-person-dark-skin)" stroke="#422a1e" stroke-width="2"/>
+<circle cx="150" cy="44" r="11" fill="url(#pregnant-person-dark-hair)" stroke="#130e0b" stroke-width="2"/>
+<circle cx="122" cy="52" r="25" fill="url(#pregnant-person-dark-skin)" stroke="#422a1e" stroke-width="2.5"/>
+<path d="M100 46C104 28 128 22 142 32C152 40 150 58 140 68C138 54 130 44 100 46Z" fill="url(#pregnant-person-dark-hair)" stroke="#130e0b" stroke-width="2" stroke-linejoin="round"/>
+</svg>

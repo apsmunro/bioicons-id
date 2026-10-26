@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="iv-cannula-title">
+<title id="iv-cannula-title">IV cannula</title>
+<desc>Peripheral intravenous cannula, seen from above: catheter, colour-coded wings and injection port, and a Luer-lock cap.</desc>
+<defs><linearGradient id="iv-cannula-body" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><linearGradient id="iv-cannula-hub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a85c4"/><stop offset="0.25" stop-color="#9fc7e8"/><stop offset="0.6" stop-color="#3E8ED0"/><stop offset="1" stop-color="#306fa2"/></linearGradient><radialGradient id="iv-cannula-wing" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#a5cae9"/><stop offset="0.55" stop-color="#5b9fd7"/><stop offset="1" stop-color="#4c86b5"/></radialGradient><radialGradient id="iv-cannula-port" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9fc7e8"/><stop offset="0.55" stop-color="#3E8ED0"/><stop offset="1" stop-color="#3477af"/></radialGradient><linearGradient id="iv-cannula-cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3e3e3"/><stop offset="0.25" stop-color="#f9f9f9"/><stop offset="0.6" stop-color="#F2F2F2"/><stop offset="1" stop-color="#bdbdbd"/></linearGradient></defs>
+<g transform="translate(136 120) rotate(-35) scale(1.22)">
+<path d="M-34 -4L-106 -2.5Q-114 0 -106 2.5L-34 4Z" fill="#F4F7F9" stroke="#8DA6B8" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M-40 -1.2L-100 -0.6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
+<path d="M-30 -10L-26 -36Q-24 -44 -16 -44L-4 -44Q4 -44 4 -36L2 -10Z" fill="url(#iv-cannula-wing)" stroke="#265881" stroke-width="2" stroke-linejoin="round"/>
+<path d="M-30 10L-26 36Q-24 44 -16 44L-4 44Q4 44 4 36L2 10Z" fill="url(#iv-cannula-wing)" stroke="#265881" stroke-width="2" stroke-linejoin="round"/>
+<path d="M-40 -9L-30 -11L-6 -11L-6 11L-30 11L-40 9Z" fill="url(#iv-cannula-hub)" stroke="#265881" stroke-width="2" stroke-linejoin="round"/>
+<rect x="-8" y="-11" width="50" height="22" rx="5" fill="url(#iv-cannula-body)" stroke="#8DA6B8" stroke-width="2"/>
+<rect x="0" y="-7" width="36" height="3" rx="1.5" fill="#fff" opacity="0.7"/>
+<circle cx="10" cy="0" r="12" fill="url(#iv-cannula-port)" stroke="#265881" stroke-width="2"/>
+<circle cx="10" cy="0" r="6" fill="#3579b1" stroke="#265881" stroke-width="1.2"/>
+<rect x="42" y="-9" width="24" height="18" rx="3" fill="url(#iv-cannula-cap)" stroke="#A7B1BA" stroke-width="2"/>
+<path d="M48 -9V9M54 -9V9M60 -9V9" stroke="#C6CED5" stroke-width="1.3"/>
+</g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="child-dark-title">
+<title id="child-dark-title">Child (dark skin tone)</title>
+<desc>Young child standing.</desc>
+<defs><radialGradient id="child-dark-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9f8578"/><stop offset="0.55" stop-color="#6B4430"/><stop offset="1" stop-color="#5a3928"/></radialGradient><radialGradient id="child-dark-hair" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#6d6865"/><stop offset="0.55" stop-color="#1E1612"/><stop offset="1" stop-color="#19120f"/></radialGradient><linearGradient id="child-dark-shirt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#48aba2"/><stop offset="0.25" stop-color="#a6dbd6"/><stop offset="0.6" stop-color="#4DB6AC"/><stop offset="1" stop-color="#3c8e86"/></linearGradient><linearGradient id="child-dark-shorts" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b5582"/><stop offset="0.25" stop-color="#9fadc5"/><stop offset="0.6" stop-color="#3F5A8A"/><stop offset="1" stop-color="#31466c"/></linearGradient></defs>
+<path d="M113 182L113 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="20"/><path d="M113 182L113 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="15"/><path d="M113 182L113 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.3" opacity="0.4" transform="translate(-2.7 -2.7)"/>
+<path d="M143 182L143 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="20"/><path d="M143 182L143 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="15"/><path d="M143 182L143 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.3" opacity="0.4" transform="translate(-2.7 -2.7)"/>
+<ellipse cx="110" cy="230" rx="14" ry="7" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<ellipse cx="146" cy="230" rx="14" ry="7" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<path d="M98 156L158 156L162 188L132 188L128 176L124 188L94 188Z" fill="url(#child-dark-shorts)" stroke="#273856" stroke-width="3" stroke-linejoin="round"/>
+<path d="M80 132L72 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="18"/><path d="M80 132L72 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="13"/><path d="M80 132L72 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.86" opacity="0.4" transform="translate(-2.34 -2.34)"/>
+<path d="M176 132L184 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#422a1e" stroke-width="18"/><path d="M176 132L184 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6B4430" stroke-width="13"/><path d="M176 132L184 172" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.86" opacity="0.4" transform="translate(-2.34 -2.34)"/>
+<path d="M98 96Q128 88 158 96L184 128L170 140L158 126L158 160L98 160L98 126L86 140L72 128Z" fill="url(#child-dark-shirt)" stroke="#30716b" stroke-width="3" stroke-linejoin="round"/>
+<rect x="121" y="80" width="14" height="14" fill="#5e3c2a"/>
+<circle cx="99" cy="58" r="6" fill="#6B4430" stroke="#422a1e" stroke-width="2"/>
+<circle cx="157" cy="58" r="6" fill="#6B4430" stroke="#422a1e" stroke-width="2"/>
+<circle cx="128" cy="56" r="29" fill="url(#child-dark-skin)" stroke="#422a1e" stroke-width="2.5"/>
+<path d="M99 56C96 32 110 24 128 24C148 24 160 34 157 56C150 44 140 39 128 40C116 41 106 46 99 56Z" fill="url(#child-dark-hair)" stroke="#130e0b" stroke-width="2" stroke-linejoin="round"/>
+</svg>

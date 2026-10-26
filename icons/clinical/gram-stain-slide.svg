@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="gram-stain-slide-title">
+<title id="gram-stain-slide-title">Gram stain slide</title>
+<desc>Microscope slide with a stained smear, and a magnified field showing violet Gram-positive cocci and pink Gram-negative bacilli.</desc>
+<defs><clipPath id="gram-stain-slide-field"><circle cx="140" cy="86" r="64"/></clipPath><linearGradient id="gram-stain-slide-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><radialGradient id="gram-stain-slide-pos" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d1c5f0"/><stop offset="0.55" stop-color="#8B6FD9"/><stop offset="1" stop-color="#755db6"/></radialGradient><linearGradient id="gram-stain-slide-neg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d66884"/><stop offset="0.25" stop-color="#f2b7c6"/><stop offset="0.6" stop-color="#E46F8C"/><stop offset="1" stop-color="#b2576d"/></linearGradient></defs>
+<g transform="rotate(-6 128 190)">
+<rect x="20" y="162" width="216" height="58" rx="3" fill="url(#gram-stain-slide-glass)" stroke="#8DA6B8" stroke-width="3"/>
+<rect x="23" y="165" width="52" height="52" fill="#DCE3E9"/>
+<path d="M28 170L24 212M36 170L32 212M44 170L40 212M52 170L48 212M60 170L56 212M68 170L64 212" stroke="#C9D3DB" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M210 191C210.39 192.36 210.39 193.87 210 195.2C209.61 196.54 208.7 197.88 207.64 199C206.57 200.12 205.08 201.12 203.59 201.91C202.1 202.71 200.34 203.31 198.69 203.78C197.05 204.24 195.29 204.49 193.71 204.69C192.14 204.89 190.59 204.91 189.25 204.98C187.9 205.05 186.7 205.02 185.66 205.1C184.62 205.18 183.78 205.27 183.02 205.46C182.26 205.66 181.69 205.95 181.11 206.29C180.53 206.63 180.06 207.1 179.53 207.51C179 207.92 178.49 208.42 177.92 208.78C177.34 209.13 176.71 209.48 176.06 209.65C175.41 209.82 174.69 209.87 173.99 209.79C173.3 209.71 172.57 209.45 171.91 209.15C171.24 208.85 170.59 208.39 170 208C169.41 207.61 168.87 207.14 168.34 206.81C167.8 206.49 167.33 206.2 166.8 206.07C166.26 205.94 165.74 205.94 165.12 206.03C164.49 206.12 163.82 206.38 163.04 206.63C162.27 206.88 161.39 207.25 160.47 207.51C159.55 207.77 158.51 208.06 157.51 208.19C156.5 208.32 155.43 208.38 154.43 208.29C153.43 208.2 152.44 207.97 151.51 207.65C150.58 207.33 149.72 206.86 148.85 206.36C147.98 205.87 147.19 205.28 146.29 204.69C145.39 204.1 144.5 203.48 143.45 202.82C142.41 202.16 141.26 201.51 140.03 200.74C138.8 199.97 137.37 199.17 136.09 198.21C134.8 197.25 133.35 196.16 132.34 194.96C131.32 193.76 130.39 192.36 130 191C129.61 189.64 129.61 188.13 130 186.8C130.39 185.46 131.3 184.12 132.36 183C133.43 181.88 134.92 180.88 136.41 180.09C137.9 179.29 139.66 178.69 141.31 178.22C142.95 177.76 144.71 177.51 146.29 177.31C147.86 177.11 149.41 177.09 150.75 177.02C152.1 176.95 153.3 176.98 154.34 176.9C155.38 176.82 156.22 176.73 156.98 176.54C157.74 176.34 158.31 176.05 158.89 175.71C159.47 175.37 159.94 174.9 160.47 174.49C161 174.08 161.51 173.58 162.08 173.22C162.66 172.87 163.29 172.52 163.94 172.35C164.59 172.18 165.31 172.13 166.01 172.21C166.7 172.29 167.43 172.55 168.09 172.85C168.76 173.15 169.41 173.61 170 174C170.59 174.39 171.13 174.86 171.66 175.19C172.2 175.51 172.67 175.8 173.2 175.93C173.74 176.06 174.26 176.06 174.88 175.97C175.51 175.88 176.18 175.62 176.96 175.37C177.73 175.12 178.61 174.75 179.53 174.49C180.45 174.23 181.49 173.94 182.49 173.81C183.5 173.68 184.57 173.62 185.57 173.71C186.57 173.8 187.56 174.03 188.49 174.35C189.42 174.67 190.28 175.14 191.15 175.64C192.02 176.13 192.81 176.72 193.71 177.31C194.61 177.9 195.5 178.52 196.55 179.18C197.59 179.84 198.74 180.49 199.97 181.26C201.2 182.03 202.63 182.83 203.91 183.79C205.2 184.75 206.65 185.84 207.66 187.04C208.68 188.24 209.61 189.64 210 191Z" fill="#C99BD6" opacity="0.85"/>
+<rect x="80" y="168" width="150" height="4" rx="2" fill="#fff" opacity="0.6"/>
+</g>
+<path d="M150 184L96 133M188 180L192 124" stroke="#8DA6B8" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
+<circle cx="140" cy="86" r="64" fill="#FBF0F4"/>
+<g clip-path="url(#gram-stain-slide-field)">
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(150 58) rotate(30)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(166 76) rotate(-20)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(130 104) rotate(70)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(102 96) rotate(10)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(150 132) rotate(-35)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(188 82) rotate(50)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(124 132) rotate(15)" fill="url(#gram-stain-slide-neg)" stroke="#8d4557" stroke-width="1.3"/>
+<circle cx="112" cy="60" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="124" cy="54" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="118" cy="70" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="130" cy="66" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="106" cy="72" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="168" cy="112" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="178" cy="104" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="174" cy="120" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="186" cy="114" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="96" cy="118" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+<circle cx="104" cy="126" r="6" fill="url(#gram-stain-slide-pos)" stroke="#564587" stroke-width="1.3"/>
+</g>
+<circle cx="140" cy="86" r="64" fill="none" stroke="#3A4650" stroke-width="6"/>
+</svg>

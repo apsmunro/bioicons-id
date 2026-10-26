@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="newborn-dark-title">
+<title id="newborn-dark-title">Newborn baby (dark skin tone)</title>
+<desc>Swaddled newborn baby, seen from the front.</desc>
+<defs><radialGradient id="newborn-dark-swaddle" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbf1d0"/><stop offset="0.55" stop-color="#F6E2A0"/><stop offset="1" stop-color="#cfbe86"/></radialGradient><radialGradient id="newborn-dark-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9f8578"/><stop offset="0.55" stop-color="#6B4430"/><stop offset="1" stop-color="#5a3928"/></radialGradient><radialGradient id="newborn-dark-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(0 -6)">
+<circle cx="128" cy="88" r="52" fill="url(#newborn-dark-swaddle)" stroke="#998c63" stroke-width="3"/>
+<circle cx="128" cy="92" r="33" fill="url(#newborn-dark-skin)" stroke="#422a1e" stroke-width="2.5"/>
+<path d="M70 132Q100 140 128 128Q156 140 186 132C200 170 192 214 170 228C150 238 106 238 86 228C64 214 56 170 70 132Z" fill="url(#newborn-dark-swaddle)" stroke="#998c63" stroke-width="3" stroke-linejoin="round"/>
+<path d="M184 140Q150 178 108 230M72 142Q98 164 116 172" fill="none" stroke="#b9aa78" stroke-width="2.5" stroke-linecap="round"/>
+<ellipse cx="96" cy="172" rx="12" ry="28" transform="rotate(15 96 172)" fill="url(#newborn-dark-gloss)"/>
+</g>
+</svg>

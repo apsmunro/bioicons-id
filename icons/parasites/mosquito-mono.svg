@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mosquito-mono-title">
+<title id="mosquito-mono-title">Mosquito (single colour)</title>
+<desc>Anopheles mosquito at rest, with the body and proboscis held in a line at an angle to the surface, long palps and spotted wings.</desc>
+<defs></defs>
+<path d="M126 142L112 190L108 214L102 236M136 142L168 180L176 208L190 232M142 136L182 126L214 132L236 116M122 140L100 186L86 212L74 236M132 142L150 186L148 214L156 236M140 140L188 146L218 176L238 168" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 -14C39.07 -16 78.14 -7 97.67 -5Q104.67 0 97.67 5C78.14 7 39.07 16 0 14Z" transform="translate(150 106) rotate(-42.51)" fill="#000000"/>
+<ellipse cx="169.98" cy="61.31" rx="56" ry="10" transform="rotate(-42 169.98 61.31)" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="132" cy="126" rx="30" ry="23" transform="rotate(-40 132 126)" fill="#000000"/>
+<circle cx="104" cy="154" r="13" fill="#000000"/>
+<path d="M96 166L38 222" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M90 156L34 210M98 146L66 122" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

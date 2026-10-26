@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="picc-line-mono-title">
+<title id="picc-line-mono-title">PICC line (single colour)</title>
+<desc>Peripherally inserted central catheter with two lumens: the catheter, a junction hub with suture wings, and extension legs with clamps and needle-free connectors.</desc>
+<defs></defs>
+<path d="M114 142C92 164 50 158 44 192C38 226 98 236 140 220C176 206 200 214 222 230" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M130 122C138 100 150 78 160 58M136 128C158 114 184 102 204 92" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-7 -12H7V5Q7 12 0 12Q-7 12 -7 5Z" transform="translate(146 92) rotate(-64)" fill="#000000"/>
+<path d="M-7 -12H7V5Q7 12 0 12Q-7 12 -7 5Z" transform="translate(176 108) rotate(-24)" fill="#000000"/>
+<g transform="translate(164 50) rotate(-64)"><rect x="-14" y="-7" width="20" height="14" rx="3" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="-8.5" width="12" height="17" rx="3" fill="#000000"/></g>
+<g transform="translate(212 88) rotate(-24)"><rect x="-14" y="-7" width="20" height="14" rx="3" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="-8.5" width="12" height="17" rx="3" fill="#000000"/></g>
+<path d="M-14 -24Q-4 -24 -4 -14L4 -14Q4 -24 14 -24Q20 -24 20 -16L20 16Q20 24 14 24Q4 24 4 14L-4 14Q-4 24 -14 24Q-20 24 -20 16L-20 -16Q-20 -24 -14 -24Z" transform="translate(124 132) rotate(-45)" fill="#000000"/>
+</svg>

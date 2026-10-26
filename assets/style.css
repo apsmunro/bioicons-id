@@ -74,8 +74,8 @@ button, input, select { font: inherit; color: inherit; }
 .segmented button + button { border-left: 1px solid var(--border); }
 .segmented button[aria-pressed="true"] { background: var(--accent-soft); font-weight: 600; }
 
-.ink { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
-.ink[hidden] { display: none; }
+.ink, .tone { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+.ink[hidden], .tone[hidden] { display: none; }
 .ink-label { color: var(--muted); font-size: 0.9rem; margin-right: 4px; }
 .swatch {
   position: relative; width: 30px; height: 30px; padding: 0; border-radius: 50%;
@@ -86,7 +86,7 @@ button, input, select { font: inherit; color: inherit; }
 .swatch.custom input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: 0; padding: 0; }
 
 .info .segmented { margin-bottom: 4px; }
-.info .ink { margin: 8px 0 4px; }
+.info .ink, .info .tone { margin: 8px 0 4px; }
 .info .actions { margin-top: 16px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }

@@ -151,7 +151,31 @@ const PALETTE = {
   swabTip: '#F6D9A8',
   medium: '#F3B6C3',
   dress: '#9C7FD9',
+  spore: '#4FA36A', // Schaeffer–Fulton malachite green
+  hivEnvelope: '#F3D9A4',
+  hivCapsid: '#3FA7A0',
+  norovirus: '#8FA3E3',
+  giardia: '#B9D7EE',
+  b2m: '#F4A3A8', // β2-microglobulin
+  secretoryComponent: '#B07CC6',
+  tlr: '#5FA8D3',
+  treg: '#9ED8D0',
+  nam: '#6F9BE0', // N-acetylmuramic acid (NAG uses glycan green)
+  urine: '#F2D35B',
+  mosquito: '#8B6B4A',
+  wing: '#DCE6EE',
+  lateralFlowLine: '#B0306A',
+  smear: '#C99BD6',
 };
+
+// Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
+// icon's main file; the others are drawn into the files listed in its catalogue "toneFiles".
+const SKIN_TONES = [
+  { id: 'light', label: 'Light', skin: '#F2CDA8', hair: '#8C5A33' },
+  { id: 'medium', label: 'Medium', skin: '#D9A07A', hair: '#5A3A29' },
+  { id: 'brown', label: 'Brown', skin: '#A8714B', hair: '#2F2119' },
+  { id: 'dark', label: 'Dark', skin: '#6B4430', hair: '#1E1612' },
+];
 
 const round = v => Math.round(v * 100) / 100;
 
@@ -297,6 +321,132 @@ const BIOFILM_CELLS = [[46, 194, 20, 'rod'], [66, 176, -30, 'rod'], [88, 196, 60
   [114, 186, 30, 'rod'], [140, 166, 80, 'rod'], [146, 196, -10, 'rod'], [162, 140, 20, 'rod'], [172, 174, -40, 'rod'],
   [192, 154, 70, 'rod'], [196, 194, 15, 'rod'], [216, 180, -25, 'rod'], [74, 200, 0, 'coccus'], [132, 140, 0, 'coccus'],
   [168, 196, 0, 'coccus'], [212, 160, 0, 'coccus'], [96, 182, 0, 'coccus']];
+
+// Pseudomonas rods, each with a single polar flagellum: [x, y, angle].
+const PSEUDOMONAS_CELLS = [[86, 78, -32], [112, 132, -26], [146, 180, -34]];
+
+// Salmonella invading the gut epithelium: two enterocytes, the right one ruffling its apical
+// membrane up around a bacterium; microvilli (x positions) line the left cell's brush border.
+const ENTEROCYTES = {
+  left: 'M24 232L24 124Q24 118 30 118L128 118L128 232Z',
+  right: 'M128 232L128 118L134 118C140 100 130 76 140 58C148 44 172 42 180 52C184 58 178 64 172 62C162 60 154 70 156 84' +
+    'C158 100 168 112 184 112C198 112 208 104 210 92C212 80 206 70 210 64C214 58 222 58 224 66C228 84 222 104 228 118' +
+    'Q232 118 232 124L232 232Z',
+  microvilli: Array.from({ length: 9 }, (_, i) => 34 + i * 11),
+};
+
+// C. difficile: a vegetative rod, a rod with a subterminal spore, and free spores ([x, y, angle]).
+const CDIFF = { vegetative: [92, 74, -22], sporulating: [130, 154, -22], spores: [[198, 96, -30], [214, 150, 15], [58, 194, 20], [196, 214, -10]] };
+
+// Outline of a rod (half-length s, end radius r) swollen by a subterminal spore: the rod merged
+// with an oval bulge [x, rx, ry]. Traced as the farther of the two boundaries along each ray.
+function sporulatingRod(s = 40, r = 15, [bx, rx, ry] = [28, 21, 18]) {
+  return smoothClosedPath(polarPoints(0, 0, a => {
+    const c = Math.cos(a), sn = Math.abs(Math.sin(a));
+    const flat = sn > 0 ? r / sn : Infinity;
+    const rod = flat * Math.abs(c) <= s ? flat : s * Math.abs(c) + Math.sqrt(r * r - s * s * sn * sn);
+    const A = (c / rx) ** 2 + (Math.sin(a) / ry) ** 2, B = -2 * bx * c / rx ** 2, D = B * B - 4 * A * (bx * bx / rx ** 2 - 1);
+    return Math.max(rod, D > 0 ? (-B + Math.sqrt(D)) / (2 * A) : 0);
+  }, 144));
+}
+
+// HIV conical capsid, narrow end to the left, centred near the origin.
+const HIV_CAPSID = 'M-36 -10L26 -24A24 24 0 0 1 26 24L-36 10A10 10 0 0 1 -36 -10Z';
+
+// Cryptococcus: [x, y, cell radius, capsule radius]; the second cell is a narrow-necked bud.
+const CRYPTOCOCCUS_CELLS = [[110, 140, 44, 80], [152, 95, 20, 40], [200, 196, 18, 34]];
+
+// Giardia trophozoite seen from the ventral side, anterior end up.
+const GIARDIA = {
+  body: 'M128 36C178 36 202 64 200 96C198 132 162 170 138 200Q128 212 118 200C94 170 58 132 56 96C54 64 78 36 128 36Z',
+  disc: [128, 92, 52, 40],
+  nuclei: [[106, 90], [150, 90]],
+  medianBodies: [[114, 146, 25], [142, 146, -25]],
+  // The free parts of the four pairs of flagella (left side; the right mirrors it), then the caudal pair.
+  flagella: ['M61 118C46 128 48 146 30 158', 'M99 176C86 186 90 204 68 216', 'M111 192C104 206 110 220 100 234'],
+  caudal: 'M124 206C120 216 124 226 118 238M132 206C136 216 132 226 138 238',
+};
+
+// Bacterial conjugation: donor above, recipient below, as rods [x, y, angle] (half-length s, end
+// radius r) joined by a mating bridge from x = bridge on the donor's underside to x = -bridge on
+// the recipient's upper side (local coordinates). Plasmids sit near the bridge, chromosomes away from it.
+const CONJUGATION = { donor: [100, 82, -12], recipient: [156, 176, -12], s: 30, r: 27, bridge: 20, plasmid: [14, 4], chromosome: [-18, -2] };
+
+// Canvas position of local point (u, v) on a shape placed at [x, y, angle in degrees].
+const toGlobal = ([x, y, a], u, v) => {
+  const t = a * Math.PI / 180;
+  return [x + u * Math.cos(t) - v * Math.sin(t), y + u * Math.sin(t) + v * Math.cos(t)];
+};
+
+// Toll-like receptor dimer: centre of the left horseshoe ectodomain (the right mirrors it) and
+// the arc it spans (degrees, clockwise from the right); its inner end leads down to the membrane.
+const TLR = { centre: [84, 100], from: 160, to: 380 };
+
+// C3b opsonisation: outline of a phagocyte whose two arms cup a bacterium at P. The round body
+// (centre B, radius rb) meets arms that run round P between radii ri and ro, with rounded tips at
+// ±tip degrees. The cup's inner face is the arc at radius ri.
+const OPSONISATION = { B: [70, 128], rb: 58, P: [178, 128], ri: 50, ro: 68, tip: 45 };
+function phagocyteCup({ B: [bx, by], rb, P: [px, py], ri, ro, tip } = OPSONISATION) {
+  const at = (deg, r) => [px + r * Math.cos(deg * Math.PI / 180), py + r * Math.sin(deg * Math.PI / 180)].map(round).join(' ');
+  // Where the arms' outer edges meet the body.
+  const d = px - bx, a = (rb * rb - ro * ro + d * d) / (2 * d), h = Math.sqrt(rb * rb - a * a);
+  const join = 180 - Math.atan2(h, d - a) * 180 / Math.PI, cap = (ro - ri) / 2;
+  return `M${round(bx + a)} ${round(by + h)}A${rb} ${rb} 0 1 1 ${round(bx + a)} ${round(by - h)}` +
+    `A${ro} ${ro} 0 0 1 ${at(360 - tip, ro)}A${cap} ${cap} 0 0 1 ${at(360 - tip, ri)}` +
+    `A${ri} ${ri} 0 1 0 ${at(tip, ri)}A${cap} ${cap} 0 0 1 ${at(tip, ro)}A${ro} ${ro} 0 0 1 ${at(join, ro)}Z`;
+}
+
+// Points on a circular arc from a0 to a1 degrees (clockwise from the right), every step degrees.
+function arcPoints(cx, cy, r, a0, a1, step = 5) {
+  const count = Math.round(Math.abs(a1 - a0) / step);
+  return Array.from({ length: count + 1 }, (_, i) => {
+    const a = (a0 + (a1 - a0) * i / count) * Math.PI / 180;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  });
+}
+
+// Peptidoglycan: glycan strands (rows, y) of alternating NAG and NAM sugars (x), cross-linked
+// by peptides between rows at every NAM. Cross-links are missing where the PBP is blocked.
+const PEPTIDOGLYCAN = {
+  rows: [76, 122, 168],
+  sugars: Array.from({ length: 10 }, (_, i) => 34 + i * 21),
+  pbp: [198, 210],
+  blocked: (x, row) => row === 1 && x > 150,
+};
+
+// Conjugate vaccine: polysaccharide chains on a carrier protein centred at (128, 140):
+// [direction in degrees, number of sugars], with sugars every 17 px from radius 64.
+const CONJUGATE_CHAINS = [[-165, 3], [-122, 4], [-80, 4], [-38, 4], [-2, 3], [78, 3], [148, 3]];
+
+// Peripheral IV cannula in local coordinates, catheter towards -x (drawn rotated).
+const CANNULA = {
+  catheter: 'M-34 -4L-106 -2.5Q-114 0 -106 2.5L-34 4Z',
+  wing: 'M-30 -10L-26 -36Q-24 -44 -16 -44L-4 -44Q4 -44 4 -36L2 -10Z',
+};
+
+// PICC line: catheter, junction hub [x, y, angle] and two extension legs ending in connectors.
+const PICC = {
+  catheter: 'M114 142C92 164 50 158 44 192C38 226 98 236 140 220C176 206 200 214 222 230',
+  hub: [124, 132, -45],
+  legs: ['M130 122C138 100 150 78 160 58', 'M136 128C158 114 184 102 204 92'],
+  connectors: [[164, 50, -64], [212, 88, -24]],
+  clamps: [[146, 92, -64], [176, 108, -24]],
+};
+
+// Anopheles mosquito at rest, side view: head down, body and proboscis in one line at about 45°.
+const MOSQUITO = {
+  proboscis: [[96, 166], [38, 222]],
+  palps: [[90, 156], [34, 210]],
+  head: [104, 154, 13],
+  antenna: [[98, 146], [66, 122]],
+  thorax: [132, 126, 30, 23, -40],
+  abdomen: { from: [150, 106], to: [222, 40], widths: [14, 5] },
+  // The folded wing lies along the back, above the abdomen.
+  wing: [176, 68, 56, 10, -42],
+  // Legs from the thorax, each [hip, knee, ankle, foot]; the far-side legs are listed first.
+  farLegs: [[[126, 142], [112, 190], [108, 214], [102, 236]], [[136, 142], [168, 180], [176, 208], [190, 232]], [[142, 136], [182, 126], [214, 132], [236, 116]]],
+  nearLegs: [[[122, 140], [100, 186], [86, 212], [74, 236]], [[132, 142], [150, 186], [148, 214], [156, 236]], [[140, 140], [188, 146], [218, 176], [238, 168]]],
+};
 
 // Dense polyline through pts along an open Catmull–Rom curve.
 function densify(pts, steps = 12) {
@@ -463,6 +613,12 @@ function pipe(d, colour, width) {
 // Mirror an absolute-coordinate path ("x y" pairs only) left–right across the canvas centre.
 const mirrorX = d => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${round(256 - Number(x))} ${y}`);
 
+// Polygon points of a hexagon (a sugar ring) of radius r at (x, y), turned by deg.
+const hexagon = (x, y, r, deg = 0) => Array.from({ length: 6 }, (_, k) => {
+  const a = (k * 60 + deg) * Math.PI / 180;
+  return `${round(x + r * Math.cos(a))},${round(y + r * Math.sin(a))}`;
+}).join(' ');
+
 // Radius of an ellipse with semi-axes rx, ry in direction a (radians).
 const ellipseRadius = (rx, ry, a) => 1 / Math.sqrt((Math.cos(a) / rx) ** 2 + (Math.sin(a) / ry) ** 2);
 
@@ -503,6 +659,26 @@ function icosahedron({ tiltX = 0.38, tiltY = 0.52 } = {}) {
   return { vertices, visibleFaces, visibleVertices };
 }
 
+// Calicivirus (norovirus) surface on the unit sphere: 32 cup-shaped depressions at the 5-fold
+// (vertex) and 3-fold (face) axes, ringed by 90 arch-forming P-domain dimers at the 2-fold
+// (edge) and quasi-2-fold (vertex–face) positions.
+function calicivirusPoints() {
+  const { vertices: V } = icosahedron();
+  const close = (i, j) => Math.hypot(...vec.sub(V[i], V[j])) < 1.2;
+  const mid = (...vs) => vec.unit([0, 1, 2].map(d => vs.reduce((sum, v) => sum + v[d], 0)));
+  const edges = [], faces = [];
+  for (let i = 0; i < 12; i++) for (let j = i + 1; j < 12; j++) {
+    if (!close(i, j)) continue;
+    edges.push([i, j]);
+    for (let k = j + 1; k < 12; k++) if (close(i, k) && close(j, k)) faces.push([i, j, k]);
+  }
+  const centres = faces.map(f => mid(...f.map(i => V[i])));
+  return {
+    cups: [...V, ...centres],
+    dimers: [...edges.map(([i, j]) => mid(V[i], V[j])), ...faces.flatMap((f, k) => f.map(i => mid(V[i], centres[k])))],
+  };
+}
+
 // Deterministic pseudo-random numbers (mulberry32), so regenerated icons are identical.
 function rng(seed) {
   let a = seed >>> 0;
@@ -541,4 +717,6 @@ module.exports = {
   sphereGradient, cylinderGradient, glossGradient, gloss,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
   pointsAlongBezier, densify, resample, splitSubpaths, ORGANS, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
+  SKIN_TONES, PSEUDOMONAS_CELLS, ENTEROCYTES, CDIFF, sporulatingRod, HIV_CAPSID, CRYPTOCOCCUS_CELLS, GIARDIA, CONJUGATION, toGlobal, TLR,
+  OPSONISATION, phagocyteCup, arcPoints, hexagon, PEPTIDOGLYCAN, CONJUGATE_CHAINS, CANNULA, PICC, MOSQUITO, calicivirusPoints,
 };

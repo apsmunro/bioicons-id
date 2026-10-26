@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="urine-dipstick-mono-title">
+<title id="urine-dipstick-mono-title">Urine dipstick (single colour)</title>
+<desc>Urine sample pot beside a reagent strip with coloured test pads.</desc>
+<defs></defs>
+<path d="M44 116H124V214Q124 228 110 228H58Q44 228 44 214Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53 152H115V211Q115 219 107 219H61Q53 219 53 211Z" fill="#000000"/>
+<rect x="38" y="94" width="92" height="24" rx="5" fill="#000000"/>
+<g transform="translate(184 128) rotate(14)">
+<rect x="-13" y="-104" width="26" height="208" rx="3" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-5.5" y="-66" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="-47" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="-28" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="-9" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="10" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="29" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="48" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="67" width="11" height="13" rx="2" fill="#000000"/>
+<rect x="-5.5" y="86" width="11" height="13" rx="2" fill="#000000"/>
+</g>
+</svg>

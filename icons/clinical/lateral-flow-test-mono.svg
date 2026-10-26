@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lateral-flow-test-mono-title">
+<title id="lateral-flow-test-mono-title">Lateral flow test (single colour)</title>
+<desc>Lateral flow test cassette with a sample well and a result window showing control and test lines (a positive result).</desc>
+<defs></defs>
+<g transform="translate(128 128) rotate(-20)">
+<rect x="-42" y="-106" width="84" height="212" rx="18" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-18 -90H18M-18 -82H18M-18 -74H18" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-18" y="-58" width="36" height="70" rx="6" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-11" y="-40" width="22" height="5" rx="1.5" fill="#000000"/>
+<rect x="-11" y="-16" width="22" height="5" rx="1.5" fill="#000000"/>
+<circle cx="0" cy="58" r="16" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="0" cy="58" r="7" fill="#000000"/>
+</g>
+</svg>

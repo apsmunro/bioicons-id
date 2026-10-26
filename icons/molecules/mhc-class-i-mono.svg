@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mhc-class-i-mono-title">
+<title id="mhc-class-i-mono-title">MHC class I (single colour)</title>
+<desc>MHC class I molecule in the cell membrane: a heavy chain (α1, α2 and α3 domains) with β2-microglobulin, presenting a short peptide in a groove closed at both ends.</desc>
+<defs></defs>
+<g transform="translate(0 -8)">
+<path d="M24 184H232M24 210H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M104 166V222" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="104" cy="144" rx="20" ry="24" transform="rotate(0 104 144)" fill="#000000"/>
+<ellipse cx="154" cy="146" rx="19" ry="21" transform="rotate(0 154 146)" fill="#000000"/>
+<ellipse cx="98" cy="94" rx="27" ry="19" transform="rotate(22 98 94)" fill="#000000"/>
+<ellipse cx="158" cy="94" rx="27" ry="19" transform="rotate(-22 158 94)" fill="#000000"/>
+<path d="M100 65C101.17 64.62 104.67 63.41 107 62.7C109.33 62 111.67 61.3 114 60.76C116.33 60.22 118.67 59.75 121 59.46C123.33 59.16 125.67 59 128 59C130.33 59 132.67 59.16 135 59.46C137.33 59.75 139.67 60.22 142 60.76C144.33 61.3 146.67 62 149 62.7C151.33 63.41 154.83 64.62 156 65" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

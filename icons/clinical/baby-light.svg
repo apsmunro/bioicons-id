@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="baby-light-title">
+<title id="baby-light-title">Baby (light skin tone)</title>
+<desc>Baby sitting up, wearing a nappy.</desc>
+<defs><radialGradient id="baby-light-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f7dfc6"/><stop offset="0.55" stop-color="#F2CDA8"/><stop offset="1" stop-color="#cbac8d"/></radialGradient><linearGradient id="baby-light-torso" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e3c19e"/><stop offset="0.25" stop-color="#f9e6d4"/><stop offset="0.6" stop-color="#F2CDA8"/><stop offset="1" stop-color="#bda083"/></linearGradient><radialGradient id="baby-light-nappy" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbfbfc"/><stop offset="0.55" stop-color="#F4F6F8"/><stop offset="1" stop-color="#e0e2e4"/></radialGradient></defs>
+<path d="M106 188Q88 204 70 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#967f68" stroke-width="27"/><path d="M106 188Q88 204 70 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F2CDA8" stroke-width="22"/><path d="M106 188Q88 204 70 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="4.84" opacity="0.4" transform="translate(-3.96 -3.96)"/>
+<path d="M150 188Q168 204 186 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#967f68" stroke-width="27"/><path d="M150 188Q168 204 186 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F2CDA8" stroke-width="22"/><path d="M150 188Q168 204 186 208" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="4.84" opacity="0.4" transform="translate(-3.96 -3.96)"/>
+<ellipse cx="62" cy="206" rx="14" ry="11" fill="url(#baby-light-skin)" stroke="#967f68" stroke-width="2"/>
+<ellipse cx="194" cy="206" rx="14" ry="11" fill="url(#baby-light-skin)" stroke="#967f68" stroke-width="2"/>
+<path d="M96 108Q128 98 160 108Q172 142 164 170L92 170Q84 142 96 108Z" fill="url(#baby-light-torso)" stroke="#967f68" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M88 158Q128 168 168 158Q172 186 152 198Q128 206 104 198Q84 186 88 158Z" fill="url(#baby-light-nappy)" stroke="#AEB8C2" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="90" y="161" width="10" height="8" rx="2" fill="#9ED9C2" stroke="#628778" stroke-width="1.2"/>
+<rect x="156" y="161" width="10" height="8" rx="2" fill="#9ED9C2" stroke="#628778" stroke-width="1.2"/>
+<path d="M100 116Q86 136 84 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#967f68" stroke-width="22"/><path d="M100 116Q86 136 84 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F2CDA8" stroke-width="17"/><path d="M100 116Q86 136 84 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.74" opacity="0.4" transform="translate(-3.06 -3.06)"/>
+<path d="M156 116Q170 136 172 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#967f68" stroke-width="22"/><path d="M156 116Q170 136 172 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F2CDA8" stroke-width="17"/><path d="M156 116Q170 136 172 156" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.74" opacity="0.4" transform="translate(-3.06 -3.06)"/>
+<circle cx="84" cy="160" r="10" fill="url(#baby-light-skin)" stroke="#967f68" stroke-width="2"/>
+<circle cx="172" cy="160" r="10" fill="url(#baby-light-skin)" stroke="#967f68" stroke-width="2"/>
+<circle cx="90" cy="70" r="7" fill="#F2CDA8" stroke="#967f68" stroke-width="2"/>
+<circle cx="166" cy="70" r="7" fill="#F2CDA8" stroke="#967f68" stroke-width="2"/>
+<circle cx="128" cy="66" r="38" fill="url(#baby-light-skin)" stroke="#967f68" stroke-width="2.5"/>
+<path d="M122 30C118 22 128 16 136 22C130 22 128 26 130 30" fill="none" stroke="#8C5A33" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

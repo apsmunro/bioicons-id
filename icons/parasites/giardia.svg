@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="giardia-title">
+<title id="giardia-title">Giardia</title>
+<desc>Giardia trophozoite from the ventral side: pear-shaped, with two nuclei, a ventral adhesive disc, median bodies and four pairs of flagella.</desc>
+<defs><radialGradient id="giardia-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#dcebf7"/><stop offset="0.55" stop-color="#B9D7EE"/><stop offset="1" stop-color="#a3bdd1"/></radialGradient><radialGradient id="giardia-nucleus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8a3dd"/><stop offset="0.55" stop-color="#7E57C2"/><stop offset="1" stop-color="#6a49a3"/></radialGradient><radialGradient id="giardia-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M61 118C46 128 48 146 30 158M99 176C86 186 90 204 68 216M111 192C104 206 110 220 100 234M195 118C210 128 208 146 226 158M157 176C170 186 166 204 188 216M145 192C152 206 146 220 156 234M124 206C120 216 124 226 118 238M132 206C136 216 132 226 138 238" fill="none" stroke="#738594" stroke-width="3" stroke-linecap="round"/>
+<path d="M128 36C178 36 202 64 200 96C198 132 162 170 138 200Q128 212 118 200C94 170 58 132 56 96C54 64 78 36 128 36Z" fill="url(#giardia-body)" stroke="#738594" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="128" cy="92" rx="52" ry="40" fill="#d9e9f6" stroke="#8ba1b3" stroke-width="2"/>
+<ellipse cx="128" cy="92" rx="42.64" ry="32.8" fill="none" stroke="#9db7ca" stroke-width="1.2" opacity="0.6"/>
+<ellipse cx="128" cy="92" rx="33.28" ry="25.6" fill="none" stroke="#9db7ca" stroke-width="1.2" opacity="0.6"/>
+<ellipse cx="128" cy="92" rx="23.92" ry="18.4" fill="none" stroke="#9db7ca" stroke-width="1.2" opacity="0.6"/>
+<path d="M123 70L124 206M133 70L132 206" stroke="#788c9b" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+<ellipse cx="114" cy="146" rx="10" ry="4" transform="rotate(25 114 146)" fill="#667683"/>
+<ellipse cx="142" cy="146" rx="10" ry="4" transform="rotate(-25 142 146)" fill="#667683"/>
+<ellipse cx="106" cy="90" rx="12" ry="17" fill="url(#giardia-nucleus)" stroke="#4e3678" stroke-width="2"/><circle cx="106" cy="91" r="4" fill="#52397e"/>
+<ellipse cx="150" cy="90" rx="12" ry="17" fill="url(#giardia-nucleus)" stroke="#4e3678" stroke-width="2"/><circle cx="150" cy="91" r="4" fill="#52397e"/>
+<ellipse cx="92" cy="62" rx="20" ry="9" transform="rotate(-30 92 62)" fill="url(#giardia-gloss)"/>
+</svg>

@@ -23,6 +23,9 @@ simplified **single-colour** version.
   and search tags (include clinical terms and abbreviations people type).
 - Single-colour files must use only `#000000` (the gallery swaps it for the chosen colour), with
   transparent gaps instead of white fills.
+- People icons have skin-tone versions: a catalogue entry's `toneFiles` lists them, and the colour
+  script redraws the icon with `SKIN_TONES` (in the kit) swapped into `PALETTE.skin`/`hair`. The
+  gallery shows a skin-tone picker in the detail view for these icons.
 
 ### Drawings supplied by the author
 
@@ -57,23 +60,18 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 - Anatomy and science should be accurate; the author reviews closely and will push back on odd shapes.
 - People have no facial features. British spelling throughout.
 
-## Status (26 Oct 2026)
+## Status (26 Oct 2026, batch 5)
 
-73 icons in 10 categories: bacteria 11, viruses 9, fungi 2, parasites 2, immune cells 14,
-molecules 5, organs & body systems 12, treatment 5, antimicrobial resistance 3, clinical & lab 10.
+95 icons in 10 categories: bacteria 15, viruses 11, fungi 3, parasites & vectors 4, immune cells 15,
+molecules 9, organs & body systems 12, treatment 7, antimicrobial resistance 4, clinical & lab 15.
+The four people icons come in four skin tones.
 
 ## Ideas not yet done
 
-- Pathogens: *Haemophilus*, *Klebsiella*, *Pseudomonas*, *Salmonella*, *C. difficile* (spores),
-  *Mycoplasma*, norovirus, HIV, hepatitis B, *Cryptococcus*, *Pneumocystis*, *Giardia*, a helminth,
-  scabies mite, head louse.
-- Immunology: Treg, basophil, IgA dimer, IgE on a mast cell, MHC class I, Toll-like receptor,
-  immune synapse, C3b opsonisation, antigen/epitope binding.
-- Resistance and vaccines: plasmid transfer, antibiotic acting on the cell wall, viral-vector
-  and conjugate vaccines.
-- Clinical: cannula/PICC, nebuliser or oxygen mask, neonatal incubator, urine dipstick, Gram
-  stain slide, PCR tube, lateral-flow test, blood bottles, parent and baby, mosquito, tick,
+- Pathogens: *Haemophilus*, *Mycoplasma*, hepatitis B, *Pneumocystis*, a helminth, scabies mite,
+  head louse, tick.
+- Immunology: basophil, IgE on a mast cell, immune synapse, antigen/epitope binding.
+- Vaccines: viral-vector vaccine.
+- Clinical: nebuliser or oxygen mask, neonatal incubator, PCR tube, blood bottles, parent and baby,
   transmission routes, hand hygiene, mask, globe.
-- Other skin tones for the people icons.
-- Known weaknesses: the single-colour β-lactamase reads a little like an apple with a bite out
-  at small sizes; the supplied brain and heart drawings have fine lines that look light below ~64 px.
+- Known weaknesses: the supplied brain and heart drawings have fine lines that look light below ~64 px.

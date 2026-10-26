@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="klebsiella-mono-title">
+<title id="klebsiella-mono-title">Klebsiella (single colour)</title>
+<desc>A pair of plump, non-motile Gram-negative bacilli inside a thick polysaccharide capsule.</desc>
+<defs></defs>
+<g transform="translate(128 128) rotate(-28)">
+<ellipse rx="114" ry="64" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-99" y="-26" width="96" height="52" rx="26" fill="#000000"/>
+<rect x="3" y="-26" width="96" height="52" rx="26" fill="#000000"/>
+</g>
+</svg>

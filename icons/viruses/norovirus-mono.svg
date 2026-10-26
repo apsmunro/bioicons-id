@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="norovirus-mono-title">
+<title id="norovirus-mono-title">Norovirus (single colour)</title>
+<desc>Non-enveloped calicivirus: an icosahedral capsid whose arch-like protruding dimers ring 32 cup-shaped depressions.</desc>
+<defs></defs>
+<circle cx="128" cy="128" r="84" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="141.62" cy="59.35" rx="10.5" ry="3.38" transform="rotate(11.23 141.62 59.35)" fill="#000000"/>
+<ellipse cx="136.25" cy="86.17" rx="10.5" ry="8.58" transform="rotate(11.16 136.25 86.17)" fill="#000000"/>
+<ellipse cx="72.37" cy="85.2" rx="10.5" ry="3.3" transform="rotate(-52.43 72.37 85.2)" fill="#000000"/>
+<ellipse cx="93.45" cy="102.15" rx="10.5" ry="8.53" transform="rotate(-53.19 93.45 102.15)" fill="#000000"/>
+<ellipse cx="175.9" cy="86.17" rx="10.5" ry="5.35" transform="rotate(48.87 175.9 86.17)" fill="#000000"/>
+<ellipse cx="79.83" cy="170.8" rx="10.5" ry="5.15" transform="rotate(228.38 79.83 170.8)" fill="#000000"/>
+<ellipse cx="162.11" cy="155.42" rx="10.5" ry="8.46" transform="rotate(128.79 162.11 155.42)" fill="#000000"/>
+<ellipse cx="183.46" cy="171.4" rx="10.5" ry="3.19" transform="rotate(128.04 183.46 171.4)" fill="#000000"/>
+<ellipse cx="119.31" cy="171.4" rx="10.5" ry="8.41" transform="rotate(191.32 119.31 171.4)" fill="#000000"/>
+<ellipse cx="191.88" cy="128.97" rx="10.5" ry="5.28" transform="rotate(90.87 191.88 128.97)" fill="#000000"/>
+<ellipse cx="127.73" cy="128.97" rx="10.5" ry="10.5" transform="rotate(195.55 127.73 128.97)" fill="#000000"/>
+<ellipse cx="63.85" cy="128" rx="10.5" ry="5.22" transform="rotate(-90 63.85 128)" fill="#000000"/>
+<ellipse cx="129.46" cy="68.49" rx="10.5" ry="6.23" transform="rotate(1.4 129.46 68.49)" fill="#000000"/>
+<ellipse cx="165.06" cy="68.49" rx="10.5" ry="3.33" transform="rotate(31.91 165.06 68.49)" fill="#000000"/>
+<ellipse cx="160.24" cy="92.58" rx="10.5" ry="8" transform="rotate(42.3 160.24 92.58)" fill="#000000"/>
+<ellipse cx="111.31" cy="84.61" rx="10.5" ry="8.16" transform="rotate(-21.04 111.31 84.61)" fill="#000000"/>
+<ellipse cx="142.09" cy="108.7" rx="10.5" ry="9.94" transform="rotate(36.13 142.09 108.7)" fill="#000000"/>
+<ellipse cx="103.66" cy="123.04" rx="10.5" ry="9.89" transform="rotate(-78.49 103.66 123.04)" fill="#000000"/>
+<ellipse cx="87.25" cy="84.25" rx="10.5" ry="6.17" transform="rotate(-42.97 87.25 84.25)" fill="#000000"/>
+<ellipse cx="60.67" cy="107.46" rx="10.5" ry="3.2" transform="rotate(-73.04 60.67 107.46)" fill="#000000"/>
+<ellipse cx="79.6" cy="122.68" rx="10.5" ry="7.9" transform="rotate(-83.73 79.6 122.68)" fill="#000000"/>
+<ellipse cx="181.19" cy="108.7" rx="10.5" ry="6.76" transform="rotate(70.05 181.19 108.7)" fill="#000000"/>
+<ellipse cx="126.23" cy="188.64" rx="10.5" ry="6" transform="rotate(181.67 126.23 188.64)" fill="#000000"/>
+<ellipse cx="95.36" cy="164.88" rx="10.5" ry="7.83" transform="rotate(221.51 95.36 164.88)" fill="#000000"/>
+<ellipse cx="74.47" cy="148.54" rx="10.5" ry="6.63" transform="rotate(249.01 74.47 148.54)" fill="#000000"/>
+<ellipse cx="168.44" cy="172.88" rx="10.5" ry="6.05" transform="rotate(137.98 168.44 172.88)" fill="#000000"/>
+<ellipse cx="176" cy="134.78" rx="10.5" ry="7.93" transform="rotate(98.04 176 134.78)" fill="#000000"/>
+<ellipse cx="195.17" cy="149.13" rx="10.5" ry="3.2" transform="rotate(107.46 195.17 149.13)" fill="#000000"/>
+<ellipse cx="144.27" cy="172.88" rx="10.5" ry="8.02" transform="rotate(160.07 144.27 172.88)" fill="#000000"/>
+<ellipse cx="151.83" cy="134.78" rx="10.5" ry="9.89" transform="rotate(105.88 151.83 134.78)" fill="#000000"/>
+<ellipse cx="113.4" cy="149.13" rx="10.5" ry="9.85" transform="rotate(214.65 113.4 149.13)" fill="#000000"/>
+</svg>

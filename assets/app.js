@@ -22,12 +22,16 @@
     current: null,
     variant: storage.get('icon-variant') === 'mono' ? 'mono' : 'colour',
     ink: /^#[0-9a-f]{6}$/.test(storage.get('icon-ink') || '') ? storage.get('icon-ink') : INK,
+    // Skin tone for the people icons; "medium" is each icon's main file.
+    tone: lib.skinTones.some(t => t.id === storage.get('icon-tone')) ? storage.get('icon-tone') : 'medium',
   };
 
   const isMono = icon => state.variant === 'mono' && icon.monoSvg;
-  const svgFor = icon => (isMono(icon) ? icon.monoSvg.split(INK).join(state.ink) : icon.svg);
+  const toned = icon => !isMono(icon) && icon.toneSvgs && icon.toneSvgs[state.tone];
+  const svgFor = icon => (isMono(icon) ? icon.monoSvg.split(INK).join(state.ink) : toned(icon) || icon.svg);
   const svgUrl = icon => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgFor(icon));
-  const fileBase = icon => (isMono(icon) ? `${icon.id}-mono${state.ink === INK ? '' : '-' + state.ink.slice(1)}` : icon.id);
+  const fileBase = icon => (isMono(icon) ? `${icon.id}-mono${state.ink === INK ? '' : '-' + state.ink.slice(1)}`
+    : toned(icon) ? `${icon.id}-${state.tone}` : icon.id);
 
   for (const icon of lib.icons) {
     icon.searchText = [icon.name, icon.description, categoryLabel[icon.category], ...(icon.tags || [])]
@@ -99,11 +103,38 @@
     }
   }
 
+  // Skin-tone swatches, shown in the detail view for full-colour people icons.
+  function renderTonePicker() {
+    const box = $('.tone'), icon = state.current;
+    box.hidden = !(icon && icon.toneSvgs && state.variant === 'colour');
+    const label = document.createElement('span');
+    label.className = 'ink-label';
+    label.textContent = 'Skin tone';
+    box.replaceChildren(label, ...lib.skinTones.map(({ id, label: name, skin }) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'swatch';
+      b.style.setProperty('--swatch', skin);
+      b.setAttribute('aria-label', name);
+      b.title = name;
+      b.setAttribute('aria-pressed', String(state.tone === id));
+      b.addEventListener('click', () => setTone(id));
+      return b;
+    }));
+  }
+
   function refresh() {
     $$('[data-variant]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.variant === state.variant)));
     renderInkPickers();
+    renderTonePicker();
     renderGrid();
     if (state.current) $('#detail-img').src = svgUrl(state.current);
+  }
+
+  function setTone(tone) {
+    state.tone = tone;
+    storage.set('icon-tone', tone);
+    refresh();
   }
 
   function setVariant(variant) {
@@ -139,6 +170,7 @@
       li.textContent = t;
       return li;
     }));
+    renderTonePicker();
     say('');
     history.replaceState(null, '', '#' + icon.id);
     if (!dialog.open) dialog.showModal();

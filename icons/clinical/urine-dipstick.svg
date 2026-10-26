@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="urine-dipstick-title">
+<title id="urine-dipstick-title">Urine dipstick</title>
+<desc>Urine sample pot beside a reagent strip with coloured test pads.</desc>
+<defs><clipPath id="urine-dipstick-clip"><path d="M44 116H124V214Q124 228 110 228H58Q44 228 44 214Z"/></clipPath><linearGradient id="urine-dipstick-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><linearGradient id="urine-dipstick-lid" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cc4e4a"/><stop offset="0.25" stop-color="#eca9a7"/><stop offset="0.6" stop-color="#D9534F"/><stop offset="1" stop-color="#a9413e"/></linearGradient><linearGradient id="urine-dipstick-urine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5de84"/><stop offset="1" stop-color="#d5ba50"/></linearGradient></defs>
+<path d="M44 116H124V214Q124 228 110 228H58Q44 228 44 214Z" fill="url(#urine-dipstick-glass)"/>
+<g clip-path="url(#urine-dipstick-clip)"><rect x="40" y="150" width="90" height="82" fill="url(#urine-dipstick-urine)"/><line x1="40" y1="150" x2="128" y2="150" stroke="#fff" stroke-width="2" opacity="0.7"/></g>
+<rect x="52" y="122" width="6" height="96" rx="3" fill="#fff" opacity="0.5"/>
+<path d="M44 116H124V214Q124 228 110 228H58Q44 228 44 214Z" fill="none" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<rect x="38" y="94" width="92" height="24" rx="5" fill="url(#urine-dipstick-lid)" stroke="#873331" stroke-width="2.5"/>
+<path d="M46 98V114M54.5 98V114M63 98V114M71.5 98V114M80 98V114M88.5 98V114M97 98V114M105.5 98V114M114 98V114M122.5 98V114" stroke="#ae423f" stroke-width="1.3"/>
+<g transform="translate(184 128) rotate(14)">
+<rect x="-13" y="-104" width="26" height="208" rx="3" fill="#FBFCFD" stroke="#8DA6B8" stroke-width="2.5"/>
+<rect x="-9" y="-66" width="18" height="13" rx="2" fill="#B9A3D6" stroke="#827296" stroke-width="1.2"/>
+<rect x="-9" y="-47" width="18" height="13" rx="2" fill="#F2B8C6" stroke="#a9818b" stroke-width="1.2"/>
+<rect x="-9" y="-28" width="18" height="13" rx="2" fill="#F5C79E" stroke="#ac8b6f" stroke-width="1.2"/>
+<rect x="-9" y="-9" width="18" height="13" rx="2" fill="#C9DC7A" stroke="#8d9a55" stroke-width="1.2"/>
+<rect x="-9" y="10" width="18" height="13" rx="2" fill="#F2A541" stroke="#a9742e" stroke-width="1.2"/>
+<rect x="-9" y="29" width="18" height="13" rx="2" fill="#5E9E5A" stroke="#426f3f" stroke-width="1.2"/>
+<rect x="-9" y="48" width="18" height="13" rx="2" fill="#6FB7A8" stroke="#4e8076" stroke-width="1.2"/>
+<rect x="-9" y="67" width="18" height="13" rx="2" fill="#E9A0A0" stroke="#a37070" stroke-width="1.2"/>
+<rect x="-9" y="86" width="18" height="13" rx="2" fill="#9FD5D1" stroke="#6f9592" stroke-width="1.2"/>
+</g>
+</svg>

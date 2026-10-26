@@ -8,7 +8,7 @@
     { "id": "bacteria", "label": "Bacteria" },
     { "id": "viruses", "label": "Viruses" },
     { "id": "fungi", "label": "Fungi" },
-    { "id": "parasites", "label": "Parasites" },
+    { "id": "parasites", "label": "Parasites & vectors" },
     { "id": "immune-cells", "label": "Immune cells" },
     { "id": "molecules", "label": "Molecules" },
     { "id": "organs", "label": "Organs & body systems" },
@@ -117,6 +117,42 @@
       "tags": ["Treponema pallidum", "syphilis", "congenital syphilis", "spirochaete", "spirochete", "Borrelia", "Leptospira", "bacterium"]
     },
     {
+      "id": "pseudomonas",
+      "name": "Pseudomonas aeruginosa",
+      "category": "bacteria",
+      "file": "icons/bacteria/pseudomonas.svg",
+      "monoFile": "icons/bacteria/pseudomonas-mono.svg",
+      "description": "Slender Gram-negative bacilli, each with a single polar flagellum. Coloured pink, after the Gram stain.",
+      "tags": ["gram-negative", "rod", "bacillus", "P. aeruginosa", "Pseudomonas", "non-fermenter", "cystic fibrosis", "CF", "line infection", "neutropenic sepsis", "ecthyma gangrenosum", "polar flagellum", "bacterium"]
+    },
+    {
+      "id": "klebsiella",
+      "name": "Klebsiella",
+      "category": "bacteria",
+      "file": "icons/bacteria/klebsiella.svg",
+      "monoFile": "icons/bacteria/klebsiella-mono.svg",
+      "description": "A pair of plump, non-motile Gram-negative bacilli inside a thick polysaccharide capsule.",
+      "tags": ["gram-negative", "rod", "bacillus", "K. pneumoniae", "Klebsiella pneumoniae", "Enterobacterales", "coliform", "capsule", "ESBL", "CPE", "KPC", "carbapenemase", "UTI", "neonatal sepsis", "bacterium"]
+    },
+    {
+      "id": "salmonella",
+      "name": "Salmonella",
+      "category": "bacteria",
+      "file": "icons/bacteria/salmonella.svg",
+      "monoFile": "icons/bacteria/salmonella-mono.svg",
+      "description": "Gram-negative bacilli invading the gut epithelium: one swimming with peritrichous flagella, one triggering membrane ruffles on an enterocyte, and one inside a Salmonella-containing vacuole.",
+      "tags": ["gram-negative", "rod", "bacillus", "Salmonella enterica", "Typhi", "typhoid", "enteric fever", "non-typhoidal Salmonella", "NTS", "gastroenteritis", "invasion", "enterocyte", "gut", "bacterium"]
+    },
+    {
+      "id": "c-difficile",
+      "name": "Clostridioides difficile",
+      "category": "bacteria",
+      "file": "icons/bacteria/c-difficile.svg",
+      "monoFile": "icons/bacteria/c-difficile-mono.svg",
+      "description": "Large Gram-positive bacilli: a vegetative cell with peritrichous flagella, a cell with a subterminal spore, and free spores (coloured green, after the spore stain).",
+      "tags": ["gram-positive", "rod", "bacillus", "C. difficile", "C. diff", "Clostridium difficile", "CDI", "spores", "sporulation", "anaerobe", "antibiotic-associated diarrhoea", "pseudomembranous colitis", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -198,6 +234,24 @@
       "tags": ["measles", "morbillivirus", "paramyxovirus", "MMR", "rubeola", "SSPE", "mumps", "enveloped virus", "RNA virus", "virion"]
     },
     {
+      "id": "hiv",
+      "name": "HIV",
+      "category": "viruses",
+      "file": "icons/viruses/hiv.svg",
+      "monoFile": "icons/viruses/hiv-mono.svg",
+      "description": "Enveloped retrovirus with sparse Env (gp120/gp41) spike trimers, a matrix layer and a cone-shaped capsid holding two RNA genomes and reverse transcriptase.",
+      "tags": ["HIV", "HIV-1", "human immunodeficiency virus", "retrovirus", "lentivirus", "AIDS", "Env", "gp120", "gp41", "capsid", "p24", "PMTCT", "vertical transmission", "virus"]
+    },
+    {
+      "id": "norovirus",
+      "name": "Norovirus",
+      "category": "viruses",
+      "file": "icons/viruses/norovirus.svg",
+      "monoFile": "icons/viruses/norovirus-mono.svg",
+      "description": "Non-enveloped calicivirus: an icosahedral capsid whose arch-like protruding dimers ring 32 cup-shaped depressions.",
+      "tags": ["norovirus", "calicivirus", "Caliciviridae", "Norwalk", "winter vomiting bug", "gastroenteritis", "diarrhoea and vomiting", "D&V", "non-enveloped", "outbreak", "virus"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -216,6 +270,15 @@
       "tags": ["Aspergillus fumigatus", "mould", "mold", "aspergillosis", "invasive fungal infection", "hyphae", "conidia", "spores", "fungus"]
     },
     {
+      "id": "cryptococcus",
+      "name": "Cryptococcus",
+      "category": "fungi",
+      "file": "icons/fungi/cryptococcus.svg",
+      "monoFile": "icons/fungi/cryptococcus-mono.svg",
+      "description": "Round yeast cells with a thick polysaccharide capsule, one with a narrow-necked bud, as seen on India ink staining.",
+      "tags": ["Cryptococcus neoformans", "C. gattii", "cryptococcal meningitis", "yeast", "capsule", "India ink", "CrAg", "HIV", "immunocompromised", "fungus"]
+    },
+    {
       "id": "malaria",
       "name": "Malaria (Plasmodium)",
       "category": "parasites",
@@ -232,6 +295,24 @@
       "monoFile": "icons/parasites/toxoplasma-mono.svg",
       "description": "Crescent-shaped tachyzoite with apical conoid, rhoptries (orange), micronemes (yellow) and nucleus.",
       "tags": ["Toxoplasma gondii", "toxoplasmosis", "congenital toxoplasmosis", "TORCH", "tachyzoite", "apicomplexa", "protozoa", "parasite"]
+    },
+    {
+      "id": "giardia",
+      "name": "Giardia",
+      "category": "parasites",
+      "file": "icons/parasites/giardia.svg",
+      "monoFile": "icons/parasites/giardia-mono.svg",
+      "description": "Giardia trophozoite from the ventral side: pear-shaped, with two nuclei, a ventral adhesive disc, median bodies and four pairs of flagella.",
+      "tags": ["Giardia lamblia", "Giardia intestinalis", "Giardia duodenalis", "giardiasis", "trophozoite", "protozoa", "flagellate", "diarrhoea", "malabsorption", "parasite"]
+    },
+    {
+      "id": "mosquito",
+      "name": "Mosquito",
+      "category": "parasites",
+      "file": "icons/parasites/mosquito.svg",
+      "monoFile": "icons/parasites/mosquito-mono.svg",
+      "description": "Anopheles mosquito at rest, with the body and proboscis held in a line at an angle to the surface, long palps and spotted wings.",
+      "tags": ["mosquito", "Anopheles", "vector", "malaria", "insect", "bite", "Aedes", "dengue", "arbovirus", "travel", "tropical medicine"]
     },
     {
       "id": "neutrophil",
@@ -360,6 +441,15 @@
       "tags": ["NETs", "neutrophil extracellular traps", "NETosis", "neutrophil", "DNA", "histones", "innate immunity", "thrombosis"]
     },
     {
+      "id": "treg",
+      "name": "Regulatory T cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/treg.svg",
+      "monoFile": "icons/immune-cells/treg-mono.svg",
+      "description": "CD4+ regulatory T cell carrying T-cell receptors and the IL-2 receptor α chain (CD25), releasing suppressive cytokines such as IL-10 and TGF-β.",
+      "tags": ["Treg", "regulatory T cell", "CD4", "CD25", "FOXP3", "IL-10", "TGF-beta", "TGF-β", "tolerance", "immune suppression", "IPEX", "lymphocyte"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -403,6 +493,42 @@
       "monoFile": "icons/molecules/complement-mac-mono.svg",
       "description": "Complement membrane attack complex: a C9 pore (pink) assembled on C5b–8 (purple), spanning a lipid bilayer.",
       "tags": ["complement", "MAC", "C5b-9", "C9", "terminal complement", "pore", "eculizumab", "meningococcal", "innate immunity", "membrane"]
+    },
+    {
+      "id": "mhc-class-i",
+      "name": "MHC class I",
+      "category": "molecules",
+      "file": "icons/molecules/mhc-class-i.svg",
+      "monoFile": "icons/molecules/mhc-class-i-mono.svg",
+      "description": "MHC class I molecule in the cell membrane: a heavy chain (α1, α2 and α3 domains) with β2-microglobulin, presenting a short peptide in a groove closed at both ends.",
+      "tags": ["MHC I", "MHC class I", "HLA", "HLA-A", "HLA-B", "HLA-C", "beta-2 microglobulin", "β2m", "antigen presentation", "CD8", "cytotoxic T cell", "peptide"]
+    },
+    {
+      "id": "iga-dimer",
+      "name": "Secretory IgA",
+      "category": "molecules",
+      "file": "icons/molecules/iga-dimer.svg",
+      "monoFile": "icons/molecules/iga-dimer-mono.svg",
+      "description": "Dimeric IgA: two antibody units joined tail to tail by the J chain and wrapped by the secretory component, as found on mucosal surfaces and in breast milk.",
+      "tags": ["IgA", "sIgA", "secretory IgA", "dimer", "J chain", "secretory component", "mucosal immunity", "breast milk", "colostrum", "IgA deficiency", "antibody", "immunoglobulin"]
+    },
+    {
+      "id": "toll-like-receptor",
+      "name": "Toll-like receptor",
+      "category": "molecules",
+      "file": "icons/molecules/toll-like-receptor.svg",
+      "monoFile": "icons/molecules/toll-like-receptor-mono.svg",
+      "description": "Toll-like receptor dimer: two horseshoe-shaped leucine-rich-repeat ectodomains binding a microbial ligand (here lipopolysaccharide), each crossing the membrane to a TIR signalling domain.",
+      "tags": ["TLR", "TLR4", "TLR2", "Toll-like receptor", "pattern recognition receptor", "PRR", "PAMP", "LPS", "lipopolysaccharide", "endotoxin", "innate immunity", "MyD88", "leucine-rich repeat"]
+    },
+    {
+      "id": "c3b-opsonisation",
+      "name": "C3b opsonisation",
+      "category": "molecules",
+      "file": "icons/molecules/c3b-opsonisation.svg",
+      "monoFile": "icons/molecules/c3b-opsonisation-mono.svg",
+      "description": "A bacterium coated in C3b, held by complement receptors on a phagocyte whose arms are closing around it.",
+      "tags": ["C3b", "complement", "opsonin", "opsonisation", "opsonization", "phagocytosis", "CR1", "CR3", "complement receptor", "phagocyte", "macrophage", "innate immunity"]
     },
     {
       "id": "lungs",
@@ -558,6 +684,24 @@
       "tags": ["mRNA vaccine", "lipid nanoparticle", "LNP", "vaccine", "vaccination", "COVID-19 vaccine", "RSV vaccine", "PEG", "nanoparticle"]
     },
     {
+      "id": "cell-wall-antibiotic",
+      "name": "Antibiotic acting on the cell wall",
+      "category": "treatment",
+      "file": "icons/treatment/cell-wall-antibiotic.svg",
+      "monoFile": "icons/treatment/cell-wall-antibiotic-mono.svg",
+      "description": "A β-lactam bound to a penicillin-binding protein (PBP), so the peptide cross-links between the glycan strands of the peptidoglycan wall are not made.",
+      "tags": ["beta-lactam", "β-lactam", "penicillin", "cephalosporin", "carbapenem", "PBP", "penicillin-binding protein", "transpeptidase", "peptidoglycan", "cell wall", "mechanism of action", "antibiotic"]
+    },
+    {
+      "id": "conjugate-vaccine",
+      "name": "Conjugate vaccine",
+      "category": "treatment",
+      "file": "icons/treatment/conjugate-vaccine.svg",
+      "monoFile": "icons/treatment/conjugate-vaccine-mono.svg",
+      "description": "Capsular polysaccharide chains linked to a carrier protein (a toxoid such as CRM197 or tetanus toxoid), so the sugars draw a T-cell-dependent response.",
+      "tags": ["conjugate vaccine", "polysaccharide", "carrier protein", "CRM197", "tetanus toxoid", "Hib", "PCV", "PCV13", "MenACWY", "MenC", "pneumococcal vaccine", "immunisation", "vaccination"]
+    },
+    {
       "id": "beta-lactamase",
       "name": "β-lactamase",
       "category": "resistance",
@@ -585,6 +729,15 @@
       "tags": ["antimicrobial susceptibility testing", "AST", "disc diffusion", "Kirby-Bauer", "zone of inhibition", "sensitivities", "resistance", "microbiology", "laboratory"]
     },
     {
+      "id": "plasmid-transfer",
+      "name": "Plasmid transfer",
+      "category": "resistance",
+      "file": "icons/resistance/plasmid-transfer.svg",
+      "monoFile": "icons/resistance/plasmid-transfer-mono.svg",
+      "description": "Bacterial conjugation: a donor bacterium passes a copy of a plasmid carrying a resistance gene to a recipient through a mating bridge.",
+      "tags": ["plasmid", "conjugation", "horizontal gene transfer", "HGT", "resistance gene", "ESBL", "carbapenemase", "sex pilus", "mobile genetic element", "AMR", "antimicrobial resistance"]
+    },
+    {
       "id": "blood-culture-bottle",
       "name": "Blood culture bottle",
       "category": "clinical",
@@ -609,7 +762,8 @@
       "file": "icons/clinical/child.svg",
       "monoFile": "icons/clinical/child-mono.svg",
       "description": "Young child standing.",
-      "tags": ["child", "paediatric", "pediatric", "patient", "kid", "person", "human", "school-age"]
+      "tags": ["child", "paediatric", "pediatric", "patient", "kid", "person", "human", "school-age"],
+      "toneFiles": { "light": "icons/clinical/child-light.svg", "brown": "icons/clinical/child-brown.svg", "dark": "icons/clinical/child-dark.svg" }
     },
     {
       "id": "newborn",
@@ -618,7 +772,8 @@
       "file": "icons/clinical/newborn.svg",
       "monoFile": "icons/clinical/newborn-mono.svg",
       "description": "Swaddled newborn baby, seen from the front.",
-      "tags": ["newborn", "neonate", "neonatal", "baby", "infant", "patient", "person", "human", "swaddled", "early-onset sepsis"]
+      "tags": ["newborn", "neonate", "neonatal", "baby", "infant", "patient", "person", "human", "swaddled", "early-onset sepsis"],
+      "toneFiles": { "light": "icons/clinical/newborn-light.svg", "brown": "icons/clinical/newborn-brown.svg", "dark": "icons/clinical/newborn-dark.svg" }
     },
     {
       "id": "baby",
@@ -627,7 +782,8 @@
       "file": "icons/clinical/baby.svg",
       "monoFile": "icons/clinical/baby-mono.svg",
       "description": "Baby sitting up, wearing a nappy.",
-      "tags": ["baby", "infant", "toddler", "paediatric", "pediatric", "patient", "person", "human", "nappy", "diaper"]
+      "tags": ["baby", "infant", "toddler", "paediatric", "pediatric", "patient", "person", "human", "nappy", "diaper"],
+      "toneFiles": { "light": "icons/clinical/baby-light.svg", "brown": "icons/clinical/baby-brown.svg", "dark": "icons/clinical/baby-dark.svg" }
     },
     {
       "id": "thermometer",
@@ -672,7 +828,53 @@
       "file": "icons/clinical/pregnant-person.svg",
       "monoFile": "icons/clinical/pregnant-person-mono.svg",
       "description": "Pregnant person in side view.",
-      "tags": ["pregnancy", "pregnant", "maternal", "antenatal", "vertical transmission", "congenital infection", "maternal vaccination", "person", "human"]
+      "tags": ["pregnancy", "pregnant", "maternal", "antenatal", "vertical transmission", "congenital infection", "maternal vaccination", "person", "human"],
+      "toneFiles": { "light": "icons/clinical/pregnant-person-light.svg", "brown": "icons/clinical/pregnant-person-brown.svg", "dark": "icons/clinical/pregnant-person-dark.svg" }
+    },
+    {
+      "id": "iv-cannula",
+      "name": "IV cannula",
+      "category": "clinical",
+      "file": "icons/clinical/iv-cannula.svg",
+      "monoFile": "icons/clinical/iv-cannula-mono.svg",
+      "description": "Peripheral intravenous cannula, seen from above: catheter, colour-coded wings and injection port, and a Luer-lock cap.",
+      "tags": ["cannula", "IV", "intravenous", "PIVC", "venflon", "peripheral line", "venous access", "drip", "IV antibiotics", "line infection", "phlebitis"]
+    },
+    {
+      "id": "picc-line",
+      "name": "PICC line",
+      "category": "clinical",
+      "file": "icons/clinical/picc-line.svg",
+      "monoFile": "icons/clinical/picc-line-mono.svg",
+      "description": "Peripherally inserted central catheter with two lumens: the catheter, a junction hub with suture wings, and extension legs with clamps and needle-free connectors.",
+      "tags": ["PICC", "central line", "CVC", "central venous catheter", "long line", "Hickman", "OPAT", "home IV antibiotics", "CLABSI", "line infection", "CRBSI", "venous access"]
+    },
+    {
+      "id": "urine-dipstick",
+      "name": "Urine dipstick",
+      "category": "clinical",
+      "file": "icons/clinical/urine-dipstick.svg",
+      "monoFile": "icons/clinical/urine-dipstick-mono.svg",
+      "description": "Urine sample pot beside a reagent strip with coloured test pads.",
+      "tags": ["urine dipstick", "urinalysis", "reagent strip", "UTI", "urinary tract infection", "leucocyte esterase", "leukocytes", "nitrite", "urine sample", "MSU", "clean catch", "point of care"]
+    },
+    {
+      "id": "gram-stain-slide",
+      "name": "Gram stain slide",
+      "category": "clinical",
+      "file": "icons/clinical/gram-stain-slide.svg",
+      "monoFile": "icons/clinical/gram-stain-slide-mono.svg",
+      "description": "Microscope slide with a stained smear, and a magnified field showing violet Gram-positive cocci and pink Gram-negative bacilli.",
+      "tags": ["Gram stain", "Gram film", "slide", "smear", "microscopy", "microbiology", "gram-positive", "gram-negative", "laboratory", "lab"]
+    },
+    {
+      "id": "lateral-flow-test",
+      "name": "Lateral flow test",
+      "category": "clinical",
+      "file": "icons/clinical/lateral-flow-test.svg",
+      "monoFile": "icons/clinical/lateral-flow-test-mono.svg",
+      "description": "Lateral flow test cassette with a sample well and a result window showing control and test lines (a positive result).",
+      "tags": ["lateral flow", "LFT", "LFD", "rapid antigen test", "RDT", "rapid diagnostic test", "point of care", "POCT", "COVID test", "immunochromatographic", "malaria RDT"]
     }
   ]
 }
