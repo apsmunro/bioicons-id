@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="basophil-title">
+<title id="basophil-title">Basophil</title>
+<desc>Granulocyte with a lobed nucleus largely hidden by large, dark basophilic granules.</desc>
+<defs><radialGradient id="basophil-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f6f3f9"/><stop offset="0.55" stop-color="#EDE6F2"/><stop offset="1" stop-color="#d5cfda"/></radialGradient><radialGradient id="basophil-nucleus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8a3dd"/><stop offset="0.55" stop-color="#7E57C2"/><stop offset="1" stop-color="#6a49a3"/></radialGradient><radialGradient id="basophil-granule" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#787fb6"/><stop offset="0.55" stop-color="#2F3A8F"/><stop offset="1" stop-color="#273178"/></radialGradient><radialGradient id="basophil-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M216.15 128C216.85 130.55 217.48 133.23 217.63 135.84C217.77 138.46 217.6 141.16 217.01 143.7C216.43 146.23 215.36 148.75 214.11 151.07C212.86 153.4 211.15 155.59 209.5 157.66C207.86 159.74 205.94 161.63 204.24 163.55C202.54 165.47 200.82 167.26 199.32 169.17C197.81 171.09 196.47 173.01 195.2 175.05C193.92 177.09 192.85 179.25 191.67 181.42C190.48 183.6 189.4 185.91 188.08 188.08C186.77 190.26 185.39 192.48 183.77 194.47C182.16 196.45 180.35 198.34 178.41 199.99C176.46 201.63 174.29 203.07 172.08 204.34C169.86 205.61 167.49 206.66 165.13 207.62C162.76 208.58 160.32 209.38 157.89 210.12C155.45 210.86 153 211.51 150.52 212.06C148.05 212.61 145.56 213.11 143.06 213.42C140.56 213.72 138.03 213.93 135.52 213.91C133.01 213.9 130.48 213.69 128 213.35C125.52 213 123.07 212.41 120.67 211.83C118.26 211.25 115.92 210.49 113.57 209.85C111.22 209.22 108.93 208.55 106.56 208.03C104.19 207.5 101.82 207.1 99.35 206.71C96.88 206.33 94.33 206.12 91.76 205.72C89.19 205.33 86.48 205.01 83.92 204.34C81.36 203.67 78.73 202.88 76.4 201.7C74.06 200.51 71.81 199.02 69.9 197.24C68 195.46 66.35 193.29 64.96 191.04C63.57 188.79 62.54 186.22 61.56 183.75C60.58 181.29 59.9 178.68 59.09 176.25C58.28 173.82 57.59 171.44 56.68 169.17C55.78 166.91 54.79 164.79 53.66 162.67C52.52 160.54 51.19 158.54 49.9 156.43C48.61 154.31 47.15 152.22 45.92 149.99C44.7 147.77 43.46 145.46 42.55 143.07C41.64 140.68 40.91 138.17 40.46 135.66C40 133.15 39.84 130.55 39.85 128C39.85 125.45 40.14 122.87 40.49 120.34C40.84 117.81 41.37 115.3 41.94 112.83C42.52 110.35 43.18 107.89 43.94 105.48C44.7 103.06 45.51 100.66 46.5 98.34C47.48 96.01 48.57 93.72 49.84 91.55C51.1 89.38 52.55 87.3 54.09 85.33C55.62 83.36 57.36 81.52 59.07 79.73C60.77 77.94 62.61 76.29 64.33 74.58C66.06 72.86 67.78 71.21 69.42 69.42C71.05 67.63 72.59 65.78 74.16 63.83C75.72 61.89 77.18 59.78 78.81 57.75C80.44 55.72 82.06 53.54 83.92 51.66C85.78 49.78 87.78 47.89 89.98 46.46C92.17 45.03 94.59 43.83 97.09 43.06C99.58 42.3 102.28 41.97 104.93 41.89C107.57 41.81 110.32 42.2 112.94 42.58C115.56 42.97 118.16 43.69 120.67 44.2C123.18 44.71 125.59 45.31 128 45.65C130.41 46 132.74 46.2 135.15 46.28C137.55 46.36 139.96 46.21 142.43 46.15C144.91 46.09 147.45 45.87 149.99 45.92C152.53 45.98 155.15 46.06 157.68 46.47C160.2 46.87 162.74 47.49 165.14 48.35C167.54 49.22 169.87 50.38 172.08 51.66C174.28 52.94 176.37 54.47 178.39 56.04C180.4 57.61 182.31 59.32 184.17 61.06C186.03 62.8 187.83 64.6 189.54 66.46C191.25 68.33 192.92 70.24 194.44 72.25C195.96 74.26 197.4 76.35 198.65 78.53C199.89 80.71 200.98 83.01 201.91 85.33C202.85 87.64 203.57 90.06 204.27 92.44C204.97 94.81 205.48 97.22 206.1 99.57C206.73 101.93 207.29 104.24 208.03 106.56C208.76 108.87 209.59 111.13 210.49 113.45C211.39 115.78 212.49 118.1 213.43 120.53C214.37 122.95 215.45 125.45 216.15 128Z" fill="url(#basophil-body)" stroke="#a19ca5" stroke-width="3"/>
+<path d="M104 122Q128 142 152 136" fill="none" stroke="#4e3678" stroke-width="13" stroke-linecap="round"/>
+<ellipse cx="104" cy="122" rx="26" ry="20" transform="rotate(-30 104 122)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<ellipse cx="152" cy="136" rx="26" ry="20" transform="rotate(20 152 136)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<path d="M104 122Q128 142 152 136" fill="none" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="104" cy="122" rx="26" ry="20" transform="rotate(-30 104 122)" fill="url(#basophil-nucleus)"/>
+<ellipse cx="152" cy="136" rx="26" ry="20" transform="rotate(20 152 136)" fill="url(#basophil-nucleus)"/>
+<circle cx="196.38" cy="145.21" r="6.56" fill="url(#basophil-granule)"/>
+<circle cx="116.06" cy="163.84" r="5" fill="url(#basophil-granule)"/>
+<circle cx="115.48" cy="181.4" r="5.18" fill="url(#basophil-granule)"/>
+<circle cx="147.54" cy="154.37" r="6.47" fill="url(#basophil-granule)"/>
+<circle cx="179.49" cy="154.55" r="6.92" fill="url(#basophil-granule)"/>
+<circle cx="77.88" cy="133.39" r="6.91" fill="url(#basophil-granule)"/>
+<circle cx="142.33" cy="170.53" r="5.46" fill="url(#basophil-granule)"/>
+<circle cx="95.32" cy="176.41" r="5.85" fill="url(#basophil-granule)"/>
+<circle cx="156.64" cy="70.9" r="6.44" fill="url(#basophil-granule)"/>
+<circle cx="152.42" cy="131.44" r="6.02" fill="url(#basophil-granule)"/>
+<circle cx="178.59" cy="128.24" r="6.5" fill="url(#basophil-granule)"/>
+<circle cx="133.11" cy="124.74" r="5.65" fill="url(#basophil-granule)"/>
+<circle cx="154.17" cy="87.73" r="6.7" fill="url(#basophil-granule)"/>
+<circle cx="181.61" cy="87.84" r="5.48" fill="url(#basophil-granule)"/>
+<circle cx="88.76" cy="145.24" r="6.68" fill="url(#basophil-granule)"/>
+<circle cx="98.54" cy="98.5" r="6.31" fill="url(#basophil-granule)"/>
+<circle cx="120.55" cy="93.62" r="6.38" fill="url(#basophil-granule)"/>
+<circle cx="104.44" cy="77.66" r="6" fill="url(#basophil-granule)"/>
+<circle cx="92.94" cy="65.66" r="6.8" fill="url(#basophil-granule)"/>
+<circle cx="159.37" cy="190.34" r="5.51" fill="url(#basophil-granule)"/>
+<circle cx="145.6" cy="103.47" r="5.62" fill="url(#basophil-granule)"/>
+<circle cx="116.75" cy="128.23" r="5.8" fill="url(#basophil-granule)"/>
+<circle cx="189.05" cy="101.9" r="6.49" fill="url(#basophil-granule)"/>
+<circle cx="76.83" cy="98.01" r="5.99" fill="url(#basophil-granule)"/>
+<circle cx="181.9" cy="172.86" r="6.25" fill="url(#basophil-granule)"/>
+<circle cx="75.78" cy="159.75" r="5.71" fill="url(#basophil-granule)"/>
+<circle cx="88.99" cy="121.85" r="6.61" fill="url(#basophil-granule)"/>
+<circle cx="116.23" cy="146.18" r="5.86" fill="url(#basophil-granule)"/>
+<circle cx="136.66" cy="84.62" r="5.37" fill="url(#basophil-granule)"/>
+<circle cx="136.78" cy="188.56" r="6.05" fill="url(#basophil-granule)"/>
+<circle cx="114.48" cy="110.9" r="6.74" fill="url(#basophil-granule)"/>
+<circle cx="136.6" cy="68.34" r="5.15" fill="url(#basophil-granule)"/>
+<circle cx="197.55" cy="122.78" r="5.49" fill="url(#basophil-granule)"/>
+<circle cx="63.18" cy="113.93" r="5.41" fill="url(#basophil-granule)"/>
+<ellipse cx="78" cy="76" rx="22" ry="10" transform="rotate(-30 78 76)" fill="url(#basophil-gloss)"/>
+</svg>

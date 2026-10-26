@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="hand-hygiene-brown-title">
+<title id="hand-hygiene-brown-title">Hand hygiene (brown skin tone)</title>
+<desc>An open hand among soap bubbles and water drops.</desc>
+<defs><radialGradient id="hand-hygiene-brown-skin" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80"><stop offset="0" stop-color="#c6a38a"/><stop offset="0.55" stop-color="#A8714B"/><stop offset="1" stop-color="#8d5f3f"/></radialGradient></defs>
+<path d="M100 122L96 50" stroke="#68462f" stroke-width="23" stroke-linecap="round"/>
+<path d="M120 116L122 36" stroke="#68462f" stroke-width="23" stroke-linecap="round"/>
+<path d="M140 118L148 46" stroke="#68462f" stroke-width="23" stroke-linecap="round"/>
+<path d="M158 128L172 72" stroke="#68462f" stroke-width="21" stroke-linecap="round"/>
+<path d="M92 162L52 118" stroke="#68462f" stroke-width="25" stroke-linecap="round"/>
+<path d="M84 134C84 118 96 108 112 108L150 110C164 112 170 122 168 138L164 176C160 196 146 206 128 206C104 206 88 194 86 172Z" fill="#68462f" stroke="#68462f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M100 196L156 196L158 238L98 238Z" fill="#68462f" stroke="#68462f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M100 122L96 50" stroke="url(#hand-hygiene-brown-skin)" stroke-width="18" stroke-linecap="round"/>
+<path d="M120 116L122 36" stroke="url(#hand-hygiene-brown-skin)" stroke-width="18" stroke-linecap="round"/>
+<path d="M140 118L148 46" stroke="url(#hand-hygiene-brown-skin)" stroke-width="18" stroke-linecap="round"/>
+<path d="M158 128L172 72" stroke="url(#hand-hygiene-brown-skin)" stroke-width="16" stroke-linecap="round"/>
+<path d="M92 162L52 118" stroke="url(#hand-hygiene-brown-skin)" stroke-width="20" stroke-linecap="round"/>
+<path d="M84 134C84 118 96 108 112 108L150 110C164 112 170 122 168 138L164 176C160 196 146 206 128 206C104 206 88 194 86 172Z" fill="url(#hand-hygiene-brown-skin)"/>
+<path d="M100 196L156 196L158 238L98 238Z" fill="url(#hand-hygiene-brown-skin)"/>
+<path d="M92.81 89.9L103.59 89.3M91.73 70.46L102.51 69.86M115.5 79.87L126.3 80.13M116.04 58.27L126.84 58.53M138.23 85L148.97 86.2M140.39 65.56L151.13 66.76M159.64 101.64L168.96 103.96M163.42 86.52L172.74 88.84M104 178C116 168 136 164 152 170" fill="none" stroke="#7e5538" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+<circle cx="206" cy="84" r="14" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M198.3 81.2A8.4 8.4 0 0 1 204.6 75.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<circle cx="214" cy="128" r="10" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M208.5 126A6 6 0 0 1 213 122" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<circle cx="202" cy="162" r="7" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M198.15 160.6A4.2 4.2 0 0 1 201.3 157.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<circle cx="52" cy="80" r="12" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M45.4 77.6A7.2 7.2 0 0 1 50.8 72.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<circle cx="40" cy="196" r="9" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M35.05 194.2A5.4 5.4 0 0 1 39.1 190.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<circle cx="64" cy="44" r="7" fill="#fff" fill-opacity="0.35" stroke="#8FC7E8" stroke-width="2"/><path d="M60.15 42.6A4.2 4.2 0 0 1 63.3 39.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<path d="M196 192.8C200.4 201.6 204.8 206 204.8 210.4A8.8 8.8 0 0 1 187.2 210.4C187.2 206 191.6 201.6 196 192.8Z" fill="#9BD0EF" stroke="#65879b" stroke-width="1.5"/>
+<path d="M222 172.4C225.2 178.8 228.4 182 228.4 185.2A6.4 6.4 0 0 1 215.6 185.2C215.6 182 218.8 178.8 222 172.4Z" fill="#9BD0EF" stroke="#65879b" stroke-width="1.5"/>
+<path d="M30 120.4C33.2 126.8 36.4 130 36.4 133.2A6.4 6.4 0 0 1 23.6 133.2C23.6 130 26.8 126.8 30 120.4Z" fill="#9BD0EF" stroke="#65879b" stroke-width="1.5"/>
+</svg>

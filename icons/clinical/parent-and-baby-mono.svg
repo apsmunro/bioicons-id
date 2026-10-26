@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="parent-and-baby-mono-title">
+<title id="parent-and-baby-mono-title">Parent and baby (single colour)</title>
+<desc>Adult holding a swaddled baby in their arms.</desc>
+<defs></defs>
+<circle cx="103" cy="54" r="5.5" fill="#000000"/>
+<circle cx="153" cy="54" r="5.5" fill="#000000"/>
+<circle cx="128" cy="52" r="25" fill="#000000"/>
+<path d="M84 94Q128 82 172 94Q190 100 192 124L194 238H62L64 124Q66 100 84 94ZM70 150a58 34 0 1 0 116 0a58 34 0 1 0 -116 0Z" fill-rule="evenodd" fill="#000000"/>
+<path d="M79 146a17 17 0 1 0 34 0a17 17 0 1 0 -34 0ZM87 146a9 9 0 1 0 18 0a9 9 0 1 0 -18 0Z" fill-rule="evenodd" fill="#000000"/>
+<ellipse cx="142" cy="156" rx="38" ry="20" transform="rotate(-12 142 156)" fill="#000000"/>
+</svg>

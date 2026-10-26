@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="incubator-mono-title">
+<title id="incubator-mono-title">Neonatal incubator (single colour)</title>
+<desc>Neonatal incubator with a clear hood, two portholes and a control unit, a swaddled baby lying inside.</desc>
+<defs></defs>
+<rect x="62" y="194" width="10" height="28" fill="#000000"/>
+<rect x="186" y="194" width="10" height="28" fill="#000000"/>
+<rect x="52" y="212" width="152" height="8" rx="3" fill="#000000"/>
+<circle cx="67" cy="228" r="8" fill="#000000"/>
+<circle cx="191" cy="228" r="8" fill="#000000"/>
+<rect x="40" y="150" width="176" height="44" rx="6" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="166" y="160" width="36" height="20" rx="3" fill="#000000"/>
+<path d="M34 150V94Q34 62 66 62H190Q222 62 222 94V150Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="58" cy="116" r="13" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="198" cy="116" r="13" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42 142H214" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="140" cy="129" rx="30" ry="11" fill="#000000"/>
+<circle cx="102" cy="127" r="11" fill="#000000"/>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="incubator-title">
+<title id="incubator-title">Neonatal incubator</title>
+<desc>Neonatal incubator with a clear hood, two portholes and a control unit, a swaddled baby lying inside.</desc>
+<defs><linearGradient id="incubator-cab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6dce1"/><stop offset="0.25" stop-color="#f2f5f7"/><stop offset="0.6" stop-color="#E4EAEF"/><stop offset="1" stop-color="#b2b7ba"/></linearGradient><radialGradient id="incubator-swaddle" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbf1d0"/><stop offset="0.55" stop-color="#F6E2A0"/><stop offset="1" stop-color="#cfbe86"/></radialGradient><radialGradient id="incubator-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e6c1a9"/><stop offset="0.55" stop-color="#D9A07A"/><stop offset="1" stop-color="#b68666"/></radialGradient><linearGradient id="incubator-hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6F2FA" stop-opacity="0.8"/><stop offset="1" stop-color="#CFE4F2" stop-opacity="0.45"/></linearGradient></defs>
+<rect x="62" y="194" width="10" height="28" fill="#B9C3CC" stroke="#73797e" stroke-width="2"/>
+<rect x="186" y="194" width="10" height="28" fill="#B9C3CC" stroke="#73797e" stroke-width="2"/>
+<rect x="52" y="212" width="152" height="8" rx="3" fill="#B9C3CC" stroke="#73797e" stroke-width="2"/>
+<circle cx="67" cy="228" r="8" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<circle cx="191" cy="228" r="8" fill="#4A4A55" stroke="#2e2e35" stroke-width="2"/>
+<rect x="40" y="148" width="176" height="48" rx="6" fill="url(#incubator-cab)" stroke="#8DA6B8" stroke-width="3"/>
+<rect x="166" y="158" width="38" height="22" rx="3" fill="#3A4650"/>
+<path d="M171 172L178 172L182 164L187 178L191 168L199 168" fill="none" stroke="#7CD992" stroke-width="2" stroke-linejoin="round"/>
+<path d="M52 172H150" stroke="#C6CED5" stroke-width="2" stroke-linecap="round"/>
+<rect x="42" y="138" width="172" height="10" rx="3" fill="#9ED9C2" stroke="#628778" stroke-width="1.5"/>
+<ellipse cx="140" cy="128" rx="30" ry="12" fill="url(#incubator-swaddle)" stroke="#998c63" stroke-width="2"/>
+<circle cx="102" cy="126" r="12" fill="url(#incubator-skin)" stroke="#87634c" stroke-width="2"/>
+<path d="M34 150V94Q34 62 66 62H190Q222 62 222 94V150Z" fill="url(#incubator-hood)" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="58" cy="116" r="14" fill="#DCEAF4" fill-opacity="0.5" stroke="#8DA6B8" stroke-width="4"/>
+<circle cx="198" cy="116" r="14" fill="#DCEAF4" fill-opacity="0.5" stroke="#8DA6B8" stroke-width="4"/>
+<path d="M44 128V96Q44 72 68 72H120" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+</svg>

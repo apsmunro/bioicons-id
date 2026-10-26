@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="face-mask-title">
+<title id="face-mask-title">Face mask</title>
+<desc>Pleated surgical face mask with ear loops and a nose wire.</desc>
+<defs><linearGradient id="face-mask-mask" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93bdda"/><stop offset="0.25" stop-color="#cee4f4"/><stop offset="0.6" stop-color="#9CC9E8"/><stop offset="1" stop-color="#7a9db5"/></linearGradient></defs>
+<path d="M50 100C14 92 12 160 48 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#97999a" stroke-width="9"/><path d="M50 100C14 92 12 160 48 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F4F6F8" stroke-width="4"/><path d="M50 100C14 92 12 160 48 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.72 -0.72)"/>
+<path d="M206 100C242 92 244 160 208 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#97999a" stroke-width="9"/><path d="M206 100C242 92 244 160 208 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F4F6F8" stroke-width="4"/><path d="M206 100C242 92 244 160 208 158" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.72 -0.72)"/>
+<path d="M48 92Q128 78 208 92L212 164Q128 182 44 164Z" fill="url(#face-mask-mask)" stroke="#617d90" stroke-width="3" stroke-linejoin="round"/>
+<path d="M52 114Q128 104 204 114" fill="none" stroke="#7091a7" stroke-width="2.2" stroke-linecap="round"/><path d="M52 114Q128 104 204 114" transform="translate(0 3)" fill="none" stroke="#cee4f4" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M52 134Q128 126 204 134" fill="none" stroke="#7091a7" stroke-width="2.2" stroke-linecap="round"/><path d="M52 134Q128 126 204 134" transform="translate(0 3)" fill="none" stroke="#cee4f4" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M52 152Q128 148 204 152" fill="none" stroke="#7091a7" stroke-width="2.2" stroke-linecap="round"/><path d="M52 152Q128 148 204 152" transform="translate(0 3)" fill="none" stroke="#cee4f4" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M48 92L58 91L60 166L44 164Z" fill="#89b1cc" stroke="#617d90" stroke-width="2" stroke-linejoin="round"/>
+<path d="M208 92L198 91L196 166L212 164Z" fill="#89b1cc" stroke="#617d90" stroke-width="2" stroke-linejoin="round"/>
+<path d="M104 90Q128 86 152 90" fill="none" stroke="#B9C3CC" stroke-width="4" stroke-linecap="round"/>
+</svg>

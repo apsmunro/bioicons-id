@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="face-mask-mono-title">
+<title id="face-mask-mono-title">Face mask (single colour)</title>
+<desc>Pleated surgical face mask with ear loops and a nose wire.</desc>
+<defs></defs>
+<path d="M50 100C14 92 12 160 48 158M206 100C242 92 244 160 208 158" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M48 92Q128 78 208 92L212 164Q128 182 44 164Z" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 114Q128 104 198 114M58 134Q128 126 198 134M58 152Q128 148 198 152" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="pcr-tube-title">
+<title id="pcr-tube-title">PCR tube</title>
+<desc>PCR tube with an open hinged cap and reaction mix, beside a stretch of double-stranded DNA.</desc>
+<defs><clipPath id="pcr-tube-tube"><path d="M-22 -52H22V6L5 62Q0 70 -5 62L-22 6Z"/></clipPath><linearGradient id="pcr-tube-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><linearGradient id="pcr-tube-cap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e0e5e9"/><stop offset="0.25" stop-color="#f7fafc"/><stop offset="0.6" stop-color="#EEF4F8"/><stop offset="1" stop-color="#babec1"/></linearGradient></defs>
+<line x1="205.79" y1="40.2" x2="190.21" y2="40.2" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="216.64" y1="48.6" x2="179.36" y2="48.6" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<line x1="216.19" y1="57" x2="179.81" y2="57" stroke="#E5707A" stroke-width="3" stroke-linecap="round"/>
+<line x1="204.72" y1="65.4" x2="191.28" y2="65.4" stroke="#5B8FD9" stroke-width="3" stroke-linecap="round"/>
+<line x1="189.18" y1="73.8" x2="206.82" y2="73.8" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="178.98" y1="82.2" x2="217.02" y2="82.2" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<line x1="180.31" y1="90.6" x2="215.69" y2="90.6" stroke="#E5707A" stroke-width="3" stroke-linecap="round"/>
+<line x1="192.37" y1="99" x2="203.63" y2="99" stroke="#5B8FD9" stroke-width="3" stroke-linecap="round"/>
+<line x1="207.83" y1="107.4" x2="188.17" y2="107.4" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="217.34" y1="115.8" x2="178.66" y2="115.8" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<line x1="215.13" y1="124.2" x2="180.87" y2="124.2" stroke="#E5707A" stroke-width="3" stroke-linecap="round"/>
+<line x1="202.53" y1="132.6" x2="193.47" y2="132.6" stroke="#5B8FD9" stroke-width="3" stroke-linecap="round"/>
+<line x1="187.19" y1="141" x2="208.81" y2="141" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="178.4" y1="149.4" x2="217.6" y2="149.4" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<line x1="181.49" y1="157.8" x2="214.51" y2="157.8" stroke="#E5707A" stroke-width="3" stroke-linecap="round"/>
+<line x1="194.59" y1="166.2" x2="201.41" y2="166.2" stroke="#5B8FD9" stroke-width="3" stroke-linecap="round"/>
+<line x1="209.76" y1="174.6" x2="186.24" y2="174.6" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="217.8" y1="183" x2="178.2" y2="183" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<line x1="213.84" y1="191.4" x2="182.16" y2="191.4" stroke="#E5707A" stroke-width="3" stroke-linecap="round"/>
+<line x1="200.28" y1="199.8" x2="195.72" y2="199.8" stroke="#5B8FD9" stroke-width="3" stroke-linecap="round"/>
+<line x1="185.34" y1="208.2" x2="210.66" y2="208.2" stroke="#F2A541" stroke-width="3" stroke-linecap="round"/>
+<line x1="178.07" y1="216.6" x2="217.93" y2="216.6" stroke="#5DBB63" stroke-width="3" stroke-linecap="round"/>
+<path d="M198 36C199.3 36.7 203.39 38.8 205.79 40.2C208.18 41.6 210.53 43 212.34 44.4C214.15 45.8 215.7 47.2 216.64 48.6C217.58 50 218.07 51.4 217.99 52.8C217.92 54.2 217.27 55.6 216.19 57C215.11 58.4 213.44 59.8 211.52 61.2C209.61 62.6 207.17 64 204.72 65.4C202.28 66.8 199.45 68.2 196.86 69.6C194.27 71 191.5 72.4 189.18 73.8C186.85 75.2 184.58 76.6 182.89 78C181.19 79.4 179.78 80.8 178.98 82.2C178.18 83.6 177.85 85 178.07 86.4C178.3 87.8 179.1 89.2 180.31 90.6C181.52 92 183.33 93.4 185.34 94.8C187.35 96.2 189.88 97.6 192.37 99C194.86 100.4 197.7 101.8 200.28 103.2C202.86 104.6 205.57 106 207.83 107.4C210.09 108.8 212.25 110.2 213.84 111.6C215.42 113 216.68 114.4 217.34 115.8C218 117.2 218.17 118.6 217.8 120C217.43 121.4 216.47 122.8 215.13 124.2C213.79 125.6 211.86 127 209.76 128.4C207.66 129.8 205.06 131.2 202.53 132.6C200 134 197.15 135.4 194.59 136.8C192.03 138.2 189.37 139.6 187.19 141C185 142.4 182.96 143.8 181.49 145.2C180.03 146.6 178.91 148 178.4 149.4C177.88 150.8 177.88 152.2 178.4 153.6C178.91 155 180.03 156.4 181.49 157.8C182.96 159.2 185 160.6 187.19 162C189.37 163.4 192.03 164.8 194.59 166.2C197.15 167.6 200 169 202.53 170.4C205.06 171.8 207.66 173.2 209.76 174.6C211.86 176 213.79 177.4 215.13 178.8C216.47 180.2 217.43 181.6 217.8 183C218.17 184.4 218 185.8 217.34 187.2C216.68 188.6 215.42 190 213.84 191.4C212.25 192.8 210.09 194.2 207.83 195.6C205.57 197 202.86 198.4 200.28 199.8C197.7 201.2 194.86 202.6 192.37 204C189.88 205.4 187.35 206.8 185.34 208.2C183.33 209.6 181.52 211 180.31 212.4C179.1 213.8 178.3 215.2 178.07 216.6C177.85 218 178.83 220.1 178.98 220.8" fill="none" stroke="#7E57C2" stroke-width="4.5" stroke-linecap="round"/>
+<path d="M198 36C196.7 36.7 192.61 38.8 190.21 40.2C187.82 41.6 185.47 43 183.66 44.4C181.85 45.8 180.3 47.2 179.36 48.6C178.42 50 177.93 51.4 178.01 52.8C178.08 54.2 178.73 55.6 179.81 57C180.89 58.4 182.56 59.8 184.48 61.2C186.39 62.6 188.83 64 191.28 65.4C193.72 66.8 196.55 68.2 199.14 69.6C201.73 71 204.5 72.4 206.82 73.8C209.15 75.2 211.42 76.6 213.11 78C214.81 79.4 216.22 80.8 217.02 82.2C217.82 83.6 218.15 85 217.93 86.4C217.7 87.8 216.9 89.2 215.69 90.6C214.48 92 212.67 93.4 210.66 94.8C208.65 96.2 206.12 97.6 203.63 99C201.14 100.4 198.3 101.8 195.72 103.2C193.14 104.6 190.43 106 188.17 107.4C185.91 108.8 183.75 110.2 182.16 111.6C180.58 113 179.32 114.4 178.66 115.8C178 117.2 177.83 118.6 178.2 120C178.57 121.4 179.53 122.8 180.87 124.2C182.21 125.6 184.14 127 186.24 128.4C188.34 129.8 190.94 131.2 193.47 132.6C196 134 198.85 135.4 201.41 136.8C203.97 138.2 206.63 139.6 208.81 141C211 142.4 213.04 143.8 214.51 145.2C215.97 146.6 217.09 148 217.6 149.4C218.12 150.8 218.12 152.2 217.6 153.6C217.09 155 215.97 156.4 214.51 157.8C213.04 159.2 211 160.6 208.81 162C206.63 163.4 203.97 164.8 201.41 166.2C198.85 167.6 196 169 193.47 170.4C190.94 171.8 188.34 173.2 186.24 174.6C184.14 176 182.21 177.4 180.87 178.8C179.53 180.2 178.57 181.6 178.2 183C177.83 184.4 178 185.8 178.66 187.2C179.32 188.6 180.58 190 182.16 191.4C183.75 192.8 185.91 194.2 188.17 195.6C190.43 197 193.14 198.4 195.72 199.8C198.3 201.2 201.14 202.6 203.63 204C206.12 205.4 208.65 206.8 210.66 208.2C212.67 209.6 214.48 211 215.69 212.4C216.9 213.8 217.7 215.2 217.93 216.6C218.15 218 217.17 220.1 217.02 220.8" fill="none" stroke="#5B7FD6" stroke-width="4.5" stroke-linecap="round"/>
+<g transform="translate(96 140) rotate(-10)">
+<path d="M-22 -52H22V6L5 62Q0 70 -5 62L-22 6Z" fill="url(#pcr-tube-glass)"/>
+<g clip-path="url(#pcr-tube-tube)"><rect x="-26" y="22" width="52" height="50" fill="#9BD0EF"/><line x1="-24" y1="22" x2="24" y2="22" stroke="#fff" stroke-width="2" opacity="0.7"/></g>
+<path d="M-22 -52H22V6L5 62Q0 70 -5 62L-22 6Z" fill="none" stroke="#8DA6B8" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="-16" y="-44" width="5" height="44" rx="2.5" fill="#fff" opacity="0.6"/>
+<rect x="-26" y="-62" width="52" height="12" rx="3" fill="url(#pcr-tube-cap)" stroke="#8DA6B8" stroke-width="2.5"/>
+<path d="M-26 -58L-40 -66" stroke="#8DA6B8" stroke-width="5" stroke-linecap="round"/>
+<g transform="translate(-58 -78) rotate(-38)"><rect x="-22" y="-6" width="44" height="12" rx="4" fill="url(#pcr-tube-cap)" stroke="#8DA6B8" stroke-width="2.5"/><rect x="-14" y="6" width="28" height="10" rx="2" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2"/></g>
+</g>
+</svg>

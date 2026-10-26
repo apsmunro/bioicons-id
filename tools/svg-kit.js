@@ -166,6 +166,23 @@ const PALETTE = {
   wing: '#DCE6EE',
   lateralFlowLine: '#B0306A',
   smear: '#C99BD6',
+  mycoplasma: '#E7A6C9',
+  hbvEnvelope: '#F2B5A0',
+  hbvCore: '#6FAE8E',
+  worm: '#EFE8DA',
+  mite: '#F2E6CF',
+  arthropodLeg: '#A97B50',
+  louse: '#C9A27A',
+  tick: '#B5603A',
+  scutum: '#4A3428',
+  basophil: '#EDE6F2',
+  basophilGranule: '#2F3A8F',
+  allergen: '#8FBF4D',
+  antigen: '#A8C8E8',
+  nebuliserMask: '#BFE3D0',
+  surgicalMask: '#9CC9E8',
+  ocean: '#4A90C8',
+  cardigan: '#E07A5F',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
@@ -448,6 +465,120 @@ const MOSQUITO = {
   nearLegs: [[[122, 140], [100, 186], [86, 212], [74, 236]], [[132, 142], [150, 186], [148, 214], [156, 236]], [[140, 140], [188, 146], [218, 176], [238, 168]]],
 };
 
+// Haemophilus coccobacilli [x, y, angle, half-length]; end radius 10, each in its own capsule.
+const HAEMOPHILUS_CELLS = [[78, 72, -20, 8], [150, 62, 30, 4], [200, 108, -50, 10], [110, 130, 15, 6], [60, 170, 40, 4], [166, 170, -15, 8], [110, 206, -30, 5]];
+
+// Mycoplasma pneumoniae on ciliated respiratory epithelium. Cells [x, y, angle, scale] are
+// flask-shaped with the tip organelle at local (0, 31); the first is attached at the surface.
+const MYCOPLASMA = {
+  flask: 'M0 -30C20 -30 26 -12 22 2C18 14 8 20 5 28L-5 28C-8 20 -18 14 -22 2C-26 -12 -20 -30 0 -30Z',
+  cells: [[112, 137, 0, 1], [180, 86, 28, 1], [64, 80, -22, 0.85]],
+  epithelium: ['M24 232L24 174Q24 168 30 168L128 168L128 232Z', 'M128 232L128 168L226 168Q232 168 232 174L232 232Z'],
+  // Cilia (x positions) are left out round the attached cell.
+  cilia: Array.from({ length: 20 }, (_, i) => 32 + i * 10).filter(x => Math.abs(x - 112) > 26),
+};
+
+// Pneumocystis: cysts [x, y, r], a collapsed cyst, and trophic forms [x, y, r].
+const PNEUMOCYSTIS = {
+  cysts: [[92, 90, 34], [170, 124, 30]],
+  collapsed: [104, 186, 28],
+  trophs: [[196, 62, 13], [150, 56, 10], [214, 184, 11], [50, 148, 11], [166, 206, 10], [54, 214, 9]],
+};
+
+// Outline of a worm along the centreline pts, with width w(t) at fraction t along it.
+function wormOutline(pts, w) {
+  const line = densify(pts, 12), n = line.length, left = [], right = [];
+  line.forEach(([x, y], i) => {
+    const [p, q] = [line[Math.max(0, i - 1)], line[Math.min(n - 1, i + 1)]], l = Math.hypot(q[0] - p[0], q[1] - p[1]) || 1;
+    const [nx, ny] = [-(q[1] - p[1]) / l, (q[0] - p[0]) / l], h = w(i / (n - 1)) / 2;
+    left.push([x + nx * h, y + ny * h]);
+    right.push([x - nx * h, y - ny * h]);
+  });
+  return smoothClosedPath([...left, ...right.reverse()]);
+}
+
+// Threadworms: a female with a long pointed tail and a smaller male with a curled tail, and eggs
+// flattened on one side ([x, y, angle]); widths round off at the head.
+const THREADWORM = {
+  female: { pts: [[56, 44], [110, 58], [150, 92], [148, 140], [110, 170], [92, 206], [118, 232]],
+    // The small bump behind the head is the pair of cephalic alae.
+    width: t => 18 * Math.min(1, Math.sqrt(t / 0.05), (1 - t) / 0.4) + 3 * Math.exp(-(((t - 0.06) / 0.025) ** 2)) },
+  male: { pts: [[170, 168], [198, 150], [224, 166], [220, 196], [198, 206], [184, 192], [194, 180]],
+    width: t => 12 * Math.min(1, Math.sqrt(t / 0.05), 0.4 + (1 - t) / 0.25) },
+  egg: 'M-17 -2C-14 -9 10 -10 16 -4C20 2 14 11 2 11C-10 11 -18 6 -17 -2Z',
+  larva: 'M-9 3C-11 -4 -2 -6 5 -4C10 -2 10 4 5 5',
+  eggs: [[192, 46, -15], [224, 76, 25], [200, 104, -5]],
+};
+
+// Scabies mite from above. Legs on the left (the right mirrors them): [hip, foot, kind], the
+// front two pairs ending in stalked suckers, the hind two in long bristles.
+const SCABIES = {
+  body: [128, 142, 62, 54],
+  gnathosoma: 'M114 92L112 78Q112 70 120 70L136 70Q144 70 144 78L142 92Z',
+  legs: [[[84, 104], [64, 86], 'sucker'], [[72, 124], [48, 116], 'sucker'], [[88, 182], [76, 198], 'bristle'], [[104, 190], [98, 206], 'bristle']],
+  ridges: [100, 112, 124],
+  spines: [[110, 148], [128, 144], [146, 148], [118, 164], [138, 164], [102, 132], [154, 132]],
+};
+
+// Head louse from above, centred on x = 128, beside a hair carrying a nit. Legs on the left (the
+// right mirrors them) run hip, knee, claw.
+const HEAD_LOUSE = {
+  head: [128, 58, 15, 17],
+  antenna: [[118, 48], [108, 36], [104, 24], [96, 16]],
+  thorax: [128, 92, 22, 15],
+  abdomen: [128, 156, 40, 62],
+  legs: [[[110, 86], [84, 78], [70, 96]], [[108, 94], [80, 104], [68, 126]], [[110, 102], [86, 128], [80, 154]]],
+  hair: 'M216 18C210 80 222 160 214 238',
+  nit: [216, 84, 9, 16, 4],
+};
+
+// Hard tick from above. Legs on the left (the right mirrors them) run hip to foot.
+const TICK = {
+  body: [128, 152, 50, 62],
+  scutum: 'M98 98C98 84 112 80 128 80C144 80 158 84 158 98C158 120 146 138 128 142C110 138 98 120 98 98Z',
+  legs: [[[90, 104], [62, 88], [48, 60], [44, 40]], [[84, 120], [54, 112], [36, 98], [24, 92]], [[84, 140], [52, 150], [34, 168], [26, 178]], [[90, 160], [62, 184], [50, 210], [44, 228]]],
+};
+
+// Immune synapse: outline of one of the two cells, its face flattened against the other at x = face.
+// side = -1 for the cell on the left, 1 for the cell on the right; bumps add dendrites.
+function synapseCell(cx, cy, R, face, side, bumps = []) {
+  return smoothClosedPath(polarPoints(cx, cy, a => {
+    const r = R + 2 * Math.sin(5 * a + 1) + bumps.reduce((s, [c, h, w]) => s + h * Math.exp(-(wrapAngle(a - c) ** 2) / (2 * w * w)), 0);
+    const towards = -side * Math.cos(a);
+    return towards > 0 ? Math.min(r, Math.abs(face - cx) / towards) : r;
+  }, 140));
+}
+
+// Open hand, palm towards the viewer: palm, wrist, and fingers [base, tip] (the last is the thumb).
+const HAND = {
+  palm: 'M84 134C84 118 96 108 112 108L150 110C164 112 170 122 168 138L164 176C160 196 146 206 128 206C104 206 88 194 86 172Z',
+  wrist: 'M100 196L156 196L158 238L98 238Z',
+  fingers: [[[100, 122], [96, 50]], [[120, 116], [122, 36]], [[140, 118], [148, 46]], [[158, 128], [172, 72]], [[92, 162], [52, 118]]],
+  bubbles: [[206, 84, 14], [214, 128, 10], [202, 162, 7], [52, 80, 12], [40, 196, 9], [64, 44, 7]],
+};
+
+// Points along the visible (front) parts of a globe's lines of latitude and longitude, as
+// separate runs, for a globe of radius R at (cx, cy) tilted by tilt radians towards the viewer.
+function graticule(cx, cy, R, tilt = 0.35, spin = 0.3) {
+  const runs = [];
+  const project = (lat, lon) => {
+    const [x, y, z] = [Math.cos(lat) * Math.sin(lon + spin), Math.sin(lat), Math.cos(lat) * Math.cos(lon + spin)];
+    const [y1, z1] = [y * Math.cos(tilt) - z * Math.sin(tilt), y * Math.sin(tilt) + z * Math.cos(tilt)];
+    return [cx + R * x, cy - R * y1, z1];
+  };
+  const trace = f => {
+    let run = [];
+    for (let k = 0; k <= 120; k++) {
+      const [x, y, z] = f(k / 120);
+      if (z > 0) run.push([x, y]); else { if (run.length > 1) runs.push(run); run = []; }
+    }
+    if (run.length > 1) runs.push(run);
+  };
+  for (let lon = 0; lon < 360; lon += 30) trace(t => project(-Math.PI / 2 + t * Math.PI, lon * Math.PI / 180));
+  for (const lat of [-60, -30, 0, 30, 60]) trace(t => project(lat * Math.PI / 180, t * 2 * Math.PI));
+  return runs;
+}
+
 // Dense polyline through pts along an open Catmull–Rom curve.
 function densify(pts, steps = 12) {
   const out = [];
@@ -527,11 +658,12 @@ const ORGANS = {
   // first subpath is the outer edge. Its bounds (x 42.946–783.030, y 186.590–875.937, measured in a
   // browser) are fitted to the canvas with a 16 px margin.
   get brainArt() {
-    const d = lineArt('brain-line-art.svg');
+    const d = lineArt('brain-line-art.svg'), scale = 224 / 740.084;
     return {
       d,
+      scale,
       silhouette: splitSubpaths(d)[0],
-      transform: `translate(128 128) scale(${(224 / 740.084).toFixed(4)}) translate(-412.988 -531.264)`,
+      transform: `translate(128 128) scale(${scale.toFixed(4)}) translate(-412.988 -531.264)`,
     };
   },
   // Heart: line art supplied as an SVG (tools/sources/heart-line-art.svg), one filled path. Its
@@ -539,11 +671,12 @@ const ORGANS = {
   // structure, numbered in path order) and ink details. Bounds (x 6.420–198.160,
   // y 13.129–284.604, measured in a browser) fitted to the canvas.
   get heartArt() {
-    const d = lineArt('heart-line-art.svg');
+    const d = lineArt('heart-line-art.svg'), scale = 224 / 271.475;
     return {
       d,
+      scale,
       regions: splitSubpaths(d),
-      transform: `translate(128 128) scale(${(224 / 271.475).toFixed(4)}) translate(-102.29 -148.866)`,
+      transform: `translate(128 128) scale(${scale.toFixed(4)}) translate(-102.29 -148.866)`,
     };
   },
   heartRegions: {
@@ -718,5 +851,6 @@ module.exports = {
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
   pointsAlongBezier, densify, resample, splitSubpaths, ORGANS, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
   SKIN_TONES, PSEUDOMONAS_CELLS, ENTEROCYTES, CDIFF, sporulatingRod, HIV_CAPSID, CRYPTOCOCCUS_CELLS, GIARDIA, CONJUGATION, toGlobal, TLR,
-  OPSONISATION, phagocyteCup, arcPoints, hexagon, PEPTIDOGLYCAN, CONJUGATE_CHAINS, CANNULA, PICC, MOSQUITO, calicivirusPoints,
+  OPSONISATION, phagocyteCup, arcPoints, hexagon, HAEMOPHILUS_CELLS, MYCOPLASMA, PNEUMOCYSTIS, wormOutline, THREADWORM,
+  SCABIES, HEAD_LOUSE, TICK, synapseCell, HAND, graticule, PEPTIDOGLYCAN, CONJUGATE_CHAINS, CANNULA, PICC, MOSQUITO, calicivirusPoints,
 };

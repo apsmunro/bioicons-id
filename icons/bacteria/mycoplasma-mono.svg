@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mycoplasma-mono-title">
+<title id="mycoplasma-mono-title">Mycoplasma pneumoniae (single colour)</title>
+<desc>Flask-shaped bacteria with no cell wall, attaching by their tip organelles among the cilia of the respiratory epithelium.</desc>
+<defs></defs>
+<path d="M32 163C28 150 36 138 32 124M42 163C38 150 46 138 42 124M52 163C48 150 56 138 52 124M62 163C58 150 66 138 62 124M72 163C68 150 76 138 72 124M82 163C78 150 86 138 82 124M142 163C138 150 146 138 142 124M152 163C148 150 156 138 152 124M162 163C158 150 166 138 162 124M172 163C168 150 176 138 172 124M182 163C178 150 186 138 182 124M192 163C188 150 196 138 192 124M202 163C198 150 206 138 202 124M212 163C208 150 216 138 212 124M222 163C218 150 226 138 222 124" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 232L24 174Q24 168 30 168L128 168L128 232Z" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 232L128 168L226 168Q232 168 232 174L232 232Z" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="76" cy="206" rx="22" ry="13" fill="#000000"/>
+<ellipse cx="180" cy="206" rx="22" ry="13" fill="#000000"/>
+<g transform="translate(112 137) rotate(0) scale(1)"><path d="M0 -30C20 -30 26 -12 22 2C18 14 8 20 5 28L-5 28C-8 20 -18 14 -22 2C-26 -12 -20 -30 0 -30Z" fill="#000000"/><ellipse cy="31" rx="6.5" ry="5" fill="#000000"/></g>
+<g transform="translate(180 86) rotate(28) scale(1)"><path d="M0 -30C20 -30 26 -12 22 2C18 14 8 20 5 28L-5 28C-8 20 -18 14 -22 2C-26 -12 -20 -30 0 -30Z" fill="#000000"/><ellipse cy="31" rx="6.5" ry="5" fill="#000000"/></g>
+<g transform="translate(64 80) rotate(-22) scale(0.85)"><path d="M0 -30C20 -30 26 -12 22 2C18 14 8 20 5 28L-5 28C-8 20 -18 14 -22 2C-26 -12 -20 -30 0 -30Z" fill="#000000"/><ellipse cy="31" rx="6.5" ry="5" fill="#000000"/></g>
+</svg>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="tick-title">
+<title id="tick-title">Tick</title>
+<desc>Hard (ixodid) tick from above: mouthparts at the front, a dark dorsal shield, and four pairs of legs.</desc>
+<defs><radialGradient id="tick-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d6a893"/><stop offset="0.55" stop-color="#B5603A"/><stop offset="1" stop-color="#985131"/></radialGradient><radialGradient id="tick-scutum" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#897b73"/><stop offset="0.55" stop-color="#4A3428"/><stop offset="1" stop-color="#3e2c22"/></radialGradient><radialGradient id="tick-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M90 104L62 88L48 60L44 40M84 120L54 112L36 98L24 92M84 140L52 150L34 168L26 178M90 160L62 184L50 210L44 228M166 104L194 88L208 60L212 40M172 120L202 112L220 98L232 92M172 140L204 150L222 168L230 178M166 160L194 184L206 210L212 228" fill="none" stroke="#2e2019" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M90 104L62 88L48 60L44 40M84 120L54 112L36 98L24 92M84 140L52 150L34 168L26 178M90 160L62 184L50 210L44 228M166 104L194 88L208 60L212 40M172 120L202 112L220 98L232 92M172 140L204 150L222 168L230 178M166 160L194 184L206 210L212 228" fill="none" stroke="#655248" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="62" cy="88" r="3.5" fill="#6e5d53"/>
+<circle cx="194" cy="88" r="3.5" fill="#6e5d53"/>
+<circle cx="48" cy="60" r="3.5" fill="#6e5d53"/>
+<circle cx="208" cy="60" r="3.5" fill="#6e5d53"/>
+<circle cx="54" cy="112" r="3.5" fill="#6e5d53"/>
+<circle cx="202" cy="112" r="3.5" fill="#6e5d53"/>
+<circle cx="36" cy="98" r="3.5" fill="#6e5d53"/>
+<circle cx="220" cy="98" r="3.5" fill="#6e5d53"/>
+<circle cx="52" cy="150" r="3.5" fill="#6e5d53"/>
+<circle cx="204" cy="150" r="3.5" fill="#6e5d53"/>
+<circle cx="34" cy="168" r="3.5" fill="#6e5d53"/>
+<circle cx="222" cy="168" r="3.5" fill="#6e5d53"/>
+<circle cx="62" cy="184" r="3.5" fill="#6e5d53"/>
+<circle cx="194" cy="184" r="3.5" fill="#6e5d53"/>
+<circle cx="50" cy="210" r="3.5" fill="#6e5d53"/>
+<circle cx="206" cy="210" r="3.5" fill="#6e5d53"/>
+<ellipse cx="119" cy="50" rx="5" ry="13" fill="url(#tick-scutum)" stroke="#2e2019" stroke-width="1.5"/>
+<ellipse cx="137" cy="50" rx="5" ry="13" fill="url(#tick-scutum)" stroke="#2e2019" stroke-width="1.5"/>
+<ellipse cx="128" cy="46" rx="3" ry="13" fill="#897b73" stroke="#2e2019" stroke-width="1.2"/>
+<rect x="113" y="60" width="30" height="18" rx="5" fill="url(#tick-scutum)" stroke="#2e2019" stroke-width="2"/>
+<ellipse cx="128" cy="152" rx="50" ry="62" fill="url(#tick-body)" stroke="#703c24" stroke-width="3"/>
+<ellipse cx="128" cy="156" rx="41" ry="52" fill="none" stroke="#914d2e" stroke-width="1.5" opacity="0.7"/>
+<path d="M98 98C98 84 112 80 128 80C144 80 158 84 158 98C158 120 146 138 128 142C110 138 98 120 98 98Z" fill="url(#tick-scutum)" stroke="#2e2019" stroke-width="2"/>
+<ellipse cx="112" cy="98" rx="10" ry="5" transform="rotate(-30 112 98)" fill="url(#tick-gloss)"/>
+<ellipse cx="104" cy="170" rx="9" ry="16" transform="rotate(15 104 170)" fill="url(#tick-gloss)"/>
+</svg>

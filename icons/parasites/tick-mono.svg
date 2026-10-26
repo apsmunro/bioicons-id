@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="tick-mono-title">
+<title id="tick-mono-title">Tick (single colour)</title>
+<desc>Hard (ixodid) tick from above: mouthparts at the front, a dark dorsal shield, and four pairs of legs.</desc>
+<defs></defs>
+<path d="M90 104L62 88L48 60L44 40M84 120L54 112L36 98L24 92M84 140L52 150L34 168L26 178M90 160L62 184L50 210L44 228M166 104L194 88L208 60L212 40M172 120L202 112L220 98L232 92M172 140L204 150L222 168L230 178M166 160L194 184L206 210L212 228" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="119" cy="50" rx="5" ry="13" fill="#000000"/>
+<ellipse cx="137" cy="50" rx="5" ry="13" fill="#000000"/>
+<rect x="113" y="60" width="30" height="18" rx="5" fill="#000000"/>
+<ellipse cx="128" cy="152" rx="50" ry="62" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 98C98 84 112 80 128 80C144 80 158 84 158 98C158 120 146 138 128 142C110 138 98 120 98 98Z" fill="#000000"/>
+</svg>

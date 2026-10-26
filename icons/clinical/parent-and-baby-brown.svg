@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="parent-and-baby-brown-title">
+<title id="parent-and-baby-brown-title">Parent and baby (brown skin tone)</title>
+<desc>Adult holding a swaddled baby in their arms.</desc>
+<defs><radialGradient id="parent-and-baby-brown-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#c6a38a"/><stop offset="0.55" stop-color="#A8714B"/><stop offset="1" stop-color="#8d5f3f"/></radialGradient><radialGradient id="parent-and-baby-brown-hair" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#786f6a"/><stop offset="0.55" stop-color="#2F2119"/><stop offset="1" stop-color="#271c15"/></radialGradient><linearGradient id="parent-and-baby-brown-top" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d37359"/><stop offset="0.25" stop-color="#f0bdaf"/><stop offset="0.6" stop-color="#E07A5F"/><stop offset="1" stop-color="#af5f4a"/></linearGradient><radialGradient id="parent-and-baby-brown-swaddle" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbf1d0"/><stop offset="0.55" stop-color="#F6E2A0"/><stop offset="1" stop-color="#cfbe86"/></radialGradient></defs>
+<rect x="119" y="70" width="18" height="22" fill="#946342"/>
+<path d="M84 94Q128 82 172 94Q190 100 192 124L194 238H62L64 124Q66 100 84 94Z" fill="url(#parent-and-baby-brown-top)" stroke="#8b4c3b" stroke-width="3" stroke-linejoin="round"/>
+<path d="M112 90L128 110L144 90" fill="none" stroke="#a85c47" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M80 104C62 128 60 166 76 184C92 198 150 198 186 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#8b4c3b" stroke-width="29"/><path d="M80 104C62 128 60 166 76 184C92 198 150 198 186 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E07A5F" stroke-width="24"/><path d="M80 104C62 128 60 166 76 184C92 198 150 198 186 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="5.28" opacity="0.4" transform="translate(-4.32 -4.32)"/>
+<circle cx="94" cy="140" r="24" fill="url(#parent-and-baby-brown-swaddle)" stroke="#998c63" stroke-width="2.5"/>
+<ellipse cx="148" cy="156" rx="52" ry="25" transform="rotate(-12 148 156)" fill="url(#parent-and-baby-brown-swaddle)" stroke="#998c63" stroke-width="2.5"/>
+<circle cx="94" cy="140" r="15" fill="url(#parent-and-baby-brown-skin)" stroke="#68462f" stroke-width="2"/>
+<path d="M112 164Q142 146 186 134" fill="none" stroke="#b9aa78" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M176 104C196 124 200 156 188 172C180 182 166 184 154 180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#8b4c3b" stroke-width="27"/><path d="M176 104C196 124 200 156 188 172C180 182 166 184 154 180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E07A5F" stroke-width="22"/><path d="M176 104C196 124 200 156 188 172C180 182 166 184 154 180" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="4.84" opacity="0.4" transform="translate(-3.96 -3.96)"/>
+<ellipse cx="192" cy="179" rx="11" ry="7.5" transform="rotate(-25 192 179)" fill="url(#parent-and-baby-brown-skin)" stroke="#68462f" stroke-width="2"/>
+<ellipse cx="150" cy="178" rx="11" ry="7.5" transform="rotate(10 150 178)" fill="url(#parent-and-baby-brown-skin)" stroke="#68462f" stroke-width="2"/>
+<circle cx="103" cy="54" r="5.5" fill="#A8714B" stroke="#68462f" stroke-width="2"/>
+<circle cx="153" cy="54" r="5.5" fill="#A8714B" stroke="#68462f" stroke-width="2"/>
+<circle cx="128" cy="52" r="25" fill="url(#parent-and-baby-brown-skin)" stroke="#68462f" stroke-width="2.5"/>
+<path d="M103 52C100 30 114 24 128 24C146 24 158 32 153 52C146 42 138 38 128 39C116 40 108 44 103 52Z" fill="url(#parent-and-baby-brown-hair)" stroke="#1d1410" stroke-width="2" stroke-linejoin="round"/>
+</svg>

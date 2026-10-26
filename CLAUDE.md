@@ -60,18 +60,20 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 - Anatomy and science should be accurate; the author reviews closely and will push back on odd shapes.
 - People have no facial features. British spelling throughout.
 
-## Status (26 Oct 2026, batch 5)
+## Status (26 Oct 2026, batch 6)
 
-95 icons in 10 categories: bacteria 15, viruses 11, fungi 3, parasites & vectors 4, immune cells 15,
-molecules 9, organs & body systems 12, treatment 7, antimicrobial resistance 4, clinical & lab 15.
-The four people icons come in four skin tones.
+115 icons in 10 categories: bacteria 17, viruses 12, fungi 4, parasites & vectors 8, immune cells 17,
+molecules 11, organs & body systems 12, treatment 8, antimicrobial resistance 4, clinical & lab 22.
+Six people icons (child, newborn, baby, pregnant person, hand hygiene, parent and baby) come in
+four skin tones. The single-colour brain and heart have their lines thickened (`ART_THICKEN` in
+the mono script) so they hold up at small sizes.
 
 ## Ideas not yet done
 
-- Pathogens: *Haemophilus*, *Mycoplasma*, hepatitis B, *Pneumocystis*, a helminth, scabies mite,
-  head louse, tick.
-- Immunology: basophil, IgE on a mast cell, immune synapse, antigen/epitope binding.
-- Vaccines: viral-vector vaccine.
-- Clinical: nebuliser or oxygen mask, neonatal incubator, PCR tube, blood bottles, parent and baby,
-  transmission routes, hand hygiene, mask, globe.
-- Known weaknesses: the supplied brain and heart drawings have fine lines that look light below ~64 px.
+- Transmission routes (droplet, airborne, faecal–oral, vertical): diagrams more than icons, so
+  plan them with the author first.
+- Clinical: blood bottles (paediatric and adult sets).
+- The globe has lines of latitude and longitude but no continents; drawing coastlines accurately
+  would need real map data.
+- Watch for faces: two round features above a horizontal one read as a face (it happened with
+  the nebuliser mask and the incubator's portholes), which the author wants to avoid.

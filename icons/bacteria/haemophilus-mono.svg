@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="haemophilus-mono-title">
+<title id="haemophilus-mono-title">Haemophilus influenzae (single colour)</title>
+<desc>Small, pleomorphic Gram-negative coccobacilli, each in a polysaccharide capsule (as in type b, Hib).</desc>
+<defs></defs>
+<g transform="translate(78 72) rotate(-20)"><ellipse rx="27" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-18" y="-10" width="36" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(150 62) rotate(30)"><ellipse rx="23" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-14" y="-10" width="28" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(200 108) rotate(-50)"><ellipse rx="29" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-20" y="-10" width="40" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(110 130) rotate(15)"><ellipse rx="25" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-16" y="-10" width="32" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(60 170) rotate(40)"><ellipse rx="23" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-14" y="-10" width="28" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(166 170) rotate(-15)"><ellipse rx="27" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-18" y="-10" width="36" height="20" rx="10" fill="#000000"/></g>
+<g transform="translate(110 206) rotate(-30)"><ellipse rx="24" ry="19" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-15" y="-10" width="30" height="20" rx="10" fill="#000000"/></g>
+</svg>

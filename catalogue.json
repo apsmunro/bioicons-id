@@ -153,6 +153,24 @@
       "tags": ["gram-positive", "rod", "bacillus", "C. difficile", "C. diff", "Clostridium difficile", "CDI", "spores", "sporulation", "anaerobe", "antibiotic-associated diarrhoea", "pseudomembranous colitis", "bacterium"]
     },
     {
+      "id": "haemophilus",
+      "name": "Haemophilus influenzae",
+      "category": "bacteria",
+      "file": "icons/bacteria/haemophilus.svg",
+      "monoFile": "icons/bacteria/haemophilus-mono.svg",
+      "description": "Small, pleomorphic Gram-negative coccobacilli, each in a polysaccharide capsule (as in type b, Hib).",
+      "tags": ["gram-negative", "coccobacillus", "H. influenzae", "Haemophilus influenzae", "Hib", "type b", "NTHi", "non-typeable", "capsule", "epiglottitis", "meningitis", "otitis media", "bacterium"]
+    },
+    {
+      "id": "mycoplasma",
+      "name": "Mycoplasma pneumoniae",
+      "category": "bacteria",
+      "file": "icons/bacteria/mycoplasma.svg",
+      "monoFile": "icons/bacteria/mycoplasma-mono.svg",
+      "description": "Flask-shaped bacteria with no cell wall, attaching by their tip organelles among the cilia of the respiratory epithelium.",
+      "tags": ["Mycoplasma pneumoniae", "M. pneumoniae", "Mycoplasma", "atypical pneumonia", "walking pneumonia", "no cell wall", "macrolide", "cilia", "respiratory epithelium", "Stevens-Johnson", "MIRM", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -252,6 +270,15 @@
       "tags": ["norovirus", "calicivirus", "Caliciviridae", "Norwalk", "winter vomiting bug", "gastroenteritis", "diarrhoea and vomiting", "D&V", "non-enveloped", "outbreak", "virus"]
     },
     {
+      "id": "hepatitis-b",
+      "name": "Hepatitis B virus",
+      "category": "viruses",
+      "file": "icons/viruses/hepatitis-b.svg",
+      "monoFile": "icons/viruses/hepatitis-b-mono.svg",
+      "description": "Dane particle: an envelope studded with surface antigen (HBsAg) around an icosahedral core (HBcAg) holding partly double-stranded circular DNA and its polymerase.",
+      "tags": ["hepatitis B", "HBV", "Dane particle", "HBsAg", "surface antigen", "HBcAg", "core antigen", "hepadnavirus", "vertical transmission", "hepatitis", "liver", "virus"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -277,6 +304,15 @@
       "monoFile": "icons/fungi/cryptococcus-mono.svg",
       "description": "Round yeast cells with a thick polysaccharide capsule, one with a narrow-necked bud, as seen on India ink staining.",
       "tags": ["Cryptococcus neoformans", "C. gattii", "cryptococcal meningitis", "yeast", "capsule", "India ink", "CrAg", "HIV", "immunocompromised", "fungus"]
+    },
+    {
+      "id": "pneumocystis",
+      "name": "Pneumocystis jirovecii",
+      "category": "fungi",
+      "file": "icons/fungi/pneumocystis.svg",
+      "monoFile": "icons/fungi/pneumocystis-mono.svg",
+      "description": "Pneumocystis cysts (asci) holding eight intracystic bodies, one collapsed into a cup shape, among small trophic forms.",
+      "tags": ["Pneumocystis jirovecii", "Pneumocystis carinii", "PCP", "PJP", "Pneumocystis pneumonia", "cyst", "trophic form", "co-trimoxazole", "HIV", "immunocompromised", "fungus"]
     },
     {
       "id": "malaria",
@@ -313,6 +349,42 @@
       "monoFile": "icons/parasites/mosquito-mono.svg",
       "description": "Anopheles mosquito at rest, with the body and proboscis held in a line at an angle to the surface, long palps and spotted wings.",
       "tags": ["mosquito", "Anopheles", "vector", "malaria", "insect", "bite", "Aedes", "dengue", "arbovirus", "travel", "tropical medicine"]
+    },
+    {
+      "id": "threadworm",
+      "name": "Threadworm",
+      "category": "parasites",
+      "file": "icons/parasites/threadworm.svg",
+      "monoFile": "icons/parasites/threadworm-mono.svg",
+      "description": "Enterobius vermicularis: a female worm with a long pointed tail, a smaller male with a curled tail, and eggs flattened on one side, each holding a larva.",
+      "tags": ["threadworm", "pinworm", "Enterobius vermicularis", "enterobiasis", "helminth", "nematode", "roundworm", "worm", "eggs", "perianal itch", "sellotape test", "mebendazole", "parasite"]
+    },
+    {
+      "id": "scabies-mite",
+      "name": "Scabies mite",
+      "category": "parasites",
+      "file": "icons/parasites/scabies-mite.svg",
+      "monoFile": "icons/parasites/scabies-mite-mono.svg",
+      "description": "Sarcoptes scabiei from above: a rounded body with transverse ridges and spines, short legs ending in stalked suckers at the front and long bristles at the back.",
+      "tags": ["scabies", "Sarcoptes scabiei", "mite", "itch mite", "burrow", "crusted scabies", "Norwegian scabies", "permethrin", "ivermectin", "ectoparasite", "skin", "parasite"]
+    },
+    {
+      "id": "head-louse",
+      "name": "Head louse",
+      "category": "parasites",
+      "file": "icons/parasites/head-louse.svg",
+      "monoFile": "icons/parasites/head-louse-mono.svg",
+      "description": "Pediculus humanus capitis from above, with clawed legs for gripping hair, beside a hair carrying a nit (egg).",
+      "tags": ["head lice", "head louse", "Pediculus humanus capitis", "pediculosis", "nit", "louse", "lice", "insect", "ectoparasite", "hair", "school", "parasite"]
+    },
+    {
+      "id": "tick",
+      "name": "Tick",
+      "category": "parasites",
+      "file": "icons/parasites/tick.svg",
+      "monoFile": "icons/parasites/tick-mono.svg",
+      "description": "Hard (ixodid) tick from above: mouthparts at the front, a dark dorsal shield, and four pairs of legs.",
+      "tags": ["tick", "Ixodes", "hard tick", "Lyme disease", "Borrelia", "tick-borne encephalitis", "TBE", "rickettsia", "spotted fever", "vector", "arachnid", "bite"]
     },
     {
       "id": "neutrophil",
@@ -450,6 +522,24 @@
       "tags": ["Treg", "regulatory T cell", "CD4", "CD25", "FOXP3", "IL-10", "TGF-beta", "TGF-β", "tolerance", "immune suppression", "IPEX", "lymphocyte"]
     },
     {
+      "id": "basophil",
+      "name": "Basophil",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/basophil.svg",
+      "monoFile": "icons/immune-cells/basophil-mono.svg",
+      "description": "Granulocyte with a lobed nucleus largely hidden by large, dark basophilic granules.",
+      "tags": ["basophil", "granulocyte", "histamine", "allergy", "IgE", "white blood cell", "WBC", "leukocyte", "leucocyte", "basophilia"]
+    },
+    {
+      "id": "immune-synapse",
+      "name": "Immune synapse",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/immune-synapse.svg",
+      "monoFile": "icons/immune-cells/immune-synapse-mono.svg",
+      "description": "A T cell meeting an antigen-presenting cell: T-cell receptors bind peptide–MHC complexes across the narrow gap between the two cells.",
+      "tags": ["immunological synapse", "immune synapse", "T cell", "antigen-presenting cell", "APC", "dendritic cell", "TCR", "MHC", "peptide", "antigen presentation", "T-cell activation"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -529,6 +619,24 @@
       "monoFile": "icons/molecules/c3b-opsonisation-mono.svg",
       "description": "A bacterium coated in C3b, held by complement receptors on a phagocyte whose arms are closing around it.",
       "tags": ["C3b", "complement", "opsonin", "opsonisation", "opsonization", "phagocytosis", "CR1", "CR3", "complement receptor", "phagocyte", "macrophage", "innate immunity"]
+    },
+    {
+      "id": "ige-mast-cell",
+      "name": "IgE on a mast cell",
+      "category": "molecules",
+      "file": "icons/molecules/ige-mast-cell.svg",
+      "monoFile": "icons/molecules/ige-mast-cell-mono.svg",
+      "description": "IgE held by its Fc receptor (FcεRI) on a mast cell; an allergen cross-links two IgE molecules and a granule releases histamine.",
+      "tags": ["IgE", "FcεRI", "Fc epsilon receptor", "mast cell", "allergen", "cross-linking", "degranulation", "histamine", "allergy", "anaphylaxis", "type I hypersensitivity", "atopy"]
+    },
+    {
+      "id": "antibody-epitope",
+      "name": "Antibody binding an epitope",
+      "category": "molecules",
+      "file": "icons/molecules/antibody-epitope.svg",
+      "monoFile": "icons/molecules/antibody-epitope-mono.svg",
+      "description": "An IgG antibody binding two epitopes on the surface of an antigen with the tips of its Fab arms.",
+      "tags": ["epitope", "antigen", "paratope", "antibody", "IgG", "Fab", "antigen binding", "neutralisation", "neutralization", "affinity", "immunoglobulin"]
     },
     {
       "id": "lungs",
@@ -700,6 +808,15 @@
       "monoFile": "icons/treatment/conjugate-vaccine-mono.svg",
       "description": "Capsular polysaccharide chains linked to a carrier protein (a toxoid such as CRM197 or tetanus toxoid), so the sugars draw a T-cell-dependent response.",
       "tags": ["conjugate vaccine", "polysaccharide", "carrier protein", "CRM197", "tetanus toxoid", "Hib", "PCV", "PCV13", "MenACWY", "MenC", "pneumococcal vaccine", "immunisation", "vaccination"]
+    },
+    {
+      "id": "viral-vector-vaccine",
+      "name": "Viral-vector vaccine",
+      "category": "treatment",
+      "file": "icons/treatment/viral-vector-vaccine.svg",
+      "monoFile": "icons/treatment/viral-vector-vaccine-mono.svg",
+      "description": "A harmless adenovirus vector, its capsid shown see-through, carrying DNA with an inserted gene for the target antigen.",
+      "tags": ["viral vector", "viral-vector vaccine", "adenovirus vector", "ChAdOx1", "Ad26", "transgene", "vaccine", "immunisation", "vaccination", "Ebola vaccine", "COVID-19 vaccine"]
     },
     {
       "id": "beta-lactamase",
@@ -875,6 +992,71 @@
       "monoFile": "icons/clinical/lateral-flow-test-mono.svg",
       "description": "Lateral flow test cassette with a sample well and a result window showing control and test lines (a positive result).",
       "tags": ["lateral flow", "LFT", "LFD", "rapid antigen test", "RDT", "rapid diagnostic test", "point of care", "POCT", "COVID test", "immunochromatographic", "malaria RDT"]
+    },
+    {
+      "id": "nebuliser-mask",
+      "name": "Nebuliser mask",
+      "category": "clinical",
+      "file": "icons/clinical/nebuliser-mask.svg",
+      "monoFile": "icons/clinical/nebuliser-mask-mono.svg",
+      "description": "Child-size face mask with a nebuliser chamber and oxygen tubing; also stands for an oxygen mask.",
+      "tags": ["nebuliser", "nebulizer", "neb", "oxygen mask", "oxygen", "O2", "salbutamol", "hypertonic saline", "bronchiolitis", "asthma", "respiratory support"]
+    },
+    {
+      "id": "incubator",
+      "name": "Neonatal incubator",
+      "category": "clinical",
+      "file": "icons/clinical/incubator.svg",
+      "monoFile": "icons/clinical/incubator-mono.svg",
+      "description": "Neonatal incubator with a clear hood, two portholes and a control unit, a swaddled baby lying inside.",
+      "tags": ["incubator", "isolette", "neonatal unit", "NICU", "SCBU", "neonatal intensive care", "preterm", "premature", "newborn", "neonate"]
+    },
+    {
+      "id": "pcr-tube",
+      "name": "PCR tube",
+      "category": "clinical",
+      "file": "icons/clinical/pcr-tube.svg",
+      "monoFile": "icons/clinical/pcr-tube-mono.svg",
+      "description": "PCR tube with an open hinged cap and reaction mix, beside a stretch of double-stranded DNA.",
+      "tags": ["PCR", "polymerase chain reaction", "RT-PCR", "qPCR", "molecular diagnostics", "NAAT", "DNA", "tube", "laboratory", "lab", "multiplex"]
+    },
+    {
+      "id": "hand-hygiene",
+      "name": "Hand hygiene",
+      "category": "clinical",
+      "file": "icons/clinical/hand-hygiene.svg",
+      "monoFile": "icons/clinical/hand-hygiene-mono.svg",
+      "description": "An open hand among soap bubbles and water drops.",
+      "tags": ["hand hygiene", "handwashing", "hand washing", "hand rub", "soap", "alcohol gel", "infection control", "IPC", "five moments", "hand"],
+      "toneFiles": { "light": "icons/clinical/hand-hygiene-light.svg", "brown": "icons/clinical/hand-hygiene-brown.svg", "dark": "icons/clinical/hand-hygiene-dark.svg" }
+    },
+    {
+      "id": "face-mask",
+      "name": "Face mask",
+      "category": "clinical",
+      "file": "icons/clinical/face-mask.svg",
+      "monoFile": "icons/clinical/face-mask-mono.svg",
+      "description": "Pleated surgical face mask with ear loops and a nose wire.",
+      "tags": ["mask", "face mask", "surgical mask", "fluid-resistant surgical mask", "FRSM", "PPE", "droplet precautions", "infection control", "IPC", "respiratory"]
+    },
+    {
+      "id": "parent-and-baby",
+      "name": "Parent and baby",
+      "category": "clinical",
+      "file": "icons/clinical/parent-and-baby.svg",
+      "monoFile": "icons/clinical/parent-and-baby-mono.svg",
+      "description": "Adult holding a swaddled baby in their arms.",
+      "tags": ["parent", "mother", "father", "carer", "baby", "newborn", "infant", "family", "person", "human", "maternal", "breastfeeding"],
+      "toneFiles": { "light": "icons/clinical/parent-and-baby-light.svg", "brown": "icons/clinical/parent-and-baby-brown.svg", "dark": "icons/clinical/parent-and-baby-dark.svg" }
+    },
+    {
+      "id": "globe",
+      "name": "Globe",
+      "category": "clinical",
+      "file": "icons/clinical/globe.svg",
+      "monoFile": "icons/clinical/globe-mono.svg",
+      "description": "Globe with lines of latitude and longitude, circled by a flight path with an aeroplane.",
+      "tags": ["globe", "world", "global health", "travel", "travel medicine", "returning traveller", "imported infection", "international", "migrant health", "tropical medicine", "aeroplane"]
     }
   ]
 }
