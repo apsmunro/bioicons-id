@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="iv-bag-title">
+<title id="iv-bag-title">IV infusion bag</title>
+<desc>Labelled infusion bag with drip chamber and giving set tubing.</desc>
+<defs><clipPath id="iv-bag-clip"><path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z"/></clipPath><linearGradient id="iv-bag-fluid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bee0f5"/><stop offset="0.5" stop-color="#9BD0EF"/><stop offset="1" stop-color="#8fbfdc"/></linearGradient></defs>
+<path d="M114 10h28a6 6 0 0 1 6 6v18h-40v-18a6 6 0 0 1 6-6zM120 20a8 4 0 1 0 16 0a8 4 0 1 0 -16 0z" fill-rule="evenodd" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2.5"/>
+<rect x="117" y="194" width="9" height="16" rx="2" fill="#d1dbe3" stroke="#8DA6B8" stroke-width="1.5"/>
+<rect x="131" y="194" width="9" height="12" rx="2" fill="#d1dbe3" stroke="#8DA6B8" stroke-width="1.5"/>
+<path d="M121 234C121 248 146 250 166 242S204 228 222 236" fill="none" stroke="#8DA6B8" stroke-width="5.5" stroke-linecap="round"/>
+<path d="M121 234C121 248 146 250 166 242S204 228 222 236" fill="none" stroke="#b9def4" stroke-width="2.5" stroke-linecap="round"/>
+<rect x="111" y="208" width="20" height="26" rx="5" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2"/>
+<rect x="113" y="222" width="16" height="10" rx="3" fill="#9BD0EF"/>
+<ellipse cx="121" cy="214" rx="2" ry="3" fill="#9BD0EF"/>
+<path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z" fill="#EEF4F8"/>
+<g clip-path="url(#iv-bag-clip)"><path d="M70 78Q128 72 186 78L186 204L70 204Z" fill="url(#iv-bag-fluid)"/><path d="M70 78Q128 72 186 78" fill="none" stroke="#fff" stroke-width="2" opacity="0.7"/></g>
+<g stroke="#8DA6B8" stroke-width="1.5" stroke-linecap="round"><line x1="164" y1="92" x2="172" y2="92"/><line x1="164" y1="110" x2="172" y2="110"/><line x1="164" y1="128" x2="172" y2="128"/><line x1="164" y1="146" x2="172" y2="146"/><line x1="164" y1="164" x2="172" y2="164"/></g>
+<rect x="90" y="96" width="62" height="58" rx="4" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>
+<path d="M90 109V100a4 4 0 0 1 4-4h54a4 4 0 0 1 4 4v9Z" fill="#F2A541"/>
+<rect x="98" y="118" width="46" height="4" rx="2" fill="#B8C6D1"/>
+<rect x="98" y="128" width="36" height="4" rx="2" fill="#B8C6D1"/>
+<rect x="98" y="138" width="42" height="4" rx="2" fill="#B8C6D1"/>
+<path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z" fill="none" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<rect x="84" y="40" width="7" height="136" rx="3.5" fill="#fff" opacity="0.55"/>
+</svg>

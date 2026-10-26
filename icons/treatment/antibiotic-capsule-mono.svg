@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="antibiotic-capsule-mono-title">
+<title id="antibiotic-capsule-mono-title">Antibiotic capsule (single colour)</title>
+<desc>Two-part oral capsule.</desc>
+<defs></defs>
+<g transform="translate(128 128) rotate(-35)">
+<path d="M0 -32L-58 -32A32 32 0 0 0 -58 32L0 32Z" fill="#000000"/>
+<rect x="-90" y="-32" width="180" height="64" rx="32" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="22" y1="-14" x2="58" y2="-14" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

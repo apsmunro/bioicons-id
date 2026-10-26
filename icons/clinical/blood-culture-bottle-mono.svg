@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="blood-culture-bottle-mono-title">
+<title id="blood-culture-bottle-mono-title">Blood culture bottle (single colour)</title>
+<desc>Inoculated blood culture bottle with label, barcode and base sensor.</desc>
+<defs></defs>
+<rect x="98" y="14" width="60" height="28" rx="6" fill="#000000"/>
+<rect x="102" y="48" width="52" height="12" rx="3" fill="#000000"/>
+<path d="M82 104Q82 84 104 78L106 68L150 68L152 78Q174 84 174 104L174 222Q174 236 160 236L96 236Q82 236 82 222Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="100" y="112" width="56" height="62" rx="4" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="108" y="124" width="34" height="6" rx="3" fill="#000000"/>
+<rect x="108" y="146" width="3.2" height="18" fill="#000000"/>
+<rect x="114.2" y="146" width="1.6" height="18" fill="#000000"/>
+<rect x="117.8" y="146" width="4.8" height="18" fill="#000000"/>
+<rect x="124.6" y="146" width="1.6" height="18" fill="#000000"/>
+<rect x="129.2" y="146" width="3.2" height="18" fill="#000000"/>
+<rect x="134.4" y="146" width="3.2" height="18" fill="#000000"/>
+<rect x="139.6" y="146" width="1.6" height="18" fill="#000000"/>
+<rect x="144.2" y="146" width="4.8" height="18" fill="#000000"/>
+<rect x="151" y="146" width="1.6" height="18" fill="#000000"/>
+<rect x="154.6" y="146" width="3.2" height="18" fill="#000000"/>
+<rect x="160.8" y="146" width="4.8" height="18" fill="#000000"/>
+<rect x="167.6" y="146" width="1.6" height="18" fill="#000000"/>
+<path d="M96 190L160 190L160 218Q160 224 154 224L102 224Q96 224 96 218Z" fill="#000000"/>
+</svg>

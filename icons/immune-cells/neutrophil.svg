@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="neutrophil-title">
+<title id="neutrophil-title">Neutrophil</title>
+<desc>Polymorphonuclear neutrophil with a multilobed nucleus and cytoplasmic granules.</desc>
+<defs><radialGradient id="neutrophil-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fae4eb"/><stop offset="0.55" stop-color="#F5C8D6"/><stop offset="1" stop-color="#e1b8c5"/></radialGradient><radialGradient id="neutrophil-nucleus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8a3dd"/><stop offset="0.55" stop-color="#7E57C2"/><stop offset="1" stop-color="#6a49a3"/></radialGradient><radialGradient id="neutrophil-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M225.1 128C225.61 130.8 225.79 133.72 225.59 136.54C225.4 139.36 224.74 142.2 223.92 144.91C223.11 147.63 221.89 150.27 220.72 152.84C219.54 155.42 218.16 157.88 216.89 160.35C215.61 162.82 214.33 165.24 213.06 167.66C211.79 170.09 210.6 172.54 209.26 174.92C207.93 177.3 206.61 179.71 205.05 181.95C203.49 184.19 201.81 186.38 199.92 188.35C198.03 190.31 195.91 192.1 193.73 193.73C191.55 195.36 189.16 196.74 186.84 198.12C184.52 199.5 182.12 200.68 179.83 202.02C177.55 203.36 175.32 204.67 173.13 206.17C170.95 207.67 168.88 209.33 166.72 211.05C164.57 212.76 162.47 214.71 160.2 216.46C157.92 218.21 155.57 220.09 153.06 221.53C150.55 222.97 147.86 224.29 145.12 225.1C142.38 225.91 139.46 226.33 136.61 226.36C133.75 226.4 130.81 225.91 128 225.3C125.19 224.68 122.41 223.62 119.72 222.66C117.03 221.71 114.44 220.53 111.86 219.54C109.28 218.55 106.77 217.59 104.23 216.72C101.68 215.84 99.14 215.12 96.59 214.3C94.04 213.47 91.44 212.75 88.93 211.78C86.42 210.81 83.89 209.78 81.52 208.5C79.16 207.21 76.87 205.72 74.72 204.09C72.58 202.46 70.6 200.59 68.65 198.74C66.7 196.88 64.91 194.88 63.03 192.97C61.14 191.07 59.31 189.16 57.35 187.28C55.39 185.41 53.34 183.62 51.28 181.72C49.21 179.83 46.99 177.99 44.98 175.93C42.98 173.87 40.9 171.74 39.26 169.38C37.61 167.03 36.11 164.47 35.11 161.81C34.11 159.14 33.49 156.25 33.24 153.39C32.98 150.53 33.22 147.53 33.56 144.65C33.89 141.77 34.64 138.89 35.23 136.12C35.82 133.34 36.58 130.66 37.1 128C37.61 125.34 38.03 122.78 38.31 120.15C38.59 117.53 38.64 114.93 38.78 112.27C38.91 109.61 38.88 106.89 39.12 104.19C39.36 101.48 39.63 98.71 40.22 96.05C40.82 93.39 41.64 90.73 42.67 88.21C43.71 85.69 45.05 83.27 46.45 80.92C47.85 78.57 49.47 76.35 51.05 74.12C52.63 71.88 54.28 69.72 55.9 67.5C57.53 65.28 59.12 63.03 60.8 60.8C62.48 58.56 64.13 56.24 66 54.11C67.86 51.98 69.81 49.81 72 48.02C74.19 46.23 76.59 44.59 79.13 43.36C81.68 42.13 84.48 41.25 87.27 40.66C90.07 40.07 93.04 39.92 95.9 39.8C98.75 39.68 101.64 39.91 104.4 39.93C107.17 39.96 109.84 40.1 112.48 39.96C115.11 39.81 117.63 39.52 120.22 39.08C122.81 38.64 125.35 37.91 128 37.3C130.65 36.68 133.35 35.86 136.1 35.38C138.85 34.9 141.71 34.44 144.5 34.4C147.3 34.36 150.16 34.58 152.89 35.12C155.62 35.66 158.31 36.59 160.89 37.63C163.47 38.68 165.95 40.05 168.38 41.4C170.82 42.74 173.16 44.24 175.52 45.68C177.89 47.13 180.23 48.58 182.55 50.09C184.88 51.59 187.26 53.06 189.49 54.72C191.72 56.38 193.98 58.09 195.96 60.04C197.94 61.99 199.82 64.13 201.37 66.44C202.92 68.75 204.2 71.31 205.28 73.89C206.35 76.47 207.07 79.26 207.8 81.93C208.52 84.6 208.98 87.33 209.64 89.93C210.3 92.53 210.91 95.04 211.77 97.51C212.64 99.98 213.67 102.32 214.83 104.73C215.98 107.15 217.42 109.51 218.7 112.01C219.98 114.51 221.45 117.07 222.51 119.73C223.58 122.4 224.58 125.2 225.1 128Z" fill="url(#neutrophil-body)" stroke="#ac8c96" stroke-width="3"/>
+<circle cx="78.99" cy="88.42" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="163.59" cy="79.51" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="53.28" cy="137.42" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="69.18" cy="160.35" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="88.04" cy="158.63" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="62.34" cy="164.95" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="152.52" cy="60.41" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="101.32" cy="186.98" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="123.37" cy="47.05" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="118.9" cy="158.04" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="171.54" cy="67.84" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="118.21" cy="136.66" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="194.64" cy="162.87" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="120.56" cy="185.62" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="66.59" cy="150.31" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="195.02" cy="148.98" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="108.99" cy="186.04" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="84.6" cy="189.49" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="83.74" cy="80.73" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="70.95" cy="183.2" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="204.84" cy="132.15" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="111.31" cy="177.66" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="188.11" cy="74.61" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="80.25" cy="61.57" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="102.43" cy="151.74" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="160.23" cy="55.55" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="128.02" cy="122.18" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="65.78" cy="99.07" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="166.25" cy="190.97" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="106.62" cy="56.2" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="198.88" cy="88.24" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="76.03" cy="157.72" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="176.78" cy="183.8" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="160.23" cy="65.31" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="188.06" cy="165.36" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="113.94" cy="149.34" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="74.62" cy="175.82" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="202.56" cy="111.79" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="51.84" cy="118.49" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="195.45" cy="169.84" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="137.17" cy="206.73" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="131.81" cy="49.35" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="144.97" cy="49.21" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="55.75" cy="162.08" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="127.21" cy="194.11" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="65.73" cy="76.31" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="58.23" cy="104.23" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="109.9" cy="203.66" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="101.19" cy="168.14" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="86.48" cy="172.63" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="72.07" cy="70.59" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="143.32" cy="202.04" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="122.27" cy="129.02" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="89.8" cy="73.2" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="187.85" cy="154.07" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="173.64" cy="191.33" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="128.95" cy="137.01" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="91.03" cy="199.8" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="115" cy="59.92" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="112.56" cy="193.28" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="97.12" cy="66.42" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="65.73" cy="177.81" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="77.82" cy="148.43" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="110.03" cy="162.95" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="176.01" cy="73.99" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="91.48" cy="151.8" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="54.93" cy="92.91" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="101.28" cy="178.72" r="2.4" fill="#b48acb" opacity="0.85"/>
+<circle cx="103.75" cy="195.11" r="2.4" fill="#c4a0ab" opacity="0.85"/>
+<circle cx="189" cy="136.43" r="2.4" fill="#b48acb" opacity="0.85"/>
+<path d="M92 118C98 113.33 115.33 91 128 90C140.67 89 163.67 100.67 168 112C172.33 123.33 156.33 150.33 154 158" fill="none" stroke="#4e3678" stroke-width="14" stroke-linecap="round"/>
+<ellipse cx="92" cy="118" rx="27" ry="21" transform="rotate(-25 92 118)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<ellipse cx="128" cy="90" rx="26" ry="20" transform="rotate(10 128 90)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<ellipse cx="168" cy="112" rx="25" ry="21" transform="rotate(45 168 112)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<ellipse cx="154" cy="158" rx="27" ry="20" transform="rotate(-15 154 158)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<path d="M92 118C98 113.33 115.33 91 128 90C140.67 89 163.67 100.67 168 112C172.33 123.33 156.33 150.33 154 158" fill="none" stroke="#7E57C2" stroke-width="9" stroke-linecap="round"/>
+<ellipse cx="92" cy="118" rx="27" ry="21" transform="rotate(-25 92 118)" fill="url(#neutrophil-nucleus)"/>
+<ellipse cx="128" cy="90" rx="26" ry="20" transform="rotate(10 128 90)" fill="url(#neutrophil-nucleus)"/>
+<ellipse cx="168" cy="112" rx="25" ry="21" transform="rotate(45 168 112)" fill="url(#neutrophil-nucleus)"/>
+<ellipse cx="154" cy="158" rx="27" ry="20" transform="rotate(-15 154 158)" fill="url(#neutrophil-nucleus)"/>
+<ellipse cx="85.36" cy="119.62" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="89.16" cy="123.68" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="135.56" cy="83.75" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="124.84" cy="88.43" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="163.09" cy="106.46" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="174.92" cy="107.41" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="155.47" cy="151.42" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="154.31" cy="159.69" rx="6" ry="4" fill="#583d88" opacity="0.35"/>
+<ellipse cx="76" cy="70" rx="24" ry="11" transform="rotate(-30 76 70)" fill="url(#neutrophil-gloss)"/>
+</svg>

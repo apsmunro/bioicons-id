@@ -1,0 +1,126 @@
+{
+  "library": {
+    "name": "ID & Immunology Icons",
+    "licence": "CC0 1.0",
+    "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "categories": [
+    { "id": "bacteria", "label": "Bacteria" },
+    { "id": "viruses", "label": "Viruses" },
+    { "id": "fungi", "label": "Fungi" },
+    { "id": "immune-cells", "label": "Immune cells" },
+    { "id": "molecules", "label": "Molecules" },
+    { "id": "treatment", "label": "Treatment" },
+    { "id": "clinical", "label": "Clinical & lab" }
+  ],
+  "icons": [
+    {
+      "id": "staphylococcus",
+      "name": "Staphylococcus",
+      "category": "bacteria",
+      "file": "icons/bacteria/staphylococcus.svg",
+      "monoFile": "icons/bacteria/staphylococcus-mono.svg",
+      "description": "Gram-positive cocci in grape-like clusters. Coloured violet, after the Gram stain.",
+      "tags": ["gram-positive", "cocci", "clusters", "S. aureus", "staph aureus", "MRSA", "MSSA", "CoNS", "S. epidermidis", "bacterium"]
+    },
+    {
+      "id": "escherichia-coli",
+      "name": "Escherichia coli",
+      "category": "bacteria",
+      "file": "icons/bacteria/escherichia-coli.svg",
+      "monoFile": "icons/bacteria/escherichia-coli-mono.svg",
+      "description": "Gram-negative bacillus with a double envelope, peritrichous flagella and pili. Coloured pink, after the Gram stain.",
+      "tags": ["gram-negative", "rod", "bacillus", "E. coli", "Enterobacterales", "coliform", "Klebsiella", "UTI", "flagella", "pili", "bacterium"]
+    },
+    {
+      "id": "sars-cov-2",
+      "name": "SARS-CoV-2",
+      "category": "viruses",
+      "file": "icons/viruses/sars-cov-2.svg",
+      "monoFile": "icons/viruses/sars-cov-2-mono.svg",
+      "description": "Enveloped coronavirus with spike (S) glycoproteins and membrane (M) proteins.",
+      "tags": ["coronavirus", "COVID-19", "enveloped virus", "spike protein", "RNA virus", "respiratory virus", "virion"]
+    },
+    {
+      "id": "adenovirus",
+      "name": "Adenovirus",
+      "category": "viruses",
+      "file": "icons/viruses/adenovirus.svg",
+      "monoFile": "icons/viruses/adenovirus-mono.svg",
+      "description": "Non-enveloped icosahedral capsid with hexon capsomeres, penton bases and protruding fibres.",
+      "tags": ["non-enveloped virus", "icosahedral", "capsid", "DNA virus", "penton", "hexon", "fibre", "viral vector", "virion"]
+    },
+    {
+      "id": "candida",
+      "name": "Candida (budding yeast)",
+      "category": "fungi",
+      "file": "icons/fungi/candida.svg",
+      "monoFile": "icons/fungi/candida-mono.svg",
+      "description": "Yeast cell with a daughter bud, thick cell wall, vacuole, nucleus and bud scar.",
+      "tags": ["fungus", "yeast", "Candida albicans", "candidaemia", "candidiasis", "budding", "fungal infection"]
+    },
+    {
+      "id": "neutrophil",
+      "name": "Neutrophil",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/neutrophil.svg",
+      "monoFile": "icons/immune-cells/neutrophil-mono.svg",
+      "description": "Polymorphonuclear neutrophil with a multilobed nucleus and cytoplasmic granules.",
+      "tags": ["PMN", "polymorphonuclear", "granulocyte", "phagocyte", "innate immunity", "leukocyte", "white blood cell", "neutrophilia", "neutropenia"]
+    },
+    {
+      "id": "macrophage",
+      "name": "Macrophage",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/macrophage.svg",
+      "monoFile": "icons/immune-cells/macrophage-mono.svg",
+      "description": "Macrophage with pseudopodia, lysosomes and phagosomes containing engulfed bacteria.",
+      "tags": ["monocyte", "phagocyte", "phagocytosis", "antigen-presenting cell", "APC", "innate immunity", "leukocyte", "white blood cell"]
+    },
+    {
+      "id": "t-cell",
+      "name": "T cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/t-cell.svg",
+      "monoFile": "icons/immune-cells/t-cell-mono.svg",
+      "description": "Lymphocyte with a large nucleus and surface αβ T-cell receptors.",
+      "tags": ["T lymphocyte", "TCR", "lymphocyte", "adaptive immunity", "CD4", "CD8", "leukocyte", "white blood cell"]
+    },
+    {
+      "id": "igg-antibody",
+      "name": "IgG antibody",
+      "category": "molecules",
+      "file": "icons/molecules/igg-antibody.svg",
+      "monoFile": "icons/molecules/igg-antibody-mono.svg",
+      "description": "Immunoglobulin G showing heavy chains (dark blue), light chains (light blue), hinge disulphide bonds and the Fc glycan.",
+      "tags": ["antibody", "immunoglobulin", "IgG", "Fab", "Fc", "humoral immunity", "monoclonal antibody", "mAb", "IVIG"]
+    },
+    {
+      "id": "antibiotic-capsule",
+      "name": "Antibiotic capsule",
+      "category": "treatment",
+      "file": "icons/treatment/antibiotic-capsule.svg",
+      "monoFile": "icons/treatment/antibiotic-capsule-mono.svg",
+      "description": "Two-part oral capsule.",
+      "tags": ["antibiotic", "antimicrobial", "oral", "capsule", "pill", "medication", "drug", "amoxicillin", "enteral"]
+    },
+    {
+      "id": "iv-bag",
+      "name": "IV infusion bag",
+      "category": "treatment",
+      "file": "icons/treatment/iv-bag.svg",
+      "monoFile": "icons/treatment/iv-bag-mono.svg",
+      "description": "Labelled infusion bag with drip chamber and giving set tubing.",
+      "tags": ["intravenous", "IV", "infusion", "drip", "fluids", "IV antibiotics", "parenteral", "OPAT"]
+    },
+    {
+      "id": "blood-culture-bottle",
+      "name": "Blood culture bottle",
+      "category": "clinical",
+      "file": "icons/clinical/blood-culture-bottle.svg",
+      "monoFile": "icons/clinical/blood-culture-bottle-mono.svg",
+      "description": "Inoculated blood culture bottle with label, barcode and base sensor.",
+      "tags": ["blood culture", "sepsis", "bacteraemia", "microbiology", "diagnostics", "laboratory", "specimen"]
+    }
+  ]
+}

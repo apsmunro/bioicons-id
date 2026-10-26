@@ -1,0 +1,12 @@
+{
+  "name": "id-immunology-icons",
+  "private": true,
+  "description": "Free illustrations of pathogens, immune cells and treatments, in full colour and single colour.",
+  "license": "CC0-1.0",
+  "scripts": {
+    "draw": "node tools/draw-pilot-icons.js && node tools/draw-mono-icons.js",
+    "build": "node tools/build-site.js",
+    "all": "npm run draw && npm run build",
+    "serve": "node tools/serve.js"
+  }
+}

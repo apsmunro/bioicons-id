@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ID &amp; Immunology Icons</title>
+<meta name="description" content="Free illustrations of pathogens, immune cells, molecules and treatments for teaching, slides and papers.">
+<link rel="icon" href="icons/viruses/sars-cov-2.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <h1>ID &amp; Immunology Icons</h1>
+    <p class="tagline">Free illustrations of pathogens, immune cells and treatments for slides, posters and papers.</p>
+    <div class="toolbar">
+      <label class="search">
+        <span class="visually-hidden">Search icons</span>
+        <input id="search" type="search" placeholder="Search, e.g. gram-negative, PMN, IV…" autocomplete="off">
+      </label>
+      <div class="segmented" role="group" aria-label="Icon style">
+        <button type="button" data-variant="colour" aria-pressed="true">Full colour</button>
+        <button type="button" data-variant="mono" aria-pressed="false">Single colour</button>
+      </div>
+      <div class="segmented" role="group" aria-label="Preview background">
+        <button type="button" data-bg="light" aria-pressed="true">Light</button>
+        <button type="button" data-bg="dark" aria-pressed="false">Dark</button>
+        <button type="button" data-bg="checker" aria-pressed="false">Transparent</button>
+      </div>
+    </div>
+    <div class="ink" role="group" aria-label="Single-colour ink" hidden></div>
+    <nav id="categories" class="chips" aria-label="Categories"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p id="count" class="count" aria-live="polite"></p>
+  <ul id="grid" class="grid" data-bg="light"></ul>
+  <p id="empty" class="empty" hidden>No icons match that search.</p>
+</main>
+
+<footer class="wrap site-footer">
+  <p id="licence"></p>
+  <p><strong>In PowerPoint:</strong> download the SVG and drag it onto a slide, or use “Copy image” and paste.
+    Single-colour SVGs can be recoloured directly with <em>Graphics Fill</em>; to recolour parts of a
+    full-colour icon, right-click it and choose <em>Convert to Shape</em>.</p>
+</footer>
+
+<dialog id="detail" aria-labelledby="detail-name">
+  <form method="dialog" class="close-form"><button class="close" aria-label="Close">×</button></form>
+  <div class="detail">
+    <div id="detail-preview" class="preview" data-bg="light"><img id="detail-img" alt=""></div>
+    <div class="info">
+      <p id="detail-category" class="eyebrow"></p>
+      <h2 id="detail-name"></h2>
+      <p id="detail-desc"></p>
+      <ul id="detail-tags" class="tags" aria-label="Tags"></ul>
+      <div class="segmented" role="group" aria-label="Icon style">
+        <button type="button" data-variant="colour" aria-pressed="true">Full colour</button>
+        <button type="button" data-variant="mono" aria-pressed="false">Single colour</button>
+      </div>
+      <div class="ink" role="group" aria-label="Single-colour ink" hidden></div>
+      <div class="actions">
+        <button type="button" id="dl-svg" class="primary">Download SVG</button>
+        <div class="png-row">
+          <button type="button" id="dl-png">Download PNG</button>
+          <label>Size
+            <select id="png-size">
+              <option value="512">512 px</option>
+              <option value="1024" selected>1024 px</option>
+              <option value="2048">2048 px</option>
+              <option value="4096">4096 px</option>
+            </select>
+          </label>
+        </div>
+        <button type="button" id="copy-png">Copy image</button>
+        <button type="button" id="copy-svg">Copy SVG code</button>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/icon-data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

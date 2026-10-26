@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="sars-cov-2-mono-title">
+<title id="sars-cov-2-mono-title">SARS-CoV-2 (single colour)</title>
+<desc>Enveloped coronavirus with spike (S) glycoproteins and membrane (M) proteins.</desc>
+<defs></defs>
+<g transform="translate(128 128)">
+<g transform="rotate(4)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(40)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(76)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(112)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(148)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(184)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(220)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(256)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(292)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<g transform="rotate(328)"><line x1="0" y1="-58" x2="0" y2="-77" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-9 -77C-14 -87 -13 -95 -7 -97C-4 -100 4 -100 7 -97C13 -95 14 -87 9 -77Z" fill="#000000"/></g>
+<circle r="56" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="-20" cy="-18" r="9" fill="#000000"/>
+<circle cx="20" cy="-22" r="9" fill="#000000"/>
+<circle cx="0" cy="14" r="9" fill="#000000"/>
+<circle cx="-28" cy="22" r="9" fill="#000000"/>
+<circle cx="28" cy="18" r="9" fill="#000000"/>
+</g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="staphylococcus-mono-title">
+<title id="staphylococcus-mono-title">Staphylococcus (single colour)</title>
+<desc>Gram-positive cocci in grape-like clusters. Coloured violet, after the Gram stain.</desc>
+<defs></defs>
+<circle cx="88" cy="55" r="24" fill="#000000"/>
+<circle cx="144" cy="51" r="24" fill="#000000"/>
+<circle cx="58" cy="103" r="24" fill="#000000"/>
+<circle cx="114" cy="105" r="24" fill="#000000"/>
+<circle cx="170" cy="101" r="24" fill="#000000"/>
+<circle cx="86" cy="155" r="24" fill="#000000"/>
+<circle cx="142" cy="157" r="24" fill="#000000"/>
+<circle cx="198" cy="153" r="24" fill="#000000"/>
+<circle cx="114" cy="205" r="24" fill="#000000"/>
+</svg>

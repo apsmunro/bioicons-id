@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="igg-antibody-title">
+<title id="igg-antibody-title">IgG antibody</title>
+<desc>Immunoglobulin G showing heavy chains (dark blue), light chains (light blue), hinge disulphide bonds and the Fc glycan.</desc>
+<defs><radialGradient id="igg-antibody-heavy" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9eb9e7"/><stop offset="0.55" stop-color="#3D73CF"/><stop offset="1" stop-color="#3361ae"/></radialGradient><radialGradient id="igg-antibody-light" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#c6e1f8"/><stop offset="0.55" stop-color="#8CC2F0"/><stop offset="1" stop-color="#76a3ca"/></radialGradient></defs>
+<path d="M118.12 85.61C118.12 99.61 114 113 114 127" fill="none" stroke="#264780" stroke-width="6" stroke-linecap="round"/><path d="M118.12 85.61C118.12 99.61 114 113 114 127" fill="none" stroke="#3D73CF" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M137.88 85.61C137.88 99.61 142 113 142 127" fill="none" stroke="#264780" stroke-width="6" stroke-linecap="round"/><path d="M137.88 85.61C137.88 99.61 142 113 142 127" fill="none" stroke="#3D73CF" stroke-width="3.5" stroke-linecap="round"/>
+<ellipse cx="114" cy="146" rx="12.5" ry="19" transform="rotate(0 114 146)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="114" cy="188" rx="12.5" ry="19" transform="rotate(0 114 188)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="142" cy="146" rx="12.5" ry="19" transform="rotate(0 142 146)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="142" cy="188" rx="12.5" ry="19" transform="rotate(0 142 188)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<g stroke="#3a743d" stroke-width="1.5"><line x1="128" y1="138" x2="124" y2="148"/><line x1="128" y1="138" x2="132" y2="148"/><circle cx="128" cy="138" r="3.2" fill="#5DBB63"/><circle cx="124" cy="148" r="3.2" fill="#5DBB63"/><circle cx="132" cy="148" r="3.2" fill="#5DBB63"/></g>
+<ellipse cx="104" cy="72.9" rx="12.5" ry="19" transform="rotate(-48 104 72.9)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="74.27" cy="46.13" rx="12.5" ry="19" transform="rotate(-48 74.27 46.13)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="86.6" cy="92.22" rx="12.5" ry="19" transform="rotate(-48 86.6 92.22)" fill="url(#igg-antibody-light)" stroke="#577895" stroke-width="2"/>
+<ellipse cx="56.88" cy="65.45" rx="12.5" ry="19" transform="rotate(-48 56.88 65.45)" fill="url(#igg-antibody-light)" stroke="#577895" stroke-width="2"/>
+<ellipse cx="152" cy="72.9" rx="12.5" ry="19" transform="rotate(48 152 72.9)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="181.73" cy="46.13" rx="12.5" ry="19" transform="rotate(48 181.73 46.13)" fill="url(#igg-antibody-heavy)" stroke="#264780" stroke-width="2"/>
+<ellipse cx="169.4" cy="92.22" rx="12.5" ry="19" transform="rotate(48 169.4 92.22)" fill="url(#igg-antibody-light)" stroke="#577895" stroke-width="2"/>
+<ellipse cx="199.12" cy="65.45" rx="12.5" ry="19" transform="rotate(48 199.12 65.45)" fill="url(#igg-antibody-light)" stroke="#577895" stroke-width="2"/>
+<line x1="118" y1="100" x2="138" y2="100" stroke="#cea442" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="117" y1="108" x2="139" y2="108" stroke="#cea442" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="111.21" y1="88.81" x2="103.18" y2="97.72" stroke="#cea442" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="144.79" y1="88.81" x2="152.82" y2="97.72" stroke="#cea442" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

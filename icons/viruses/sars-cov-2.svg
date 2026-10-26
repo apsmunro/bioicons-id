@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="sars-cov-2-title">
+<title id="sars-cov-2-title">SARS-CoV-2</title>
+<desc>Enveloped coronavirus with spike (S) glycoproteins and membrane (M) proteins.</desc>
+<defs><radialGradient id="sars-cov-2-env" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#cfe2ef"/><stop offset="0.55" stop-color="#86B6D6"/><stop offset="1" stop-color="#7199b4"/></radialGradient><radialGradient id="sars-cov-2-spike" cx="0.45" cy="0.42" r="0.62" fx="0.5" fy="0.3"><stop offset="0" stop-color="#f2bab6"/><stop offset="0.55" stop-color="#DF5249"/><stop offset="1" stop-color="#bb453d"/></radialGradient><radialGradient id="sars-cov-2-spike-back" cx="0.45" cy="0.42" r="0.62" fx="0.5" fy="0.3"><stop offset="0" stop-color="#dcb2af"/><stop offset="0.55" stop-color="#a73e37"/><stop offset="1" stop-color="#8c342e"/></radialGradient><radialGradient id="sars-cov-2-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(128 128)">
+<g transform="rotate(16.36)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(49.09)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(81.82)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(114.55)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(147.27)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(180)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(212.73)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(245.45)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(278.18)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(310.91)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(343.64)"><line x1="0" y1="-56" x2="0" y2="-69" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -69C-14 -79 -13 -87 -7 -89C-4 -92 4 -92 7 -89C13 -87 14 -79 9 -69Z" fill="url(#sars-cov-2-spike-back)" stroke="#8a332d" stroke-width="2"/></g>
+<circle r="60" fill="url(#sars-cov-2-env)" stroke="#537185" stroke-width="3"/>
+<circle cx="12.91" cy="0.95" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="43.02" cy="-6.29" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-32.81" cy="-4.45" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-24.9" cy="5.36" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-41.95" cy="-14.61" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-1.01" cy="20.51" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="3.31" cy="-37.29" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-10.21" cy="36.63" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-14.76" cy="49.26" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="15.82" cy="23.16" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="44.34" cy="22.42" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-21.73" cy="-46.26" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-35.43" cy="-35.15" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="4.87" cy="-9.18" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-49.61" cy="9.9" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-12.48" cy="-41.3" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-15.06" cy="27.14" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="25.23" cy="-15.34" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="1.75" cy="-51.37" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="44.5" cy="-16.53" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="33.28" cy="39.76" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="13.6" cy="-46.09" r="3" fill="#F3C24F" stroke="#aa8837" stroke-width="1"/>
+<circle cx="-24" cy="-22" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="-24" cy="-22" r="3" fill="#9c3933"/>
+<circle cx="18" cy="-30" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="18" cy="-30" r="3" fill="#9c3933"/>
+<circle cx="-2" cy="4" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="-2" cy="4" r="3" fill="#9c3933"/>
+<circle cx="-34" cy="18" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="-34" cy="18" r="3" fill="#9c3933"/>
+<circle cx="30" cy="14" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="30" cy="14" r="3" fill="#9c3933"/>
+<circle cx="6" cy="38" r="8" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/><circle cx="6" cy="38" r="3" fill="#9c3933"/>
+<ellipse cx="-24" cy="-32" rx="20" ry="11" transform="rotate(-30 -24 -32)" fill="url(#sars-cov-2-gloss)"/>
+<g transform="rotate(4)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(36.73)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(69.45)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(102.18)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(134.91)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(167.64)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(200.36)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(233.09)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(265.82)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(298.55)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+<g transform="rotate(331.27)"><line x1="0" y1="-56" x2="0" y2="-79" stroke="#91352f" stroke-width="5" stroke-linecap="round"/><path d="M-9 -79C-14 -89 -13 -97 -7 -99C-4 -102 4 -102 7 -99C13 -97 14 -89 9 -79Z" fill="url(#sars-cov-2-spike)" stroke="#8a332d" stroke-width="2"/></g>
+</g>
+</svg>

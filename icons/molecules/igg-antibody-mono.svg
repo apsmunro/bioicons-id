@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="igg-antibody-mono-title">
+<title id="igg-antibody-mono-title">IgG antibody (single colour)</title>
+<desc>Immunoglobulin G showing heavy chains (dark blue), light chains (light blue), hinge disulphide bonds and the Fc glycan.</desc>
+<defs></defs>
+<g transform="translate(128 126) scale(1.12) translate(-128 -126)">
+<path d="M118.12 85.61C118.12 99.61 114 113 114 127" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="104" cy="72.9" rx="10" ry="16" transform="rotate(-48 104 72.9)" fill="#000000"/>
+<ellipse cx="74.27" cy="46.13" rx="10" ry="16" transform="rotate(-48 74.27 46.13)" fill="#000000"/>
+<ellipse cx="86.6" cy="92.22" rx="10" ry="16" transform="rotate(-48 86.6 92.22)" fill="#000000"/>
+<ellipse cx="56.88" cy="65.45" rx="10" ry="16" transform="rotate(-48 56.88 65.45)" fill="#000000"/>
+<ellipse cx="114" cy="146" rx="10" ry="16" transform="rotate(0 114 146)" fill="#000000"/>
+<ellipse cx="114" cy="188" rx="10" ry="16" transform="rotate(0 114 188)" fill="#000000"/>
+<path d="M137.88 85.61C137.88 99.61 142 113 142 127" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="152" cy="72.9" rx="10" ry="16" transform="rotate(48 152 72.9)" fill="#000000"/>
+<ellipse cx="181.73" cy="46.13" rx="10" ry="16" transform="rotate(48 181.73 46.13)" fill="#000000"/>
+<ellipse cx="169.4" cy="92.22" rx="10" ry="16" transform="rotate(48 169.4 92.22)" fill="#000000"/>
+<ellipse cx="199.12" cy="65.45" rx="10" ry="16" transform="rotate(48 199.12 65.45)" fill="#000000"/>
+<ellipse cx="142" cy="146" rx="10" ry="16" transform="rotate(0 142 146)" fill="#000000"/>
+<ellipse cx="142" cy="188" rx="10" ry="16" transform="rotate(0 142 188)" fill="#000000"/>
+<line x1="118" y1="100" x2="138" y2="100" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="118" y1="108" x2="138" y2="108" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
