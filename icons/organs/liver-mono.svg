@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="liver-mono-title">
+<title id="liver-mono-title">Liver (single colour)</title>
+<desc>Liver with falciform ligament and gallbladder.</desc>
+<defs></defs>
+<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M150 66C148 94 140 126 128 160" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="108" cy="188" rx="12" ry="16" transform="rotate(-20 108 188)" fill="#000000"/>
+</svg>

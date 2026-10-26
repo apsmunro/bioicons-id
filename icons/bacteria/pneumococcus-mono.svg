@@ -4,8 +4,8 @@
 <desc>Lancet-shaped Gram-positive diplococci surrounded by a polysaccharide capsule.</desc>
 <defs></defs>
 <g transform="translate(128 128) rotate(-30) scale(1.25)">
-<ellipse rx="80" ry="44" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2 0C2 -18 14 -26 28 -24C42 -22 54 -10 62 0C54 10 42 22 28 24C14 26 2 18 2 0Z" fill="#000000"/>
-<path d="M-2 0C-2 -18 -14 -26 -28 -24C-42 -22 -54 -10 -62 0C-54 10 -42 22 -28 24C-14 26 -2 18 -2 0Z" fill="#000000"/>
+<ellipse rx="82" ry="42" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-4 0C-4 -14 -15 -22 -30 -22C-46 -22 -60 -11 -62 0C-60 11 -46 22 -30 22C-15 22 -4 14 -4 0Z" fill="#000000"/>
+<path d="M4 0C4 -14 15 -22 30 -22C46 -22 60 -11 62 0C60 11 46 22 30 22C15 22 4 14 4 0Z" fill="#000000"/>
 </g>
 </svg>

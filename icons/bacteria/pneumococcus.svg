@@ -4,11 +4,11 @@
 <desc>Lancet-shaped Gram-positive diplococci surrounded by a polysaccharide capsule.</desc>
 <defs><radialGradient id="pneumococcus-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d1c5f0"/><stop offset="0.55" stop-color="#8B6FD9"/><stop offset="1" stop-color="#755db6"/></radialGradient><radialGradient id="pneumococcus-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
 <g transform="translate(128 128) rotate(-30) scale(1.25)">
-<ellipse rx="80" ry="44" fill="#E6DEFA" opacity="0.85" stroke="#b4a1e6" stroke-width="2"/>
-<ellipse rx="72" ry="37" fill="none" stroke="#c5b7ec" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>
-<path d="M-2 0C-2 -18 -14 -26 -28 -24C-42 -22 -54 -10 -62 0C-54 10 -42 22 -28 24C-14 26 -2 18 -2 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
-<path d="M2 0C2 -18 14 -26 28 -24C42 -22 54 -10 62 0C54 10 42 22 28 24C14 26 2 18 2 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
-<ellipse cx="-30" cy="-12" rx="12" ry="5" transform="rotate(0 -30 -12)" fill="url(#pneumococcus-gloss)"/>
-<ellipse cx="26" cy="-12" rx="12" ry="5" transform="rotate(0 26 -12)" fill="url(#pneumococcus-gloss)"/>
+<ellipse rx="82" ry="42" fill="#E6DEFA" opacity="0.85" stroke="#b4a1e6" stroke-width="2"/>
+<ellipse rx="74" ry="35" fill="none" stroke="#c5b7ec" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>
+<path d="M-4 0C-4 -14 -15 -22 -30 -22C-46 -22 -60 -11 -62 0C-60 11 -46 22 -30 22C-15 22 -4 14 -4 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
+<path d="M4 0C4 -14 15 -22 30 -22C46 -22 60 -11 62 0C60 11 46 22 30 22C15 22 4 14 4 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
+<ellipse cx="-30" cy="-10" rx="12" ry="5" transform="rotate(0 -30 -10)" fill="url(#pneumococcus-gloss)"/>
+<ellipse cx="30" cy="-10" rx="12" ry="5" transform="rotate(0 30 -10)" fill="url(#pneumococcus-gloss)"/>
 </g>
 </svg>

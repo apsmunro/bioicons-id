@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="brain-title">
+<title id="brain-title">Brain</title>
+<desc>Brain in side view: cerebrum with sulci, cerebellum and brainstem.</desc>
+<defs><radialGradient id="brain-brain" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fadbe1"/><stop offset="0.55" stop-color="#F4B6C2"/><stop offset="1" stop-color="#cd99a3"/></radialGradient><radialGradient id="brain-cerebellum" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#eecfd5"/><stop offset="0.55" stop-color="#e0a7b2"/><stop offset="1" stop-color="#bc8c96"/></radialGradient><radialGradient id="brain-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(0 -4)">
+<path d="M140 166C142 186 140 204 134 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#906b72" stroke-width="27"/><path d="M140 166C142 186 140 204 134 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#e8adb8" stroke-width="22"/><path d="M140 166C142 186 140 204 134 222" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="4.84" opacity="0.4" transform="translate(-3.96 -3.96)"/>
+<ellipse cx="178" cy="178" rx="32" ry="21" transform="rotate(-8 178 178)" fill="url(#brain-cerebellum)" stroke="#977178" stroke-width="2.5"/>
+<path d="M158 168C172 164 190 168 202 166M160 175C172 171 190 175 200 173M162 182C172 178 190 182 198 180M164 189C172 185 190 189 196 187" fill="none" stroke="#b78992" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M58 132C50 90 82 50 130 46C178 42 216 72 218 112C220 140 206 160 184 164C174 176 156 178 144 172C128 180 108 178 98 170C80 172 62 160 58 132Z" fill="url(#brain-brain)" stroke="#977178" stroke-width="3"/>
+<path d="M94 142C118 130 140 134 166 120" fill="none" stroke="#a67c84" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M138 50C130 76 146 94 134 118M86 76C98 86 92 100 104 108M110 58C108 74 120 82 114 98M166 56C158 72 172 86 162 100M192 78C180 88 194 104 182 114M206 124C192 128 190 142 176 146M72 116C84 118 86 128 76 138M112 158C124 150 136 160 150 152M160 132C172 140 186 136 196 144" fill="none" stroke="#b0838c" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+<ellipse cx="100" cy="74" rx="30" ry="13" transform="rotate(-30 100 74)" fill="url(#brain-gloss)"/>
+</g>
+</svg>

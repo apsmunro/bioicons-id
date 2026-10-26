@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="kidneys-mono-title">
+<title id="kidneys-mono-title">Kidneys and urinary tract (single colour)</title>
+<desc>Kidneys with renal pelvis, ureters, bladder and urethra.</desc>
+<defs></defs>
+<g transform="translate(0 -6)">
+<path d="M70 24C98 24 108 50 104 68C100 80 92 80 92 90C92 100 102 104 102 116C100 134 88 146 70 146C46 146 36 116 36 84C36 48 46 24 70 24ZM186 24C158 24 148 50 152 68C156 80 164 80 164 90C164 100 154 104 154 116C156 134 168 146 186 146C210 146 220 116 220 84C220 48 210 24 186 24Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 76C88 78 84 84 85 90C84 96 88 102 98 104ZM158 76C168 78 172 84 171 90C172 96 168 102 158 104Z" fill="#000000"/>
+<path d="M94 102C104 130 108 160 112 180M162 102C152 130 148 160 144 180M128 226L128 240" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86 186C86 172 104 166 128 166C152 166 170 172 170 186C170 214 152 228 128 228C104 228 86 214 86 186Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

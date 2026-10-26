@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="intestines-mono-title">
+<title id="intestines-mono-title">Intestines (single colour)</title>
+<desc>Small intestine framed by the large intestine (colon) with haustra, appendix and rectum.</desc>
+<defs></defs>
+<g transform="translate(0 -8)">
+<path d="M60 214L70 232" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M144 220L140 236" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" fill="none" stroke="#000000" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

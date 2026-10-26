@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="liver-title">
+<title id="liver-title">Liver</title>
+<desc>Liver with falciform ligament and gallbladder.</desc>
+<defs><radialGradient id="liver-liver" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d39892"/><stop offset="0.55" stop-color="#B5544A"/><stop offset="1" stop-color="#98473e"/></radialGradient><radialGradient id="liver-gb" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#cbe1c4"/><stop offset="0.55" stop-color="#7DB46C"/><stop offset="1" stop-color="#69975b"/></radialGradient><radialGradient id="liver-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="110" cy="174" rx="14" ry="22" transform="rotate(-20 110 174)" fill="url(#liver-gb)" stroke="#4e7043" stroke-width="2.5"/>
+<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" fill="url(#liver-liver)" stroke="#70342e" stroke-width="3"/>
+<path d="M150 62C148 92 140 126 126 168" fill="none" stroke="#7f3b34" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+<ellipse cx="88" cy="96" rx="34" ry="14" transform="rotate(-30 88 96)" fill="url(#liver-gloss)"/>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="baby-mono-title">
+<title id="baby-mono-title">Baby (single colour)</title>
+<desc>Baby sitting up, wearing a nappy.</desc>
+<defs></defs>
+<path d="M106 188Q88 204 70 208M150 188Q168 204 186 208" fill="none" stroke="#000000" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="62" cy="206" rx="14" ry="11" fill="#000000"/>
+<ellipse cx="194" cy="206" rx="14" ry="11" fill="#000000"/>
+<path d="M96 108Q128 98 160 108Q172 142 164 170L92 170Q84 142 96 108Z" fill="#000000"/>
+<path d="M88 158Q128 168 168 158Q172 186 152 198Q128 206 104 198Q84 186 88 158Z" fill="#000000"/>
+<path d="M100 116Q86 136 84 156M156 116Q170 136 172 156" fill="none" stroke="#000000" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="84" cy="160" r="10" fill="#000000"/>
+<circle cx="172" cy="160" r="10" fill="#000000"/>
+<circle cx="93" cy="68" r="7" fill="#000000"/>
+<circle cx="163" cy="68" r="7" fill="#000000"/>
+<circle cx="128" cy="64" r="35" fill="#000000"/>
+</svg>

@@ -8,8 +8,10 @@
     { "id": "bacteria", "label": "Bacteria" },
     { "id": "viruses", "label": "Viruses" },
     { "id": "fungi", "label": "Fungi" },
+    { "id": "parasites", "label": "Parasites" },
     { "id": "immune-cells", "label": "Immune cells" },
     { "id": "molecules", "label": "Molecules" },
+    { "id": "organs", "label": "Organs & body systems" },
     { "id": "treatment", "label": "Treatment" },
     { "id": "clinical", "label": "Clinical & lab" }
   ],
@@ -56,7 +58,7 @@
       "category": "bacteria",
       "file": "icons/bacteria/meningococcus.svg",
       "monoFile": "icons/bacteria/meningococcus-mono.svg",
-      "description": "Kidney-shaped Gram-negative diplococci with pili. Coloured pink, after the Gram stain.",
+      "description": "Kidney-shaped Gram-negative diplococci. Coloured pink, after the Gram stain.",
       "tags": ["Neisseria meningitidis", "meningococcal", "diplococci", "gram-negative", "meningitis", "septicaemia", "MenB", "MenACWY", "gonococcus", "bacterium"]
     },
     {
@@ -67,6 +69,15 @@
       "monoFile": "icons/bacteria/mycobacterium-tuberculosis-mono.svg",
       "description": "Slender, beaded acid-fast bacilli in a cord. Coloured red, after the Ziehl–Neelsen stain.",
       "tags": ["TB", "tuberculosis", "mycobacteria", "acid-fast bacilli", "AFB", "NTM", "non-tuberculous mycobacteria", "Ziehl-Neelsen", "cording", "bacterium"]
+    },
+    {
+      "id": "biofilm",
+      "name": "Biofilm",
+      "category": "bacteria",
+      "file": "icons/bacteria/biofilm.svg",
+      "monoFile": "icons/bacteria/biofilm-mono.svg",
+      "description": "Bacteria embedded in an extracellular matrix on a surface, with free-swimming planktonic cells above.",
+      "tags": ["biofilm", "device infection", "line infection", "prosthetic", "extracellular matrix", "EPS", "chronic infection", "cystic fibrosis", "phage", "bacteria"]
     },
     {
       "id": "sars-cov-2",
@@ -141,6 +152,15 @@
       "tags": ["Aspergillus fumigatus", "mould", "mold", "aspergillosis", "invasive fungal infection", "hyphae", "conidia", "spores", "fungus"]
     },
     {
+      "id": "malaria",
+      "name": "Malaria (Plasmodium)",
+      "category": "parasites",
+      "file": "icons/parasites/malaria.svg",
+      "monoFile": "icons/parasites/malaria-mono.svg",
+      "description": "Red blood cells infected with Plasmodium: ring forms with chromatin dots, and a banana-shaped gametocyte.",
+      "tags": ["malaria", "Plasmodium falciparum", "P. falciparum", "ring form", "gametocyte", "parasite", "red blood cell", "returning traveller", "tropical medicine"]
+    },
+    {
       "id": "neutrophil",
       "name": "Neutrophil",
       "category": "immune-cells",
@@ -213,6 +233,33 @@
       "tags": ["erythrocyte", "RBC", "red cell", "blood", "anaemia", "haemolysis", "malaria", "sickle cell", "transfusion"]
     },
     {
+      "id": "monocyte",
+      "name": "Monocyte",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/monocyte.svg",
+      "monoFile": "icons/immune-cells/monocyte-mono.svg",
+      "description": "Large mononuclear cell with a horseshoe-shaped nucleus and vacuolated cytoplasm.",
+      "tags": ["monocyte", "mononuclear", "phagocyte", "innate immunity", "macrophage precursor", "leukocyte", "white blood cell"]
+    },
+    {
+      "id": "eosinophil",
+      "name": "Eosinophil",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/eosinophil.svg",
+      "monoFile": "icons/immune-cells/eosinophil-mono.svg",
+      "description": "Granulocyte with a bilobed nucleus and orange-red eosinophilic granules.",
+      "tags": ["eosinophil", "granulocyte", "eosinophilia", "allergy", "helminth", "parasite", "asthma", "leukocyte", "white blood cell"]
+    },
+    {
+      "id": "platelets",
+      "name": "Platelets",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/platelets.svg",
+      "monoFile": "icons/immune-cells/platelets-mono.svg",
+      "description": "Resting discoid platelets with granules, and an activated platelet with pseudopods.",
+      "tags": ["platelet", "thrombocyte", "thrombocytopenia", "coagulation", "clotting", "DIC", "blood", "haemostasis"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -247,6 +294,123 @@
       "monoFile": "icons/molecules/cytokine-receptor-mono.svg",
       "description": "Cytokine bound to a dimeric receptor in the cell membrane, with associated JAK kinases inside the cell and free cytokines above.",
       "tags": ["cytokine", "interleukin", "interferon", "IL-6", "receptor", "JAK-STAT", "signalling", "signaling", "cytokine storm", "membrane"]
+    },
+    {
+      "id": "complement-mac",
+      "name": "Complement membrane attack complex",
+      "category": "molecules",
+      "file": "icons/molecules/complement-mac.svg",
+      "monoFile": "icons/molecules/complement-mac-mono.svg",
+      "description": "Complement membrane attack complex: a C9 pore (pink) assembled on C5b–8 (purple), spanning a lipid bilayer.",
+      "tags": ["complement", "MAC", "C5b-9", "C9", "terminal complement", "pore", "eculizumab", "meningococcal", "innate immunity", "membrane"]
+    },
+    {
+      "id": "lungs",
+      "name": "Lungs",
+      "category": "organs",
+      "file": "icons/organs/lungs.svg",
+      "monoFile": "icons/organs/lungs-mono.svg",
+      "description": "Lungs with trachea, bronchi and lobar fissures.",
+      "tags": ["lung", "respiratory", "pneumonia", "LRTI", "chest", "airway", "bronchi", "trachea", "anatomy"]
+    },
+    {
+      "id": "brain",
+      "name": "Brain",
+      "category": "organs",
+      "file": "icons/organs/brain.svg",
+      "monoFile": "icons/organs/brain-mono.svg",
+      "description": "Brain in side view: cerebrum with sulci, cerebellum and brainstem.",
+      "tags": ["brain", "CNS", "central nervous system", "meningitis", "encephalitis", "neurology", "cerebrum", "cerebellum", "anatomy"]
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "category": "organs",
+      "file": "icons/organs/heart.svg",
+      "monoFile": "icons/organs/heart-mono.svg",
+      "description": "Heart with aorta and arch vessels (red), superior vena cava and pulmonary trunk (blue), and coronary arteries.",
+      "tags": ["heart", "cardiac", "endocarditis", "myocarditis", "Kawasaki disease", "MIS-C", "PIMS-TS", "cardiovascular", "anatomy"]
+    },
+    {
+      "id": "kidneys",
+      "name": "Kidneys and urinary tract",
+      "category": "organs",
+      "file": "icons/organs/kidneys.svg",
+      "monoFile": "icons/organs/kidneys-mono.svg",
+      "description": "Kidneys with renal pelvis, ureters, bladder and urethra.",
+      "tags": ["kidney", "renal", "urinary tract", "UTI", "pyelonephritis", "bladder", "ureter", "nephrology", "AKI", "anatomy"]
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "category": "organs",
+      "file": "icons/organs/liver.svg",
+      "monoFile": "icons/organs/liver-mono.svg",
+      "description": "Liver with falciform ligament and gallbladder.",
+      "tags": ["liver", "hepatic", "hepatitis", "gallbladder", "biliary", "hepatology", "cholangitis", "anatomy"]
+    },
+    {
+      "id": "intestines",
+      "name": "Intestines",
+      "category": "organs",
+      "file": "icons/organs/intestines.svg",
+      "monoFile": "icons/organs/intestines-mono.svg",
+      "description": "Small intestine framed by the large intestine (colon) with haustra, appendix and rectum.",
+      "tags": ["intestines", "gut", "bowel", "colon", "gastroenteritis", "diarrhoea", "GI tract", "gastrointestinal", "microbiome", "appendix", "anatomy"]
+    },
+    {
+      "id": "skin",
+      "name": "Skin",
+      "category": "organs",
+      "file": "icons/organs/skin.svg",
+      "monoFile": "icons/organs/skin-mono.svg",
+      "description": "Skin cross-section: epidermis, dermis with blood vessels, hair follicle and sweat gland, and subcutaneous fat.",
+      "tags": ["skin", "dermatology", "cellulitis", "SSTI", "skin and soft tissue infection", "epidermis", "dermis", "subcutaneous", "wound", "anatomy"]
+    },
+    {
+      "id": "bone",
+      "name": "Bone",
+      "category": "organs",
+      "file": "icons/organs/bone.svg",
+      "monoFile": "icons/organs/bone-mono.svg",
+      "description": "Long bone with a window onto the marrow cavity.",
+      "tags": ["bone", "osteomyelitis", "long bone", "femur", "marrow", "bone marrow", "orthopaedic", "musculoskeletal", "anatomy"]
+    },
+    {
+      "id": "knee-joint",
+      "name": "Knee joint",
+      "category": "organs",
+      "file": "icons/organs/knee-joint.svg",
+      "monoFile": "icons/organs/knee-joint-mono.svg",
+      "description": "Knee joint in section: femur, tibia and fibula with articular cartilage (blue) inside the synovial capsule (green).",
+      "tags": ["joint", "knee", "septic arthritis", "synovium", "synovial fluid", "cartilage", "arthritis", "musculoskeletal", "anatomy"]
+    },
+    {
+      "id": "lymph-node",
+      "name": "Lymph node",
+      "category": "organs",
+      "file": "icons/organs/lymph-node.svg",
+      "monoFile": "icons/organs/lymph-node-mono.svg",
+      "description": "Lymph node with follicles and germinal centres, afferent lymphatics, and efferent lymphatic, artery and vein at the hilum.",
+      "tags": ["lymph node", "lymphadenopathy", "lymphadenitis", "germinal centre", "follicle", "lymphatic", "secondary lymphoid organ", "adaptive immunity", "anatomy"]
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "category": "organs",
+      "file": "icons/organs/spleen.svg",
+      "monoFile": "icons/organs/spleen-mono.svg",
+      "description": "Spleen with splenic artery and vein at the hilum.",
+      "tags": ["spleen", "splenic", "asplenia", "hyposplenism", "splenomegaly", "secondary lymphoid organ", "encapsulated bacteria", "anatomy"]
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "category": "organs",
+      "file": "icons/organs/thymus.svg",
+      "monoFile": "icons/organs/thymus-mono.svg",
+      "description": "Bilobed, lobulated thymus.",
+      "tags": ["thymus", "thymic", "T-cell development", "primary lymphoid organ", "DiGeorge", "22q11", "SCID", "anatomy"]
     },
     {
       "id": "antibiotic-capsule",
@@ -303,15 +467,6 @@
       "tags": ["agar", "culture", "petri dish", "colonies", "microbiology", "laboratory", "beta-haemolysis", "β-haemolysis", "diagnostics"]
     },
     {
-      "id": "lungs",
-      "name": "Lungs",
-      "category": "clinical",
-      "file": "icons/clinical/lungs.svg",
-      "monoFile": "icons/clinical/lungs-mono.svg",
-      "description": "Lungs with trachea, bronchi and lobar fissures.",
-      "tags": ["lung", "respiratory", "pneumonia", "LRTI", "chest", "airway", "bronchi", "trachea", "anatomy"]
-    },
-    {
       "id": "child",
       "name": "Child",
       "category": "clinical",
@@ -326,8 +481,17 @@
       "category": "clinical",
       "file": "icons/clinical/newborn.svg",
       "monoFile": "icons/clinical/newborn-mono.svg",
-      "description": "Swaddled newborn baby in a knitted hat.",
-      "tags": ["newborn", "neonate", "neonatal", "baby", "infant", "patient", "person", "human", "early-onset sepsis"]
+      "description": "Swaddled newborn baby, seen from the front.",
+      "tags": ["newborn", "neonate", "neonatal", "baby", "infant", "patient", "person", "human", "swaddled", "early-onset sepsis"]
+    },
+    {
+      "id": "baby",
+      "name": "Baby",
+      "category": "clinical",
+      "file": "icons/clinical/baby.svg",
+      "monoFile": "icons/clinical/baby-mono.svg",
+      "description": "Baby sitting up, wearing a nappy.",
+      "tags": ["baby", "infant", "toddler", "paediatric", "pediatric", "patient", "person", "human", "nappy", "diaper"]
     }
   ]
 }

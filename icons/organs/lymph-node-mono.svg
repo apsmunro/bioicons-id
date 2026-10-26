@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lymph-node-mono-title">
+<title id="lymph-node-mono-title">Lymph node (single colour)</title>
+<desc>Lymph node with follicles and germinal centres, afferent lymphatics, and efferent lymphatic, artery and vein at the hilum.</desc>
+<defs></defs>
+<path d="M34 74L64 92M30 158L60 151M96 24L108 54" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M196 126L232 116M198 140L234 142M196 154L232 166" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 128C60 74 100 52 140 56C184 60 206 90 204 112C202 124 186 124 186 136C186 148 204 152 202 166C198 194 168 208 132 206C90 204 60 180 60 128Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M128 130C150 128 168 132 180 136M126 146C150 150 168 150 180 146M130 114C150 112 164 118 178 126" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="92" cy="96" r="11" fill="#000000"/>
+<circle cx="122" cy="78" r="11" fill="#000000"/>
+<circle cx="158" cy="82" r="11" fill="#000000"/>
+<circle cx="84" cy="134" r="11" fill="#000000"/>
+<circle cx="94" cy="170" r="11" fill="#000000"/>
+<circle cx="130" cy="184" r="11" fill="#000000"/>
+<circle cx="164" cy="176" r="11" fill="#000000"/>
+</svg>

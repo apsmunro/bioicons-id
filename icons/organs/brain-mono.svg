@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="brain-mono-title">
+<title id="brain-mono-title">Brain (single colour)</title>
+<desc>Brain in side view: cerebrum with sulci, cerebellum and brainstem.</desc>
+<defs></defs>
+<g transform="translate(0 -4)">
+<path d="M140 178C141 194 139 208 134 224" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="184" cy="188" rx="28" ry="17" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M166 186H202M170 195H198" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 132C50 90 82 50 130 46C178 42 216 72 218 112C220 140 206 160 184 164C174 176 156 178 144 172C128 180 108 178 98 170C80 172 62 160 58 132Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M94 142C118 130 140 134 166 120" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M138 50C130 76 146 94 134 118M86 76C98 86 92 100 104 108M110 58C108 74 120 82 114 98M166 56C158 72 172 86 162 100M192 78C180 88 194 104 182 114M206 124C192 128 190 142 176 146M72 116C84 118 86 128 76 138M112 158C124 150 136 160 150 152" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

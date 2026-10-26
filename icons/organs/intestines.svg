@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="intestines-title">
+<title id="intestines-title">Intestines</title>
+<desc>Small intestine framed by the large intestine (colon) with haustra, appendix and rectum.</desc>
+<defs></defs>
+<g transform="translate(0 -8)">
+<path d="M60 214L70 232" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#906844" stroke-width="12"/><path d="M60 214L70 232" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E8A76D" stroke-width="7"/><path d="M60 214L70 232" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.54" opacity="0.4" transform="translate(-1.26 -1.26)"/>
+<path d="M144 220L140 236" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#906844" stroke-width="25"/><path d="M144 220L140 236" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E8A76D" stroke-width="20"/><path d="M144 220L140 236" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="4.4" opacity="0.4" transform="translate(-3.6 -3.6)"/>
+<path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#906844" stroke-width="35"/><path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E8A76D" stroke-width="30"/><path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="6.6" opacity="0.4" transform="translate(-5.4 -5.4)"/>
+<path d="M51 80H77M51 104H77M51 128H77M51 152H77M51 176H77M51 200H77M96 41V67M120 41V67M144 41V67M168 41V67M179 80H205M179 104H205M179 128H205M179 152H205M179 176H205M179 200H205" stroke="#a2754c" stroke-width="2" opacity="0.6"/>
+<path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#966868" stroke-width="21"/><path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F2A7A7" stroke-width="16"/><path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.52" opacity="0.4" transform="translate(-2.88 -2.88)"/>
+</g>
+</svg>

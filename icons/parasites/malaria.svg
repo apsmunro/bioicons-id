@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="malaria-title">
+<title id="malaria-title">Malaria (Plasmodium)</title>
+<desc>Red blood cells infected with Plasmodium: ring forms with chromatin dots, and a banana-shaped gametocyte.</desc>
+<defs><radialGradient id="malaria-front" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f0b5b2"/><stop offset="0.55" stop-color="#D9473F"/><stop offset="1" stop-color="#b63c35"/></radialGradient><radialGradient id="malaria-back" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e3b1af"/><stop offset="0.55" stop-color="#b83c36"/><stop offset="1" stop-color="#9b322d"/></radialGradient><radialGradient id="malaria-pallor"><stop offset="0" stop-color="#e68782"/><stop offset="1" stop-color="#e68782" stop-opacity="0"/></radialGradient><radialGradient id="malaria-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<circle cx="196" cy="64" r="44" fill="url(#malaria-back)" stroke="#722521" stroke-width="3"/>
+<path d="M176 74C186 54 206 50 220 60" fill="none" stroke="#4e3678" stroke-width="15" stroke-linecap="round"/>
+<path d="M176 74C186 54 206 50 220 60" fill="none" stroke="#7E57C2" stroke-width="11" stroke-linecap="round"/>
+<circle cx="190" cy="60" r="2" fill="#B71C4A"/>
+<circle cx="200" cy="56" r="2" fill="#B71C4A"/>
+<circle cx="208" cy="58" r="2" fill="#B71C4A"/>
+<circle cx="112" cy="146" r="86" fill="url(#malaria-front)" stroke="#872c27" stroke-width="3"/>
+<circle cx="112" cy="146" r="46" fill="url(#malaria-pallor)"/>
+<circle cx="84" cy="122" r="13" fill="none" stroke="#7E57C2" stroke-width="3.5"/><circle cx="94" cy="113" r="5" fill="#B71C4A" stroke="#71112e" stroke-width="1"/>
+<circle cx="140" cy="176" r="13" fill="none" stroke="#7E57C2" stroke-width="3.5"/><circle cx="150" cy="167" r="5" fill="#B71C4A" stroke="#71112e" stroke-width="1"/>
+<circle cx="150" cy="112" r="13" fill="none" stroke="#7E57C2" stroke-width="3.5"/><circle cx="160" cy="103" r="5" fill="#B71C4A" stroke="#71112e" stroke-width="1"/>
+<ellipse cx="66" cy="92" rx="26" ry="12" transform="rotate(-30 66 92)" fill="url(#malaria-gloss)"/>
+</svg>

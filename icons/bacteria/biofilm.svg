@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="biofilm-title">
+<title id="biofilm-title">Biofilm</title>
+<desc>Bacteria embedded in an extracellular matrix on a surface, with free-swimming planktonic cells above.</desc>
+<defs><linearGradient id="biofilm-rod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d66884"/><stop offset="0.25" stop-color="#f2b7c6"/><stop offset="0.6" stop-color="#E46F8C"/><stop offset="1" stop-color="#b2576d"/></linearGradient><radialGradient id="biofilm-coccus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d1c5f0"/><stop offset="0.55" stop-color="#8B6FD9"/><stop offset="1" stop-color="#755db6"/></radialGradient><linearGradient id="biofilm-substrate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5b3b9"/><stop offset="0.25" stop-color="#d8dfe2"/><stop offset="0.6" stop-color="#B0BEC5"/><stop offset="1" stop-color="#89949a"/></linearGradient></defs>
+<path d="M20 208C26 170 50 150 76 156C88 120 120 110 140 128C160 104 196 112 204 140C222 146 236 176 236 208Z" fill="#CFE3A0" opacity="0.9" stroke="#919f70" stroke-width="2"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(46 194) rotate(20)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(66 176) rotate(-30)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(88 196) rotate(60)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(98 164) rotate(10)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(120 146) rotate(-50)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(114 186) rotate(30)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(140 166) rotate(80)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(146 196) rotate(-10)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(162 140) rotate(20)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(172 174) rotate(-40)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(192 154) rotate(70)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(196 194) rotate(15)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(216 180) rotate(-25)" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="1.6"/>
+<circle cx="74" cy="200" r="6.5" fill="url(#biofilm-coccus)" stroke="#564587" stroke-width="1.4"/>
+<circle cx="132" cy="140" r="6.5" fill="url(#biofilm-coccus)" stroke="#564587" stroke-width="1.4"/>
+<circle cx="168" cy="196" r="6.5" fill="url(#biofilm-coccus)" stroke="#564587" stroke-width="1.4"/>
+<circle cx="212" cy="160" r="6.5" fill="url(#biofilm-coccus)" stroke="#564587" stroke-width="1.4"/>
+<circle cx="96" cy="182" r="6.5" fill="url(#biofilm-coccus)" stroke="#564587" stroke-width="1.4"/>
+<rect x="14" y="206" width="228" height="20" rx="4" fill="url(#biofilm-substrate)" stroke="#6d767a" stroke-width="2.5"/>
+<g transform="translate(84 66) rotate(-20)"><path d="M-11 0C-11.5 0 -13 0.24 -14 0C-15 -0.24 -16 -1.25 -17 -1.46C-18 -1.68 -19 -2.07 -20 -1.3C-21 -0.54 -22 2.39 -23 3.13C-24 3.87 -25 3.94 -26 3.13C-27 2.32 -28 -0.56 -29 -1.74C-30 -2.91 -31 -4.19 -32 -3.9C-33 -3.61 -34 -1.3 -35 0C-36 1.3 -37 3.61 -38 3.9C-39 4.19 -40 2.91 -41 1.74C-42 0.56 -43 -2.32 -44 -3.13C-45 -3.94 -46.5 -3.13 -47 -3.13" fill="none" stroke="#a04e62" stroke-width="2" stroke-linecap="round"/><rect x="-15" y="-7" width="30" height="14" rx="7" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="2"/></g>
+<g transform="translate(176 50) rotate(25)"><path d="M-11 0C-11.5 0 -13 -0.05 -14 0C-15 0.05 -16 -0.19 -17 0.31C-18 0.8 -19 2.89 -20 3C-21 3.11 -22 2.06 -23 0.97C-24 -0.13 -25 -2.98 -26 -3.57C-27 -4.16 -28 -3.55 -29 -2.55C-30 -1.55 -31 1.4 -32 2.43C-33 3.46 -34 4.18 -35 3.64C-36 3.1 -37 0.46 -38 -0.81C-39 -2.09 -40 -3.97 -41 -4C-42 -4.02 -43 -2.23 -44 -0.97C-45 0.3 -46.5 2.81 -47 3.57" fill="none" stroke="#a04e62" stroke-width="2" stroke-linecap="round"/><rect x="-15" y="-7" width="30" height="14" rx="7" fill="url(#biofilm-rod)" stroke="#8d4557" stroke-width="2"/></g>
+</svg>

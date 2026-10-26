@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="eosinophil-title">
+<title id="eosinophil-title">Eosinophil</title>
+<desc>Granulocyte with a bilobed nucleus and orange-red eosinophilic granules.</desc>
+<defs><radialGradient id="eosinophil-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fcf1e9"/><stop offset="0.55" stop-color="#F9E3D3"/><stop offset="1" stop-color="#e5d1c2"/></radialGradient><radialGradient id="eosinophil-nucleus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8a3dd"/><stop offset="0.55" stop-color="#7E57C2"/><stop offset="1" stop-color="#6a49a3"/></radialGradient><radialGradient id="eosinophil-granule" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f8bda5"/><stop offset="0.55" stop-color="#F07A4A"/><stop offset="1" stop-color="#ca663e"/></radialGradient><radialGradient id="eosinophil-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M219.44 128C219.88 130.65 220.19 133.38 220.21 136.07C220.23 138.76 220.04 141.5 219.59 144.15C219.13 146.8 218.4 149.45 217.48 151.98C216.55 154.5 215.35 156.97 214.04 159.32C212.73 161.66 211.19 163.9 209.63 166.07C208.07 168.23 206.36 170.27 204.7 172.28C203.03 174.3 201.3 176.21 199.63 178.15C197.95 180.09 196.29 181.99 194.65 183.92C193.01 185.86 191.41 187.81 189.78 189.78C188.14 191.75 186.55 193.77 184.85 195.75C183.15 197.73 181.44 199.76 179.58 201.67C177.73 203.57 175.8 205.48 173.72 207.19C171.64 208.89 169.44 210.52 167.12 211.89C164.8 213.26 162.33 214.46 159.81 215.39C157.28 216.32 154.63 217.01 151.98 217.48C149.32 217.94 146.59 218.13 143.9 218.17C141.21 218.21 138.5 218 135.85 217.73C133.2 217.46 130.58 217 128 216.56C125.42 216.12 122.9 215.59 120.38 215.11C117.86 214.62 115.39 214.13 112.89 213.68C110.39 213.23 107.91 212.82 105.39 212.39C102.86 211.96 100.32 211.59 97.75 211.11C95.19 210.62 92.57 210.16 89.99 209.5C87.42 208.85 84.8 208.13 82.28 207.19C79.77 206.24 77.25 205.15 74.91 203.82C72.57 202.5 70.29 200.96 68.22 199.24C66.15 197.52 64.23 195.57 62.5 193.5C60.77 191.44 59.24 189.16 57.86 186.85C56.48 184.55 55.31 182.09 54.22 179.66C53.13 177.23 52.21 174.73 51.3 172.28C50.39 169.83 49.6 167.37 48.75 164.95C47.91 162.53 47.1 160.15 46.25 157.76C45.39 155.37 44.5 153.01 43.61 150.61C42.72 148.21 41.77 145.82 40.9 143.36C40.04 140.89 39.14 138.4 38.41 135.84C37.69 133.28 37 130.65 36.56 128C36.12 125.35 35.81 122.62 35.79 119.93C35.77 117.24 35.96 114.5 36.41 111.85C36.87 109.2 37.6 106.55 38.52 104.02C39.45 101.5 40.65 99.03 41.96 96.68C43.27 94.34 44.81 92.1 46.37 89.93C47.93 87.77 49.64 85.73 51.3 83.72C52.97 81.7 54.7 79.79 56.37 77.85C58.05 75.91 59.71 74.01 61.35 72.08C62.99 70.14 64.59 68.19 66.22 66.22C67.86 64.25 69.45 62.23 71.15 60.25C72.85 58.27 74.56 56.24 76.42 54.33C78.27 52.43 80.2 50.52 82.28 48.81C84.36 47.11 86.56 45.48 88.88 44.11C91.2 42.74 93.67 41.54 96.19 40.61C98.72 39.68 101.37 38.99 104.02 38.52C106.68 38.06 109.41 37.87 112.1 37.83C114.79 37.79 117.5 38 120.15 38.27C122.8 38.54 125.42 39 128 39.44C130.58 39.88 133.1 40.41 135.62 40.89C138.14 41.38 140.61 41.87 143.11 42.32C145.61 42.77 148.09 43.18 150.61 43.61C153.14 44.04 155.68 44.41 158.25 44.89C160.81 45.38 163.43 45.84 166.01 46.5C168.58 47.15 171.2 47.87 173.72 48.81C176.23 49.76 178.75 50.85 181.09 52.18C183.43 53.5 185.71 55.04 187.78 56.76C189.85 58.48 191.77 60.43 193.5 62.5C195.23 64.56 196.76 66.84 198.14 69.15C199.52 71.45 200.69 73.91 201.78 76.34C202.87 78.77 203.79 81.27 204.7 83.72C205.61 86.17 206.4 88.63 207.25 91.05C208.09 93.47 208.9 95.85 209.75 98.24C210.61 100.63 211.5 102.99 212.39 105.39C213.28 107.79 214.23 110.18 215.1 112.64C215.96 115.11 216.86 117.6 217.59 120.16C218.31 122.72 219 125.35 219.44 128Z" fill="url(#eosinophil-body)" stroke="#a99a8f" stroke-width="3"/>
+<circle cx="111.82" cy="160.28" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="52.06" cy="122.23" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="118.85" cy="93.56" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="194.34" cy="167.94" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="156.57" cy="82.64" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="67.67" cy="146.61" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="153.1" cy="192.3" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="164.32" cy="183.07" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="89.58" cy="168.23" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="192.34" cy="105.3" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="186.85" cy="82.26" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="85.19" cy="72.28" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="107.07" cy="180.05" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="150.98" cy="69.71" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="97.12" cy="195.57" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="142.05" cy="174.92" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="96.56" cy="61.18" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="128.35" cy="81.07" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="123.27" cy="145.26" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="60.74" cy="93.66" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="192.38" cy="158.12" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="120.03" cy="56.99" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="132.95" cy="185.94" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="112.88" cy="75.46" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="186.59" cy="177.4" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="71.59" cy="97.1" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="196.79" cy="118.36" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="84.73" cy="86.73" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="108.57" cy="65.42" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="139.1" cy="194.19" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="149" cy="201.98" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="173.94" cy="187.22" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="156.39" cy="171.3" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="198.94" cy="133.19" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="150.94" cy="158.27" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="141.81" cy="72.38" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="102.51" cy="157.88" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="76.52" cy="140.79" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="149.79" cy="149.07" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="87.18" cy="62.08" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="177.83" cy="171.64" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="143.18" cy="87.32" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="67.95" cy="116.29" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="126.1" cy="135.95" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="139.71" cy="157.37" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="170.68" cy="84.14" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="71.23" cy="169.56" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="98.15" cy="172.77" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="92.41" cy="77.92" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="173.72" cy="145.22" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="151.76" cy="55.79" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="81.01" cy="155.29" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="172.45" cy="160.1" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="129.32" cy="173.6" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="57.1" cy="108.34" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="136.33" cy="54.85" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="191.13" cy="138.12" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="118.21" cy="170.35" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="129.29" cy="97.95" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="165.96" cy="170.47" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="116.4" cy="192" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="107.2" cy="88.64" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="105.99" cy="199.51" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="160.94" cy="150.45" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="77.19" cy="180" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="161.05" cy="74.69" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="183.65" cy="101.27" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="197.77" cy="97.08" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="127.95" cy="199.69" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="109.5" cy="54.57" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="69.28" cy="155.61" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="183.06" cy="161.59" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="163.38" cy="194.3" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="73.53" cy="85.3" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="127.75" cy="64.91" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="135.07" cy="166.58" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="62.32" cy="164.38" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="85.16" cy="186.03" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="98.32" cy="85.55" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="68.84" cy="77.54" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="54.18" cy="144.49" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="178.08" cy="90.25" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="181.94" cy="72.42" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="198.42" cy="145.5" r="4.2" fill="url(#eosinophil-granule)"/>
+<circle cx="135.05" cy="139.38" r="4.2" fill="url(#eosinophil-granule)"/>
+<path d="M98 118Q128 102 158 118" fill="none" stroke="#4e3678" stroke-width="13" stroke-linecap="round"/>
+<ellipse cx="98" cy="118" rx="27" ry="22" transform="rotate(-20 98 118)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<ellipse cx="158" cy="118" rx="27" ry="22" transform="rotate(20 158 118)" fill="#4e3678" stroke="#4e3678" stroke-width="5"/>
+<path d="M98 118Q128 102 158 118" fill="none" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="98" cy="118" rx="27" ry="22" transform="rotate(-20 98 118)" fill="url(#eosinophil-nucleus)"/>
+<ellipse cx="158" cy="118" rx="27" ry="22" transform="rotate(20 158 118)" fill="url(#eosinophil-nucleus)"/>
+<ellipse cx="76" cy="72" rx="22" ry="10" transform="rotate(-30 76 72)" fill="url(#eosinophil-gloss)"/>
+</svg>

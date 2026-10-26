@@ -86,6 +86,40 @@ const PALETTE = {
   shoe: '#4A4A55',
   swaddle: '#F6E2A0',
   hat: '#9ED9C2',
+  brain: '#F4B6C2',
+  heartMuscle: '#D65A58',
+  artery: '#D9473F',
+  vein: '#5B8FD9',
+  kidney: '#C8645A',
+  renalPelvis: '#F2D4C9',
+  bladder: '#E9A6A0',
+  liver: '#B5544A',
+  gallbladder: '#7DB46C',
+  colon: '#E8A76D',
+  smallIntestine: '#F2A7A7',
+  epidermis: '#E2A27E',
+  dermis: '#F6D3C2',
+  fat: '#F7E08A',
+  bone: '#F1E6C8',
+  marrow: '#C84B4B',
+  cartilage: '#CFE6F2',
+  synovium: '#9ED9C2',
+  lymphNode: '#A8D8B9',
+  follicle: '#6FBF8E',
+  lymph: '#F2D07A',
+  spleen: '#9C4A6E',
+  thymus: '#F2B8A0',
+  monocyte: '#C9D9E8',
+  eosinophil: '#F9E3D3',
+  eosinGranule: '#F07A4A',
+  platelet: '#C9A9E0',
+  plasmodium: '#7E57C2',
+  chromatin: '#B71C4A',
+  biofilmMatrix: '#CFE3A0',
+  substrate: '#B0BEC5',
+  complement: '#E5707A',
+  complementComplex: '#9C7FD9',
+  nappy: '#F4F6F8',
 };
 
 const round = v => Math.round(v * 100) / 100;
@@ -227,6 +261,27 @@ function pointsAlongBezier(p0, p1, p2, p3, gaps) {
 // Bézier and gaps for the streptococcal chain, shared by its colour and single-colour icons.
 const STREP_CHAIN = [[22, 178], [84, 6], [170, 250], [234, 80], [39, 45, 39, 45, 39, 45]];
 
+// Bacteria embedded in a biofilm: [x, y, angle, kind] with kind 'rod' or 'coccus'.
+const BIOFILM_CELLS = [[46, 194, 20, 'rod'], [66, 176, -30, 'rod'], [88, 196, 60, 'rod'], [98, 164, 10, 'rod'], [120, 146, -50, 'rod'],
+  [114, 186, 30, 'rod'], [140, 166, 80, 'rod'], [146, 196, -10, 'rod'], [162, 140, 20, 'rod'], [172, 174, -40, 'rod'],
+  [192, 154, 70, 'rod'], [196, 194, 15, 'rod'], [216, 180, -25, 'rod'], [74, 200, 0, 'coccus'], [132, 140, 0, 'coccus'],
+  [168, 196, 0, 'coccus'], [212, 160, 0, 'coccus'], [96, 182, 0, 'coccus']];
+
+// One coccus of a pneumococcal pair: an oval, slightly fuller where the pair meets (x = 0)
+// and tapering a little towards the far end. side = 1 draws the right-hand coccus, -1 the left.
+const lancetPath = side => {
+  const p = (x, y) => `${x * side} ${y}`;
+  return `M${p(4, 0)}C${p(4, -14)} ${p(15, -22)} ${p(30, -22)}C${p(46, -22)} ${p(60, -11)} ${p(62, 0)}` +
+    `C${p(60, 11)} ${p(46, 22)} ${p(30, 22)}C${p(15, 22)} ${p(4, 14)} ${p(4, 0)}Z`;
+};
+
+// One coccus of a meningococcal pair: a coffee bean with its concave face towards x = 0.
+const beanPath = side => {
+  const p = (x, y) => `${x * side} ${y}`;
+  return `M${p(10, -32)}C${p(34, -44)} ${p(60, -30)} ${p(60, 0)}C${p(60, 30)} ${p(34, 44)} ${p(10, 32)}` +
+    `C${p(2, 28)} ${p(2, 20)} ${p(8, 14)}C${p(12, 8)} ${p(12, -8)} ${p(8, -14)}C${p(2, -20)} ${p(2, -28)} ${p(10, -32)}Z`;
+};
+
 // A tube (hypha, limb, airway) drawn as layered strokes: outline, body colour, soft highlight.
 function pipe(d, colour, width) {
   const common = `d="${d}" fill="none" stroke-linecap="round" stroke-linejoin="round"`;
@@ -234,6 +289,12 @@ function pipe(d, colour, width) {
     `<path ${common} stroke="${colour}" stroke-width="${width}"/>` +
     `<path ${common} stroke="#fff" stroke-width="${round(Math.max(1.5, width * 0.22))}" opacity="0.4" transform="translate(${round(-width * 0.18)} ${round(-width * 0.18)})"/>`;
 }
+
+// Mirror an absolute-coordinate path ("x y" pairs only) left–right across the canvas centre.
+const mirrorX = d => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${round(256 - Number(x))} ${y}`);
+
+// Radius of an ellipse with semi-axes rx, ry in direction a (radians).
+const ellipseRadius = (rx, ry, a) => 1 / Math.sqrt((Math.cos(a) / rx) ** 2 + (Math.sin(a) / ry) ** 2);
 
 // Circle as a path, so circles can be combined into one shape (e.g. with holes via evenodd).
 const circlePath = (cx, cy, r) =>
@@ -309,5 +370,5 @@ module.exports = {
   STROKE, INK, PALETTE, round, mix, tint, shade, outline,
   sphereGradient, cylinderGradient, glossGradient, gloss,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
-  pointsAlongBezier, STREP_CHAIN, pipe, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
+  pointsAlongBezier, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
 };

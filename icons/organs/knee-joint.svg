@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="knee-joint-title">
+<title id="knee-joint-title">Knee joint</title>
+<desc>Knee joint in section: femur, tibia and fibula with articular cartilage (blue) inside the synovial capsule (green).</desc>
+<defs><linearGradient id="knee-joint-bone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e3d8bc"/><stop offset="0.25" stop-color="#f8f3e4"/><stop offset="0.6" stop-color="#F1E6C8"/><stop offset="1" stop-color="#bcb39c"/></linearGradient></defs>
+<rect x="72" y="96" width="112" height="82" rx="34" fill="#9ED9C2" opacity="0.45" stroke="#6f9888" stroke-width="2.5"/>
+<rect x="176" y="172" width="13" height="66" rx="5" fill="url(#knee-joint-bone)" stroke="#958f7c" stroke-width="2.5"/>
+<circle cx="182" cy="170" r="10" fill="url(#knee-joint-bone)" stroke="#958f7c" stroke-width="2.5"/>
+<path d="M108 12L148 12L150 84C170 92 176 112 168 128C160 140 142 138 134 128L122 128C114 138 96 140 88 128C80 112 86 92 106 84Z" fill="url(#knee-joint-bone)" stroke="#958f7c" stroke-width="3" stroke-linejoin="round"/>
+<path d="M84 152Q84 144 128 144Q172 144 172 152L172 162Q168 178 150 186L148 238L108 238L106 186Q88 178 84 162Z" fill="url(#knee-joint-bone)" stroke="#958f7c" stroke-width="3" stroke-linejoin="round"/>
+<path d="M88 126C92 138 112 140 122 128M134 128C144 140 164 138 168 126M90 148Q128 140 166 148" fill="none" stroke="#9badb6" stroke-width="7" stroke-linecap="round"/>
+<path d="M88 126C92 138 112 140 122 128M134 128C144 140 164 138 168 126M90 148Q128 140 166 148" fill="none" stroke="#CFE6F2" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

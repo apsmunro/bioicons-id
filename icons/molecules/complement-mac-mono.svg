@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="complement-mac-mono-title">
+<title id="complement-mac-mono-title">Complement membrane attack complex (single colour)</title>
+<desc>Complement membrane attack complex: a C9 pore (pink) assembled on C5b–8 (purple), spanning a lipid bilayer.</desc>
+<defs></defs>
+<path d="M24 150H88M168 150H234M24 176H88M168 176H234" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="98" y1="104" x2="98" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="108" y1="104" x2="108" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="118" y1="104" x2="118" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="128" y1="104" x2="128" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="138" y1="104" x2="138" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="148" y1="104" x2="148" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="158" y1="104" x2="158" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="128" cy="98" rx="34" ry="10" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="90" cy="70" rx="9" ry="7" transform="rotate(0 90 70)" fill="#000000"/>
+<ellipse cx="70" cy="104" rx="11" ry="9" transform="rotate(0 70 104)" fill="#000000"/>
+<ellipse cx="80" cy="86" rx="13" ry="9" transform="rotate(-20 80 86)" fill="#000000"/>
+<circle cx="124" cy="58" r="3.5" fill="#000000"/>
+<circle cx="134" cy="74" r="3.5" fill="#000000"/>
+<circle cx="122" cy="214" r="3.5" fill="#000000"/>
+<circle cx="132" cy="230" r="3.5" fill="#000000"/>
+</svg>

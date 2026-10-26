@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="bone-mono-title">
+<title id="bone-mono-title">Bone (single colour)</title>
+<desc>Long bone with a window onto the marrow cavity.</desc>
+<defs></defs>
+<path d="M-15 -72V72H15V-72ZM-35 -84a21 21 0 1 0 42 0a21 21 0 1 0 -42 0ZM-7 -84a21 21 0 1 0 42 0a21 21 0 1 0 -42 0ZM-35 84a21 21 0 1 0 42 0a21 21 0 1 0 -42 0ZM-7 84a21 21 0 1 0 42 0a21 21 0 1 0 -42 0ZM-8 -50H8V50H-8Z" transform="translate(128 128) rotate(-40)" fill="#000000"/>
+</svg>

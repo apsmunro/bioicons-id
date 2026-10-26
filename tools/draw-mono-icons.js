@@ -44,17 +44,15 @@ function streptococcus() {
 function pneumococcus() {
   return [
     `<g transform="translate(128 128) rotate(-30) scale(1.25)">`,
-    `<ellipse rx="80" ry="44" ${line(4)}/>`,
-    `<path d="M2 0C2 -18 14 -26 28 -24C42 -22 54 -10 62 0C54 10 42 22 28 24C14 26 2 18 2 0Z" ${solid}/>`,
-    `<path d="M-2 0C-2 -18 -14 -26 -28 -24C-42 -22 -54 -10 -62 0C-54 10 -42 22 -28 24C-14 26 -2 18 -2 0Z" ${solid}/>`,
+    `<ellipse rx="82" ry="42" ${line(4)}/>`,
+    `<path d="${K.lancetPath(-1)}" ${solid}/>`,
+    `<path d="${K.lancetPath(1)}" ${solid}/>`,
     `</g>`,
   ];
 }
 
 function meningococcus() {
-  const bean = side => `M${6 * side} -34C${40 * side} -40 ${60 * side} -18 ${60 * side} 4C${60 * side} 28 ${38 * side} 40 ${6 * side} 34` +
-    `C${14 * side} 14 ${14 * side} -14 ${6 * side} -34Z`;
-  return [`<g transform="translate(128 128) rotate(-20) scale(1.35)">`, `<path d="${bean(-1)}" ${solid}/>`, `<path d="${bean(1)}" ${solid}/>`, `</g>`];
+  return [`<g transform="translate(128 128) rotate(-20) scale(1.35)">`, `<path d="${K.beanPath(-1)}" ${solid}/>`, `<path d="${K.beanPath(1)}" ${solid}/>`, `</g>`];
 }
 
 function mycobacteriumTuberculosis() {
@@ -63,6 +61,22 @@ function mycobacteriumTuberculosis() {
     const x = 128 + across[0] * k * 30 + along[0] * shift, y = 128 + across[1] * k * 30 + along[1] * shift;
     return `<rect x="${-len / 2}" y="-10" width="${len}" height="20" rx="10" transform="translate(${n(x)} ${n(y)}) rotate(-30)" ${solid}/>`;
   });
+}
+
+function biofilm() {
+  const swimmer = (x, y, angle, phase) => {
+    const tail = K.wavePoints({ x: -14, y: 0, nx: -1, ny: 0 }, 0, { length: 34, amplitude: 4, wavelength: 14, phase });
+    return `<g transform="translate(${x} ${y}) rotate(${angle})"><path d="${K.smoothOpenPath(tail)}" ${line(3)}/>` +
+      `<rect x="-15" y="-7" width="30" height="14" rx="7" ${solid}/></g>`;
+  };
+  return [
+    `<path d="M20 202C26 170 50 150 76 156C88 120 120 110 140 128C160 104 196 112 204 140C222 146 236 176 236 202" ${line(4)}/>`,
+    ...K.BIOFILM_CELLS.map(([x, y, angle, kind]) => kind === 'rod'
+      ? `<rect x="-11" y="-4.5" width="22" height="9" rx="4.5" transform="translate(${x} ${y}) rotate(${angle})" ${solid}/>`
+      : `<circle cx="${x}" cy="${y}" r="5.5" ${solid}/>`),
+    `<rect x="14" y="208" width="228" height="16" rx="4" ${solid}/>`,
+    swimmer(84, 66, -20, 0), swimmer(176, 50, 25, 2),
+  ];
 }
 
 // ----------------------------------------------------------------- viruses
@@ -211,6 +225,18 @@ function aspergillus() {
   ];
 }
 
+// --------------------------------------------------------------- parasites
+
+function malaria() {
+  const ring = (x, y) => `<circle cx="${x}" cy="${y}" r="12" ${line(4)}/><circle cx="${x + 10}" cy="${y - 9}" r="5" ${solid}/>`;
+  return [
+    `<circle cx="204" cy="58" r="34" ${line(8)}/>`,
+    `<path d="M190 66C197 51 210 48 219 56" ${line(10)}/>`,
+    `<circle cx="110" cy="150" r="80" ${line(LINE)}/>`,
+    ring(82, 126), ring(138, 180), ring(146, 116),
+  ];
+}
+
 // ------------------------------------------------------------ immune cells
 
 // Stroked Y antibody with its stem base at (x, y), pointing up before rotation.
@@ -311,6 +337,44 @@ function nkCell() {
   ];
 }
 
+function monocyte() {
+  const nucleus = K.polarPoints(0, 0, a => 40 - 18 * Math.exp(-(K.wrapAngle(a + 1.2) ** 2) / (2 * 0.4 ** 2)), 72)
+    .map(([x, y]) => [120 + 1.15 * x, 136 + y]);
+  return [
+    `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => 82 + 3 * Math.sin(5 * a + 1) + 2 * Math.sin(8 * a)))}" ${line(LINE)}/>`,
+    `<path d="${K.smoothClosedPath(nucleus)}" ${solid}/>`,
+    ...[[176, 96, 7], [182, 150, 5], [92, 72, 6]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" ${line(3)}/>`),
+  ];
+}
+
+function eosinophil() {
+  const lobes = [[98, 118, 27, 22, -20], [158, 118, 27, 22, 20]];
+  const rand = K.rng(23), granules = [];
+  for (let tries = 0; granules.length < 36 && tries < 8000; tries++) {
+    const a = rand() * 2 * Math.PI, d = Math.sqrt(rand()) * 72, p = [128 + d * Math.cos(a), 128 + d * Math.sin(a)];
+    if (lobes.every(([x, y]) => Math.hypot(p[0] - x, p[1] - y) > 34) && Math.hypot(p[0] - 128, p[1] - 110) > 16 &&
+      granules.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 14)) granules.push(p);
+  }
+  return [
+    `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => 88 + 3 * Math.sin(6 * a + 0.5)))}" ${line(LINE)}/>`,
+    `<path d="M98 118Q128 102 158 118" ${line(10)}/>`,
+    ...lobes.map(([x, y, rx, ry, rot]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" ${solid}/>`),
+    ...granules.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="4" ${solid}/>`),
+  ];
+}
+
+function platelets() {
+  const dots = (x, y) => [[-10, -4], [4, -7], [10, 4], [-4, 7]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="3.5" ${solid}/>`).join('');
+  const spikes = [[0.2, 26, 0.12], [1.2, 30, 0.1], [2.1, 22, 0.13], [4.0, 24, 0.12], [5.1, 30, 0.1]];
+  const activated = K.polarPoints(170, 168, a => 28 + spikes.reduce((s, [c, h, w]) => s + h * Math.exp(-(K.wrapAngle(a - c) ** 2) / (2 * w * w)), 0), 120);
+  return [
+    ...[[78, 88, 36, 23, -15], [176, 76, 30, 20, 20], [84, 182, 30, 19, 10]].map(([x, y, rx, ry, rot]) =>
+      `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" ${line(5)}/>` + dots(x, y)),
+    `<path d="${K.smoothClosedPath(activated)}" ${line(5)}/>`,
+    `<circle cx="168" cy="166" r="4" ${solid}/><circle cx="178" cy="172" r="4" ${solid}/>`,
+  ];
+}
+
 function redBloodCells() {
   // A cell seen face-on (with central pallor) beside one seen edge-on (biconcave profile).
   return [
@@ -373,6 +437,17 @@ function cytokineReceptor() {
     blob(102, 94, 16, 20, 18), blob(154, 94, 16, 20, -18),
     blob(128, 68, 18, 16, 0),
     blob(52, 62, 15, 13, 20), blob(200, 46, 14, 12, -15), blob(212, 110, 11, 10, 10),
+  ];
+}
+
+function complementMac() {
+  return [
+    `<path d="M24 150H88M168 150H234M24 176H88M168 176H234" ${line(5)}/>`,
+    ...Array.from({ length: 7 }, (_, k) => `<line x1="${98 + k * 10}" y1="104" x2="${98 + k * 10}" y2="192" ${line(5)}/>`),
+    `<ellipse cx="128" cy="98" rx="34" ry="10" ${line(4)}/>`,
+    ...[[90, 70, 9, 7, 0], [70, 104, 11, 9, 0], [80, 86, 13, 9, -20]].map(([x, y, rx, ry, rot]) =>
+      `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" ${solid}/>`),
+    ...[[124, 58], [134, 74], [122, 214], [132, 230]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.5" ${solid}/>`),
   ];
 }
 
@@ -517,15 +592,146 @@ function child() {
 }
 
 function newborn() {
+  // Silhouette: hood and wrapped body in ink, the face cut out of the hood (evenodd).
   return [
-    `<g transform="translate(148 152) rotate(-32)">`,
-    `<ellipse rx="84" ry="52" ${line(LINE)}/>`,
-    `<path d="M-36 -46Q-10 0 -28 48M12 -50Q36 0 20 50" ${line(4)}/>`,
+    `<g transform="translate(0 -6)">`,
+    `<path d="${K.circlePath(128, 88, 52)}${K.circlePath(128, 92, 30)}" fill-rule="evenodd" ${solid}/>`,
+    `<path d="M70 132Q100 140 128 128Q156 140 186 132C200 170 192 214 170 228C150 238 106 238 86 228C64 214 56 170 70 132Z" ${solid}/>`,
     `</g>`,
-    `<circle cx="78" cy="92" r="30" ${line(LINE)}/>`,
-    `<path d="M49 82C47 62 62 54 80 54C98 54 110 64 108 80C92 72 66 72 49 82Z" ${solid}/>`,
-    `<circle cx="64" cy="54" r="7" ${solid}/>`,
   ];
+}
+
+function baby() {
+  const arm = 'M100 116Q86 136 84 156', leg = 'M106 188Q88 204 70 208';
+  return [
+    `<path d="${leg}${K.mirrorX(leg)}" ${line(22)}/>`,
+    ...[62, 194].map(x => `<ellipse cx="${x}" cy="206" rx="14" ry="11" ${solid}/>`),
+    `<path d="M96 108Q128 98 160 108Q172 142 164 170L92 170Q84 142 96 108Z" ${solid}/>`,
+    `<path d="M88 158Q128 168 168 158Q172 186 152 198Q128 206 104 198Q84 186 88 158Z" ${solid}/>`,
+    `<path d="${arm}${K.mirrorX(arm)}" ${line(17)}/>`,
+    ...[84, 172].map(x => `<circle cx="${x}" cy="160" r="10" ${solid}/>`),
+    ...[93, 163].map(x => `<circle cx="${x}" cy="68" r="7" ${solid}/>`),
+    `<circle cx="128" cy="64" r="35" ${solid}/>`,
+  ];
+}
+
+// ------------------------------------------------------------------ organs
+
+function brain() {
+  const cerebrum = 'M58 132C50 90 82 50 130 46C178 42 216 72 218 112C220 140 206 160 184 164C174 176 156 178 144 172C128 180 108 178 98 170C80 172 62 160 58 132Z';
+  const sulci = 'M138 50C130 76 146 94 134 118M86 76C98 86 92 100 104 108M110 58C108 74 120 82 114 98M166 56C158 72 172 86 162 100' +
+    'M192 78C180 88 194 104 182 114M206 124C192 128 190 142 176 146M72 116C84 118 86 128 76 138M112 158C124 150 136 160 150 152';
+  return [
+    `<g transform="translate(0 -4)">`,
+    `<path d="M140 178C141 194 139 208 134 224" ${line(14)}/>`,
+    `<ellipse cx="184" cy="188" rx="28" ry="17" ${line(8)}/>`,
+    `<path d="M166 186H202M170 195H198" ${line(3)}/>`,
+    `<path d="${cerebrum}" ${line(LINE)}/>`,
+    `<path d="M94 142C118 130 140 134 166 120" ${line(5)}/>`,
+    `<path d="${sulci}" ${line(4)}/>`,
+    `</g>`,
+  ];
+}
+
+function heart() {
+  const body = 'M126 226C94 210 62 178 58 140C54 108 74 90 98 90C112 90 122 96 130 106C140 94 156 88 174 92C200 98 208 128 200 156C190 190 160 212 126 226Z';
+  return [
+    `<path d="M100 104L98 46" ${line(16)}/>`,
+    `<path d="M136 46L132 24M152 40L152 18M166 46L172 26" ${line(7)}/>`,
+    `<path d="M120 104C116 56 150 36 178 56L182 96" ${line(18)}/>`,
+    `<g transform="rotate(-15 128 150)"><path d="${body}" ${line(LINE)}/>` +
+    `<path d="M134 116C120 148 118 182 128 214M118 112C100 118 84 130 76 148" ${line(4)}/></g>`,
+    `<path d="M144 112C146 84 130 72 104 74" ${line(14)}/>`,
+  ];
+}
+
+function kidneys() {
+  const kidney = 'M70 24C98 24 108 50 104 68C100 80 92 80 92 90C92 100 102 104 102 116C100 134 88 146 70 146C46 146 36 116 36 84C36 48 46 24 70 24Z';
+  const pelvis = 'M98 76C88 78 84 84 85 90C84 96 88 102 98 104Z', ureter = 'M94 102C104 130 108 160 112 180';
+  return [
+    `<g transform="translate(0 -6)">`,
+    `<path d="${kidney}${K.mirrorX(kidney)}" ${line(LINE)}/>`,
+    `<path d="${pelvis}${K.mirrorX(pelvis)}" ${solid}/>`,
+    `<path d="${ureter}${K.mirrorX(ureter)}M128 226L128 240" ${line(6)}/>`,
+    `<path d="M86 186C86 172 104 166 128 166C152 166 170 172 170 186C170 214 152 228 128 228C104 228 86 214 86 186Z" ${line(LINE)}/>`,
+    `</g>`,
+  ];
+}
+
+function liver() {
+  return [
+    `<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" ${line(LINE)}/>`,
+    `<path d="M150 66C148 94 140 126 128 160" ${line(4)}/>`,
+    `<ellipse cx="108" cy="188" rx="12" ry="16" transform="rotate(-20 108 188)" ${solid}/>`,
+  ];
+}
+
+function intestines() {
+  return [
+    `<g transform="translate(0 -8)">`,
+    `<path d="M60 214L70 232" ${line(7)}/>`,
+    `<path d="M144 220L140 236" ${line(18)}/>`,
+    `<path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" ${line(26)}/>`,
+    `<path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" ${line(12)}/>`,
+    `</g>`,
+  ];
+}
+
+function skin() {
+  const xs = Array.from({ length: 27 }, (_, i) => 24 + i * 8);
+  const surface = K.smoothOpenPath(xs.map(x => [x, 60 + 3 * Math.sin(x / 10)]));
+  const lobules = [];
+  for (const [row, y] of [[0, 174], [1, 198]]) for (let x = 40 + row * 11; x <= 218; x += 23) lobules.push([x, y]);
+  return [
+    `<path d="${surface}L232 216L24 216Z" ${line(8)}/>`,
+    `<path d="${K.smoothOpenPath(xs.map(x => [x, 86 + 6 * Math.sin(x / 8)]))}" ${line(4)}/>`,
+    `<path d="${K.smoothOpenPath(xs.map(x => [x, 154 + 4 * Math.sin(x / 18)]))}" ${line(3)}/>`,
+    ...lobules.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" ${line(3)}/>`),
+    `<path d="M28 126C64 114 104 136 144 122C176 112 206 128 228 120M28 140C64 130 104 150 144 138C176 128 206 144 228 136" ${line(4)}/>`,
+    `<path d="M182 64C184 92 176 118 182 138" ${line(3)}/>`,
+    `<path d="M92 20L118 146" ${line(4)}/>`,
+    `<ellipse cx="119" cy="152" rx="9" ry="11" ${solid}/>`,
+  ];
+}
+
+function bone() {
+  // One shape: shaft and four end lobes wound the same way, the marrow window wound the
+  // opposite way so it stays a hole.
+  const ends = [[-14, -84], [14, -84], [-14, 84], [14, 84]].map(([x, y]) => K.circlePath(x, y, 21)).join('');
+  return [`<path d="M-15 -72V72H15V-72Z${ends}M-8 -50H8V50H-8Z" transform="translate(128 128) rotate(-40)" ${solid}/>`];
+}
+
+function kneeJoint() {
+  return [
+    `<rect x="72" y="96" width="112" height="82" rx="34" ${line(3)} stroke-dasharray="2 8"/>`,
+    `<path d="M108 12L148 12L150 84C170 92 176 112 168 128C160 140 142 138 134 128L122 128C114 138 96 140 88 128C80 112 86 92 106 84Z" ${line(LINE)}/>`,
+    `<path d="M84 152Q84 144 128 144Q172 144 172 152L172 162Q168 178 150 186L148 238L108 238L106 186Q88 178 84 162Z" ${line(LINE)}/>`,
+    `<rect x="186" y="180" width="10" height="56" rx="5" ${line(5)}/>`,
+    `<circle cx="191" cy="171" r="8" ${line(5)}/>`,
+  ];
+}
+
+function lymphNode() {
+  return [
+    `<path d="M34 74L64 92M30 158L60 151M96 24L108 54" ${line(6)}/>`,
+    `<path d="M196 126L232 116M198 140L234 142M196 154L232 166" ${line(6)}/>`,
+    `<path d="M60 128C60 74 100 52 140 56C184 60 206 90 204 112C202 124 186 124 186 136C186 148 204 152 202 166C198 194 168 208 132 206C90 204 60 180 60 128Z" ${line(LINE)}/>`,
+    `<path d="M128 130C150 128 168 132 180 136M126 146C150 150 168 150 180 146M130 114C150 112 164 118 178 126" ${line(3)}/>`,
+    ...[[92, 96], [122, 78], [158, 82], [84, 134], [94, 170], [130, 184], [164, 176]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="11" ${solid}/>`),
+  ];
+}
+
+function spleen() {
+  return [
+    `<path d="M48 168C40 112 82 52 148 42C190 36 214 58 210 84C206 96 190 96 182 108C168 128 168 150 150 168C126 192 96 208 70 204C56 200 50 186 48 168Z" ${line(LINE)}/>`,
+    `<path d="M68 108L80 113M98 68L106 78" ${line(4)}/>`,
+    `<path d="M170 136C186 152 204 170 226 182M162 146C178 168 196 188 216 206" ${line(7)}/>`,
+  ];
+}
+
+function thymus() {
+  const lobe = cx => K.smoothClosedPath(K.polarPoints(cx, 132, a => K.ellipseRadius(22 + 6 * Math.max(0, Math.sin(a)), 84, a) + 1.5 * Math.sin(9 * a), 120));
+  return [`<path d="${lobe(94)}${lobe(162)}" ${line(LINE)}/>`];
 }
 
 // ------------------------------------------------------------------------
@@ -537,6 +743,7 @@ const DRAWINGS = {
   'pneumococcus': pneumococcus,
   'meningococcus': meningococcus,
   'mycobacterium-tuberculosis': mycobacteriumTuberculosis,
+  'biofilm': biofilm,
   'sars-cov-2': sarsCov2,
   'adenovirus': adenovirus,
   'rsv': rsv,
@@ -545,6 +752,7 @@ const DRAWINGS = {
   'bacteriophage': bacteriophage,
   'candida': candida,
   'aspergillus': aspergillus,
+  'malaria': malaria,
   'neutrophil': neutrophil,
   'macrophage': macrophage,
   't-cell': tCell,
@@ -553,10 +761,25 @@ const DRAWINGS = {
   'dendritic-cell': dendriticCell,
   'nk-cell': nkCell,
   'red-blood-cells': redBloodCells,
+  'monocyte': monocyte,
+  'eosinophil': eosinophil,
+  'platelets': platelets,
   'igg-antibody': iggAntibody,
   'igm-pentamer': igmPentamer,
   'mhc-class-ii': mhcClassII,
   'cytokine-receptor': cytokineReceptor,
+  'complement-mac': complementMac,
+  'brain': brain,
+  'heart': heart,
+  'kidneys': kidneys,
+  'liver': liver,
+  'intestines': intestines,
+  'skin': skin,
+  'bone': bone,
+  'knee-joint': kneeJoint,
+  'lymph-node': lymphNode,
+  'spleen': spleen,
+  'thymus': thymus,
   'antibiotic-capsule': antibioticCapsule,
   'iv-bag': ivBag,
   'vaccine': vaccine,
@@ -566,6 +789,7 @@ const DRAWINGS = {
   'lungs': lungs,
   'child': child,
   'newborn': newborn,
+  'baby': baby,
 };
 
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));

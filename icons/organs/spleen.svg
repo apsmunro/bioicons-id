@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="spleen-title">
+<title id="spleen-title">Spleen</title>
+<desc>Spleen with splenic artery and vein at the hilum.</desc>
+<defs><radialGradient id="spleen-spleen" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#c492a8"/><stop offset="0.55" stop-color="#9C4A6E"/><stop offset="1" stop-color="#833e5c"/></radialGradient><radialGradient id="spleen-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M48 168C40 112 82 52 148 42C190 36 214 58 210 84C206 96 190 96 182 108C168 128 168 150 150 168C126 192 96 208 70 204C56 200 50 186 48 168Z" fill="url(#spleen-spleen)" stroke="#612e44" stroke-width="3" stroke-linejoin="round"/>
+<path d="M66 106L80 112M96 66L106 78" stroke="#612e44" stroke-width="3" stroke-linecap="round"/>
+<path d="M166 132C184 150 204 170 226 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#872c27" stroke-width="13"/><path d="M166 132C184 150 204 170 226 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#D9473F" stroke-width="8"/><path d="M166 132C184 150 204 170 226 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.76" opacity="0.4" transform="translate(-1.44 -1.44)"/>
+<path d="M158 142C176 166 196 188 216 206" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#385987" stroke-width="15"/><path d="M158 142C176 166 196 188 216 206" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#5B8FD9" stroke-width="10"/><path d="M158 142C176 166 196 188 216 206" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.2" opacity="0.4" transform="translate(-1.8 -1.8)"/>
+<ellipse cx="112" cy="82" rx="34" ry="13" transform="rotate(-40 112 82)" fill="url(#spleen-gloss)"/>
+</svg>

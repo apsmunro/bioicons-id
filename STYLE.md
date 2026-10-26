@@ -49,6 +49,10 @@ surface proteins get different colours (e.g. RSV F orange and G blue; influenza 
 
 People are drawn without facial features, so they stay neutral and work for any audience.
 
+Organs use natural tissue colours. Arteries are red and veins blue (the pulmonary trunk is
+blue, as it carries deoxygenated blood); lymphatics are yellow. Paired organs are drawn once
+and mirrored (`mirrorX` in `tools/svg-kit.js`) so both sides match exactly.
+
 ## Single-colour versions
 
 Every icon also has a simplified single-colour version (`<id>-mono.svg`) for black-and-white

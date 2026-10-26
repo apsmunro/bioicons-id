@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="kidneys-title">
+<title id="kidneys-title">Kidneys and urinary tract</title>
+<desc>Kidneys with renal pelvis, ureters, bladder and urethra.</desc>
+<defs><radialGradient id="kidneys-kidney" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e1aaa4"/><stop offset="0.55" stop-color="#C8645A"/><stop offset="1" stop-color="#a8544c"/></radialGradient><radialGradient id="kidneys-bladder" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f4d3d0"/><stop offset="0.55" stop-color="#E9A6A0"/><stop offset="1" stop-color="#c48b86"/></radialGradient><radialGradient id="kidneys-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(0 -6)">
+<path d="M70 24C98 24 108 50 104 68C100 80 92 80 92 90C92 100 102 104 102 116C100 134 88 146 70 146C46 146 36 116 36 84C36 48 46 24 70 24Z" fill="url(#kidneys-kidney)" stroke="#7c3e38" stroke-width="3"/>
+<path d="M186 24C158 24 148 50 152 68C156 80 164 80 164 90C164 100 154 104 154 116C156 134 168 146 186 146C210 146 220 116 220 84C220 48 210 24 186 24Z" fill="url(#kidneys-kidney)" stroke="#7c3e38" stroke-width="3"/>
+<path d="M98 74C86 76 80 84 82 90C80 96 86 104 98 106Z" fill="#F2D4C9" stroke="#a9948d" stroke-width="1.5"/>
+<path d="M158 74C170 76 176 84 174 90C176 96 170 104 158 106Z" fill="#F2D4C9" stroke="#a9948d" stroke-width="1.5"/>
+<ellipse cx="56" cy="52" rx="12" ry="18" transform="rotate(10 56 52)" fill="url(#kidneys-gloss)"/>
+<ellipse cx="186" cy="52" rx="12" ry="18" transform="rotate(-10 186 52)" fill="url(#kidneys-gloss)"/>
+<path d="M94 102C104 130 108 160 112 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#8c6966" stroke-width="12"/><path d="M94 102C104 130 108 160 112 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#e1aaa4" stroke-width="7"/><path d="M94 102C104 130 108 160 112 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.54" opacity="0.4" transform="translate(-1.26 -1.26)"/>
+<path d="M162 102C152 130 148 160 144 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#8c6966" stroke-width="12"/><path d="M162 102C152 130 148 160 144 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#e1aaa4" stroke-width="7"/><path d="M162 102C152 130 148 160 144 182" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.54" opacity="0.4" transform="translate(-1.26 -1.26)"/>
+<path d="M128 222L128 240" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#8c6966" stroke-width="12"/><path d="M128 222L128 240" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#e1aaa4" stroke-width="7"/><path d="M128 222L128 240" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.54" opacity="0.4" transform="translate(-1.26 -1.26)"/>
+<path d="M86 186C86 172 104 166 128 166C152 166 170 172 170 186C170 214 152 228 128 228C104 228 86 214 86 186Z" fill="url(#kidneys-bladder)" stroke="#906763" stroke-width="3"/>
+</g>
+</svg>
