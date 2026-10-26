@@ -374,43 +374,44 @@ function resample(poly, spacing) {
 // Organ geometry shared by the colour and single-colour drawings.
 const ORGANS = {
   // Brain: line art supplied as an SVG (tools/sources/brain-line-art.svg), one filled path whose
-  // first subpath is the outer edge. Its bounds (x 44.175–164.679, y 57.358–160.073, measured in a
+  // first subpath is the outer edge. Its bounds (x 42.946–783.030, y 186.590–875.937, measured in a
   // browser) are fitted to the canvas with a 16 px margin.
   get brainArt() {
     const d = lineArt('brain-line-art.svg');
     return {
       d,
-      silhouette: d.slice(0, d.search(/\s[mM]\s/)) + ' z',
-      transform: `translate(128 128) scale(${round(224 / 120.504)}) translate(-104.427 -108.716)`,
+      silhouette: splitSubpaths(d)[0],
+      transform: `translate(128 128) scale(${(224 / 740.084).toFixed(4)}) translate(-412.988 -531.264)`,
     };
   },
   // Heart: line art supplied as an SVG (tools/sources/heart-line-art.svg), one filled path. Its
-  // subpaths are the outer edge, the enclosed regions between the lines (listed below, numbered
-  // in path order), and one ink detail. Bounds (x 55.9–153.5, y 75.3–220.6) fitted to the canvas.
+  // subpaths are the outer edge, the enclosed regions between the lines (grouped below by
+  // structure, numbered in path order) and ink details. Bounds (x 6.420–198.160,
+  // y 13.129–284.604, measured in a browser) fitted to the canvas.
   get heartArt() {
     const d = lineArt('heart-line-art.svg');
     return {
       d,
       regions: splitSubpaths(d),
-      transform: `translate(128 128) scale(${round(224 / 145.3)}) translate(-104.7 -147.95)`,
+      transform: `translate(128 128) scale(${(224 / 271.475).toFixed(4)}) translate(-102.29 -148.866)`,
     };
   },
   heartRegions: {
-    ventricles: 1, // also runs up into the pulmonary trunk and left pulmonary artery
-    rightAtrium: 3,
-    leftAtrium: 4, // with a pulmonary vein leaving to the right
-    pulmonaryVeinLumen: 5,
-    aorta: 6,
-    aorticRootGaps: [7, 10],
-    superiorVenaCava: [8, 12],
-    leftPulmonaryArteryLumen: 9,
-    rightPulmonaryArtery: 11,
+    muscle: [1, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 22, 24, 25, 26, 28, 29, 31, 32, 34, 35, 45, 53], // ventricles, between the vessels
+    atria: [18, 30, 54], // right atrium, left auricle, and the gap under the arch
+    aorta: [41],
+    venous: [50, 6, 55], // superior and inferior venae cavae, right pulmonary artery
+    pulmonaryVeins: [48, 39, 46, 37],
+    // Coronary vessels. Region 2 also includes the pulmonary trunk and left pulmonary artery,
+    // which are coloured separately (pulmonaryTrunk below).
+    coronary: [2, 4, 9, 17, 20, 21, 23, 27, 36],
+    trunk: 2,
   },
-  // The drawing's short line at the base of the pulmonary trunk, extended at both ends to meet
-  // the aorta and the left atrium, so it closes off the trunk (drawing coordinates).
-  pulmonaryTrunkBase: 'M102.6 136.2C101.2 134.2 100.1 131.8 99.5 129.2M112.6 143.4C116 144.8 119.4 145.8 122.8 146.4',
-  // Everything in the ventricles region beyond that line: the pulmonary trunk and left pulmonary artery.
-  pulmonaryTrunk: 'M99 129L102.5 136.2C105 139.5 108.5 142 112.6 143.4C116 144.8 119.4 145.8 122.8 146.4L165 146.4L165 92L99 92Z',
+  // Short lines across the two coronary bands where they leave the base of the pulmonary trunk,
+  // closing it off from them (drawing coordinates).
+  pulmonaryTrunkBase: 'M86.6 124.2L90.8 125.8M131.6 135.5L137.4 134.8',
+  // Everything in region 2 above those lines: the pulmonary trunk and left pulmonary artery.
+  pulmonaryTrunk: 'M60 20L86.6 124.2L90.8 125.8L131.6 135.5L137.4 134.8L200 60L200 20Z',
   // Colon centreline: caecum, ascending, transverse (sagging), descending, sigmoid, rectum.
   colon: [[66, 206], [66, 170], [66, 128], [68, 90], [84, 68], [116, 80], [150, 80], [180, 60], [198, 74], [198, 120],
     [198, 168], [190, 194], [164, 204], [142, 196], [128, 208], [128, 230]],

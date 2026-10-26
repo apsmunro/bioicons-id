@@ -828,7 +828,7 @@ function heart() {
   return [
     `<g transform="${A.transform}">`,
     `<path d="${A.d}" ${solid}/>`,
-    `<path d="${K.ORGANS.pulmonaryTrunkBase}" fill="none" stroke="${INK}" stroke-width="1.7" stroke-linecap="round"/>`,
+    `<path d="${K.ORGANS.pulmonaryTrunkBase}" fill="none" stroke="${INK}" stroke-width="1.1" stroke-linecap="round"/>`,
     `</g>`,
   ];
 }

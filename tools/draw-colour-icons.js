@@ -1149,32 +1149,31 @@ function brain(id) {
 
 function heart(id) {
   // The supplied line art, with each enclosed region filled: muscle red for the chambers,
-  // arterial red for the aorta, venous blue for the SVC and pulmonary arteries.
-  const muscle = C.heartMuscle, atrium = shade(C.heartMuscle, 0.08), art = C.artery, vein = C.vein;
+  // arterial red for the aorta and pulmonary veins, venous blue for the venae cavae and
+  // pulmonary arteries, and coronary vessels in yellow epicardial fat.
+  const muscle = C.heartMuscle, atrium = shade(C.heartMuscle, 0.08), ink = shade(muscle, 0.6);
   const O = K.ORGANS, A = O.heartArt, R = O.heartRegions;
-  const fill = (index, grad) => [].concat(index).map(i => `<path d="${A.regions[i]}" fill="url(#${id}-${grad})"/>`).join('');
+  const fill = (indices, grad) => indices.map(i => `<path d="${A.regions[i]}" fill="url(#${id}-${grad})"/>`).join('');
   return {
     defs: [
-      `<clipPath id="${id}-ventricles"><path d="${A.regions[R.ventricles]}"/></clipPath>`,
+      `<clipPath id="${id}-trunk"><path d="${A.regions[R.trunk]}"/></clipPath>`,
       K.sphereGradient(`${id}-muscle`, muscle, { light: 0.45 }), K.sphereGradient(`${id}-atrium`, atrium, { light: 0.4 }),
-      K.sphereGradient(`${id}-aorta`, art, { light: 0.45 }), K.sphereGradient(`${id}-vein`, vein, { light: 0.45 }),
-      K.sphereGradient(`${id}-vein-lumen`, shade(vein, 0.45), { light: 0.2 }), K.sphereGradient(`${id}-artery-lumen`, shade(art, 0.45), { light: 0.2 }),
-      K.glossGradient(`${id}-gloss`),
+      K.sphereGradient(`${id}-artery`, C.artery, { light: 0.45 }), K.sphereGradient(`${id}-vein`, C.vein, { light: 0.45 }),
+      K.sphereGradient(`${id}-coronary`, C.fat, { light: 0.4 }), K.glossGradient(`${id}-gloss`),
     ],
     body: [
       `<g transform="${A.transform}">`,
-      fill(R.ventricles, 'muscle'),
-      `<path d="${O.pulmonaryTrunk}" clip-path="url(#${id}-ventricles)" fill="url(#${id}-vein)"/>`,
-      fill([R.rightAtrium, R.leftAtrium, ...R.aorticRootGaps], 'atrium'),
-      fill(R.aorta, 'aorta'),
-      fill([...R.superiorVenaCava, R.rightPulmonaryArtery], 'vein'),
-      fill(R.leftPulmonaryArteryLumen, 'vein-lumen'),
-      fill(R.pulmonaryVeinLumen, 'artery-lumen'),
+      fill(R.muscle, 'muscle'),
+      fill(R.atria, 'atrium'),
+      fill([...R.aorta, ...R.pulmonaryVeins], 'artery'),
+      fill(R.venous, 'vein'),
+      fill(R.coronary, 'coronary'),
+      `<path d="${O.pulmonaryTrunk}" clip-path="url(#${id}-trunk)" fill="url(#${id}-vein)"/>`,
       `</g>`,
-      K.gloss(`${id}-gloss`, 92, 160, 16, 28, 20),
-      `<g transform="${A.transform}" fill="${shade(muscle, 0.6)}">`,
+      K.gloss(`${id}-gloss`, 84, 156, 14, 26, 20),
+      `<g transform="${A.transform}" fill="${ink}">`,
       `<path d="${A.d}"/>`,
-      `<path d="${O.pulmonaryTrunkBase}" fill="none" stroke="${shade(muscle, 0.6)}" stroke-width="1.7" stroke-linecap="round"/>`,
+      `<path d="${O.pulmonaryTrunkBase}" fill="none" stroke="${ink}" stroke-width="1.1" stroke-linecap="round"/>`,
       `</g>`,
     ],
   };
