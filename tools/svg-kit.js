@@ -267,6 +267,144 @@ const BIOFILM_CELLS = [[46, 194, 20, 'rod'], [66, 176, -30, 'rod'], [88, 196, 60
   [192, 154, 70, 'rod'], [196, 194, 15, 'rod'], [216, 180, -25, 'rod'], [74, 200, 0, 'coccus'], [132, 140, 0, 'coccus'],
   [168, 196, 0, 'coccus'], [212, 160, 0, 'coccus'], [96, 182, 0, 'coccus']];
 
+// Dense polyline through pts along an open Catmull–Rom curve.
+function densify(pts, steps = 12) {
+  const out = [];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+    for (let s = 0; s < steps; s++) {
+      const t = s / steps, t2 = t * t, t3 = t2 * t;
+      out.push([0, 1].map(k => 0.5 * (2 * p1[k] + (p2[k] - p0[k]) * t + (2 * p0[k] - 5 * p1[k] + 4 * p2[k] - p3[k]) * t2 +
+        (3 * p1[k] - p0[k] - 3 * p2[k] + p3[k]) * t3)));
+    }
+  }
+  out.push(pts[pts.length - 1]);
+  return out;
+}
+
+// Path data of a line-art SVG in tools/sources (a single filled path).
+const lineArt = file => fs.readFileSync(path.join(__dirname, 'sources', file), 'utf8')
+  .match(/\sd="([^"]+)"/)[1].replace(/\s+/g, ' ').trim();
+
+// Split SVG path data into its subpaths, each rewritten in absolute coordinates so it can
+// be drawn on its own. Handles M, L, H, V, C, S, Q and Z (upper or lower case).
+function splitSubpaths(d) {
+  const tokens = d.match(/-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?|[a-zA-Z]/gi);
+  const subpaths = [];
+  let i = 0, cmd = 'M', cx = 0, cy = 0, sx = 0, sy = 0, cur = null;
+  const num = () => parseFloat(tokens[i++]);
+  const pair = rel => { const x = num(), y = num(); return rel ? [x + cx, y + cy] : [x, y]; };
+  while (i < tokens.length) {
+    if (/^[a-z]$/i.test(tokens[i])) cmd = tokens[i++];
+    const rel = cmd === cmd.toLowerCase(), C = cmd.toUpperCase();
+    if (C === 'M') {
+      [cx, cy] = pair(rel);
+      [sx, sy] = [cx, cy];
+      cur = [`M${round(cx)} ${round(cy)}`];
+      subpaths.push(cur);
+      cmd = rel ? 'l' : 'L'; // further pairs after a move are lines
+    } else if (C === 'L') {
+      [cx, cy] = pair(rel);
+      cur.push(`L${round(cx)} ${round(cy)}`);
+    } else if (C === 'H') {
+      cx = num() + (rel ? cx : 0);
+      cur.push(`L${round(cx)} ${round(cy)}`);
+    } else if (C === 'V') {
+      cy = num() + (rel ? cy : 0);
+      cur.push(`L${round(cx)} ${round(cy)}`);
+    } else if (C === 'C' || C === 'S' || C === 'Q') {
+      const count = C === 'C' ? 3 : 2, pts = [];
+      for (let k = 0; k < count; k++) pts.push(pair(rel));
+      [cx, cy] = pts[pts.length - 1];
+      cur.push(C + pts.map(p => p.map(round).join(' ')).join(' '));
+    } else if (C === 'Z') {
+      cur.push('Z');
+      [cx, cy] = [sx, sy];
+    } else {
+      throw new Error(`Unsupported path command "${cmd}"`);
+    }
+  }
+  return subpaths.map(s => s.join(''));
+}
+
+// Points every `spacing` px along a polyline, starting at its first point.
+function resample(poly, spacing) {
+  const out = [poly[0]];
+  let carry = 0;
+  for (let i = 1; i < poly.length; i++) {
+    const [a, b] = [poly[i - 1], poly[i]], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    let d = spacing - carry;
+    for (; d <= len; d += spacing) out.push([a[0] + (b[0] - a[0]) * d / len, a[1] + (b[1] - a[1]) * d / len]);
+    carry = len - (d - spacing);
+  }
+  return out;
+}
+
+// Organ geometry shared by the colour and single-colour drawings.
+const ORGANS = {
+  // Brain: line art supplied as an SVG (tools/sources/brain-line-art.svg), one filled path whose
+  // first subpath is the outer edge. Its bounds (x 44.175–164.679, y 57.358–160.073, measured in a
+  // browser) are fitted to the canvas with a 16 px margin.
+  get brainArt() {
+    const d = lineArt('brain-line-art.svg');
+    return {
+      d,
+      silhouette: d.slice(0, d.search(/\s[mM]\s/)) + ' z',
+      transform: `translate(128 128) scale(${round(224 / 120.504)}) translate(-104.427 -108.716)`,
+    };
+  },
+  // Heart: line art supplied as an SVG (tools/sources/heart-line-art.svg), one filled path. Its
+  // subpaths are the outer edge, the enclosed regions between the lines (listed below, numbered
+  // in path order), and one ink detail. Bounds (x 55.9–153.5, y 75.3–220.6) fitted to the canvas.
+  get heartArt() {
+    const d = lineArt('heart-line-art.svg');
+    return {
+      d,
+      regions: splitSubpaths(d),
+      transform: `translate(128 128) scale(${round(224 / 145.3)}) translate(-104.7 -147.95)`,
+    };
+  },
+  heartRegions: {
+    ventricles: 1, // also runs up into the pulmonary trunk and left pulmonary artery
+    rightAtrium: 3,
+    leftAtrium: 4, // with a pulmonary vein leaving to the right
+    pulmonaryVeinLumen: 5,
+    aorta: 6,
+    aorticRootGaps: [7, 10],
+    superiorVenaCava: [8, 12],
+    leftPulmonaryArteryLumen: 9,
+    rightPulmonaryArtery: 11,
+  },
+  // The drawing's short line at the base of the pulmonary trunk, extended at both ends to meet
+  // the aorta and the left atrium, so it closes off the trunk (drawing coordinates).
+  pulmonaryTrunkBase: 'M102.6 136.2C101.2 134.2 100.1 131.8 99.5 129.2M112.6 143.4C116 144.8 119.4 145.8 122.8 146.4',
+  // Everything in the ventricles region beyond that line: the pulmonary trunk and left pulmonary artery.
+  pulmonaryTrunk: 'M99 129L102.5 136.2C105 139.5 108.5 142 112.6 143.4C116 144.8 119.4 145.8 122.8 146.4L165 146.4L165 92L99 92Z',
+  // Colon centreline: caecum, ascending, transverse (sagging), descending, sigmoid, rectum.
+  colon: [[66, 206], [66, 170], [66, 128], [68, 90], [84, 68], [116, 80], [150, 80], [180, 60], [198, 74], [198, 120],
+    [198, 168], [190, 194], [164, 204], [142, 196], [128, 208], [128, 230]],
+  // Sacculations along the colon: [x, y, radius, direction of travel in degrees]. The caecum
+  // is larger and the rectum narrower.
+  colonSacs() {
+    const pts = resample(densify(this.colon, 16), 18);
+    return pts.map(([x, y], i) => {
+      const [p, q] = [pts[Math.max(0, i - 1)], pts[Math.min(pts.length - 1, i + 1)]];
+      return [x, y, i === 0 ? 21 : i >= pts.length - 2 ? 13 : 17, Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI];
+    });
+  },
+  // Small-bowel loops packed inside the colon frame, ending at the caecum.
+  smallIntestine() {
+    const pts = [];
+    [112, 131, 150, 169].forEach((y, row) => {
+      const xs = row % 2 ? [164, 144, 124, 104] : [104, 124, 144, 164];
+      xs.forEach((x, i) => pts.push([x, y + 2.5 * Math.sin(i * 1.7 + row)]));
+      if (row < 3) pts.push([row % 2 ? 96 : 170, y + 9.5]);
+    });
+    pts.push([90, 186], [80, 198]);
+    return densify(pts, 10);
+  },
+};
+
 // One coccus of a pneumococcal pair: an oval, slightly fuller where the pair meets (x = 0)
 // and tapering a little towards the far end. side = 1 draws the right-hand coccus, -1 the left.
 const lancetPath = side => {
@@ -370,5 +508,5 @@ module.exports = {
   STROKE, INK, PALETTE, round, mix, tint, shade, outline,
   sphereGradient, cylinderGradient, glossGradient, gloss,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
-  pointsAlongBezier, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
+  pointsAlongBezier, densify, resample, splitSubpaths, ORGANS, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
 };

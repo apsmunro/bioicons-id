@@ -43,6 +43,7 @@ tools/draw-colour-icons.js        code that draws the full-colour icons
 tools/draw-mono-icons.js         code that draws the single-colour icons
 tools/build-site.js              bundles the catalogue and SVGs for the gallery
 tools/serve.js                   local preview server
+tools/sources/                   hand-drawn artwork that some icons are built from (e.g. the brain)
 index.html, assets/              the gallery website
 ```
 

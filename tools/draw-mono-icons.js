@@ -618,30 +618,19 @@ function baby() {
 // ------------------------------------------------------------------ organs
 
 function brain() {
-  const cerebrum = 'M58 132C50 90 82 50 130 46C178 42 216 72 218 112C220 140 206 160 184 164C174 176 156 178 144 172C128 180 108 178 98 170C80 172 62 160 58 132Z';
-  const sulci = 'M138 50C130 76 146 94 134 118M86 76C98 86 92 100 104 108M110 58C108 74 120 82 114 98M166 56C158 72 172 86 162 100' +
-    'M192 78C180 88 194 104 182 114M206 124C192 128 190 142 176 146M72 116C84 118 86 128 76 138M112 158C124 150 136 160 150 152';
-  return [
-    `<g transform="translate(0 -4)">`,
-    `<path d="M140 178C141 194 139 208 134 224" ${line(14)}/>`,
-    `<ellipse cx="184" cy="188" rx="28" ry="17" ${line(8)}/>`,
-    `<path d="M166 186H202M170 195H198" ${line(3)}/>`,
-    `<path d="${cerebrum}" ${line(LINE)}/>`,
-    `<path d="M94 142C118 130 140 134 166 120" ${line(5)}/>`,
-    `<path d="${sulci}" ${line(4)}/>`,
-    `</g>`,
-  ];
+  // The supplied line art, fitted to the canvas.
+  const art = K.ORGANS.brainArt;
+  return [`<path d="${art.d}" transform="${art.transform}" ${solid}/>`];
 }
 
 function heart() {
-  const body = 'M126 226C94 210 62 178 58 140C54 108 74 90 98 90C112 90 122 96 130 106C140 94 156 88 174 92C200 98 208 128 200 156C190 190 160 212 126 226Z';
+  // The supplied line art, fitted to the canvas, with the line at the pulmonary trunk's base completed.
+  const A = K.ORGANS.heartArt;
   return [
-    `<path d="M100 104L98 46" ${line(16)}/>`,
-    `<path d="M136 46L132 24M152 40L152 18M166 46L172 26" ${line(7)}/>`,
-    `<path d="M120 104C116 56 150 36 178 56L182 96" ${line(18)}/>`,
-    `<g transform="rotate(-15 128 150)"><path d="${body}" ${line(LINE)}/>` +
-    `<path d="M134 116C120 148 118 182 128 214M118 112C100 118 84 130 76 148" ${line(4)}/></g>`,
-    `<path d="M144 112C146 84 130 72 104 74" ${line(14)}/>`,
+    `<g transform="${A.transform}">`,
+    `<path d="${A.d}" ${solid}/>`,
+    `<path d="${K.ORGANS.pulmonaryTrunkBase}" fill="none" stroke="${INK}" stroke-width="1.7" stroke-linecap="round"/>`,
+    `</g>`,
   ];
 }
 
@@ -668,11 +657,10 @@ function liver() {
 
 function intestines() {
   return [
-    `<g transform="translate(0 -8)">`,
-    `<path d="M60 214L70 232" ${line(7)}/>`,
-    `<path d="M144 220L140 236" ${line(18)}/>`,
-    `<path d="M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220" ${line(26)}/>`,
-    `<path d="M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190" ${line(12)}/>`,
+    `<g transform="translate(0 -6)">`,
+    `<path d="${K.smoothOpenPath(K.ORGANS.smallIntestine())}" ${line(10)}/>`,
+    `<path d="M80 224C88 238 100 236 98 226" ${line(7)}/>`,
+    ...K.ORGANS.colonSacs().map(([x, y, r]) => `<circle cx="${n(x)}" cy="${n(y)}" r="${r}" ${solid}/>`),
     `</g>`,
   ];
 }

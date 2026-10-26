@@ -819,44 +819,47 @@ function complementMac(id) {
 // ------------------------------------------------------------------ organs
 
 function brain(id) {
-  const base = C.brain;
-  const cerebrum = 'M58 132C50 90 82 50 130 46C178 42 216 72 218 112C220 140 206 160 184 164C174 176 156 178 144 172C128 180 108 178 98 170C80 172 62 160 58 132Z';
-  const sulci = ['M138 50C130 76 146 94 134 118', 'M86 76C98 86 92 100 104 108', 'M110 58C108 74 120 82 114 98',
-    'M166 56C158 72 172 86 162 100', 'M192 78C180 88 194 104 182 114', 'M206 124C192 128 190 142 176 146',
-    'M72 116C84 118 86 128 76 138', 'M112 158C124 150 136 160 150 152', 'M160 132C172 140 186 136 196 144'];
-  const folia = [0, 1, 2, 3].map(i => `M${158 + i * 2} ${168 + i * 7}C172 ${164 + i * 7} 190 ${168 + i * 7} ${202 - i * 2} ${166 + i * 7}`);
+  // The supplied line art over a shaded fill of its own silhouette.
+  const base = C.brain, art = K.ORGANS.brainArt;
   return {
-    defs: [K.sphereGradient(`${id}-brain`, base, { light: 0.5 }), K.sphereGradient(`${id}-cerebellum`, shade(base, 0.08), { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+    defs: [K.sphereGradient(`${id}-brain`, base, { light: 0.5 }), K.glossGradient(`${id}-gloss`)],
     body: [
-      `<g transform="translate(0 -4)">`,
-      K.pipe('M140 166C142 186 140 204 134 222', shade(base, 0.05), 22),
-      `<ellipse cx="178" cy="178" rx="32" ry="21" transform="rotate(-8 178 178)" fill="url(#${id}-cerebellum)" stroke="${outline(base)}" stroke-width="2.5"/>`,
-      `<path d="${folia.join('')}" fill="none" stroke="${shade(base, 0.25)}" stroke-width="1.8" stroke-linecap="round"/>`,
-      `<path d="${cerebrum}" fill="url(#${id}-brain)" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
-      `<path d="M94 142C118 130 140 134 166 120" fill="none" stroke="${shade(base, 0.32)}" stroke-width="3.5" stroke-linecap="round"/>`,
-      `<path d="${sulci.join('')}" fill="none" stroke="${shade(base, 0.28)}" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>`,
-      K.gloss(`${id}-gloss`, 100, 74, 30, 13),
-      `</g>`,
+      `<path d="${art.silhouette}" transform="${art.transform}" fill="url(#${id}-brain)"/>`,
+      K.gloss(`${id}-gloss`, 88, 74, 30, 13),
+      `<path d="${art.d}" transform="${art.transform}" fill="${shade(base, 0.45)}"/>`,
     ],
   };
 }
 
 function heart(id) {
-  const muscle = C.heartMuscle, art = C.artery, vein = C.vein;
-  const body = 'M126 226C94 210 62 178 58 140C54 108 74 90 98 90C112 90 122 96 130 106C140 94 156 88 174 92C200 98 208 128 200 156C190 190 160 212 126 226Z';
+  // The supplied line art, with each enclosed region filled: muscle red for the chambers,
+  // arterial red for the aorta, venous blue for the SVC and pulmonary arteries.
+  const muscle = C.heartMuscle, atrium = shade(C.heartMuscle, 0.08), art = C.artery, vein = C.vein;
+  const O = K.ORGANS, A = O.heartArt, R = O.heartRegions;
+  const fill = (index, grad) => [].concat(index).map(i => `<path d="${A.regions[i]}" fill="url(#${id}-${grad})"/>`).join('');
   return {
-    defs: [K.sphereGradient(`${id}-muscle`, muscle, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+    defs: [
+      `<clipPath id="${id}-ventricles"><path d="${A.regions[R.ventricles]}"/></clipPath>`,
+      K.sphereGradient(`${id}-muscle`, muscle, { light: 0.45 }), K.sphereGradient(`${id}-atrium`, atrium, { light: 0.4 }),
+      K.sphereGradient(`${id}-aorta`, art, { light: 0.45 }), K.sphereGradient(`${id}-vein`, vein, { light: 0.45 }),
+      K.sphereGradient(`${id}-vein-lumen`, shade(vein, 0.45), { light: 0.2 }), K.sphereGradient(`${id}-artery-lumen`, shade(art, 0.45), { light: 0.2 }),
+      K.glossGradient(`${id}-gloss`),
+    ],
     body: [
-      K.pipe('M100 104L98 46', vein, 18),
-      K.pipe('M136 46L132 24', art, 8), K.pipe('M152 40L152 18', art, 8), K.pipe('M166 46L172 26', art, 8),
-      K.pipe('M120 104C116 56 150 36 178 56L182 96', art, 22),
-      // Tilted so the apex points to the patient's left (viewer's right).
-      `<g transform="rotate(-15 128 150)">`,
-      `<path d="${body}" fill="url(#${id}-muscle)" stroke="${outline(muscle)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<path d="M134 116C120 148 118 182 128 214M118 112C100 118 84 130 76 148" fill="none" stroke="${shade(muscle, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
-      K.gloss(`${id}-gloss`, 90, 128, 20, 12),
+      `<g transform="${A.transform}">`,
+      fill(R.ventricles, 'muscle'),
+      `<path d="${O.pulmonaryTrunk}" clip-path="url(#${id}-ventricles)" fill="url(#${id}-vein)"/>`,
+      fill([R.rightAtrium, R.leftAtrium, ...R.aorticRootGaps], 'atrium'),
+      fill(R.aorta, 'aorta'),
+      fill([...R.superiorVenaCava, R.rightPulmonaryArtery], 'vein'),
+      fill(R.leftPulmonaryArteryLumen, 'vein-lumen'),
+      fill(R.pulmonaryVeinLumen, 'artery-lumen'),
       `</g>`,
-      K.pipe('M144 112C146 84 130 72 104 74', vein, 18),
+      K.gloss(`${id}-gloss`, 92, 160, 16, 28, 20),
+      `<g transform="${A.transform}" fill="${shade(muscle, 0.6)}">`,
+      `<path d="${A.d}"/>`,
+      `<path d="${O.pulmonaryTrunkBase}" fill="none" stroke="${shade(muscle, 0.6)}" stroke-width="1.7" stroke-linecap="round"/>`,
+      `</g>`,
     ],
   };
 }
@@ -895,20 +898,22 @@ function liver(id) {
 
 function intestines(id) {
   const colon = C.colon, small = C.smallIntestine;
-  const haustra = [
-    ...[80, 104, 128, 152, 176, 200].map(y => `M51 ${y}H77`),
-    ...[96, 120, 144, 168].map(x => `M${x} 41V67`),
-    ...[80, 104, 128, 152, 176, 200].map(y => `M179 ${y}H205`),
-  ];
+  const sacs = K.ORGANS.colonSacs();
+  // Haustral folds: a short crease across the colon between neighbouring sacculations.
+  const folds = sacs.slice(1).map(([x, y, r, a], i) => {
+    const [px, py] = sacs[i], mx = (x + px) / 2, my = (y + py) / 2, t = a * Math.PI / 180, h = r * 0.85;
+    return `M${n(mx - h * Math.sin(t))} ${n(my + h * Math.cos(t))}L${n(mx + h * Math.sin(t))} ${n(my - h * Math.cos(t))}`;
+  });
   return {
-    defs: [],
+    defs: [K.sphereGradient(`${id}-sac`, colon, { light: 0.45, dark: 0.12 })],
     body: [
-      `<g transform="translate(0 -8)">`,
-      K.pipe('M60 214L70 232', colon, 7),
-      K.pipe('M144 220L140 236', colon, 20),
-      K.pipe('M64 208L64 74Q64 54 84 54L172 54Q192 54 192 74L192 196Q192 220 168 220L144 220', colon, 30),
-      `<path d="${haustra.join('')}" stroke="${shade(colon, 0.3)}" stroke-width="2" opacity="0.6"/>`,
-      K.pipe('M98 92C130 80 162 84 160 102C158 120 100 110 98 130C96 150 160 140 160 160C160 180 100 172 102 190', small, 16),
+      `<g transform="translate(0 -6)">`,
+      K.pipe(K.smoothOpenPath(K.ORGANS.smallIntestine()), small, 12),
+      K.pipe('M80 224C88 238 100 236 98 226', colon, 7),
+      // Outline layer first, then fills, so the sacculations merge into one scalloped tube.
+      ...sacs.map(([x, y, r]) => `<circle cx="${n(x)}" cy="${n(y)}" r="${r + 2.5}" fill="${outline(colon)}"/>`),
+      ...sacs.map(([x, y, r]) => `<circle cx="${n(x)}" cy="${n(y)}" r="${r}" fill="url(#${id}-sac)"/>`),
+      `<path d="${folds.join('')}" stroke="${shade(colon, 0.3)}" stroke-width="2" stroke-linecap="round" opacity="0.7"/>`,
       `</g>`,
     ],
   };
