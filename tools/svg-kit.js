@@ -41,6 +41,51 @@ const PALETTE = {
   labelAccent: '#F2A541',
   broth: '#B23B37',
   capYellow: '#F2B33D',
+  acidFast: '#D9466F', // Ziehl–Neelsen carbol fuchsin
+  capsule: '#E6DEFA',
+  rsvEnvelope: '#A8D5BA',
+  fusionProtein: '#E58A3C',
+  attachmentProtein: '#5B7FD6',
+  fluEnvelope: '#F2C48D',
+  haemagglutinin: '#4F86D9',
+  neuraminidase: '#D9534F',
+  herpesEnvelope: '#CDB8EA',
+  tegument: '#EEE5F8',
+  herpesCapsid: '#5E9ED6',
+  phageHead: '#5DA9E9',
+  mould: '#B9D98C',
+  conidia: '#4E8F3A',
+  bLymphocyte: '#B8E0C8',
+  plasmaCell: '#9FD3B4',
+  dendritic: '#F7DFA3',
+  nkCell: '#D6C9F0',
+  cytotoxicGranule: '#D9534F',
+  erythrocyte: '#D9473F',
+  jChain: '#F2A541',
+  mhcAlpha: '#B39DDB',
+  mhcBeta: '#4DB6AC',
+  peptide: '#F2A541',
+  lipidHead: '#F4B860',
+  lipidTail: '#D9B48A',
+  receptorChainA: '#4FA3C7',
+  receptorChainB: '#86C9E8',
+  cytokine: '#F28C6B',
+  kinase: '#9C7FD9',
+  vialCap: '#3E8ED0',
+  plunger: '#9AA6B2',
+  amberGlass: '#C77B2A',
+  oralPlunger: '#8E6CC9',
+  suspension: '#F3C6CF',
+  bloodAgar: '#B8323A',
+  colony: '#F3E9D2',
+  lung: '#EE9FA9',
+  skin: '#D9A07A',
+  hair: '#5A3A29',
+  shirt: '#4DB6AC',
+  shorts: '#3F5A8A',
+  shoe: '#4A4A55',
+  swaddle: '#F6E2A0',
+  hat: '#9ED9C2',
 };
 
 const round = v => Math.round(v * 100) / 100;
@@ -159,6 +204,41 @@ function wavePoints(p, tilt, { length = 46, amplitude = 5, wavelength = 18, phas
   return pts;
 }
 
+// Centres spaced along a cubic Bézier by the given gaps (n gaps → n + 1 points),
+// centred on the curve, each with its tangent angle in degrees.
+function pointsAlongBezier(p0, p1, p2, p3, gaps) {
+  const at = t => { const u = 1 - t; return [0, 1].map(k => u ** 3 * p0[k] + 3 * u * u * t * p1[k] + 3 * u * t * t * p2[k] + t ** 3 * p3[k]); };
+  const samples = Array.from({ length: 801 }, (_, i) => at(i / 800));
+  const dist = [0];
+  for (let i = 1; i < samples.length; i++) {
+    dist.push(dist[i - 1] + Math.hypot(samples[i][0] - samples[i - 1][0], samples[i][1] - samples[i - 1][1]));
+  }
+  let d = (dist[dist.length - 1] - gaps.reduce((a, b) => a + b, 0)) / 2;
+  const out = [];
+  for (let k = 0; k <= gaps.length; k++) {
+    const i = Math.max(1, Math.min(samples.length - 2, dist.findIndex(x => x >= d)));
+    const [p, q] = [samples[i - 1], samples[i + 1]];
+    out.push({ x: samples[i][0], y: samples[i][1], angle: Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI });
+    d += gaps[k] || 0;
+  }
+  return out;
+}
+
+// Bézier and gaps for the streptococcal chain, shared by its colour and single-colour icons.
+const STREP_CHAIN = [[22, 178], [84, 6], [170, 250], [234, 80], [39, 45, 39, 45, 39, 45]];
+
+// A tube (hypha, limb, airway) drawn as layered strokes: outline, body colour, soft highlight.
+function pipe(d, colour, width) {
+  const common = `d="${d}" fill="none" stroke-linecap="round" stroke-linejoin="round"`;
+  return `<path ${common} stroke="${outline(colour)}" stroke-width="${width + 5}"/>` +
+    `<path ${common} stroke="${colour}" stroke-width="${width}"/>` +
+    `<path ${common} stroke="#fff" stroke-width="${round(Math.max(1.5, width * 0.22))}" opacity="0.4" transform="translate(${round(-width * 0.18)} ${round(-width * 0.18)})"/>`;
+}
+
+// Circle as a path, so circles can be combined into one shape (e.g. with holes via evenodd).
+const circlePath = (cx, cy, r) =>
+  `M${round(cx - r)} ${round(cy)}a${r} ${r} 0 1 0 ${round(2 * r)} 0a${r} ${r} 0 1 0 ${round(-2 * r)} 0Z`;
+
 const vec = {
   unit: v => { const l = Math.hypot(...v); return v.map(x => x / l); },
   sub: (a, b) => a.map((x, i) => x - b[i]),
@@ -229,5 +309,5 @@ module.exports = {
   STROKE, INK, PALETTE, round, mix, tint, shade, outline,
   sphereGradient, cylinderGradient, glossGradient, gloss,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
-  vec, icosahedron, rng, svgDocument, writeIcon,
+  pointsAlongBezier, STREP_CHAIN, pipe, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
 };

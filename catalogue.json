@@ -33,6 +33,42 @@
       "tags": ["gram-negative", "rod", "bacillus", "E. coli", "Enterobacterales", "coliform", "Klebsiella", "UTI", "flagella", "pili", "bacterium"]
     },
     {
+      "id": "streptococcus",
+      "name": "Streptococcus",
+      "category": "bacteria",
+      "file": "icons/bacteria/streptococcus.svg",
+      "monoFile": "icons/bacteria/streptococcus-mono.svg",
+      "description": "Gram-positive cocci in chains (e.g. group A and group B streptococci). Coloured violet, after the Gram stain.",
+      "tags": ["gram-positive", "cocci", "chains", "GAS", "GBS", "Streptococcus pyogenes", "Streptococcus agalactiae", "strep", "scarlet fever", "iGAS", "bacterium"]
+    },
+    {
+      "id": "pneumococcus",
+      "name": "Pneumococcus",
+      "category": "bacteria",
+      "file": "icons/bacteria/pneumococcus.svg",
+      "monoFile": "icons/bacteria/pneumococcus-mono.svg",
+      "description": "Lancet-shaped Gram-positive diplococci surrounded by a polysaccharide capsule.",
+      "tags": ["Streptococcus pneumoniae", "pneumococcal", "diplococci", "capsule", "serotype", "PCV", "pneumonia", "meningitis", "IPD", "gram-positive", "bacterium"]
+    },
+    {
+      "id": "meningococcus",
+      "name": "Meningococcus",
+      "category": "bacteria",
+      "file": "icons/bacteria/meningococcus.svg",
+      "monoFile": "icons/bacteria/meningococcus-mono.svg",
+      "description": "Kidney-shaped Gram-negative diplococci with pili. Coloured pink, after the Gram stain.",
+      "tags": ["Neisseria meningitidis", "meningococcal", "diplococci", "gram-negative", "meningitis", "septicaemia", "MenB", "MenACWY", "gonococcus", "bacterium"]
+    },
+    {
+      "id": "mycobacterium-tuberculosis",
+      "name": "Mycobacterium tuberculosis",
+      "category": "bacteria",
+      "file": "icons/bacteria/mycobacterium-tuberculosis.svg",
+      "monoFile": "icons/bacteria/mycobacterium-tuberculosis-mono.svg",
+      "description": "Slender, beaded acid-fast bacilli in a cord. Coloured red, after the Ziehl–Neelsen stain.",
+      "tags": ["TB", "tuberculosis", "mycobacteria", "acid-fast bacilli", "AFB", "NTM", "non-tuberculous mycobacteria", "Ziehl-Neelsen", "cording", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -51,6 +87,42 @@
       "tags": ["non-enveloped virus", "icosahedral", "capsid", "DNA virus", "penton", "hexon", "fibre", "viral vector", "virion"]
     },
     {
+      "id": "rsv",
+      "name": "Respiratory syncytial virus (RSV)",
+      "category": "viruses",
+      "file": "icons/viruses/rsv.svg",
+      "monoFile": "icons/viruses/rsv-mono.svg",
+      "description": "Enveloped pneumovirus with fusion (F, orange) and attachment (G, blue) glycoproteins and a helical nucleocapsid.",
+      "tags": ["RSV", "bronchiolitis", "pneumovirus", "F protein", "nirsevimab", "palivizumab", "enveloped virus", "RNA virus", "respiratory virus", "virion"]
+    },
+    {
+      "id": "influenza",
+      "name": "Influenza virus",
+      "category": "viruses",
+      "file": "icons/viruses/influenza.svg",
+      "monoFile": "icons/viruses/influenza-mono.svg",
+      "description": "Enveloped orthomyxovirus with haemagglutinin (HA, blue) and neuraminidase (NA, red) spikes and eight RNA segments.",
+      "tags": ["flu", "influenza A", "influenza B", "haemagglutinin", "hemagglutinin", "neuraminidase", "HA", "NA", "oseltamivir", "enveloped virus", "RNA virus", "virion"]
+    },
+    {
+      "id": "herpesvirus",
+      "name": "Herpesvirus (e.g. CMV)",
+      "category": "viruses",
+      "file": "icons/viruses/herpesvirus.svg",
+      "monoFile": "icons/viruses/herpesvirus-mono.svg",
+      "description": "Enveloped virus with glycoprotein spikes, a tegument layer and an icosahedral capsid.",
+      "tags": ["CMV", "cytomegalovirus", "cCMV", "congenital CMV", "HSV", "herpes simplex", "VZV", "varicella", "EBV", "HHV-6", "DNA virus", "enveloped virus", "virion"]
+    },
+    {
+      "id": "bacteriophage",
+      "name": "Bacteriophage",
+      "category": "viruses",
+      "file": "icons/viruses/bacteriophage.svg",
+      "monoFile": "icons/viruses/bacteriophage-mono.svg",
+      "description": "Tailed phage with an icosahedral head, contractile tail sheath, baseplate and tail fibres.",
+      "tags": ["phage", "phage therapy", "T4", "tailed phage", "Caudovirales", "virus", "antimicrobial resistance", "AMR", "virion"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -58,6 +130,15 @@
       "monoFile": "icons/fungi/candida-mono.svg",
       "description": "Yeast cell with a daughter bud, thick cell wall, vacuole, nucleus and bud scar.",
       "tags": ["fungus", "yeast", "Candida albicans", "candidaemia", "candidiasis", "budding", "fungal infection"]
+    },
+    {
+      "id": "aspergillus",
+      "name": "Aspergillus",
+      "category": "fungi",
+      "file": "icons/fungi/aspergillus.svg",
+      "monoFile": "icons/fungi/aspergillus-mono.svg",
+      "description": "Mould with septate branching hyphae and a conidiophore bearing chains of conidia.",
+      "tags": ["Aspergillus fumigatus", "mould", "mold", "aspergillosis", "invasive fungal infection", "hyphae", "conidia", "spores", "fungus"]
     },
     {
       "id": "neutrophil",
@@ -87,6 +168,51 @@
       "tags": ["T lymphocyte", "TCR", "lymphocyte", "adaptive immunity", "CD4", "CD8", "leukocyte", "white blood cell"]
     },
     {
+      "id": "b-cell",
+      "name": "B cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/b-cell.svg",
+      "monoFile": "icons/immune-cells/b-cell-mono.svg",
+      "description": "Lymphocyte with a large nucleus and surface B-cell receptors (membrane-bound antibody).",
+      "tags": ["B lymphocyte", "BCR", "lymphocyte", "adaptive immunity", "humoral immunity", "CD19", "CD20", "leukocyte", "white blood cell"]
+    },
+    {
+      "id": "plasma-cell",
+      "name": "Plasma cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/plasma-cell.svg",
+      "monoFile": "icons/immune-cells/plasma-cell-mono.svg",
+      "description": "Antibody-secreting cell with an eccentric clock-face nucleus, perinuclear Golgi and abundant rough endoplasmic reticulum.",
+      "tags": ["plasma cell", "antibody-secreting cell", "ASC", "plasmablast", "humoral immunity", "immunoglobulin", "B cell", "adaptive immunity"]
+    },
+    {
+      "id": "dendritic-cell",
+      "name": "Dendritic cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/dendritic-cell.svg",
+      "monoFile": "icons/immune-cells/dendritic-cell-mono.svg",
+      "description": "Antigen-presenting cell with long dendritic processes.",
+      "tags": ["DC", "antigen-presenting cell", "APC", "Langerhans cell", "pDC", "innate immunity", "antigen presentation", "leukocyte"]
+    },
+    {
+      "id": "nk-cell",
+      "name": "Natural killer cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/nk-cell.svg",
+      "monoFile": "icons/immune-cells/nk-cell-mono.svg",
+      "description": "Large granular lymphocyte with cytotoxic granules polarised to one side.",
+      "tags": ["NK cell", "natural killer", "large granular lymphocyte", "cytotoxicity", "perforin", "granzyme", "innate immunity", "HLH", "leukocyte"]
+    },
+    {
+      "id": "red-blood-cells",
+      "name": "Red blood cells",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/red-blood-cells.svg",
+      "monoFile": "icons/immune-cells/red-blood-cells-mono.svg",
+      "description": "Biconcave erythrocytes.",
+      "tags": ["erythrocyte", "RBC", "red cell", "blood", "anaemia", "haemolysis", "malaria", "sickle cell", "transfusion"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -94,6 +220,33 @@
       "monoFile": "icons/molecules/igg-antibody-mono.svg",
       "description": "Immunoglobulin G showing heavy chains (dark blue), light chains (light blue), hinge disulphide bonds and the Fc glycan.",
       "tags": ["antibody", "immunoglobulin", "IgG", "Fab", "Fc", "humoral immunity", "monoclonal antibody", "mAb", "IVIG"]
+    },
+    {
+      "id": "igm-pentamer",
+      "name": "IgM pentamer",
+      "category": "molecules",
+      "file": "icons/molecules/igm-pentamer.svg",
+      "monoFile": "icons/molecules/igm-pentamer-mono.svg",
+      "description": "Pentameric immunoglobulin M with five antibody units joined by the J chain (orange).",
+      "tags": ["antibody", "immunoglobulin", "IgM", "pentamer", "J chain", "primary response", "humoral immunity", "serology"]
+    },
+    {
+      "id": "mhc-class-ii",
+      "name": "MHC class II with peptide",
+      "category": "molecules",
+      "file": "icons/molecules/mhc-class-ii.svg",
+      "monoFile": "icons/molecules/mhc-class-ii-mono.svg",
+      "description": "MHC class II molecule (α chain lilac, β chain teal) presenting a peptide (orange) at the cell membrane.",
+      "tags": ["MHC II", "HLA class II", "HLA-DR", "antigen presentation", "peptide", "epitope", "CD4 T cell", "membrane", "adaptive immunity"]
+    },
+    {
+      "id": "cytokine-receptor",
+      "name": "Cytokine and receptor",
+      "category": "molecules",
+      "file": "icons/molecules/cytokine-receptor.svg",
+      "monoFile": "icons/molecules/cytokine-receptor-mono.svg",
+      "description": "Cytokine bound to a dimeric receptor in the cell membrane, with associated JAK kinases inside the cell and free cytokines above.",
+      "tags": ["cytokine", "interleukin", "interferon", "IL-6", "receptor", "JAK-STAT", "signalling", "signaling", "cytokine storm", "membrane"]
     },
     {
       "id": "antibiotic-capsule",
@@ -114,6 +267,24 @@
       "tags": ["intravenous", "IV", "infusion", "drip", "fluids", "IV antibiotics", "parenteral", "OPAT"]
     },
     {
+      "id": "vaccine",
+      "name": "Vaccine",
+      "category": "treatment",
+      "file": "icons/treatment/vaccine.svg",
+      "monoFile": "icons/treatment/vaccine-mono.svg",
+      "description": "Vaccine vial with a syringe.",
+      "tags": ["vaccine", "vaccination", "immunisation", "immunization", "injection", "vial", "syringe", "needle", "prevention"]
+    },
+    {
+      "id": "oral-suspension",
+      "name": "Oral antibiotic suspension",
+      "category": "treatment",
+      "file": "icons/treatment/oral-suspension.svg",
+      "monoFile": "icons/treatment/oral-suspension-mono.svg",
+      "description": "Amber medicine bottle with an oral dosing syringe, as used for liquid antibiotics in children.",
+      "tags": ["oral suspension", "liquid medicine", "syrup", "antibiotic", "paediatric", "pediatric", "dosing syringe", "oral", "enteral", "amoxicillin"]
+    },
+    {
       "id": "blood-culture-bottle",
       "name": "Blood culture bottle",
       "category": "clinical",
@@ -121,6 +292,42 @@
       "monoFile": "icons/clinical/blood-culture-bottle-mono.svg",
       "description": "Inoculated blood culture bottle with label, barcode and base sensor.",
       "tags": ["blood culture", "sepsis", "bacteraemia", "microbiology", "diagnostics", "laboratory", "specimen"]
+    },
+    {
+      "id": "blood-agar-plate",
+      "name": "Blood agar plate",
+      "category": "clinical",
+      "file": "icons/clinical/blood-agar-plate.svg",
+      "monoFile": "icons/clinical/blood-agar-plate-mono.svg",
+      "description": "Blood agar plate with colonies streaked out across quadrants, some surrounded by haemolysis.",
+      "tags": ["agar", "culture", "petri dish", "colonies", "microbiology", "laboratory", "beta-haemolysis", "β-haemolysis", "diagnostics"]
+    },
+    {
+      "id": "lungs",
+      "name": "Lungs",
+      "category": "clinical",
+      "file": "icons/clinical/lungs.svg",
+      "monoFile": "icons/clinical/lungs-mono.svg",
+      "description": "Lungs with trachea, bronchi and lobar fissures.",
+      "tags": ["lung", "respiratory", "pneumonia", "LRTI", "chest", "airway", "bronchi", "trachea", "anatomy"]
+    },
+    {
+      "id": "child",
+      "name": "Child",
+      "category": "clinical",
+      "file": "icons/clinical/child.svg",
+      "monoFile": "icons/clinical/child-mono.svg",
+      "description": "Young child standing.",
+      "tags": ["child", "paediatric", "pediatric", "patient", "kid", "person", "human", "school-age"]
+    },
+    {
+      "id": "newborn",
+      "name": "Newborn baby",
+      "category": "clinical",
+      "file": "icons/clinical/newborn.svg",
+      "monoFile": "icons/clinical/newborn-mono.svg",
+      "description": "Swaddled newborn baby in a knitted hat.",
+      "tags": ["newborn", "neonate", "neonatal", "baby", "infant", "patient", "person", "human", "early-onset sepsis"]
     }
   ]
 }

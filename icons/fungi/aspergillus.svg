@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="aspergillus-title">
+<title id="aspergillus-title">Aspergillus</title>
+<desc>Mould with septate branching hyphae and a conidiophore bearing chains of conidia.</desc>
+<defs><radialGradient id="aspergillus-vesicle" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e3f0d1"/><stop offset="0.55" stop-color="#B9D98C"/><stop offset="1" stop-color="#9bb676"/></radialGradient><radialGradient id="aspergillus-conidium" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8d2b0"/><stop offset="0.55" stop-color="#4E8F3A"/><stop offset="1" stop-color="#427831"/></radialGradient></defs>
+<path d="M70 202Q58 188 42 178" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#738757" stroke-width="15"/><path d="M70 202Q58 188 42 178" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9D98C" stroke-width="10"/><path d="M70 202Q58 188 42 178" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.2" opacity="0.4" transform="translate(-1.8 -1.8)"/>
+<path d="M172 202Q190 214 212 234" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#738757" stroke-width="15"/><path d="M172 202Q190 214 212 234" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9D98C" stroke-width="10"/><path d="M172 202Q190 214 212 234" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.2" opacity="0.4" transform="translate(-1.8 -1.8)"/>
+<path d="M30 202L226 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#738757" stroke-width="17"/><path d="M30 202L226 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9D98C" stroke-width="12"/><path d="M30 202L226 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.64" opacity="0.4" transform="translate(-2.16 -2.16)"/>
+<g stroke="#738757" stroke-width="2"><line x1="56" y1="196" x2="56" y2="208"/><line x1="100" y1="196" x2="100" y2="208"/><line x1="150" y1="196" x2="150" y2="208"/><line x1="198" y1="196" x2="198" y2="208"/></g>
+<path d="M128 202L128 118" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#738757" stroke-width="16"/><path d="M128 202L128 118" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9D98C" stroke-width="11"/><path d="M128 202L128 118" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.42" opacity="0.4" transform="translate(-1.98 -1.98)"/>
+<path d="M108.68 94.82L96.12 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M108.68 94.82L96.12 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M108.68 94.82L96.12 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M111.37 88.89L100.56 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M111.37 88.89L100.56 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M111.37 88.89L100.56 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M115.82 84.13L107.91 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M115.82 84.13L107.91 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M115.82 84.13L107.91 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M121.57 81.06L117.39 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M121.57 81.06L117.39 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M121.57 81.06L117.39 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M128 80L128 67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M128 80L128 67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M128 80L128 67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M134.43 81.06L138.61 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M134.43 81.06L138.61 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M134.43 81.06L138.61 68.75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M140.18 84.13L148.09 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M140.18 84.13L148.09 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M140.18 84.13L148.09 73.82" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M144.63 88.89L155.44 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M144.63 88.89L155.44 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M144.63 88.89L155.44 81.67" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<path d="M147.32 94.82L159.88 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#697c50" stroke-width="10"/><path d="M147.32 94.82L159.88 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#aac881" stroke-width="5"/><path d="M147.32 94.82L159.88 91.46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-0.9 -0.9)"/>
+<circle cx="128" cy="100" r="22" fill="url(#aspergillus-vesicle)" stroke="#738757" stroke-width="2.5"/>
+<circle cx="59.9" cy="81.75" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="69.38" cy="60.83" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="85.08" cy="44.07" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="105.34" cy="33.24" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="128" cy="29.5" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="150.66" cy="33.24" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="170.92" cy="44.07" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="186.62" cy="60.83" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="196.1" cy="81.75" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="70.04" cy="84.47" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="78.11" cy="66.67" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="91.47" cy="52.4" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="108.71" cy="43.18" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="128" cy="40" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="147.29" cy="43.18" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="164.53" cy="52.4" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="177.89" cy="66.67" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="185.96" cy="84.47" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="80.19" cy="87.19" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="86.84" cy="72.5" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="97.87" cy="60.73" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="112.09" cy="53.13" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="128" cy="50.5" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="143.91" cy="53.13" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="158.13" cy="60.73" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="169.16" cy="72.5" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="175.81" cy="87.19" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="90.33" cy="89.91" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="95.57" cy="78.33" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="104.26" cy="69.06" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="115.46" cy="63.07" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="128" cy="61" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="140.54" cy="63.07" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="151.74" cy="69.06" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="160.43" cy="78.33" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+<circle cx="165.67" cy="89.91" r="5.2" fill="url(#aspergillus-conidium)" stroke="#305924" stroke-width="1.2"/>
+</svg>

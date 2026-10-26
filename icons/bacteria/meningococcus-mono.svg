@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="meningococcus-mono-title">
+<title id="meningococcus-mono-title">Meningococcus (single colour)</title>
+<desc>Kidney-shaped Gram-negative diplococci with pili. Coloured pink, after the Gram stain.</desc>
+<defs></defs>
+<g transform="translate(128 128) rotate(-20) scale(1.35)">
+<path d="M-6 -34C-40 -40 -60 -18 -60 4C-60 28 -38 40 -6 34C-14 14 -14 -14 -6 -34Z" fill="#000000"/>
+<path d="M6 -34C40 -40 60 -18 60 4C60 28 38 40 6 34C14 14 14 -14 6 -34Z" fill="#000000"/>
+</g>
+</svg>

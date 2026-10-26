@@ -31,6 +31,8 @@ Every icon follows these rules so the set looks like one family on a slide.
 | --- | --- | --- |
 | Gram-positive bacteria | violet `#8B6FD9` | crystal violet in the Gram stain |
 | Gram-negative bacteria | pink `#E46F8C` | safranin counterstain |
+| Mycobacteria | red `#D9466F` | carbol fuchsin in the Ziehl–Neelsen stain |
+| Bacterial capsule | pale lilac halo `#E6DEFA` | |
 | Fungi | warm yellow `#E8C26A` | |
 | Viral envelope | soft blue `#86B6D6` | |
 | Spike / attachment proteins | red `#DF5249` | |
@@ -41,7 +43,11 @@ Every icon follows these rules so the set looks like one family on a slide.
 | Glycans | green `#5DBB63` | |
 
 Cell cytoplasm colours distinguish cell types: neutrophil pink, macrophage peach,
-lymphocyte blue.
+T cell blue, B-cell lineage mint (deeper for plasma cells), NK cell lavender,
+dendritic cell sand. Each virus has its own envelope colour; within a virus, different
+surface proteins get different colours (e.g. RSV F orange and G blue; influenza HA blue and NA red).
+
+People are drawn without facial features, so they stay neutral and work for any audience.
 
 ## Single-colour versions
 

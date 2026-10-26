@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="oral-suspension-mono-title">
+<title id="oral-suspension-mono-title">Oral antibiotic suspension (single colour)</title>
+<desc>Amber medicine bottle with an oral dosing syringe, as used for liquid antibiotics in children.</desc>
+<defs></defs>
+<path d="M62 104Q62 86 80 82L84 70L130 70L134 82Q152 86 152 104L152 216Q152 228 140 228L74 228Q62 228 62 216Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="78" y="28" width="58" height="32" rx="6" fill="#000000"/>
+<rect x="76" y="122" width="62" height="64" rx="3" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="85" y="136" width="44" height="5" rx="2.5" fill="#000000"/>
+<rect x="85" y="148" width="34" height="5" rx="2.5" fill="#000000"/>
+<rect x="85" y="160" width="46" height="5" rx="2.5" fill="#000000"/>
+<rect x="85" y="172" width="28" height="5" rx="2.5" fill="#000000"/>
+<g transform="translate(196 132) rotate(12)">
+<line x1="0" y1="-98" x2="0" y2="-80" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-15" y="-106" width="30" height="8" rx="3" fill="#000000"/>
+<rect x="-20" y="-82" width="40" height="6" rx="3" fill="#000000"/>
+<rect x="-12" y="-70" width="24" height="120" rx="4" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-6" y="-2" width="12" height="46" rx="2" fill="#000000"/>
+<rect x="-7" y="-12" width="14" height="5" rx="2" fill="#000000"/>
+<rect x="-4" y="52" width="8" height="12" rx="2" fill="#000000"/>
+</g>
+</svg>

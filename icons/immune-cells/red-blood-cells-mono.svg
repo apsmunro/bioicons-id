@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="red-blood-cells-mono-title">
+<title id="red-blood-cells-mono-title">Red blood cells (single colour)</title>
+<desc>Biconcave erythrocytes.</desc>
+<defs></defs>
+<circle cx="98" cy="128" r="68" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="98" cy="128" r="32" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M208 53C226 53 232 70 226 95C222 112 222 144 226 161C232 186 226 203 208 203C190 203 184 186 190 161C194 144 194 112 190 95C184 70 190 53 208 53Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

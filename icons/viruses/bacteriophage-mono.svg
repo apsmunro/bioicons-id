@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="bacteriophage-mono-title">
+<title id="bacteriophage-mono-title">Bacteriophage (single colour)</title>
+<desc>Tailed phage with an icosahedral head, contractile tail sheath, baseplate and tail fibres.</desc>
+<defs></defs>
+<polygon points="128,20 168,42 168,96 128,118 88,96 88,42" fill="#000000" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+<rect x="114" y="123" width="28" height="7" rx="2" fill="#000000"/>
+<rect x="117" y="133" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="140" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="147" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="154" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="161" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="168" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="175" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="117" y="182" width="22" height="4.5" rx="1.5" fill="#000000"/>
+<rect x="100" y="188" width="56" height="9" rx="3" fill="#000000"/>
+<path d="M104 196L74 208L60 236" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M152 196L182 208L196 236" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M116 197L100 216L96 238" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 197L156 216L160 238" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

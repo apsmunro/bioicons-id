@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="child-mono-title">
+<title id="child-mono-title">Child (single colour)</title>
+<desc>Young child standing.</desc>
+<defs></defs>
+<path d="M113 182L113 222M143 182L143 222" fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="110" cy="230" rx="14" ry="7" fill="#000000"/>
+<ellipse cx="146" cy="230" rx="14" ry="7" fill="#000000"/>
+<path d="M98 156L158 156L162 188L132 188L128 176L124 188L94 188Z" fill="#000000"/>
+<path d="M80 132L72 172M176 132L184 172" fill="none" stroke="#000000" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 96Q128 88 158 96L184 128L170 140L158 126L158 160L98 160L98 126L86 140L72 128Z" fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="99" cy="58" r="6" fill="#000000"/>
+<circle cx="157" cy="58" r="6" fill="#000000"/>
+<circle cx="128" cy="56" r="29" fill="#000000"/>
+</svg>

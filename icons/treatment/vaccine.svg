@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="vaccine-title">
+<title id="vaccine-title">Vaccine</title>
+<desc>Vaccine vial with a syringe.</desc>
+<defs><clipPath id="vaccine-clip"><path d="M44 108Q44 94 58 90L60 80L88 80L90 90Q104 94 104 108L104 200Q104 210 94 210L54 210Q44 210 44 200Z"/></clipPath><linearGradient id="vaccine-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><linearGradient id="vaccine-cap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a85c4"/><stop offset="0.25" stop-color="#9fc7e8"/><stop offset="0.6" stop-color="#3E8ED0"/><stop offset="1" stop-color="#306fa2"/></linearGradient><linearGradient id="vaccine-crimp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#aeb7c0"/><stop offset="0.25" stop-color="#dce1e6"/><stop offset="0.6" stop-color="#B9C3CC"/><stop offset="1" stop-color="#90989f"/></linearGradient><linearGradient id="vaccine-rod" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#919ca7"/><stop offset="0.25" stop-color="#cdd3d9"/><stop offset="0.6" stop-color="#9AA6B2"/><stop offset="1" stop-color="#78818b"/></linearGradient><linearGradient id="vaccine-liquid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#92c4e1"/><stop offset="0.25" stop-color="#cde8f7"/><stop offset="0.6" stop-color="#9BD0EF"/><stop offset="1" stop-color="#79a2ba"/></linearGradient></defs>
+<path d="M44 108Q44 94 58 90L60 80L88 80L90 90Q104 94 104 108L104 200Q104 210 94 210L54 210Q44 210 44 200Z" fill="url(#vaccine-glass)"/>
+<g clip-path="url(#vaccine-clip)"><rect x="40" y="128" width="70" height="86" fill="#afd9f2"/><line x1="40" y1="128" x2="108" y2="128" stroke="#fff" stroke-width="2" opacity="0.8"/></g>
+<rect x="50" y="98" width="5" height="100" rx="2.5" fill="#fff" opacity="0.5"/>
+<rect x="50" y="146" width="48" height="38" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>
+<path d="M50 155V148a2 2 0 0 1 2-2h44a2 2 0 0 1 2 2v7Z" fill="#3E8ED0"/>
+<rect x="56" y="164" width="32" height="3.5" rx="1.75" fill="#B8C6D1"/>
+<rect x="56" y="172" width="24" height="3.5" rx="1.75" fill="#B8C6D1"/>
+<path d="M44 108Q44 94 58 90L60 80L88 80L90 90Q104 94 104 108L104 200Q104 210 94 210L54 210Q44 210 44 200Z" fill="none" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<rect x="60" y="68" width="28" height="14" rx="3" fill="url(#vaccine-crimp)" stroke="#787f85" stroke-width="2"/>
+<rect x="56" y="50" width="36" height="20" rx="5" fill="url(#vaccine-cap)" stroke="#265881" stroke-width="2.5"/>
+<g transform="translate(160 140) rotate(-45)">
+<rect x="-100" y="-4" width="50" height="8" fill="url(#vaccine-rod)" stroke="#5f676e" stroke-width="1.5"/>
+<rect x="-106" y="-16" width="8" height="32" rx="3" fill="#9AA6B2" stroke="#5f676e" stroke-width="2"/>
+<line x1="56" y1="0" x2="96" y2="0" stroke="#5f676e" stroke-width="4" stroke-linecap="round"/>
+<line x1="56" y1="0" x2="96" y2="0" stroke="#D4DBE1" stroke-width="2" stroke-linecap="round"/>
+<path d="M44 -8L54 -5L54 5L44 8Z" fill="#82b6e0" stroke="#265881" stroke-width="2" stroke-linejoin="round"/>
+<rect x="-56" y="-14" width="100" height="28" rx="4" fill="#EEF4F8" opacity="0.9"/>
+<rect x="-10" y="-11" width="52" height="22" rx="2" fill="url(#vaccine-liquid)"/>
+<rect x="-17" y="-12" width="8" height="24" rx="2" fill="#4A4A55"/>
+<g stroke="#8DA6B8" stroke-width="1.2"><line x1="-44" y1="-14" x2="-44" y2="-5"/><line x1="-36" y1="-14" x2="-36" y2="-9"/><line x1="-28" y1="-14" x2="-28" y2="-5"/><line x1="-20" y1="-14" x2="-20" y2="-9"/><line x1="-12" y1="-14" x2="-12" y2="-5"/><line x1="-4" y1="-14" x2="-4" y2="-9"/><line x1="4" y1="-14" x2="4" y2="-5"/><line x1="12" y1="-14" x2="12" y2="-9"/><line x1="20" y1="-14" x2="20" y2="-5"/><line x1="28" y1="-14" x2="28" y2="-9"/></g>
+<rect x="-56" y="-14" width="100" height="28" rx="4" fill="none" stroke="#8DA6B8" stroke-width="2.5"/>
+<rect x="-62" y="-24" width="7" height="48" rx="3" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2"/>
+<rect x="-48" y="6" width="86" height="4" rx="2" fill="#fff" opacity="0.55"/>
+</g>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="newborn-title">
+<title id="newborn-title">Newborn baby</title>
+<desc>Swaddled newborn baby in a knitted hat.</desc>
+<defs><radialGradient id="newborn-swaddle" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbf1d0"/><stop offset="0.55" stop-color="#F6E2A0"/><stop offset="1" stop-color="#cfbe86"/></radialGradient><radialGradient id="newborn-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e6c1a9"/><stop offset="0.55" stop-color="#D9A07A"/><stop offset="1" stop-color="#b68666"/></radialGradient><radialGradient id="newborn-hat" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#cfece1"/><stop offset="0.55" stop-color="#9ED9C2"/><stop offset="1" stop-color="#85b6a3"/></radialGradient><radialGradient id="newborn-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(-8 0)">
+<circle cx="84" cy="96" r="46" fill="url(#newborn-swaddle)" stroke="#998c63" stroke-width="3"/>
+<g transform="translate(142 150) rotate(-32)">
+<ellipse rx="92" ry="56" fill="url(#newborn-swaddle)" stroke="#998c63" stroke-width="3"/>
+<path d="M-40 -52Q-12 0 -32 54M12 -55Q38 0 22 55" fill="none" stroke="#b9aa78" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+</g>
+<circle cx="84" cy="94" r="31" fill="url(#newborn-skin)" stroke="#87634c" stroke-width="2.5"/>
+<path d="M55 84C53 64 68 56 86 56C104 56 116 66 114 82C98 74 72 74 55 84Z" fill="url(#newborn-hat)" stroke="#628778" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M56 82C78 71 100 72 113 80" fill="none" stroke="#86b8a5" stroke-width="4" stroke-linecap="round"/>
+<circle cx="70" cy="56" r="8" fill="url(#newborn-hat)" stroke="#628778" stroke-width="2"/>
+<ellipse cx="150" cy="120" rx="30" ry="12" transform="rotate(-32 150 120)" fill="url(#newborn-gloss)"/>
+</g>
+</svg>

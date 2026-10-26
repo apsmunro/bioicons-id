@@ -39,7 +39,7 @@ icons/<category>/<id>-mono.svg   single-colour icons
 catalogue.json                   names, categories, descriptions and search tags
 STYLE.md                         the house style every icon follows
 tools/svg-kit.js                 shared palette, gradients, geometry and drawing helpers
-tools/draw-pilot-icons.js        code that draws the full-colour icons
+tools/draw-colour-icons.js        code that draws the full-colour icons
 tools/draw-mono-icons.js         code that draws the single-colour icons
 tools/build-site.js              bundles the catalogue and SVGs for the gallery
 tools/serve.js                   local preview server

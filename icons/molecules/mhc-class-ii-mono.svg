@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="mhc-class-ii-mono-title">
+<title id="mhc-class-ii-mono-title">MHC class II with peptide (single colour)</title>
+<desc>MHC class II molecule (α chain lilac, β chain teal) presenting a peptide (orange) at the cell membrane.</desc>
+<defs></defs>
+<g transform="translate(0 -8)">
+<path d="M24 184H232M24 210H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M104 166V222M152 166V222" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="104" cy="144" rx="20" ry="24" transform="rotate(0 104 144)" fill="#000000"/>
+<ellipse cx="152" cy="144" rx="20" ry="24" transform="rotate(0 152 144)" fill="#000000"/>
+<ellipse cx="98" cy="94" rx="27" ry="19" transform="rotate(22 98 94)" fill="#000000"/>
+<ellipse cx="158" cy="94" rx="27" ry="19" transform="rotate(-22 158 94)" fill="#000000"/>
+<path d="M96 58C97.78 58.48 103.13 60.63 106.7 60.89C110.27 61.15 113.83 60.37 117.4 59.55C120.97 58.72 124.53 56.64 128.1 55.94C131.67 55.24 135.23 54.9 138.8 55.35C142.37 55.8 145.93 57.7 149.5 58.65C153.07 59.59 158.42 60.6 160.2 61" fill="none" stroke="#000000" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

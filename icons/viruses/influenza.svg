@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="influenza-title">
+<title id="influenza-title">Influenza virus</title>
+<desc>Enveloped orthomyxovirus with haemagglutinin (HA, blue) and neuraminidase (NA, red) spikes and eight RNA segments.</desc>
+<defs><radialGradient id="influenza-env" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fae7d1"/><stop offset="0.55" stop-color="#F2C48D"/><stop offset="1" stop-color="#cba576"/></radialGradient><linearGradient id="influenza-ha" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a7ecc"/><stop offset="0.25" stop-color="#a7c3ec"/><stop offset="0.6" stop-color="#4F86D9"/><stop offset="1" stop-color="#3e69a9"/></linearGradient><radialGradient id="influenza-na" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f0bab9"/><stop offset="0.55" stop-color="#D9534F"/><stop offset="1" stop-color="#b64642"/></radialGradient><linearGradient id="influenza-rnp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7652b6"/><stop offset="0.25" stop-color="#bfabe1"/><stop offset="0.6" stop-color="#7E57C2"/><stop offset="1" stop-color="#624497"/></linearGradient><radialGradient id="influenza-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<g transform="translate(128 128)">
+<g transform="rotate(2)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(15.85)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(29.69)"><line x1="0" y1="-59" x2="0" y2="-76" stroke="#983a37" stroke-width="3" stroke-linecap="round"/><rect x="-6.5" y="-86" width="13" height="11" rx="3.5" fill="url(#influenza-na)" stroke="#873331" stroke-width="1.5"/></g>
+<g transform="rotate(43.54)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(57.38)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(71.23)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(85.08)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(98.92)"><line x1="0" y1="-59" x2="0" y2="-76" stroke="#983a37" stroke-width="3" stroke-linecap="round"/><rect x="-6.5" y="-86" width="13" height="11" rx="3.5" fill="url(#influenza-na)" stroke="#873331" stroke-width="1.5"/></g>
+<g transform="rotate(112.77)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(126.62)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(140.46)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(154.31)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(168.15)"><line x1="0" y1="-59" x2="0" y2="-76" stroke="#983a37" stroke-width="3" stroke-linecap="round"/><rect x="-6.5" y="-86" width="13" height="11" rx="3.5" fill="url(#influenza-na)" stroke="#873331" stroke-width="1.5"/></g>
+<g transform="rotate(182)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(195.85)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(209.69)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(223.54)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(237.38)"><line x1="0" y1="-59" x2="0" y2="-76" stroke="#983a37" stroke-width="3" stroke-linecap="round"/><rect x="-6.5" y="-86" width="13" height="11" rx="3.5" fill="url(#influenza-na)" stroke="#873331" stroke-width="1.5"/></g>
+<g transform="rotate(251.23)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(265.08)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(278.92)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(292.77)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(306.62)"><line x1="0" y1="-59" x2="0" y2="-76" stroke="#983a37" stroke-width="3" stroke-linecap="round"/><rect x="-6.5" y="-86" width="13" height="11" rx="3.5" fill="url(#influenza-na)" stroke="#873331" stroke-width="1.5"/></g>
+<g transform="rotate(320.46)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(334.31)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<g transform="rotate(348.15)"><rect x="-3.5" y="-84" width="7" height="25" rx="3.5" fill="url(#influenza-ha)" stroke="#315387" stroke-width="1.4"/></g>
+<circle r="62" fill="url(#influenza-env)" stroke="#967a57" stroke-width="3"/>
+<circle r="55" fill="none" stroke="#c29d71" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>
+<rect x="-34.5" y="-26" width="7" height="56" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="-25.5" y="-30" width="7" height="64" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="-16.5" y="-34" width="7" height="72" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="-7.5" y="-28" width="7" height="60" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="1.5" y="-32" width="7" height="68" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="10.5" y="-24" width="7" height="52" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="19.5" y="-29" width="7" height="62" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<rect x="28.5" y="-27" width="7" height="58" rx="3.5" fill="url(#influenza-rnp)" stroke="#4e3678" stroke-width="1.2"/>
+<ellipse cx="-26" cy="-32" rx="18" ry="9" transform="rotate(-30 -26 -32)" fill="url(#influenza-gloss)"/>
+</g>
+</svg>

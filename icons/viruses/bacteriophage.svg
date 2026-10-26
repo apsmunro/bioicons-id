@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="bacteriophage-title">
+<title id="bacteriophage-title">Bacteriophage</title>
+<desc>Tailed phage with an icosahedral head, contractile tail sheath, baseplate and tail fibres.</desc>
+<defs><linearGradient id="bacteriophage-sheath" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8594a1"/><stop offset="0.25" stop-color="#c7ced5"/><stop offset="0.6" stop-color="#8E9DAB"/><stop offset="1" stop-color="#6f7a85"/></linearGradient></defs>
+<path d="M104 190L74 204L60 236" fill="none" stroke="#58616a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 190L74 204L60 236" fill="none" stroke="#8E9DAB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M152 190L182 204L196 236" fill="none" stroke="#58616a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M152 190L182 204L196 236" fill="none" stroke="#8E9DAB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M116 192L100 214L96 238" fill="none" stroke="#58616a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M116 192L100 214L96 238" fill="none" stroke="#8E9DAB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 192L156 214L160 238" fill="none" stroke="#58616a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 192L156 214L160 238" fill="none" stroke="#8E9DAB" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="116" y="122" width="24" height="62" rx="3" fill="url(#bacteriophage-sheath)" stroke="#58616a" stroke-width="2.5"/>
+<g stroke="#636e78" stroke-width="1.5"><line x1="117.5" y1="129" x2="138.5" y2="129"/><line x1="117.5" y1="135" x2="138.5" y2="135"/><line x1="117.5" y1="141" x2="138.5" y2="141"/><line x1="117.5" y1="147" x2="138.5" y2="147"/><line x1="117.5" y1="153" x2="138.5" y2="153"/><line x1="117.5" y1="159" x2="138.5" y2="159"/><line x1="117.5" y1="165" x2="138.5" y2="165"/><line x1="117.5" y1="171" x2="138.5" y2="171"/><line x1="117.5" y1="177" x2="138.5" y2="177"/></g>
+<rect x="100" y="182" width="56" height="10" rx="3" fill="#7d8a96" stroke="#58616a" stroke-width="2.5"/>
+<rect x="113" y="114" width="30" height="10" rx="2" fill="#808d9a" stroke="#58616a" stroke-width="2.5"/>
+<polygon points="128,20 88,42 128,52" fill="#a6d0f3" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="128,20 168,42 128,52" fill="#75b6ec" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="88,42 128,52 128,86 88,96" fill="#86bfef" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="168,42 128,52 128,86 168,96" fill="#569bd6" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="88,96 128,86 128,118" fill="#5da9e9" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="168,96 128,86 128,118" fill="#4984b6" stroke="#3c6e97" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="128,20 168,42 168,96 128,118 88,96 88,42" fill="none" stroke="#3a6990" stroke-width="3" stroke-linejoin="round"/>
+<rect x="95" y="50" width="5" height="40" rx="2.5" fill="#fff" opacity="0.4"/>
+</svg>
