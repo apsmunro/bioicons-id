@@ -136,6 +136,78 @@ function biofilm(id) {
   };
 }
 
+function kingella(id) {
+  const base = C.gramNegative;
+  const cell = (x, y, angle) => `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(angle)})">` +
+    `<rect x="-17" y="-13" width="34" height="26" rx="12" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
+    `<rect x="-12.5" y="-8.5" width="25" height="17" rx="8" fill="none" stroke="${shade(base, 0.2)}" stroke-width="1.3" opacity="0.5"/>` +
+    `<rect x="-10" y="-9" width="20" height="4" rx="2" fill="#fff" opacity="0.45"/></g>`;
+  // Pairs in a short chain, plus a separate pair and a single cell.
+  const chain = K.pointsAlongBezier([30, 112], [90, 56], [160, 124], [226, 70], [36, 42, 36]);
+  return {
+    defs: [K.cylinderGradient(`${id}-body`, base)],
+    body: [...chain.map(p => cell(p.x, p.y, p.angle)), cell(92, 184, 14), cell(127, 193, 14), cell(190, 168, -30)],
+  };
+}
+
+function bordetella(id) {
+  const base = C.gramNegative, tox = C.toxin;
+  const cells = [[70, 80, 20], [120, 62, -15], [170, 92, 35], [96, 132, -40], [152, 148, 10], [204, 140, -25], [78, 188, 25], [132, 204, -10], [190, 196, 40]];
+  const fimbriae = Array.from({ length: 10 }, (_, i) => {
+    const p = K.stadiumPoint((i + 0.5) / 10, 6, 9);
+    return `M${n(p.x + p.nx)} ${n(p.y + p.ny)}L${n(p.x + p.nx * 7)} ${n(p.y + p.ny * 7)}`;
+  }).join('');
+  const cell = ([x, y, a]) => `<g transform="translate(${x} ${y}) rotate(${a})">` +
+    `<path d="${fimbriae}" stroke="${shade(base, 0.25)}" stroke-width="1.3" stroke-linecap="round"/>` +
+    `<rect x="-15" y="-9" width="30" height="18" rx="9" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="2.5"/>` +
+    `<rect x="-9" y="-5.5" width="18" height="3" rx="1.5" fill="#fff" opacity="0.45"/></g>`;
+  // Pertussis toxin: an A subunit sitting on a ring of five B subunits.
+  const toxin = (x, y) => Array.from({ length: 5 }, (_, k) => {
+    const a = k * 2 * Math.PI / 5 - Math.PI / 2;
+    return `<circle cx="${n(x + 7 * Math.cos(a))}" cy="${n(y + 4 + 5 * Math.sin(a))}" r="4.5" fill="url(#${id}-tox)" stroke="${outline(tox)}" stroke-width="1"/>`;
+  }).join('') + `<circle cx="${x}" cy="${y - 6}" r="6" fill="url(#${id}-toxa)" stroke="${outline(shade(tox, 0.2))}" stroke-width="1"/>`;
+  return {
+    defs: [K.cylinderGradient(`${id}-body`, base), K.sphereGradient(`${id}-tox`, tox), K.sphereGradient(`${id}-toxa`, shade(tox, 0.2))],
+    body: [...cells.map(cell), toxin(40, 140), toxin(220, 64), toxin(224, 214), toxin(36, 36)],
+  };
+}
+
+function listeria(id) {
+  const host = C.hostCell, rod = C.gramPositive, actin = C.actin;
+  // Host cell, with a protrusion where one bacterium is pushing out towards a neighbour.
+  const membrane = K.polarPoints(128, 138, a => 92 + 34 * Math.exp(-(K.wrapAngle(a + 0.7) ** 2) / (2 * 0.2 ** 2)) + 2 * Math.sin(5 * a), 140);
+  const bug = (x, y, deg) => `<g transform="translate(${n(x)} ${n(y)}) rotate(${deg})">` +
+    `<path d="M-15 -10L-70 0L-15 10Z" fill="url(#${id}-actin)"/>` +
+    [[-26, -4], [-30, 4], [-38, -2], [-44, 3], [-52, -1]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2" fill="${shade(actin, 0.35)}" opacity="0.8"/>`).join('') +
+    `<rect x="-18" y="-8" width="36" height="16" rx="8" fill="url(#${id}-rod)" stroke="${outline(rod)}" stroke-width="2.5"/>` +
+    `<rect x="-12" y="-5" width="24" height="3" rx="1.5" fill="#fff" opacity="0.45"/></g>`;
+  return {
+    defs: [
+      K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
+      K.cylinderGradient(`${id}-rod`, rod),
+      `<linearGradient id="${id}-actin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${actin}" stop-opacity="0"/><stop offset="0.5" stop-color="${actin}" stop-opacity="0.8"/><stop offset="1" stop-color="${shade(actin, 0.1)}"/></linearGradient>`,
+    ],
+    body: [
+      `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="82" cy="176" r="26" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
+      bug(211, 68, -40), bug(100, 100, -150), bug(150, 170, 20),
+    ],
+  };
+}
+
+function treponema(id) {
+  const base = C.spirochaete;
+  const helix = (cx, cy, deg, len) => {
+    const a = deg * Math.PI / 180, u = [Math.cos(a), Math.sin(a)], v = [-u[1], u[0]], pts = [];
+    for (let t = -len / 2; t <= len / 2; t += 2) {
+      const off = 9 * Math.min(1, (len / 2 - Math.abs(t)) / 14) * Math.sin(2 * Math.PI * t / 16);
+      pts.push([cx + u[0] * t + v[0] * off, cy + u[1] * t + v[1] * off]);
+    }
+    return K.smoothOpenPath(pts);
+  };
+  return { defs: [], body: [K.pipe(helix(122, 94, -24, 190), base, 6), K.pipe(helix(134, 170, -18, 170), base, 6)] };
+}
+
 // ----------------------------------------------------------------- viruses
 
 function rsv(id) {
@@ -240,6 +312,67 @@ function bacteriophage(id) {
       facet([[88, 96], [128, 86], [128, 118]], 0), facet([[168, 96], [128, 86], [128, 118]], -0.22),
       `<polygon points="128,20 168,42 168,96 128,118 88,96 88,42" fill="none" stroke="${outline(head)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<rect x="95" y="50" width="5" height="40" rx="2.5" fill="#fff" opacity="0.4"/>`,
+    ],
+  };
+}
+
+function rotavirus(id) {
+  const outer = C.rotaOuter, mid = C.rotaMiddle, core = C.rotaCore, R = 76;
+  // Triple-layered "wheel": spikes on the outer shell, spokes from the core to the rim.
+  const spikes = Array.from({ length: 24 }, (_, k) => {
+    const a = k * Math.PI / 12;
+    return `<circle cx="${n(128 + (R + 5) * Math.cos(a))}" cy="${n(128 + (R + 5) * Math.sin(a))}" r="5.5" fill="url(#${id}-spike)" stroke="${outline(outer)}" stroke-width="1.2"/>`;
+  });
+  const spokes = Array.from({ length: 12 }, (_, k) => {
+    const a = k * Math.PI / 6 + 0.13;
+    return K.pipe(`M${n(128 + 30 * Math.cos(a))} ${n(128 + 30 * Math.sin(a))}L${n(128 + (R - 15) * Math.cos(a))} ${n(128 + (R - 15) * Math.sin(a))}`, outer, 8);
+  });
+  return {
+    defs: [K.sphereGradient(`${id}-outer`, outer), K.sphereGradient(`${id}-mid`, mid, { light: 0.5 }), K.sphereGradient(`${id}-core`, core),
+      K.sphereGradient(`${id}-spike`, shade(outer, 0.1)), K.glossGradient(`${id}-gloss`)],
+    body: [
+      ...spikes,
+      `<circle cx="128" cy="128" r="${R}" fill="url(#${id}-outer)" stroke="${outline(outer)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="128" cy="128" r="${R - 14}" fill="url(#${id}-mid)" stroke="${shade(outer, 0.25)}" stroke-width="2"/>`,
+      ...spokes,
+      `<circle cx="128" cy="128" r="32" fill="url(#${id}-core)" stroke="${outline(core)}" stroke-width="2.5"/>`,
+      K.gloss(`${id}-gloss`, 96, 92, 22, 10),
+    ],
+  };
+}
+
+function enterovirus(id) {
+  return { defs: [], body: capsidFacets(C.enterovirus, 88, 128, 128, 5.5) };
+}
+
+function measles(id) {
+  const env = C.measlesEnvelope, H = C.haemagglutinin, F = C.fusionProtein;
+  const radius = a => 70 + 6 * Math.sin(3 * a + 1) + 4 * Math.sin(5 * a);
+  const spikes = Array.from({ length: 34 }, (_, k) => {
+    const a = k * 2 * Math.PI / 34, deg = n(a * 180 / Math.PI + 90), r = n(radius(a) - 3);
+    return `<g transform="rotate(${deg}) translate(0 ${-r})">` + (k % 2
+      ? `<line x1="0" y1="2" x2="0" y2="-14" stroke="${shade(H, 0.3)}" stroke-width="3" stroke-linecap="round"/><ellipse cy="-18" rx="7" ry="5" fill="url(#${id}-h)" stroke="${outline(H)}" stroke-width="1.3"/>`
+      : `<line x1="0" y1="2" x2="0" y2="-8" stroke="${shade(F, 0.3)}" stroke-width="4" stroke-linecap="round"/><ellipse cy="-12" rx="5" ry="7" fill="url(#${id}-f)" stroke="${outline(F)}" stroke-width="1.3"/>`) + `</g>`;
+  });
+  // Helical nucleocapsid: a looping strand with herringbone ticks.
+  const strand = Array.from({ length: 141 }, (_, i) => {
+    const t = i / 140, a = t * 2 * Math.PI * 1.1 + 0.6, r = 34 + 12 * Math.sin(2 * a + 0.5);
+    return [r * Math.cos(a), r * Math.sin(a)];
+  });
+  const ticks = strand.filter((_, i) => i % 4 === 2 && i < 138).map(([x, y], j) => {
+    const i = j * 4 + 2, [p, q] = [strand[i - 1], strand[i + 1]], dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1;
+    return `M${n(x - dy / l * 5)} ${n(y + dx / l * 5)}L${n(x + dy / l * 5)} ${n(y - dx / l * 5)}`;
+  }).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-env`, env), K.sphereGradient(`${id}-h`, H), K.sphereGradient(`${id}-f`, F, { focus: [0.5, 0.3] }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      `<g transform="translate(128 128)">`,
+      ...spikes,
+      `<path d="${K.smoothClosedPath(K.polarPoints(0, 0, radius))}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
+      `<path d="${ticks}" stroke="${shade(C.nucleus, 0.1)}" stroke-width="2" stroke-linecap="round" opacity="0.8"/>`,
+      `<path d="${K.smoothOpenPath(strand)}" fill="none" stroke="${C.nucleus}" stroke-width="4" stroke-linecap="round"/>`,
+      K.gloss(`${id}-gloss`, -28, -34, 22, 10),
+      `</g>`,
     ],
   };
 }
@@ -407,6 +540,25 @@ function malaria(id) {
       `<circle cx="112" cy="146" r="46" fill="url(#${id}-pallor)"/>`,
       ring(84, 122), ring(140, 176), ring(150, 112),
       K.gloss(`${id}-gloss`, 66, 92, 26, 12),
+    ],
+  };
+}
+
+function toxoplasma(id) {
+  const base = C.toxoplasma, rho = C.rhoptry, mic = C.microneme;
+  // Tachyzoite: crescent with the apical (conoid) end at the top right.
+  const body = 'M60 200C40 156 86 72 192 56C206 54 214 62 206 72C156 104 116 152 98 202C92 216 66 216 60 200Z';
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
+      K.sphereGradient(`${id}-rho`, rho), K.glossGradient(`${id}-gloss`)],
+    body: [
+      `<path d="${body}" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<ellipse cx="96" cy="168" rx="15" ry="21" transform="rotate(30 96 168)" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
+      ...[[146, 104], [158, 94], [134, 116]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="4.5" ry="15" transform="rotate(54 ${x} ${y})" fill="url(#${id}-rho)" stroke="${outline(rho)}" stroke-width="1.2"/>`),
+      ...[[182, 70], [190, 65], [176, 78], [186, 76], [196, 63], [170, 84]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="2" ry="4.5" transform="rotate(54 ${x} ${y})" fill="${mic}" stroke="${outline(mic)}" stroke-width="0.8"/>`),
+      ...[[118, 150], [80, 196], [124, 128]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3" fill="${shade(base, 0.3)}" opacity="0.6"/>`),
+      `<path d="M197 60C201 58 205 60 207 64M195 64C199 62 203 64 205 68" fill="none" stroke="${outline(base)}" stroke-width="2" stroke-linecap="round"/>`,
+      K.gloss(`${id}-gloss`, 84, 126, 10, 26, 30),
     ],
   };
 }
@@ -657,6 +809,94 @@ function platelets(id) {
   };
 }
 
+function cd8Killing(id) {
+  const t = C.lymphocyte, target = C.targetCell, nuc = C.nucleus, gr = C.cytotoxicGranule, virus = C.spike;
+  const blebs = [[-0.7, 9], [-0.1, 10], [0.55, 8], [1.1, 7]].map(([a, r]) =>
+    `<circle cx="${n(180 + 68 * Math.cos(a))}" cy="${n(130 + 68 * Math.sin(a))}" r="${r}" fill="url(#${id}-target)" stroke="${shade(target, 0.35)}" stroke-width="2"/>`);
+  return {
+    defs: [K.sphereGradient(`${id}-t`, t, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-target`, target, { light: 0.5, dark: 0.1 }),
+      K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.sphereGradient(`${id}-granule`, gr), K.sphereGradient(`${id}-virus`, virus)],
+    body: [
+      // Target cell (dying: blebbing membrane, condensed nucleus) under the T cell at the synapse.
+      ...blebs,
+      `<path d="${K.smoothClosedPath(K.polarPoints(180, 130, a => 66 + 2 * Math.sin(5 * a)))}" fill="url(#${id}-target)" stroke="${shade(target, 0.35)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="196" cy="134" r="20" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2"/>`,
+      ...[[214, 156], [178, 160]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-nucleus)"/>`),
+      ...[[170, 96], [212, 104], [158, 166], [200, 182]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-virus)" stroke="${outline(virus)}" stroke-width="1.5" stroke-dasharray="2 1.5"/>`),
+      ...[[138, 118], [142, 132], [138, 146]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="url(#${id}-granule)" stroke="${outline(gr)}" stroke-width="1"/>`),
+      `<path d="${K.smoothClosedPath(K.polarPoints(80, 132, a => 52 + 1.5 * Math.sin(6 * a)))}" fill="url(#${id}-t)" stroke="${shade(t, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="70" cy="130" r="35" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
+      ...[[114, 112], [120, 126], [116, 140], [122, 152], [110, 124], [110, 150]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-granule)" stroke="${outline(gr)}" stroke-width="1.2"/>`),
+    ],
+  };
+}
+
+function mastCell(id) {
+  const base = C.mastCell, gr = C.mastGranule, cx = 116, cy = 132, R = 78;
+  const rand = K.rng(51), inside = [], released = [];
+  for (let tries = 0; inside.length < 70 && tries < 8000; tries++) {
+    const a = rand() * 2 * Math.PI, d = Math.sqrt(rand()) * 66, p = [cx + d * Math.cos(a), cy + d * Math.sin(a)];
+    if (Math.hypot(p[0] - 100, p[1] - 136) > 30 && inside.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 9)) inside.push(p);
+  }
+  for (let tries = 0; released.length < 14 && tries < 8000; tries++) {
+    const p = [196 + rand() * 42, 74 + rand() * 116];
+    if (Math.hypot(p[0] - cx, p[1] - cy) > R + 10 && released.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 11)) released.push(p);
+  }
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
+      K.sphereGradient(`${id}-granule`, gr, { light: 0.45 })],
+    body: [
+      ...[200, 240, 280, 320].map(deg => `<g transform="rotate(${deg} ${cx} ${cy})">${miniAntibody(cx, cy - R - 3, 0)}</g>`),
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 2 * Math.sin(5 * a + 1) + 1.5 * Math.sin(9 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="100" cy="136" r="24" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
+      ...inside.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="4.2" fill="url(#${id}-granule)"/>`),
+      ...released.map(([x, y], i) => `<circle cx="${n(x)}" cy="${n(y)}" r="4.2" fill="url(#${id}-granule)" opacity="${n(1 - (x - 196) / 70)}"/>`),
+    ],
+  };
+}
+
+function nets(id) {
+  const base = C.neutrophil, dna = C.nucleus;
+  const rand = K.rng(41), strands = [];
+  for (let s = 0; s < 10; s++) {
+    let a = -1.2 + s * 0.27 + (rand() - 0.5) * 0.2;
+    const pts = [[70 + 46 * Math.cos(a), 128 + 46 * Math.sin(a)]];
+    for (let k = 0; k < 12; k++) {
+      a += (rand() - 0.5) * 0.9;
+      const [px, py] = pts[pts.length - 1], q = [px + 14 * Math.cos(a), py + 14 * Math.sin(a)];
+      if (q[0] > 236 || q[1] < 22 || q[1] > 234) break;
+      pts.push(q);
+    }
+    strands.push(pts);
+  }
+  const all = strands.flatMap((pts, s) => pts.map(p => [...p, s]));
+  const links = [];
+  for (let i = 0; i < all.length && links.length < 14; i += 3) {
+    const j = all.findIndex(q => q[2] !== all[i][2] && Math.hypot(q[0] - all[i][0], q[1] - all[i][1]) < 26 && q[0] > 110);
+    if (j >= 0) links.push(`M${n(all[i][0])} ${n(all[i][1])}L${n(all[j][0])} ${n(all[j][1])}`);
+  }
+  const caught = [[strands[1], 6, 'rod', 30], [strands[4], 8, 'coccus'], [strands[6], 5, 'rod', -40], [strands[8], 9, 'coccus'], [strands[3], 10, 'rod', 70]]
+    .filter(([pts, i]) => pts[i]).map(([pts, i, kind, a]) => {
+      const [x, y] = pts[i];
+      return kind === 'rod'
+        ? `<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(${n(x)} ${n(y)}) rotate(${a})" fill="url(#${id}-rod)" stroke="${outline(C.gramNegative)}" stroke-width="1.6"/>`
+        : `<circle cx="${n(x - 4)}" cy="${n(y)}" r="5.5" fill="url(#${id}-coccus)" stroke="${outline(C.gramPositive)}" stroke-width="1.3"/><circle cx="${n(x + 6)}" cy="${n(y + 1)}" r="5.5" fill="url(#${id}-coccus)" stroke="${outline(C.gramPositive)}" stroke-width="1.3"/>`;
+    });
+  const lobes = [[56, 116, 16, 12, -20], [80, 106, 15, 11, 15], [88, 134, 15, 12, 40]];
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, dna, { light: 0.45 }),
+      K.cylinderGradient(`${id}-rod`, C.gramNegative), K.sphereGradient(`${id}-coccus`, C.gramPositive)],
+    body: [
+      `<path d="${links.join('')}" stroke="${dna}" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>`,
+      `<path d="${strands.map(K.smoothOpenPath).join('')}" fill="none" stroke="${dna}" stroke-width="2.6" stroke-linecap="round" opacity="0.8"/>`,
+      ...strands.flatMap(pts => pts.filter((_, i) => i % 3 === 2).map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="2.3" fill="${tint(dna, 0.4)}"/>`)),
+      ...caught,
+      `<path d="${K.smoothClosedPath(K.polarPoints(70, 128, a => 50 + 2 * Math.sin(5 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.3)}" stroke-width="${STROKE}"/>`,
+      ...lobes.map(([x, y, rx, ry, rot]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" fill="url(#${id}-nucleus)" stroke="${outline(dna)}" stroke-width="2"/>`),
+    ],
+  };
+}
+
 function redBloodCells(id) {
   const base = C.erythrocyte;
   const cell = (cx, cy, rx, ry, rot, colour, grad) =>
@@ -812,6 +1052,82 @@ function complementMac(id) {
       ...[[92, 72, 10, 8, 0], [72, 104, 12, 10, 0], [84, 86, 16, 12, -20]].map(([x, y, rx, ry, rot]) =>
         `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" fill="url(#${id}-cx)" stroke="${outline(cx)}" stroke-width="2"/>`),
       ...[[124, 58], [134, 74], [122, 214], [132, 230]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.5" fill="${C.fluid}" stroke="${outline(C.fluid)}" stroke-width="1"/>`),
+    ],
+  };
+}
+
+// ------------------------------------------------------- antimicrobial resistance
+
+// A small two-tone antibiotic capsule, used as a stand-in for an antibiotic molecule.
+function pill(id, x, y, rot, s = 1) {
+  return `<g transform="translate(${n(x)} ${n(y)}) rotate(${rot}) scale(${s})">` +
+    `<rect x="-11" y="-5" width="22" height="10" rx="5" fill="url(#${id}-pill-b)" stroke="${outline(C.drugYellow)}" stroke-width="1.3"/>` +
+    `<path d="M0 -5H-6A5 5 0 0 0 -6 5H0Z" fill="url(#${id}-pill-a)" stroke="${outline(C.drugRed)}" stroke-width="1.3"/></g>`;
+}
+const pillGradients = id => [K.cylinderGradient(`${id}-pill-a`, C.drugRed), K.cylinderGradient(`${id}-pill-b`, C.drugYellow)];
+
+function betaLactamase(id) {
+  const enz = C.enzyme, bond = C.bond;
+  // Enzyme with its active-site cleft opening to the right.
+  const blob = K.polarPoints(104, 132, a => 74 + 3 * Math.sin(6 * a + 1) - 34 * Math.exp(-(K.wrapAngle(a) ** 2) / (2 * 0.3 ** 2)), 120);
+  const rand = K.rng(61), dimples = [];
+  for (let tries = 0; dimples.length < 14 && tries < 4000; tries++) {
+    const a = rand() * 2 * Math.PI, d = Math.sqrt(rand()) * 58, p = [104 + d * Math.cos(a), 132 + d * Math.sin(a)];
+    if (Math.abs(K.wrapAngle(a)) > 0.6 && dimples.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 16)) dimples.push(p);
+  }
+  // β-lactam core: four-membered ring (C=O at top left) fused to the five-membered ring below.
+  // The ring's C–N bond, in the active site, is shown breaking.
+  const bonds = 'M150 114L176 114L176 140L150 140M150 140L142 164L163 180L184 164L176 140M150 114L138 100M154 110L142 96';
+  return {
+    defs: [K.sphereGradient(`${id}-enzyme`, enz, { light: 0.5 })],
+    body: [
+      `<path d="${K.smoothClosedPath(blob)}" fill="url(#${id}-enzyme)" stroke="${outline(enz)}" stroke-width="${STROKE}"/>`,
+      ...dimples.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="${n(3 + rand() * 2)}" fill="${shade(enz, 0.12)}" opacity="0.5"/>`),
+      `<circle cx="140" cy="132" r="5" fill="${C.penton}" stroke="${outline(C.penton)}" stroke-width="1.2"/>`,
+      `<path d="${bonds}" fill="none" stroke="${bond}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`,
+      `<path d="M150 114L150 121M150 133L150 140" stroke="${bond}" stroke-width="5" stroke-linecap="round"/>`,
+      `<path d="M139 121L134 117M140 127L133 127M139 133L134 137" stroke="${C.drugRed}" stroke-width="2.5" stroke-linecap="round"/>`,
+      `<circle cx="150" cy="140" r="6.5" fill="${C.attachmentProtein}" stroke="${outline(C.attachmentProtein)}" stroke-width="1.2"/>`,
+      `<circle cx="138" cy="98" r="6.5" fill="${C.drugRed}" stroke="${outline(C.drugRed)}" stroke-width="1.2"/>`,
+      `<circle cx="184" cy="164" r="6.5" fill="${C.microneme}" stroke="${outline(C.microneme)}" stroke-width="1.2"/>`,
+    ],
+  };
+}
+
+function effluxPump(id) {
+  const pump = C.pump;
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.cylinderGradient(`${id}-pump`, pump, { horizontal: true }), ...pillGradients(id)],
+    body: [
+      lipidBilayer(`${id}-lipid`, 24, 90, 148, 174), lipidBilayer(`${id}-lipid`, 166, 234, 148, 174),
+      `<rect x="96" y="82" width="64" height="128" rx="20" fill="url(#${id}-pump)" stroke="${outline(pump)}" stroke-width="${STROKE}"/>`,
+      `<rect x="117" y="88" width="22" height="116" rx="11" fill="${C.channel}" stroke="${shade(pump, 0.2)}" stroke-width="1.5"/>`,
+      pill(id, 128, 178, 90), pill(id, 128, 128, 90),
+      `<path d="M128 74V32M117 45L128 31L139 45" fill="none" stroke="${C.bond}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`,
+      pill(id, 158, 46, -30), pill(id, 62, 70, 25), pill(id, 196, 92, -15),
+      pill(id, 58, 212, 20), pill(id, 200, 210, -35),
+    ],
+  };
+}
+
+function susceptibilityPlate(id) {
+  const agar = C.mhAgar;
+  const discs = [[128, 70, 34], [188, 112, 26], [168, 182, 0], [88, 184, 40], [66, 112, 18]];
+  const rand = K.rng(71), lawn = [];
+  for (let k = 0; k < 220; k++) {
+    const a = rand() * 2 * Math.PI, d = Math.sqrt(rand()) * 96;
+    lawn.push([128 + d * Math.cos(a), 128 + d * Math.sin(a)]);
+  }
+  return {
+    defs: [K.sphereGradient(`${id}-agar`, agar, { light: 0.3, dark: 0.12 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      `<circle cx="128" cy="128" r="110" fill="#E8EFF4" stroke="${C.plasticEdge}" stroke-width="${STROKE}"/>`,
+      `<circle cx="128" cy="128" r="101" fill="url(#${id}-agar)" stroke="${shade(agar, 0.3)}" stroke-width="1.5"/>`,
+      ...lawn.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="1.3" fill="${shade(agar, 0.22)}" opacity="0.5"/>`),
+      // Zones of inhibition: clear agar around each disc; the resistant disc has none.
+      ...discs.filter(([, , z]) => z).map(([x, y, z]) => `<circle cx="${x}" cy="${y}" r="${z}" fill="${tint(agar, 0.5)}" stroke="${shade(agar, 0.18)}" stroke-width="1.2"/>`),
+      ...discs.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="3.5" fill="#E3E8EC"/>`),
+      K.gloss(`${id}-gloss`, 78, 62, 36, 12, -40),
     ],
   };
 }
@@ -1175,6 +1491,37 @@ function ivBag(id) {
   };
 }
 
+function mrnaVaccine(id) {
+  const R = 74, head = C.lipidHead;
+  const rand = K.rng(81), dots = [];
+  for (let tries = 0; dots.length < 18 && tries < 4000; tries++) {
+    const a = rand() * 2 * Math.PI, d = Math.sqrt(rand()) * 56, p = [128 + d * Math.cos(a), 128 + d * Math.sin(a)];
+    if (dots.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 18)) dots.push(p);
+  }
+  const strand = Array.from({ length: 181 }, (_, i) => {
+    const t = i / 180, a = t * 2 * Math.PI * 1.6 + 0.3, r = 26 + 14 * Math.sin(3 * a + 1);
+    return [128 + r * Math.cos(a), 128 + r * Math.sin(a)];
+  });
+  const at = (a, r) => [128 + r * Math.cos(a), 128 + r * Math.sin(a)];
+  const heads = Array.from({ length: 40 }, (_, k) => k * 2 * Math.PI / 40);
+  const peg = [0.3, 1.1, 1.9, 2.7, 3.5, 4.3, 5.1, 5.9].map(a => {
+    const pts = Array.from({ length: 9 }, (_, i) => { const r = R + 5 + i * 2.7, w = 3 * Math.sin(i * 1.4); return [128 + r * Math.cos(a) - w * Math.sin(a), 128 + r * Math.sin(a) + w * Math.cos(a)]; });
+    return K.smoothOpenPath(pts);
+  });
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, head), K.sphereGradient(`${id}-core`, C.lnpInterior, { light: 0.4, dark: 0.06 })],
+    body: [
+      `<path d="${peg.join('')}" fill="none" stroke="${C.peg}" stroke-width="2.5" stroke-linecap="round"/>`,
+      `<circle cx="128" cy="128" r="${R - 6}" fill="url(#${id}-core)"/>`,
+      ...dots.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3" fill="${tint(head, 0.3)}" stroke="${shade(head, 0.2)}" stroke-width="0.8"/>`),
+      `<path d="${K.smoothOpenPath(strand)}" fill="none" stroke="${outline(C.mrna)}" stroke-width="6" stroke-linecap="round"/>`,
+      `<path d="${K.smoothOpenPath(strand)}" fill="none" stroke="${C.mrna}" stroke-width="3.5" stroke-linecap="round"/>`,
+      `<path d="${heads.map(a => { const [p, q] = [at(a - 0.03, R - 4), at(a - 0.03, R - 15)], [r, s] = [at(a + 0.03, R - 4), at(a + 0.03, R - 15)]; return `M${n(p[0])} ${n(p[1])}L${n(q[0])} ${n(q[1])}M${n(r[0])} ${n(r[1])}L${n(s[0])} ${n(s[1])}`; }).join('')}" stroke="${C.lipidTail}" stroke-width="1.6" stroke-linecap="round"/>`,
+      ...heads.map(a => { const [x, y] = at(a, R); return `<circle cx="${n(x)}" cy="${n(y)}" r="5.5" fill="url(#${id}-lipid)" stroke="${outline(head)}" stroke-width="1"/>`; }),
+    ],
+  };
+}
+
 // ---------------------------------------------------------- clinical & lab
 
 function bloodCultureBottle(id) {
@@ -1332,6 +1679,106 @@ function baby(id) {
   };
 }
 
+function thermometer(id) {
+  const red = C.mercury, edge = C.plasticEdge;
+  return {
+    defs: [glassGradient(`${id}-glass`), K.sphereGradient(`${id}-bulb`, red), K.cylinderGradient(`${id}-column`, red, { horizontal: true })],
+    body: [
+      `<g transform="translate(128 128) rotate(40)">`,
+      `<rect x="-16" y="-100" width="32" height="172" rx="16" fill="url(#${id}-glass)" stroke="${edge}" stroke-width="${STROKE}"/>`,
+      `<g stroke="${edge}" stroke-width="1.5">` + Array.from({ length: 16 }, (_, i) => `<line x1="${i % 2 ? 8 : 4}" y1="${-88 + i * 9}" x2="14" y2="${-88 + i * 9}"/>`).join('') + `</g>`,
+      `<rect x="-5" y="-62" width="10" height="140" rx="5" fill="url(#${id}-column)"/>`,
+      `<circle cy="82" r="24" fill="url(#${id}-bulb)" stroke="${outline(red)}" stroke-width="${STROKE}"/>`,
+      `<rect x="-11" y="-92" width="4" height="150" rx="2" fill="#fff" opacity="0.5"/>`,
+      `</g>`,
+    ],
+  };
+}
+
+function stethoscope(id) {
+  const metal = C.metal, tube = C.tubing;
+  return {
+    defs: [K.sphereGradient(`${id}-disc`, metal, { light: 0.6 }), K.sphereGradient(`${id}-diaphragm`, tint(metal, 0.4), { light: 0.6 }), K.sphereGradient(`${id}-tip`, tube, { light: 0.4 })],
+    body: [
+      K.pipe('M128 128C128 178 92 214 124 226C152 236 168 222 172 202', tube, 12),
+      K.pipe('M84 46C84 92 100 120 128 128C156 120 172 92 172 46', metal, 7),
+      `<circle cx="128" cy="128" r="8" fill="url(#${id}-disc)" stroke="${outline(metal)}" stroke-width="2"/>`,
+      ...[84, 172].map(x => `<ellipse cx="${x}" cy="38" rx="9" ry="11" fill="url(#${id}-tip)" stroke="${outline(tube)}" stroke-width="2"/>`),
+      K.pipe('M172 200L178 190', metal, 8),
+      `<circle cx="190" cy="172" r="30" fill="url(#${id}-disc)" stroke="${outline(metal)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="190" cy="172" r="21" fill="url(#${id}-diaphragm)" stroke="${shade(metal, 0.25)}" stroke-width="1.5"/>`,
+    ],
+  };
+}
+
+function lumbarPuncture(id) {
+  const b = C.bone, edge = C.metal;
+  const ys = [70, 132, 194];
+  // Spinous process of each vertebra, sloping down and back from the canal.
+  const process = y => `M132 ${y - 18}L186 ${y - 2}Q200 ${y + 6} 188 ${y + 16}L132 ${y + 18}Z`;
+  return {
+    defs: [K.sphereGradient(`${id}-bone`, b, { light: 0.5 }), K.cylinderGradient(`${id}-needle`, edge),
+      K.cylinderGradient(`${id}-hub`, C.penton), K.sphereGradient(`${id}-drop`, C.csf, { light: 0.6 })],
+    body: [
+      `<rect x="106" y="36" width="26" height="200" fill="${C.csf}"/>`,
+      `<path d="M112 36V236M119 36V236M126 36V236" stroke="${C.lymph}" stroke-width="2" opacity="0.8"/>`,
+      ...[95, 157].map(y => `<rect x="44" y="${y}" width="58" height="12" rx="6" fill="${C.intervertebralDisc}" stroke="${shade(C.intervertebralDisc, 0.3)}" stroke-width="2"/>`),
+      ...ys.map(y => `<rect x="40" y="${y - 24}" width="62" height="48" rx="10" fill="url(#${id}-bone)" stroke="${outline(b)}" stroke-width="${STROKE}"/>`),
+      ...ys.map(y => `<path d="${process(y)}" fill="url(#${id}-bone)" stroke="${outline(b)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`),
+      `<path d="M120 164L224 151" stroke="${outline(edge)}" stroke-width="5" stroke-linecap="round"/>`,
+      `<path d="M120 164L224 151" stroke="#D4DBE1" stroke-width="2.5" stroke-linecap="round"/>`,
+      `<rect x="222" y="143" width="22" height="15" rx="3" transform="rotate(-7 233 150)" fill="url(#${id}-hub)" stroke="${outline(C.penton)}" stroke-width="2"/>`,
+      `<path d="M236 166C240 172 242 176 242 179A6 6 0 0 1 230 179C230 176 232 172 236 166Z" fill="url(#${id}-drop)" stroke="${shade(C.csf, 0.35)}" stroke-width="1.5"/>`,
+    ],
+  };
+}
+
+function npSwab(id) {
+  const edge = C.plasticEdge, cap = C.vialCap, tip = C.swabTip;
+  const tube = 'M150 84H200V218Q200 228 190 228H160Q150 228 150 218Z';
+  const fuzz = K.polarPoints(0, 0, a => K.ellipseRadius(8, 18, a), 28).map(([x, y]) => {
+    const l = Math.hypot(x, y) || 1;
+    return `M${n(x)} ${n(y)}L${n(x + x / l * 3.5)} ${n(y + y / l * 3.5)}`;
+  }).join('');
+  return {
+    defs: [`<clipPath id="${id}-clip"><path d="${tube}"/></clipPath>`, glassGradient(`${id}-glass`),
+      K.cylinderGradient(`${id}-cap`, cap, { horizontal: true }), K.sphereGradient(`${id}-tip`, tip, { light: 0.5 })],
+    body: [
+      `<path d="${tube}" fill="url(#${id}-glass)"/>`,
+      `<g clip-path="url(#${id}-clip)"><rect x="146" y="164" width="60" height="70" fill="${C.medium}"/>` +
+      `<line x1="146" y1="164" x2="204" y2="164" stroke="#fff" stroke-width="2" opacity="0.7"/></g>`,
+      `<rect x="156" y="104" width="38" height="44" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
+      `<path d="M156 113V106a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v7Z" fill="${cap}"/>`,
+      ...[[122, 26], [130, 18]].map(([y, w]) => `<rect x="162" y="${y}" width="${w}" height="3.5" rx="1.75" fill="#B8C6D1"/>`),
+      `<path d="${tube}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<rect x="146" y="50" width="58" height="36" rx="6" fill="url(#${id}-cap)" stroke="${outline(cap)}" stroke-width="${STROKE}"/>`,
+      K.pipe('M40 30L114 198', '#E9EEF2', 6),
+      `<circle cx="70" cy="98" r="4.5" fill="none" stroke="${edge}" stroke-width="2"/>`,
+      `<g transform="translate(121 214) rotate(-23.8)"><path d="${fuzz}" stroke="${shade(tip, 0.25)}" stroke-width="1.5" stroke-linecap="round"/>` +
+      `<ellipse rx="8" ry="18" fill="url(#${id}-tip)" stroke="${outline(tip)}" stroke-width="1.5"/></g>`,
+    ],
+  };
+}
+
+function pregnantPerson(id) {
+  const skin = C.skin, hair = C.hair, dress = C.dress, shoe = C.shoe;
+  return {
+    defs: [K.sphereGradient(`${id}-skin`, skin, { light: 0.35 }), K.sphereGradient(`${id}-hair`, hair, { light: 0.35 }),
+      K.cylinderGradient(`${id}-dress`, dress, { horizontal: true })],
+    body: [
+      K.pipe('M110 196L108 228', skin, 13), K.pipe('M136 196L140 228', skin, 13),
+      ...[[103, 233], [145, 233]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="12" ry="6" fill="${shoe}" stroke="${outline(shoe)}" stroke-width="2"/>`),
+      `<rect x="116" y="68" width="14" height="18" fill="${shade(skin, 0.12)}"/>`,
+      `<path d="M106 84Q96 92 96 106Q94 118 84 128Q58 148 70 174Q80 188 92 198L152 198Q146 170 148 140Q150 108 142 84Z" fill="url(#${id}-dress)" stroke="${outline(dress)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      K.pipe('M126 94Q118 122 100 144', skin, 12),
+      `<circle cx="97" cy="148" r="7.5" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`,
+      `<circle cx="150" cy="44" r="11" fill="url(#${id}-hair)" stroke="${outline(hair)}" stroke-width="2"/>`,
+      `<circle cx="122" cy="52" r="25" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2.5"/>`,
+      `<path d="M100 46C104 28 128 22 142 32C152 40 150 58 140 68C138 54 130 44 100 46Z" fill="url(#${id}-hair)" stroke="${outline(hair)}" stroke-width="2" stroke-linejoin="round"/>`,
+    ],
+  };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -1342,15 +1789,23 @@ const DRAWINGS = {
   'meningococcus': meningococcus,
   'mycobacterium-tuberculosis': mycobacteriumTuberculosis,
   'biofilm': biofilm,
+  'kingella': kingella,
+  'bordetella': bordetella,
+  'listeria': listeria,
+  'treponema': treponema,
   'sars-cov-2': sarsCov2,
   'adenovirus': adenovirus,
   'rsv': rsv,
   'influenza': influenza,
   'herpesvirus': herpesvirus,
   'bacteriophage': bacteriophage,
+  'rotavirus': rotavirus,
+  'enterovirus': enterovirus,
+  'measles': measles,
   'candida': candida,
   'aspergillus': aspergillus,
   'malaria': malaria,
+  'toxoplasma': toxoplasma,
   'neutrophil': neutrophil,
   'macrophage': macrophage,
   't-cell': tCell,
@@ -1362,6 +1817,9 @@ const DRAWINGS = {
   'monocyte': monocyte,
   'eosinophil': eosinophil,
   'platelets': platelets,
+  'cd8-killing': cd8Killing,
+  'mast-cell': mastCell,
+  'nets': nets,
   'igg-antibody': iggAntibody,
   'igm-pentamer': igmPentamer,
   'mhc-class-ii': mhcClassII,
@@ -1382,12 +1840,21 @@ const DRAWINGS = {
   'iv-bag': ivBag,
   'vaccine': vaccine,
   'oral-suspension': oralSuspension,
+  'mrna-vaccine': mrnaVaccine,
+  'beta-lactamase': betaLactamase,
+  'efflux-pump': effluxPump,
+  'susceptibility-plate': susceptibilityPlate,
   'blood-culture-bottle': bloodCultureBottle,
   'blood-agar-plate': bloodAgarPlate,
   'lungs': lungs,
   'child': child,
   'newborn': newborn,
   'baby': baby,
+  'thermometer': thermometer,
+  'stethoscope': stethoscope,
+  'lumbar-puncture': lumbarPuncture,
+  'np-swab': npSwab,
+  'pregnant-person': pregnantPerson,
 };
 
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));

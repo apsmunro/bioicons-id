@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="stethoscope-mono-title">
+<title id="stethoscope-mono-title">Stethoscope (single colour)</title>
+<desc>Stethoscope with earpieces, tubing and chest piece.</desc>
+<defs></defs>
+<path d="M128 128C128 178 92 214 124 226C152 236 168 222 172 202" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M84 46C84 92 100 120 128 128C156 120 172 92 172 46M172 200L178 190" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="84" cy="38" rx="9" ry="11" fill="#000000"/>
+<ellipse cx="172" cy="38" rx="9" ry="11" fill="#000000"/>
+<circle cx="190" cy="172" r="28" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="172" r="14" fill="#000000"/>
+</svg>

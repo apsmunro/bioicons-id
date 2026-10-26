@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="toxoplasma-title">
+<title id="toxoplasma-title">Toxoplasma gondii</title>
+<desc>Crescent-shaped tachyzoite with apical conoid, rhoptries (orange), micronemes (yellow) and nucleus.</desc>
+<defs><radialGradient id="toxoplasma-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#cfe9e3"/><stop offset="0.55" stop-color="#9FD3C7"/><stop offset="1" stop-color="#86b1a7"/></radialGradient><radialGradient id="toxoplasma-nucleus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#b8a3dd"/><stop offset="0.55" stop-color="#7E57C2"/><stop offset="1" stop-color="#6a49a3"/></radialGradient><radialGradient id="toxoplasma-rho" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f5d0b1"/><stop offset="0.55" stop-color="#E58A3C"/><stop offset="1" stop-color="#c07432"/></radialGradient><radialGradient id="toxoplasma-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M60 200C40 156 86 72 192 56C206 54 214 62 206 72C156 104 116 152 98 202C92 216 66 216 60 200Z" fill="url(#toxoplasma-body)" stroke="#63837b" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="96" cy="168" rx="15" ry="21" transform="rotate(30 96 168)" fill="url(#toxoplasma-nucleus)" stroke="#4e3678" stroke-width="2"/>
+<ellipse cx="146" cy="104" rx="4.5" ry="15" transform="rotate(54 146 104)" fill="url(#toxoplasma-rho)" stroke="#8e5625" stroke-width="1.2"/>
+<ellipse cx="158" cy="94" rx="4.5" ry="15" transform="rotate(54 158 94)" fill="url(#toxoplasma-rho)" stroke="#8e5625" stroke-width="1.2"/>
+<ellipse cx="134" cy="116" rx="4.5" ry="15" transform="rotate(54 134 116)" fill="url(#toxoplasma-rho)" stroke="#8e5625" stroke-width="1.2"/>
+<ellipse cx="182" cy="70" rx="2" ry="4.5" transform="rotate(54 182 70)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<ellipse cx="190" cy="65" rx="2" ry="4.5" transform="rotate(54 190 65)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<ellipse cx="176" cy="78" rx="2" ry="4.5" transform="rotate(54 176 78)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<ellipse cx="186" cy="76" rx="2" ry="4.5" transform="rotate(54 186 76)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<ellipse cx="196" cy="63" rx="2" ry="4.5" transform="rotate(54 196 63)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<ellipse cx="170" cy="84" rx="2" ry="4.5" transform="rotate(54 170 84)" fill="#F2C14E" stroke="#967830" stroke-width="0.8"/>
+<circle cx="118" cy="150" r="3" fill="#6f948b" opacity="0.6"/>
+<circle cx="80" cy="196" r="3" fill="#6f948b" opacity="0.6"/>
+<circle cx="124" cy="128" r="3" fill="#6f948b" opacity="0.6"/>
+<path d="M197 60C201 58 205 60 207 64M195 64C199 62 203 64 205 68" fill="none" stroke="#63837b" stroke-width="2" stroke-linecap="round"/>
+<ellipse cx="84" cy="126" rx="10" ry="26" transform="rotate(30 84 126)" fill="url(#toxoplasma-gloss)"/>
+</svg>

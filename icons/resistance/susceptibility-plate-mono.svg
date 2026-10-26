@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="susceptibility-plate-mono-title">
+<title id="susceptibility-plate-mono-title">Antibiotic susceptibility plate (single colour)</title>
+<desc>Disc diffusion plate: antibiotic discs on a bacterial lawn, with zones of inhibition of different sizes and one resistant disc with none.</desc>
+<defs></defs>
+<circle cx="128" cy="128" r="108" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="98" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="128" cy="70" r="34" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<circle cx="188" cy="112" r="26" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<circle cx="88" cy="184" r="40" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<circle cx="66" cy="112" r="18" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<circle cx="128" cy="70" r="9" fill="#000000"/>
+<circle cx="188" cy="112" r="9" fill="#000000"/>
+<circle cx="168" cy="182" r="9" fill="#000000"/>
+<circle cx="88" cy="184" r="9" fill="#000000"/>
+<circle cx="66" cy="112" r="9" fill="#000000"/>
+</svg>

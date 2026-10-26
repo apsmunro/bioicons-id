@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="thermometer-title">
+<title id="thermometer-title">Thermometer</title>
+<desc>Clinical thermometer showing a high reading.</desc>
+<defs><linearGradient id="thermometer-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><radialGradient id="thermometer-bulb" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f3b7b7"/><stop offset="0.55" stop-color="#E04B4B"/><stop offset="1" stop-color="#bc3f3f"/></radialGradient><linearGradient id="thermometer-column" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d34747"/><stop offset="0.25" stop-color="#f0a5a5"/><stop offset="0.6" stop-color="#E04B4B"/><stop offset="1" stop-color="#af3b3b"/></linearGradient></defs>
+<g transform="translate(128 128) rotate(40)">
+<rect x="-16" y="-100" width="32" height="172" rx="16" fill="url(#thermometer-glass)" stroke="#8DA6B8" stroke-width="3"/>
+<g stroke="#8DA6B8" stroke-width="1.5"><line x1="4" y1="-88" x2="14" y2="-88"/><line x1="8" y1="-79" x2="14" y2="-79"/><line x1="4" y1="-70" x2="14" y2="-70"/><line x1="8" y1="-61" x2="14" y2="-61"/><line x1="4" y1="-52" x2="14" y2="-52"/><line x1="8" y1="-43" x2="14" y2="-43"/><line x1="4" y1="-34" x2="14" y2="-34"/><line x1="8" y1="-25" x2="14" y2="-25"/><line x1="4" y1="-16" x2="14" y2="-16"/><line x1="8" y1="-7" x2="14" y2="-7"/><line x1="4" y1="2" x2="14" y2="2"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="4" y1="20" x2="14" y2="20"/><line x1="8" y1="29" x2="14" y2="29"/><line x1="4" y1="38" x2="14" y2="38"/><line x1="8" y1="47" x2="14" y2="47"/></g>
+<rect x="-5" y="-62" width="10" height="140" rx="5" fill="url(#thermometer-column)"/>
+<circle cy="82" r="24" fill="url(#thermometer-bulb)" stroke="#8b2f2f" stroke-width="3"/>
+<rect x="-11" y="-92" width="4" height="150" rx="2" fill="#fff" opacity="0.5"/>
+</g>
+</svg>

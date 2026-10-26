@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lumbar-puncture-mono-title">
+<title id="lumbar-puncture-mono-title">Lumbar puncture (single colour)</title>
+<desc>Lumbar spine in side view with a needle between two spinous processes into the CSF-filled canal, and a drop of CSF.</desc>
+<defs></defs>
+<path d="M112 40V232M119 40V232M126 40V232" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="46" y="97" width="54" height="8" rx="4" fill="#000000"/>
+<rect x="46" y="159" width="54" height="8" rx="4" fill="#000000"/>
+<rect x="42" y="48" width="58" height="44" rx="9" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="42" y="110" width="58" height="44" rx="9" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="42" y="172" width="58" height="44" rx="9" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136 54L186 69Q198 76 188 84L136 86Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136 116L186 131Q198 138 188 146L136 148Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136 178L186 193Q198 200 188 208L136 210Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 164L222 151" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="222" y="143" width="20" height="14" rx="3" transform="rotate(-7 232 150)" fill="#000000"/>
+<path d="M236 166C240 172 242 176 242 179A6 6 0 0 1 230 179C230 176 232 172 236 166Z" fill="#000000"/>
+</svg>

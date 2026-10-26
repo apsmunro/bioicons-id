@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="toxoplasma-mono-title">
+<title id="toxoplasma-mono-title">Toxoplasma gondii (single colour)</title>
+<desc>Crescent-shaped tachyzoite with apical conoid, rhoptries (orange), micronemes (yellow) and nucleus.</desc>
+<defs></defs>
+<path d="M60 200C40 156 86 72 192 56C206 54 214 62 206 72C156 104 116 152 98 202C92 216 66 216 60 200Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="96" cy="166" rx="13" ry="19" transform="rotate(30 96 166)" fill="#000000"/>
+<ellipse cx="146" cy="104" rx="4" ry="13" transform="rotate(54 146 104)" fill="#000000"/>
+<ellipse cx="160" cy="92" rx="4" ry="13" transform="rotate(54 160 92)" fill="#000000"/>
+<ellipse cx="132" cy="118" rx="4" ry="13" transform="rotate(54 132 118)" fill="#000000"/>
+<circle cx="182" cy="72" r="3" fill="#000000"/>
+<circle cx="192" cy="66" r="3" fill="#000000"/>
+<circle cx="174" cy="82" r="3" fill="#000000"/>
+</svg>

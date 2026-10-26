@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="stethoscope-title">
+<title id="stethoscope-title">Stethoscope</title>
+<desc>Stethoscope with earpieces, tubing and chest piece.</desc>
+<defs><radialGradient id="stethoscope-disc" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e3e7eb"/><stop offset="0.55" stop-color="#B9C3CC"/><stop offset="1" stop-color="#9ba4ab"/></radialGradient><radialGradient id="stethoscope-diaphragm" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#eef1f3"/><stop offset="0.55" stop-color="#d5dbe0"/><stop offset="1" stop-color="#b3b8bc"/></radialGradient><radialGradient id="stethoscope-tip" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#8b929b"/><stop offset="0.55" stop-color="#3E4A59"/><stop offset="1" stop-color="#343e4b"/></radialGradient></defs>
+<path d="M128 128C128 178 92 214 124 226C152 236 168 222 172 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#262e37" stroke-width="17"/><path d="M128 128C128 178 92 214 124 226C152 236 168 222 172 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#3E4A59" stroke-width="12"/><path d="M128 128C128 178 92 214 124 226C152 236 168 222 172 202" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.64" opacity="0.4" transform="translate(-2.16 -2.16)"/>
+<path d="M84 46C84 92 100 120 128 128C156 120 172 92 172 46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#73797e" stroke-width="12"/><path d="M84 46C84 92 100 120 128 128C156 120 172 92 172 46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9C3CC" stroke-width="7"/><path d="M84 46C84 92 100 120 128 128C156 120 172 92 172 46" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.54" opacity="0.4" transform="translate(-1.26 -1.26)"/>
+<circle cx="128" cy="128" r="8" fill="url(#stethoscope-disc)" stroke="#73797e" stroke-width="2"/>
+<ellipse cx="84" cy="38" rx="9" ry="11" fill="url(#stethoscope-tip)" stroke="#262e37" stroke-width="2"/>
+<ellipse cx="172" cy="38" rx="9" ry="11" fill="url(#stethoscope-tip)" stroke="#262e37" stroke-width="2"/>
+<path d="M172 200L178 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#73797e" stroke-width="13"/><path d="M172 200L178 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9C3CC" stroke-width="8"/><path d="M172 200L178 190" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.76" opacity="0.4" transform="translate(-1.44 -1.44)"/>
+<circle cx="190" cy="172" r="30" fill="url(#stethoscope-disc)" stroke="#73797e" stroke-width="3"/>
+<circle cx="190" cy="172" r="21" fill="url(#stethoscope-diaphragm)" stroke="#8b9299" stroke-width="1.5"/>
+</svg>

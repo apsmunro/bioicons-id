@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="cd8-killing-mono-title">
+<title id="cd8-killing-mono-title">CD8 T cell killing an infected cell (single colour)</title>
+<desc>Cytotoxic T cell releasing granules across the immune synapse into a virus-infected target cell, which is blebbing as it dies.</desc>
+<defs></defs>
+<circle cx="245.07" cy="83.62" r="8" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="262.64" cy="122.71" r="9" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250.53" cy="167.11" r="7" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="221.75" cy="192.38" r="6" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="190" cy="130" r="60" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="204" cy="134" r="17" fill="#000000"/>
+<circle cx="178" cy="98" r="5" fill="#000000"/>
+<circle cx="218" cy="100" r="5" fill="#000000"/>
+<circle cx="168" cy="164" r="5" fill="#000000"/>
+<circle cx="206" cy="172" r="5" fill="#000000"/>
+<circle cx="78" cy="132" r="50" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="70" cy="132" r="28" fill="#000000"/>
+<circle cx="110" cy="114" r="5" fill="#000000"/>
+<circle cx="112" cy="132" r="5" fill="#000000"/>
+<circle cx="110" cy="150" r="5" fill="#000000"/>
+</svg>

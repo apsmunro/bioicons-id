@@ -13,6 +13,7 @@
     { "id": "molecules", "label": "Molecules" },
     { "id": "organs", "label": "Organs & body systems" },
     { "id": "treatment", "label": "Treatment" },
+    { "id": "resistance", "label": "Antimicrobial resistance" },
     { "id": "clinical", "label": "Clinical & lab" }
   ],
   "icons": [
@@ -80,6 +81,42 @@
       "tags": ["biofilm", "device infection", "line infection", "prosthetic", "extracellular matrix", "EPS", "chronic infection", "cystic fibrosis", "phage", "bacteria"]
     },
     {
+      "id": "kingella",
+      "name": "Kingella kingae",
+      "category": "bacteria",
+      "file": "icons/bacteria/kingella.svg",
+      "monoFile": "icons/bacteria/kingella-mono.svg",
+      "description": "Plump Gram-negative coccobacilli in pairs and short chains. Coloured pink, after the Gram stain.",
+      "tags": ["Kingella kingae", "Kingella", "osteoarticular infection", "septic arthritis", "osteomyelitis", "HACEK", "coccobacilli", "gram-negative", "bacterium"]
+    },
+    {
+      "id": "bordetella",
+      "name": "Bordetella pertussis",
+      "category": "bacteria",
+      "file": "icons/bacteria/bordetella.svg",
+      "monoFile": "icons/bacteria/bordetella-mono.svg",
+      "description": "Small Gram-negative coccobacilli with fimbriae, and pertussis toxin molecules (orange, A subunit on a ring of five B subunits).",
+      "tags": ["Bordetella pertussis", "pertussis", "whooping cough", "pertussis toxin", "AB5 toxin", "coccobacilli", "gram-negative", "maternal vaccination", "bacterium"]
+    },
+    {
+      "id": "listeria",
+      "name": "Listeria monocytogenes",
+      "category": "bacteria",
+      "file": "icons/bacteria/listeria.svg",
+      "monoFile": "icons/bacteria/listeria-mono.svg",
+      "description": "Gram-positive rods inside a host cell, propelled by actin comet tails, one pushing out in a membrane protrusion.",
+      "tags": ["Listeria monocytogenes", "listeriosis", "neonatal sepsis", "early-onset sepsis", "actin", "intracellular", "gram-positive", "rod", "bacterium"]
+    },
+    {
+      "id": "treponema",
+      "name": "Treponema pallidum",
+      "category": "bacteria",
+      "file": "icons/bacteria/treponema.svg",
+      "monoFile": "icons/bacteria/treponema-mono.svg",
+      "description": "Tightly coiled spirochaetes.",
+      "tags": ["Treponema pallidum", "syphilis", "congenital syphilis", "spirochaete", "spirochete", "Borrelia", "Leptospira", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -134,6 +171,33 @@
       "tags": ["phage", "phage therapy", "T4", "tailed phage", "Caudovirales", "virus", "antimicrobial resistance", "AMR", "virion"]
     },
     {
+      "id": "rotavirus",
+      "name": "Rotavirus",
+      "category": "viruses",
+      "file": "icons/viruses/rotavirus.svg",
+      "monoFile": "icons/viruses/rotavirus-mono.svg",
+      "description": "Non-enveloped, triple-layered wheel-like capsid with VP4 spikes.",
+      "tags": ["rotavirus", "gastroenteritis", "diarrhoea", "Rotarix", "reovirus", "dsRNA virus", "non-enveloped virus", "virion"]
+    },
+    {
+      "id": "enterovirus",
+      "name": "Enterovirus",
+      "category": "viruses",
+      "file": "icons/viruses/enterovirus.svg",
+      "monoFile": "icons/viruses/enterovirus-mono.svg",
+      "description": "Small non-enveloped icosahedral capsid (picornavirus), also suitable for parechovirus, poliovirus and rhinovirus.",
+      "tags": ["enterovirus", "parechovirus", "picornavirus", "poliovirus", "rhinovirus", "coxsackie", "EV-D68", "viral meningitis", "hand foot and mouth", "non-enveloped virus", "virion"]
+    },
+    {
+      "id": "measles",
+      "name": "Measles virus",
+      "category": "viruses",
+      "file": "icons/viruses/measles.svg",
+      "monoFile": "icons/viruses/measles-mono.svg",
+      "description": "Pleomorphic enveloped paramyxovirus with haemagglutinin (H, blue) and fusion (F, orange) glycoproteins and a helical nucleocapsid.",
+      "tags": ["measles", "morbillivirus", "paramyxovirus", "MMR", "rubeola", "SSPE", "mumps", "enveloped virus", "RNA virus", "virion"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -159,6 +223,15 @@
       "monoFile": "icons/parasites/malaria-mono.svg",
       "description": "Red blood cells infected with Plasmodium: ring forms with chromatin dots, and a banana-shaped gametocyte.",
       "tags": ["malaria", "Plasmodium falciparum", "P. falciparum", "ring form", "gametocyte", "parasite", "red blood cell", "returning traveller", "tropical medicine"]
+    },
+    {
+      "id": "toxoplasma",
+      "name": "Toxoplasma gondii",
+      "category": "parasites",
+      "file": "icons/parasites/toxoplasma.svg",
+      "monoFile": "icons/parasites/toxoplasma-mono.svg",
+      "description": "Crescent-shaped tachyzoite with apical conoid, rhoptries (orange), micronemes (yellow) and nucleus.",
+      "tags": ["Toxoplasma gondii", "toxoplasmosis", "congenital toxoplasmosis", "TORCH", "tachyzoite", "apicomplexa", "protozoa", "parasite"]
     },
     {
       "id": "neutrophil",
@@ -258,6 +331,33 @@
       "monoFile": "icons/immune-cells/platelets-mono.svg",
       "description": "Resting discoid platelets with granules, and an activated platelet with pseudopods.",
       "tags": ["platelet", "thrombocyte", "thrombocytopenia", "coagulation", "clotting", "DIC", "blood", "haemostasis"]
+    },
+    {
+      "id": "cd8-killing",
+      "name": "CD8 T cell killing an infected cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/cd8-killing.svg",
+      "monoFile": "icons/immune-cells/cd8-killing-mono.svg",
+      "description": "Cytotoxic T cell releasing granules across the immune synapse into a virus-infected target cell, which is blebbing as it dies.",
+      "tags": ["CD8", "cytotoxic T lymphocyte", "CTL", "killer T cell", "perforin", "granzyme", "apoptosis", "immune synapse", "cell-mediated immunity"]
+    },
+    {
+      "id": "mast-cell",
+      "name": "Mast cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/mast-cell.svg",
+      "monoFile": "icons/immune-cells/mast-cell-mono.svg",
+      "description": "Mast cell packed with granules, releasing them on one side, with IgE bound to its surface.",
+      "tags": ["mast cell", "degranulation", "histamine", "IgE", "allergy", "anaphylaxis", "type I hypersensitivity", "urticaria", "innate immunity"]
+    },
+    {
+      "id": "nets",
+      "name": "Neutrophil extracellular traps",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/nets.svg",
+      "monoFile": "icons/immune-cells/nets-mono.svg",
+      "description": "Neutrophil releasing a web of DNA (NETs) that traps bacteria.",
+      "tags": ["NETs", "neutrophil extracellular traps", "NETosis", "neutrophil", "DNA", "histones", "innate immunity", "thrombosis"]
     },
     {
       "id": "igg-antibody",
@@ -449,6 +549,42 @@
       "tags": ["oral suspension", "liquid medicine", "syrup", "antibiotic", "paediatric", "pediatric", "dosing syringe", "oral", "enteral", "amoxicillin"]
     },
     {
+      "id": "mrna-vaccine",
+      "name": "mRNA vaccine (lipid nanoparticle)",
+      "category": "treatment",
+      "file": "icons/treatment/mrna-vaccine.svg",
+      "monoFile": "icons/treatment/mrna-vaccine-mono.svg",
+      "description": "Lipid nanoparticle with a lipid shell, PEG-lipids on the surface and mRNA inside.",
+      "tags": ["mRNA vaccine", "lipid nanoparticle", "LNP", "vaccine", "vaccination", "COVID-19 vaccine", "RSV vaccine", "PEG", "nanoparticle"]
+    },
+    {
+      "id": "beta-lactamase",
+      "name": "β-lactamase",
+      "category": "resistance",
+      "file": "icons/resistance/beta-lactamase.svg",
+      "monoFile": "icons/resistance/beta-lactamase-mono.svg",
+      "description": "β-lactamase enzyme hydrolysing the β-lactam ring of an antibiotic in its active site.",
+      "tags": ["beta-lactamase", "β-lactamase", "ESBL", "carbapenemase", "AmpC", "antimicrobial resistance", "AMR", "beta-lactam", "penicillin", "enzyme"]
+    },
+    {
+      "id": "efflux-pump",
+      "name": "Efflux pump",
+      "category": "resistance",
+      "file": "icons/resistance/efflux-pump.svg",
+      "monoFile": "icons/resistance/efflux-pump-mono.svg",
+      "description": "Efflux pump spanning the bacterial membrane, expelling antibiotic molecules.",
+      "tags": ["efflux pump", "AcrAB-TolC", "multidrug resistance", "MDR", "antimicrobial resistance", "AMR", "membrane transporter", "antibiotic"]
+    },
+    {
+      "id": "susceptibility-plate",
+      "name": "Antibiotic susceptibility plate",
+      "category": "resistance",
+      "file": "icons/resistance/susceptibility-plate.svg",
+      "monoFile": "icons/resistance/susceptibility-plate-mono.svg",
+      "description": "Disc diffusion plate: antibiotic discs on a bacterial lawn, with zones of inhibition of different sizes and one resistant disc with none.",
+      "tags": ["antimicrobial susceptibility testing", "AST", "disc diffusion", "Kirby-Bauer", "zone of inhibition", "sensitivities", "resistance", "microbiology", "laboratory"]
+    },
+    {
       "id": "blood-culture-bottle",
       "name": "Blood culture bottle",
       "category": "clinical",
@@ -492,6 +628,51 @@
       "monoFile": "icons/clinical/baby-mono.svg",
       "description": "Baby sitting up, wearing a nappy.",
       "tags": ["baby", "infant", "toddler", "paediatric", "pediatric", "patient", "person", "human", "nappy", "diaper"]
+    },
+    {
+      "id": "thermometer",
+      "name": "Thermometer",
+      "category": "clinical",
+      "file": "icons/clinical/thermometer.svg",
+      "monoFile": "icons/clinical/thermometer-mono.svg",
+      "description": "Clinical thermometer showing a high reading.",
+      "tags": ["thermometer", "fever", "temperature", "pyrexia", "febrile", "febrile infant", "observations"]
+    },
+    {
+      "id": "stethoscope",
+      "name": "Stethoscope",
+      "category": "clinical",
+      "file": "icons/clinical/stethoscope.svg",
+      "monoFile": "icons/clinical/stethoscope-mono.svg",
+      "description": "Stethoscope with earpieces, tubing and chest piece.",
+      "tags": ["stethoscope", "examination", "auscultation", "clinician", "doctor", "clinical assessment"]
+    },
+    {
+      "id": "lumbar-puncture",
+      "name": "Lumbar puncture",
+      "category": "clinical",
+      "file": "icons/clinical/lumbar-puncture.svg",
+      "monoFile": "icons/clinical/lumbar-puncture-mono.svg",
+      "description": "Lumbar spine in side view with a needle between two spinous processes into the CSF-filled canal, and a drop of CSF.",
+      "tags": ["lumbar puncture", "LP", "spinal tap", "CSF", "cerebrospinal fluid", "meningitis", "febrile infant", "spine", "procedure"]
+    },
+    {
+      "id": "np-swab",
+      "name": "Nasopharyngeal swab",
+      "category": "clinical",
+      "file": "icons/clinical/np-swab.svg",
+      "monoFile": "icons/clinical/np-swab-mono.svg",
+      "description": "Flocked swab with a tube of transport medium.",
+      "tags": ["nasopharyngeal swab", "NPS", "swab", "respiratory sample", "viral PCR", "transport medium", "specimen", "diagnostics"]
+    },
+    {
+      "id": "pregnant-person",
+      "name": "Pregnant person",
+      "category": "clinical",
+      "file": "icons/clinical/pregnant-person.svg",
+      "monoFile": "icons/clinical/pregnant-person-mono.svg",
+      "description": "Pregnant person in side view.",
+      "tags": ["pregnancy", "pregnant", "maternal", "antenatal", "vertical transmission", "congenital infection", "maternal vaccination", "person", "human"]
     }
   ]
 }

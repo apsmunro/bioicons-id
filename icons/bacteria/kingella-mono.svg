@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="kingella-mono-title">
+<title id="kingella-mono-title">Kingella kingae (single colour)</title>
+<desc>Plump Gram-negative coccobacilli in pairs and short chains. Coloured pink, after the Gram stain.</desc>
+<defs></defs>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(70.9 90.43) rotate(-11.83)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(106.64 88.62) rotate(3.5)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(148.54 92.14) rotate(3.03)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(184.52 90.05) rotate(-11.76)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(92 184) rotate(14)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(127 193) rotate(14)" fill="#000000"/>
+<rect x="-16" y="-12" width="32" height="24" rx="11" transform="translate(190 168) rotate(-30)" fill="#000000"/>
+</svg>

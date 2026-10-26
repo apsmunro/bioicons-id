@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="lumbar-puncture-title">
+<title id="lumbar-puncture-title">Lumbar puncture</title>
+<desc>Lumbar spine in side view with a needle between two spinous processes into the CSF-filled canal, and a drop of CSF.</desc>
+<defs><radialGradient id="lumbar-puncture-bone" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f8f3e4"/><stop offset="0.55" stop-color="#F1E6C8"/><stop offset="1" stop-color="#cac1a8"/></radialGradient><linearGradient id="lumbar-puncture-needle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aeb7c0"/><stop offset="0.25" stop-color="#dce1e6"/><stop offset="0.6" stop-color="#B9C3CC"/><stop offset="1" stop-color="#90989f"/></linearGradient><linearGradient id="lumbar-puncture-hub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e39b3d"/><stop offset="0.25" stop-color="#f9d2a0"/><stop offset="0.6" stop-color="#F2A541"/><stop offset="1" stop-color="#bd8133"/></linearGradient><radialGradient id="lumbar-puncture-drop" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e5f4fc"/><stop offset="0.55" stop-color="#BFE3F7"/><stop offset="1" stop-color="#a0bfcf"/></radialGradient></defs>
+<rect x="106" y="36" width="26" height="200" fill="#BFE3F7"/>
+<path d="M112 36V236M119 36V236M126 36V236" stroke="#F2D07A" stroke-width="2" opacity="0.8"/>
+<rect x="44" y="95" width="58" height="12" rx="6" fill="#BFD7E6" stroke="#8697a1" stroke-width="2"/>
+<rect x="44" y="157" width="58" height="12" rx="6" fill="#BFD7E6" stroke="#8697a1" stroke-width="2"/>
+<rect x="40" y="46" width="62" height="48" rx="10" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3"/>
+<rect x="40" y="108" width="62" height="48" rx="10" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3"/>
+<rect x="40" y="170" width="62" height="48" rx="10" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3"/>
+<path d="M132 52L186 68Q200 76 188 86L132 88Z" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3" stroke-linejoin="round"/>
+<path d="M132 114L186 130Q200 138 188 148L132 150Z" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3" stroke-linejoin="round"/>
+<path d="M132 176L186 192Q200 200 188 210L132 212Z" fill="url(#lumbar-puncture-bone)" stroke="#958f7c" stroke-width="3" stroke-linejoin="round"/>
+<path d="M120 164L224 151" stroke="#73797e" stroke-width="5" stroke-linecap="round"/>
+<path d="M120 164L224 151" stroke="#D4DBE1" stroke-width="2.5" stroke-linecap="round"/>
+<rect x="222" y="143" width="22" height="15" rx="3" transform="rotate(-7 233 150)" fill="url(#lumbar-puncture-hub)" stroke="#966628" stroke-width="2"/>
+<path d="M236 166C240 172 242 176 242 179A6 6 0 0 1 230 179C230 176 232 172 236 166Z" fill="url(#lumbar-puncture-drop)" stroke="#7c94a1" stroke-width="1.5"/>
+</svg>

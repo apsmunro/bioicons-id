@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="np-swab-mono-title">
+<title id="np-swab-mono-title">Nasopharyngeal swab (single colour)</title>
+<desc>Flocked swab with a tube of transport medium.</desc>
+<defs></defs>
+<path d="M150 90H200V218Q200 228 190 228H160Q150 228 150 218Z" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 166H190V214Q190 218 186 218H164Q160 218 160 214Z" fill="#000000"/>
+<rect x="146" y="48" width="58" height="34" rx="6" fill="#000000"/>
+<path d="M40 30L114 198" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse rx="8" ry="18" transform="translate(121 214) rotate(-23.8)" fill="#000000"/>
+</svg>

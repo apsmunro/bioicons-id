@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="efflux-pump-mono-title">
+<title id="efflux-pump-mono-title">Efflux pump (single colour)</title>
+<desc>Efflux pump spanning the bacterial membrane, expelling antibiotic molecules.</desc>
+<defs></defs>
+<path d="M24 148H86M170 148H234M24 174H86M170 174H234" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="96" y="82" width="64" height="128" rx="20" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="117" y="92" width="22" height="108" rx="11" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(128 176) rotate(90)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(128 128) rotate(90)" fill="#000000"/>
+<path d="M128 72V32M117 45L128 31L139 45" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(158 46) rotate(-30)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(62 70) rotate(25)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(196 92) rotate(-15)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(58 212) rotate(20)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(200 210) rotate(-35)" fill="#000000"/>
+</svg>

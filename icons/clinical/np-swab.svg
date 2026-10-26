@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="np-swab-title">
+<title id="np-swab-title">Nasopharyngeal swab</title>
+<desc>Flocked swab with a tube of transport medium.</desc>
+<defs><clipPath id="np-swab-clip"><path d="M150 84H200V218Q200 228 190 228H160Q150 228 150 218Z"/></clipPath><linearGradient id="np-swab-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/><stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient><linearGradient id="np-swab-cap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a85c4"/><stop offset="0.25" stop-color="#9fc7e8"/><stop offset="0.6" stop-color="#3E8ED0"/><stop offset="1" stop-color="#306fa2"/></linearGradient><radialGradient id="np-swab-tip" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbecd4"/><stop offset="0.55" stop-color="#F6D9A8"/><stop offset="1" stop-color="#cfb68d"/></radialGradient></defs>
+<path d="M150 84H200V218Q200 228 190 228H160Q150 228 150 218Z" fill="url(#np-swab-glass)"/>
+<g clip-path="url(#np-swab-clip)"><rect x="146" y="164" width="60" height="70" fill="#F3B6C3"/><line x1="146" y1="164" x2="204" y2="164" stroke="#fff" stroke-width="2" opacity="0.7"/></g>
+<rect x="156" y="104" width="38" height="44" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>
+<path d="M156 113V106a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v7Z" fill="#3E8ED0"/>
+<rect x="162" y="122" width="26" height="3.5" rx="1.75" fill="#B8C6D1"/>
+<rect x="162" y="130" width="18" height="3.5" rx="1.75" fill="#B8C6D1"/>
+<path d="M150 84H200V218Q200 228 190 228H160Q150 228 150 218Z" fill="none" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<rect x="146" y="50" width="58" height="36" rx="6" fill="url(#np-swab-cap)" stroke="#265881" stroke-width="3"/>
+<path d="M40 30L114 198" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#909496" stroke-width="11"/><path d="M40 30L114 198" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#E9EEF2" stroke-width="6"/><path d="M40 30L114 198" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.5" opacity="0.4" transform="translate(-1.08 -1.08)"/>
+<circle cx="70" cy="98" r="4.5" fill="none" stroke="#8DA6B8" stroke-width="2"/>
+<g transform="translate(121 214) rotate(-23.8)"><path d="M8 0L11.5 0M7.96 1.82L11.37 2.6M7.82 3.77L10.98 5.29M7.54 6.01L10.28 8.2M6.99 8.76L9.17 11.5M5.88 12.21L7.4 15.36M3.65 16.01L4.43 19.42M0 18L0 21.5M-3.65 16.01L-4.43 19.42M-5.88 12.21L-7.4 15.36M-6.99 8.76L-9.17 11.5M-7.54 6.01L-10.28 8.2M-7.82 3.77L-10.98 5.29M-7.96 1.82L-11.37 2.6M-8 0L-11.5 0M-7.96 -1.82L-11.37 -2.6M-7.82 -3.77L-10.98 -5.29M-7.54 -6.01L-10.28 -8.2M-6.99 -8.76L-9.17 -11.5M-5.88 -12.21L-7.4 -15.36M-3.65 -16.01L-4.43 -19.42M0 -18L0 -21.5M3.65 -16.01L4.43 -19.42M5.88 -12.21L7.4 -15.36M6.99 -8.76L9.17 -11.5M7.54 -6.01L10.28 -8.2M7.82 -3.77L10.98 -5.29M7.96 -1.82L11.37 -2.6" stroke="#b9a37e" stroke-width="1.5" stroke-linecap="round"/><ellipse rx="8" ry="18" fill="url(#np-swab-tip)" stroke="#998768" stroke-width="1.5"/></g>
+</svg>
