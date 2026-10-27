@@ -230,6 +230,47 @@ const PALETTE = {
   purpura: '#7A1F3D',
   xrayFilm: '#16202B',
   schistosomeEgg: '#E6CF92',
+  reticulateBody: '#EBA9C4',
+  elementaryBody: '#9C2A5E',
+  inclusion: '#F8EAF0',
+  borrelia: '#6E9BD1',
+  hcvEnvelope: '#B9DDB2',
+  hcvCore: '#E58A3C',
+  cmvCytoplasm: '#EBC3D6',
+  cmvInclusion: '#5A2A82',
+  halo: '#F6EEF8',
+  amastigote: '#BFD3EE',
+  sandfly: '#C9A77E',
+  th1: '#F2A7A0',
+  th2: '#A9DDB0',
+  th17: '#F6C58F',
+  tfh: '#C9B6EC',
+  stat1: '#5FA8D3',
+  stat2: '#4DB6AC',
+  phosphate: '#F2C14E',
+  c1q: '#9C7FD9',
+  mbl: '#6FBF8E',
+  factorB: '#F2A541',
+  pbp2a: '#E58A3C',
+  carbapenemase: '#3E9C8F',
+  porin: '#7FB3D5',
+  stewardship: '#3E8ED0',
+  valveTissue: '#F3D9CF',
+  annulus: '#E2A79A',
+  vegetation: '#E9D59A',
+  scalp: '#E2A27E',
+  dura: '#C99A93',
+  arachnoid: '#E8D6E8',
+  cortex: '#F2B8C2',
+  whiteMatter: '#F8E1E4',
+  pipette: '#E6ECF1',
+  pipetteTip: '#F4F8FB',
+  elisa: '#F2D35B',
+  centrifuge: '#E4E9EE',
+  rotor: '#B9C3CC',
+  sachet: '#5DA9E9',
+  silhouette: '#8FA3B8', // the neutral figures in the transmission icons
+  arrow: '#3E4A59',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
@@ -903,9 +944,10 @@ const NASAL_SPRAY = {
   virions: [[46, -6, 8], [72, 11, 7], [84, -12, 6.5], [28, 9, 5.5]],
 };
 
-// CAR T cell (left) binding a target cell (right). CAR directions in degrees round the T cell; the
-// ones facing the target engage its CD19.
-const CAR_T = { cell: [110, 112, 62], target: [206, 194, 32], cars: [-140, -95, -50, -5, 40, 85, 130, 175, 220], engaged: 40 };
+// CAR T cell (left) binding a target cell (right). CAR directions in degrees round the T cell, kept
+// to the side facing the target (all round, the CARs read as a virus's spikes); the one at
+// engaged binds its CD19.
+const CAR_T = { cell: [110, 112, 62], target: [206, 194, 32], cars: [-100, -58, -16, 40, 82, 124], engaged: 40 };
 
 // Blood bottles: adult tubes [x, cap colour] and paediatric microtubes [x, cap colour].
 const BLOOD_BOTTLES = { adult: [[42, 'edta'], [80, 'serum'], [118, 'citrate'], [156, 'heparin']], paediatric: [[194, 'edta'], [224, 'serum']] };
@@ -948,6 +990,278 @@ const CHEST_XRAY = {
   ribs: [[60, 18], [76, 20], [92, 22], [108, 24], [124, 26], [140, 28], [156, 30], [172, 30]],
   clavicle: 'M118 66C104 62 92 58 80 60C70 62 62 60 52 54',
   gastricBubble: [178, 214, 12, 7],
+};
+
+// A curved arrow from p0 to p1, bending towards the control point c. The shaft stops inside the
+// head, so its round cap does not poke through the point.
+function curvedArrow([x0, y0], [cx, cy], [x1, y1], size = 13) {
+  const l = Math.hypot(x1 - cx, y1 - cy), [ux, uy] = [(x1 - cx) / l, (y1 - cy) / l], w = size * 0.55;
+  const [ex, ey, bx, by] = [x1 - ux * size * 0.6, y1 - uy * size * 0.6, x1 - ux * size, y1 - uy * size];
+  return {
+    shaft: `M${round(x0)} ${round(y0)}Q${round(cx)} ${round(cy)} ${round(ex)} ${round(ey)}`,
+    head: `${round(x1)},${round(y1)} ${round(bx - uy * w)},${round(by + ux * w)} ${round(bx + uy * w)},${round(by - ux * w)}`,
+  };
+}
+const straightArrow = (p0, p1, size) => curvedArrow(p0, [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2], p1, size);
+
+// Points scattered in a region by rejection: inside(p) decides membership and clear(p, placed)
+// whether p keeps its distance from the points already placed.
+function scatter(seed, count, box, inside, clear, tries = 8000) {
+  const rand = rng(seed), out = [], [x0, y0, x1, y1] = box;
+  for (let t = 0; out.length < count && t < tries; t++) {
+    const p = [x0 + rand() * (x1 - x0), y0 + rand() * (y1 - y0)];
+    if (inside(p) && clear(p, out)) out.push(p);
+  }
+  return out;
+}
+const apart = d => (p, placed) => placed.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > d);
+const inEllipse = (cx, cy, rx, ry) => ([x, y]) => ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 < 1;
+
+// Chlamydia in an epithelial cell: an inclusion packed with reticulate bodies (larger, dividing)
+// and elementary bodies (small, infectious), pushing the nucleus aside; elementary bodies leave.
+const CHLAMYDIA = {
+  cell: [122, 134, 92], nucleus: [56, 132, 16, 40, -6], inclusion: [142, 132, 58],
+  outside: [[204, 46], [222, 66], [190, 28], [232, 92]],
+  get bodies() {
+    const [cx, cy, r] = this.inclusion;
+    const rbs = scatter(29, 11, [cx - r, cy - r, cx + r, cy + r], inEllipse(cx, cy, r - 15, r - 15), apart(23));
+    const ebs = scatter(31, 30, [cx - r, cy - r, cx + r, cy + r], inEllipse(cx, cy, r - 8, r - 8),
+      (p, placed) => apart(16.5)(p, rbs) && apart(11)(p, placed));
+    return { rbs, ebs };
+  },
+};
+
+// Borrelia: long, loosely and irregularly coiled spirochaetes [x, y, angle, length, phase].
+const BORRELIA = { cells: [[122, 90, -18, 204, 0], [136, 170, -12, 196, 1.7]], amp: 12, wavelength: 44 };
+function borreliaPath([cx, cy, deg, len, phase], { amp, wavelength } = BORRELIA) {
+  const a = deg * Math.PI / 180, [ux, uy] = [Math.cos(a), Math.sin(a)], pts = [];
+  for (let t = -len / 2; t <= len / 2; t += 3) {
+    const off = amp * Math.min(1, (len / 2 - Math.abs(t)) / 16) * (1 + 0.25 * Math.sin(t / 23 + phase)) * Math.sin(2 * Math.PI * t / wavelength + phase);
+    pts.push([cx + ux * t - uy * off, cy + uy * t + ux * off]);
+  }
+  return smoothOpenPath(pts);
+}
+
+// Enterococcus: oval cocci (elongated along the chain) in pairs and short chains [x, y, angle, count].
+const ENTEROCOCCUS = {
+  groups: [[72, 64, 28, 2], [176, 56, -18, 2], [118, 128, 8, 4], [58, 192, -38, 3], [186, 190, 32, 2], [214, 118, 84, 2]],
+  spacing: 33, rx: 17, ry: 14,
+  get cocci() {
+    return this.groups.flatMap(([x, y, a, k]) => Array.from({ length: k }, (_, i) => {
+      const d = (i - (k - 1) / 2) * this.spacing, t = a * Math.PI / 180;
+      return [x + d * Math.cos(t), y + d * Math.sin(t), a];
+    }));
+  },
+};
+
+// Hepatitis C virion: envelope radius R with E1/E2 glycoprotein heterodimers, round a core
+// holding the single-stranded RNA genome.
+const HEPATITIS_C = { R: 70, spikes: 20, core: 32 };
+const hcvRna = (r = 22) => smoothOpenPath(Array.from({ length: 50 }, (_, i) => {
+  const t = i / 49, a = t * 2 * Math.PI * 1.6 - 0.6, rr = r * (0.35 + 0.65 * Math.abs(Math.sin(t * 7.3 + 0.4)));
+  return [128 + rr * Math.cos(a), 128 + rr * Math.sin(a)];
+}));
+
+// Cytomegalovirus-infected cell: an enlarged cell whose nucleus holds a large dark inclusion
+// ringed by a clear halo ("owl's eye"), with small cytoplasmic inclusions, beside two normal cells.
+const CMV_CELL = {
+  cell: [124, 128, 84], nucleus: [130, 122, 46, 40, -10], halo: [130, 122, 28, 23], inclusion: [130, 122, 18, 14],
+  granules: [[64, 150, 3.5], [96, 194, 4], [172, 182, 4.5], [178, 80, 3.5]],
+  neighbours: [[214, 212, 24], [40, 42, 20]],
+};
+
+// Leishmania amastigotes in a macrophage, and the sandfly vector (local coordinates, facing left,
+// wings raised over its back).
+const LEISHMANIA = {
+  macrophage: [96, 160, 72], nucleus: [62, 170],
+  get amastigotes() {
+    const [mx, my, r] = this.macrophage;
+    return scatter(43, 9, [mx - r, my - r, mx + r, my + r], p => inEllipse(mx, my, r - 16, r - 16)(p) && !inEllipse(62, 170, 42, 40)(p), apart(23));
+  },
+  sandfly: {
+    at: [190, 62, 0.9],
+    thorax: [0, 0, 15, 13], head: [-19, 9, 7.5], abdomen: [22, 17, 22, 8, 32],
+    wings: [[12, -28, 25, 7, -64], [24, -22, 25, 7, -38]],
+    legs: [[[-4, 10], [-16, 34], [-22, 56]], [[2, 12], [4, 36], [8, 58]], [[8, 10], [24, 32], [36, 52]]],
+    proboscis: 'M-23 14L-34 30', palps: 'M-22 12C-32 16 -38 24 -36 36', antenna: 'M-22 4C-34 2 -46 10 -54 24',
+  },
+};
+
+// Germinal centre in a lymphoid follicle: a mantle of small naive B cells round the germinal
+// centre, its dark zone (dense dividing centroblasts, below) and light zone (centrocytes among
+// follicular dendritic cells, with a few follicular helper T cells).
+const GERMINAL_CENTRE = {
+  follicle: [128, 128, 108, 96], centre: [128, 138, 78, 64],
+  fdc: [[104, 106], [156, 100]],
+  get fdcBranches() {
+    return this.fdc.flatMap(([x, y], k) => [0, 1, 2, 3, 4].map(i => {
+      const a = (i * 72 + k * 30 + 10) * Math.PI / 180, l = 22 + 6 * ((i + k) % 2);
+      return [[x, y], [x + l * 0.55 * Math.cos(a) - 4 * Math.sin(a), y + l * 0.55 * Math.sin(a) + 4 * Math.cos(a)], [x + l * Math.cos(a), y + l * Math.sin(a)]];
+    }));
+  },
+  get cells() {
+    const [fx, fy, frx, fry] = this.follicle, [cx, cy, crx, cry] = this.centre;
+    const segs = this.fdcBranches.flatMap(b => [[b[0], b[1]], [b[1], b[2]]]);
+    const offFdc = p => segs.every(([a, b]) => {
+      const [dx, dy] = [b[0] - a[0], b[1] - a[1]], t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy)));
+      return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy) > 9;
+    });
+    const mantle = scatter(51, 170, [fx - frx, fy - fry, fx + frx, fy + fry], p => inEllipse(fx, fy, frx - 5, fry - 5)(p) && !inEllipse(cx, cy, crx + 6, cry + 6)(p), apart(11), 20000);
+    const dark = scatter(52, 60, [cx - crx, cy, cx + crx, cy + cry], p => inEllipse(cx, cy, crx - 8, cry - 8)(p) && p[1] > cy + 4, apart(15));
+    const light = scatter(53, 22, [cx - crx, cy - cry, cx + crx, cy], p => inEllipse(cx, cy, crx - 8, cry - 8)(p) && p[1] < cy - 6 && offFdc(p) && !this.fdc.some(([x, y]) => Math.hypot(p[0] - x, p[1] - y) < 12), apart(18));
+    return { mantle, dark, light: light.slice(4), tfh: light.slice(0, 4) };
+  },
+};
+
+// Helper T-cell subsets: a naive CD4 T cell differentiating into Th1, Th2, Th17 and Tfh cells
+// [x, y, palette colour, cytokine symbol].
+const TH_SUBSETS = { naive: [128, 128, 34], r: 26, subsets: [[62, 64, 'th1', 'circle'], [194, 64, 'th2', 'triangle'], [62, 192, 'th17', 'square'], [194, 192, 'tfh', 'diamond']] };
+// Positions of a subset's three secreted cytokines, on its side facing away from the naive cell.
+const subsetCytokines = ([x, y]) => {
+  const out = Math.atan2(y - 128, x - 128);
+  return [-35, 0, 35].map(d => [x + 39 * Math.cos(out + d * Math.PI / 180), y + 39 * Math.sin(out + d * Math.PI / 180)]);
+};
+// A cytokine symbol (one shape per subset, so they stay distinct in single colour) as an SVG element body.
+function cytokineShape(kind, x, y, s = 6.5) {
+  if (kind === 'circle') return `circle cx="${round(x)}" cy="${round(y)}" r="${s}"`;
+  const pts = { triangle: [[0, -1.2], [1.1, 0.8], [-1.1, 0.8]], square: [[-0.9, -0.9], [0.9, -0.9], [0.9, 0.9], [-0.9, 0.9]], diamond: [[0, -1.25], [1, 0], [0, 1.25], [-1, 0]] }[kind];
+  return `polygon points="${pts.map(([u, v]) => `${round(x + u * s)},${round(y + v * s)}`).join(' ')}"`;
+}
+
+// Type I interferon signalling: interferon binding its receptor (IFNAR1 and IFNAR2), the
+// receptor-bound kinases (JAK1, TYK2) phosphorylating STAT1 and STAT2, which with IRF9 (ISGF3)
+// move into the nucleus and bind DNA.
+const INTERFERON = {
+  // Interferon binds between the two receptor chains, each with two extracellular domains (y).
+  membrane: [72, 94], chains: [100, 156], ligand: [128, 38], domains: [30, 53], jak: 120,
+  stats: [128, 150], arrow: [[128, 178], [128, 194]], envelope: 'M16 214Q128 178 240 214', isgf3: [128, 214], dna: 232,
+};
+
+// Complement activation on a bacterial surface: the classical (C1q on antibody), lectin (MBL on
+// mannose) and alternative (C3bBb) pathways, each leading to C3 being split into C3a and C3b.
+const COMPLEMENT = {
+  surface: 'M16 206Q128 182 240 206L240 232Q240 240 232 240L24 240Q16 240 16 232Z',
+  surfaceY: x => { const t = (x - 16) / 224; return (1 - t) ** 2 * 206 + 2 * t * (1 - t) * 182 + t * t * 206; },
+  classical: 56, lectin: 128, alternative: 200, c3: [120, 52],
+  arrows: [[[58, 112], [62, 70], [94, 58]], [[128, 128], [128, 100], [128, 76]], [[200, 152], [198, 82], [150, 60]]],
+};
+// A bouquet (C1q or MBL), its stem at the top and heads [x, y] at the bottom.
+const bouquet = (x, top, heads) => ({ stem: `M${x} ${top}L${x} ${top + 14}`, stalks: heads.map(([hx, hy]) => `M${x} ${top + 14}Q${x} ${round((top + hy) / 2 + 6)} ${hx} ${hy - 6}`).join('') });
+
+// Fc receptors on a phagocyte binding IgG on a bacterium: the C3b opsonisation cup, opened up.
+const FC_RECEPTOR = { B: [70, 128], rb: 50, P: [180, 128], ri: 56, ro: 74, tip: 45, bacterium: 26, antibodies: 12, scale: 0.85 };
+
+// MRSA: peptidoglycan above the membrane. A normal PBP is blocked by a β-lactam, so no
+// cross-links form above it; PBP2a, which β-lactams barely bind, goes on cross-linking.
+const MRSA = {
+  rows: [44, 90], sugars: Array.from({ length: 10 }, (_, i) => 34 + i * 21), membrane: [204, 228],
+  pbp: [76, 160], pbp2a: [182, 158], blocked: x => x < 120,
+  free: [[146, 118, -30], [226, 132, 50]],
+};
+
+// Carbapenemase: a Gram-negative envelope (outer membrane with porins, periplasm with a thin
+// peptidoglycan layer, inner membrane). Carbapenems enter through the porins and are broken
+// down by the enzyme in the periplasm before they reach their target.
+const CARBAPENEMASE = {
+  outer: [86, 108], wall: 142, inner: [176, 198], porins: [72, 180],
+  incoming: [[72, 40, 80], [180, 30, 100], [124, 56, 20], [214, 64, -30]],
+  enzymes: [[98, 136, -60], [186, 152, -110], [142, 158, -20]],
+  broken: [[120, 124, 30], [206, 128, -20], [160, 136, 60]],
+};
+
+// Antimicrobial stewardship: a capsule inside a review cycle (an arrow most of the way round)
+// with a tick.
+const STEWARDSHIP = { capsule: [118, 120, 0.6], arc: [120, 122, 92, 62, 378], badge: [190, 182, 26] };
+
+// Aortic valve seen from above: the annulus, three cusps meeting along closure lines, and
+// vegetations [x, y, r] on the cusps' free edges.
+const HEART_VALVE = { centre: [128, 128], R: 92, inner: 74, commissures: [-90, 30, 150], vegetations: [[133, 84, 17], [168, 150, 11]] };
+const vegetationPath = ([x, y, r], seed) => smoothClosedPath(polarPoints(x, y, a => r * (1 + 0.16 * Math.sin(5 * a + seed) + 0.1 * Math.sin(9 * a + 2 * seed)), 60));
+
+// Meninges in section, top to bottom: scalp, skull (with spongy diploë), dura, arachnoid with
+// trabeculae across the CSF-filled subarachnoid space, and the pia on the cortex, dipping into a
+// sulcus; white matter below.
+const MENINGES = {
+  frame: [16, 16, 224, 224, 14],
+  scalp: [16, 32], skull: [32, 74], dura: [74, 86], arachnoid: 91,
+  cortex: 'M16 126C40 116 70 116 92 122C108 126 116 134 120 150L124 194Q128 202 132 194L136 150C140 134 148 126 164 122C186 116 216 116 240 126',
+  whiteMatter: 'M16 176C50 162 84 166 100 184C110 198 118 222 128 226C138 222 146 198 156 184C172 166 206 162 240 176',
+  trabeculae: [40, 66, 96, 158, 188, 216],
+  vessel: [196, 104, 7],
+};
+
+// Micropipette (local coordinates, tip down, drawn tilted).
+const PIPETTE = {
+  at: [124, 120, -16, 0.88],
+  button: [-10, -116, 20, 12], rod: [-4, -104, 8, 16],
+  body: 'M-17 -88Q-17 -96 -9 -96L9 -96Q17 -96 17 -88L17 26Q17 34 9 34L-9 34Q-17 34 -17 26Z',
+  hook: 'M17 -84C30 -84 34 -76 34 -68C34 -62 28 -60 24 -64C20 -68 17 -70 17 -70Z',
+  ejector: 'M-17 -90L-28 -98Q-32 -100 -32 -94L-32 -84Q-32 -80 -27 -80L-17 -80Z',
+  window: [-8, -54, 16, 26],
+  shaft: 'M-11 34L11 34L5 76L-5 76Z',
+  tip: 'M-6 74L6 74L1.5 120Q0 123 -1.5 120Z',
+  liquid: 'M-3.6 100L3.6 100L1.5 120Q0 123 -1.5 120Z',
+  drop: [0, 132, 4.5],
+};
+
+// 96-well plate in perspective: plate coordinates (u across, v front to back, both 0..W/D)
+// projected with the back edge narrower. Wells hold an ELISA: two columns of standards, then samples.
+const WELL_PLATE = { W: 210, D: 140, top: 76, depth: 0.6, persp: 0.14, side: 16, pitch: 16.2 };
+const platePoint = (u, v, P = WELL_PLATE) => [128 + (u - P.W / 2) * (1 - P.persp * (1 - v / P.D)), P.top + v * P.depth];
+function plateWells(P = WELL_PLATE) {
+  const rand = rng(97), out = [];
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 12; c++) {
+    const [u, v] = [(P.W - 12 * P.pitch) / 2 + P.pitch * (c + 0.5), (P.D - 8 * P.pitch) / 2 + P.pitch * (r + 0.5)];
+    const [x, y] = platePoint(u, v, P), f = 1 - P.persp * (1 - v / P.D);
+    const level = c < 2 ? 1 - r / 7 : c === 11 ? 0 : rand() < 0.3 ? 0.75 + rand() * 0.25 : rand() * 0.3;
+    out.push({ x, y, rx: 6.2 * f, ry: 6.2 * P.depth * f, level });
+  }
+  return out;
+}
+
+// Microcentrifuge in perspective: a round body (top face ellipse, side height), its chamber with
+// a fixed-angle rotor holding tubes in balanced pairs, the lid open behind, and a front panel.
+const CENTRIFUGE = { top: [128, 128, 98, 40], height: 70, chamber: [128, 128, 76, 30], rotor: [128, 130, 62, 24], lid: [128, 72, 98, 54], panel: [104, 180, 48, 16], button: [168, 188, 7] };
+const rotorSlots = ([cx, cy] = CENTRIFUGE.rotor) => Array.from({ length: 12 }, (_, k) => {
+  const a = k * 30 * Math.PI / 180;
+  return { x: cx + 48 * Math.cos(a), y: cy + 18.5 * Math.sin(a), a, loaded: k % 2 === 0 };
+});
+
+// Oral rehydration solution: a sachet (local coordinates, drawn tilted) and a mug of solution.
+const ORS = { sachet: [84, 124, -12], w: 86, h: 136, mug: [186, 172] };
+const sachetPath = ({ w, h } = ORS) => {
+  const zig = (y, dir) => Array.from({ length: 9 }, (_, i) => `L${round(-w / 2 + (i + 0.5) * w / 9)} ${y + dir * 5}L${round(-w / 2 + (i + 1) * w / 9)} ${y}`).join('');
+  return `M${-w / 2} ${-h / 2}${zig(-h / 2, -1)}L${w / 2} ${h / 2}${zig(h / 2, 1).replace(/L(-?[\d.]+) /g, (m, x) => `L${round(-Number(x))} `)}Z`;
+};
+const dropPath = (x, y, s) => `M${x} ${round(y - 12 * s)}C${round(x + 4 * s)} ${round(y - 4 * s)} ${round(x + 8 * s)} ${y} ${round(x + 8 * s)} ${round(y + 4 * s)}A${round(8 * s)} ${round(8 * s)} 0 0 1 ${round(x - 8 * s)} ${round(y + 4 * s)}C${round(x - 8 * s)} ${y} ${round(x - 4 * s)} ${round(y - 4 * s)} ${x} ${round(y - 12 * s)}Z`;
+
+// Transmission routes, drawn with neutral head-and-shoulders figures (local coordinates: base
+// centre at the origin) so they suit any audience, and one arrow per step.
+const TRANSMISSION = {
+  bust: { head: [0, -96, 24], neck: 'M-10 -80L10 -80L12 -58L-12 -58Z', shoulders: 'M-46 0C-46 -40 -32 -62 0 -62C32 -62 46 -40 46 0Z' },
+  pair: [[58, 222, 0.9], [198, 222, 0.9]],
+  over: [[70, 90], [128, 28], [186, 90]],
+  droplets: [[96, 132, 7.5], [114, 137, 7], [131, 145, 6.5], [146, 156, 6], [159, 170, 5.5]],
+  air: [96, 118, 140],
+  // Fine aerosol particles between and around the figures, clear of the recipient.
+  get aerosol() {
+    const hy = 222 - 96 * 0.9;
+    return scatter(61, 22, [86, 46, 238, 178], ([x, y]) => Math.hypot(x - 198, y - hy) > 30 && Math.hypot(x - 58, y - hy) > 34 && !(y > 160 && Math.abs(x - 198) < 50), apart(14));
+  },
+  // A nappy from the front: waistband, leg openings and side tabs (local coordinates).
+  nappy: 'M-38 -20L38 -20L37 -6C31 0 25 8 23 18C21 26 14 30 0 30C-14 30 -21 26 -23 18C-25 8 -31 0 -37 -6Z',
+  hands: { at: [[70, 138], [186, 138]], scale: 0.55, arrow: [[108, 150], [150, 150]],
+    germs: [[58, 152, 'rod', 20], [76, 164, 'coccus'], [64, 124, 'coccus'], [80, 138, 'rod', -30], [54, 176, 'coccus'], [184, 158, 'rod', 10], [196, 134, 'coccus']] },
+  faecalOral: { nappy: [64, 84], hand: [194, 86, 0.42], mug: [128, 196],
+    arrows: [[[98, 62], [128, 38], [158, 62]], [[206, 140], [206, 176], [170, 194]], [[86, 194], [50, 178], [56, 128]]] },
+  vector: { pair: [[52, 222, 0.82], [204, 222, 0.82]], mosquito: [128, 66, 0.42], arrows: [[[56, 118], [56, 66], [88, 58]], [[168, 58], [200, 66], [200, 118]]] },
+  vertical: {
+    // A standing profile facing right, cropped at the thighs, without arms.
+    body: 'M96 68C82 76 76 96 78 124C80 150 74 170 76 196C78 214 84 228 86 240L146 240C146 226 148 212 150 200C178 196 202 176 202 148C202 126 184 112 150 114C142 104 136 96 128 88C122 80 118 72 114 68Z',
+    head: [104, 46, 22], uterus: [168, 156, 28, 35], placenta: 'M184 128C194 136 198 150 194 166C190 160 186 144 180 134Z',
+    fetus: { head: [164, 142, 11], body: [161, 165, 13, 18, -20], cord: 'M168 162C176 162 182 154 186 146' },
+    pathogens: [[100, 132], [96, 168], [112, 200]], arrow: [[108, 176], [132, 196], [152, 172]],
+  },
 };
 
 // Dense polyline through pts along an open Catmull–Rom curve.
@@ -1227,4 +1541,8 @@ module.exports = {
   CAMPYLOBACTER, campylobacterCell, TETANI, drumstickPath, DIPHTHERIAE, MPOX, flavivirusRafts, onSphere, RABIES, bulletPath, RHIZOPUS,
   SCHISTOSOMA, TRYPANOSOMA, trypanosomeParts, DIAPEDESIS, hourglassPath, crawlingCell, INFLAMMASOME, EAR, cochleaPoints, EYE, eyeGlobePath,
   PLACENTA, placentaVessel, MAB_SYRINGE, NASAL_SPRAY, CAR_T, BLOOD_BOTTLES, GLASS_TEST, CHEST_XRAY, MICROSCOPE, icosahedralAxes,
+  curvedArrow, straightArrow, scatter, CHLAMYDIA, BORRELIA, borreliaPath, ENTEROCOCCUS, HEPATITIS_C, hcvRna, CMV_CELL, LEISHMANIA,
+  GERMINAL_CENTRE, TH_SUBSETS, subsetCytokines, cytokineShape, INTERFERON, COMPLEMENT, bouquet, FC_RECEPTOR, MRSA, CARBAPENEMASE,
+  STEWARDSHIP, HEART_VALVE, vegetationPath, MENINGES, PIPETTE, WELL_PLATE, platePoint, plateWells, CENTRIFUGE, rotorSlots, ORS,
+  sachetPath, dropPath, TRANSMISSION,
 };

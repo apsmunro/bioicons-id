@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="antimicrobial-stewardship-mono-title">
+<title id="antimicrobial-stewardship-mono-title">Antimicrobial stewardship (single colour)</title>
+<desc>An antibiotic capsule inside a review cycle, with a tick.</desc>
+<defs></defs>
+<path d="M163.19 203.23A92 92 0 1 1 210.31 139.55" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="207.5,150.43 200.36,127.08 226.99,135.73" fill="#000000"/>
+<g transform="translate(118 120) scale(0.6) translate(-128 -128)">
+<g transform="translate(128 128) rotate(-35)">
+<path d="M0 -32L-58 -32A32 32 0 0 0 -58 32L0 32Z" fill="#000000"/>
+<rect x="-90" y="-32" width="180" height="64" rx="32" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="22" y1="-14" x2="58" y2="-14" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<circle cx="190" cy="182" r="23" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M179 183L187 191L202 174" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

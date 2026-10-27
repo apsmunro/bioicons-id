@@ -60,21 +60,23 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 - Anatomy and science should be accurate; the author reviews closely and will push back on odd shapes.
 - People have no facial features. British spelling throughout.
 
-## Status (27 Oct 2026, batch 7)
+## Status (27 Oct 2026, batch 8)
 
-137 icons in 10 categories: bacteria 20, viruses 16, fungi 5, parasites & vectors 10, immune cells 18,
-molecules 12, organs & body systems 15, treatment 11, antimicrobial resistance 4, clinical & lab 26.
-Seven icons with skin (child, newborn, baby, pregnant person, hand hygiene, parent and baby, glass
-test) come in four skin tones. The single-colour brain and heart have their lines thickened (`ART_THICKEN` in
-the mono script) so they hold up at small sizes.
+163 icons in 11 categories: bacteria 23, viruses 18, fungi 5, parasites & vectors 11, immune cells 20,
+molecules 15, organs & body systems 17, treatment 12, antimicrobial resistance 7, clinical & lab 29,
+transmission 6. Seven icons with skin (child, newborn, baby, pregnant person, hand hygiene, parent and
+baby, glass test) come in four skin tones. The single-colour brain and heart have their lines
+thickened (`ART_THICKEN` in the mono script) so they hold up at small sizes.
+
+The transmission icons (droplet, airborne, contact, faecal–oral, vector-borne, vertical) were agreed
+with the author as one SVG per route, built from the same few parts in `TRANSMISSION` (kit): neutral
+head-and-shoulders figures (no skin, so no tone versions), the route's agent, and `curvedArrow`.
 
 ## Ideas not yet done
 
-- Transmission routes (droplet, airborne, faecal–oral, vertical): diagrams more than icons, so
-  plan them with the author first.
-- Batch 7 icons to watch in review: the single-colour CAR T cell can read as a spiked virus, and
-  the ear and chest X-ray are anatomy the author may want to refine.
 - The globe has lines of latitude and longitude but no continents; drawing coastlines accurately
   would need real map data.
+- A throat/tonsils icon was dropped: an open-throat view (two tonsils, uvula, tongue) reads as a face.
 - Watch for faces: two round features above a horizontal one read as a face (it happened with
-  the nebuliser mask and the incubator's portholes), which the author wants to avoid.
+  the nebuliser mask, the incubator's portholes, the aortic valve's cusp curves, and germs drawn
+  inside a single-colour outline), which the author wants to avoid.

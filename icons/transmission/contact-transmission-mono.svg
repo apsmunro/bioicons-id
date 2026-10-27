@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="contact-transmission-mono-title">
+<title id="contact-transmission-mono-title">Contact transmission (single colour)</title>
+<desc>Bacteria passing from one hand to another by touch.</desc>
+<defs></defs>
+<g transform="translate(70 138) scale(0.55 0.55) translate(-128 -140)"><path d="M100 122L96 50" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M120 116L122 36" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 118L148 46" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M158 128L172 72" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 162L52 118" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 134C84 118 96 108 112 108L150 110C164 112 170 122 168 138L164 176C160 196 146 206 128 206C104 206 88 194 86 172ZM100 196L156 196L158 238L98 238Z" fill="#000000"/></g>
+<g transform="translate(186 138) scale(-0.55 0.55) translate(-128 -140)"><path d="M100 122L96 50" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M120 116L122 36" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 118L148 46" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M158 128L172 72" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 162L52 118" fill="none" stroke="#000000" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 134C84 118 96 108 112 108L150 110C164 112 170 122 168 138L164 176C160 196 146 206 128 206C104 206 88 194 86 172ZM100 196L156 196L158 238L98 238Z" fill="#000000"/></g>
+<circle cx="110" cy="118" r="4" fill="#000000"/>
+<rect x="-7" y="-3.5" width="14" height="7" rx="3.5" transform="translate(128 106) rotate(20)" fill="#000000"/>
+<circle cx="146" cy="120" r="4" fill="#000000"/>
+<path d="M108 150Q129 150 141.6 150" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="150,150 136,157.7 136,142.3" fill="#000000"/>
+</svg>

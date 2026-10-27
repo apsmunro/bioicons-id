@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="vertical-transmission-title">
+<title id="vertical-transmission-title">Vertical transmission</title>
+<desc>A pregnant person with pathogens crossing the placenta to the fetus.</desc>
+<defs><radialGradient id="vertical-transmission-figure" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#c1ccd8"/><stop offset="0.55" stop-color="#8FA3B8"/><stop offset="1" stop-color="#78899b"/></radialGradient><radialGradient id="vertical-transmission-uterus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fae4e7"/><stop offset="0.55" stop-color="#F4C9CF"/><stop offset="1" stop-color="#cda9ae"/></radialGradient><radialGradient id="vertical-transmission-fetus" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e0e6ec"/><stop offset="0.55" stop-color="#c1ccd8"/><stop offset="1" stop-color="#a2abb5"/></radialGradient></defs>
+<path d="M96 68C82 76 76 96 78 124C80 150 74 170 76 196C78 214 84 228 86 240L146 240C146 226 148 212 150 200C178 196 202 176 202 148C202 126 184 112 150 114C142 104 136 96 128 88C122 80 118 72 114 68Z" fill="url(#vertical-transmission-figure)" stroke="#596572" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="104" cy="46" r="22" fill="url(#vertical-transmission-figure)" stroke="#596572" stroke-width="3"/>
+<ellipse cx="168" cy="156" rx="28" ry="35" fill="url(#vertical-transmission-uterus)" stroke="#92797c" stroke-width="2"/>
+<path d="M184 128C194 136 198 150 194 166C190 160 186 144 180 134Z" fill="#B04A5A" stroke="#6d2e38" stroke-width="1.5"/>
+<path d="M168 162C176 162 182 154 186 146" fill="none" stroke="#9aa2a7" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="161" cy="165" rx="13" ry="18" transform="rotate(-20 161 165)" fill="url(#vertical-transmission-fetus)" stroke="#787e86" stroke-width="2"/>
+<circle cx="164" cy="142" r="11" fill="url(#vertical-transmission-fetus)" stroke="#787e86" stroke-width="2"/>
+<path d="M105 132L108 132M103.54 135.54L105.66 137.66M100 137L100 140M96.46 135.54L94.34 137.66M95 132L92 132M96.46 128.46L94.34 126.34M100 127L100 124M103.54 128.46L105.66 126.34" stroke="#b2423a" stroke-width="2" stroke-linecap="round"/><circle cx="100" cy="132" r="5" fill="#DF5249" stroke="#8a332d" stroke-width="1.2"/>
+<path d="M101 168L104 168M99.54 171.54L101.66 173.66M96 173L96 176M92.46 171.54L90.34 173.66M91 168L88 168M92.46 164.46L90.34 162.34M96 163L96 160M99.54 164.46L101.66 162.34" stroke="#b2423a" stroke-width="2" stroke-linecap="round"/><circle cx="96" cy="168" r="5" fill="#DF5249" stroke="#8a332d" stroke-width="1.2"/>
+<path d="M117 200L120 200M115.54 203.54L117.66 205.66M112 205L112 208M108.46 203.54L106.34 205.66M107 200L104 200M108.46 196.46L106.34 194.34M112 195L112 192M115.54 196.46L117.66 194.34" stroke="#b2423a" stroke-width="2" stroke-linecap="round"/><circle cx="112" cy="200" r="5" fill="#DF5249" stroke="#8a332d" stroke-width="1.2"/>
+<path d="M108 176Q132 196 147.01 177.99" fill="none" stroke="#3E4A59" stroke-width="4.5" stroke-linecap="round"/><polygon points="152,172 149.17,186.56 138.18,177.41" fill="#3E4A59" stroke="#3E4A59" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

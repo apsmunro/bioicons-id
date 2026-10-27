@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="oral-rehydration-title">
+<title id="oral-rehydration-title">Oral rehydration solution</title>
+<desc>A sachet of oral rehydration salts beside a mug of made-up solution.</desc>
+<defs><linearGradient id="oral-rehydration-sachet" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#579fdb"/><stop offset="0.25" stop-color="#aed4f4"/><stop offset="0.6" stop-color="#5DA9E9"/><stop offset="1" stop-color="#4984b6"/></linearGradient><linearGradient id="oral-rehydration-mug" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e5e7e9"/><stop offset="0.25" stop-color="#fafbfc"/><stop offset="0.6" stop-color="#F4F6F8"/><stop offset="1" stop-color="#bec0c1"/></linearGradient><radialGradient id="oral-rehydration-ors" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e1f1fa"/><stop offset="0.55" stop-color="#c3e3f5"/><stop offset="1" stop-color="#a4bfce"/></radialGradient></defs>
+<g transform="translate(84 124) rotate(-12)">
+<path d="M-43 -68L-38.22 -73L-33.44 -68L-28.67 -73L-23.89 -68L-19.11 -73L-14.33 -68L-9.56 -73L-4.78 -68L0 -73L4.78 -68L9.56 -73L14.33 -68L19.11 -73L23.89 -68L28.67 -73L33.44 -68L38.22 -73L43 -68L43 68L38.22 73L33.44 68L28.67 73L23.89 68L19.11 73L14.33 68L9.56 73L4.78 68L0 73L-4.78 68L-9.56 73L-14.33 68L-19.11 73L-23.89 68L-28.67 73L-33.44 68L-38.22 73L-43 68Z" fill="url(#oral-rehydration-sachet)" stroke="#3a6990" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M-43 -58H43M-43 58H43" stroke="#467faf" stroke-width="1.5" stroke-dasharray="3 3"/>
+<rect x="-30" y="-36" width="60" height="72" rx="8" fill="#fff" opacity="0.92"/>
+<path d="M0 -16.4C6.8 -2.8 13.6 4 13.6 10.8A13.6 13.6 0 0 1 -13.6 10.8C-13.6 4 -6.8 -2.8 0 -16.4Z" fill="#5DA9E9" stroke="#3a6990" stroke-width="1.5"/>
+<path d="M-14 26H14" stroke="#8ec3f0" stroke-width="3" stroke-linecap="round"/>
+<path d="M43 -46l-6 4l6 4" fill="none" stroke="#3a6990" stroke-width="2" stroke-linejoin="round"/>
+</g>
+<g transform="translate(186 172)">
+<path d="M26 -20C46 -20 46 14 24 14" fill="none" stroke="#97999a" stroke-width="11" stroke-linecap="round"/><path d="M26 -20C46 -20 46 14 24 14" fill="none" stroke="#F4F6F8" stroke-width="6" stroke-linecap="round"/>
+<path d="M-30 -34L30 -34L26 34Q25 42 17 42L-17 42Q-25 42 -26 34Z" fill="url(#oral-rehydration-mug)" stroke="#97999a" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cy="-30" rx="27" ry="5" fill="url(#oral-rehydration-ors)" stroke="#6d92a7" stroke-width="1.5"/>
+<path d="M6 -32L22 -70" stroke="#73797e" stroke-width="5" stroke-linecap="round"/><path d="M6 -32L22 -70" stroke="#B9C3CC" stroke-width="2.5" stroke-linecap="round"/>
+<ellipse cx="24" cy="-76" rx="5" ry="8" transform="rotate(22 24 -76)" fill="#B9C3CC" stroke="#73797e" stroke-width="1.5"/>
+<rect x="-22" y="-20" width="5" height="50" rx="2.5" fill="#fff" opacity="0.7"/>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="meninges-mono-title">
+<title id="meninges-mono-title">Meninges (single colour)</title>
+<desc>Section through the scalp, skull, dura, arachnoid with trabeculae across the CSF-filled subarachnoid space, and the pia on the cortex, dipping into a sulcus.</desc>
+<defs></defs>
+<clipPath id="meninges-mono-frame"><rect x="16" y="16" width="224" height="224" rx="14"/></clipPath>
+<g clip-path="url(#meninges-mono-frame)">
+<path d="M16 32H240M16 74H240" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="164.85" cy="50.31" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="134.53" cy="49.99" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="42.26" cy="57.13" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="82.68" cy="54.56" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="189.69" cy="51.66" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="206.32" cy="51.85" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="112.28" cy="55.62" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="62.82" cy="50.72" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="149.33" cy="57.51" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="231.59" cy="59.03" rx="4" ry="2.5" fill="#000000"/>
+<ellipse cx="26.12" cy="51.01" rx="4" ry="2.5" fill="#000000"/>
+<rect x="16" y="76" width="224" height="10" fill="#000000"/>
+<path d="M16 93H240" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 97C45 101 35 107 41 112M66 97C71 101 61 107 67 112M96 97C101 101 91 107 97 112M158 97C163 101 153 107 159 112M188 97C193 101 183 107 189 112M216 97C221 101 211 107 217 112" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="196" cy="106" r="6" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 126C40 116 70 116 92 122C108 126 116 134 120 150L124 194Q128 202 132 194L136 150C140 134 148 126 164 122C186 116 216 116 240 126" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 176C50 162 84 166 100 184C110 198 118 222 128 226C138 222 146 198 156 184C172 166 206 162 240 176" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect x="16" y="16" width="224" height="224" rx="14" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

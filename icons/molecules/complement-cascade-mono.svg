@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="complement-cascade-mono-title">
+<title id="complement-cascade-mono-title">Complement pathways (single colour)</title>
+<desc>Complement activation on a bacterial surface by the classical (C1q on antibody), lectin (mannose-binding lectin on mannose) and alternative (C3bBb) pathways, all leading to C3 being split into C3b and C3a.</desc>
+<defs></defs>
+<path d="M16 206Q128 182 240 206L240 232Q240 240 232 240L24 240Q16 240 16 232Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(44 172.96) rotate(180) scale(1.2)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(68 172.96) rotate(180) scale(1.2)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 118.95918367346937L56 132.95918367346937M56 132.95918367346937Q56 144.96 36 152.95918367346937M56 132.95918367346937Q56 143.46 44 149.95918367346937M56 132.95918367346937Q56 142.46 52 147.95918367346937M56 132.95918367346937Q56 142.46 60 147.95918367346937M56 132.95918367346937Q56 143.46 68 149.95918367346937M56 132.95918367346937Q56 144.96 76 152.95918367346937" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="158.96" r="4.5" fill="#000000"/><circle cx="44" cy="155.96" r="4.5" fill="#000000"/><circle cx="52" cy="153.96" r="4.5" fill="#000000"/><circle cx="60" cy="153.96" r="4.5" fill="#000000"/><circle cx="68" cy="155.96" r="4.5" fill="#000000"/><circle cx="76" cy="158.96" r="4.5" fill="#000000"/>
+<polygon points="120.33,191.64 116,194.14 111.67,191.64 111.67,186.64 116,184.14 120.33,186.64" fill="#000000"/>
+<polygon points="132.33,191.5 128,194 123.67,191.5 123.67,186.5 128,184 132.33,186.5" fill="#000000"/>
+<polygon points="144.33,191.64 140,194.14 135.67,191.64 135.67,186.64 140,184.14 144.33,186.64" fill="#000000"/>
+<path d="M128 134L128 148M128 148Q128 162.5 112 173M128 148Q128 161.5 122 171M128 148Q128 161.5 134 171M128 148Q128 162.5 144 173" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="112" cy="179" r="4.5" fill="#000000"/><circle cx="122" cy="177" r="4.5" fill="#000000"/><circle cx="134" cy="177" r="4.5" fill="#000000"/><circle cx="144" cy="179" r="4.5" fill="#000000"/>
+<ellipse cx="200" cy="186.96" rx="14" ry="10" fill="#000000"/><ellipse cx="200" cy="165.96" rx="10" ry="8" fill="#000000"/>
+<path d="M58 112Q62 70 87.26 60.53" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="94,58 85.08,68.39 80.45,56.03" fill="#000000"/>
+<path d="M128 128Q128 100 128 83.2" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="128,76 134.6,88 121.4,88" fill="#000000"/>
+<path d="M200 152Q198 82 156.55 63" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="150,60 163.66,59 158.16,71" fill="#000000"/>
+<ellipse cx="120" cy="52" rx="26" ry="17" fill="#000000"/><circle cx="160" cy="34" r="8" fill="#000000"/>
+</svg>

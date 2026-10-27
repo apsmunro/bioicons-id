@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="vertical-transmission-mono-title">
+<title id="vertical-transmission-mono-title">Vertical transmission (single colour)</title>
+<desc>A pregnant person with pathogens crossing the placenta to the fetus.</desc>
+<defs></defs>
+<path d="M96 68C82 76 76 96 78 124C80 150 74 170 76 196C78 214 84 228 86 240L146 240C146 226 148 212 150 200C178 196 202 176 202 148C202 126 184 112 150 114C142 104 136 96 128 88C122 80 118 72 114 68Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="104" cy="43" r="17" fill="#000000"/>
+<ellipse cx="168" cy="156" rx="26" ry="33" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M184 128C194 136 198 150 194 166C190 160 186 144 180 134Z" fill="#000000"/>
+<path d="M168 162C176 162 182 154 186 146" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="161" cy="165" rx="13" ry="18" transform="rotate(-20 161 165)" fill="#000000"/><circle cx="164" cy="142" r="11" fill="#000000"/>
+<circle cx="100" cy="132" r="5.5" fill="#000000"/>
+<circle cx="96" cy="168" r="5.5" fill="#000000"/>
+<circle cx="112" cy="200" r="5.5" fill="#000000"/>
+<path d="M108 176Q132 196 147.01 177.99" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="152,172 149.17,186.56 138.18,177.41" fill="#000000"/>
+</svg>

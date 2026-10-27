@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="centrifuge-title">
+<title id="centrifuge-title">Centrifuge</title>
+<desc>Benchtop microcentrifuge with its lid open, tubes loaded in balanced pairs in the rotor.</desc>
+<defs><linearGradient id="centrifuge-side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d6dbe0"/><stop offset="0.25" stop-color="#f2f4f7"/><stop offset="0.6" stop-color="#E4E9EE"/><stop offset="1" stop-color="#b2b6ba"/></linearGradient><radialGradient id="centrifuge-top" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f4f6f8"/><stop offset="0.55" stop-color="#E4E9EE"/><stop offset="1" stop-color="#cdd2d6"/></radialGradient><radialGradient id="centrifuge-rotor" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#e3e7eb"/><stop offset="0.55" stop-color="#B9C3CC"/><stop offset="1" stop-color="#9ba4ab"/></radialGradient><radialGradient id="centrifuge-lid" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#eceef1"/><stop offset="0.55" stop-color="#d9dde2"/><stop offset="1" stop-color="#b6babe"/></radialGradient></defs>
+<ellipse cx="128" cy="72" rx="98" ry="54" fill="url(#centrifuge-lid)" stroke="#8d9094" stroke-width="3"/>
+<ellipse cx="128" cy="68" rx="72" ry="36" fill="#d2eaf8" stroke="#a0a3a7" stroke-width="2"/>
+<path d="M30 128L30 198A98 40 0 0 0 226 198L226 128Z" fill="url(#centrifuge-side)" stroke="#8d9094" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="128" cy="128" rx="98" ry="40" fill="url(#centrifuge-top)" stroke="#8d9094" stroke-width="3"/>
+<ellipse cx="128" cy="128" rx="76" ry="30" fill="#4A5560" stroke="#898c8f" stroke-width="2"/>
+<ellipse cx="128" cy="130" rx="62" ry="24" fill="url(#centrifuge-rotor)" stroke="#73797e" stroke-width="2"/>
+<ellipse cx="128" cy="111.5" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="104" cy="111.98" rx="7" ry="4.5" fill="#F3B6C3" stroke="#977179" stroke-width="1.5"/>
+<ellipse cx="152" cy="111.98" rx="7" ry="4.5" fill="#F2B33D" stroke="#966f26" stroke-width="1.5"/>
+<ellipse cx="169.57" cy="120.75" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="86.43" cy="120.75" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="176" cy="128" rx="7" ry="4.5" fill="#F2B33D" stroke="#966f26" stroke-width="1.5"/>
+<ellipse cx="80" cy="128" rx="7" ry="4.5" fill="#F4F6F8" stroke="#97999a" stroke-width="1.5"/>
+<ellipse cx="169.57" cy="139.25" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="86.43" cy="139.25" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="152" cy="144.02" rx="7" ry="4.5" fill="#F4F6F8" stroke="#97999a" stroke-width="1.5"/>
+<ellipse cx="104" cy="144.02" rx="7" ry="4.5" fill="#F3B6C3" stroke="#977179" stroke-width="1.5"/>
+<ellipse cx="128" cy="148.5" rx="5.5" ry="3" fill="#4A5560"/>
+<ellipse cx="128" cy="130" rx="10" ry="5" fill="#8b9299" stroke="#73797e" stroke-width="1.5"/>
+<rect x="104" y="180" width="48" height="16" rx="3" fill="#2F3A44"/>
+<rect x="110" y="185" width="36" height="6" rx="1.5" fill="#9FE0B0"/>
+<circle cx="168" cy="188" r="7" fill="#3E8ED0" stroke="#265881" stroke-width="2"/>
+</svg>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="vector-borne-transmission-title">
+<title id="vector-borne-transmission-title">Vector-borne transmission</title>
+<desc>A mosquito carrying infection from one person to another.</desc>
+<defs><radialGradient id="vector-borne-transmission-figure" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#c1ccd8"/><stop offset="0.55" stop-color="#8FA3B8"/><stop offset="1" stop-color="#78899b"/></radialGradient><radialGradient id="vector-borne-transmission-mosquito-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#bfae9b"/><stop offset="0.55" stop-color="#8B6B4A"/><stop offset="1" stop-color="#755a3e"/></radialGradient><linearGradient id="vector-borne-transmission-mosquito-abdomen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#836546"/><stop offset="0.25" stop-color="#c5b5a5"/><stop offset="0.6" stop-color="#8B6B4A"/><stop offset="1" stop-color="#6c533a"/></linearGradient><linearGradient id="vector-borne-transmission-mosquito-wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.75"/><stop offset="1" stop-color="#DCE6EE" stop-opacity="0.45"/></linearGradient></defs>
+<g transform="translate(52 222) scale(0.82)"><path d="M-10 -80L10 -80L12 -58L-12 -58Z" fill="#7a8b9c"/><path d="M-46 0C-46 -40 -32 -62 0 -62C32 -62 46 -40 46 0Z" fill="url(#vector-borne-transmission-figure)" stroke="#596572" stroke-width="3.66"/><circle cx="0" cy="-96" r="24" fill="url(#vector-borne-transmission-figure)" stroke="#596572" stroke-width="3.66"/></g>
+<g transform="translate(204 222) scale(0.82)"><path d="M-10 -80L10 -80L12 -58L-12 -58Z" fill="#7a8b9c"/><path d="M-46 0C-46 -40 -32 -62 0 -62C32 -62 46 -40 46 0Z" fill="url(#vector-borne-transmission-figure)" stroke="#596572" stroke-width="3.66"/><circle cx="0" cy="-96" r="24" fill="url(#vector-borne-transmission-figure)" stroke="#596572" stroke-width="3.66"/></g>
+<g transform="translate(128 66) scale(0.42) translate(-128 -128)">
+<path d="M126 142L112 190L108 214L102 236" fill="none" stroke="#a89077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136 142L168 180L176 208L190 232" fill="none" stroke="#a89077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M142 136L182 126L214 132L236 116" fill="none" stroke="#a89077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 -14C39.0691694306393 -16 78.1383388612786 -7 97.67292357659824 -5Q104.67292357659824 0 97.67292357659824 5C78.1383388612786 7 39.0691694306393 16 0 14Z" transform="translate(150 106) rotate(-42.51)" fill="url(#vector-borne-transmission-mosquito-abdomen)" stroke="#56422e" stroke-width="2.5"/>
+<path d="M13.95 -12.71L13.95 12.71M27.91 -11.43L27.91 11.43M41.86 -10.14L41.86 10.14M55.81 -8.86L55.81 8.86M69.77 -7.57L69.77 7.57M83.72 -6.29L83.72 6.29" transform="translate(150 106) rotate(-42.51)" stroke="#614b34" stroke-width="1.5"/>
+<ellipse cx="176" cy="68" rx="56" ry="10" transform="rotate(-42 176 68)" fill="url(#vector-borne-transmission-mosquito-wing)" stroke="#8f969b" stroke-width="1.5"/>
+<ellipse cx="144.56" cy="86.89" rx="4.5" ry="2.5" transform="rotate(-42 144.56 86.89)" fill="#614b34" opacity="0.8"/>
+<ellipse cx="159.43" cy="73.5" rx="4.5" ry="2.5" transform="rotate(-42 159.43 73.5)" fill="#614b34" opacity="0.8"/>
+<ellipse cx="174.29" cy="60.12" rx="4.5" ry="2.5" transform="rotate(-42 174.29 60.12)" fill="#614b34" opacity="0.8"/>
+<ellipse cx="189.15" cy="46.74" rx="4.5" ry="2.5" transform="rotate(-42 189.15 46.74)" fill="#614b34" opacity="0.8"/>
+<ellipse cx="202.53" cy="34.69" rx="4.5" ry="2.5" transform="rotate(-42 202.53 34.69)" fill="#614b34" opacity="0.8"/>
+<ellipse cx="132" cy="126" rx="30" ry="23" transform="rotate(-40 132 126)" fill="url(#vector-borne-transmission-mosquito-body)" stroke="#56422e" stroke-width="3"/>
+<path d="M96 166L38 222" fill="none" stroke="#56422e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96 166L38 222" fill="none" stroke="#7d6043" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M90 156L34 210" fill="none" stroke="#6f563b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 146L66 122" fill="none" stroke="#614b34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M89.43 144.57L97.43 140.57M84.86 141.14L92.86 137.14M80.29 137.71L88.29 133.71M75.71 134.29L83.71 130.29M71.14 130.86L79.14 126.86M66.57 127.43L74.57 123.43" stroke="#614b34" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="104" cy="154" r="13" fill="url(#vector-borne-transmission-mosquito-body)" stroke="#56422e" stroke-width="2.5"/>
+<circle cx="101" cy="153" r="9" fill="#3f3021"/>
+<path d="M122 140L100 186L86 212L74 236" fill="none" stroke="#56422e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M122 140L100 186L86 212L74 236" fill="none" stroke="#7d6043" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M132 142L150 186L148 214L156 236" fill="none" stroke="#56422e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M132 142L150 186L148 214L156 236" fill="none" stroke="#7d6043" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 140L188 146L218 176L238 168" fill="none" stroke="#56422e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 140L188 146L218 176L238 168" fill="none" stroke="#7d6043" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M56 118Q56 66 80.43 59.89" fill="none" stroke="#3E4A59" stroke-width="4.5" stroke-linecap="round"/><polygon points="88,58 77.12,68.09 73.65,54.22" fill="#3E4A59" stroke="#3E4A59" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M168 58Q200 66 200 110.2" fill="none" stroke="#3E4A59" stroke-width="4.5" stroke-linecap="round"/><polygon points="200,118 192.85,105 207.15,105" fill="#3E4A59" stroke="#3E4A59" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

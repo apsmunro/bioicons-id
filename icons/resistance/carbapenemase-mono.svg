@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="carbapenemase-mono-title">
+<title id="carbapenemase-mono-title">Carbapenemase (single colour)</title>
+<desc>A Gram-negative cell envelope: carbapenems entering through porins are broken down by carbapenemase enzymes in the periplasm before they reach their target.</desc>
+<defs></defs>
+<path d="M18 86H54M18 108H54M90 86H162M90 108H162M198 86H238M198 108H238" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="61" y="80" width="22" height="34" rx="6" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="169" y="80" width="22" height="34" rx="6" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 142H240" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<path d="M16 176H240M16 198H240" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(72 40) rotate(80)" fill="#000000"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(180 30) rotate(100)" fill="#000000"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(124 56) rotate(20)" fill="#000000"/>
+<rect x="-12" y="-5.5" width="24" height="11" rx="5.5" transform="translate(214 64) rotate(-30)" fill="#000000"/>
+<g transform="translate(120 124) rotate(30)"><path d="M-3 -5H-9A5 5 0 0 0 -9 5H-3Z" transform="rotate(-18)" fill="#000000"/><path d="M3 -5H9A5 5 0 0 1 9 5H3Z" transform="rotate(18)" fill="#000000"/></g>
+<g transform="translate(206 128) rotate(-20)"><path d="M-3 -5H-9A5 5 0 0 0 -9 5H-3Z" transform="rotate(-18)" fill="#000000"/><path d="M3 -5H9A5 5 0 0 1 9 5H3Z" transform="rotate(18)" fill="#000000"/></g>
+<g transform="translate(160 136) rotate(60)"><path d="M-3 -5H-9A5 5 0 0 0 -9 5H-3Z" transform="rotate(-18)" fill="#000000"/><path d="M3 -5H9A5 5 0 0 1 9 5H3Z" transform="rotate(18)" fill="#000000"/></g>
+<path d="M98 136L111.57 127.52A16 16 0 1 1 98.56 120.01Z" fill="#000000"/>
+<path d="M186 152L188.23 136.16A16 16 0 1 1 174.11 141.29Z" fill="#000000"/>
+<path d="M142 158L157.84 160.23A16 16 0 1 1 152.71 146.11Z" fill="#000000"/>
+</svg>

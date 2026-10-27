@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t-helper-subsets-mono-title">
+<title id="t-helper-subsets-mono-title">T helper cell subsets (single colour)</title>
+<desc>A naive CD4 T cell differentiating into four helper subsets (Th1, Th2, Th17, Tfh), each releasing its own cytokines, shown with a different shape for each subset.</desc>
+<defs></defs>
+<path d="M98.57 99.46Q92.13 93.22 90.86 91.99" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="85.69,86.97 98.9,90.59 89.71,100.06" fill="#000000"/>
+<path d="M157.43 99.46Q163.87 93.22 165.14 91.99" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="170.31,86.97 166.29,100.06 157.1,90.59" fill="#000000"/>
+<path d="M98.57 156.54Q92.13 162.78 90.86 164.01" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="85.69,169.03 89.71,155.94 98.9,165.41" fill="#000000"/>
+<path d="M157.43 156.54Q163.87 162.78 165.14 164.01" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="170.31,169.03 157.1,165.41 166.29,155.94" fill="#000000"/>
+<circle cx="128" cy="128" r="32" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="124.6" cy="124.6" r="17" fill="#000000"/>
+<circle cx="62" cy="64" r="24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="59.4" cy="61.4" r="13" fill="#000000"/><circle cx="23.49" cy="57.82" r="6.5" fill="#000000"/><circle cx="34" cy="36.85" r="6.5" fill="#000000"/><circle cx="54.64" cy="25.7" r="6.5" fill="#000000"/>
+<circle cx="194" cy="64" r="24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="191.4" cy="61.4" r="13" fill="#000000"/><polygon points="201.36,17.9 208.51,30.9 194.21,30.9" fill="#000000"/><polygon points="222,29.05 229.15,42.05 214.85,42.05" fill="#000000"/><polygon points="232.51,50.02 239.66,63.02 225.36,63.02" fill="#000000"/>
+<circle cx="62" cy="192" r="24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="59.4" cy="189.4" r="13" fill="#000000"/><polygon points="48.79,224.45 60.49,224.45 60.49,236.15 48.79,236.15" fill="#000000"/><polygon points="28.15,213.3 39.85,213.3 39.85,225 28.15,225" fill="#000000"/><polygon points="17.64,192.33 29.34,192.33 29.34,204.03 17.64,204.03" fill="#000000"/>
+<circle cx="194" cy="192" r="24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="191.4" cy="189.4" r="13" fill="#000000"/><polygon points="232.51,190.06 239.01,198.18 232.51,206.31 226.01,198.18" fill="#000000"/><polygon points="222,211.02 228.5,219.15 222,227.27 215.5,219.15" fill="#000000"/><polygon points="201.36,222.17 207.86,230.3 201.36,238.42 194.86,230.3" fill="#000000"/>
+</svg>

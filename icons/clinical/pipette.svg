@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="pipette-title">
+<title id="pipette-title">Pipette</title>
+<desc>Single-channel micropipette with a disposable tip, dispensing a drop.</desc>
+<defs><linearGradient id="pipette-body" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d8dee3"/><stop offset="0.25" stop-color="#f3f6f8"/><stop offset="0.6" stop-color="#E6ECF1"/><stop offset="1" stop-color="#b3b8bc"/></linearGradient><linearGradient id="pipette-shaft" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bdc6cf"/><stop offset="0.25" stop-color="#e4e9ee"/><stop offset="0.6" stop-color="#C9D3DC"/><stop offset="1" stop-color="#9da5ac"/></linearGradient><linearGradient id="pipette-button" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a85c4"/><stop offset="0.25" stop-color="#9fc7e8"/><stop offset="0.6" stop-color="#3E8ED0"/><stop offset="1" stop-color="#306fa2"/></linearGradient><linearGradient id="pipette-liquid" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#92c4e1"/><stop offset="0.25" stop-color="#cde8f7"/><stop offset="0.6" stop-color="#9BD0EF"/><stop offset="1" stop-color="#79a2ba"/></linearGradient></defs>
+<g transform="translate(124 120) rotate(-16) scale(0.88)">
+<rect x="-4" y="-104" width="8" height="16" fill="#B9C3CC" stroke="#73797e" stroke-width="1.5"/>
+<rect x="-10" y="-116" width="20" height="12" rx="4" fill="url(#pipette-button)" stroke="#265881" stroke-width="2"/>
+<path d="M-17 -90L-28 -98Q-32 -100 -32 -94L-32 -84Q-32 -80 -27 -80L-17 -80Z" fill="#cfd4d9" stroke="#8f9295" stroke-width="2" stroke-linejoin="round"/>
+<path d="M17 -84C30 -84 34 -76 34 -68C34 -62 28 -60 24 -64C20 -68 17 -70 17 -70Z" fill="url(#pipette-body)" stroke="#8f9295" stroke-width="2" stroke-linejoin="round"/>
+<path d="M-17 -88Q-17 -96 -9 -96L9 -96Q17 -96 17 -88L17 26Q17 34 9 34L-9 34Q-17 34 -17 26Z" fill="url(#pipette-body)" stroke="#8f9295" stroke-width="3"/>
+<rect x="-8" y="-54" width="16" height="26" rx="2" fill="#2F3A44"/>
+<rect x="-5" y="-51" width="10" height="4" rx="1" fill="#9FE0B0"/>
+<rect x="-5" y="-43" width="10" height="4" rx="1" fill="#9FE0B0"/>
+<rect x="-5" y="-35" width="10" height="4" rx="1" fill="#9FE0B0"/>
+<rect x="-12" y="-84" width="4" height="100" rx="2" fill="#fff" opacity="0.6"/>
+<path d="M-11 34L11 34L5 76L-5 76Z" fill="url(#pipette-shaft)" stroke="#7d8388" stroke-width="2" stroke-linejoin="round"/>
+<path d="M-6 74L6 74L1.5 120Q0 123 -1.5 120Z" fill="#F4F8FB" fill-opacity="0.85" stroke="#8DA6B8" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M-3.6 100L3.6 100L1.5 120Q0 123 -1.5 120Z" fill="url(#pipette-liquid)"/>
+<path d="M0 125.4C2.2 129.8 4.4 132 4.4 134.2A4.4 4.4 0 0 1 -4.4 134.2C-4.4 132 -2.2 129.8 0 125.4Z" fill="#9BD0EF" stroke="#65879b" stroke-width="1.2"/>
+</g>
+</svg>

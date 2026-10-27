@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="droplet-transmission-mono-title">
+<title id="droplet-transmission-mono-title">Droplet transmission (single colour)</title>
+<desc>Large respiratory droplets passing from one person to another close by.</desc>
+<defs></defs>
+<g transform="translate(58 222) scale(0.9)"><path d="M-46 0C-46 -40 -32 -62 0 -62C32 -62 46 -40 46 0Z" fill="#000000"/><circle cx="0" cy="-96" r="24" fill="#000000"/></g>
+<g transform="translate(198 222) scale(0.9)"><path d="M-46 0C-46 -40 -32 -62 0 -62C32 -62 46 -40 46 0Z" fill="#000000"/><circle cx="0" cy="-96" r="24" fill="#000000"/></g>
+<circle cx="96" cy="132" r="7.5" fill="#000000"/>
+<circle cx="114" cy="137" r="7" fill="#000000"/>
+<circle cx="131" cy="145" r="6.5" fill="#000000"/>
+<circle cx="146" cy="156" r="6" fill="#000000"/>
+<circle cx="159" cy="170" r="5.5" fill="#000000"/>
+<path d="M70 90Q128 28 180.67 84.3" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="186,90 171.9,85.39 182.34,75.62" fill="#000000"/>
+</svg>

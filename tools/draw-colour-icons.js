@@ -386,6 +386,37 @@ function corynebacteriumDiphtheriae(id) {
   };
 }
 
+function chlamydia(id) {
+  const X = K.CHLAMYDIA, [cx, cy, R] = X.cell, [nx, ny, nrx, nry, na] = X.nucleus, [ix, iy, ir] = X.inclusion, { rbs, ebs } = X.bodies, host = C.hostCell;
+  const eb = ([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3.6" fill="${C.elementaryBody}" stroke="${shade(C.elementaryBody, 0.35)}" stroke-width="0.8"/>`;
+  return {
+    defs: [K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
+      K.sphereGradient(`${id}-rb`, C.reticulateBody, { light: 0.5 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 2.5 * Math.sin(5 * a + 1) + 1.5 * Math.sin(9 * a), 120))}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<ellipse cx="${nx}" cy="${ny}" rx="${nrx}" ry="${nry}" transform="rotate(${na} ${nx} ${ny})" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
+      // The inclusion: reticulate bodies (larger, dividing) among elementary bodies (small, infectious).
+      `<circle cx="${ix}" cy="${iy}" r="${ir}" fill="${C.inclusion}" stroke="${shade(C.inclusion, 0.3)}" stroke-width="2"/>`,
+      ...rbs.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="9" fill="url(#${id}-rb)" stroke="${outline(C.reticulateBody)}" stroke-width="1.3"/>`),
+      ...ebs.map(eb), ...X.outside.map(eb),
+      K.gloss(`${id}-gloss`, 74, 74, 22, 9),
+    ],
+  };
+}
+
+function borrelia(id) {
+  return { defs: [], body: K.BORRELIA.cells.map(c => K.pipe(K.borreliaPath(c), C.borrelia, 6)) };
+}
+
+function enterococcus(id) {
+  const base = C.gramPositive, E = K.ENTEROCOCCUS;
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base), K.glossGradient(`${id}-gloss`)],
+    body: E.cocci.map(([x, y, a]) => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${E.rx}" ry="${E.ry}" transform="rotate(${a} ${n(x)} ${n(y)})" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
+      K.gloss(`${id}-gloss`, x - 6, y - 7, 7, 4)),
+  };
+}
+
 // ----------------------------------------------------------------- viruses
 
 function rsv(id) {
@@ -850,6 +881,50 @@ function rabies(id) {
   };
 }
 
+function hepatitisC(id) {
+  const env = C.hcvEnvelope, H = K.HEPATITIS_C, R = H.R, e1 = C.penton, e2 = C.attachmentProtein, core = C.hcvCore;
+  // E1/E2 heterodimers round the envelope.
+  const spikes = Array.from({ length: H.spikes }, (_, i) => `<g transform="rotate(${n(i * 360 / H.spikes + 4)} 128 128)">` +
+    `<line x1="128" y1="${128 - R + 2}" x2="128" y2="${128 - R - 7}" stroke="${shade(e2, 0.3)}" stroke-width="3" stroke-linecap="round"/>` +
+    `<ellipse cx="124" cy="${128 - R - 11}" rx="3.5" ry="5" fill="${e1}" stroke="${outline(e1)}" stroke-width="1"/>` +
+    `<ellipse cx="131" cy="${128 - R - 12}" rx="4.5" ry="6" fill="url(#${id}-e2)" stroke="${outline(e2)}" stroke-width="1"/></g>`);
+  return {
+    defs: [K.sphereGradient(`${id}-env`, env, { light: 0.45 }), K.sphereGradient(`${id}-e2`, e2), K.sphereGradient(`${id}-core`, core, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      ...spikes,
+      `<circle cx="128" cy="128" r="${R}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="128" cy="128" r="${R - 7}" fill="none" stroke="${tint(env, 0.45)}" stroke-width="2" stroke-dasharray="3 4" stroke-linecap="round"/>`,
+      // The core, holding the single-stranded RNA genome.
+      `<circle cx="128" cy="128" r="${H.core}" fill="url(#${id}-core)" stroke="${outline(core)}" stroke-width="2.5"/>`,
+      `<path d="${K.hcvRna()}" fill="none" stroke="${shade(C.mrna, 0.25)}" stroke-width="2.5" stroke-linecap="round"/>`,
+      K.gloss(`${id}-gloss`, 94, 88, 20, 9),
+    ],
+  };
+}
+
+function cmvCell(id) {
+  const X = K.CMV_CELL, cyto = C.cmvCytoplasm, nuc = C.nucleus;
+  const [cx, cy, R] = X.cell, [nx, ny, nrx, nry, na] = X.nucleus, [hx, hy, hrx, hry] = X.halo, [ix, iy, irx, iry] = X.inclusion;
+  const blob = (x, y, r, k) => K.smoothClosedPath(K.polarPoints(x, y, a => r * (1 + 0.03 * Math.sin(k * a + 1)), 90));
+  const ell = (x, y, rx, ry, attrs) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${na} ${x} ${y})" ${attrs}/>`;
+  return {
+    defs: [K.sphereGradient(`${id}-cyto`, cyto, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }),
+      K.sphereGradient(`${id}-inclusion`, C.cmvInclusion, { light: 0.3 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      // Two normal cells for scale, then the enlarged (cytomegalic) infected cell.
+      ...X.neighbours.map(([x, y, r]) => `<path d="${blob(x, y, r, 5)}" fill="url(#${id}-cyto)" stroke="${shade(cyto, 0.32)}" stroke-width="2.5"/>` +
+        `<circle cx="${x - 1}" cy="${y - 1}" r="${n(r * 0.45)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="1.5"/>`),
+      `<path d="${blob(cx, cy, R, 6)}" fill="url(#${id}-cyto)" stroke="${shade(cyto, 0.32)}" stroke-width="${STROKE}"/>`,
+      ...X.granules.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.cmvInclusion}" opacity="0.8"/>`),
+      // Owl's eye: chromatin pushed to the nuclear rim, a clear halo, and the large inclusion.
+      ell(nx, ny, nrx, nry, `fill="${tint(nuc, 0.45)}" stroke="${outline(nuc)}" stroke-width="4"`),
+      ell(hx, hy, hrx, hry, `fill="${C.halo}"`),
+      ell(ix, iy, irx, iry, `fill="url(#${id}-inclusion)" stroke="${shade(C.cmvInclusion, 0.3)}" stroke-width="1.5"`),
+      K.gloss(`${id}-gloss`, 82, 70, 18, 8),
+    ],
+  };
+}
+
 // ------------------------------------------------------------------- fungi
 
 function candida(id) {
@@ -1248,6 +1323,42 @@ function trypanosoma(id) {
       `<circle cx="${n(kin.x + kin.nx * 3)}" cy="${n(kin.y + kin.ny * 3)}" r="3.5" fill="${C.kinetoplast}"/>`,
       `<path d="${K.smoothOpenPath(flagellum)}" fill="none" stroke="${shade(base, 0.45)}" stroke-width="2.5" stroke-linecap="round"/>`,
       K.gloss(`${id}-gloss`, 100, 100, 18, 4, -14),
+    ],
+  };
+}
+
+function leishmania(id) {
+  const L = K.LEISHMANIA, [mx, my, R] = L.macrophage, cell = C.macrophage, am = C.amastigote, S = L.sandfly, sf = C.sandfly;
+  const pods = [[0.4, 16, 0.25], [1.9, 14, 0.22], [3.3, 18, 0.25], [4.6, 12, 0.2]];
+  const membrane = K.polarPoints(mx, my, a => R - 8 + 2.5 * Math.sin(7 * a) + pods.reduce((s, [c, h, w]) => s + h * Math.exp(-(K.wrapAngle(a - c) ** 2) / (2 * w * w)), 0), 110);
+  const kidney = K.polarPoints(0, 0, a => 24 - 9 * Math.exp(-(K.wrapAngle(a - 0.3) ** 2) / (2 * 0.32 ** 2)), 60).map(([x, y]) => [L.nucleus[0] + 1.1 * x, L.nucleus[1] + y]);
+  // Amastigotes, each in its vacuole: an oval body with a nucleus and a rod-shaped kinetoplast.
+  const amastigote = ([x, y], k) => `<circle cx="${n(x)}" cy="${n(y)}" r="12.5" fill="${tint(cell, 0.6)}" stroke="${shade(cell, 0.2)}" stroke-width="1.2"/>` +
+    `<g transform="translate(${n(x)} ${n(y)}) rotate(${(k * 47) % 180 - 90})"><ellipse rx="9" ry="6.5" fill="url(#${id}-am)" stroke="${outline(am)}" stroke-width="1.2"/>` +
+    `<circle cx="-3" r="3" fill="${C.nucleus}"/><rect x="3.2" y="-2.6" width="2.4" height="5.2" rx="1.1" fill="${C.kinetoplast}"/></g>`;
+  const [ax, ay, as] = S.at, [tx, ty, trx, try_] = S.thorax, [hx, hy, hr] = S.head, [bx, by, brx, bry, ba] = S.abdomen;
+  const legs = S.legs.map(p => `M${p.map(q => q.join(' ')).join('L')}`).join('');
+  const hairs = Array.from({ length: 9 }, (_, i) => { const x = bx - 16 + i * 4; return `M${x} ${by + 6}l1 4`; }).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-cell`, cell, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.sphereGradient(`${id}-am`, am, { light: 0.5 }),
+      K.sphereGradient(`${id}-fly`, sf, { light: 0.45 }),
+      `<linearGradient id="${id}-wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.8"/><stop offset="1" stop-color="${C.wing}" stop-opacity="0.5"/></linearGradient>`],
+    body: [
+      `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-cell)" stroke="${shade(cell, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<path d="${K.smoothClosedPath(kidney)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
+      ...L.amastigotes.map(amastigote),
+      // Sandfly, with its hairy wings raised over its back.
+      `<g transform="translate(${ax} ${ay}) scale(${as})">`,
+      `<path d="${legs}" fill="none" stroke="${shade(sf, 0.3)}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`,
+      ...S.wings.map(([x, y, rx, ry, a]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${a} ${x} ${y})" fill="url(#${id}-wing)" stroke="${shade(C.wing, 0.4)}" stroke-width="1.5" stroke-dasharray="2 2"/>`),
+      `<ellipse cx="${bx}" cy="${by}" rx="${brx}" ry="${bry}" transform="rotate(${ba} ${bx} ${by})" fill="url(#${id}-fly)" stroke="${outline(sf)}" stroke-width="2"/>`,
+      `<path d="${hairs}" transform="rotate(${ba} ${bx} ${by})" stroke="${shade(sf, 0.3)}" stroke-width="1" stroke-linecap="round"/>`,
+      `<ellipse cx="${tx}" cy="${ty}" rx="${trx}" ry="${try_}" fill="url(#${id}-fly)" stroke="${outline(sf)}" stroke-width="2.2"/>`,
+      `<path d="${S.proboscis}${S.palps}" fill="none" stroke="${shade(sf, 0.35)}" stroke-width="2.2" stroke-linecap="round"/>`,
+      `<path d="${S.antenna}" fill="none" stroke="${shade(sf, 0.35)}" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="3 1.5"/>`,
+      `<circle cx="${hx}" cy="${hy}" r="${hr}" fill="url(#${id}-fly)" stroke="${outline(sf)}" stroke-width="2"/>`,
+      `<circle cx="${hx - 2}" cy="${hy - 1}" r="4" fill="${shade(sf, 0.6)}"/>`,
+      `</g>`,
     ],
   };
 }
@@ -1729,6 +1840,53 @@ function neutrophilDiapedesis(id) {
   };
 }
 
+function germinalCentre(id) {
+  const G = K.GERMINAL_CENTRE, [fx, fy, frx, fry] = G.follicle, [cx, cy, crx, cry] = G.centre, { mantle, dark, light, tfh } = G.cells, b = C.bLymphocyte, d = C.dendritic;
+  const dot = (r, fill, stroke) => ([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="1"/>`;
+  const fdc = G.fdcBranches.map(([a, m, e]) => `M${n(a[0])} ${n(a[1])}Q${n(m[0])} ${n(m[1])} ${n(e[0])} ${n(e[1])}`).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-follicle`, tint(b, 0.35), { light: 0.4, dark: 0.08 }), K.sphereGradient(`${id}-blast`, shade(b, 0.12), { light: 0.45 }),
+      K.sphereGradient(`${id}-cyte`, b, { light: 0.5 }), K.sphereGradient(`${id}-tfh`, C.lymphocyte, { light: 0.5 })],
+    body: [
+      `<ellipse cx="${fx}" cy="${fy}" rx="${frx}" ry="${fry}" fill="url(#${id}-follicle)" stroke="${shade(b, 0.38)}" stroke-width="${STROKE}"/>`,
+      // Mantle zone of small naive B cells.
+      ...mantle.map(dot(4.6, shade(b, 0.28), shade(b, 0.45))),
+      `<ellipse cx="${cx}" cy="${cy}" rx="${crx}" ry="${cry}" fill="${tint(b, 0.72)}" stroke="${shade(b, 0.2)}" stroke-width="1.5"/>`,
+      // Dark zone below: tightly packed, dividing centroblasts.
+      `<path d="M${cx - crx} ${cy}A${crx} ${cry} 0 0 0 ${cx + crx} ${cy}Z" fill="${tint(b, 0.35)}"/>`,
+      ...dark.map(dot(7.5, `url(#${id}-blast)`, shade(b, 0.4))),
+      // Light zone above: centrocytes on the follicular dendritic cell network, with Tfh cells.
+      `<path d="${fdc}" fill="none" stroke="${outline(d)}" stroke-width="4.5" stroke-linecap="round"/><path d="${fdc}" fill="none" stroke="${d}" stroke-width="2.5" stroke-linecap="round"/>`,
+      ...G.fdc.map(dot(6.5, d, outline(d))),
+      ...light.map(dot(5.5, `url(#${id}-cyte)`, shade(b, 0.4))),
+      ...tfh.map(dot(6.5, `url(#${id}-tfh)`, shade(C.lymphocyte, 0.4))),
+    ],
+  };
+}
+
+function thSubsets(id) {
+  const T = K.TH_SUBSETS, [nx, ny, nr] = T.naive;
+  const cell = (x, y, r, colour, grad) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-${grad})" stroke="${shade(colour, 0.32)}" stroke-width="${STROKE}"/>` +
+    `<circle cx="${n(x - r * 0.1)}" cy="${n(y - r * 0.1)}" r="${n(r * 0.62)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>` +
+    K.gloss(`${id}-gloss`, x - r * 0.5, y - r * 0.55, r * 0.3, r * 0.15);
+  const arrow = ([x, y]) => {
+    const l = Math.hypot(x - nx, y - ny), [ux, uy] = [(x - nx) / l, (y - ny) / l];
+    const a = K.straightArrow([nx + ux * (nr + 7), ny + uy * (nr + 7)], [x - ux * (T.r + 7), y - uy * (T.r + 7)], 12);
+    return `<path d="${a.shaft}" stroke="${C.arrow}" stroke-width="4" stroke-linecap="round"/><polygon points="${a.head}" fill="${C.arrow}" stroke="${C.arrow}" stroke-width="1.5" stroke-linejoin="round"/>`;
+  };
+  return {
+    defs: [K.sphereGradient(`${id}-naive`, C.lymphocyte, { light: 0.5, dark: 0.1 }), ...T.subsets.map(([, , c]) => K.sphereGradient(`${id}-${c}`, C[c], { light: 0.5, dark: 0.1 })),
+      K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      ...T.subsets.map(arrow),
+      cell(nx, ny, nr, C.lymphocyte, 'naive'),
+      // Each subset with its own cytokines, a different shape for each.
+      ...T.subsets.map(([x, y, c, kind]) => cell(x, y, T.r, C[c], c) +
+        K.subsetCytokines([x, y]).map(([px, py]) => `<${K.cytokineShape(kind, px, py)} fill="${shade(C[c], 0.25)}" stroke="${outline(C[c])}" stroke-width="1.5" stroke-linejoin="round"/>`).join('')),
+    ],
+  };
+}
+
 // --------------------------------------------------------------- molecules
 
 function iggAntibody(id) {
@@ -2044,6 +2202,97 @@ function inflammasome(id) {
   };
 }
 
+function interferonSignalling(id) {
+  const I = K.INTERFERON, [top, bottom] = I.membrane, [xa, xb] = I.chains, A = C.receptorChainA, B = C.receptorChainB, J = C.kinase, ck = C.cytokine;
+  const domain = (x, y, rx, ry, rot, colour, grad) =>
+    `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" fill="url(#${id}-${grad})" stroke="${outline(colour)}" stroke-width="2"/>`;
+  const phosphate = (x, y) => `<circle cx="${x}" cy="${y}" r="4.2" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1.2"/>`;
+  // ISGF3: phosphorylated STAT1 and STAT2 with IRF9.
+  const isgf3 = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})">` + domain(-10, 0, 11, 15, 10, C.stat1, 'stat1') + domain(10, 0, 11, 15, -10, C.stat2, 'stat2') +
+    domain(0, 16, 9, 6, 0, C.penton, 'irf9') + phosphate(-16, -12) + phosphate(16, -12) + `</g>`;
+  const [ix, iy] = I.isgf3, arrow = K.straightArrow(...I.arrow, 11);
+  const strand = phase => K.smoothOpenPath(Array.from({ length: 41 }, (_, i) => [40 + i * 4.4, I.dna + 5 * Math.sin(i / 40 * 2 * Math.PI * 3 + phase)]));
+  const rungs = Array.from({ length: 20 }, (_, i) => { const x = 42 + i * 8.8, t = (x - 40) / 176 * 2 * Math.PI * 3; return `M${n(x)} ${n(I.dna + 5 * Math.sin(t))}L${n(x)} ${n(I.dna + 5 * Math.sin(t + Math.PI))}`; }).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-a`, A, { light: 0.5 }), K.sphereGradient(`${id}-b`, B, { light: 0.5 }),
+      K.sphereGradient(`${id}-ifn`, ck), K.sphereGradient(`${id}-jak`, J), K.sphereGradient(`${id}-stat1`, C.stat1, { light: 0.5 }),
+      K.sphereGradient(`${id}-stat2`, C.stat2, { light: 0.5 }), K.sphereGradient(`${id}-irf9`, C.penton)],
+    body: [
+      // Nucleus below, with ISGF3 bound to DNA.
+      `<path d="${I.envelope}L240 232Q240 240 232 240L24 240Q16 240 16 232Z" fill="${tint(C.nucleus, 0.82)}"/>`,
+      `<path d="${I.envelope}" fill="none" stroke="${shade(C.nucleus, 0.1)}" stroke-width="8"/><path d="${I.envelope}" fill="none" stroke="${tint(C.nucleus, 0.6)}" stroke-width="3"/>`,
+      ...[60, 196].map(x => `<circle cx="${x}" cy="${n(214 - 18 * (1 - ((x - 128) / 112) ** 2))}" r="4.5" fill="${tint(C.nucleus, 0.82)}" stroke="${shade(C.nucleus, 0.1)}" stroke-width="2"/>`),
+      `<path d="${rungs}" stroke="${tint(C.nucleus, 0.3)}" stroke-width="2"/>`,
+      `<path d="${strand(0)}" fill="none" stroke="${C.nucleus}" stroke-width="3.5" stroke-linecap="round"/><path d="${strand(Math.PI)}" fill="none" stroke="${C.attachmentProtein}" stroke-width="3.5" stroke-linecap="round"/>`,
+      isgf3(ix, iy, 0.75),
+      lipidBilayer(`${id}-lipid`, 24, 234, top, bottom),
+      K.pipe(`M${xa} ${I.domains[1] + 8}V${I.jak - 6}`, A, 7), K.pipe(`M${xb} ${I.domains[1] + 8}V${I.jak - 6}`, B, 7),
+      domain(xa - 12, I.jak, 13, 9, -10, J, 'jak'), domain(xb + 12, I.jak, 13, 9, 10, J, 'jak'),
+      ...I.domains.map(y => domain(xa, y, 13, 12, 0, A, 'a') + domain(xb, y, 13, 12, 0, B, 'b')),
+      domain(128, I.ligand[1], 13, 18, 0, ck, 'ifn'),
+      `<path d="M122 ${I.ligand[1] - 10}V${I.ligand[1] + 10}M128 ${I.ligand[1] - 13}V${I.ligand[1] + 13}M134 ${I.ligand[1] - 10}V${I.ligand[1] + 10}" stroke="${shade(ck, 0.22)}" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>`,
+      isgf3(...I.stats, 1),
+      `<path d="${arrow.shaft}" stroke="${C.arrow}" stroke-width="4" stroke-linecap="round"/><polygon points="${arrow.head}" fill="${C.arrow}"/>`,
+    ],
+  };
+}
+
+function complementCascade(id) {
+  const X = K.COMPLEMENT, bug = C.gramPositive, c3 = C.complement, yS = X.surfaceY;
+  const head = (x, y, r, colour) => `<circle cx="${n(x)}" cy="${n(y)}" r="${r}" fill="url(#${id}-${colour})" stroke="${outline(C[colour])}" stroke-width="1.3"/>`;
+  const stalks = (b, colour) => `<path d="${b.stem}${b.stalks}" fill="none" stroke="${outline(C[colour])}" stroke-width="4.5" stroke-linecap="round"/>` +
+    `<path d="${b.stem}${b.stalks}" fill="none" stroke="${C[colour]}" stroke-width="2.5" stroke-linecap="round"/>`;
+  // Classical: C1q on the Fc of two antibodies bound to the surface.
+  const cx = X.classical, ay = yS(cx) - 26, hy = ay - 14;
+  const c1qHeads = [[36, hy], [44, hy - 3], [52, hy - 5], [60, hy - 5], [68, hy - 3], [76, hy]];
+  // Lectin: MBL on mannose residues.
+  const lx = X.lectin, ly = yS(lx), mblHeads = [[112, ly - 15], [122, ly - 17], [134, ly - 17], [144, ly - 15]];
+  // Alternative: C3b fixed to the surface, carrying factor Bb.
+  const axx = X.alternative, ayy = yS(axx);
+  const [c3x, c3y] = X.c3;
+  return {
+    defs: [K.cylinderGradient(`${id}-bug`, bug), K.sphereGradient(`${id}-c1q`, C.c1q), K.sphereGradient(`${id}-mbl`, C.mbl), K.sphereGradient(`${id}-complement`, c3, { light: 0.5 }),
+      K.sphereGradient(`${id}-factorB`, C.factorB), K.sphereGradient(`${id}-c3a`, tint(c3, 0.35))],
+    body: [
+      `<path d="${X.surface}" fill="url(#${id}-bug)" stroke="${outline(bug)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      miniAntibody(44, ay, 180, 1.2), miniAntibody(68, ay, 180, 1.2),
+      stalks(K.bouquet(cx, hy - 40, c1qHeads), 'c1q'), ...c1qHeads.map(([x, y]) => head(x, y, 5.5, 'c1q')),
+      ...[116, 128, 140].map(x => `<polygon points="${hexagon(x, yS(x) - 5, 5.5, 30)}" fill="${C.glycan}" stroke="${outline(C.glycan)}" stroke-width="1.2"/>`),
+      stalks(K.bouquet(lx, ly - 60, mblHeads), 'mbl'), ...mblHeads.map(([x, y]) => head(x, y, 5.5, 'mbl')),
+      `<ellipse cx="${axx}" cy="${n(ayy - 12)}" rx="15" ry="11" fill="url(#${id}-complement)" stroke="${outline(c3)}" stroke-width="2"/>`,
+      `<ellipse cx="${axx}" cy="${n(ayy - 32)}" rx="11" ry="9" fill="url(#${id}-factorB)" stroke="${outline(C.factorB)}" stroke-width="2"/>`,
+      // All three converge on C3, split into C3b and the small C3a.
+      ...X.arrows.map(([p, c, q]) => { const a = K.curvedArrow(p, c, q, 12); return `<path d="${a.shaft}" fill="none" stroke="${C.arrow}" stroke-width="4" stroke-linecap="round"/><polygon points="${a.head}" fill="${C.arrow}"/>`; }),
+      `<ellipse cx="${c3x}" cy="${c3y}" rx="27" ry="18" fill="url(#${id}-complement)" stroke="${outline(c3)}" stroke-width="2.5"/>`,
+      `<circle cx="${c3x + 40}" cy="${c3y - 18}" r="9" fill="url(#${id}-c3a)" stroke="${outline(c3)}" stroke-width="2"/>`,
+      `<path d="M${c3x + 24} ${c3y - 20}l4 6l-5 2l4 6" fill="none" stroke="${C.arrow}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+    ],
+  };
+}
+
+function fcReceptor(id) {
+  const F = K.FC_RECEPTOR, cell = C.macrophage, bug = C.gramPositive, rc = C.receptorA, [px, py] = F.P, [bx, by] = F.B;
+  const at = (a, r) => [px + r * Math.cos(a * Math.PI / 180), py + r * Math.sin(a * Math.PI / 180)];
+  const nucleus = K.polarPoints(0, 0, a => 24 - 8 * Math.exp(-(K.wrapAngle(a - 0.2) ** 2) / (2 * 0.35 ** 2)), 60).map(([x, y]) => [bx - 6 + 1.15 * x, by + y]);
+  const angles = Array.from({ length: F.antibodies }, (_, k) => k * 360 / F.antibodies), stemR = F.bacterium + 1 + 26 * F.scale;
+  const cupped = a => a > 55 && a < 305;
+  return {
+    defs: [`<radialGradient id="${id}-cell" gradientUnits="userSpaceOnUse" cx="112" cy="118" r="140" fx="62" fy="80">` +
+      `<stop offset="0" stop-color="${tint(cell, 0.5)}"/><stop offset="0.55" stop-color="${cell}"/><stop offset="1" stop-color="${shade(cell, 0.1)}"/></radialGradient>`,
+      K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.sphereGradient(`${id}-bug`, bug), K.glossGradient(`${id}-gloss`)],
+    body: [
+      `<path d="${K.phagocyteCup(F)}" fill="url(#${id}-cell)" stroke="${shade(cell, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<path d="${K.smoothClosedPath(nucleus)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
+      // Fcγ receptors on the cup's inner face, each holding the Fc of an antibody.
+      ...angles.filter(cupped).map(a => { const [[x0, y0], [x1, y1]] = [at(a, F.ri + 1), at(a, stemR + 1)]; return K.pipe(`M${n(x0)} ${n(y0)}L${n(x1)} ${n(y1)}`, rc, 4); }),
+      `<circle cx="${px}" cy="${py}" r="${F.bacterium}" fill="url(#${id}-bug)" stroke="${outline(bug)}" stroke-width="${STROKE}"/>`,
+      K.gloss(`${id}-gloss`, px - 9, py - 11, 9, 5),
+      // IgG coating the bacterium: Fab arms on its surface, Fc pointing out.
+      ...angles.map(a => { const [x, y] = at(a, stemR); return miniAntibody(x, y, a - 90, F.scale); }),
+    ],
+  };
+}
+
 // ------------------------------------------------------- antimicrobial resistance
 
 // A small two-tone antibiotic capsule, used as a stand-in for an antibiotic molecule.
@@ -2145,6 +2394,84 @@ function susceptibilityPlate(id) {
       ...discs.filter(([, , z]) => z).map(([x, y, z]) => `<circle cx="${x}" cy="${y}" r="${z}" fill="${tint(agar, 0.5)}" stroke="${shade(agar, 0.18)}" stroke-width="1.2"/>`),
       ...discs.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="3.5" fill="#E3E8EC"/>`),
       K.gloss(`${id}-gloss`, 78, 62, 36, 12, -40),
+    ],
+  };
+}
+
+function mrsa(id) {
+  const M = K.MRSA, nag = C.glycan, nam = C.nam, pep = C.peptide, pbp = C.kinase, p2 = C.pbp2a, [r0, r1] = M.rows, xs = M.sugars;
+  const links = [], residues = [];
+  xs.filter((_, i) => i % 2).forEach(x => {
+    if (!M.blocked(x)) links.push(`M${x} ${r0 + 9}V${r1 - 9}`);
+    residues.push(...(M.blocked(x) ? [r0 + 14, r1 - 14] : [r0 + 15, r0 + 23, r0 + 31]).map(b => [x, b]));
+  });
+  const [bx, by] = M.pbp, [cx, cy] = M.pbp2a;
+  const motion = ([x, y, a]) => `<path d="M${x - 14} ${y + 12}q-6 6 -2 14M${x - 6} ${y + 16}q-4 6 0 12" transform="rotate(${a} ${x} ${y})" fill="none" stroke="${C.arrow}" stroke-width="2" stroke-linecap="round" opacity="0.7"/>`;
+  return {
+    defs: [K.sphereGradient(`${id}-nag`, nag, { light: 0.5 }), K.sphereGradient(`${id}-nam`, nam, { light: 0.5 }), K.sphereGradient(`${id}-pep`, pep),
+      K.sphereGradient(`${id}-pbp`, pbp, { light: 0.5 }), K.sphereGradient(`${id}-pbp2a`, p2, { light: 0.5 }), K.sphereGradient(`${id}-lipid`, C.lipidHead), ...pillGradients(id)],
+    body: [
+      `<path d="${links.join('')}" stroke="${shade(pep, 0.25)}" stroke-width="3" stroke-linecap="round"/>`,
+      ...residues.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4.5" fill="url(#${id}-pep)" stroke="${outline(pep)}" stroke-width="1"/>`),
+      `<path d="${M.rows.map(y => `M${xs[0]} ${y}H${xs[xs.length - 1]}`).join('')}" stroke="${shade(nag, 0.4)}" stroke-width="3" stroke-linecap="round"/>`,
+      ...M.rows.flatMap(y => xs.map((x, i) => `<polygon points="${hexagon(x, y, 9, 30)}" fill="url(#${id}-${i % 2 ? 'nam' : 'nag'})" stroke="${outline(i % 2 ? nam : nag)}" stroke-width="1.5" stroke-linejoin="round"/>`)),
+      lipidBilayer(`${id}-lipid`, 24, 232, ...M.membrane),
+      K.pipe(`M${bx} ${by + 22}V${M.membrane[0] - 4}`, pbp, 5), K.pipe(`M${cx} ${cy + 24}V${M.membrane[0] - 4}`, p2, 5),
+      // A normal PBP, blocked by the β-lactam in its active site: no cross-links above it.
+      `<path d="${K.smoothClosedPath(K.polarPoints(bx, by, a => 25 + 2 * Math.sin(5 * a) - 9 * Math.exp(-(K.wrapAngle(a + Math.PI / 2) ** 2) / (2 * 0.3 ** 2)), 90))}" fill="url(#${id}-pbp)" stroke="${outline(pbp)}" stroke-width="2.5"/>`,
+      pill(id, bx, by - 20, 90, 1.1),
+      // PBP2a: its active site is barely accessible, so the β-lactams bounce off and it carries on.
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => 28 + 3 * Math.sin(2 * a + 0.5) + 2 * Math.sin(5 * a), 90))}" fill="url(#${id}-pbp2a)" stroke="${outline(p2)}" stroke-width="2.5"/>`,
+      `<path d="M${cx - 8} ${cy - 27}Q${cx} ${cy - 22} ${cx + 8} ${cy - 27}" fill="none" stroke="${outline(p2)}" stroke-width="2" stroke-linecap="round"/>`,
+      ...M.free.map(([x, y, a]) => pill(id, x, y, a, 1.1) + motion([x, y, a])),
+    ],
+  };
+}
+
+function carbapenemase(id) {
+  const X = K.CARBAPENEMASE, [o0, o1] = X.outer, [i0, i1] = X.inner, enz = C.carbapenemase, neg = C.gramNegative, por = C.porin;
+  const gaps = X.porins.flatMap(x => [x - 14, x + 14]), spans = [[16, gaps[0]], [gaps[1], gaps[2]], [gaps[3], 240]];
+  const enzyme = ([x, y, a]) => {
+    const p = d => [x + 16 * Math.cos((a + d) * Math.PI / 180), y + 16 * Math.sin((a + d) * Math.PI / 180)].map(n).join(' ');
+    return `<path d="M${x} ${y}L${p(28)}A16 16 0 1 1 ${p(-28)}Z" fill="url(#${id}-enzyme)" stroke="${outline(enz)}" stroke-width="2" stroke-linejoin="round"/>`;
+  };
+  // A broken carbapenem: the two halves of its capsule apart.
+  const broken = ([x, y, a]) => `<g transform="translate(${x} ${y}) rotate(${a})">` +
+    `<path d="M-3 -5H-9A5 5 0 0 0 -9 5H-3Z" fill="url(#${id}-pill-a)" stroke="${outline(C.drugRed)}" stroke-width="1.3" transform="rotate(-18)"/>` +
+    `<path d="M3 -5H9A5 5 0 0 1 9 5H3Z" fill="url(#${id}-pill-b)" stroke="${outline(C.drugYellow)}" stroke-width="1.3" transform="rotate(18)"/></g>`;
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-enzyme`, enz, { light: 0.5 }), K.cylinderGradient(`${id}-porin`, por, { horizontal: true }), ...pillGradients(id)],
+    body: [
+      `<rect x="16" y="${o1}" width="224" height="${i0 - o1}" fill="${tint(neg, 0.82)}"/>`,
+      `<path d="M16 ${i1}H240V232Q240 240 232 240H24Q16 240 16 232Z" fill="${tint(neg, 0.68)}"/>`,
+      `<path d="M16 ${X.wall}H240" stroke="${shade(neg, 0.15)}" stroke-width="3" stroke-dasharray="10 4"/>`,
+      ...spans.map(([a, b]) => lipidBilayer(`${id}-lipid`, a + 5, b - 5, o0, o1)),
+      lipidBilayer(`${id}-lipid`, 21, 235, i0, i1),
+      ...X.porins.map(x => `<rect x="${x - 13}" y="${o0 - 7}" width="26" height="${o1 - o0 + 14}" rx="7" fill="url(#${id}-porin)" stroke="${outline(por)}" stroke-width="2"/>` +
+        `<rect x="${x - 4.5}" y="${o0 - 5}" width="9" height="${o1 - o0 + 10}" rx="4" fill="${tint(por, 0.6)}"/>`),
+      ...X.incoming.map(([x, y, a]) => pill(id, x, y, a, 1.15)),
+      ...X.broken.map(broken),
+      ...X.enzymes.map(enzyme),
+    ],
+  };
+}
+
+function stewardship(id) {
+  const S = K.STEWARDSHIP, [cx, cy, cs] = S.capsule, [ax, ay, r, a0, a1] = S.arc, [bx, by, br] = S.badge, col = C.stewardship, ok = C.heparin;
+  const capsule = antibioticCapsule(id);
+  const at = deg => [ax + r * Math.cos(deg * Math.PI / 180), ay + r * Math.sin(deg * Math.PI / 180)];
+  // The review cycle: an arc most of the way round, ending in an arrowhead.
+  const [p0, p1, tip] = [at(a0), at(a1 - 7), at(a1)], t = a1 * Math.PI / 180, [ux, uy] = [-Math.sin(t), Math.cos(t)];
+  const base = [tip[0] - ux * 20, tip[1] - uy * 20], head = [tip, [base[0] - uy * 13, base[1] + ux * 13], [base[0] + uy * 13, base[1] - ux * 13]];
+  const arc = `M${n(p0[0])} ${n(p0[1])}A${r} ${r} 0 1 1 ${n(p1[0])} ${n(p1[1])}`;
+  return {
+    defs: [...capsule.defs, K.sphereGradient(`${id}-badge`, ok, { light: 0.45 })],
+    body: [
+      `<path d="${arc}" fill="none" stroke="${outline(col)}" stroke-width="14" stroke-linecap="round"/><path d="${arc}" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round"/>`,
+      `<polygon points="${head.map(p => p.map(n).join(',')).join(' ')}" fill="${col}" stroke="${outline(col)}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      `<g transform="translate(${cx} ${cy}) scale(${cs}) translate(-128 -128)">`, ...capsule.body, `</g>`,
+      `<circle cx="${bx}" cy="${by}" r="${br}" fill="url(#${id}-badge)" stroke="${outline(ok)}" stroke-width="${STROKE}"/>`,
+      `<path d="M${bx - 11} ${by + 1}L${bx - 3} ${by + 9}L${bx + 12} ${by - 8}" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`,
     ],
   };
 }
@@ -2480,6 +2807,54 @@ function placenta(id) {
       `<g transform="translate(${n(end.p[0])} ${n(end.p[1])}) rotate(${endDeg})">` +
       `<ellipse rx="${P.cordWidth / 2}" ry="7" fill="${tint(jelly, 0.3)}" stroke="${shade(jelly, 0.4)}" stroke-width="2"/>` +
       [[-6, 0, 3, deoxy], [6, 0, 3, deoxy], [0, 1, 3.8, oxy]].map(([x, y, r, c]) => `<ellipse cx="${x}" cy="${y}" rx="${r}" ry="${n(r * 0.6)}" fill="${c}" stroke="${outline(c)}" stroke-width="1"/>`).join('') + `</g>`,
+    ],
+  };
+}
+
+function heartValve(id) {
+  const V = K.HEART_VALVE, [cx, cy] = V.centre, { R, inner } = V, tissue = C.valveTissue, ring = C.annulus, veg = C.vegetation;
+  const at = (deg, r) => [n(cx + r * Math.cos(deg * Math.PI / 180)), n(cy + r * Math.sin(deg * Math.PI / 180))];
+  const [a0, a1, a2] = V.commissures, sectors = [[a0, a1], [a1, a2], [a2, a0 + 360]];
+  const rand = K.rng(83);
+  return {
+    defs: [K.sphereGradient(`${id}-ring`, ring, { light: 0.4 }), K.sphereGradient(`${id}-cusp`, tissue, { light: 0.6, dark: 0.12 }), K.sphereGradient(`${id}-veg`, veg, { light: 0.45 })],
+    body: [
+      `<circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#${id}-ring)" stroke="${outline(ring)}" stroke-width="${STROKE}"/>`,
+      // Three cusps meeting along their closure lines.
+      ...sectors.map(([s, e]) => { const [p, q] = [at(s, inner), at(e, inner)]; return `<path d="M${cx} ${cy}L${p[0]} ${p[1]}A${inner} ${inner} 0 0 1 ${q[0]} ${q[1]}Z" fill="url(#${id}-cusp)" stroke="${shade(tissue, 0.3)}" stroke-width="2" stroke-linejoin="round"/>`; }),
+      `<path d="${V.commissures.map(a => { const p = at(a, inner); return `M${cx} ${cy}L${p[0]} ${p[1]}`; }).join('')}" stroke="${shade(tissue, 0.45)}" stroke-width="3" stroke-linecap="round"/>`,
+      // Vegetations on the closure lines, studded with bacteria.
+      ...V.vegetations.map((v, k) => `<path d="${K.vegetationPath(v, k + 1)}" fill="url(#${id}-veg)" stroke="${outline(veg)}" stroke-width="2"/>` +
+        Array.from({ length: Math.round(v[2] * 0.6) }, () => { const a = rand() * 2 * Math.PI, d = rand() * v[2] * 0.7; return `<circle cx="${n(v[0] + d * Math.cos(a))}" cy="${n(v[1] + d * Math.sin(a))}" r="2.2" fill="${C.gramPositive}" stroke="${outline(C.gramPositive)}" stroke-width="0.6"/>`; }).join('')),
+    ],
+  };
+}
+
+function meninges(id) {
+  const M = K.MENINGES, [fx, fy, fw, fh, fr] = M.frame, [vx, vy, vr] = M.vessel;
+  const band = ([y0, y1], fill) => `<rect x="${fx}" y="${y0}" width="${fw}" height="${y1 - y0}" fill="${fill}"/>`;
+  const rand = K.rng(17), diploe = [];
+  for (let k = 0; k < 26; k++) diploe.push(`<ellipse cx="${n(22 + rand() * 212)}" cy="${n(44 + rand() * 18)}" rx="${n(3 + rand() * 3)}" ry="${n(2 + rand() * 2)}" fill="${tint(C.marrow, 0.55)}" opacity="0.8"/>`);
+  const trabeculae = M.trabeculae.map(x => `M${x} ${M.arachnoid + 2}C${x + 5} ${M.arachnoid + 8} ${x - 5} ${M.arachnoid + 16} ${x + 1} 116`).join('');
+  return {
+    defs: [`<clipPath id="${id}-frame"><rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="${fr}"/></clipPath>`,
+      K.cylinderGradient(`${id}-bone`, C.bone), K.cylinderGradient(`${id}-dura`, C.dura), K.sphereGradient(`${id}-cortex`, C.cortex, { light: 0.4, dark: 0.08 })],
+    body: [
+      `<g clip-path="url(#${id}-frame)">`,
+      band(M.scalp, C.scalp), band(M.skull, `url(#${id}-bone)`), ...diploe, band(M.dura, `url(#${id}-dura)`),
+      band([M.dura[1], fy + fh], C.csf),
+      // Arachnoid with trabeculae across the subarachnoid space, and a vessel in the CSF.
+      `<path d="${trabeculae}" fill="none" stroke="${shade(C.arachnoid, 0.2)}" stroke-width="1.8" stroke-linecap="round"/>`,
+      `<path d="M${fx} ${M.arachnoid}H${fx + fw}" stroke="${shade(C.arachnoid, 0.15)}" stroke-width="3.5"/>`,
+      `<circle cx="${vx}" cy="${vy}" r="${vr}" fill="${C.artery}" stroke="${outline(C.artery)}" stroke-width="2"/>`,
+      // Cortex covered by the pia, following it into a sulcus; white matter beneath.
+      `<path d="${M.cortex}L240 240L16 240Z" fill="url(#${id}-cortex)"/>`,
+      `<path d="${M.whiteMatter}L240 240L16 240Z" fill="${C.whiteMatter}"/>`,
+      `<path d="${M.whiteMatter}" fill="none" stroke="${shade(C.cortex, 0.12)}" stroke-width="1.5" opacity="0.7"/>`,
+      `<path d="${M.cortex}" fill="none" stroke="${shade(C.cortex, 0.35)}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      `<path d="M${fx} ${M.scalp[1]}H${fx + fw}M${fx} ${M.skull[1]}H${fx + fw}M${fx} ${M.dura[1]}H${fx + fw}" stroke="#000" stroke-opacity="0.2" stroke-width="1.5"/>`,
+      `</g>`,
+      `<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="${fr}" fill="none" stroke="${shade(C.dura, 0.45)}" stroke-width="${STROKE}"/>`,
     ],
   };
 }
@@ -2828,6 +3203,32 @@ function carTCell(id) {
       `<path d="${blob(tx - 6, ty - 6, 30, 4)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...T.cars.map(inside),
       K.gloss(`${id}-gloss`, tx - 26, ty - 32, 16, 8),
+    ],
+  };
+}
+
+function ors(id) {
+  const O = K.ORS, [sx, sy, sa] = O.sachet, [mx, my] = O.mug, sc = C.sachet, mug = '#F4F6F8';
+  return {
+    defs: [K.cylinderGradient(`${id}-sachet`, sc, { horizontal: true }), K.cylinderGradient(`${id}-mug`, mug, { horizontal: true }), K.sphereGradient(`${id}-ors`, tint(C.fluid, 0.4), { light: 0.5 })],
+    body: [
+      `<g transform="translate(${sx} ${sy}) rotate(${sa})">`,
+      `<path d="${K.sachetPath()}" fill="url(#${id}-sachet)" stroke="${outline(sc)}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      `<path d="M${-O.w / 2} ${-O.h / 2 + 10}H${O.w / 2}M${-O.w / 2} ${O.h / 2 - 10}H${O.w / 2}" stroke="${shade(sc, 0.25)}" stroke-width="1.5" stroke-dasharray="3 3"/>`,
+      `<rect x="-30" y="-36" width="60" height="72" rx="8" fill="#fff" opacity="0.92"/>`,
+      `<path d="${K.dropPath(0, 4, 1.7)}" fill="${sc}" stroke="${outline(sc)}" stroke-width="1.5"/>`,
+      `<path d="M-14 26H14" stroke="${tint(sc, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
+      `<path d="M${O.w / 2} ${-O.h / 2 + 22}l-6 4l6 4" fill="none" stroke="${outline(sc)}" stroke-width="2" stroke-linejoin="round"/>`,
+      `</g>`,
+      `<g transform="translate(${mx} ${my})">`,
+      `<path d="M26 -20C46 -20 46 14 24 14" fill="none" stroke="${outline(mug)}" stroke-width="11" stroke-linecap="round"/><path d="M26 -20C46 -20 46 14 24 14" fill="none" stroke="${mug}" stroke-width="6" stroke-linecap="round"/>`,
+      `<path d="M-30 -34L30 -34L26 34Q25 42 17 42L-17 42Q-25 42 -26 34Z" fill="url(#${id}-mug)" stroke="${outline(mug)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<ellipse cy="-30" rx="27" ry="5" fill="url(#${id}-ors)" stroke="${shade(C.fluid, 0.3)}" stroke-width="1.5"/>`,
+      // A spoon standing in the mug.
+      `<path d="M6 -32L22 -70" stroke="${outline(C.metal)}" stroke-width="5" stroke-linecap="round"/><path d="M6 -32L22 -70" stroke="${C.metal}" stroke-width="2.5" stroke-linecap="round"/>`,
+      `<ellipse cx="24" cy="-76" rx="5" ry="8" transform="rotate(22 24 -76)" fill="${C.metal}" stroke="${outline(C.metal)}" stroke-width="1.5"/>`,
+      `<rect x="-22" y="-20" width="5" height="50" rx="2.5" fill="#fff" opacity="0.7"/>`,
+      `</g>`,
     ],
   };
 }
@@ -3508,6 +3909,195 @@ function chestXray(id) {
   };
 }
 
+function pipette(id) {
+  const P = K.PIPETTE, [x, y, a, s] = P.at, body = C.pipette, edge = C.plasticEdge, [wx, wy, ww, wh] = P.window, [dx, dy] = P.drop;
+  return {
+    defs: [K.cylinderGradient(`${id}-body`, body, { horizontal: true }), K.cylinderGradient(`${id}-shaft`, '#C9D3DC', { horizontal: true }),
+      K.cylinderGradient(`${id}-button`, C.vialCap, { horizontal: true }), K.cylinderGradient(`${id}-liquid`, C.fluid, { horizontal: true })],
+    body: [
+      `<g transform="translate(${x} ${y}) rotate(${a}) scale(${s})">`,
+      `<rect x="${P.rod[0]}" y="${P.rod[1]}" width="${P.rod[2]}" height="${P.rod[3]}" fill="${C.metal}" stroke="${outline(C.metal)}" stroke-width="1.5"/>`,
+      `<rect x="${P.button[0]}" y="${P.button[1]}" width="${P.button[2]}" height="${P.button[3]}" rx="4" fill="url(#${id}-button)" stroke="${outline(C.vialCap)}" stroke-width="2"/>`,
+      `<path d="${P.ejector}" fill="${shade(body, 0.1)}" stroke="${outline(body)}" stroke-width="2" stroke-linejoin="round"/>`,
+      `<path d="${P.hook}" fill="url(#${id}-body)" stroke="${outline(body)}" stroke-width="2" stroke-linejoin="round"/>`,
+      `<path d="${P.body}" fill="url(#${id}-body)" stroke="${outline(body)}" stroke-width="${STROKE}"/>`,
+      `<rect x="${wx}" y="${wy}" width="${ww}" height="${wh}" rx="2" fill="#2F3A44"/>`,
+      ...[0, 1, 2].map(i => `<rect x="${wx + 3}" y="${wy + 3 + i * 8}" width="${ww - 6}" height="4" rx="1" fill="#9FE0B0"/>`),
+      `<rect x="-12" y="-84" width="4" height="100" rx="2" fill="#fff" opacity="0.6"/>`,
+      `<path d="${P.shaft}" fill="url(#${id}-shaft)" stroke="${outline('#C9D3DC')}" stroke-width="2" stroke-linejoin="round"/>`,
+      `<path d="${P.tip}" fill="${C.pipetteTip}" fill-opacity="0.85" stroke="${edge}" stroke-width="1.8" stroke-linejoin="round"/>`,
+      `<path d="${P.liquid}" fill="url(#${id}-liquid)"/>`,
+      `<path d="${K.dropPath(dx, dy, 0.55)}" fill="${C.fluid}" stroke="${shade(C.fluid, 0.35)}" stroke-width="1.2"/>`,
+      `</g>`,
+    ],
+  };
+}
+
+function wellPlate(id) {
+  const P = K.WELL_PLATE, pt = (u, v) => K.platePoint(u, v).map(n).join(','), edge = C.plasticEdge, el = C.elisa;
+  const top = [pt(10, 0), pt(P.W, 0), pt(P.W, P.D), pt(0, P.D), pt(0, 10)];
+  const [fl, fr] = [K.platePoint(0, P.D), K.platePoint(P.W, P.D)];
+  return {
+    defs: [`<linearGradient id="${id}-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="${C.plastic}"/></linearGradient>`],
+    body: [
+      `<polygon points="${n(fl[0])},${n(fl[1])} ${n(fr[0])},${n(fr[1])} ${n(fr[0])},${n(fr[1] + P.side)} ${n(fl[0])},${n(fl[1] + P.side)}" fill="${shade(C.plastic, 0.12)}" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      `<polygon points="${top.join(' ')}" fill="url(#${id}-top)" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      // ELISA: two columns of standards fading down, then samples (yellow where positive).
+      ...K.plateWells().map(({ x, y, rx, ry, level }) => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${n(rx)}" ry="${n(ry)}" fill="${shade(C.plastic, 0.2)}"/>` +
+        `<ellipse cx="${n(x)}" cy="${n(y + ry * 0.2)}" rx="${n(rx * 0.82)}" ry="${n(ry * 0.72)}" fill="${level ? mix(tint(el, 0.85), shade(el, 0.08), level) : '#FFFFFF'}"/>`),
+    ],
+  };
+}
+
+function centrifuge(id) {
+  const X = K.CENTRIFUGE, [tx, ty, trx, try_] = X.top, h = X.height, [cx, cy, crx, cry] = X.chamber, [rx, ry, rrx, rry] = X.rotor, [lx, ly, lrx, lry] = X.lid, body = C.centrifuge;
+  const [px, py, pw, ph] = X.panel, [bx, by, br] = X.button, caps = ['#F4F6F8', '#F3B6C3', C.capYellow];
+  const slots = K.rotorSlots().sort((p, q) => p.y - q.y);
+  return {
+    defs: [K.cylinderGradient(`${id}-side`, body, { horizontal: true }), K.sphereGradient(`${id}-top`, body, { light: 0.6, dark: 0.1 }), K.sphereGradient(`${id}-rotor`, C.rotor, { light: 0.6 }),
+      K.sphereGradient(`${id}-lid`, shade(body, 0.05), { light: 0.5 })],
+    body: [
+      // The lid, open behind.
+      `<ellipse cx="${lx}" cy="${ly}" rx="${lrx}" ry="${lry}" fill="url(#${id}-lid)" stroke="${outline(body)}" stroke-width="${STROKE}"/>`,
+      `<ellipse cx="${lx}" cy="${ly - 4}" rx="${lrx - 26}" ry="${lry - 18}" fill="${tint(C.fluid, 0.55)}" stroke="${shade(body, 0.3)}" stroke-width="2"/>`,
+      `<path d="M${tx - trx} ${ty}L${tx - trx} ${ty + h}A${trx} ${try_} 0 0 0 ${tx + trx} ${ty + h}L${tx + trx} ${ty}Z" fill="url(#${id}-side)" stroke="${outline(body)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<ellipse cx="${tx}" cy="${ty}" rx="${trx}" ry="${try_}" fill="url(#${id}-top)" stroke="${outline(body)}" stroke-width="${STROKE}"/>`,
+      `<ellipse cx="${cx}" cy="${cy}" rx="${crx}" ry="${cry}" fill="#4A5560" stroke="${shade(body, 0.4)}" stroke-width="2"/>`,
+      `<ellipse cx="${rx}" cy="${ry}" rx="${rrx}" ry="${rry}" fill="url(#${id}-rotor)" stroke="${outline(C.rotor)}" stroke-width="2"/>`,
+      // Tubes in balanced pairs; empty slots show as holes.
+      ...slots.map(({ x, y, loaded }, k) => loaded
+        ? `<ellipse cx="${n(x)}" cy="${n(y - 2)}" rx="7" ry="4.5" fill="${caps[k % 3]}" stroke="${outline(caps[k % 3])}" stroke-width="1.5"/>`
+        : `<ellipse cx="${n(x)}" cy="${n(y)}" rx="5.5" ry="3" fill="#4A5560"/>`),
+      `<ellipse cx="${rx}" cy="${ry}" rx="10" ry="5" fill="${shade(C.rotor, 0.25)}" stroke="${outline(C.rotor)}" stroke-width="1.5"/>`,
+      `<rect x="${px}" y="${py}" width="${pw}" height="${ph}" rx="3" fill="#2F3A44"/>`,
+      `<rect x="${px + 6}" y="${py + 5}" width="${pw - 12}" height="${ph - 10}" rx="1.5" fill="#9FE0B0"/>`,
+      `<circle cx="${bx}" cy="${by}" r="${br}" fill="${C.vialCap}" stroke="${outline(C.vialCap)}" stroke-width="2"/>`,
+    ],
+  };
+}
+
+// ------------------------------------------------------------ transmission
+
+// A neutral head-and-shoulders figure with its base centre at (x, y), scaled by s.
+function bust(id, x, y, s) {
+  const B = K.TRANSMISSION.bust, [hx, hy, hr] = B.head, fig = C.silhouette, w = n(STROKE / s);
+  return `<g transform="translate(${x} ${y}) scale(${s})"><path d="${B.neck}" fill="${shade(fig, 0.15)}"/>` +
+    `<path d="${B.shoulders}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${w}"/>` +
+    `<circle cx="${hx}" cy="${hy}" r="${hr}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${w}"/></g>`;
+}
+const figureDefs = id => [K.sphereGradient(`${id}-figure`, C.silhouette, { light: 0.45 })];
+const arrowMarks = ({ shaft, head }) => `<path d="${shaft}" fill="none" stroke="${C.arrow}" stroke-width="4.5" stroke-linecap="round"/>` +
+  `<polygon points="${head}" fill="${C.arrow}" stroke="${C.arrow}" stroke-width="1.5" stroke-linejoin="round"/>`;
+// An open hand in the figures' colour, centred at (x, y), scaled by s and mirrored if flip.
+function neutralHand(id, x, y, s, flip = false) {
+  const H = K.HAND, fig = C.silhouette, widths = [18, 18, 18, 16, 20];
+  const fingers = H.fingers.map(([[x0, y0], [x1, y1]]) => `M${x0} ${y0}L${x1} ${y1}`);
+  return `<g transform="translate(${x} ${y}) scale(${flip ? -s : s} ${s}) translate(-128 -140)">` +
+    fingers.map((d, i) => `<path d="${d}" stroke="${outline(fig)}" stroke-width="${widths[i] + 6}" stroke-linecap="round"/>`).join('') +
+    [H.palm, H.wrist].map(d => `<path d="${d}" fill="${outline(fig)}" stroke="${outline(fig)}" stroke-width="6" stroke-linejoin="round"/>`).join('') +
+    fingers.map((d, i) => `<path d="${d}" stroke="url(#${id}-hand)" stroke-width="${widths[i]}" stroke-linecap="round"/>`).join('') +
+    [H.palm, H.wrist].map(d => `<path d="${d}" fill="url(#${id}-hand)"/>`).join('') + `</g>`;
+}
+const handDefs = id => [`<radialGradient id="${id}-hand" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80">` +
+  `<stop offset="0" stop-color="${tint(C.silhouette, 0.4)}"/><stop offset="0.55" stop-color="${C.silhouette}"/><stop offset="1" stop-color="${shade(C.silhouette, 0.16)}"/></radialGradient>`];
+const germ = ([x, y, kind, a = 0]) => kind === 'rod'
+  ? `<rect x="-7" y="-3.5" width="14" height="7" rx="3.5" transform="translate(${x} ${y}) rotate(${a})" fill="${C.gramNegative}" stroke="${outline(C.gramNegative)}" stroke-width="1.3"/>`
+  : `<circle cx="${x}" cy="${y}" r="4" fill="${C.gramPositive}" stroke="${outline(C.gramPositive)}" stroke-width="1.3"/>`;
+
+function dropletTransmission(id) {
+  const T = K.TRANSMISSION, fl = C.fluid;
+  return {
+    defs: [...figureDefs(id), K.sphereGradient(`${id}-drop`, fl, { light: 0.55 })],
+    body: [
+      ...T.pair.map(([x, y, s]) => bust(id, x, y, s)),
+      // Large droplets, falling within a short distance.
+      ...T.droplets.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-drop)" stroke="${shade(fl, 0.35)}" stroke-width="1.5"/>`),
+      arrowMarks(K.curvedArrow(...T.over)),
+    ],
+  };
+}
+
+function airborneTransmission(id) {
+  const T = K.TRANSMISSION, fl = C.fluid;
+  const air = T.air.map((y, k) => K.smoothOpenPath(Array.from({ length: 31 }, (_, i) => [86 + i * 5, y + 5 * Math.sin(i / 30 * 2 * Math.PI * 2.5 + k)]))).join('');
+  return {
+    defs: figureDefs(id),
+    body: [
+      `<path d="${air}" fill="none" stroke="${tint(fl, 0.2)}" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>`,
+      ...T.pair.map(([x, y, s]) => bust(id, x, y, s)),
+      // Fine aerosol, drifting well beyond the nearest person.
+      ...T.aerosol.map(([x, y], k) => `<circle cx="${n(x)}" cy="${n(y)}" r="${2 + (k % 3) * 0.5}" fill="${shade(fl, 0.15)}"/>`),
+      arrowMarks(K.curvedArrow(...T.over)),
+    ],
+  };
+}
+
+function contactTransmission(id) {
+  const T = K.TRANSMISSION.hands;
+  return {
+    defs: handDefs(id),
+    body: [
+      neutralHand(id, ...T.at[0], T.scale), neutralHand(id, ...T.at[1], T.scale, true),
+      ...T.germs.map(germ),
+      arrowMarks(K.straightArrow(...T.arrow, 14)),
+    ],
+  };
+}
+
+function faecalOralTransmission(id) {
+  const F = K.TRANSMISSION.faecalOral, [nx, ny] = F.nappy, [hx, hy, hs] = F.hand, [mx, my] = F.mug, nap = C.nappy, mug = '#F4F6F8';
+  return {
+    defs: [...handDefs(id), K.cylinderGradient(`${id}-nappy`, nap, { horizontal: true }), K.cylinderGradient(`${id}-mug`, mug, { horizontal: true })],
+    body: [
+      // Nappy, hands, then food or drink.
+      `<g transform="translate(${nx} ${ny})"><path d="${K.TRANSMISSION.nappy}" fill="url(#${id}-nappy)" stroke="${outline(nap)}" stroke-width="${STROKE}" stroke-linejoin="round"/>` +
+        `<path d="M-31 -2C-25 6 -20 14 -18 22M31 -2C25 6 20 14 18 22" fill="none" stroke="${shade(nap, 0.25)}" stroke-width="2" stroke-dasharray="3 3"/>` +
+        `<rect x="-38" y="-24" width="76" height="8" rx="3" fill="${C.hat}" stroke="${outline(C.hat)}" stroke-width="2"/>` +
+        [-1, 1].map(s => `<rect x="${s > 0 ? 32 : -42}" y="-18" width="10" height="9" rx="2" fill="${C.vialCap}" stroke="${outline(C.vialCap)}" stroke-width="1.5"/>`).join('') + `</g>`,
+      neutralHand(id, hx, hy, hs),
+      `<g transform="translate(${mx} ${my})"><path d="M26 -10C42 -10 42 16 24 16" fill="none" stroke="${outline(mug)}" stroke-width="10" stroke-linecap="round"/><path d="M26 -10C42 -10 42 16 24 16" fill="none" stroke="${mug}" stroke-width="5" stroke-linecap="round"/>` +
+        `<path d="M-28 -24L28 -24L25 22Q24 30 16 30L-16 30Q-24 30 -25 22Z" fill="url(#${id}-mug)" stroke="${outline(mug)}" stroke-width="${STROKE}" stroke-linejoin="round"/>` +
+        `<ellipse cy="-20" rx="25" ry="5" fill="${tint(C.fluid, 0.3)}" stroke="${shade(C.fluid, 0.3)}" stroke-width="1.5"/></g>`,
+      ...[[hx - 6, hy + 2, 'rod', -20], [hx + 8, hy + 16, 'coccus'], [mx - 10, my - 19, 'coccus'], [mx + 8, my - 22, 'rod', 10]].map(germ),
+      ...F.arrows.map(([p, c, q]) => arrowMarks(K.curvedArrow(p, c, q))),
+    ],
+  };
+}
+
+function vectorTransmission(id) {
+  const V = K.TRANSMISSION.vector, [mx, my, ms] = V.mosquito, m = mosquito(`${id}-mosquito`);
+  return {
+    defs: [...figureDefs(id), ...m.defs],
+    body: [
+      ...V.pair.map(([x, y, s]) => bust(id, x, y, s)),
+      `<g transform="translate(${mx} ${my}) scale(${ms}) translate(-128 -128)">`, ...m.body, `</g>`,
+      ...V.arrows.map(([p, c, q]) => arrowMarks(K.curvedArrow(p, c, q))),
+    ],
+  };
+}
+
+function verticalTransmission(id) {
+  const V = K.TRANSMISSION.vertical, fig = C.silhouette, [hx, hy, hr] = V.head, [ux, uy, urx, ury] = V.uterus, F = V.fetus, fetal = tint(C.silhouette, 0.45);
+  const [fhx, fhy, fhr] = F.head, [fbx, fby, fbrx, fbry, fba] = F.body;
+  const virion = ([x, y]) => `<path d="${Array.from({ length: 8 }, (_, k) => { const a = k * Math.PI / 4; return `M${n(x + 5 * Math.cos(a))} ${n(y + 5 * Math.sin(a))}L${n(x + 8 * Math.cos(a))} ${n(y + 8 * Math.sin(a))}`; }).join('')}" stroke="${shade(C.spike, 0.2)}" stroke-width="2" stroke-linecap="round"/>` +
+    `<circle cx="${x}" cy="${y}" r="5" fill="${C.spike}" stroke="${outline(C.spike)}" stroke-width="1.2"/>`;
+  return {
+    defs: [...figureDefs(id), K.sphereGradient(`${id}-uterus`, '#F4C9CF', { light: 0.5 }), K.sphereGradient(`${id}-fetus`, fetal, { light: 0.5 })],
+    body: [
+      `<path d="${V.body}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<circle cx="${hx}" cy="${hy}" r="${hr}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${STROKE}"/>`,
+      // The uterus, with the placenta and a curled fetus.
+      `<ellipse cx="${ux}" cy="${uy}" rx="${urx}" ry="${ury}" fill="url(#${id}-uterus)" stroke="${shade('#F4C9CF', 0.4)}" stroke-width="2"/>`,
+      `<path d="${V.placenta}" fill="${C.placenta}" stroke="${outline(C.placenta)}" stroke-width="1.5"/>`,
+      `<path d="${F.cord}" fill="none" stroke="${shade(C.cordJelly, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
+      `<ellipse cx="${fbx}" cy="${fby}" rx="${fbrx}" ry="${fbry}" transform="rotate(${fba} ${fbx} ${fby})" fill="url(#${id}-fetus)" stroke="${outline(fetal)}" stroke-width="2"/>`,
+      `<circle cx="${fhx}" cy="${fhy}" r="${fhr}" fill="url(#${id}-fetus)" stroke="${outline(fetal)}" stroke-width="2"/>`,
+      ...V.pathogens.map(virion),
+      arrowMarks(K.curvedArrow(...V.arrow)),
+    ],
+  };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -3648,6 +4238,32 @@ const DRAWINGS = {
   'microscope': microscope,
   'glass-test': glassTest,
   'chest-x-ray': chestXray,
+  'chlamydia': chlamydia,
+  'borrelia': borrelia,
+  'enterococcus': enterococcus,
+  'hepatitis-c': hepatitisC,
+  'cmv-infected-cell': cmvCell,
+  'leishmania': leishmania,
+  'germinal-centre': germinalCentre,
+  't-helper-subsets': thSubsets,
+  'interferon-signalling': interferonSignalling,
+  'complement-cascade': complementCascade,
+  'fc-receptor': fcReceptor,
+  'mrsa': mrsa,
+  'carbapenemase': carbapenemase,
+  'antimicrobial-stewardship': stewardship,
+  'heart-valve': heartValve,
+  'meninges': meninges,
+  'oral-rehydration': ors,
+  'pipette': pipette,
+  'well-plate': wellPlate,
+  'centrifuge': centrifuge,
+  'droplet-transmission': dropletTransmission,
+  'airborne-transmission': airborneTransmission,
+  'contact-transmission': contactTransmission,
+  'faecal-oral-transmission': faecalOralTransmission,
+  'vector-borne-transmission': vectorTransmission,
+  'vertical-transmission': verticalTransmission,
 };
 
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));

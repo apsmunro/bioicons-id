@@ -14,7 +14,8 @@
     { "id": "organs", "label": "Organs & body systems" },
     { "id": "treatment", "label": "Treatment" },
     { "id": "resistance", "label": "Antimicrobial resistance" },
-    { "id": "clinical", "label": "Clinical & lab" }
+    { "id": "clinical", "label": "Clinical & lab" },
+    { "id": "transmission", "label": "Transmission" }
   ],
   "icons": [
     {
@@ -198,6 +199,33 @@
       "tags": ["Corynebacterium diphtheriae", "C. diphtheriae", "diphtheria", "coryneform", "diphtheroid", "club-shaped", "Chinese letters", "metachromatic granules", "volutin", "gram-positive", "diphtheria toxin", "bacterium"]
     },
     {
+      "id": "chlamydia",
+      "name": "Chlamydia",
+      "category": "bacteria",
+      "file": "icons/bacteria/chlamydia.svg",
+      "monoFile": "icons/bacteria/chlamydia-mono.svg",
+      "description": "An epithelial cell holding a Chlamydia inclusion packed with reticulate bodies (larger, dividing) and elementary bodies (small, infectious), its nucleus pushed aside; elementary bodies are released.",
+      "tags": ["Chlamydia", "Chlamydia trachomatis", "C. trachomatis", "Chlamydia pneumoniae", "Chlamydophila", "elementary body", "reticulate body", "inclusion", "obligate intracellular", "neonatal conjunctivitis", "trachoma", "STI", "bacterium"]
+    },
+    {
+      "id": "borrelia",
+      "name": "Borrelia",
+      "category": "bacteria",
+      "file": "icons/bacteria/borrelia.svg",
+      "monoFile": "icons/bacteria/borrelia-mono.svg",
+      "description": "Long, loosely and irregularly coiled spirochaetes, as in Lyme disease.",
+      "tags": ["Borrelia", "Borrelia burgdorferi", "Lyme disease", "Lyme borreliosis", "relapsing fever", "spirochaete", "spirochete", "tick-borne", "erythema migrans", "bacterium"]
+    },
+    {
+      "id": "enterococcus",
+      "name": "Enterococcus",
+      "category": "bacteria",
+      "file": "icons/bacteria/enterococcus.svg",
+      "monoFile": "icons/bacteria/enterococcus-mono.svg",
+      "description": "Oval Gram-positive cocci in pairs and short chains.",
+      "tags": ["Enterococcus", "Enterococcus faecalis", "Enterococcus faecium", "E. faecalis", "E. faecium", "VRE", "vancomycin-resistant", "gram-positive", "cocci", "UTI", "endocarditis", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -342,6 +370,24 @@
       "tags": ["rabies", "RABV", "lyssavirus", "rhabdovirus", "bullet-shaped", "bat lyssavirus", "dog bite", "animal bite", "post-exposure prophylaxis", "PEP", "encephalitis", "virus"]
     },
     {
+      "id": "hepatitis-c",
+      "name": "Hepatitis C virus",
+      "category": "viruses",
+      "file": "icons/viruses/hepatitis-c.svg",
+      "monoFile": "icons/viruses/hepatitis-c-mono.svg",
+      "description": "Enveloped hepacivirus with E1/E2 glycoprotein heterodimers, round a core holding its single-stranded RNA genome.",
+      "tags": ["hepatitis C", "HCV", "hepacivirus", "flavivirus", "E1", "E2", "RNA virus", "bloodborne virus", "vertical transmission", "hepatitis", "liver", "DAA", "virus"]
+    },
+    {
+      "id": "cmv-infected-cell",
+      "name": "CMV-infected cell",
+      "category": "viruses",
+      "file": "icons/viruses/cmv-infected-cell.svg",
+      "monoFile": "icons/viruses/cmv-infected-cell-mono.svg",
+      "description": "An enlarged cell infected with cytomegalovirus: a large intranuclear inclusion ringed by a clear halo (\"owl's eye\") and small cytoplasmic inclusions, beside two normal cells.",
+      "tags": ["cytomegalovirus", "CMV", "owl's eye", "inclusion body", "cytomegaly", "congenital CMV", "cCMV", "herpesvirus", "HHV-5", "histology", "transplant", "immunocompromised", "virus"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -475,6 +521,15 @@
       "monoFile": "icons/parasites/trypanosoma-mono.svg",
       "description": "Trypomastigote among red cells: a slender body with a central nucleus and a posterior kinetoplast, its flagellum running along an undulating membrane and free beyond the anterior tip.",
       "tags": ["Trypanosoma", "trypanosome", "trypomastigote", "T. brucei", "sleeping sickness", "African trypanosomiasis", "T. cruzi", "Chagas disease", "kinetoplast", "undulating membrane", "protozoan", "blood film", "parasite"]
+    },
+    {
+      "id": "leishmania",
+      "name": "Leishmania",
+      "category": "parasites",
+      "file": "icons/parasites/leishmania.svg",
+      "monoFile": "icons/parasites/leishmania-mono.svg",
+      "description": "Leishmania amastigotes, each with a nucleus and rod-shaped kinetoplast, inside a macrophage, beside the sandfly that transmits them.",
+      "tags": ["Leishmania", "leishmaniasis", "visceral leishmaniasis", "kala-azar", "cutaneous leishmaniasis", "amastigote", "Leishman–Donovan body", "LD body", "sandfly", "sand fly", "Phlebotomus", "macrophage", "protozoan", "parasite"]
     },
     {
       "id": "neutrophil",
@@ -639,6 +694,24 @@
       "tags": ["extravasation", "diapedesis", "transendothelial migration", "leukocyte adhesion cascade", "rolling", "selectin", "integrin", "chemotaxis", "neutrophil", "endothelium", "blood vessel", "inflammation", "LAD"]
     },
     {
+      "id": "germinal-centre",
+      "name": "Germinal centre",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/germinal-centre.svg",
+      "monoFile": "icons/immune-cells/germinal-centre-mono.svg",
+      "description": "Lymphoid follicle with a mantle of naive B cells round a germinal centre: the dark zone of dividing centroblasts and the light zone of centrocytes among follicular dendritic cells and Tfh cells.",
+      "tags": ["germinal centre", "germinal center", "GC", "lymphoid follicle", "B-cell follicle", "dark zone", "light zone", "centroblast", "centrocyte", "follicular dendritic cell", "FDC", "Tfh", "affinity maturation", "somatic hypermutation", "class switching"]
+    },
+    {
+      "id": "t-helper-subsets",
+      "name": "T helper cell subsets",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/t-helper-subsets.svg",
+      "monoFile": "icons/immune-cells/t-helper-subsets-mono.svg",
+      "description": "A naive CD4 T cell differentiating into four helper subsets (Th1, Th2, Th17, Tfh), each releasing its own cytokines, shown with a different shape for each subset.",
+      "tags": ["T helper", "Th1", "Th2", "Th17", "Tfh", "CD4", "helper T cell", "T-cell differentiation", "polarisation", "naive T cell", "cytokines", "interferon gamma", "IL-4", "IL-17", "IL-21"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -745,6 +818,33 @@
       "monoFile": "icons/molecules/inflammasome-mono.svg",
       "description": "NLRP3 inflammasome seen from above: a wheel of NLRP3 subunits (NACHT domains inside, LRR domains outside) from which an ASC filament recruits caspase-1, releasing IL-1β.",
       "tags": ["inflammasome", "NLRP3", "NLR", "ASC", "caspase-1", "IL-1β", "IL-1 beta", "interleukin-1", "pyroptosis", "innate immunity", "autoinflammatory", "periodic fever", "CAPS"]
+    },
+    {
+      "id": "interferon-signalling",
+      "name": "Interferon signalling",
+      "category": "molecules",
+      "file": "icons/molecules/interferon-signalling.svg",
+      "monoFile": "icons/molecules/interferon-signalling-mono.svg",
+      "description": "Type I interferon binding its receptor (IFNAR1 and IFNAR2); the receptor-bound kinases (JAK1, TYK2) phosphorylate STAT1 and STAT2, which with IRF9 (ISGF3) move into the nucleus and bind DNA.",
+      "tags": ["interferon", "IFN", "type I interferon", "IFNAR", "JAK-STAT", "JAK", "STAT1", "STAT2", "IRF9", "ISGF3", "ISRE", "interferon-stimulated genes", "ISG", "interferonopathy", "antiviral", "signalling", "signaling"]
+    },
+    {
+      "id": "complement-cascade",
+      "name": "Complement pathways",
+      "category": "molecules",
+      "file": "icons/molecules/complement-cascade.svg",
+      "monoFile": "icons/molecules/complement-cascade-mono.svg",
+      "description": "Complement activation on a bacterial surface by the classical (C1q on antibody), lectin (mannose-binding lectin on mannose) and alternative (C3bBb) pathways, all leading to C3 being split into C3b and C3a.",
+      "tags": ["complement", "complement cascade", "classical pathway", "lectin pathway", "alternative pathway", "C1q", "MBL", "mannose-binding lectin", "C3", "C3b", "C3a", "factor B", "C3 convertase", "complement deficiency"]
+    },
+    {
+      "id": "fc-receptor",
+      "name": "Fc receptor binding",
+      "category": "molecules",
+      "file": "icons/molecules/fc-receptor.svg",
+      "monoFile": "icons/molecules/fc-receptor-mono.svg",
+      "description": "A phagocyte engulfing a bacterium coated with IgG: Fcγ receptors on the phagocyte bind the antibodies' Fc regions.",
+      "tags": ["Fc receptor", "FcγR", "Fc gamma receptor", "opsonisation", "opsonization", "opsonophagocytosis", "IgG", "antibody", "phagocytosis", "phagocyte", "macrophage", "neutrophil"]
     },
     {
       "id": "lungs",
@@ -882,6 +982,24 @@
       "tags": ["placenta", "umbilical cord", "chorion", "chorioamnionitis", "congenital infection", "vertical transmission", "TORCH", "congenital CMV", "pregnancy", "fetus", "maternal", "neonatal"]
     },
     {
+      "id": "heart-valve",
+      "name": "Heart valve with vegetations",
+      "category": "organs",
+      "file": "icons/organs/heart-valve.svg",
+      "monoFile": "icons/organs/heart-valve-mono.svg",
+      "description": "Aortic valve seen from above, its three cusps meeting along their closure lines, with bacterial vegetations on the cusps (infective endocarditis).",
+      "tags": ["infective endocarditis", "endocarditis", "vegetation", "heart valve", "aortic valve", "cusp", "Staphylococcus aureus", "viridans streptococci", "Duke criteria", "congenital heart disease", "heart"]
+    },
+    {
+      "id": "meninges",
+      "name": "Meninges",
+      "category": "organs",
+      "file": "icons/organs/meninges.svg",
+      "monoFile": "icons/organs/meninges-mono.svg",
+      "description": "Section through the scalp, skull, dura, arachnoid with trabeculae across the CSF-filled subarachnoid space, and the pia on the cortex, dipping into a sulcus.",
+      "tags": ["meninges", "meningitis", "dura mater", "arachnoid", "pia mater", "subarachnoid space", "CSF", "cerebrospinal fluid", "skull", "cortex", "brain", "subdural", "empyema", "CNS infection"]
+    },
+    {
       "id": "antibiotic-capsule",
       "name": "Antibiotic capsule",
       "category": "treatment",
@@ -981,6 +1099,15 @@
       "tags": ["CAR T", "CAR-T", "chimeric antigen receptor", "CD19", "tisagenlecleucel", "Kymriah", "ALL", "acute lymphoblastic leukaemia", "cytokine release syndrome", "CRS", "cell therapy", "immunotherapy", "T cell"]
     },
     {
+      "id": "oral-rehydration",
+      "name": "Oral rehydration solution",
+      "category": "treatment",
+      "file": "icons/treatment/oral-rehydration.svg",
+      "monoFile": "icons/treatment/oral-rehydration-mono.svg",
+      "description": "A sachet of oral rehydration salts beside a mug of made-up solution.",
+      "tags": ["oral rehydration solution", "ORS", "oral rehydration salts", "Dioralyte", "rehydration", "dehydration", "gastroenteritis", "diarrhoea", "diarrhea", "fluids", "sachet"]
+    },
+    {
       "id": "beta-lactamase",
       "name": "β-lactamase",
       "category": "resistance",
@@ -1015,6 +1142,33 @@
       "monoFile": "icons/resistance/plasmid-transfer-mono.svg",
       "description": "Bacterial conjugation: a donor bacterium passes a copy of a plasmid carrying a resistance gene to a recipient through a mating bridge.",
       "tags": ["plasmid", "conjugation", "horizontal gene transfer", "HGT", "resistance gene", "ESBL", "carbapenemase", "sex pilus", "mobile genetic element", "AMR", "antimicrobial resistance"]
+    },
+    {
+      "id": "mrsa",
+      "name": "MRSA (PBP2a)",
+      "category": "resistance",
+      "file": "icons/resistance/mrsa.svg",
+      "monoFile": "icons/resistance/mrsa-mono.svg",
+      "description": "How MRSA resists β-lactams: a normal penicillin-binding protein is blocked by the drug, so the cell wall goes uncross-linked above it, while PBP2a, which β-lactams barely bind, carries on building it.",
+      "tags": ["MRSA", "meticillin-resistant Staphylococcus aureus", "methicillin-resistant", "PBP2a", "mecA", "penicillin-binding protein", "β-lactam", "beta-lactam", "flucloxacillin", "cell wall", "peptidoglycan", "resistance"]
+    },
+    {
+      "id": "carbapenemase",
+      "name": "Carbapenemase",
+      "category": "resistance",
+      "file": "icons/resistance/carbapenemase.svg",
+      "monoFile": "icons/resistance/carbapenemase-mono.svg",
+      "description": "A Gram-negative cell envelope: carbapenems entering through porins are broken down by carbapenemase enzymes in the periplasm before they reach their target.",
+      "tags": ["carbapenemase", "CPE", "CPO", "carbapenemase-producing Enterobacterales", "KPC", "NDM", "OXA-48", "VIM", "carbapenem", "meropenem", "porin", "periplasm", "gram-negative", "resistance"]
+    },
+    {
+      "id": "antimicrobial-stewardship",
+      "name": "Antimicrobial stewardship",
+      "category": "resistance",
+      "file": "icons/resistance/antimicrobial-stewardship.svg",
+      "monoFile": "icons/resistance/antimicrobial-stewardship-mono.svg",
+      "description": "An antibiotic capsule inside a review cycle, with a tick.",
+      "tags": ["antimicrobial stewardship", "antibiotic stewardship", "AMS", "Start Smart then Focus", "antibiotic review", "prescribing", "IV to oral switch", "duration", "AMR", "antimicrobial resistance", "quality improvement"]
     },
     {
       "id": "blood-culture-bottle",
@@ -1256,6 +1410,87 @@
       "monoFile": "icons/clinical/chest-x-ray-mono.svg",
       "description": "Frontal (PA) chest radiograph: lung fields, ribs, clavicles, the heart shadow and the domes of the diaphragm.",
       "tags": ["chest X-ray", "CXR", "chest radiograph", "X-ray", "radiology", "imaging", "pneumonia", "consolidation", "empyema", "tuberculosis", "lungs", "PA film"]
+    },
+    {
+      "id": "pipette",
+      "name": "Pipette",
+      "category": "clinical",
+      "file": "icons/clinical/pipette.svg",
+      "monoFile": "icons/clinical/pipette-mono.svg",
+      "description": "Single-channel micropipette with a disposable tip, dispensing a drop.",
+      "tags": ["pipette", "micropipette", "Gilson", "pipetting", "laboratory", "lab", "research", "sample", "assay", "tip"]
+    },
+    {
+      "id": "well-plate",
+      "name": "96-well plate",
+      "category": "clinical",
+      "file": "icons/clinical/well-plate.svg",
+      "monoFile": "icons/clinical/well-plate-mono.svg",
+      "description": "A 96-well plate after an ELISA: two columns of standards fading in colour, then samples, yellow where positive.",
+      "tags": ["96-well plate", "microplate", "microtitre plate", "microtiter plate", "ELISA", "immunoassay", "serology", "antibody test", "laboratory", "lab", "research", "assay"]
+    },
+    {
+      "id": "centrifuge",
+      "name": "Centrifuge",
+      "category": "clinical",
+      "file": "icons/clinical/centrifuge.svg",
+      "monoFile": "icons/clinical/centrifuge-mono.svg",
+      "description": "Benchtop microcentrifuge with its lid open, tubes loaded in balanced pairs in the rotor.",
+      "tags": ["centrifuge", "microcentrifuge", "rotor", "spin", "laboratory", "lab", "sample processing", "serum separation", "research", "tubes"]
+    },
+    {
+      "id": "droplet-transmission",
+      "name": "Droplet transmission",
+      "category": "transmission",
+      "file": "icons/transmission/droplet-transmission.svg",
+      "monoFile": "icons/transmission/droplet-transmission-mono.svg",
+      "description": "Large respiratory droplets passing from one person to another close by.",
+      "tags": ["droplet transmission", "droplet spread", "respiratory droplets", "transmission", "spread", "close contact", "droplet precautions", "infection control", "IPC", "respiratory infection"]
+    },
+    {
+      "id": "airborne-transmission",
+      "name": "Airborne transmission",
+      "category": "transmission",
+      "file": "icons/transmission/airborne-transmission.svg",
+      "monoFile": "icons/transmission/airborne-transmission-mono.svg",
+      "description": "Fine aerosol particles carried on air currents from one person to another, and beyond.",
+      "tags": ["airborne transmission", "aerosol", "airborne spread", "aerosol-generating procedure", "AGP", "measles", "tuberculosis", "varicella", "airborne precautions", "FFP3", "ventilation", "transmission"]
+    },
+    {
+      "id": "contact-transmission",
+      "name": "Contact transmission",
+      "category": "transmission",
+      "file": "icons/transmission/contact-transmission.svg",
+      "monoFile": "icons/transmission/contact-transmission-mono.svg",
+      "description": "Bacteria passing from one hand to another by touch.",
+      "tags": ["contact transmission", "direct contact", "indirect contact", "fomite", "hand-to-hand", "touch", "contact precautions", "hand hygiene", "infection control", "IPC", "transmission"]
+    },
+    {
+      "id": "faecal-oral-transmission",
+      "name": "Faecal–oral transmission",
+      "category": "transmission",
+      "file": "icons/transmission/faecal-oral-transmission.svg",
+      "monoFile": "icons/transmission/faecal-oral-transmission-mono.svg",
+      "description": "The faecal–oral route as a cycle: from a nappy, to hands, to food or drink.",
+      "tags": ["faecal-oral", "fecal-oral", "faecal–oral transmission", "enteric", "gastroenteritis", "norovirus", "rotavirus", "hepatitis A", "nappy", "diaper", "hand hygiene", "food", "water", "transmission"]
+    },
+    {
+      "id": "vector-borne-transmission",
+      "name": "Vector-borne transmission",
+      "category": "transmission",
+      "file": "icons/transmission/vector-borne-transmission.svg",
+      "monoFile": "icons/transmission/vector-borne-transmission-mono.svg",
+      "description": "A mosquito carrying infection from one person to another.",
+      "tags": ["vector-borne", "vector", "mosquito", "arthropod-borne", "arbovirus", "malaria", "dengue", "Zika", "tick-borne", "insect", "transmission"]
+    },
+    {
+      "id": "vertical-transmission",
+      "name": "Vertical transmission",
+      "category": "transmission",
+      "file": "icons/transmission/vertical-transmission.svg",
+      "monoFile": "icons/transmission/vertical-transmission-mono.svg",
+      "description": "A pregnant person with pathogens crossing the placenta to the fetus.",
+      "tags": ["vertical transmission", "mother-to-child transmission", "MTCT", "congenital infection", "transplacental", "in utero", "perinatal", "TORCH", "pregnancy", "fetus", "placenta", "transmission"]
     }
   ]
 }

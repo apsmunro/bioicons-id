@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="centrifuge-mono-title">
+<title id="centrifuge-mono-title">Centrifuge (single colour)</title>
+<desc>Benchtop microcentrifuge with its lid open, tubes loaded in balanced pairs in the rotor.</desc>
+<defs></defs>
+<path d="M30 72A98 54 0 0 1 226 72" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 68A72 36 0 0 1 200 68" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30 128L30 198A98 40 0 0 0 226 198L226 128" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="128" cy="128" rx="98" ry="40" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="128" cy="128" rx="76" ry="30" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="176" cy="128" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="152" cy="144.02" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="104" cy="144.02" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="80" cy="128" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="104" cy="111.98" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="152" cy="111.98" rx="7" ry="4.5" fill="#000000"/>
+<ellipse cx="128" cy="130" rx="10" ry="5" fill="#000000"/>
+<rect x="104" y="180" width="48" height="16" rx="3" fill="#000000"/>
+<circle cx="168" cy="188" r="7" fill="#000000"/>
+</svg>
