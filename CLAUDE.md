@@ -60,19 +60,20 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 - Anatomy and science should be accurate; the author reviews closely and will push back on odd shapes.
 - People have no facial features. British spelling throughout.
 
-## Status (26 Oct 2026, batch 6)
+## Status (27 Oct 2026, batch 7)
 
-115 icons in 10 categories: bacteria 17, viruses 12, fungi 4, parasites & vectors 8, immune cells 17,
-molecules 11, organs & body systems 12, treatment 8, antimicrobial resistance 4, clinical & lab 22.
-Six people icons (child, newborn, baby, pregnant person, hand hygiene, parent and baby) come in
-four skin tones. The single-colour brain and heart have their lines thickened (`ART_THICKEN` in
+137 icons in 10 categories: bacteria 20, viruses 16, fungi 5, parasites & vectors 10, immune cells 18,
+molecules 12, organs & body systems 15, treatment 11, antimicrobial resistance 4, clinical & lab 26.
+Seven icons with skin (child, newborn, baby, pregnant person, hand hygiene, parent and baby, glass
+test) come in four skin tones. The single-colour brain and heart have their lines thickened (`ART_THICKEN` in
 the mono script) so they hold up at small sizes.
 
 ## Ideas not yet done
 
 - Transmission routes (droplet, airborne, faecal–oral, vertical): diagrams more than icons, so
   plan them with the author first.
-- Clinical: blood bottles (paediatric and adult sets).
+- Batch 7 icons to watch in review: the single-colour CAR T cell can read as a spiked virus, and
+  the ear and chest X-ray are anatomy the author may want to refine.
 - The globe has lines of latitude and longitude but no continents; drawing coastlines accurately
   would need real map data.
 - Watch for faces: two round features above a horizontal one read as a face (it happened with

@@ -185,6 +185,30 @@ function mycoplasma() {
   ];
 }
 
+function campylobacter() {
+  const P = K.CAMPYLOBACTER, { body, poles } = K.campylobacterCell();
+  const flagella = poles.map((p, i) => K.smoothOpenPath(K.wavePoints(p, 0, { length: 38, amplitude: 4, wavelength: 16, phase: i * 2 }))).join('');
+  return P.cells.map(([x, y, a]) => `<g transform="translate(${x} ${y}) rotate(${a})"><path d="${flagella}" ${line(4)}/><path d="${K.smoothOpenPath(body)}" ${line(18)}/></g>`);
+}
+
+function clostridiumTetani() {
+  const T = K.TETANI, [cx, R] = T.spore, r = T.r, [vx, vy, va] = T.vegetative, vs = 36;
+  const flagella = [0.04, 0.14, 0.26, 0.38, 0.54, 0.64, 0.76, 0.88].map((u, i) =>
+    K.smoothOpenPath(K.wavePoints(K.stadiumPoint(u, vs, r), (i % 2 ? 1 : -1) * 0.3, { length: 28, amplitude: 4, wavelength: 14, phase: i }))).join('');
+  return [
+    `<g transform="translate(${vx} ${vy}) rotate(${va})"><path d="${flagella}" ${line(3.5)}/><rect x="${-(vs + r)}" y="${-r}" width="${2 * (vs + r)}" height="${2 * r}" rx="${r}" ${solid}/></g>`,
+    // Each drumstick: a solid rod ending in a ring round its spore.
+    ...T.cells.map(([x, y, a]) => `<g transform="translate(${x} ${y}) rotate(${a})"><rect x="${-T.s - r}" y="${-r}" width="${T.s + r + cx - R + 4}" height="${2 * r}" rx="${r}" ${solid}/>` +
+      `<circle cx="${cx}" r="${R - 2.5}" ${line(5)}/><circle cx="${cx}" r="8" ${solid}/></g>`),
+  ];
+}
+
+function corynebacteriumDiphtheriae() {
+  const D = K.DIPHTHERIAE;
+  // Solid clubs with their polar granules left clear.
+  return D.cells.map(([x, y, a]) => `<path d="${D.club}${D.granules.map(([gx, r]) => K.circlePath(gx, 0, r)).join('')}" transform="translate(${n(x)} ${n(y)}) rotate(${a})" fill-rule="evenodd" ${solid}/>`);
+}
+
 // ----------------------------------------------------------------- viruses
 
 function rotavirus() {
@@ -380,6 +404,61 @@ function hepatitisB() {
   ];
 }
 
+function mpox() {
+  const X = K.MPOX, [a, b, p] = X.brick, [lx, ly, lrx, lry] = X.lateral;
+  const edge = K.polarPoints(0, 0, t => X.radius(t), 160);
+  const tubules = K.resample([...edge, edge[0]], 14).slice(0, -1).map(([x, y]) => {
+    const [gx, gy] = [Math.sign(x) * Math.abs(x / a) ** (p - 1) / a, Math.sign(y) * Math.abs(y / b) ** (p - 1) / b], l = Math.hypot(gx, gy);
+    return `M${n(x + gx / l * 4)} ${n(y + gy / l * 4)}L${n(x + gx / l * 11)} ${n(y + gy / l * 11)}`;
+  }).join('');
+  return [
+    `<g transform="translate(128 128) rotate(-18) scale(0.92)">`,
+    `<path d="${tubules}" ${line(5)}/>`,
+    `<path d="${K.smoothClosedPath(edge)}" ${line(LINE)}/>`,
+    `<path d="${X.core}" ${solid}/>`,
+    ...[-1, 1].map(s => `<ellipse cx="${lx}" cy="${s * ly}" rx="${lrx}" ry="${lry}" ${solid}/>`),
+    `</g>`,
+  ];
+}
+
+function dengue() {
+  const R = 84, P = v => `${n(128 + R * v[0])} ${n(128 - R * v[1])}`;
+  // Each raft's three dimers as parallel lines, on the side facing the viewer.
+  const lines = K.flavivirusRafts().filter(raft => raft.c[2] > 0.42).flatMap(raft => [-0.19, 0, 0.19].map(v =>
+    'M' + Array.from({ length: 7 }, (_, k) => P(K.onSphere(raft, -0.36 + k * 0.12, v))).join('L')));
+  return [`<circle cx="128" cy="128" r="${R}" ${line(8)}/>`, `<path d="${lines.join('')}" ${line(5)}/>`];
+}
+
+function parvovirus() {
+  const R = 72, { five, three } = K.icosahedralAxes();
+  const feature = (v, size, attrs) => {
+    const [x, y] = [n(128 + R * v[0]), n(128 - R * v[1])], deg = n(Math.atan2(-v[1], v[0]) * 180 / Math.PI + 90);
+    return `<ellipse cx="${x}" cy="${y}" rx="${size}" ry="${n(size * Math.max(0.3, v[2]))}" transform="rotate(${deg} ${x} ${y})" ${attrs}/>`;
+  };
+  return [
+    `<circle cx="128" cy="128" r="${R}" ${line(8)}/>`,
+    // Pores at the 5-fold axes, spikes at the 3-fold axes.
+    ...five.filter(v => v[2] > 0.3).map(v => feature(v, 9, line(3.5))),
+    ...three.filter(({ centre }) => centre[2] > 0.3).map(({ centre }) => feature(centre, 8, solid)),
+  ];
+}
+
+function rabies() {
+  const B = K.RABIES, count = 22;
+  const spikes = Array.from({ length: count }, (_, k) => B.along((k + 0.5) / count * B.perimeter)).filter(([x]) => x > -B.base + 8);
+  const coils = [];
+  for (let x = -B.base + 14; x < B.tip + B.r - 8; x += 10) coils.push(`M${x} ${-B.r}L${x + 4} ${B.r}`);
+  return [
+    `<g transform="translate(128 128) rotate(-30) translate(${(B.base - B.tip - B.r) / 2} 0)">`,
+    `<clipPath id="rabies-mono-inner"><path d="${K.bulletPath(B, 13)}"/></clipPath>`,
+    `<path d="${spikes.map(([x, y, nx, ny]) => `M${n(x + nx * 4)} ${n(y + ny * 4)}L${n(x + nx * 10)} ${n(y + ny * 10)}`).join('')}" ${line(3.5)}/>`,
+    ...spikes.map(([x, y, nx, ny]) => `<circle cx="${n(x + nx * 14)}" cy="${n(y + ny * 14)}" r="3.5" ${solid}/>`),
+    `<path d="${K.bulletPath()}" ${line(LINE)}/>`,
+    `<g clip-path="url(#rabies-mono-inner)"><path d="${coils.join('')}" ${line(4)}/></g>`,
+    `</g>`,
+  ];
+}
+
 // ------------------------------------------------------------------- fungi
 
 function candida() {
@@ -441,6 +520,26 @@ function pneumocystis() {
     `<circle cx="${cx}" cy="${cy}" r="${cr}" ${line(6)}/>`,
     // The fold of the collapsed cyst.
     `<path d="M${cx - 12} ${cy - 14}Q${cx + 14} ${cy - 14} ${cx + 14} ${cy + 10}" ${line(4)}/>`,
+  ];
+}
+
+function rhizopus() {
+  const Z = K.RHIZOPUS, [sx, sy, sr] = Z.sporangium, [cx, cy] = Z.columella, [yx, yy, yr] = Z.young;
+  const spores = [];
+  for (let y = -sr; y <= sr; y += 10) for (let x = -sr; x <= sr; x += 11) {
+    const px = x + (Math.round(y / 10) % 2 ? 5.5 : 0);
+    if (Math.hypot(px, y) < sr - 13) spores.push(`<circle cx="${n(sx + px)}" cy="${n(sy + y)}" r="3" ${solid}/>`);
+  }
+  return [
+    `<path d="${Z.rhizoids.join('')}" ${line(4)}/>`,
+    `<path d="${K.wormOutline(Z.stolon, Z.width)}" ${solid}/>`,
+    `<path d="${Z.stalks.join('')}" ${line(7)}/>`,
+    `<path d="M${cx - 4} ${cy + 16}L${cx - 10} ${cy + 3}L${cx + 10} ${cy + 3}L${cx + 4} ${cy + 16}Z" ${solid}/>`,
+    `<path d="M${cx - 15} ${cy + 4}C${cx - 15} ${cy - 26} ${cx + 15} ${cy - 26} ${cx + 15} ${cy + 4}Z" ${solid}/>`,
+    `<circle cx="${yx}" cy="${yy}" r="${yr}" ${solid}/>`,
+    `<circle cx="${sx}" cy="${sy}" r="${sr - 3}" ${line(6)}/>`,
+    ...spores,
+    ...Z.spores.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" ${solid}/>`),
   ];
 }
 
@@ -550,6 +649,27 @@ function tick() {
     `<rect x="113" y="60" width="30" height="18" rx="5" ${solid}/>`,
     `<ellipse cx="${bx}" cy="${by}" rx="${rx}" ry="${ry}" ${line(8)}/>`,
     `<path d="${T.scutum}" ${solid}/>`,
+  ];
+}
+
+function schistosoma() {
+  const S = K.SCHISTOSOMA, [ex, ey, erx, ery, ea] = S.egg;
+  return [
+    // The male in outline, so the female shows lying in his canal.
+    `<path d="${K.wormOutline(S.male, S.maleWidth)}" ${line(5)}/>`,
+    `<path d="${K.wormOutline(S.female, S.femaleWidth)}" ${solid}/>`,
+    `<g transform="translate(${ex} ${ey}) rotate(${ea})"><ellipse rx="${erx}" ry="${ery}" ${line(5)}/>` +
+      `<path d="M4 ${ery + 1}L16 ${ery + 1}L28 ${ery + 13}Z" ${solid}/><ellipse rx="${erx - 10}" ry="${ery - 8}" ${solid}/></g>`,
+  ];
+}
+
+function trypanosoma() {
+  const T = K.TRYPANOSOMA, { at, N, outline, flagellum } = K.trypanosomeParts(), p = at(Math.round(T.nucleus * (N - 1)));
+  const tilt = Math.atan2(p.ty, p.tx), nucleus = K.smoothClosedPath(K.polarPoints(p.x, p.y, a => K.ellipseRadius(8, 4.5, a - tilt), 24));
+  return [
+    ...T.redCells.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r - 3}" ${line(6)}/>`),
+    `<path d="${outline}${nucleus}" fill-rule="evenodd" ${solid}/>`,
+    `<path d="${K.smoothOpenPath(flagellum)}" ${line(3.5)}/>`,
   ];
 }
 
@@ -804,6 +924,27 @@ function redBloodCells() {
   ];
 }
 
+function neutrophilDiapedesis() {
+  const D = K.DIAPEDESIS, [top, bottom] = D.endothelium, X = D.through.x, [rx, ry, rr] = D.rolling, [cx, cy] = D.crawling;
+  // Lobes joined by a strand, so the nucleus reads as one multilobed shape rather than dots.
+  const lobes = list => `<path d="M${list.map(([x, y]) => `${x} ${y}`).join('L')}" ${line(5)}/>` +
+    list.map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="6.5" ry="5.5" ${solid}/>`).join('');
+  // Endothelial cells, parted widely enough round the migrating cell to leave a clear gap.
+  const cells = D.junctions.slice(0, -1).map((x0, k) => {
+    const x1 = D.junctions[k + 1], a = x0 === 16 ? 16 : x0 + (x0 === X ? 14 : 3), b = x1 === 240 ? 240 : x1 - (x1 === X ? 14 : 3);
+    return `<rect x="${a}" y="${top}" width="${b - a}" height="${bottom - top}" rx="6" ${solid}/>`;
+  });
+  const dir = Math.atan2(D.bacteria[0][1] - cy, D.bacteria[0][0] - cx);
+  return [
+    ...D.redCells.map(([x, y, a, b, r]) => `<ellipse cx="${x}" cy="${y}" rx="${a - 2}" ry="${b - 2}" transform="rotate(${r} ${x} ${y})" ${line(4)}/>`),
+    ...cells,
+    `<circle cx="${rx}" cy="${ry}" r="${rr - 4}" ${line(6)}/>`, lobes([[rx - 9, ry], [rx + 1, ry + 6], [rx + 9, ry - 4]]),
+    `<path d="${K.hourglassPath()}" ${line(6)}/>`, lobes([[X - 7, 92], [X + 6, 100], [X, 168]]),
+    `<path d="${K.crawlingCell(cx, cy, dir)}" ${line(6)}/>`, lobes([[cx - 14, cy - 6], [cx - 4, cy + 4], [cx - 16, cy + 10]]),
+    ...D.bacteria.map(([x, y, a]) => `<rect x="-9" y="-4.5" width="18" height="9" rx="4.5" transform="translate(${x} ${y}) rotate(${a})" ${solid}/>`),
+  ];
+}
+
 // --------------------------------------------------------------- molecules
 
 function iggAntibody() {
@@ -939,6 +1080,28 @@ function c3bOpsonisation() {
   ];
 }
 
+function inflammasome() {
+  const I = K.INFLAMMASOME, [cx, cy] = I.centre;
+  const at = (deg, r) => [n(cx + r * Math.cos(deg * Math.PI / 180)), n(cy + r * Math.sin(deg * Math.PI / 180))];
+  const subunits = Array.from({ length: I.count }, (_, i) => {
+    const a = i * 360 / I.count, [x, y] = at(a, I.nacht), [p, q] = [at(a, I.nacht + 9), at(a, I.lrr - 5)];
+    return `<path d="M${p[0]} ${p[1]}L${q[0]} ${q[1]}" ${line(4)}/><path d="${K.smoothOpenPath(K.arcPoints(cx, cy, I.lrr, a - 11, a + 11, 2))}" ${line(10)}/>` +
+      `<ellipse cx="${x}" cy="${y}" rx="10" ry="9" transform="rotate(${a} ${x} ${y})" ${solid}/>`;
+  });
+  // The ASC filament is shown where it has left the wheel.
+  const beads = [];
+  for (let d = 70; d <= I.filament.to; d += 13) { const [x, y] = at(I.filament.angle, d); beads.push(`<circle cx="${x}" cy="${y}" r="4.5" ${solid}/>`); }
+  const [kx, ky, ka] = I.caspase;
+  return [
+    ...subunits, `<circle cx="${cx}" cy="${cy}" r="11" ${solid}/>`, ...beads,
+    `<g transform="translate(${kx} ${ky}) rotate(${ka})"><ellipse cy="-9" rx="14" ry="6.5" ${solid}/><ellipse cy="9" rx="14" ry="6.5" ${solid}/></g>`,
+    ...I.il1b.map(([x, y, a]) => [0, 120, 240].map(b => {
+      const t = (a + b - 90) * Math.PI / 180;
+      return `<circle cx="${n(x + 6 * Math.cos(t))}" cy="${n(y + 6 * Math.sin(t))}" r="7" ${solid}/>`;
+    }).join('')),
+  ];
+}
+
 // --------------------------------------------------------------- treatment
 
 function antibioticCapsule() {
@@ -1069,6 +1232,69 @@ function viralVectorVaccine() {
     ...rim.map(k => edgeLine(k, 8)),
     `<path d="${K.smoothOpenPath(genome)}" ${line(4)}/>`,
     `<path d="${K.smoothOpenPath(genome.slice(70, 104))}" ${line(10)}/>`,
+  ];
+}
+
+function monoclonalAntibody() {
+  const S = K.MAB_SYRINGE, [x, y, a] = S.at, [b0, b1, h] = S.barrel;
+  return [
+    // A bold antibody: the full domain drawing breaks up at this size.
+    `<path d="M0 44L0 4M0 4L-30 -32M0 4L30 -32" transform="translate(76 98) rotate(-16)" ${line(16)}/>`,
+    `<path d="M-14 -4L-38 -32M14 -4L38 -32" transform="translate(76 98) rotate(-16)" ${line(9)}/>`,
+    `<g transform="translate(${x} ${y}) rotate(${a})">`,
+    `<line x1="${S.plunger + 6}" y1="0" x2="${b0 - 2}" y2="0" ${line(THIN)}/>`,
+    `<rect x="${S.plunger}" y="-16" width="8" height="32" rx="3" ${solid}/>`,
+    `<rect x="${b0 - 9}" y="-26" width="7" height="52" rx="3" ${solid}/>`,
+    `<rect x="${b0}" y="${-h}" width="${b1 - b0}" height="${2 * h}" rx="4" ${line(5)}/>`,
+    `<rect x="${b0 + 4}" y="${-h + 4}" width="7" height="${2 * h - 8}" rx="2" ${solid}/>`,
+    `<rect x="${b0 + 16}" y="${-h + 7.5}" width="${b1 - b0 - 24}" height="${2 * h - 15}" rx="2" ${solid}/>`,
+    `<path d="M${b1 + 2} -7L${b1 + 14} -5L${b1 + 14} 5L${b1 + 2} 7Z" ${solid}/>`,
+    `<line x1="${b1 + 14}" y1="0" x2="${S.needle}" y2="0" ${line(4)}/>`,
+    `</g>`,
+  ];
+}
+
+function nasalSprayVaccine() {
+  const N = K.NASAL_SPRAY, [x, y, a, s] = N.at, { spread, reach } = N.plume;
+  const rand = K.rng(71), mist = [];
+  for (let tries = 0; mist.length < 22 && tries < 2000; tries++) {
+    const d = 10 + Math.sqrt(rand()) * (reach - 14), p = N.from(d, (rand() * 2 - 1) * spread * 0.9);
+    const clear = N.virions.every(([vd, deg, r]) => { const v = N.from(vd, deg); return Math.hypot(p[0] - v[0], p[1] - v[1]) > r + 12; });
+    if (clear && mist.every(q => Math.hypot(p[0] - q[0], p[1] - q[1]) > 10)) mist.push(p);
+  }
+  const [bx, by, bw, bh] = N.barrel, [cx, cy, cw, ch] = N.clip, [px, py, pw, ph] = N.plunger, [hx, hy, hw, hh] = N.thumb;
+  return [
+    ...mist.map(([mx, my]) => `<circle cx="${n(mx)}" cy="${n(my)}" r="2.6" ${solid}/>`),
+    ...N.virions.map(([d, deg, r]) => {
+      const [vx, vy] = N.from(d, deg);
+      const spikes = Array.from({ length: 10 }, (_, k) => { const b = k / 10 * 2 * Math.PI; return `M${n(vx + (r + 1) * Math.cos(b))} ${n(vy + (r + 1) * Math.sin(b))}L${n(vx + (r + 5) * Math.cos(b))} ${n(vy + (r + 5) * Math.sin(b))}`; }).join('');
+      return `<path d="${spikes}" ${line(2.5)}/><circle cx="${n(vx)}" cy="${n(vy)}" r="${r}" ${solid}/>`;
+    }),
+    `<g transform="translate(${x} ${y}) rotate(${a}) scale(${s})">`,
+    `<line x1="0" y1="${by + bh + 2}" x2="0" y2="${py + ph}" ${line(THIN)}/>`,
+    `<rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" rx="4" ${solid}/>`,
+    `<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="3" ${solid}/>`,
+    `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="4" ${line(5)}/>`,
+    `<rect x="${bx + 8}" y="${by + 34}" width="${bw - 16}" height="${bh - 42}" rx="2" ${solid}/>`,
+    `<path d="${N.nozzle}" ${solid}/>`,
+    `</g>`,
+  ];
+}
+
+function carTCell() {
+  const T = K.CAR_T, [tx, ty, R] = T.cell, [gx, gy, gr] = T.target;
+  const blob = (x, y, r, k) => K.smoothClosedPath(K.polarPoints(x, y, a => r + 1.5 * Math.sin(k * a)));
+  const toT = Math.atan2(ty - gy, tx - gx) * 180 / Math.PI;
+  return [
+    ...[toT - 70, toT - 35, toT, toT + 35, toT + 70, toT + 120, toT - 120, toT + 180].map(deg => `<g transform="rotate(${n(deg)} ${gx} ${gy})">` +
+      `<line x1="${gx + gr + 1}" y1="${gy}" x2="${gx + gr + 5}" y2="${gy}" ${line(3)}/><circle cx="${gx + gr + 8}" cy="${gy}" r="4" ${solid}/></g>`),
+    `<path d="${blob(gx, gy, gr - 3, 5)}" ${line(6)}/>`,
+    `<circle cx="${gx + 2}" cy="${gy + 2}" r="${gr - 14}" ${solid}/>`,
+    // Each CAR: hinge, scFv outside, and its signalling domain inside the membrane.
+    ...T.cars.map(deg => `<g transform="rotate(${deg} ${tx} ${ty})"><line x1="${tx + R + 4}" y1="${ty}" x2="${tx + R + 14}" y2="${ty}" ${line(4)}/>` +
+      `<circle cx="${tx + R + 21}" cy="${ty - 7.5}" r="5.5" ${solid}/><circle cx="${tx + R + 21}" cy="${ty + 7.5}" r="5.5" ${solid}/><circle cx="${tx + R - 13}" cy="${ty}" r="4.5" ${solid}/></g>`),
+    `<path d="${blob(tx, ty, R, 6)}" ${line(8)}/>`,
+    `<path d="${blob(tx - 6, ty - 6, 24, 4)}" ${solid}/>`,
   ];
 }
 
@@ -1548,6 +1774,96 @@ function pregnantPerson() {
   ];
 }
 
+function ear() {
+  const E = K.EAR, [vx, vy, vrx, vry] = E.vestibule, [dx, dy, drx, dry, da] = E.eardrum;
+  return [
+    `<path d="${E.nerve}" ${line(6)}/>`,
+    ...E.canals.map(([x, y, rx, ry, a]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${a} ${x} ${y})" ${line(5)}/>`),
+    `<path d="${K.smoothOpenPath(K.cochleaPoints())}" ${line(6)}/>`,
+    `<ellipse cx="${vx}" cy="${vy}" rx="${vrx}" ry="${vry}" ${solid}/>`,
+    `<path d="${E.tube}" ${line(8)}/>`,
+    `<path d="${E.malleus}${E.incus}" ${solid}/>`, `<path d="${E.stapes}" ${line(3)}/>`,
+    `<path d="${E.outer}" ${line(6)}/>`, `<path d="${E.canal}" ${solid}/>`, `<path d="${E.helix}${E.antihelix}" ${line(4)}/>`,
+    `<ellipse cx="${dx}" cy="${dy}" rx="${drx}" ry="${dry}" transform="rotate(${da} ${dx} ${dy})" ${line(3)}/>`,
+  ];
+}
+
+function eye() {
+  const E = K.EYE, [cx, cy] = E.centre, R = E.R, [, ly, lrx, lry] = E.lens, [n0, ny, n1, nh] = E.nerve;
+  const at = (deg, r) => [n(cx + r * Math.cos(deg * Math.PI / 180)), n(cy + r * Math.sin(deg * Math.PI / 180))];
+  const [a, b] = [at(-138, R - 13), at(138, R - 13)];
+  return [
+    `<path d="M${n0 - 4} ${ny - nh}L${n1} ${ny - nh - 2}L${n1} ${ny + nh + 2}L${n0 - 4} ${ny + nh}Z" ${solid}/>`,
+    `<path d="${K.eyeGlobePath()}" ${line(8)}/>`,
+    // The retina lining the back of the globe, the lens, and the iris in front of it.
+    `<path d="M${a[0]} ${a[1]}A${R - 13} ${R - 13} 0 1 1 ${b[0]} ${b[1]}" ${line(4)}/>`,
+    `<ellipse cx="92" cy="${ly}" rx="${lrx - 1}" ry="${lry}" ${solid}/>`,
+    ...E.iris.map(([, y0, , y1]) => `<rect x="73" y="${y0}" width="6" height="${y1 - y0}" rx="3" ${solid}/>`),
+  ];
+}
+
+function placenta() {
+  const P = K.PLACENTA, [cx, cy, rx, ry] = P.disc, d = P.depth;
+  return [
+    `<path d="M${cx - rx} ${cy}A${rx} ${ry + d} 0 0 0 ${cx + rx} ${cy}" ${line(6)}/>`,
+    `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" ${line(8)}/>`,
+    `<path d="${P.vessels.map(([a, r]) => K.placentaVessel(a, r, 0)).join('')}" ${line(4)}/>`,
+    `<path d="${K.wormOutline(P.cord, () => P.cordWidth)}" ${solid}/>`,
+  ];
+}
+
+function bloodBottles() {
+  const B = K.BLOOD_BOTTLES;
+  const adult = ([x]) => `<path d="M${x - 12} 58L${x - 12} 204Q${x - 12} 218 ${x} 218Q${x + 12} 218 ${x + 12} 204L${x + 12} 58Z" ${line(5)}/>` +
+    `<path d="M${x - 4.5} 112L${x + 4.5} 112L${x + 4.5} 204Q${x + 4.5} 210 ${x} 210Q${x - 4.5} 210 ${x - 4.5} 204Z" ${solid}/>` +
+    `<rect x="${x - 15}" y="30" width="30" height="24" rx="5" ${solid}/>`;
+  const paediatric = ([x]) => `<path d="M${x - 9} 162L${x - 9} 206Q${x - 9} 218 ${x} 218Q${x + 9} 218 ${x + 9} 206L${x + 9} 162Z" ${line(4)}/>` +
+    `<path d="M${x - 3} 186L${x + 3} 186L${x + 3} 207Q${x} 211 ${x - 3} 207Z" ${solid}/>` +
+    `<rect x="${x - 11}" y="150" width="22" height="9" rx="2" ${solid}/><rect x="${x - 10}" y="130" width="20" height="13" rx="4" ${solid}/>` +
+    `<path d="M${x + 11} 155C${x + 18} 153 ${x + 18} 145 ${x + 11} 142" ${line(3)}/>`;
+  return [...B.adult.map(adult), ...B.paediatric.map(paediatric)];
+}
+
+function microscope() {
+  const M = K.MICROSCOPE, [sx, sy, sw, sh] = M.stage, [lx, ly, lr] = M.lamp, [kx, ky, kr] = M.knob, [cx, cy, cw, ch] = M.condenser;
+  return [
+    `<path d="${M.base}" ${solid}/>`,
+    `<path d="M${lx - lr} ${ly - 5}A${lr} ${lr} 0 0 1 ${lx + lr} ${ly - 5}Z" ${solid}/>`,
+    // The arm, with the focus knob left as a ring round its hub.
+    `<path d="${M.arm}${K.circlePath(kx, ky, kr - 2)}${K.circlePath(kx, ky, kr - 8)}" fill-rule="evenodd" ${solid}/>`,
+    `<path d="${M.eyepiece}" ${line(16)}/>`,
+    `<path d="${M.head}" ${solid}/>`,
+    `<path d="${M.nosepiece}" ${solid}/>`,
+    `<path d="${M.objectives.map(d => d.replace(/L(\S+) (\S+)$/, (m, x, y) => `L${x} ${Math.min(Number(y), 126)}`)).join('')}" ${line(9)}/>`,
+    `<rect x="${sx}" y="${sy}" width="${sw}" height="${sh}" rx="3" ${solid}/>`,
+    `<rect x="${cx}" y="${cy + 5}" width="${cw}" height="${ch}" rx="2" ${solid}/>`,
+  ];
+}
+
+function glassTest() {
+  const G = K.GLASS_TEST, [bx, by, brx, bry] = G.base, [rx, ry, rrx, rry] = G.rim;
+  return [
+    `<path d="${G.skinEdge}" ${line(6)}/>`,
+    ...G.spots.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r + 0.5}" ${solid}/>`),
+    `<ellipse cx="${rx}" cy="${ry}" rx="${rrx}" ry="${rry}" ${line(6)}/>`,
+    `<path d="M${bx - brx} ${by}L${rx - rrx} ${ry}M${bx + brx} ${by}L${rx + rrx} ${ry}M${bx - brx} ${by}A${brx} ${bry} 0 0 0 ${bx + brx} ${by}" ${line(6)}/>`,
+    `<path d="M${bx - brx} ${by}A${brx} ${bry} 0 0 1 ${bx + brx} ${by}" ${line(3)}/>`,
+  ];
+}
+
+function chestXray() {
+  const X = K.CHEST_XRAY, [fx, fy, fw, fh, fr] = X.film;
+  const ribs = X.ribs.map(([y, drop]) => `M122 ${y}C104 ${y - 12} 66 ${y - 10} 52 ${y + drop}`).join('');
+  return [
+    `<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="${fr}" ${line(6)}/>`,
+    `<clipPath id="chest-x-ray-mono-lungs"><path d="${X.rightLung}${X.leftLung}"/></clipPath>`,
+    `<path d="${X.rightLung}${X.leftLung}" ${line(5)}/>`,
+    `<g clip-path="url(#chest-x-ray-mono-lungs)"><path d="${ribs}${K.mirrorX(ribs)}" ${line(4)}/></g>`,
+    `<path d="${X.clavicle}${K.mirrorX(X.clavicle)}" ${line(6)}/>`,
+    ...Array.from({ length: 6 }, (_, i) => `<rect x="121" y="${40 + i * 17}" width="14" height="11" rx="3" ${solid}/>`),
+  ];
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -1666,6 +1982,28 @@ const DRAWINGS = {
   'face-mask': faceMask,
   'parent-and-baby': parentAndBaby,
   'globe': globe,
+  'campylobacter': campylobacter,
+  'clostridium-tetani': clostridiumTetani,
+  'corynebacterium-diphtheriae': corynebacteriumDiphtheriae,
+  'mpox': mpox,
+  'dengue': dengue,
+  'parvovirus-b19': parvovirus,
+  'rabies': rabies,
+  'rhizopus': rhizopus,
+  'schistosoma': schistosoma,
+  'trypanosoma': trypanosoma,
+  'neutrophil-diapedesis': neutrophilDiapedesis,
+  'inflammasome': inflammasome,
+  'ear': ear,
+  'eye': eye,
+  'placenta': placenta,
+  'monoclonal-antibody': monoclonalAntibody,
+  'nasal-spray-vaccine': nasalSprayVaccine,
+  'car-t-cell': carTCell,
+  'blood-bottles': bloodBottles,
+  'microscope': microscope,
+  'glass-test': glassTest,
+  'chest-x-ray': chestXray,
 };
 
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));

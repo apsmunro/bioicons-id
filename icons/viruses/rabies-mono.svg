@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="rabies-mono-title">
+<title id="rabies-mono-title">Rabies virus (single colour)</title>
+<desc>Bullet-shaped lyssavirus: glycoprotein spikes over its envelope, except at the flat base, around the coiled helical nucleocapsid.</desc>
+<defs></defs>
+<g transform="translate(128 128) rotate(-30) translate(9 0)">
+<clipPath id="rabies-mono-inner"><path d="M-67 -19L30 -19A19 19 0 0 1 30 19L-67 19Z"/></clipPath>
+<path d="M-58.15 -36L-58.15 -42M-43.58 -36L-43.58 -42M-29.01 -36L-29.01 -42M-14.44 -36L-14.44 -42M0.13 -36L0.13 -42M14.7 -36L14.7 -42M29.27 -36L29.27 -42M45.09 -32.68L47.61 -38.13M57.93 -22.72L62.58 -26.51M65.07 -8.12L70.92 -9.48M65.07 8.12L70.92 9.48M57.93 22.72L62.58 26.51M45.09 32.68L47.61 38.13M29.27 36L29.27 42M14.7 36L14.7 42M0.13 36L0.13 42M-14.44 36L-14.44 42M-29.01 36L-29.01 42M-43.58 36L-43.58 42M-58.15 36L-58.15 42" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="-58.15" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="-43.58" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="-29.01" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="-14.44" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="0.13" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="14.7" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="29.27" cy="-46" r="3.5" fill="#000000"/>
+<circle cx="49.28" cy="-41.76" r="3.5" fill="#000000"/>
+<circle cx="65.68" cy="-29.03" r="3.5" fill="#000000"/>
+<circle cx="74.81" cy="-10.38" r="3.5" fill="#000000"/>
+<circle cx="74.81" cy="10.38" r="3.5" fill="#000000"/>
+<circle cx="65.68" cy="29.03" r="3.5" fill="#000000"/>
+<circle cx="49.28" cy="41.76" r="3.5" fill="#000000"/>
+<circle cx="29.27" cy="46" r="3.5" fill="#000000"/>
+<circle cx="14.7" cy="46" r="3.5" fill="#000000"/>
+<circle cx="0.13" cy="46" r="3.5" fill="#000000"/>
+<circle cx="-14.44" cy="46" r="3.5" fill="#000000"/>
+<circle cx="-29.01" cy="46" r="3.5" fill="#000000"/>
+<circle cx="-43.58" cy="46" r="3.5" fill="#000000"/>
+<circle cx="-58.15" cy="46" r="3.5" fill="#000000"/>
+<path d="M-80 -32L30 -32A32 32 0 0 1 30 32L-80 32Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<g clip-path="url(#rabies-mono-inner)"><path d="M-66 -32L-62 32M-56 -32L-52 32M-46 -32L-42 32M-36 -32L-32 32M-26 -32L-22 32M-16 -32L-12 32M-6 -32L-2 32M4 -32L8 32M14 -32L18 32M24 -32L28 32M34 -32L38 32M44 -32L48 32" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g>
+</svg>

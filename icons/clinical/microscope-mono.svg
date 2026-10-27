@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="microscope-mono-title">
+<title id="microscope-mono-title">Microscope (single colour)</title>
+<desc>Compound light microscope with a slide on the stage.</desc>
+<defs></defs>
+<path d="M48 224Q48 208 64 208L200 208Q216 208 216 224L216 226Q216 234 208 234L56 234Q48 234 48 226Z" fill="#000000"/>
+<path d="M147 203A13 13 0 0 1 173 203Z" fill="#000000"/>
+<path d="M80 208C66 178 64 136 78 108C86 92 98 80 112 72L132 94C120 102 110 114 106 130C100 154 104 182 114 208ZM79 172a13 13 0 1 0 26 0a13 13 0 1 0 -26 0ZM85 172a7 7 0 1 0 14 0a7 7 0 1 0 -14 0Z" fill-rule="evenodd" fill="#000000"/>
+<path d="M120 60L92 24" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M106 56L172 52Q182 52 182 62L182 84Q182 94 172 94L118 96Q108 96 106 86Z" fill="#000000"/>
+<path d="M134 96L182 96L176 108L140 108Z" fill="#000000"/>
+<path d="M148 108L144 126M160 108L160 126M172 108L176 126" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="102" y="138" width="116" height="10" rx="3" fill="#000000"/>
+<rect x="146" y="153" width="28" height="10" rx="2" fill="#000000"/>
+</svg>

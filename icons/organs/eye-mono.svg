@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="eye-mono-title">
+<title id="eye-mono-title">Eye (single colour)</title>
+<desc>Eye in section, front to the left: cornea, iris, lens and ciliary body, the retina and choroid lining the globe, and the optic nerve and rectus muscles running back to the orbit.</desc>
+<defs></defs>
+<path d="M196 116L240 114L240 142L196 140Z" fill="#000000"/>
+<path d="M70.01 87.59A74 74 0 1 1 70.01 168.41A50.8 50.8 0 0 1 70.01 87.59Z" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86.67 87.18A61 61 0 1 1 86.67 168.82" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="92" cy="128" rx="10" ry="26" fill="#000000"/>
+<rect x="73" y="88" width="6" height="28" rx="3" fill="#000000"/>
+<rect x="73" y="140" width="6" height="28" rx="3" fill="#000000"/>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="microscope-title">
+<title id="microscope-title">Microscope</title>
+<desc>Compound light microscope with a slide on the stage.</desc>
+<defs><radialGradient id="microscope-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f5f7f9"/><stop offset="0.55" stop-color="#E6ECF1"/><stop offset="1" stop-color="#cad0d4"/></radialGradient><linearGradient id="microscope-dark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a4654"/><stop offset="0.25" stop-color="#9fa5ac"/><stop offset="0.6" stop-color="#3E4A59"/><stop offset="1" stop-color="#303a45"/></linearGradient><radialGradient id="microscope-lamp" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fdf3d5"/><stop offset="0.55" stop-color="#F7D774"/><stop offset="1" stop-color="#cfb561"/></radialGradient><radialGradient id="microscope-knob" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#828993"/><stop offset="0.55" stop-color="#3E4A59"/><stop offset="1" stop-color="#343e4b"/></radialGradient></defs>
+<path d="M48 224Q48 208 64 208L200 208Q216 208 216 224L216 226Q216 234 208 234L56 234Q48 234 48 226Z" fill="url(#microscope-body)" stroke="#8f9295" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M147 208A13 13 0 0 1 173 208Z" fill="url(#microscope-lamp)" stroke="#948146" stroke-width="2"/>
+<path d="M80 208C66 178 64 136 78 108C86 92 98 80 112 72L132 94C120 102 110 114 106 130C100 154 104 182 114 208Z" fill="url(#microscope-body)" stroke="#8f9295" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M120 60L92 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#262e37" stroke-width="21"/><path d="M120 60L92 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#3E4A59" stroke-width="16"/><path d="M120 60L92 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="3.52" opacity="0.4" transform="translate(-2.88 -2.88)"/>
+<rect x="80" y="14" width="22" height="12" rx="3" transform="rotate(-52 91 20)" fill="#323b47" stroke="#262e37" stroke-width="2"/>
+<path d="M106 56L172 52Q182 52 182 62L182 84Q182 94 172 94L118 96Q108 96 106 86Z" fill="url(#microscope-body)" stroke="#8f9295" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M134 96L182 96L176 108L140 108Z" fill="url(#microscope-dark)" stroke="#262e37" stroke-width="2" stroke-linejoin="round"/>
+<path d="M148 108L144 128" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#656b70" stroke-width="14"/><path d="M148 108L144 128" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#a3acb4" stroke-width="9"/><path d="M148 108L144 128" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.98" opacity="0.4" transform="translate(-1.62 -1.62)"/>
+<path d="M160 108L160 134" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#73797e" stroke-width="14"/><path d="M160 108L160 134" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#B9C3CC" stroke-width="9"/><path d="M160 108L160 134" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.98" opacity="0.4" transform="translate(-1.62 -1.62)"/>
+<path d="M172 108L176 126" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#656b70" stroke-width="14"/><path d="M172 108L176 126" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#a3acb4" stroke-width="9"/><path d="M172 108L176 126" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="1.98" opacity="0.4" transform="translate(-1.62 -1.62)"/>
+<circle cx="144" cy="128" r="3.5" fill="#3E4A59"/>
+<circle cx="160" cy="134" r="3.5" fill="#3E4A59"/>
+<circle cx="176" cy="126" r="3.5" fill="#3E4A59"/>
+<rect x="146" y="148" width="28" height="10" rx="2" fill="url(#microscope-dark)" stroke="#262e37" stroke-width="2"/>
+<rect x="102" y="138" width="116" height="10" rx="3" fill="url(#microscope-dark)" stroke="#262e37" stroke-width="2"/>
+<rect x="130" y="133" width="64" height="5" rx="1" fill="#E3EEF5" stroke="#8DA6B8" stroke-width="1.5"/>
+<ellipse cx="162" cy="135.5" rx="8" ry="1.8" fill="#C99BD6"/>
+<circle cx="92" cy="172" r="15" fill="url(#microscope-knob)" stroke="#262e37" stroke-width="2"/>
+<circle cx="92" cy="172" r="7.5" fill="#353f4c" stroke="#78808b" stroke-width="2"/>
+</svg>

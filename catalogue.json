@@ -171,6 +171,33 @@
       "tags": ["Mycoplasma pneumoniae", "M. pneumoniae", "Mycoplasma", "atypical pneumonia", "walking pneumonia", "no cell wall", "macrolide", "cilia", "respiratory epithelium", "Stevens-Johnson", "MIRM", "bacterium"]
     },
     {
+      "id": "campylobacter",
+      "name": "Campylobacter",
+      "category": "bacteria",
+      "file": "icons/bacteria/campylobacter.svg",
+      "monoFile": "icons/bacteria/campylobacter-mono.svg",
+      "description": "Curved, S-shaped Gram-negative rods with a single flagellum at each pole.",
+      "tags": ["Campylobacter", "Campylobacter jejuni", "C. jejuni", "gram-negative", "curved rod", "spiral", "gull-wing", "gastroenteritis", "bloody diarrhoea", "food poisoning", "Guillain-Barré", "bacterium"]
+    },
+    {
+      "id": "clostridium-tetani",
+      "name": "Clostridium tetani",
+      "category": "bacteria",
+      "file": "icons/bacteria/clostridium-tetani.svg",
+      "monoFile": "icons/bacteria/clostridium-tetani-mono.svg",
+      "description": "Slender Gram-positive rods with round terminal spores, the \"drumstick\" shape, beside a vegetative rod with peritrichous flagella.",
+      "tags": ["Clostridium tetani", "C. tetani", "tetanus", "lockjaw", "drumstick", "terminal spore", "spore", "anaerobe", "gram-positive", "neonatal tetanus", "tetanospasmin", "bacterium"]
+    },
+    {
+      "id": "corynebacterium-diphtheriae",
+      "name": "Corynebacterium diphtheriae",
+      "category": "bacteria",
+      "file": "icons/bacteria/corynebacterium-diphtheriae.svg",
+      "monoFile": "icons/bacteria/corynebacterium-diphtheriae-mono.svg",
+      "description": "Club-shaped Gram-positive rods in V and L shapes (\"Chinese letters\") after snapping division, with metachromatic granules at their poles.",
+      "tags": ["Corynebacterium diphtheriae", "C. diphtheriae", "diphtheria", "coryneform", "diphtheroid", "club-shaped", "Chinese letters", "metachromatic granules", "volutin", "gram-positive", "diphtheria toxin", "bacterium"]
+    },
+    {
       "id": "sars-cov-2",
       "name": "SARS-CoV-2",
       "category": "viruses",
@@ -279,6 +306,42 @@
       "tags": ["hepatitis B", "HBV", "Dane particle", "HBsAg", "surface antigen", "HBcAg", "core antigen", "hepadnavirus", "vertical transmission", "hepatitis", "liver", "virus"]
     },
     {
+      "id": "mpox",
+      "name": "Mpox virus",
+      "category": "viruses",
+      "file": "icons/viruses/mpox.svg",
+      "monoFile": "icons/viruses/mpox-mono.svg",
+      "description": "Brick-shaped orthopoxvirus in section: surface tubules round the membrane, a dumbbell-shaped core holding the DNA, and two lateral bodies.",
+      "tags": ["mpox", "monkeypox", "MPXV", "orthopoxvirus", "poxvirus", "smallpox", "variola", "vaccinia", "brick-shaped", "DNA virus", "rash", "virus"]
+    },
+    {
+      "id": "dengue",
+      "name": "Dengue virus",
+      "category": "viruses",
+      "file": "icons/viruses/dengue.svg",
+      "monoFile": "icons/viruses/dengue-mono.svg",
+      "description": "Mature flavivirus with its smooth surface of E-protein dimers lying flat in a herringbone of rafts, coloured by domain (I red, II yellow, III blue); also stands for Zika, yellow fever and other flaviviruses.",
+      "tags": ["dengue", "DENV", "flavivirus", "Zika", "ZIKV", "yellow fever", "West Nile", "Japanese encephalitis", "tick-borne encephalitis", "E protein", "arbovirus", "virus"]
+    },
+    {
+      "id": "parvovirus-b19",
+      "name": "Parvovirus B19",
+      "category": "viruses",
+      "file": "icons/viruses/parvovirus-b19.svg",
+      "monoFile": "icons/viruses/parvovirus-b19-mono.svg",
+      "description": "Small non-enveloped icosahedral capsid with spikes at the 3-fold axes and pores ringed by canyons at the 5-fold axes.",
+      "tags": ["parvovirus B19", "parvovirus", "B19V", "erythrovirus", "slapped cheek", "fifth disease", "erythema infectiosum", "aplastic crisis", "hydrops fetalis", "non-enveloped", "DNA virus", "virus"]
+    },
+    {
+      "id": "rabies",
+      "name": "Rabies virus",
+      "category": "viruses",
+      "file": "icons/viruses/rabies.svg",
+      "monoFile": "icons/viruses/rabies-mono.svg",
+      "description": "Bullet-shaped lyssavirus: glycoprotein spikes over its envelope, except at the flat base, around the coiled helical nucleocapsid.",
+      "tags": ["rabies", "RABV", "lyssavirus", "rhabdovirus", "bullet-shaped", "bat lyssavirus", "dog bite", "animal bite", "post-exposure prophylaxis", "PEP", "encephalitis", "virus"]
+    },
+    {
       "id": "candida",
       "name": "Candida (budding yeast)",
       "category": "fungi",
@@ -313,6 +376,15 @@
       "monoFile": "icons/fungi/pneumocystis-mono.svg",
       "description": "Pneumocystis cysts (asci) holding eight intracystic bodies, one collapsed into a cup shape, among small trophic forms.",
       "tags": ["Pneumocystis jirovecii", "Pneumocystis carinii", "PCP", "PJP", "Pneumocystis pneumonia", "cyst", "trophic form", "co-trimoxazole", "HIV", "immunocompromised", "fungus"]
+    },
+    {
+      "id": "rhizopus",
+      "name": "Rhizopus (mucormycosis)",
+      "category": "fungi",
+      "file": "icons/fungi/rhizopus.svg",
+      "monoFile": "icons/fungi/rhizopus-mono.svg",
+      "description": "Broad, ribbon-like hyphae with few septa, rooted by rhizoids, with sporangiophores bearing a sporangium full of spores, a burst one showing its columella, and a young one.",
+      "tags": ["Rhizopus", "Mucor", "Mucorales", "mucormycosis", "zygomycosis", "sporangium", "sporangiospores", "columella", "rhizoids", "pauciseptate", "mould", "mold", "fungus"]
     },
     {
       "id": "malaria",
@@ -385,6 +457,24 @@
       "monoFile": "icons/parasites/tick-mono.svg",
       "description": "Hard (ixodid) tick from above: mouthparts at the front, a dark dorsal shield, and four pairs of legs.",
       "tags": ["tick", "Ixodes", "hard tick", "Lyme disease", "Borrelia", "tick-borne encephalitis", "TBE", "rickettsia", "spotted fever", "vector", "arachnid", "bite"]
+    },
+    {
+      "id": "schistosoma",
+      "name": "Schistosoma",
+      "category": "parasites",
+      "file": "icons/parasites/schistosoma.svg",
+      "monoFile": "icons/parasites/schistosoma-mono.svg",
+      "description": "Adult schistosomes in copula: the female lying in the male's gynaecophoric canal, her ends protruding, beside an egg with a lateral spine (S. mansoni) holding a miracidium.",
+      "tags": ["Schistosoma", "schistosomiasis", "bilharzia", "S. mansoni", "S. haematobium", "blood fluke", "fluke", "trematode", "helminth", "worm", "egg", "praziquantel", "freshwater", "parasite"]
+    },
+    {
+      "id": "trypanosoma",
+      "name": "Trypanosoma",
+      "category": "parasites",
+      "file": "icons/parasites/trypanosoma.svg",
+      "monoFile": "icons/parasites/trypanosoma-mono.svg",
+      "description": "Trypomastigote among red cells: a slender body with a central nucleus and a posterior kinetoplast, its flagellum running along an undulating membrane and free beyond the anterior tip.",
+      "tags": ["Trypanosoma", "trypanosome", "trypomastigote", "T. brucei", "sleeping sickness", "African trypanosomiasis", "T. cruzi", "Chagas disease", "kinetoplast", "undulating membrane", "protozoan", "blood film", "parasite"]
     },
     {
       "id": "neutrophil",
@@ -540,6 +630,15 @@
       "tags": ["immunological synapse", "immune synapse", "T cell", "antigen-presenting cell", "APC", "dendritic cell", "TCR", "MHC", "peptide", "antigen presentation", "T-cell activation"]
     },
     {
+      "id": "neutrophil-diapedesis",
+      "name": "Neutrophil extravasation",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/neutrophil-diapedesis.svg",
+      "monoFile": "icons/immune-cells/neutrophil-diapedesis-mono.svg",
+      "description": "Neutrophils leaving a blood vessel: one rolling along the endothelium on selectins, one squeezing through a junction between endothelial cells (diapedesis), and one crawling through the tissue towards bacteria.",
+      "tags": ["extravasation", "diapedesis", "transendothelial migration", "leukocyte adhesion cascade", "rolling", "selectin", "integrin", "chemotaxis", "neutrophil", "endothelium", "blood vessel", "inflammation", "LAD"]
+    },
+    {
       "id": "igg-antibody",
       "name": "IgG antibody",
       "category": "molecules",
@@ -637,6 +736,15 @@
       "monoFile": "icons/molecules/antibody-epitope-mono.svg",
       "description": "An IgG antibody binding two epitopes on the surface of an antigen with the tips of its Fab arms.",
       "tags": ["epitope", "antigen", "paratope", "antibody", "IgG", "Fab", "antigen binding", "neutralisation", "neutralization", "affinity", "immunoglobulin"]
+    },
+    {
+      "id": "inflammasome",
+      "name": "Inflammasome",
+      "category": "molecules",
+      "file": "icons/molecules/inflammasome.svg",
+      "monoFile": "icons/molecules/inflammasome-mono.svg",
+      "description": "NLRP3 inflammasome seen from above: a wheel of NLRP3 subunits (NACHT domains inside, LRR domains outside) from which an ASC filament recruits caspase-1, releasing IL-1β.",
+      "tags": ["inflammasome", "NLRP3", "NLR", "ASC", "caspase-1", "IL-1β", "IL-1 beta", "interleukin-1", "pyroptosis", "innate immunity", "autoinflammatory", "periodic fever", "CAPS"]
     },
     {
       "id": "lungs",
@@ -747,6 +855,33 @@
       "tags": ["thymus", "thymic", "T-cell development", "primary lymphoid organ", "DiGeorge", "22q11", "SCID", "anatomy"]
     },
     {
+      "id": "ear",
+      "name": "Ear",
+      "category": "organs",
+      "file": "icons/organs/ear.svg",
+      "monoFile": "icons/organs/ear-mono.svg",
+      "description": "Ear in section: pinna and external canal to the eardrum, the middle ear with the malleus, incus and stapes and the Eustachian tube, and the inner ear with the cochlea, vestibule and semicircular canals.",
+      "tags": ["ear", "otitis media", "acute otitis media", "AOM", "glue ear", "otitis externa", "mastoiditis", "eardrum", "tympanic membrane", "middle ear", "Eustachian tube", "cochlea", "hearing loss", "ENT"]
+    },
+    {
+      "id": "eye",
+      "name": "Eye",
+      "category": "organs",
+      "file": "icons/organs/eye.svg",
+      "monoFile": "icons/organs/eye-mono.svg",
+      "description": "Eye in section, front to the left: cornea, iris, lens and ciliary body, the retina and choroid lining the globe, and the optic nerve and rectus muscles running back to the orbit.",
+      "tags": ["eye", "globe", "conjunctivitis", "keratitis", "endophthalmitis", "orbital cellulitis", "periorbital cellulitis", "preseptal cellulitis", "retinitis", "CMV retinitis", "uveitis", "retina", "cornea", "ophthalmology"]
+    },
+    {
+      "id": "placenta",
+      "name": "Placenta",
+      "category": "organs",
+      "file": "icons/organs/placenta.svg",
+      "monoFile": "icons/organs/placenta-mono.svg",
+      "description": "Placenta from the fetal side, with chorionic vessels branching from the umbilical cord, whose two arteries (deoxygenated, blue) coil round its vein.",
+      "tags": ["placenta", "umbilical cord", "chorion", "chorioamnionitis", "congenital infection", "vertical transmission", "TORCH", "congenital CMV", "pregnancy", "fetus", "maternal", "neonatal"]
+    },
+    {
       "id": "antibiotic-capsule",
       "name": "Antibiotic capsule",
       "category": "treatment",
@@ -817,6 +952,33 @@
       "monoFile": "icons/treatment/viral-vector-vaccine-mono.svg",
       "description": "A harmless adenovirus vector, its capsid shown see-through, carrying DNA with an inserted gene for the target antigen.",
       "tags": ["viral vector", "viral-vector vaccine", "adenovirus vector", "ChAdOx1", "Ad26", "transgene", "vaccine", "immunisation", "vaccination", "Ebola vaccine", "COVID-19 vaccine"]
+    },
+    {
+      "id": "monoclonal-antibody",
+      "name": "Monoclonal antibody injection",
+      "category": "treatment",
+      "file": "icons/treatment/monoclonal-antibody.svg",
+      "monoFile": "icons/treatment/monoclonal-antibody-mono.svg",
+      "description": "A pre-filled syringe holding antibody, beside a large antibody, for a monoclonal antibody such as nirsevimab for RSV.",
+      "tags": ["monoclonal antibody", "mAb", "nirsevimab", "Beyfortus", "palivizumab", "Synagis", "RSV prevention", "passive immunisation", "immunoprophylaxis", "biologic", "injection", "syringe"]
+    },
+    {
+      "id": "nasal-spray-vaccine",
+      "name": "Nasal-spray flu vaccine",
+      "category": "treatment",
+      "file": "icons/treatment/nasal-spray-vaccine.svg",
+      "monoFile": "icons/treatment/nasal-spray-vaccine-mono.svg",
+      "description": "Nasal-spray applicator with its dose-divider clip, spraying a fine mist that carries live attenuated influenza virions.",
+      "tags": ["LAIV", "live attenuated influenza vaccine", "nasal spray", "intranasal vaccine", "Fluenz", "FluMist", "flu vaccine", "influenza", "childhood flu programme", "vaccine", "immunisation", "vaccination"]
+    },
+    {
+      "id": "car-t-cell",
+      "name": "CAR T cell",
+      "category": "treatment",
+      "file": "icons/treatment/car-t-cell.svg",
+      "monoFile": "icons/treatment/car-t-cell-mono.svg",
+      "description": "T cell bearing chimeric antigen receptors (scFv, hinge, and co-stimulatory and CD3ζ signalling domains), one of them binding CD19 on a target B cell.",
+      "tags": ["CAR T", "CAR-T", "chimeric antigen receptor", "CD19", "tisagenlecleucel", "Kymriah", "ALL", "acute lymphoblastic leukaemia", "cytokine release syndrome", "CRS", "cell therapy", "immunotherapy", "T cell"]
     },
     {
       "id": "beta-lactamase",
@@ -1057,6 +1219,43 @@
       "monoFile": "icons/clinical/globe-mono.svg",
       "description": "Globe with lines of latitude and longitude, circled by a flight path with an aeroplane.",
       "tags": ["globe", "world", "global health", "travel", "travel medicine", "returning traveller", "imported infection", "international", "migrant health", "tropical medicine", "aeroplane"]
+    },
+    {
+      "id": "blood-bottles",
+      "name": "Blood bottles",
+      "category": "clinical",
+      "file": "icons/clinical/blood-bottles.svg",
+      "monoFile": "icons/clinical/blood-bottles-mono.svg",
+      "description": "Adult blood tubes with coloured caps (EDTA purple, serum gold, citrate light blue, heparin green) and two paediatric microtubes with hinged caps.",
+      "tags": ["blood bottles", "blood tubes", "vacutainer", "microtainer", "paediatric bottles", "phlebotomy", "venepuncture", "blood test", "FBC", "EDTA", "serum", "coagulation", "bloods"]
+    },
+    {
+      "id": "microscope",
+      "name": "Microscope",
+      "category": "clinical",
+      "file": "icons/clinical/microscope.svg",
+      "monoFile": "icons/clinical/microscope-mono.svg",
+      "description": "Compound light microscope with a slide on the stage.",
+      "tags": ["microscope", "microscopy", "light microscope", "laboratory", "lab", "microbiology", "slide", "Gram stain", "blood film", "histology", "diagnostics"]
+    },
+    {
+      "id": "glass-test",
+      "name": "Glass test",
+      "category": "clinical",
+      "file": "icons/clinical/glass-test.svg",
+      "monoFile": "icons/clinical/glass-test-mono.svg",
+      "description": "Glass pressed on skin with a purpuric rash: the skin blanches under the glass but the spots stay visible (a non-blanching rash).",
+      "tags": ["glass test", "tumbler test", "non-blanching rash", "purpura", "petechiae", "petechial rash", "meningococcal disease", "meningococcal septicaemia", "sepsis", "rash", "skin", "meningitis"],
+      "toneFiles": { "light": "icons/clinical/glass-test-light.svg", "brown": "icons/clinical/glass-test-brown.svg", "dark": "icons/clinical/glass-test-dark.svg" }
+    },
+    {
+      "id": "chest-x-ray",
+      "name": "Chest X-ray",
+      "category": "clinical",
+      "file": "icons/clinical/chest-x-ray.svg",
+      "monoFile": "icons/clinical/chest-x-ray-mono.svg",
+      "description": "Frontal (PA) chest radiograph: lung fields, ribs, clavicles, the heart shadow and the domes of the diaphragm.",
+      "tags": ["chest X-ray", "CXR", "chest radiograph", "X-ray", "radiology", "imaging", "pneumonia", "consolidation", "empyema", "tuberculosis", "lungs", "PA film"]
     }
   ]
 }

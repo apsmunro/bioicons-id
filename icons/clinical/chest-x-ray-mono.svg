@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="chest-x-ray-mono-title">
+<title id="chest-x-ray-mono-title">Chest X-ray (single colour)</title>
+<desc>Frontal (PA) chest radiograph: lung fields, ribs, clavicles, the heart shadow and the domes of the diaphragm.</desc>
+<defs></defs>
+<rect x="24" y="18" width="208" height="220" rx="12" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<clipPath id="chest-x-ray-mono-lungs"><path d="M84 66C70 72 58 100 54 136C50 166 48 186 50 200C66 194 90 186 112 188C116 160 116 112 112 82C106 70 96 64 84 66ZM172 66C186 72 198 100 202 136C206 166 208 190 206 204C196 202 186 200 180 198C176 176 160 150 144 132C142 112 142 92 146 80C152 70 162 64 172 66Z"/></clipPath>
+<path d="M84 66C70 72 58 100 54 136C50 166 48 186 50 200C66 194 90 186 112 188C116 160 116 112 112 82C106 70 96 64 84 66ZM172 66C186 72 198 100 202 136C206 166 208 190 206 204C196 202 186 200 180 198C176 176 160 150 144 132C142 112 142 92 146 80C152 70 162 64 172 66Z" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<g clip-path="url(#chest-x-ray-mono-lungs)"><path d="M122 60C104 48 66 50 52 78M122 76C104 64 66 66 52 96M122 92C104 80 66 82 52 114M122 108C104 96 66 98 52 132M122 124C104 112 66 114 52 150M122 140C104 128 66 130 52 168M122 156C104 144 66 146 52 186M122 172C104 160 66 162 52 202M134 60C152 48 190 50 204 78M134 76C152 64 190 66 204 96M134 92C152 80 190 82 204 114M134 108C152 96 190 98 204 132M134 124C152 112 190 114 204 150M134 140C152 128 190 130 204 168M134 156C152 144 190 146 204 186M134 172C152 160 190 162 204 202" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M118 66C104 62 92 58 80 60C70 62 62 60 52 54M138 66C152 62 164 58 176 60C186 62 194 60 204 54" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="121" y="40" width="14" height="11" rx="3" fill="#000000"/>
+<rect x="121" y="57" width="14" height="11" rx="3" fill="#000000"/>
+<rect x="121" y="74" width="14" height="11" rx="3" fill="#000000"/>
+<rect x="121" y="91" width="14" height="11" rx="3" fill="#000000"/>
+<rect x="121" y="108" width="14" height="11" rx="3" fill="#000000"/>
+<rect x="121" y="125" width="14" height="11" rx="3" fill="#000000"/>
+</svg>

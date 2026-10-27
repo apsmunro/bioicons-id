@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="monoclonal-antibody-mono-title">
+<title id="monoclonal-antibody-mono-title">Monoclonal antibody injection (single colour)</title>
+<desc>A pre-filled syringe holding antibody, beside a large antibody, for a monoclonal antibody such as nirsevimab for RSV.</desc>
+<defs></defs>
+<path d="M0 44L0 4M0 4L-30 -32M0 4L30 -32" transform="translate(76 98) rotate(-16)" fill="none" stroke="#000000" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-14 -4L-38 -32M14 -4L38 -32" transform="translate(76 98) rotate(-16)" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(158 150) rotate(-45)">
+<line x1="-98" y1="0" x2="-52" y2="0" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-104" y="-16" width="8" height="32" rx="3" fill="#000000"/>
+<rect x="-59" y="-26" width="7" height="52" rx="3" fill="#000000"/>
+<rect x="-50" y="-15" width="90" height="30" rx="4" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-46" y="-11" width="7" height="22" rx="2" fill="#000000"/>
+<rect x="-34" y="-7.5" width="66" height="15" rx="2" fill="#000000"/>
+<path d="M42 -7L54 -5L54 5L42 7Z" fill="#000000"/>
+<line x1="54" y1="0" x2="92" y2="0" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="eye-title">
+<title id="eye-title">Eye</title>
+<desc>Eye in section, front to the left: cornea, iris, lens and ciliary body, the retina and choroid lining the globe, and the optic nerve and rectus muscles running back to the orbit.</desc>
+<defs><radialGradient id="eye-sclera" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#fbfaf7"/><stop offset="0.55" stop-color="#F6F2EA"/><stop offset="1" stop-color="#d8d5ce"/></radialGradient><radialGradient id="eye-vitreous" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f5fafc"/><stop offset="0.55" stop-color="#EAF4F9"/><stop offset="1" stop-color="#dce5ea"/></radialGradient><radialGradient id="eye-lens" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#faf3dc"/><stop offset="0.55" stop-color="#F2E2A8"/><stop offset="1" stop-color="#cbbe8d"/></radialGradient><linearGradient id="eye-nerve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3ca91"/><stop offset="0.25" stop-color="#f9ebcd"/><stop offset="0.6" stop-color="#F2D79A"/><stop offset="1" stop-color="#bda878"/></linearGradient><linearGradient id="eye-iris" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#735537"/><stop offset="0.25" stop-color="#bdad9d"/><stop offset="0.6" stop-color="#7A5A3A"/><stop offset="1" stop-color="#5f462d"/></linearGradient><radialGradient id="eye-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<path d="M104 60C136 42 192 60 238 112" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#80423a" stroke-width="17"/><path d="M104 60C136 42 192 60 238 112" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#CF6A5E" stroke-width="12"/><path d="M104 60C136 42 192 60 238 112" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.64" opacity="0.4" transform="translate(-2.16 -2.16)"/>
+<path d="M104 196C136 214 192 196 238 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#80423a" stroke-width="17"/><path d="M104 196C136 214 192 196 238 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#CF6A5E" stroke-width="12"/><path d="M104 196C136 214 192 196 238 144" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#fff" stroke-width="2.64" opacity="0.4" transform="translate(-2.16 -2.16)"/>
+<path d="M194 116L240 114L240 142L194 140Z" fill="url(#eye-nerve)" stroke="#96855f" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M200 128L240 128" stroke="#D9473F" stroke-width="2" opacity="0.8"/>
+<path d="M70.01 87.59A74 74 0 1 1 70.01 168.41A50.8 50.8 0 0 1 70.01 87.59Z" fill="url(#eye-sclera)" stroke="#999691" stroke-width="3"/>
+<path d="M74.8 89.42A69 69 0 1 1 74.8 166.58" fill="none" stroke="#9A3E3A" stroke-width="5"/>
+<path d="M82.59 86.54A64.5 64.5 0 1 1 82.59 169.46" fill="none" stroke="#F0A27A" stroke-width="4"/>
+<path d="M87.4 84.93A62 62 0 1 1 87.4 171.07L87.4 171.07L87.4 84.93Z" fill="url(#eye-vitreous)"/>
+<path d="M72 91.11A46.8 46.8 0 0 0 72 164.89L78 164.89L78 91.11Z" fill="#f0f7fb"/>
+<path d="M90 105L82 90M90 151L82 166" stroke="#a09d98" stroke-width="1.2"/>
+<ellipse cx="80" cy="86" rx="10" ry="5" transform="rotate(-40 80 86)" fill="#8b3834" stroke="#5f2624" stroke-width="1.2"/>
+<ellipse cx="80" cy="170" rx="10" ry="5" transform="rotate(40 80 170)" fill="#8b3834" stroke="#5f2624" stroke-width="1.2"/>
+<ellipse cx="90" cy="128" rx="11" ry="26" fill="url(#eye-lens)" stroke="#9d936d" stroke-width="1.8"/>
+<rect x="76" y="88" width="6" height="28" rx="3" fill="url(#eye-iris)" stroke="#4c3824" stroke-width="1.5"/>
+<rect x="76" y="140" width="6" height="28" rx="3" fill="url(#eye-iris)" stroke="#4c3824" stroke-width="1.5"/>
+<ellipse cx="60" cy="108" rx="6" ry="14" transform="rotate(15 60 108)" fill="url(#eye-gloss)"/>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="glass-test-light-title">
+<title id="glass-test-light-title">Glass test (light skin tone)</title>
+<desc>Glass pressed on skin with a purpuric rash: the skin blanches under the glass but the spots stay visible (a non-blanching rash).</desc>
+<defs><radialGradient id="glass-test-light-skin" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f7dfc6"/><stop offset="0.55" stop-color="#F2CDA8"/><stop offset="1" stop-color="#dab997"/></radialGradient><radialGradient id="glass-test-light-spot" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#9b576e"/><stop offset="0.55" stop-color="#7A1F3D"/><stop offset="1" stop-color="#661a33"/></radialGradient><linearGradient id="glass-test-light-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E8F2F8" stop-opacity="0.55"/><stop offset="0.25" stop-color="#FFFFFF" stop-opacity="0.2"/><stop offset="0.75" stop-color="#E8F2F8" stop-opacity="0.15"/><stop offset="1" stop-color="#C9DAE6" stop-opacity="0.5"/></linearGradient></defs>
+<path d="M16 110C60 88 196 88 240 110L240 232Q240 240 232 240L24 240Q16 240 16 232Z" fill="url(#glass-test-light-skin)" stroke="#967f68" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="40" cy="166" r="4" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="56" cy="204" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="36" cy="122" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="214" cy="118" r="3.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="226" cy="134" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="44" cy="140" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="204" cy="160" r="5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="222" cy="196" r="3.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="196" cy="222" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="64" cy="228" r="4" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="30" cy="214" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="218" cy="144" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="184" cy="210" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="76" cy="160" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<ellipse cx="128" cy="186" rx="54" ry="17" fill="#f8e4cf"/>
+<circle cx="100" cy="186" r="4" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="126" cy="178" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="150" cy="192" r="5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="118" cy="198" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="142" cy="176" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="86" cy="194" r="2.5" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="160" cy="182" r="3" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<circle cx="128" cy="190" r="7" fill="url(#glass-test-light-spot)" stroke="#55162b" stroke-width="0.8"/>
+<path d="M74 186L58 56A70 22 0 0 1 198 56L182 186A54 17 0 0 1 74 186Z" fill="url(#glass-test-light-glass)"/>
+<ellipse cx="128" cy="56" rx="70" ry="22" fill="#F4F9FC" fill-opacity="0.35" stroke="#8FA9BB" stroke-width="2.5"/>
+<ellipse cx="128" cy="179" rx="51" ry="15" fill="none" stroke="#8FA9BB" stroke-width="1.5" opacity="0.6"/>
+<path d="M74 186L58 56M182 186L198 56M74 186A54 17 0 0 0 182 186" fill="none" stroke="#8FA9BB" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M88 172L74 74" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<path d="M170 168L184 78" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+</svg>

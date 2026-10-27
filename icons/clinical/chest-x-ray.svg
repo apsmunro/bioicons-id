@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="chest-x-ray-title">
+<title id="chest-x-ray-title">Chest X-ray</title>
+<desc>Frontal (PA) chest radiograph: lung fields, ribs, clavicles, the heart shadow and the domes of the diaphragm.</desc>
+<defs><clipPath id="chest-x-ray-film"><rect x="24" y="18" width="208" height="220" rx="12"/></clipPath><radialGradient id="chest-x-ray-bg" cx="0.5" cy="0.45" r="0.7"><stop offset="0" stop-color="#29323c"/><stop offset="1" stop-color="#0f161e"/></radialGradient><radialGradient id="chest-x-ray-lung" cx="0.5" cy="0.5" r="0.6"><stop offset="0" stop-color="#121a22"/><stop offset="0.8" stop-color="#2d3640"/><stop offset="1" stop-color="#505860"/></radialGradient></defs>
+<g clip-path="url(#chest-x-ray-film)">
+<rect x="24" y="18" width="208" height="220" fill="url(#chest-x-ray-bg)"/>
+<path d="M100 18L100 44C78 48 54 54 44 72C34 96 32 150 34 238L222 238C224 150 222 96 212 72C202 54 178 48 156 44L156 18Z" fill="#9AA8B5" opacity="0.5"/>
+<circle cx="38" cy="66" r="16" fill="#EEF3F6" opacity="0.35"/>
+<circle cx="218" cy="66" r="16" fill="#EEF3F6" opacity="0.35"/>
+<path d="M118 118C122 104 138 100 148 112C164 128 186 162 188 194C176 206 148 208 122 204C114 188 112 148 118 118Z" fill="#EEF3F6" opacity="0.18"/>
+<path d="M84 66C70 72 58 100 54 136C50 166 48 186 50 200C66 194 90 186 112 188C116 160 116 112 112 82C106 70 96 64 84 66Z" fill="url(#chest-x-ray-lung)"/>
+<path d="M172 66C186 72 198 100 202 136C206 166 208 190 206 204C196 202 186 200 180 198C176 176 160 150 144 132C142 112 142 92 146 80C152 70 162 64 172 66Z" fill="url(#chest-x-ray-lung)"/>
+<ellipse cx="178" cy="214" rx="12" ry="7" fill="#141d27" opacity="0.8"/>
+<rect x="117" y="30" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="47" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="64" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="81" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="98" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="115" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="132" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="149" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="166" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="183" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="200" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<rect x="117" y="217" width="22" height="13" rx="3" fill="#EEF3F6" opacity="0.3"/>
+<path d="M54 78C64 94 84 104 104 108M54 96C64 112 84 122 104 126M54 114C64 130 84 140 104 144M54 132C64 148 84 158 104 162M54 150C64 166 84 176 104 180M54 168C64 184 84 194 104 198M202 78C192 94 172 104 152 108M202 96C192 112 172 122 152 126M202 114C192 130 172 140 152 144M202 132C192 148 172 158 152 162M202 150C192 166 172 176 152 180M202 168C192 184 172 194 152 198" fill="none" stroke="#EEF3F6" stroke-width="4" stroke-linecap="round" opacity="0.22"/>
+<path d="M122 60C104 48 66 50 52 78M122 76C104 64 66 66 52 96M122 92C104 80 66 82 52 114M122 108C104 96 66 98 52 132M122 124C104 112 66 114 52 150M122 140C104 128 66 130 52 168M122 156C104 144 66 146 52 186M122 172C104 160 66 162 52 202M134 60C152 48 190 50 204 78M134 76C152 64 190 66 204 96M134 92C152 80 190 82 204 114M134 108C152 96 190 98 204 132M134 124C152 112 190 114 204 150M134 140C152 128 190 130 204 168M134 156C152 144 190 146 204 186M134 172C152 160 190 162 204 202" fill="none" stroke="#EEF3F6" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+<path d="M118 66C104 62 92 58 80 60C70 62 62 60 52 54M138 66C152 62 164 58 176 60C186 62 194 60 204 54" fill="none" stroke="#EEF3F6" stroke-width="8" stroke-linecap="round" opacity="0.65"/>
+</g>
+<rect x="24" y="18" width="208" height="220" rx="12" fill="none" stroke="#5D6B78" stroke-width="3"/>
+</svg>

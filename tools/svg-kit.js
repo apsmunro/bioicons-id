@@ -183,6 +183,53 @@ const PALETTE = {
   surgicalMask: '#9CC9E8',
   ocean: '#4A90C8',
   cardigan: '#E07A5F',
+  metachromaticGranule: '#2F2A6B', // Albert's / Neisser stain
+  poxMembrane: '#E3B98F',
+  poxCore: '#7A6BC4',
+  lateralBody: '#F2A541',
+  flavivirus: '#C9D3E8',
+  eDomainI: '#D9534F', // flavivirus E protein domains, in their usual colours
+  eDomainII: '#F2C14E',
+  eDomainIII: '#5B8FD9',
+  parvovirus: '#E79AAE',
+  rabiesEnvelope: '#B9C7E8',
+  nucleocapsid: '#8E6CC9',
+  sporangium: '#5C5048',
+  columella: '#D8D2C8',
+  schistosomeFemale: '#8A7464',
+  trypanosome: '#A9C6EA', // Giemsa-stained cytoplasm
+  kinetoplast: '#5A2A82',
+  endothelium: '#F2B9A8',
+  plasma: '#F6D5D2',
+  nlrp3: '#5A8FD0',
+  lrr: '#9CC6EE',
+  asc: '#F2A541',
+  caspase: '#C9465A',
+  eardrum: '#D9D3E6',
+  middleEar: '#DCEBF5',
+  labyrinth: '#E9B3C2',
+  nerve: '#F2D79A',
+  sclera: '#F6F2EA',
+  choroid: '#9A3E3A',
+  retina: '#F0A27A',
+  vitreous: '#EAF4F9',
+  lens: '#F2E2A8',
+  iris: '#7A5A3A',
+  eyeMuscle: '#CF6A5E',
+  placenta: '#B04A5A',
+  chorionicPlate: '#D9A3B0',
+  cordJelly: '#DCE8EE',
+  edta: '#8E6CC9', // blood bottle caps
+  serum: '#E0B33C',
+  citrate: '#7FC1E8',
+  heparin: '#4FA36A',
+  blood: '#8E1B2A',
+  gel: '#EDE6CF',
+  microscope: '#E6ECF1',
+  lamp: '#F7D774',
+  purpura: '#7A1F3D',
+  xrayFilm: '#16202B',
+  schistosomeEgg: '#E6CF92',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
@@ -579,6 +626,330 @@ function graticule(cx, cy, R, tilt = 0.35, spin = 0.3) {
   return runs;
 }
 
+// Icosahedral symmetry axes on the unit sphere: 5-fold (vertices), 3-fold (face centres, each with
+// its three edge midpoints) and 2-fold (edge midpoints).
+function icosahedralAxes() {
+  const { vertices: V } = icosahedron();
+  const close = (i, j) => Math.hypot(...vec.sub(V[i], V[j])) < 1.2;
+  const mid = (...vs) => vec.unit([0, 1, 2].map(d => vs.reduce((sum, v) => sum + v[d], 0)));
+  const two = [], three = [];
+  for (let i = 0; i < 12; i++) for (let j = i + 1; j < 12; j++) {
+    if (!close(i, j)) continue;
+    two.push(mid(V[i], V[j]));
+    for (let k = j + 1; k < 12; k++) {
+      if (close(i, k) && close(j, k)) three.push({ centre: mid(V[i], V[j], V[k]), edges: [[i, j], [j, k], [i, k]].map(([a, b]) => mid(V[a], V[b])) });
+    }
+  }
+  return { five: V, three, two };
+}
+
+// Campylobacter: S-shaped cells [x, y, angle], each one sine wave (amplitude amp) over its length
+// 2 * half, with a single flagellum leaving each pole along the cell's direction there.
+const CAMPYLOBACTER = { cells: [[104, 68, -16], [158, 128, 12], [94, 198, -18]], half: 46, amp: 13, width: 15 };
+function campylobacterCell({ half, amp } = CAMPYLOBACTER) {
+  const body = Array.from({ length: 25 }, (_, i) => { const t = -half + i * half / 12; return [t, amp * Math.sin(Math.PI * t / half)]; });
+  const slope = -amp * Math.PI / half, l = Math.hypot(1, slope);
+  return { body, poles: [{ x: half, y: 0, nx: 1 / l, ny: slope / l }, { x: -half, y: 0, nx: -1 / l, ny: -slope / l }] };
+}
+
+// Clostridium tetani: slender rods (half-length s, end radius r) swollen at one end by a round
+// terminal spore (centre x, radius R) into a drumstick; cells [x, y, angle], and a vegetative rod.
+const TETANI = { s: 40, r: 10, spore: [46, 18], cells: [[96, 62, -24], [168, 112, 196], [66, 160, -12]], vegetative: [168, 206, -18] };
+function drumstickPath({ s, r, spore: [cx, R] } = TETANI) {
+  const xi = round(cx - Math.sqrt(R * R - r * r));
+  return `M${-s} ${-r}L${xi} ${-r}A${R} ${R} 0 1 1 ${xi} ${r}L${-s} ${r}A${r} ${r} 0 0 1 ${-s} ${-r}Z`;
+}
+
+// Corynebacterium diphtheriae: club-shaped rods, narrow end at local -x, left joined at an angle
+// after snapping division. Pairs are [junction x, y, angle of each arm]: each arm runs out from
+// the junction, narrow end first. Metachromatic granules [x, r] sit at the poles.
+const DIPHTHERIAE = {
+  club: 'M-26 -7L26 -11A11 11 0 0 1 26 11L-26 7A7 7 0 0 1 -26 -7Z',
+  pairs: [[54, 124, -76, -14], [198, 46, 168, 104], [118, 214, -60, -148], [222, 154, 196, 118]],
+  singles: [[124, 126, -34]],
+  granules: [[-24, 3.2], [27, 4.6]],
+  get cells() {
+    return [...this.pairs.flatMap(([x, y, ...arms]) => arms.map(a => {
+      const t = a * Math.PI / 180;
+      return [x + 36 * Math.cos(t), y + 36 * Math.sin(t), a];
+    })), ...this.singles];
+  },
+};
+
+// Mpox virion in section: a rounded brick (superellipse with semi-axes a, b and power p) with
+// surface tubules round its edge, a dumbbell-shaped core, and a lateral body in each concavity.
+const MPOX = {
+  brick: [92, 68, 4],
+  core: 'M-56 -30C-30 -30 -28 -14 0 -14C28 -14 30 -30 56 -30Q64 -30 64 -22L64 22Q64 30 56 30C30 30 28 14 0 14C-28 14 -30 30 -56 30Q-64 30 -64 22L-64 -22Q-64 -30 -56 -30Z',
+  lateral: [0, 34, 30, 9],
+  radius(t, inset = 0) { const [a, b, p] = this.brick; return ((Math.abs(Math.cos(t)) / (a - inset)) ** p + (Math.abs(Math.sin(t)) / (b - inset)) ** p) ** (-1 / p); },
+};
+
+// Flavivirus (dengue) surface: 30 rafts of three parallel E-protein dimers, one raft on each
+// icosahedral 2-fold axis with its dimers along the edge, so the rafts form a herringbone.
+// Each raft has its centre c (unit vector) and directions e1 (along the edge) and e2 (across).
+function flavivirusRafts() {
+  const { vertices: V } = icosahedron();
+  const rafts = [];
+  for (let i = 0; i < 12; i++) for (let j = i + 1; j < 12; j++) {
+    if (Math.hypot(...vec.sub(V[i], V[j])) > 1.2) continue;
+    const c = vec.unit(V[i].map((x, d) => x + V[j][d])), e1 = vec.unit(vec.sub(V[j], V[i]));
+    rafts.push({ c, e1, e2: vec.cross(c, e1) });
+  }
+  return rafts;
+}
+// Point (u, v) on a raft's tangent plane, pressed onto the unit sphere.
+const onSphere = ({ c, e1, e2 }, u, v) => vec.unit([0, 1, 2].map(d => c[d] + u * e1[d] + v * e2[d]));
+
+// Rabies virion: a bullet with a flat base at x = -base and a hemispherical tip (centre x = tip,
+// radius r), and the number of glycoprotein spikes round its curved and long sides.
+const RABIES = {
+  base: 80, tip: 30, r: 32, spikes: 30,
+  get perimeter() { return 2 * (this.base + this.tip) + Math.PI * this.r; },
+  // Point and outward normal [x, y, nx, ny] at distance d round the outline, from the base along the top.
+  along(d) {
+    const { base, tip, r } = this, L = base + tip, arc = Math.PI * r;
+    if (d < L) return [-base + d, -r, 0, -1];
+    if (d < L + arc) { const a = -Math.PI / 2 + (d - L) / r; return [tip + r * Math.cos(a), r * Math.sin(a), Math.cos(a), Math.sin(a)]; }
+    return [tip - (d - L - arc), r, 0, 1];
+  },
+};
+const bulletPath = ({ base, tip, r } = RABIES, inset = 0) => {
+  const h = r - inset;
+  return `M${-base + inset} ${-h}L${tip} ${-h}A${h} ${h} 0 0 1 ${tip} ${h}L${-base + inset} ${h}Z`;
+};
+
+// Rhizopus: a broad, ribbon-like stolon anchored by rhizoids at a node, from which sporangiophores
+// rise: one with an intact sporangium, one burst open to show its columella, and a young one.
+const RHIZOPUS = {
+  stolon: [[20, 214], [60, 206], [102, 212], [146, 206], [190, 212], [236, 202]],
+  // Broad hyphae of uneven width.
+  width: t => (16 + 3 * Math.sin(9 * t + 1)) * Math.min(1, Math.sqrt(Math.min(t, 1 - t) / 0.03)),
+  septum: 0.8,
+  rhizoids: ['M98 218C94 226 86 230 80 238', 'M104 220C104 228 106 232 104 238', 'M110 218C116 224 124 228 130 236', 'M88 228L80 228', 'M116 226L120 232'],
+  stalks: ['M100 206C98 172 96 136 92 102', 'M108 206C118 174 160 166 168 124', 'M96 208C82 194 68 176 60 154'],
+  sporangium: [92, 66, 36],
+  columella: [168, 108],
+  young: [56, 140, 14],
+  spores: [[148, 70, 4], [192, 80, 4], [180, 58, 3.5], [156, 46, 3.5], [206, 104, 3.5], [212, 62, 3], [140, 96, 3]],
+};
+
+// Schistosoma: the male (centreline from his anterior end, with oral and ventral suckers) holding
+// the slender female in his gynaecophoric canal; her ends protrude from it. An egg with a lateral
+// spine (S. mansoni) holds a miracidium.
+const SCHISTOSOMA = {
+  male: [[44, 72], [80, 54], [120, 60], [148, 90], [156, 132], [168, 172], [196, 194], [222, 198]],
+  maleWidth: t => 26 * Math.min(1, Math.sqrt(t / 0.05), 0.3 + (1 - t) / 0.15),
+  // She follows his centreline from his third point on, leaving the canal at both ends.
+  get female() { return [[84, 102], [100, 78], ...this.male.slice(2), [238, 208]]; },
+  femaleWidth: t => 10 * Math.min(1, Math.sqrt(t / 0.04), 0.3 + (1 - t) / 0.1),
+  // The canal holds the female between these fractions of her length.
+  canal: [0.25, 0.875],
+  // The oral sucker opens at his anterior tip; the ventral sucker stands out from his underside.
+  oralSucker: [47, 71, 4, 6.5, -62],
+  ventralSucker: [80, 69, 6.5],
+  egg: [72, 198, 32, 16, -12],
+};
+
+// Trypanosome (trypomastigote) in blood: a slender body, posterior end to the left, with its
+// flagellum running from the kinetoplast along an undulating membrane and free beyond the
+// anterior tip. Red cells [x, y, r].
+const TRYPANOSOMA = {
+  body: [[30, 150], [62, 118], [108, 98], [158, 100], [198, 122], [218, 150]],
+  width: t => 22 * Math.min(1, Math.sqrt(t / 0.06)) * Math.min(1, (1 - t) / 0.45),
+  kinetoplast: 0.1,
+  nucleus: 0.48,
+  redCells: [[64, 204, 28], [196, 52, 24], [190, 212, 22]],
+};
+// Points along the trypanosome: its centreline, normals pointing to the membrane (convex) side,
+// the body outline, and the flagellum (membrane edge, then free) as one run of points.
+function trypanosomeParts({ body, width, kinetoplast } = TRYPANOSOMA) {
+  const line = densify(body, 14), N = line.length;
+  const at = i => {
+    const [p, q] = [line[Math.max(0, i - 1)], line[Math.min(N - 1, i + 1)]], l = Math.hypot(q[0] - p[0], q[1] - p[1]);
+    return { x: line[i][0], y: line[i][1], nx: (q[1] - p[1]) / l, ny: -(q[0] - p[0]) / l, tx: (q[0] - p[0]) / l, ty: (q[1] - p[1]) / l };
+  };
+  const flagellum = [];
+  for (let i = Math.round(kinetoplast * (N - 1)); i < N; i++) {
+    const t = i / (N - 1), p = at(i), envelope = Math.min(1, (t - kinetoplast) / 0.08, (1 - t) / 0.12);
+    const d = width(t) / 2 + envelope * (4 + 6 * (0.5 + 0.5 * Math.sin(2 * Math.PI * 5.5 * t)));
+    flagellum.push([p.x + p.nx * d, p.y + p.ny * d]);
+  }
+  const tip = at(N - 1);
+  for (let s = 4; s <= 30; s += 4) flagellum.push([tip.x + tip.tx * s - tip.nx * 3 * Math.sin(s / 5), tip.y + tip.ty * s - tip.ny * 3 * Math.sin(s / 5)]);
+  return { at, N, outline: wormOutline(body, width), flagellum };
+}
+
+// Neutrophil leaving a venule: the lumen above the endothelium (cells between junctions at x),
+// a neutrophil rolling, one squeezing through the junction at x = 128, and one crawling through
+// the tissue towards bacteria.
+const DIAPEDESIS = {
+  lumen: [16, 18, 224, 104],
+  endothelium: [122, 138],
+  junctions: [16, 70, 128, 186, 240],
+  rolling: [52, 92, 26],
+  through: { x: 128, top: [96, 22], bottom: [166, 20], neck: 6 },
+  crawling: [188, 196],
+  bacteria: [[224, 226, 30], [212, 214, -40], [232, 206, 70]],
+  redCells: [[176, 58, 22, 11, -10], [210, 88, 18, 9, 20]],
+};
+// Outline of the neutrophil squeezing through a junction: two lobes joined by a narrow neck.
+function hourglassPath({ x, top: [ty, tr], bottom: [by, br], neck } = DIAPEDESIS.through) {
+  const yt = ty + Math.sqrt(tr * tr - neck * neck), yb = by - Math.sqrt(br * br - neck * neck);
+  return `M${x - neck} ${round(yt)}A${tr} ${tr} 0 1 1 ${x + neck} ${round(yt)}L${x + neck} ${round(yb)}A${br} ${br} 0 1 1 ${x - neck} ${round(yb)}Z`;
+}
+// A crawling neutrophil: a broad leading edge (lamellipodium) towards dir (radians) and a tail.
+const crawlingCell = (cx, cy, dir, R = 26) => smoothClosedPath(polarPoints(cx, cy, a => {
+  const d = wrapAngle(a - dir);
+  return R + 9 * Math.exp(-(d * d) / 0.5) - 6 * Math.exp(-((Math.abs(d) - 1.6) ** 2) / 0.2) + 7 * Math.exp(-((Math.abs(d) - Math.PI) ** 2) / 0.08) + 1.5 * Math.sin(7 * a);
+}, 120));
+
+// NLRP3 inflammasome seen from above: a wheel of NLRP3 subunits (NACHT domains inside, LRR
+// domains outside) round a central hub, from which an ASC filament recruits caspase-1, which
+// releases IL-1β.
+const INFLAMMASOME = {
+  centre: [94, 96], count: 10, nacht: 30, lrr: 54,
+  filament: { angle: 54, from: 18, to: 104, step: 12 },
+  caspase: [168, 190, 54],
+  il1b: [[214, 166, 10], [200, 224, -30], [232, 210, 40]],
+};
+
+// Ear in section: pinna and external canal (to the eardrum), the air-filled middle ear with the
+// ossicles and the Eustachian tube, and the inner ear (vestibule, semicircular canals, cochlea).
+const EAR = {
+  outer: 'M124 114L84 112C76 112 72 108 70 100C66 82 66 60 56 44C48 30 34 28 26 40C16 56 14 86 16 116C18 146 22 172 30 190C36 204 48 208 56 198C62 188 64 168 70 156C72 148 76 144 84 144L124 142Z',
+  canal: 'M124 121L88 119C80 119 74 123 70 128C74 133 80 137 88 137L124 135Z',
+  antihelix: 'M54 58C42 72 38 102 42 132C44 150 48 166 54 176',
+  eardrum: [127, 128, 3.5, 21, -8],
+  cavity: 'M130 106C130 92 136 82 148 80C160 78 170 84 172 98C174 112 172 132 168 146C164 156 158 164 150 168L140 164C134 156 130 142 130 128Z',
+  tube: 'M148 160C160 186 176 206 200 226',
+  helix: 'M56 52C52 42 44 40 38 48C31 62 28 96 30 132C32 156 36 172 42 184',
+  // Malleus: head in the attic, its handle down the eardrum to the umbo. Incus: body beside the
+  // malleus head, short process back, long process down to the stapes. Stapes: two crura and a
+  // footplate in the oval window.
+  malleus: 'M134 82C140 80 145 84 144 91C143 97 139 100 136 103L132 133Q130 136 128 133L130 102C127 97 127 85 134 82Z',
+  incus: 'M146 86C150 81 158 81 162 85L170 90L162 95C159 99 157 104 157 110L158 120Q159 126 155 126Q152 125 152 120L151 108C149 102 145 98 145 93Z',
+  stapes: 'M158 123C162 117 166 116 169 117M158 123C162 129 166 130 169 129M170 115L170 131',
+  vestibule: [182, 124, 11, 14],
+  canals: [[188, 82, 13, 25, -12], [212, 102, 22, 11, 38], [168, 104, 15, 7, -18]],
+  cochlea: [204, 156, 22],
+  nerve: 'M200 128C214 126 226 120 238 116',
+};
+// Points of the cochlear spiral: about 2.6 turns inwards from its base at the vestibule.
+const cochleaPoints = ([cx, cy, R] = EAR.cochlea) => Array.from({ length: 80 }, (_, i) => {
+  const t = i / 79, a = -2.4 + t * 2.6 * 2 * Math.PI, r = R * (1 - 0.78 * t);
+  return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+});
+
+// Eye in section, front to the left: the globe (sclera, meeting the cornea at the limbus), lens,
+// iris, ciliary body, and the optic nerve and two rectus muscles running back to the orbital apex.
+const EYE = {
+  centre: [132, 128], R: 74,
+  limbus: 146.9, // degrees from the back of the globe
+  cornea: [100.8, 128, 50.8],
+  lens: [90, 128, 11, 26],
+  iris: [[76, 88, 82, 116], [76, 140, 82, 168]], // x0, y0, x1, y1 of each half
+  ciliary: [[80, 86, -40], [80, 170, 40]],
+  muscles: ['M104 60C136 42 192 60 238 112', 'M104 196C136 214 192 196 238 144'],
+  nerve: [200, 128, 240, 12],
+};
+// Outline of the globe: the sclera round the back, the cornea at the front.
+function eyeGlobePath({ centre: [cx, cy], R, limbus, cornea: [kx, , kr] } = EYE) {
+  const t = limbus * Math.PI / 180, [x, y] = [cx + R * Math.cos(t), R * Math.sin(t)];
+  return `M${round(x)} ${round(cy - y)}A${R} ${R} 0 1 1 ${round(x)} ${round(cy + y)}A${kr} ${kr} 0 0 1 ${round(x)} ${round(cy - y)}Z`;
+}
+
+// Placenta, fetal surface up: the disc (ellipse, with its thickness showing at the front), the
+// cord rising from its insertion, and the chorionic vessels branching from it ([angle, reach]).
+const PLACENTA = {
+  disc: [118, 164, 100, 58], depth: 14,
+  insertion: [124, 154],
+  cord: [[124, 154], [128, 122], [146, 86], [180, 62], [212, 46]],
+  cordWidth: 28,
+  vessels: [[-160, 0.85], [-118, 0.8], [-62, 0.82], [-14, 0.86], [30, 0.84], [92, 0.8], [150, 0.86]],
+};
+// A branching chorionic vessel along direction deg reaching fraction reach of the disc's radius;
+// offset shifts it sideways so artery and vein run side by side.
+function placentaVessel(deg, reach, offset = 0, { disc: [cx, cy, rx, ry], insertion: [ix, iy] } = PLACENTA) {
+  const t = deg * Math.PI / 180, [ux, uy] = [Math.cos(t), Math.sin(t)];
+  const p = f => [ix + (cx - ix + rx * ux) * f - uy * offset * ry / rx, iy + (cy - iy + ry * uy) * f + ux * offset];
+  const [a, b, c] = [p(0.08), p(0.5 * reach), p(reach)];
+  const fork = s => { const u = t + s * 0.5; return [b[0] + (c[0] - b[0]) * 0.6 + Math.cos(u) * rx * 0.2, b[1] + (c[1] - b[1]) * 0.6 + Math.sin(u) * ry * 0.2]; };
+  return `M${round(a[0])} ${round(a[1])}Q${round((a[0] + b[0]) / 2 + uy * 6)} ${round((a[1] + b[1]) / 2 - ux * 4)} ${round(b[0])} ${round(b[1])}` +
+    `L${round(c[0])} ${round(c[1])}M${round(b[0])} ${round(b[1])}L${round(fork(1)[0])} ${round(fork(1)[1])}`;
+}
+
+// Monoclonal antibody: a pre-filled syringe (local coordinates, needle towards +x, drawn rotated)
+// and a large antibody beside it.
+const MAB_SYRINGE = { at: [158, 150, -45], barrel: [-50, 40, 15], plunger: -104, needle: 92 };
+
+// Nasal-spray vaccine applicator (local coordinates, nozzle up, drawn tilted), its spray plume and
+// the live attenuated influenza virions in it.
+const NASAL_SPRAY = {
+  at: [170, 172, -42, 0.85],
+  nozzle: 'M-7 -100L-5 -112Q0 -118 5 -112L7 -100L13 -64L-13 -64Z',
+  barrel: [-15, -64, 30, 92],
+  clip: [-19, 34, 38, 12],
+  plunger: [-5, 46, 10, 30],
+  thumb: [-22, 76, 44, 9],
+  // The plume spreads spread degrees either side of the nozzle's axis and reaches reach px from its
+  // tip; virions are [distance, degrees off the axis, radius].
+  plume: { spread: 24, reach: 104 },
+  // Canvas point d px from the nozzle tip, deg degrees off the nozzle's axis.
+  from(d, deg) {
+    const [x, y, a, s] = this.at, t = a * Math.PI / 180, axis = Math.atan2(-Math.cos(t), Math.sin(t)) + deg * Math.PI / 180;
+    return [x + Math.sin(t) * 118 * s + d * Math.cos(axis), y - Math.cos(t) * 118 * s + d * Math.sin(axis)];
+  },
+  virions: [[46, -6, 8], [72, 11, 7], [84, -12, 6.5], [28, 9, 5.5]],
+};
+
+// CAR T cell (left) binding a target cell (right). CAR directions in degrees round the T cell; the
+// ones facing the target engage its CD19.
+const CAR_T = { cell: [110, 112, 62], target: [206, 194, 32], cars: [-140, -95, -50, -5, 40, 85, 130, 175, 220], engaged: 40 };
+
+// Blood bottles: adult tubes [x, cap colour] and paediatric microtubes [x, cap colour].
+const BLOOD_BOTTLES = { adult: [[42, 'edta'], [80, 'serum'], [118, 'citrate'], [156, 'heparin']], paediatric: [[194, 'edta'], [224, 'serum']] };
+
+// Compound microscope from the side, the user to the left: base with lamp, arm with focus knob,
+// stage with a slide, objectives on the nosepiece, and the head with an eyepiece.
+const MICROSCOPE = {
+  base: 'M48 224Q48 208 64 208L200 208Q216 208 216 224L216 226Q216 234 208 234L56 234Q48 234 48 226Z',
+  arm: 'M80 208C66 178 64 136 78 108C86 92 98 80 112 72L132 94C120 102 110 114 106 130C100 154 104 182 114 208Z',
+  head: 'M106 56L172 52Q182 52 182 62L182 84Q182 94 172 94L118 96Q108 96 106 86Z',
+  eyepiece: 'M120 60L92 24',
+  nosepiece: 'M134 96L182 96L176 108L140 108Z',
+  objectives: ['M148 108L144 128', 'M160 108L160 134', 'M172 108L176 126'],
+  stage: [102, 138, 116, 10],
+  slide: [130, 133, 64, 5],
+  condenser: [146, 148, 28, 10],
+  lamp: [160, 208, 13],
+  knob: [92, 172, 15],
+};
+
+// Glass test: a tumbler pressed onto skin, seen from slightly above; the skin under its base is
+// blanched by the pressure but the purpura stays visible. Spots [x, y, r].
+const GLASS_TEST = {
+  skin: 'M16 110C60 88 196 88 240 110L240 232Q240 240 232 240L24 240Q16 240 16 232Z',
+  skinEdge: 'M16 110C60 88 196 88 240 110',
+  base: [128, 186, 54, 17],
+  rim: [128, 56, 70, 22],
+  spots: [[100, 186, 4], [126, 178, 3], [150, 192, 5], [118, 198, 3], [142, 176, 2.5], [86, 194, 2.5], [160, 182, 3], [128, 190, 7],
+    [40, 166, 4], [56, 204, 3], [36, 122, 3], [214, 118, 3.5], [226, 134, 2.5], [44, 140, 2.5], [204, 160, 5], [222, 196, 3.5], [196, 222, 3], [64, 228, 4], [30, 214, 3], [218, 144, 2.5], [184, 210, 2.5], [76, 160, 2.5]],
+};
+
+// Chest X-ray (PA view): the film, the lung fields (the patient's right on the viewer's left, its
+// diaphragm higher), the heart shadow bulging to the viewer's right, and the ribs.
+const CHEST_XRAY = {
+  film: [24, 18, 208, 220, 12],
+  torso: 'M100 18L100 44C78 48 54 54 44 72C34 96 32 150 34 238L222 238C224 150 222 96 212 72C202 54 178 48 156 44L156 18Z',
+  rightLung: 'M84 66C70 72 58 100 54 136C50 166 48 186 50 200C66 194 90 186 112 188C116 160 116 112 112 82C106 70 96 64 84 66Z',
+  leftLung: 'M172 66C186 72 198 100 202 136C206 166 208 190 206 204C196 202 186 200 180 198C176 176 160 150 144 132C142 112 142 92 146 80C152 70 162 64 172 66Z',
+  // Posterior ribs on the viewer's left (the right mirrors them): [y at the spine, drop to the side].
+  ribs: [[60, 18], [76, 20], [92, 22], [108, 24], [124, 26], [140, 28], [156, 30], [172, 30]],
+  clavicle: 'M118 66C104 62 92 58 80 60C70 62 62 60 52 54',
+  gastricBubble: [178, 214, 12, 7],
+};
+
 // Dense polyline through pts along an open Catmull–Rom curve.
 function densify(pts, steps = 12) {
   const out = [];
@@ -853,4 +1224,7 @@ module.exports = {
   SKIN_TONES, PSEUDOMONAS_CELLS, ENTEROCYTES, CDIFF, sporulatingRod, HIV_CAPSID, CRYPTOCOCCUS_CELLS, GIARDIA, CONJUGATION, toGlobal, TLR,
   OPSONISATION, phagocyteCup, arcPoints, hexagon, HAEMOPHILUS_CELLS, MYCOPLASMA, PNEUMOCYSTIS, wormOutline, THREADWORM,
   SCABIES, HEAD_LOUSE, TICK, synapseCell, HAND, graticule, PEPTIDOGLYCAN, CONJUGATE_CHAINS, CANNULA, PICC, MOSQUITO, calicivirusPoints,
+  CAMPYLOBACTER, campylobacterCell, TETANI, drumstickPath, DIPHTHERIAE, MPOX, flavivirusRafts, onSphere, RABIES, bulletPath, RHIZOPUS,
+  SCHISTOSOMA, TRYPANOSOMA, trypanosomeParts, DIAPEDESIS, hourglassPath, crawlingCell, INFLAMMASOME, EAR, cochleaPoints, EYE, eyeGlobePath,
+  PLACENTA, placentaVessel, MAB_SYRINGE, NASAL_SPRAY, CAR_T, BLOOD_BOTTLES, GLASS_TEST, CHEST_XRAY, MICROSCOPE, icosahedralAxes,
 };
