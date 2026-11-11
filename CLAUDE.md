@@ -81,9 +81,12 @@ overlapping objects cast soft shadows (`castGradient` plus clip paths; still no 
 were redrawn by hand to use it fully: staphylococcus, red blood cells, T cell, liver, kidneys and
 child. The other icons only inherited the new gradients and outlines.
 
-Still to do by hand: redraw the other people to match the new child (newborn, baby, pregnant
-person, parent and baby), give the early organs (lungs, spleen, thymus, liver) more surface
-detail, and add cast shadows icon by icon where objects overlap.
+The other people (newborn, baby, pregnant person, parent and baby) were then reshaded the same
+way, keeping their poses so the single-colour versions still match. `joined` and `shadowOn` in
+the colour script draw merged outlines and cast shadows for people.
+
+Still to do by hand: give the early organs (lungs, spleen, thymus, liver) more surface detail,
+and add cast shadows icon by icon where objects overlap.
 
 ## Ideas not yet done
 

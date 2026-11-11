@@ -3429,20 +3429,45 @@ function child(id) {
   };
 }
 
+// Body parts that belong together (an arm and its hand): every outline first, then every fill,
+// so they read as one shape. Each part is [paint => svg, fill].
+const joined = (colour, parts) => {
+  const edge = `fill="${outline(colour)}" stroke="${outline(colour)}" stroke-width="${2 * STROKE}" stroke-linejoin="round" stroke-linecap="round"`;
+  return parts.map(([shape]) => shape(edge)).join('') + parts.map(([shape, fill]) => shape(`fill="${fill}"`)).join('');
+};
+// Paint for a cast shadow on a surface of the given colour.
+const shadowOn = (colour, opacity) => `fill="${K.deepen(colour, 0.7)}" opacity="${opacity}"`;
+
 // Swaddled newborn seen from the front: blanket hood framing the face, wrapped body below.
 const SWADDLE_BODY = 'M70 132Q100 140 128 128Q156 140 186 132C200 170 192 214 170 228C150 238 106 238 86 228C64 214 56 170 70 132Z';
 
 function newborn(id) {
   const sw = C.swaddle, skin = C.skin;
+  const folds = 'M184 140Q150 178 108 230M72 142Q98 164 116 172';
   return {
-    defs: [K.sphereGradient(`${id}-swaddle`, sw, { light: 0.5 }), K.sphereGradient(`${id}-skin`, skin, { light: 0.35 }), K.glossGradient(`${id}-gloss`)],
+    defs: [
+      K.formGradient(`${id}-hood`, sw, { light: 0.4 }), K.formGradientAt(`${id}-swaddle`, sw, 100, 158, 124, { light: 0.42, dark: 0.24 }),
+      K.formGradient(`${id}-skin`, skin, { light: 0.28, dark: 0.22 }), K.glossGradient(`${id}-gloss`, 0.45),
+      `<clipPath id="${id}-in-face"><circle cx="128" cy="92" r="33"/></clipPath>`,
+      `<clipPath id="${id}-in-body"><path d="${SWADDLE_BODY}"/></clipPath>`,
+    ],
     body: [
       `<g transform="translate(0 -6)">`,
-      `<circle cx="128" cy="88" r="52" fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="${STROKE}"/>`,
-      `<circle cx="128" cy="92" r="33" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2.5"/>`,
+      `<circle cx="128" cy="88" r="52" fill="url(#${id}-hood)" stroke="${outline(sw)}" stroke-width="${STROKE}"/>`,
+      K.sheen(`${id}-gloss`, 100, 56, 22, 10, -38),
+      // The inside of the hood, in shadow behind the face.
+      `<circle cx="128" cy="91" r="39" fill="${K.deepen(sw, 0.35)}" opacity="0.5"/>`,
+      `<circle cx="128" cy="92" r="33" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="${STROKE}"/>`,
+      // The hood's rim shades the top of the face.
+      `<circle cx="131" cy="97" r="38" fill="none" stroke="${K.deepen(skin, 0.7)}" stroke-width="12" opacity="0.2" clip-path="url(#${id}-in-face)"/>`,
       `<path d="${SWADDLE_BODY}" fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<path d="M184 140Q150 178 108 230M72 142Q98 164 116 172" fill="none" stroke="${shade(sw, 0.25)}" stroke-width="2.5" stroke-linecap="round"/>`,
-      K.gloss(`${id}-gloss`, 96, 172, 12, 28, 15),
+      `<g clip-path="url(#${id}-in-body)">`,
+      // The head shades the wrap below it, and each fold of the blanket shades the layer beneath.
+      `<circle cx="131" cy="95" r="52" ${shadowOn(sw, 0.22)}/>`,
+      `<path d="${folds}" transform="translate(3 6)" fill="none" stroke="${K.deepen(sw, 0.7)}" stroke-width="11" opacity="0.14"/>`,
+      K.sheen(`${id}-gloss`, 96, 176, 16, 34, 15),
+      `</g>`,
+      `<path d="${folds}" fill="none" stroke="${shade(sw, 0.32)}" stroke-width="2.2" stroke-linecap="round"/>`,
       `</g>`,
     ],
   };
@@ -3450,21 +3475,44 @@ function newborn(id) {
 
 function baby(id) {
   const skin = C.skin, nappy = C.nappy, edge = '#AEB8C2';
-  const arm = 'M100 116Q86 136 84 156', leg = 'M106 188Q88 204 70 208';
+  const torso = 'M98 106Q128 98 158 106C170 126 172 152 166 172L90 172C84 152 86 126 98 106Z';
+  const pants = 'M88 158Q128 168 168 158Q172 186 152 198Q128 206 104 198Q84 186 88 158Z';
+  const arm = 'M100 110Q85 132 85 157', leg = 'M110 176C94 178 74 188 58 196L62 218C82 214 104 206 120 198Z';
+  const both = draw => draw(d => d, x => x) + draw(K.mirrorX, x => 256 - x);
+  const limbs = (d, [hx, hy, rx, ry]) => both((m, x) => joined(skin, [
+    [paint => `<path d="${m(d)}" ${paint}/>`, `url(#${id}-limb)`],
+    [paint => `<ellipse cx="${x(hx)}" cy="${hy}" rx="${rx}" ry="${ry}" ${paint}/>`, `url(#${id}-skin)`],
+  ]));
+  const reach = (m, w, paint, cap = 'round') => `<path d="${m(arm)}" fill="none" stroke-width="${w}" stroke-linecap="${cap}" ${paint}/>`;
+  const hand = (x, r, paint) => `<circle cx="${x(85)}" cy="160" r="${r}" ${paint}/>`;
   return {
-    defs: [K.sphereGradient(`${id}-skin`, skin, { light: 0.35 }), K.cylinderGradient(`${id}-torso`, skin, { horizontal: true }),
-      K.sphereGradient(`${id}-nappy`, nappy, { light: 0.6, dark: 0.08 })],
+    defs: [
+      K.formGradient(`${id}-skin`, skin, { light: 0.28, dark: 0.22 }), K.limbGradient(`${id}-limb`, skin),
+      K.formGradientAt(`${id}-torso`, skin, 112, 122, 86, { light: 0.26, dark: 0.24 }),
+      K.formGradientAt(`${id}-nappy`, nappy, 112, 168, 66, { light: 0.5, dark: 0.16 }), K.glossGradient(`${id}-gloss`, 0.4),
+      `<clipPath id="${id}-on-legs"><path d="${leg}${K.mirrorX(leg)}"/></clipPath>`,
+      `<clipPath id="${id}-on-torso"><path d="${torso}"/></clipPath>`,
+      `<clipPath id="${id}-on-front"><path d="${torso}${pants}"/></clipPath>`,
+    ],
     body: [
-      K.pipe(leg, skin, 22), K.pipe(K.mirrorX(leg), skin, 22),
-      ...[62, 194].map(x => `<ellipse cx="${x}" cy="206" rx="14" ry="11" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`),
-      `<path d="M96 108Q128 98 160 108Q172 142 164 170L92 170Q84 142 96 108Z" fill="url(#${id}-torso)" stroke="${outline(skin)}" stroke-width="2.5" stroke-linejoin="round"/>`,
-      `<path d="M88 158Q128 168 168 158Q172 186 152 198Q128 206 104 198Q84 186 88 158Z" fill="url(#${id}-nappy)" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      limbs(leg, [58, 207, 13, 12.5]),
+      `<path d="${pants}" transform="translate(0 6)" ${shadowOn(skin, 0.28)} clip-path="url(#${id}-on-legs)"/>`,
+      both(m => reach(m, 17 + 2 * STROKE, `stroke="${outline(skin)}"`)),
+      `<path d="${torso}" fill="url(#${id}-torso)" stroke="${outline(skin)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      // The head shades the chest.
+      `<ellipse cx="131" cy="106" rx="27" ry="9" ${shadowOn(skin, 0.26)} clip-path="url(#${id}-on-torso)"/>`,
+      `<path d="${pants}" fill="url(#${id}-nappy)" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       ...[90, 156].map(x => `<rect x="${x}" y="161" width="10" height="8" rx="2" fill="${C.hat}" stroke="${outline(C.hat)}" stroke-width="1.2"/>`),
-      K.pipe(arm, skin, 17), K.pipe(K.mirrorX(arm), skin, 17),
-      ...[84, 172].map(x => `<circle cx="${x}" cy="160" r="10" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`),
-      ...[90, 166].map(x => `<circle cx="${x}" cy="70" r="7" fill="${skin}" stroke="${outline(skin)}" stroke-width="2"/>`),
-      `<circle cx="128" cy="66" r="38" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2.5"/>`,
-      `<path d="M122 30C118 22 128 16 136 22C130 22 128 26 130 30" fill="none" stroke="${C.hair}" stroke-width="3.5" stroke-linecap="round"/>`,
+      // Each arm shades the body behind it.
+      `<g clip-path="url(#${id}-on-front)">` + both(m => `<path d="${m(arm)}" transform="translate(4 5)" fill="none" stroke="${K.deepen(skin, 0.7)}" stroke-width="19" stroke-linecap="round" opacity="0.2"/>`) + `</g>`,
+      // Inside the body's outline an arm is edged only by a fine line, so the shoulder merges with the chest.
+      `<g clip-path="url(#${id}-on-torso)">` + both(m => reach(m, 17 + 2.4, `stroke="${outline(skin)}" opacity="0.5"`, 'butt')) + `</g>`,
+      both((m, x) => hand(x, 10 + STROKE, `fill="${outline(skin)}"`) + reach(m, 17, `stroke="${skin}"`) +
+        reach(m, 5, `stroke="${K.deepen(skin, 0.3)}" opacity="0.4" transform="translate(${x(3.5) - x(0)} 3)"`, 'butt') +
+        hand(x, 10, `fill="url(#${id}-skin)"`)),
+      both((m, x) => `<circle cx="${x(91)}" cy="70" r="6.5" fill="${K.deepen(skin, 0.08)}" stroke="${outline(skin)}" stroke-width="2"/>`),
+      `<circle cx="128" cy="64" r="37" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="${STROKE}"/>`,
+      `<path d="M122 29C118 21 128 15 136 21C130 21 128 25 130 29" fill="none" stroke="${C.hair}" stroke-width="3.5" stroke-linecap="round"/>`,
     ],
   };
 }
@@ -3806,25 +3854,44 @@ function faceMask(id) {
 function parentAndBaby(id) {
   const skin = C.skin, hair = C.hair, top = C.cardigan, sw = C.swaddle;
   const torso = 'M84 94Q128 82 172 94Q190 100 192 124L194 238H62L64 124Q66 100 84 94Z';
+  const under = 'M80 104C62 128 60 166 76 184C92 198 150 198 186 182', over = 'M176 104C196 124 200 156 188 172C180 182 166 184 154 180';
+  const bundle = `cx="148" cy="156" rx="52" ry="25" transform="rotate(-12 148 156)"`;
+  const cast = (d, w, colour, o) => `<path d="${d}" transform="translate(4 7)" fill="none" stroke="${K.deepen(colour, 0.7)}" stroke-width="${w}" stroke-linecap="round" opacity="${o}"/>`;
   return {
-    defs: [K.sphereGradient(`${id}-skin`, skin, { light: 0.35 }), K.sphereGradient(`${id}-hair`, hair, { light: 0.35 }),
-      K.cylinderGradient(`${id}-top`, top, { horizontal: true }), K.sphereGradient(`${id}-swaddle`, sw, { light: 0.5 })],
+    defs: [
+      K.formGradient(`${id}-skin`, skin, { light: 0.28, dark: 0.22 }), K.formGradient(`${id}-hair`, hair, { light: 0.3 }),
+      K.formGradientAt(`${id}-top`, top, 104, 118, 150, { light: 0.34, dark: 0.26 }), K.formGradient(`${id}-swaddle`, sw, { light: 0.4 }),
+      K.glossGradient(`${id}-gloss`, 0.4),
+      `<clipPath id="${id}-on-top"><path d="${torso}"/></clipPath>`,
+      `<clipPath id="${id}-on-bundle"><ellipse ${bundle}/><circle cx="94" cy="140" r="24"/></clipPath>`,
+      `<clipPath id="${id}-in-face"><circle cx="94" cy="140" r="15"/></clipPath>`,
+    ],
     body: [
-      `<rect x="119" y="70" width="18" height="22" fill="${shade(skin, 0.12)}"/>`,
+      `<path d="M118 68L138 68L140 96L116 96Z" fill="${K.deepen(skin, 0.2)}"/>`,
       `<path d="${torso}" fill="url(#${id}-top)" stroke="${outline(top)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<path d="M112 90L128 110L144 90" fill="none" stroke="${shade(top, 0.25)}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      `<g clip-path="url(#${id}-on-top)">`,
+      `<ellipse cx="131" cy="93" rx="30" ry="9" ${shadowOn(top, 0.24)}/>`,
+      // The arms and the baby shade the parent's front.
+      cast(under, 26, top, 0.22), cast(over, 24, top, 0.22),
+      `<ellipse cx="152" cy="164" rx="52" ry="25" transform="rotate(-12 152 164)" ${shadowOn(top, 0.24)}/>`,
+      `</g>`,
+      `<path d="M112 90L128 110L144 90" fill="none" stroke="${shade(top, 0.3)}" stroke-width="2.5" stroke-linejoin="round"/>`,
       // The arm the baby rests on, the baby, then the arm wrapped over the baby.
-      K.pipe('M80 104C62 128 60 166 76 184C92 198 150 198 186 182', top, 24),
-      `<circle cx="94" cy="140" r="24" fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="2.5"/>`,
-      `<ellipse cx="148" cy="156" rx="52" ry="25" transform="rotate(-12 148 156)" fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="2.5"/>`,
+      K.pipe(under, top, 24),
+      `<circle cx="94" cy="140" r="24" fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="${STROKE}"/>`,
+      `<ellipse ${bundle} fill="url(#${id}-swaddle)" stroke="${outline(sw)}" stroke-width="${STROKE}"/>`,
+      `<circle cx="94" cy="140" r="17.5" fill="${K.deepen(sw, 0.35)}" opacity="0.5"/>`,
       `<circle cx="94" cy="140" r="15" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`,
-      `<path d="M112 164Q142 146 186 134" fill="none" stroke="${shade(sw, 0.25)}" stroke-width="2.2" stroke-linecap="round"/>`,
-      K.pipe('M176 104C196 124 200 156 188 172C180 182 166 184 154 180', top, 22),
+      `<circle cx="96" cy="143" r="18" fill="none" stroke="${K.deepen(skin, 0.7)}" stroke-width="6" opacity="0.2" clip-path="url(#${id}-in-face)"/>`,
+      `<path d="M112 164Q142 146 186 134" fill="none" stroke="${shade(sw, 0.32)}" stroke-width="2.2" stroke-linecap="round"/>`,
+      `<g clip-path="url(#${id}-on-bundle)">${cast(over, 24, sw, 0.26)}${K.sheen(`${id}-gloss`, 132, 146, 26, 8, -14)}</g>`,
+      K.pipe(over, top, 22),
       // Hands, drawn flattened along each forearm.
       ...[[192, 179, -25], [150, 178, 10]].map(([x, y, a]) => `<ellipse cx="${x}" cy="${y}" rx="11" ry="7.5" transform="rotate(${a} ${x} ${y})" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`),
-      ...[103, 153].map(x => `<circle cx="${x}" cy="54" r="5.5" fill="${skin}" stroke="${outline(skin)}" stroke-width="2"/>`),
-      `<circle cx="128" cy="52" r="25" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2.5"/>`,
+      ...[103, 153].map(x => `<circle cx="${x}" cy="54" r="5.5" fill="${K.deepen(skin, 0.08)}" stroke="${outline(skin)}" stroke-width="2"/>`),
+      `<circle cx="128" cy="52" r="25" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="${STROKE}"/>`,
       `<path d="M103 52C100 30 114 24 128 24C146 24 158 32 153 52C146 42 138 38 128 39C116 40 108 44 103 52Z" fill="url(#${id}-hair)" stroke="${outline(hair)}" stroke-width="2" stroke-linejoin="round"/>`,
+      K.sheen(`${id}-gloss`, 120, 31, 12, 5, -15),
     ],
   };
 }
@@ -3847,19 +3914,39 @@ function globe(id) {
 
 function pregnantPerson(id) {
   const skin = C.skin, hair = C.hair, dress = C.dress, shoe = C.shoe;
+  const dressPath = 'M106 84Q96 92 96 106Q94 118 84 128Q58 148 70 174Q80 188 92 198L152 198Q146 170 148 140Q150 108 142 84Z';
+  const arm = 'M130 96C132 116 128 128 120 134C112 140 104 144 97 147';
+  const legs = ['M103 194L118 194L115 229L105 229Z', 'M130 194L145 194L145 229L135 229Z'];
+  const shoePath = dx => `<path d="M90 236Q92 227 106 227L117 227Q120 232 118 237L92 237Q90 237 90 236Z" transform="translate(${dx} 0)" fill="url(#${id}-shoe)" stroke="${outline(shoe)}" stroke-width="2" stroke-linejoin="round"/>`;
+  const stroke = (d, w) => paint => `<path d="${d}" fill="none" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${paint}/>`;
+  const armEdge = `stroke="${outline(skin)}"`, armFill = `stroke="${skin}"`;
   return {
-    defs: [K.sphereGradient(`${id}-skin`, skin, { light: 0.35 }), K.sphereGradient(`${id}-hair`, hair, { light: 0.35 }),
-      K.cylinderGradient(`${id}-dress`, dress, { horizontal: true })],
+    defs: [
+      K.formGradient(`${id}-skin`, skin, { light: 0.28, dark: 0.22 }), K.limbGradient(`${id}-limb`, skin), K.formGradient(`${id}-hair`, hair, { light: 0.3 }),
+      K.formGradientAt(`${id}-dress`, dress, 92, 118, 118, { light: 0.4, dark: 0.26 }), K.formGradient(`${id}-shoe`, shoe, { light: 0.3 }),
+      K.glossGradient(`${id}-gloss`, 0.4),
+      `<clipPath id="${id}-on-legs"><path d="${legs.join('')}"/></clipPath>`,
+      `<clipPath id="${id}-on-dress"><path d="${dressPath}"/></clipPath>`,
+    ],
     body: [
-      K.pipe('M110 196L108 228', skin, 13), K.pipe('M136 196L140 228', skin, 13),
-      ...[[103, 233], [145, 233]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="12" ry="6" fill="${shoe}" stroke="${outline(shoe)}" stroke-width="2"/>`),
-      `<rect x="116" y="68" width="14" height="18" fill="${shade(skin, 0.12)}"/>`,
-      `<path d="M106 84Q96 92 96 106Q94 118 84 128Q58 148 70 174Q80 188 92 198L152 198Q146 170 148 140Q150 108 142 84Z" fill="url(#${id}-dress)" stroke="${outline(dress)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      K.pipe('M126 94Q118 122 100 144', skin, 12),
-      `<circle cx="97" cy="148" r="7.5" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2"/>`,
+      ...legs.map(d => `<path d="${d}" fill="url(#${id}-limb)" stroke="${outline(skin)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`),
+      `<path d="${dressPath}" transform="translate(0 7)" ${shadowOn(skin, 0.3)} clip-path="url(#${id}-on-legs)"/>`,
+      shoePath(0), shoePath(29),
+      `<path d="M114 64L131 64L133 90L112 90Z" fill="${K.deepen(skin, 0.2)}"/>`,
+      `<path d="${dressPath}" fill="url(#${id}-dress)" stroke="${outline(dress)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<g clip-path="url(#${id}-on-dress)">`,
+      K.sheen(`${id}-gloss`, 84, 146, 14, 24, 20),
+      // The arm and hand shade the dress beneath them.
+      stroke(arm, 14)(`stroke="${K.deepen(dress, 0.7)}" opacity="0.22" transform="translate(4 6)"`),
+      `</g>`,
+      // The arm resting on the bump: outline first, then skin, so arm and hand read as one shape.
+      stroke(arm, 12 + 2 * STROKE)(armEdge), `<circle cx="97" cy="148" r="${7.5 + STROKE}" fill="${outline(skin)}"/>`,
+      stroke(arm, 12)(armFill), `<circle cx="97" cy="148" r="7.5" fill="url(#${id}-skin)"/>`,
+      stroke(arm, 3)(`stroke="${K.lift(skin, 0.5)}" opacity="0.5" transform="translate(-2.5 -2.5)"`),
       `<circle cx="150" cy="44" r="11" fill="url(#${id}-hair)" stroke="${outline(hair)}" stroke-width="2"/>`,
-      `<circle cx="122" cy="52" r="25" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="2.5"/>`,
+      `<circle cx="122" cy="52" r="25" fill="url(#${id}-skin)" stroke="${outline(skin)}" stroke-width="${STROKE}"/>`,
       `<path d="M100 46C104 28 128 22 142 32C152 40 150 58 140 68C138 54 130 44 100 46Z" fill="url(#${id}-hair)" stroke="${outline(hair)}" stroke-width="2" stroke-linejoin="round"/>`,
+      K.sheen(`${id}-gloss`, 120, 33, 13, 5, -12),
     ],
   };
 }

@@ -2,12 +2,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="newborn-title">
 <title id="newborn-title">Newborn baby</title>
 <desc>Swaddled newborn baby, seen from the front.</desc>
-<defs><radialGradient id="newborn-swaddle" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#faebbe"/><stop offset="0.3" stop-color="#F6E2A0"/><stop offset="0.8" stop-color="#d6b378"/><stop offset="1" stop-color="#e6cb8c"/></radialGradient><radialGradient id="newborn-skin" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#e4b99a"/><stop offset="0.3" stop-color="#D9A07A"/><stop offset="0.8" stop-color="#b77d60"/><stop offset="1" stop-color="#c88e6d"/></radialGradient><radialGradient id="newborn-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="newborn-hood" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#faebbe"/><stop offset="0.3" stop-color="#F6E2A0"/><stop offset="0.8" stop-color="#d8b57a"/><stop offset="1" stop-color="#e7cc8d"/></radialGradient><radialGradient id="newborn-swaddle" gradientUnits="userSpaceOnUse" cx="100" cy="158" r="124"><stop offset="0" stop-color="#faebc0"/><stop offset="0.3" stop-color="#F6E2A0"/><stop offset="0.8" stop-color="#d1ac72"/><stop offset="1" stop-color="#e4c789"/></radialGradient><radialGradient id="newborn-skin" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#e4b99a"/><stop offset="0.3" stop-color="#D9A07A"/><stop offset="0.8" stop-color="#b57b5e"/><stop offset="1" stop-color="#c78d6c"/></radialGradient><radialGradient id="newborn-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><clipPath id="newborn-in-face"><circle cx="128" cy="92" r="33"/></clipPath><clipPath id="newborn-in-body"><path d="M70 132Q100 140 128 128Q156 140 186 132C200 170 192 214 170 228C150 238 106 238 86 228C64 214 56 170 70 132Z"/></clipPath></defs>
 <g transform="translate(0 -6)">
-<circle cx="128" cy="88" r="52" fill="url(#newborn-swaddle)" stroke="#ad7744" stroke-width="2.5"/>
+<circle cx="128" cy="88" r="52" fill="url(#newborn-hood)" stroke="#ad7744" stroke-width="2.5"/>
+<ellipse cx="100" cy="56" rx="22" ry="10" transform="rotate(-38 100 56)" fill="url(#newborn-gloss)"/>
+<circle cx="128" cy="91" r="39" fill="#c1945d" opacity="0.5"/>
 <circle cx="128" cy="92" r="33" fill="url(#newborn-skin)" stroke="#8b4e3d" stroke-width="2.5"/>
+<circle cx="131" cy="97" r="38" fill="none" stroke="#672922" stroke-width="12" opacity="0.2" clip-path="url(#newborn-in-face)"/>
 <path d="M70 132Q100 140 128 128Q156 140 186 132C200 170 192 214 170 228C150 238 106 238 86 228C64 214 56 170 70 132Z" fill="url(#newborn-swaddle)" stroke="#ad7744" stroke-width="2.5" stroke-linejoin="round"/>
-<path d="M184 140Q150 178 108 230M72 142Q98 164 116 172" fill="none" stroke="#d0aa70" stroke-width="2.5" stroke-linecap="round"/>
-<ellipse cx="96" cy="172" rx="15" ry="40.6" transform="rotate(15 96 172)" fill="url(#newborn-gloss)"/>
+<g clip-path="url(#newborn-in-body)">
+<circle cx="131" cy="95" r="52" fill="#8b4519" opacity="0.22"/>
+<path d="M184 140Q150 178 108 230M72 142Q98 164 116 172" transform="translate(3 6)" fill="none" stroke="#8b4519" stroke-width="11" opacity="0.14"/>
+<ellipse cx="96" cy="176" rx="16" ry="34" transform="rotate(15 96 176)" fill="url(#newborn-gloss)"/>
+</g>
+<path d="M184 140Q150 178 108 230M72 142Q98 164 116 172" fill="none" stroke="#c59a62" stroke-width="2.2" stroke-linecap="round"/>
 </g>
 </svg>
