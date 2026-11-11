@@ -11,6 +11,33 @@ const { PALETTE: C, STROKE, STREP_CHAIN, mix, tint, shade, outline, round: n } =
 
 const ROOT = path.join(__dirname, '..');
 
+// ------------------------------------------------------------ cast shadows
+//
+// Soft shadows where one object lies over another, built from clip paths only (no filters).
+// A silhouette is a function paint => one SVG shape element (carrying any transform itself, so
+// it can also sit inside a <clipPath>).
+
+// The shadow one silhouette throws: two offset copies, so the edge falls off in a step.
+const shadowOf = (shape, colour, [dx, dy], opacity) => [0.55, 1].map(k =>
+  `<g transform="translate(${n(dx * k)} ${n(dy * k)})">${shape(`fill="${K.deepen(colour, 0.75)}" opacity="${n(opacity / 2)}"`)}</g>`).join('');
+
+// For objects drawn in order, each overlapping the ones before: the shadow each throws on those
+// beneath it. Returns the clip paths for <defs> and, per object, the shadow to draw just before it.
+function stackShadows(id, shapes, colour, { offset = [4, 6], opacity = 0.42 } = {}) {
+  const defs = [], shadows = shapes.map((shape, i) => {
+    if (!i) return '';
+    defs.push(`<clipPath id="${id}-under-${i}">${shapes.slice(0, i).map(s => s('')).join('')}</clipPath>`);
+    return `<g clip-path="url(#${id}-under-${i})">${shadowOf(shape, colour, offset, opacity)}</g>`;
+  });
+  return { defs, shadows };
+}
+
+// For objects lying on one surface (a nucleus on its cell): the surface's clip path for <defs>,
+// and the shadows the objects throw on it.
+const surfaceClip = (id, key, surface) => `<clipPath id="${id}-on-${key}">${surface}</clipPath>`;
+const shadowsOn = (id, key, shapes, colour, { offset = [5, 7], opacity = 0.26 } = {}) =>
+  `<g clip-path="url(#${id}-on-${key})">${shapes.map(shape => shadowOf(shape, colour, offset, opacity)).join('')}</g>`;
+
 // ---------------------------------------------------------------- bacteria
 
 function staphylococcus(id) {
@@ -67,10 +94,12 @@ function streptococcus(id) {
   const base = C.gramPositive;
   // Cocci in pairs along an S-curve: closer within a pair than between pairs.
   const cocci = K.pointsAlongBezier(...STREP_CHAIN);
+  const shapes = cocci.map(({ x, y, angle }) => paint => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="22" ry="20" transform="rotate(${n(angle)} ${n(x)} ${n(y)})" ${paint}/>`);
+  const cast = stackShadows(id, shapes, base);
   return {
-    defs: [K.sphereGradient(`${id}-body`, base), K.glossGradient(`${id}-gloss`)],
-    body: cocci.map(({ x, y, angle }) =>
-      `<ellipse cx="${n(x)}" cy="${n(y)}" rx="22" ry="20" transform="rotate(${n(angle)} ${n(x)} ${n(y)})" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
+    defs: [K.sphereGradient(`${id}-body`, base), K.glossGradient(`${id}-gloss`), ...cast.defs],
+    body: cocci.map(({ x, y }, i) => cast.shadows[i] +
+      shapes[i](`fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"`) +
       K.gloss(`${id}-gloss`, x - 7, y - 9, 8, 4.5)),
   };
 }
@@ -107,13 +136,18 @@ function mycobacteriumTuberculosis(id) {
   const base = C.acidFast;
   const along = [Math.cos(-Math.PI / 6), Math.sin(-Math.PI / 6)], across = [-along[1], along[0]];
   const rods = [[-2, -14, 100, 3], [-1, 16, 92, -2], [0, -4, 104, 4], [1, 18, 96, -3], [2, -12, 98, 2]];
+  const centre = ([k, shift]) => [128 + across[0] * k * 30 + along[0] * shift, 128 + across[1] * k * 30 + along[1] * shift];
+  const cast = stackShadows(id, rods.map(rod => paint => {
+    const [x, y] = centre(rod), [, , len, jitter] = rod;
+    return `<rect x="${-len / 2}" y="-12" width="${len}" height="24" rx="12" transform="translate(${n(x)} ${n(y)}) rotate(${-30 + jitter})" ${paint}/>`;
+  }), base);
   return {
-    defs: [K.cylinderGradient(`${id}-body`, base)],
-    body: rods.map(([k, shift, len, jitter]) => {
-      const x = 128 + across[0] * k * 30 + along[0] * shift, y = 128 + across[1] * k * 30 + along[1] * shift;
+    defs: [K.cylinderGradient(`${id}-body`, base), ...cast.defs],
+    body: rods.map(([k, shift, len, jitter], i) => {
+      const [x, y] = centre([k, shift]);
       const beads = [0, 1, 2, 3].map(j =>
         `<ellipse cx="${n(-len / 2 + 16 + j * (len - 32) / 3)}" cy="1" rx="7" ry="5" fill="${tint(base, 0.35)}" opacity="0.5"/>`);
-      return `<g transform="translate(${n(x)} ${n(y)}) rotate(${-30 + jitter})">` +
+      return cast.shadows[i] + `<g transform="translate(${n(x)} ${n(y)}) rotate(${-30 + jitter})">` +
         `<rect x="${-len / 2}" y="-12" width="${len}" height="24" rx="12" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
         beads.join('') +
         `<rect x="${-len / 2 + 12}" y="-7" width="${len - 24}" height="4" rx="2" fill="#fff" opacity="0.4"/></g>`;
@@ -186,16 +220,23 @@ function listeria(id) {
     [[-26, -4], [-30, 4], [-38, -2], [-44, 3], [-52, -1]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2" fill="${shade(actin, 0.35)}" opacity="0.8"/>`).join('') +
     `<rect x="-18" y="-8" width="36" height="16" rx="8" fill="url(#${id}-rod)" stroke="${outline(rod)}" stroke-width="2.5"/>` +
     `<rect x="-12" y="-5" width="24" height="3" rx="1.5" fill="#fff" opacity="0.45"/></g>`;
+  const bugs = [[211, 68, -40], [100, 100, -150], [150, 170, 20]];
   return {
     defs: [
       K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
       K.cylinderGradient(`${id}-rod`, rod),
       `<linearGradient id="${id}-actin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${actin}" stop-opacity="0"/><stop offset="0.5" stop-color="${actin}" stop-opacity="0.8"/><stop offset="1" stop-color="${shade(actin, 0.1)}"/></linearGradient>`,
+      surfaceClip(id, 'host', `<path d="${K.smoothClosedPath(membrane)}"/>`),
     ],
     body: [
       `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus and the bacteria shade the cytoplasm beside them.
+      shadowsOn(id, 'host', [
+        paint => `<circle cx="82" cy="176" r="26" ${paint}/>`,
+        ...bugs.map(([x, y, deg]) => paint => `<rect x="-18" y="-8" width="36" height="16" rx="8" transform="translate(${x} ${y}) rotate(${deg})" ${paint}/>`),
+      ], host),
       `<circle cx="82" cy="176" r="26" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
-      bug(211, 68, -40), bug(100, 100, -150), bug(150, 170, 20),
+      ...bugs.map(b => bug(...b)),
     ],
   };
 }
@@ -264,16 +305,22 @@ function salmonella(id) {
       `<rect x="-14" y="-6" width="28" height="3" rx="1.5" fill="#fff" opacity="0.45"/></g>`;
   };
   const villi = E.microvilli.map(x => `M${x} 120V106`).join('');
+  const nuclei = [[76, 206, 24, 14], [184, 208, 22, 14]];
   const cell = d => `<path d="${d}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`;
   return {
-    defs: [K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.cylinderGradient(`${id}-rod`, neg)],
+    defs: [K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.cylinderGradient(`${id}-rod`, neg),
+      surfaceClip(id, 'cells', `<path d="${E.left}"/><path d="${E.right}"/>`)],
     body: [
       `<path d="${villi}" stroke="${shade(host, 0.32)}" stroke-width="7.5" stroke-linecap="round"/>`,
       `<path d="${villi}" stroke="${host}" stroke-width="4.5" stroke-linecap="round"/>`,
       cell(E.left), cell(E.right),
-      ...[[76, 206, 24, 14], [184, 208, 22, 14]].map(([x, y, rx, ry]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`),
+      shadowsOn(id, 'cells', nuclei.map(([x, y, rx, ry]) => paint => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" ${paint}/>`), host, { offset: [4, 5] }),
+      ...nuclei.map(([x, y, rx, ry]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`),
       // Inside the left cell, a bacterium in its Salmonella-containing vacuole.
       `<circle cx="78" cy="160" r="28" fill="${tint(host, 0.55)}" stroke="${shade(host, 0.3)}" stroke-width="1.8"/>`,
+      // The bacteria shade the cell beneath them.
+      shadowsOn(id, 'cells', [[78, 160, 30], [182, 92, -8]].map(([x, y, deg]) => paint =>
+        `<rect x="-21" y="-9" width="42" height="18" rx="9" transform="translate(${x} ${y}) rotate(${deg})" ${paint}/>`), host, { offset: [3, 5] }),
       rod(78, 160, 30, false),
       rod(182, 92, -8, false),
       rod(70, 56, 20, true),
@@ -330,10 +377,16 @@ function mycoplasma(id) {
     K.gloss(`${id}-gloss`, -9, -18, 8, 4) + `</g>`;
   return {
     defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5 }), K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }),
-      K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+      K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.glossGradient(`${id}-gloss`),
+      surfaceClip(id, 'cells', M.epithelium.map(d => `<path d="${d}"/>`).join(''))],
     body: [
       `<path d="${cilia}" fill="none" stroke="${shade(host, 0.35)}" stroke-width="2.5" stroke-linecap="round"/>`,
       ...M.epithelium.map(d => `<path d="${d}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`),
+      // The nuclei, and any organism touching the cells, shade the cytoplasm.
+      shadowsOn(id, 'cells', [
+        ...[[76, 206], [180, 206]].map(([x, y]) => paint => `<ellipse cx="${x}" cy="${y}" rx="22" ry="14" ${paint}/>`),
+        ...M.cells.map(([x, y, a, s]) => paint => `<path d="${M.flask}" transform="translate(${x} ${y}) rotate(${a}) scale(${s})" ${paint}/>`),
+      ], host, { offset: [4, 5] }),
       ...[[76, 206], [180, 206]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="22" ry="14" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`),
       ...M.cells.map(cell),
     ],
@@ -382,9 +435,10 @@ function clostridiumTetani(id) {
 
 function corynebacteriumDiphtheriae(id) {
   const base = C.gramPositive, D = K.DIPHTHERIAE, g = C.metachromaticGranule;
+  const cast = stackShadows(id, D.cells.map(([x, y, a]) => paint => `<path d="${D.club}" transform="translate(${n(x)} ${n(y)}) ${upright(a)}" ${paint}/>`), base);
   return {
-    defs: [K.cylinderGradient(`${id}-body`, base)],
-    body: D.cells.map(([x, y, a]) => `<g transform="translate(${n(x)} ${n(y)}) ${upright(a)}">` +
+    defs: [K.cylinderGradient(`${id}-body`, base), ...cast.defs],
+    body: D.cells.map(([x, y, a], i) => cast.shadows[i] + `<g transform="translate(${n(x)} ${n(y)}) ${upright(a)}">` +
       `<path d="${D.club}" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="2.5" stroke-linejoin="round"/>` +
       `<path d="M-22 -4L22 -6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>` +
       D.granules.map(([gx, gr]) => `<circle cx="${gx}" r="${gr}" fill="${g}" stroke="${shade(g, 0.3)}" stroke-width="1"/>`).join('') + `</g>`),
@@ -394,14 +448,22 @@ function corynebacteriumDiphtheriae(id) {
 function chlamydia(id) {
   const X = K.CHLAMYDIA, [cx, cy, R] = X.cell, [nx, ny, nrx, nry, na] = X.nucleus, [ix, iy, ir] = X.inclusion, { rbs, ebs } = X.bodies, host = C.hostCell;
   const eb = ([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3.6" fill="${C.elementaryBody}" stroke="${shade(C.elementaryBody, 0.35)}" stroke-width="0.8"/>`;
+  const membrane = K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 2.5 * Math.sin(5 * a + 1) + 1.5 * Math.sin(9 * a), 120));
   return {
     defs: [K.sphereGradient(`${id}-host`, host, { light: 0.5, dark: 0.08 }), K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }),
-      K.sphereGradient(`${id}-rb`, C.reticulateBody, { light: 0.5 }), K.glossGradient(`${id}-gloss`)],
+      K.sphereGradient(`${id}-rb`, C.reticulateBody, { light: 0.5 }), K.glossGradient(`${id}-gloss`),
+      surfaceClip(id, 'host', `<path d="${membrane}"/>`), surfaceClip(id, 'inclusion', `<circle cx="${ix}" cy="${iy}" r="${ir}"/>`)],
     body: [
-      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 2.5 * Math.sin(5 * a + 1) + 1.5 * Math.sin(9 * a), 120))}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}"/>`,
+      `<path d="${membrane}" fill="url(#${id}-host)" stroke="${shade(host, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus and the inclusion shade the cytoplasm; the reticulate bodies shade the inclusion.
+      shadowsOn(id, 'host', [
+        paint => `<ellipse cx="${nx}" cy="${ny}" rx="${nrx}" ry="${nry}" transform="rotate(${na} ${nx} ${ny})" ${paint}/>`,
+        paint => `<circle cx="${ix}" cy="${iy}" r="${ir}" ${paint}/>`,
+      ], host),
       `<ellipse cx="${nx}" cy="${ny}" rx="${nrx}" ry="${nry}" transform="rotate(${na} ${nx} ${ny})" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
       // The inclusion: reticulate bodies (larger, dividing) among elementary bodies (small, infectious).
       `<circle cx="${ix}" cy="${iy}" r="${ir}" fill="${C.inclusion}" stroke="${shade(C.inclusion, 0.3)}" stroke-width="2"/>`,
+      shadowsOn(id, 'inclusion', rbs.map(([x, y]) => paint => `<circle cx="${n(x)}" cy="${n(y)}" r="9" ${paint}/>`), C.inclusion, { offset: [2, 3], opacity: 0.22 }),
       ...rbs.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="9" fill="url(#${id}-rb)" stroke="${outline(C.reticulateBody)}" stroke-width="1.3"/>`),
       ...ebs.map(eb), ...X.outside.map(eb),
       K.gloss(`${id}-gloss`, 74, 74, 22, 9),
@@ -415,9 +477,12 @@ function borrelia(id) {
 
 function enterococcus(id) {
   const base = C.gramPositive, E = K.ENTEROCOCCUS;
+  const shapes = E.cocci.map(([x, y, a]) => paint => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${E.rx}" ry="${E.ry}" transform="rotate(${a} ${n(x)} ${n(y)})" ${paint}/>`);
+  const cast = stackShadows(id, shapes, base);
   return {
-    defs: [K.sphereGradient(`${id}-body`, base), K.glossGradient(`${id}-gloss`)],
-    body: E.cocci.map(([x, y, a]) => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${E.rx}" ry="${E.ry}" transform="rotate(${a} ${n(x)} ${n(y)})" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
+    defs: [K.sphereGradient(`${id}-body`, base), K.glossGradient(`${id}-gloss`), ...cast.defs],
+    body: E.cocci.map(([x, y], i) => cast.shadows[i] +
+      shapes[i](`fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"`) +
       K.gloss(`${id}-gloss`, x - 6, y - 7, 7, 4)),
   };
 }

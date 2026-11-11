@@ -91,7 +91,13 @@ thymus (septa dividing the lobes into lobules, front lobe shading the back one) 
 ligament, lower border rolling under). Both versions of the liver take their outline and
 falciform ligament from `LIVER` in the kit.
 
-Still to do by hand: add cast shadows icon by icon where objects overlap.
+Cast shadows are added a category at a time with two helpers at the top of the colour script:
+`stackShadows` (objects overlapping each other, such as cocci in a chain) and `surfaceClip` with
+`shadowsOn` (objects on one surface, such as a nucleus on its cell). Bacteria are done: streptococcus,
+enterococcus, M. tuberculosis, C. diphtheriae, listeria, salmonella, mycoplasma and chlamydia.
+Capsules are treated as a halo, not a surface, and spores inside a cell cast nothing.
+
+Still to do: cast shadows for the other categories.
 
 ## Ideas not yet done
 
