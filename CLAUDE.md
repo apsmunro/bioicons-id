@@ -85,8 +85,13 @@ The other people (newborn, baby, pregnant person, parent and baby) were then res
 way, keeping their poses so the single-colour versions still match. `joined` and `shadowOn` in
 the colour script draw merged outlines and cast shadows for people.
 
-Still to do by hand: give the early organs (lungs, spleen, thymus, liver) more surface detail,
-and add cast shadows icon by icon where objects overlap.
+The early organs then gained surface detail with unchanged outlines: lungs (fissures as grooves,
+a bronchial tree that narrows by generation), spleen (hilum groove, branching artery and vein),
+thymus (septa dividing the lobes into lobules, front lobe shading the back one) and liver (round
+ligament, lower border rolling under). The colour liver's outline has differed slightly from the
+single-colour one since the shading change.
+
+Still to do by hand: add cast shadows icon by icon where objects overlap.
 
 ## Ideas not yet done
 

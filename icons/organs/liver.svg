@@ -8,10 +8,15 @@
 <path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" fill="url(#liver-liver)"/>
 <g clip-path="url(#liver-in-liver)">
 <path d="M146 57C146 92 140 126 134 160L240 160L240 40Z" fill="url(#liver-step)"/>
+<path d="M226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112" fill="none" stroke="#441a21" stroke-width="26" opacity="0.1"/>
+<path d="M226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112" fill="none" stroke="#441a21" stroke-width="11" opacity="0.14"/>
+<path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94" fill="none" stroke="#e9c7bb" stroke-width="3" opacity="0.32" transform="translate(2 6)"/>
 <ellipse cx="90" cy="96" rx="46" ry="20" transform="rotate(-14 90 96)" fill="url(#liver-sheen)"/>
 <ellipse cx="182" cy="82" rx="26" ry="8" transform="rotate(6 182 82)" fill="url(#liver-sheen)"/>
 </g>
 <path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" fill="none" stroke="#6c2f30" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M134 158C133 168 135 177 139 186" fill="none" stroke="#915858" stroke-width="7" stroke-linecap="round"/>
+<path d="M134 158C133 168 135 177 139 186" fill="none" stroke="#deaea3" stroke-width="4" stroke-linecap="round"/>
 <path d="M146 57C146 92 140 126 134 160" fill="none" stroke="#793534" stroke-width="4.5" stroke-linecap="round" transform="translate(1 0)" opacity="0.8"/>
 <path d="M146 57C146 92 140 126 134 160" fill="none" stroke="#d4998e" stroke-width="2.5" stroke-linecap="round"/>
 </svg>

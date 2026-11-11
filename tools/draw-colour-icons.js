@@ -2577,9 +2577,13 @@ function kidneys(id) {
 }
 
 function liver(id) {
-  const base = C.liver, gb = C.gallbladder;
+  const base = C.liver, gb = C.gallbladder, cord = K.lift(base, 0.55);
   const outlinePath = 'M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z';
   const ligament = 'M146 57C146 92 140 126 134 160';
+  // The round ligament (ligamentum teres) leaves the free edge of the falciform ligament at the lower border.
+  const round = 'M134 158C133 168 135 177 139 186';
+  const lower = 'M226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112';
+  const dome = 'M34 112C32 76 78 54 138 56C186 57 226 70 226 94';
   return {
     defs: [
       K.formGradientAt(`${id}-liver`, base, 100, 90, 220, { light: 0.34, dark: 0.22 }), K.formGradient(`${id}-gb`, gb), K.glossGradient(`${id}-sheen`, 0.42),
@@ -2595,9 +2599,15 @@ function liver(id) {
       `<path d="${outlinePath}" fill="url(#${id}-liver)"/>`,
       `<g clip-path="url(#${id}-in-liver)">`,
       `<path d="${ligament}L240 160L240 40Z" fill="url(#${id}-step)"/>`,
+      // The surface rolls under at the sharp lower border and catches the light along the dome.
+      `<path d="${lower}" fill="none" stroke="${K.deepen(base, 0.75)}" stroke-width="26" opacity="0.1"/>`,
+      `<path d="${lower}" fill="none" stroke="${K.deepen(base, 0.75)}" stroke-width="11" opacity="0.14"/>`,
+      `<path d="${dome}" fill="none" stroke="${K.lift(base, 0.7)}" stroke-width="3" opacity="0.32" transform="translate(2 6)"/>`,
       K.sheen(`${id}-sheen`, 90, 96, 46, 20, -14), K.sheen(`${id}-sheen`, 182, 82, 26, 8, 6),
       `</g>`,
       `<path d="${outlinePath}" fill="none" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<path d="${round}" fill="none" stroke="${outline(cord)}" stroke-width="${4 + 2 * 1.5}" stroke-linecap="round"/>`,
+      `<path d="${round}" fill="none" stroke="${cord}" stroke-width="4" stroke-linecap="round"/>`,
       // Falciform ligament: a pale band with a fine dark edge on its shadowed side.
       `<path d="${ligament}" fill="none" stroke="${K.deepen(base, 0.4)}" stroke-width="4.5" stroke-linecap="round" transform="translate(1 0)" opacity="0.8"/>`,
       `<path d="${ligament}" fill="none" stroke="${K.lift(base, 0.42)}" stroke-width="2.5" stroke-linecap="round"/>`,
@@ -2724,35 +2734,80 @@ const SPLEEN = 'M48 168C40 112 82 52 148 42C190 36 214 58 210 84C206 96 190 96 1
 
 function spleen(id) {
   const base = C.spleen;
+  // The splenic artery and vein each divide into branches before they enter the hilum.
+  const artery = ['M226 182C206 172 192 160 180 146', 'M180 146C174 136 170 124 166 112', 'M180 146C170 146 160 148 150 152'];
+  const vein = ['M216 206C198 194 184 180 172 164', 'M172 164C164 154 158 142 154 130', 'M172 164C162 164 152 164 142 166'];
+  const hilum = 'M186 84C172 94 164 106 158 124C152 142 146 152 134 164';
+  const layers = (paths, w, paint) => paths.map(d => `<path d="${d}" fill="none" stroke-width="${w}" stroke-linecap="round" ${paint}/>`).join('');
+  // Outlines of every branch first, then the fills, so a vessel and its branches read as one.
+  const vessel = (paths, colour, w) => layers(paths, w + 2 * STROKE, `stroke="${outline(colour)}"`) + layers(paths, w, `stroke="${colour}"`) +
+    layers(paths, n(w * 0.3), `stroke="${K.deepen(colour, 0.3)}" opacity="0.5" transform="translate(${n(w * 0.2)} ${n(w * 0.2)})"`) +
+    layers(paths, n(w * 0.24), `stroke="${K.lift(colour, 0.7)}" opacity="0.6" transform="translate(${n(-w * 0.2)} ${n(-w * 0.2)})"`);
   return {
-    defs: [K.sphereGradient(`${id}-spleen`, base, { light: 0.4 }), K.glossGradient(`${id}-gloss`)],
+    defs: [
+      K.formGradientAt(`${id}-spleen`, base, 104, 88, 150, { light: 0.34, dark: 0.26 }), K.glossGradient(`${id}-gloss`, 0.5),
+      `<clipPath id="${id}-in-spleen"><path d="${SPLEEN}"/></clipPath>`,
+    ],
     body: [
-      `<path d="${SPLEEN}" fill="url(#${id}-spleen)" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<path d="M66 106L80 112M96 66L106 78" stroke="${outline(base)}" stroke-width="3" stroke-linecap="round"/>`,
-      K.pipe('M166 132C184 150 204 170 226 182', C.artery, 8),
-      K.pipe('M158 142C176 166 196 188 216 206', C.vein, 10),
-      K.gloss(`${id}-gloss`, 112, 82, 34, 13, -40),
+      `<path d="${SPLEEN}" fill="url(#${id}-spleen)"/>`,
+      `<g clip-path="url(#${id}-in-spleen)">`,
+      // The hilum: a shallow groove along the concave border, darker in its depth with a lit far edge.
+      `<path d="${hilum}" fill="none" stroke="${K.deepen(base, 0.7)}" stroke-width="20" stroke-linecap="round" opacity="0.22"/>`,
+      `<path d="${hilum}" fill="none" stroke="${K.deepen(base, 0.7)}" stroke-width="9" stroke-linecap="round" opacity="0.25"/>`,
+      `<path d="${hilum}" fill="none" stroke="${K.lift(base, 0.5)}" stroke-width="1.6" stroke-linecap="round" opacity="0.4" transform="translate(-10 -8)"/>`,
+      // The vessels shade the surface they cross.
+      layers([...artery, ...vein], 11, `stroke="${K.deepen(base, 0.8)}" opacity="0.2" transform="translate(3 6)"`),
+      K.sheen(`${id}-gloss`, 110, 84, 44, 18, -40),
+      `</g>`,
+      `<path d="${SPLEEN}" fill="none" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      // Notches on the superior border.
+      `<path d="M66 106L80 112M96 66L106 78" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linecap="round"/>`,
+      `<path d="M66 106L80 112M96 66L106 78" stroke="${K.lift(base, 0.5)}" stroke-width="1.2" stroke-linecap="round" opacity="0.45" transform="translate(1.5 2.5)"/>`,
+      vessel(vein, C.vein, 9), vessel(artery, C.artery, 7),
     ],
   };
 }
 
 function thymus(id) {
   const base = C.thymus;
-  // A lobulated lobe, wider at the bottom than the top.
-  const lobe = (cx, rot, seed) => K.smoothClosedPath(K.polarPoints(0, 0, a =>
-    K.ellipseRadius(30 + 8 * Math.max(0, Math.sin(a)), 86, a) + 2 * Math.sin(9 * a + seed), 120))
-    .replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => {
-      const r = rot * Math.PI / 180, [px, py] = [Number(x), Number(y)];
-      return `${n(cx + px * Math.cos(r) - py * Math.sin(r))} ${n(132 + px * Math.sin(r) + py * Math.cos(r))}`;
-    });
+  const rx = a => 30 + 8 * Math.max(0, Math.sin(a));
+  // A lobulated lobe, wider at the bottom than the top, placed by turning it about its centre.
+  const place = (cx, rot) => (px, py) => {
+    const r = rot * Math.PI / 180;
+    return [n(cx + px * Math.cos(r) - py * Math.sin(r)), n(132 + px * Math.sin(r) + py * Math.cos(r))];
+  };
+  const lobe = (cx, rot, seed) => K.smoothClosedPath(K.polarPoints(0, 0, a => K.ellipseRadius(rx(a), 86, a) + 2 * Math.sin(9 * a + seed), 120)
+    .map(([x, y]) => place(cx, rot)(x, y)));
+  // Septa: fine partitions running in from the capsule, dividing each lobe into lobules.
+  const septa = (cx, rot, seed) => {
+    const at = place(cx, rot), rand = K.rng(seed);
+    return Array.from({ length: 8 }, (_, i) => {
+      const side = i % 2 ? 1 : -1, y = -62 + i * 17.5 + (rand() - 0.5) * 10;
+      const half = (y > 0 ? 38 : 30) * Math.sqrt(Math.max(0, 1 - (y / 86) ** 2)), reach = 15 + rand() * 9;
+      const [x0, y0] = at(side * half, y), [x1, y1] = at(side * (half - reach * 0.55), y + 5), [x2, y2] = at(side * (half - reach), y - 4 + rand() * 14);
+      return `M${x0} ${y0}Q${x1} ${y1} ${x2} ${y2}`;
+    }).join('');
+  };
+  // The lobe on the left of the picture lies in front, so it shades the other.
+  const lobes = [[152, 8, 1.9, 23], [104, -8, 0.3, 11]].map(([cx, rot, seed, s]) => ({ d: lobe(cx, rot, seed), lines: septa(cx, rot, s), cx }));
   return {
-    defs: [K.sphereGradient(`${id}-thymus`, base, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
-    body: [
-      ...[[104, -8, 0.3], [152, 8, 1.9]].map(([cx, rot, seed]) =>
-        `<path d="${lobe(cx, rot, seed)}" fill="url(#${id}-thymus)" stroke="${outline(base)}" stroke-width="${STROKE}"/>`),
-      `<path d="M92 96C100 104 110 102 116 110M90 150C100 156 112 154 118 162M140 104C148 112 158 110 166 118M138 164C146 170 160 168 166 176" fill="none" stroke="${shade(base, 0.25)}" stroke-width="2" stroke-linecap="round" opacity="0.7"/>`,
-      K.gloss(`${id}-gloss`, 96, 84, 10, 22, 0), K.gloss(`${id}-gloss`, 144, 84, 10, 22, 0),
+    defs: [
+      ...lobes.map(({ cx }, i) => K.formGradientAt(`${id}-lobe-${i}`, base, cx - 12, 84, 130, { light: 0.4, dark: 0.24 })),
+      K.glossGradient(`${id}-gloss`, 0.45),
+      ...lobes.map(({ d }, i) => `<clipPath id="${id}-in-${i}"><path d="${d}"/></clipPath>`),
     ],
+    body: lobes.flatMap(({ d, lines, cx }, i) => [
+      `<path d="${d}" fill="url(#${id}-lobe-${i})"/>`,
+      `<g clip-path="url(#${id}-in-${i})">`,
+      i === 0 ? `<path d="${lobes[1].d}" transform="translate(5 6)" fill="${K.deepen(base, 0.75)}" opacity="0.24"/>` : '',
+      // Each septum is a shallow furrow: soft shadow, fine line, lit lower lip.
+      `<path d="${lines}" fill="none" stroke="${K.deepen(base, 0.7)}" stroke-width="6" stroke-linecap="round" opacity="0.1" transform="translate(0 2)"/>`,
+      `<path d="${lines}" fill="none" stroke="${shade(base, 0.36)}" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>`,
+      `<path d="${lines}" fill="none" stroke="${K.lift(base, 0.7)}" stroke-width="1.2" stroke-linecap="round" opacity="0.5" transform="translate(0 2)"/>`,
+      K.sheen(`${id}-gloss`, cx - 10, 86, 10, 26, 0),
+      `</g>`,
+      `<path d="${d}" fill="none" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
+    ]),
   };
 }
 
@@ -3362,19 +3417,33 @@ function lungs(id) {
   const base = C.lung, airway = tint(base, 0.35);
   const left = 'M112 92C98 74 72 76 56 100C38 128 32 178 36 214C38 232 54 238 72 232C92 226 108 222 116 210C121 172 120 124 112 92Z';
   const right = 'M144 92C158 74 184 76 200 100C218 128 224 178 220 214C218 232 202 238 184 232C164 226 148 222 140 210C148 198 152 186 146 172C140 158 136 124 144 92Z';
-  const tree = 'M108 120L84 150M96 134L70 126M84 150L66 186M84 150L98 192M70 126L56 114M66 186L54 206M98 192L104 214';
-  const mirror = d => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (m, x, y) => `${256 - Number(x)} ${y}`);
+  // The bronchial tree by generation, narrowing as it branches: [paths, width].
+  const tree = [['M108 120L84 150', 5.5], ['M96 134L70 126M84 150L66 186M84 150L98 192', 4],
+    ['M70 126L56 114M66 186L54 206M98 192L104 214M83 130L74 110M75 168L56 170', 2.6]];
+  // Fissures: horizontal and oblique in the right lung (on the left of the picture), oblique in the left lung.
+  const fissures = 'M40 150Q76 140 112 146M48 198Q84 170 114 126M216 196Q182 168 144 126';
+  const groove = (w, paint) => `<path d="${fissures}" fill="none" stroke-width="${w}" stroke-linecap="round" ${paint}/>`;
   return {
-    defs: [K.sphereGradient(`${id}-lung`, base, { light: 0.45 }), K.cylinderGradient(`${id}-trachea`, airway, { horizontal: true })],
+    defs: [
+      K.formGradientAt(`${id}-lung-r`, base, 68, 116, 150, { light: 0.4, dark: 0.22 }), K.formGradientAt(`${id}-lung-l`, base, 170, 112, 150, { light: 0.4, dark: 0.22 }),
+      K.cylinderGradient(`${id}-trachea`, airway, { horizontal: true }), K.glossGradient(`${id}-sheen`, 0.36),
+      `<clipPath id="${id}-in-lungs"><path d="${left}${right}"/></clipPath>`,
+    ],
     body: [
-      ...[left, right].map(d => `<path d="${d}" fill="url(#${id}-lung)" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`),
-      `<g fill="none" stroke="${shade(base, 0.3)}" stroke-width="2" stroke-linecap="round" opacity="0.6">` +
-      `<path d="M40 150Q76 140 112 146"/><path d="M48 198Q84 170 114 126"/><path d="M216 196Q182 168 144 126"/></g>`,
-      `<g fill="none" stroke="${tint(base, 0.6)}" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">` +
-      `<path d="${tree}" stroke-width="4"/><path d="${mirror(tree)}" stroke-width="4"/></g>`,
+      `<path d="${left}" fill="url(#${id}-lung-r)"/><path d="${right}" fill="url(#${id}-lung-l)"/>`,
+      `<g clip-path="url(#${id}-in-lungs)">`,
+      // Each lobe overhangs the one below: a soft shadow under every fissure.
+      groove(10, `stroke="${K.deepen(base, 0.7)}" opacity="0.13" transform="translate(0 5)"`),
+      K.sheen(`${id}-sheen`, 72, 112, 15, 26, 22), K.sheen(`${id}-sheen`, 180, 110, 13, 24, -14),
+      `</g>`,
+      `<g fill="none" stroke="${K.lift(base, 0.62)}" stroke-linecap="round" stroke-linejoin="round" opacity="0.88">` +
+      tree.map(([d, w]) => `<path d="${d}${K.mirrorX(d)}" stroke-width="${w}"/>`).join('') + `</g>`,
+      groove(1.8, `stroke="${shade(base, 0.36)}" opacity="0.8"`),
+      groove(1.4, `stroke="${K.lift(base, 0.7)}" opacity="0.5" transform="translate(0 2.2)"`),
+      ...[left, right].map(d => `<path d="${d}" fill="none" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`),
       K.pipe('M128 84L128 94Q128 104 116 112L106 122', airway, 10),
       K.pipe('M128 94Q128 104 140 112L150 122', airway, 10),
-      `<rect x="119" y="14" width="18" height="76" rx="6" fill="url(#${id}-trachea)" stroke="${outline(airway)}" stroke-width="2.5"/>`,
+      `<rect x="119" y="14" width="18" height="76" rx="6" fill="url(#${id}-trachea)" stroke="${outline(airway)}" stroke-width="${STROKE}"/>`,
       `<g stroke="${shade(airway, 0.25)}" stroke-width="1.5">` + Array.from({ length: 8 }, (_, i) => `<line x1="120" y1="${22 + i * 8}" x2="136" y2="${22 + i * 8}"/>`).join('') + `</g>`,
     ],
   };
