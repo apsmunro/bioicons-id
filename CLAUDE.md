@@ -72,6 +72,19 @@ The transmission icons (droplet, airborne, contact, faecal–oral, vector-borne,
 with the author as one SVG per route, built from the same few parts in `TRANSMISSION` (kit): neutral
 head-and-shoulders figures (no skin, so no tone versions), the route's agent, and `curvedArrow`.
 
+## Shading model (11 Nov 2026)
+
+All colour icons were moved to a second shading model, set in the kit: shadows mix towards a
+deep, slightly cooler tone of the base colour (`deepen`; `shade` is now the same thing), highlights
+towards a warm white (`lift`), a soft sheen replaces the bright gloss, outlines are 2.5 px, and
+overlapping objects cast soft shadows (`castGradient` plus clip paths; still no filters). Six icons
+were redrawn by hand to use it fully: staphylococcus, red blood cells, T cell, liver, kidneys and
+child. The other icons only inherited the new gradients and outlines.
+
+Still to do by hand: redraw the other people to match the new child (newborn, baby, pregnant
+person, parent and baby), give the early organs (lungs, spleen, thymus, liver) more surface
+detail, and add cast shadows icon by icon where objects overlap.
+
 ## Ideas not yet done
 
 - The globe has lines of latitude and longitude but no continents; drawing coastlines accurately

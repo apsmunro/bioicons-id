@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="iv-bag-title">
 <title id="iv-bag-title">IV infusion bag</title>
 <desc>Labelled infusion bag with drip chamber and giving set tubing.</desc>
-<defs><clipPath id="iv-bag-clip"><path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z"/></clipPath><linearGradient id="iv-bag-fluid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bee0f5"/><stop offset="0.5" stop-color="#9BD0EF"/><stop offset="1" stop-color="#8fbfdc"/></linearGradient></defs>
+<defs><clipPath id="iv-bag-clip"><path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z"/></clipPath><linearGradient id="iv-bag-fluid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bee0f5"/><stop offset="0.5" stop-color="#9BD0EF"/><stop offset="1" stop-color="#8dc1e2"/></linearGradient></defs>
 <path d="M114 10h28a6 6 0 0 1 6 6v18h-40v-18a6 6 0 0 1 6-6zM120 20a8 4 0 1 0 16 0a8 4 0 1 0 -16 0z" fill-rule="evenodd" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2.5"/>
 <rect x="117" y="194" width="9" height="16" rx="2" fill="#d1dbe3" stroke="#8DA6B8" stroke-width="1.5"/>
 <rect x="131" y="194" width="9" height="12" rx="2" fill="#d1dbe3" stroke="#8DA6B8" stroke-width="1.5"/>
@@ -19,6 +19,6 @@
 <rect x="98" y="118" width="46" height="4" rx="2" fill="#B8C6D1"/>
 <rect x="98" y="128" width="36" height="4" rx="2" fill="#B8C6D1"/>
 <rect x="98" y="138" width="42" height="4" rx="2" fill="#B8C6D1"/>
-<path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z" fill="none" stroke="#8DA6B8" stroke-width="3" stroke-linejoin="round"/>
+<path d="M76 48Q76 30 94 30L162 30Q180 30 180 48L180 166Q180 186 160 192L140 198L116 198L96 192Q76 186 76 166Z" fill="none" stroke="#8DA6B8" stroke-width="2.5" stroke-linejoin="round"/>
 <rect x="84" y="40" width="7" height="136" rx="3.5" fill="#fff" opacity="0.55"/>
 </svg>

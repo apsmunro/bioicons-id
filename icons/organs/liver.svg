@@ -2,9 +2,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="liver-title">
 <title id="liver-title">Liver</title>
 <desc>Liver with falciform ligament and gallbladder.</desc>
-<defs><radialGradient id="liver-liver" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d39892"/><stop offset="0.55" stop-color="#B5544A"/><stop offset="1" stop-color="#98473e"/></radialGradient><radialGradient id="liver-gb" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#cbe1c4"/><stop offset="0.55" stop-color="#7DB46C"/><stop offset="1" stop-color="#69975b"/></radialGradient><radialGradient id="liver-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
-<ellipse cx="110" cy="174" rx="14" ry="22" transform="rotate(-20 110 174)" fill="url(#liver-gb)" stroke="#4e7043" stroke-width="2.5"/>
-<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" fill="url(#liver-liver)" stroke="#70342e" stroke-width="3"/>
-<path d="M150 62C148 92 140 126 126 168" fill="none" stroke="#7f3b34" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-<ellipse cx="88" cy="96" rx="34" ry="14" transform="rotate(-30 88 96)" fill="url(#liver-gloss)"/>
+<defs><radialGradient id="liver-liver" gradientUnits="userSpaceOnUse" cx="100" cy="90" r="220"><stop offset="0" stop-color="#ce8c81"/><stop offset="0.3" stop-color="#B5544A"/><stop offset="0.8" stop-color="#94433e"/><stop offset="1" stop-color="#a44b44"/></radialGradient><radialGradient id="liver-gb" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#b8d3a6"/><stop offset="0.3" stop-color="#7DB46C"/><stop offset="0.8" stop-color="#65975b"/><stop offset="1" stop-color="#71a563"/></radialGradient><radialGradient id="liver-sheen"><stop offset="0" stop-color="#fff" stop-opacity="0.42"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><clipPath id="liver-in-liver"><path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z"/></clipPath><clipPath id="liver-in-gb"><ellipse cx="108" cy="180" rx="14" ry="22" transform="rotate(-20 108 180)"/></clipPath><linearGradient id="liver-step" gradientUnits="userSpaceOnUse" x1="140" y1="100" x2="196" y2="112"><stop offset="0" stop-color="#5a2629" stop-opacity="0.15"/><stop offset="1" stop-color="#5a2629" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="108" cy="180" rx="14" ry="22" transform="rotate(-20 108 180)" fill="url(#liver-gb)" stroke="#446e42" stroke-width="2.5"/>
+<path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" transform="translate(2 7)" fill="#2a4e2f" opacity="0.4" clip-path="url(#liver-in-gb)"/>
+<path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" fill="url(#liver-liver)"/>
+<g clip-path="url(#liver-in-liver)">
+<path d="M146 57C146 92 140 126 134 160L240 160L240 40Z" fill="url(#liver-step)"/>
+<ellipse cx="90" cy="96" rx="46" ry="20" transform="rotate(-14 90 96)" fill="url(#liver-sheen)"/>
+<ellipse cx="182" cy="82" rx="26" ry="8" transform="rotate(6 182 82)" fill="url(#liver-sheen)"/>
+</g>
+<path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" fill="none" stroke="#6c2f30" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M146 57C146 92 140 126 134 160" fill="none" stroke="#793534" stroke-width="4.5" stroke-linecap="round" transform="translate(1 0)" opacity="0.8"/>
+<path d="M146 57C146 92 140 126 134 160" fill="none" stroke="#d4998e" stroke-width="2.5" stroke-linecap="round"/>
 </svg>

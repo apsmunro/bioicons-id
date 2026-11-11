@@ -12,18 +12,29 @@ Every icon follows these rules so the set looks like one family on a slide.
 
 - Light always comes from the **top left**.
 - Each part has one base colour (see `PALETTE` in `tools/svg-kit.js`); highlights,
-  rims and outlines are derived from it:
-  - **Rounded bodies** (cells, cocci, virions, domains): `sphereGradient`. A pale highlight
-    top left, the base colour, and a slightly darker rim.
-  - **Rods, capsules, tubes**: `cylinderGradient` across the short axis.
-  - Optional soft white `gloss` ellipse top left.
-- Recessed or background parts use the base colour darkened by about 15%.
+  shadows and outlines are derived from it:
+  - **Highlights** go towards a warm white (`lift`).
+  - **Shadows** go towards a deep tone of the same colour, turned slightly towards blue-violet
+    (`deepen`), never towards black or grey.
+  - **Rounded bodies** (cells, cocci, virions, domains): `sphereGradient` or `formGradient`,
+    one gradient centred on the highlight: light, base colour, core shadow, then a little
+    reflected light at the far rim. `formGradientAt` places the same shading by hand on
+    irregular shapes such as organs.
+  - **Rods, capsules, tubes**: `cylinderGradient` across the short axis; `limbGradient` for
+    limbs and tapered parts.
+  - A broad, soft `sheen` (or `gloss`) top left. Keep it soft: no small bright spots.
+- Where one object lies over another, it casts a soft shadow on it: draw the upper shape
+  again, offset down and to the right, filled with a `castGradient` or a low-opacity deep
+  tone, and clipped to the shape beneath.
+- Recessed or background parts use the base colour deepened by about 12%.
 
 ## Lines
 
-- Main outline: 3 px, base colour darkened 38% (`outline()`).
+- Main outline: 2.5 px, a deep tone of the fill (`outline()`).
 - Inner detail (membranes, walls, connectors): 1–2 px.
 - Round line caps and joins.
+- Parts that belong together (an arm and its hand) share one outline: draw the outlines
+  first, then the fills on top.
 
 ## Colour conventions
 

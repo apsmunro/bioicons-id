@@ -2,13 +2,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="pneumococcus-title">
 <title id="pneumococcus-title">Pneumococcus</title>
 <desc>Lancet-shaped Gram-positive diplococci surrounded by a polysaccharide capsule.</desc>
-<defs><radialGradient id="pneumococcus-body" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#d1c5f0"/><stop offset="0.55" stop-color="#8B6FD9"/><stop offset="1" stop-color="#755db6"/></radialGradient><radialGradient id="pneumococcus-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="pneumococcus-body" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#c3b1e2"/><stop offset="0.3" stop-color="#8B6FD9"/><stop offset="0.8" stop-color="#7157b7"/><stop offset="1" stop-color="#7e63c8"/></radialGradient><radialGradient id="pneumococcus-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
 <g transform="translate(128 128) rotate(-30) scale(1.25)">
 <ellipse rx="82" ry="42" fill="#E6DEFA" opacity="0.85" stroke="#b4a1e6" stroke-width="2"/>
 <ellipse rx="74" ry="35" fill="none" stroke="#c5b7ec" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round"/>
-<path d="M-4 0C-4 -14 -15 -22 -30 -22C-46 -22 -60 -11 -62 0C-60 11 -46 22 -30 22C-15 22 -4 14 -4 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
-<path d="M4 0C4 -14 15 -22 30 -22C46 -22 60 -11 62 0C60 11 46 22 30 22C15 22 4 14 4 0Z" fill="url(#pneumococcus-body)" stroke="#564587" stroke-width="2.4"/>
-<ellipse cx="-30" cy="-10" rx="12" ry="5" transform="rotate(0 -30 -10)" fill="url(#pneumococcus-gloss)"/>
-<ellipse cx="30" cy="-10" rx="12" ry="5" transform="rotate(0 30 -10)" fill="url(#pneumococcus-gloss)"/>
+<path d="M-4 0C-4 -14 -15 -22 -30 -22C-46 -22 -60 -11 -62 0C-60 11 -46 22 -30 22C-15 22 -4 14 -4 0Z" fill="url(#pneumococcus-body)" stroke="#4e388a" stroke-width="2.4"/>
+<path d="M4 0C4 -14 15 -22 30 -22C46 -22 60 -11 62 0C60 11 46 22 30 22C15 22 4 14 4 0Z" fill="url(#pneumococcus-body)" stroke="#4e388a" stroke-width="2.4"/>
+<ellipse cx="-30" cy="-10" rx="15" ry="7.25" transform="rotate(0 -30 -10)" fill="url(#pneumococcus-gloss)"/>
+<ellipse cx="30" cy="-10" rx="15" ry="7.25" transform="rotate(0 30 -10)" fill="url(#pneumococcus-gloss)"/>
 </g>
 </svg>

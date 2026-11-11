@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="meninges-title">
 <title id="meninges-title">Meninges</title>
 <desc>Section through the scalp, skull, dura, arachnoid with trabeculae across the CSF-filled subarachnoid space, and the pia on the cortex, dipping into a sulcus.</desc>
-<defs><clipPath id="meninges-frame"><rect x="16" y="16" width="224" height="224" rx="14"/></clipPath><linearGradient id="meninges-bone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3d8bc"/><stop offset="0.25" stop-color="#f8f3e4"/><stop offset="0.6" stop-color="#F1E6C8"/><stop offset="1" stop-color="#bcb39c"/></linearGradient><linearGradient id="meninges-dura" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bd918a"/><stop offset="0.25" stop-color="#e4cdc9"/><stop offset="0.6" stop-color="#C99A93"/><stop offset="1" stop-color="#9d7873"/></linearGradient><radialGradient id="meninges-cortex" cx="0.45" cy="0.42" r="0.62" fx="0.33" fy="0.28"><stop offset="0" stop-color="#f7d4da"/><stop offset="0.55" stop-color="#F2B8C2"/><stop offset="1" stop-color="#dfa9b2"/></radialGradient></defs>
+<defs><clipPath id="meninges-frame"><rect x="16" y="16" width="224" height="224" rx="14"/></clipPath><linearGradient id="meninges-bone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3e8cc"/><stop offset="0.22" stop-color="#f7eed7"/><stop offset="0.55" stop-color="#F1E6C8"/><stop offset="0.88" stop-color="#ccb193"/><stop offset="1" stop-color="#decbae"/></linearGradient><linearGradient id="meninges-dura" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfa59e"/><stop offset="0.22" stop-color="#e0c1b8"/><stop offset="0.55" stop-color="#C99A93"/><stop offset="0.88" stop-color="#a47674"/><stop offset="1" stop-color="#b68883"/></linearGradient><radialGradient id="meninges-cortex" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#f6cccf"/><stop offset="0.3" stop-color="#F2B8C2"/><stop offset="0.8" stop-color="#e2a2b1"/><stop offset="1" stop-color="#eaadb9"/></radialGradient></defs>
 <g clip-path="url(#meninges-frame)">
 <rect x="16" y="16" width="224" height="16" fill="#E2A27E"/>
 <rect x="16" y="32" width="224" height="42" fill="url(#meninges-bone)"/>
@@ -34,14 +34,14 @@
 <ellipse cx="101.11" cy="53.67" rx="4.7" ry="3.24" fill="#e6aeae" opacity="0.8"/>
 <rect x="16" y="74" width="224" height="12" fill="url(#meninges-dura)"/>
 <rect x="16" y="86" width="224" height="154" fill="#BFE3F7"/>
-<path d="M40 93C45 99 35 107 41 116M66 93C71 99 61 107 67 116M96 93C101 99 91 107 97 116M158 93C163 99 153 107 159 116M188 93C193 99 183 107 189 116M216 93C221 99 211 107 217 116" fill="none" stroke="#baabba" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M16 91H240" stroke="#c5b6c5" stroke-width="3.5"/>
-<circle cx="196" cy="104" r="7" fill="#D9473F" stroke="#872c27" stroke-width="2"/>
+<path d="M40 93C45 99 35 107 41 116M66 93C71 99 61 107 67 116M96 93C101 99 91 107 97 116M158 93C163 99 153 107 159 116M188 93C193 99 183 107 189 116M216 93C221 99 211 107 217 116" fill="none" stroke="#c4adc5" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M16 91H240" stroke="#cdb7ce" stroke-width="3.5"/>
+<circle cx="196" cy="104" r="7" fill="#D9473F" stroke="#86242a" stroke-width="2"/>
 <path d="M16 126C40 116 70 116 92 122C108 126 116 134 120 150L124 194Q128 202 132 194L136 150C140 134 148 126 164 122C186 116 216 116 240 126L240 240L16 240Z" fill="url(#meninges-cortex)"/>
 <path d="M16 176C50 162 84 166 100 184C110 198 118 222 128 226C138 222 146 198 156 184C172 166 206 162 240 176L240 240L16 240Z" fill="#F8E1E4"/>
-<path d="M16 176C50 162 84 166 100 184C110 198 118 222 128 226C138 222 146 198 156 184C172 166 206 162 240 176" fill="none" stroke="#d5a2ab" stroke-width="1.5" opacity="0.7"/>
-<path d="M16 126C40 116 70 116 92 122C108 126 116 134 120 150L124 194Q128 202 132 194L136 150C140 134 148 126 164 122C186 116 216 116 240 126" fill="none" stroke="#9d787e" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M16 176C50 162 84 166 100 184C110 198 118 222 128 226C138 222 146 198 156 184C172 166 206 162 240 176" fill="none" stroke="#e09fae" stroke-width="1.5" opacity="0.7"/>
+<path d="M16 126C40 116 70 116 92 122C108 126 116 134 120 150L124 194Q128 202 132 194L136 150C140 134 148 126 164 122C186 116 216 116 240 126" fill="none" stroke="#bd6f88" stroke-width="2.5" stroke-linejoin="round"/>
 <path d="M16 32H240M16 74H240M16 86H240" stroke="#000" stroke-opacity="0.2" stroke-width="1.5"/>
 </g>
-<rect x="16" y="16" width="224" height="224" rx="14" fill="none" stroke="#6f5551" stroke-width="3"/>
+<rect x="16" y="16" width="224" height="224" rx="14" fill="none" stroke="#835759" stroke-width="2.5"/>
 </svg>

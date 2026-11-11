@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const STROKE = 3;
+const STROKE = 2.5;
 
 // The one colour used by single-colour icons; the gallery swaps it for the user's choice.
 const INK = '#000000';
@@ -298,38 +298,98 @@ function mix(a, b, t) {
   return rgbToHex(A.map((v, i) => v + (B[i] - v) * t));
 }
 
-const tint = (c, t) => mix(c, '#ffffff', t);
-const shade = (c, t) => mix(c, '#000000', t);
-const outline = c => shade(c, 0.38);
+function toHsl(hex) {
+  const [r, g, b] = hexToRgb(hex).map(v => v / 255);
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
+  if (!d) return [0, 0, l];
+  const s = d / (1 - Math.abs(2 * l - 1));
+  const h = max === r ? ((g - b) / d + 6) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  return [h * 60, s, l];
+}
 
-// Spherical shading: bright highlight top-left, base colour, darker rim.
-function sphereGradient(id, base, { light = 0.6, dark = 0.16, focus = [0.33, 0.28] } = {}) {
-  return `<radialGradient id="${id}" cx="0.45" cy="0.42" r="0.62" fx="${focus[0]}" fy="${focus[1]}">` +
-    `<stop offset="0" stop-color="${tint(base, light)}"/>` +
-    `<stop offset="0.55" stop-color="${base}"/>` +
-    `<stop offset="1" stop-color="${shade(base, dark)}"/></radialGradient>`;
+function fromHsl(h, s, l) {
+  const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = l - c / 2;
+  const [r, g, b] = [[c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]][Math.floor(h / 60) % 6];
+  return rgbToHex([r, g, b].map(v => (v + m) * 255));
+}
+
+// A colour's deep tone: much darker and turned a little towards blue-violet. Shadows are mixed
+// towards it (not towards black), so they stay coloured instead of going grey.
+const COOL_HUE = 265;
+function deepTone(colour) {
+  const [h, s, l] = toHsl(colour);
+  const turn = ((COOL_HUE - h + 540) % 360) - 180;
+  return fromHsl((h + turn * 0.18 + 360) % 360, Math.min(1, s * 1.1), l * 0.32);
+}
+
+const WARM_WHITE = '#FFF8EC';
+const tint = (c, t) => mix(c, '#ffffff', t);
+const lift = (c, t) => mix(c, WARM_WHITE, t); // highlight colour
+const deepen = (c, t) => mix(c, deepTone(c), Math.min(1, t * 1.25)); // shadow colour
+const shade = deepen;
+const outline = c => deepen(c, 0.48);
+
+const formStops = (base, light, dark) =>
+  `<stop offset="0" stop-color="${lift(base, light)}"/><stop offset="0.3" stop-color="${base}"/>` +
+  `<stop offset="0.8" stop-color="${deepen(base, dark)}"/><stop offset="1" stop-color="${deepen(base, dark * 0.5)}"/>`;
+
+// Form shading sized to the shape's own box and centred on the highlight (top left): light,
+// base colour, core shadow, then a little reflected light at the far rim.
+function formGradient(id, base, { light = 0.45, dark = 0.2, focus = [0.34, 0.3] } = {}) {
+  return `<radialGradient id="${id}" cx="${focus[0]}" cy="${focus[1]}" r="0.8">${formStops(base, light, dark)}</radialGradient>`;
+}
+
+// The same, placed by hand in canvas units: highlight at (x, y), fading to shadow at distance r.
+function formGradientAt(id, base, x, y, r, { light = 0.45, dark = 0.2 } = {}) {
+  return `<radialGradient id="${id}" gradientUnits="userSpaceOnUse" cx="${x}" cy="${y}" r="${r}">${formStops(base, light, dark)}</radialGradient>`;
+}
+
+// Spherical shading for rounded bodies. `light` and `dark` are on the scale the first icons were
+// drawn with (0.6 and 0.16 by default); they are converted to formGradient's.
+function sphereGradient(id, base, { light = 0.6, dark = 0.16, focus = [0.34, 0.3] } = {}) {
+  return formGradient(id, base, { light: light * 0.8, dark: dark * 1.3, focus });
 }
 
 // Cylinder shading across the short axis of a shape (top → bottom by default).
 function cylinderGradient(id, base, { horizontal = false } = {}) {
   const dir = horizontal ? 'x1="0" y1="0" x2="1" y2="0"' : 'x1="0" y1="0" x2="0" y2="1"';
   return `<linearGradient id="${id}" ${dir}>` +
-    `<stop offset="0" stop-color="${shade(base, 0.06)}"/>` +
-    `<stop offset="0.25" stop-color="${tint(base, 0.5)}"/>` +
-    `<stop offset="0.6" stop-color="${base}"/>` +
-    `<stop offset="1" stop-color="${shade(base, 0.22)}"/></linearGradient>`;
+    `<stop offset="0" stop-color="${lift(base, 0.12)}"/>` +
+    `<stop offset="0.22" stop-color="${lift(base, 0.42)}"/>` +
+    `<stop offset="0.55" stop-color="${base}"/>` +
+    `<stop offset="0.88" stop-color="${deepen(base, 0.24)}"/>` +
+    `<stop offset="1" stop-color="${deepen(base, 0.12)}"/></linearGradient>`;
 }
 
-function glossGradient(id) {
-  return `<radialGradient id="${id}"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/>` +
+// Left-to-right shading for limbs and other tapered parts.
+function limbGradient(id, base) {
+  return `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0">` +
+    `<stop offset="0" stop-color="${lift(base, 0.22)}"/><stop offset="0.4" stop-color="${base}"/>` +
+    `<stop offset="1" stop-color="${deepen(base, 0.24)}"/></linearGradient>`;
+}
+
+function glossGradient(id, strength = 0.62) {
+  return `<radialGradient id="${id}"><stop offset="0" stop-color="#fff" stop-opacity="${strength}"/>` +
     `<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>`;
 }
 
-// Soft specular highlight.
-function gloss(gradId, cx, cy, rx, ry, rotate = -30) {
+// A shadow with a soft edge, for one object lying over another: solid in the middle, fading
+// out over the outer part. Draw the caster's shape with it, offset down and right, clipped to
+// whatever lies beneath.
+function castGradient(id, colour, strength = 0.3, core = 0.6) {
+  return `<radialGradient id="${id}">` +
+    `<stop offset="0" stop-color="${colour}" stop-opacity="${strength}"/><stop offset="${core}" stop-color="${colour}" stop-opacity="${strength}"/>` +
+    `<stop offset="1" stop-color="${colour}" stop-opacity="0"/></radialGradient>`;
+}
+
+// Soft sheen: an ellipse filled with a glossGradient, exactly the size given.
+function sheen(gradId, cx, cy, rx, ry, rotate = -30) {
   const [x, y] = [round(cx), round(cy)];
   return `<ellipse cx="${x}" cy="${y}" rx="${round(rx)}" ry="${round(ry)}" transform="rotate(${rotate} ${x} ${y})" fill="url(#${gradId})"/>`;
 }
+
+// The highlight of the first icons, which gave a small bright ellipse: drawn broader and softer.
+const gloss = (gradId, cx, cy, rx, ry, rotate) => sheen(gradId, cx, cy, rx * 1.25, ry * 1.45, rotate);
 
 // Smooth paths through points (Catmull–Rom converted to cubic Béziers).
 function smoothClosedPath(pts) {
@@ -1422,10 +1482,11 @@ const beanPath = side => {
 
 // A tube (hypha, limb, airway) drawn as layered strokes: outline, body colour, soft highlight.
 function pipe(d, colour, width) {
-  const common = `d="${d}" fill="none" stroke-linecap="round" stroke-linejoin="round"`;
-  return `<path ${common} stroke="${outline(colour)}" stroke-width="${width + 5}"/>` +
+  const common = `d="${d}" fill="none" stroke-linecap="round" stroke-linejoin="round"`, o = round(width * 0.2);
+  return `<path ${common} stroke="${outline(colour)}" stroke-width="${width + 2 * STROKE}"/>` +
     `<path ${common} stroke="${colour}" stroke-width="${width}"/>` +
-    `<path ${common} stroke="#fff" stroke-width="${round(Math.max(1.5, width * 0.22))}" opacity="0.4" transform="translate(${round(-width * 0.18)} ${round(-width * 0.18)})"/>`;
+    `<path ${common} stroke="${deepen(colour, 0.3)}" stroke-width="${round(width * 0.3)}" opacity="0.5" transform="translate(${o} ${o})"/>` +
+    `<path ${common} stroke="${lift(colour, 0.7)}" stroke-width="${round(Math.max(1.5, width * 0.22))}" opacity="0.6" transform="translate(${-o} ${-o})"/>`;
 }
 
 // Mirror an absolute-coordinate path ("x y" pairs only) left–right across the canvas centre.
@@ -1533,6 +1594,7 @@ function writeIcon(root, file, svg) {
 module.exports = {
   STROKE, INK, PALETTE, round, mix, tint, shade, outline,
   sphereGradient, cylinderGradient, glossGradient, gloss,
+  lift, deepen, formGradient, formGradientAt, limbGradient, castGradient, sheen,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
   pointsAlongBezier, densify, resample, splitSubpaths, ORGANS, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
   SKIN_TONES, PSEUDOMONAS_CELLS, ENTEROCYTES, CDIFF, sporulatingRod, HIV_CAPSID, CRYPTOCOCCUS_CELLS, GIARDIA, CONJUGATION, toGlobal, TLR,
