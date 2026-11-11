@@ -2578,8 +2578,7 @@ function kidneys(id) {
 
 function liver(id) {
   const base = C.liver, gb = C.gallbladder, cord = K.lift(base, 0.55);
-  const outlinePath = 'M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z';
-  const ligament = 'M146 57C146 92 140 126 134 160';
+  const { outline: outlinePath, ligament } = K.LIVER;
   // The round ligament (ligamentum teres) leaves the free edge of the falciform ligament at the lower border.
   const round = 'M134 158C133 168 135 177 139 186';
   const lower = 'M226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112';

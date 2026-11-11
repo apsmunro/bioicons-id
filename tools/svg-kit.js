@@ -1558,6 +1558,12 @@ function calicivirusPoints() {
   };
 }
 
+// Liver from the front: its outline and the falciform ligament, shared by both versions of the icon.
+const LIVER = {
+  outline: 'M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z',
+  ligament: 'M146 57C146 92 140 126 134 160',
+};
+
 // Deterministic pseudo-random numbers (mulberry32), so regenerated icons are identical.
 function rng(seed) {
   let a = seed >>> 0;
@@ -1606,5 +1612,5 @@ module.exports = {
   curvedArrow, straightArrow, scatter, CHLAMYDIA, BORRELIA, borreliaPath, ENTEROCOCCUS, HEPATITIS_C, hcvRna, CMV_CELL, LEISHMANIA,
   GERMINAL_CENTRE, TH_SUBSETS, subsetCytokines, cytokineShape, INTERFERON, COMPLEMENT, bouquet, FC_RECEPTOR, MRSA, CARBAPENEMASE,
   STEWARDSHIP, HEART_VALVE, vegetationPath, MENINGES, PIPETTE, WELL_PLATE, platePoint, plateWells, CENTRIFUGE, rotorSlots, ORS,
-  sachetPath, dropPath, TRANSMISSION,
+  sachetPath, dropPath, TRANSMISSION, LIVER,
 };

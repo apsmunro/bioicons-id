@@ -3,7 +3,7 @@
 <title id="liver-mono-title">Liver (single colour)</title>
 <desc>Liver with falciform ligament and gallbladder.</desc>
 <defs></defs>
-<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M150 66C148 94 140 126 128 160" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 112C32 76 78 54 138 56C186 57 226 70 226 94C226 106 214 114 198 122C176 133 158 142 140 157C112 178 88 190 68 182C46 172 36 144 34 112Z" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M146 57C146 92 140 126 134 160" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <ellipse cx="108" cy="188" rx="12" ry="16" transform="rotate(-20 108 188)" fill="#000000"/>
 </svg>

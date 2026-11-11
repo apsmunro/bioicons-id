@@ -1695,8 +1695,8 @@ function kidneys() {
 
 function liver() {
   return [
-    `<path d="M38 108C36 74 86 58 150 60C198 62 228 76 222 98C216 122 178 148 138 166C114 176 88 182 70 172C46 158 40 134 38 108Z" ${line(LINE)}/>`,
-    `<path d="M150 66C148 94 140 126 128 160" ${line(4)}/>`,
+    `<path d="${K.LIVER.outline}" ${line(LINE)}/>`,
+    `<path d="${K.LIVER.ligament}" ${line(4)}/>`,
     `<ellipse cx="108" cy="188" rx="12" ry="16" transform="rotate(-20 108 188)" ${solid}/>`,
   ];
 }

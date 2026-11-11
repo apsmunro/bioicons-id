@@ -88,8 +88,8 @@ the colour script draw merged outlines and cast shadows for people.
 The early organs then gained surface detail with unchanged outlines: lungs (fissures as grooves,
 a bronchial tree that narrows by generation), spleen (hilum groove, branching artery and vein),
 thymus (septa dividing the lobes into lobules, front lobe shading the back one) and liver (round
-ligament, lower border rolling under). The colour liver's outline has differed slightly from the
-single-colour one since the shading change.
+ligament, lower border rolling under). Both versions of the liver take their outline and
+falciform ligament from `LIVER` in the kit.
 
 Still to do by hand: add cast shadows icon by icon where objects overlap.
 
