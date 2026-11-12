@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="dengue-title">
 <title id="dengue-title">Dengue virus</title>
 <desc>Mature flavivirus with its smooth surface of E-protein dimers lying flat in a herringbone of rafts, coloured by domain (I red, II yellow, III blue); also stands for Zika, yellow fever and other flaviviruses.</desc>
-<defs><radialGradient id="dengue-env" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#dadfe9"/><stop offset="0.3" stop-color="#C9D3E8"/><stop offset="0.8" stop-color="#9fa9c6"/><stop offset="1" stop-color="#b4bed7"/></radialGradient><radialGradient id="dengue-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="dengue-env" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#C9D3E8"/><stop offset="0" stop-color="#dadfe9"/><stop offset="0.3" stop-color="#C9D3E8"/><stop offset="0.8" stop-color="#9fa9c6"/><stop offset="1" stop-color="#b4bed7"/></radialGradient></defs>
 <circle cx="128" cy="128" r="84" fill="url(#dengue-env)"/>
 <polygon points="95.77,204.98 102.53,207.87 110,210.05 117.99,211.3 126.23,211.5 123.74,210.82 115.39,210.62 107.33,209.34 99.84,207.13 93.1,204.2" fill="#b98030" stroke="#8b5923" stroke-width="0.8" stroke-linejoin="round"/>
 <polygon points="159.12,50.21 160.92,50.87 162.66,51.57 164.35,52.31 165.98,53.09 163.42,51.88 161.77,51.1 160.07,50.36 158.31,49.66 156.5,49.01" fill="#6083bc" stroke="#455f8e" stroke-width="0.8" stroke-linejoin="round"/>
@@ -274,5 +274,5 @@
 <polygon points="156.24,112.59 148.48,115.3 139.96,118.35 130.93,121.64 121.73,125.07 123.59,130.1 132.82,126.65 141.84,123.27 150.32,120.1 158.03,117.2" fill="#e3bd75" stroke="#b2834f" stroke-width="0.8" stroke-linejoin="round"/>
 <polygon points="149.79,121.33 145.69,122.88 141.44,124.49 137.05,126.13 132.58,127.81 134.44,132.83 138.9,131.13 143.25,129.44 147.48,127.79 151.55,126.17" fill="#cf7474" stroke="#9f5258" stroke-width="0.8" stroke-linejoin="round"/>
 <circle cx="128" cy="128" r="84" fill="none" stroke="#687299" stroke-width="2.5"/>
-<ellipse cx="94" cy="88" rx="30" ry="14.5" transform="rotate(-30 94 88)" fill="url(#dengue-gloss)"/>
+<g fill="#fff" fill-opacity="0.114" transform="rotate(-30 94 88)"><ellipse cx="94" cy="88" rx="30" ry="14.5"/><ellipse cx="94" cy="88" rx="25.8" ry="12.47"/><ellipse cx="94" cy="88" rx="21.6" ry="10.44"/><ellipse cx="94" cy="88" rx="17.4" ry="8.41"/><ellipse cx="94" cy="88" rx="13.2" ry="6.38"/><ellipse cx="94" cy="88" rx="9" ry="4.35"/><ellipse cx="94" cy="88" rx="4.8" ry="2.32"/></g>
 </svg>

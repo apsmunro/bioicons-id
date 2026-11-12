@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="tick-title">
 <title id="tick-title">Tick</title>
 <desc>Hard (ixodid) tick from above: mouthparts at the front, a dark dorsal shield, and four pairs of legs.</desc>
-<defs><radialGradient id="tick-body" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#d0977a"/><stop offset="0.3" stop-color="#B5603A"/><stop offset="0.8" stop-color="#964b30"/><stop offset="1" stop-color="#a55635"/></radialGradient><radialGradient id="tick-scutum" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#7d6b5f"/><stop offset="0.3" stop-color="#4A3428"/><stop offset="0.8" stop-color="#3d2a21"/><stop offset="1" stop-color="#442f24"/></radialGradient><radialGradient id="tick-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="tick-body" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#B5603A"/><stop offset="0" stop-color="#d0977a"/><stop offset="0.3" stop-color="#B5603A"/><stop offset="0.8" stop-color="#964b30"/><stop offset="1" stop-color="#a55635"/></radialGradient><radialGradient id="tick-scutum" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#4A3428"/><stop offset="0" stop-color="#7d6b5f"/><stop offset="0.3" stop-color="#4A3428"/><stop offset="0.8" stop-color="#3d2a21"/><stop offset="1" stop-color="#442f24"/></radialGradient></defs>
 <path d="M90 104L62 88L48 60L44 40M84 120L54 112L36 98L24 92M84 140L52 150L34 168L26 178M90 160L62 184L50 210L44 228M166 104L194 88L208 60L212 40M172 120L202 112L220 98L232 92M172 140L204 150L222 168L230 178M166 160L194 184L206 210L212 228" fill="none" stroke="#2c1c17" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M90 104L62 88L48 60L44 40M84 120L54 112L36 98L24 92M84 140L52 150L34 168L26 178M90 160L62 184L50 210L44 228M166 104L194 88L208 60L212 40M172 120L202 112L220 98L232 92M172 140L204 150L222 168L230 178M166 160L194 184L206 210L212 228" fill="none" stroke="#655248" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="62" cy="88" r="3.5" fill="#6e5d53"/>
@@ -28,6 +28,6 @@
 <ellipse cx="128" cy="152" rx="50" ry="62" fill="url(#tick-body)" stroke="#6c3122" stroke-width="2.5"/>
 <ellipse cx="128" cy="156" rx="41" ry="52" fill="none" stroke="#974c30" stroke-width="1.5" opacity="0.7"/>
 <path d="M98 98C98 84 112 80 128 80C144 80 158 84 158 98C158 120 146 138 128 142C110 138 98 120 98 98Z" fill="url(#tick-scutum)" stroke="#2c1c17" stroke-width="2"/>
-<ellipse cx="112" cy="98" rx="12.5" ry="7.25" transform="rotate(-30 112 98)" fill="url(#tick-gloss)"/>
-<ellipse cx="104" cy="170" rx="11.25" ry="23.2" transform="rotate(15 104 170)" fill="url(#tick-gloss)"/>
+<g fill="#fff" fill-opacity="0.131" transform="rotate(-30 112 98)"><ellipse cx="112" cy="98" rx="12.5" ry="7.25"/><ellipse cx="112" cy="98" rx="10.4" ry="6.03"/><ellipse cx="112" cy="98" rx="8.3" ry="4.81"/><ellipse cx="112" cy="98" rx="6.2" ry="3.6"/><ellipse cx="112" cy="98" rx="4.1" ry="2.38"/><ellipse cx="112" cy="98" rx="2" ry="1.16"/></g>
+<g fill="#fff" fill-opacity="0.131" transform="rotate(15 104 170)"><ellipse cx="104" cy="170" rx="11.25" ry="23.2"/><ellipse cx="104" cy="170" rx="9.36" ry="19.3"/><ellipse cx="104" cy="170" rx="7.47" ry="15.4"/><ellipse cx="104" cy="170" rx="5.58" ry="11.51"/><ellipse cx="104" cy="170" rx="3.69" ry="7.61"/><ellipse cx="104" cy="170" rx="1.8" ry="3.71"/></g>
 </svg>

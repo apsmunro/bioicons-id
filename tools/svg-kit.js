@@ -368,24 +368,38 @@ function limbGradient(id, base) {
     `<stop offset="1" stop-color="${deepen(base, 0.24)}"/></linearGradient>`;
 }
 
+// A soft-edged ellipse built from plain ellipses nested inside one another, each a little
+// opaque, so it reaches `strength` in the middle. A radial gradient fading to transparent would
+// be smoother, but PowerPoint's Convert to Shape turns one into a solid patch.
+// core: the inner fraction that is at full strength; toward: where the middle sits, as a
+// fraction of the radii off centre (for a highlight or dip that is not central).
+function softEllipse(cx, cy, rx, ry, colour, strength, { rotate = 0, core = 0, toward = [0, 0] } = {}) {
+  const steps = Math.max(6, Math.min(16, Math.ceil(Math.max(rx, ry) * strength / 2.5))), alpha = 1 - Math.pow(1 - strength, 1 / steps);
+  const inner = Math.max(core, 0.16);
+  const rings = Array.from({ length: steps }, (_, i) => {
+    const t = i / (steps - 1), k = 1 - t * (1 - inner);
+    return `<ellipse cx="${round(cx + toward[0] * rx * t)}" cy="${round(cy + toward[1] * ry * t)}" rx="${round(rx * k)}" ry="${round(ry * k)}"/>`;
+  }).join('');
+  const turn = rotate ? ` transform="rotate(${rotate} ${round(cx)} ${round(cy)})"` : '';
+  return `<g fill="${colour}" fill-opacity="${Math.round(alpha * 1000) / 1000}"${turn}>${rings}</g>`;
+}
+
+// The strength of a sheen, registered under an id in an icon's defs and looked up by sheen().
+// It adds nothing to the SVG.
+const SHEENS = new Map();
 function glossGradient(id, strength = 0.62) {
-  return `<radialGradient id="${id}"><stop offset="0" stop-color="#fff" stop-opacity="${strength}"/>` +
-    `<stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>`;
+  SHEENS.set(id, strength);
+  return '';
 }
 
 // A shadow with a soft edge, for one object lying over another: solid in the middle, fading
 // out over the outer part. Draw the caster's shape with it, offset down and right, clipped to
 // whatever lies beneath.
-function castGradient(id, colour, strength = 0.3, core = 0.6) {
-  return `<radialGradient id="${id}">` +
-    `<stop offset="0" stop-color="${colour}" stop-opacity="${strength}"/><stop offset="${core}" stop-color="${colour}" stop-opacity="${strength}"/>` +
-    `<stop offset="1" stop-color="${colour}" stop-opacity="0"/></radialGradient>`;
-}
+const castShadow = (cx, cy, rx, ry, colour, strength = 0.3, core = 0.6, options = {}) => softEllipse(cx, cy, rx, ry, colour, strength, { core, ...options });
 
-// Soft sheen: an ellipse filled with a glossGradient, exactly the size given.
+// Soft sheen: a white softEllipse exactly the size given, at the strength registered for gradId.
 function sheen(gradId, cx, cy, rx, ry, rotate = -30) {
-  const [x, y] = [round(cx), round(cy)];
-  return `<ellipse cx="${x}" cy="${y}" rx="${round(rx)}" ry="${round(ry)}" transform="rotate(${rotate} ${x} ${y})" fill="url(#${gradId})"/>`;
+  return softEllipse(cx, cy, rx, ry, '#fff', (SHEENS.get(gradId) || 0.62) * 0.92, { rotate });
 }
 
 // The highlight of the first icons, which gave a small bright ellipse: drawn broader and softer.
@@ -1600,7 +1614,7 @@ function writeIcon(root, file, svg) {
 module.exports = {
   STROKE, INK, PALETTE, round, mix, tint, shade, outline,
   sphereGradient, cylinderGradient, glossGradient, gloss,
-  lift, deepen, formGradient, formGradientAt, limbGradient, castGradient, sheen,
+  lift, deepen, formGradient, formGradientAt, limbGradient, castShadow, softEllipse, sheen,
   smoothClosedPath, smoothOpenPath, polarPoints, wrapAngle, stadiumPoint, wavePoints,
   pointsAlongBezier, densify, resample, splitSubpaths, ORGANS, STREP_CHAIN, BIOFILM_CELLS, lancetPath, beanPath, pipe, mirrorX, ellipseRadius, circlePath, vec, icosahedron, rng, svgDocument, writeIcon,
   SKIN_TONES, PSEUDOMONAS_CELLS, ENTEROCYTES, CDIFF, sporulatingRod, HIV_CAPSID, CRYPTOCOCCUS_CELLS, GIARDIA, CONJUGATION, toGlobal, TLR,

@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="hepatitis-b-title">
 <title id="hepatitis-b-title">Hepatitis B virus</title>
 <desc>Dane particle: an envelope studded with surface antigen (HBsAg) around an icosahedral core (HBcAg) holding partly double-stranded circular DNA and its polymerase.</desc>
-<defs><radialGradient id="hepatitis-b-env" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#f8d5c4"/><stop offset="0.3" stop-color="#F2B5A0"/><stop offset="0.8" stop-color="#d2897b"/><stop offset="1" stop-color="#e29f8e"/></radialGradient><radialGradient id="hepatitis-b-ag" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#aab9e1"/><stop offset="0.3" stop-color="#5B7FD6"/><stop offset="0.8" stop-color="#4865b3"/><stop offset="1" stop-color="#5172c5"/></radialGradient><radialGradient id="hepatitis-b-gloss"><stop offset="0" stop-color="#fff" stop-opacity="0.62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="hepatitis-b-env" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#F2B5A0"/><stop offset="0" stop-color="#f8d5c4"/><stop offset="0.3" stop-color="#F2B5A0"/><stop offset="0.8" stop-color="#d2897b"/><stop offset="1" stop-color="#e29f8e"/></radialGradient><radialGradient id="hepatitis-b-ag" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#5B7FD6"/><stop offset="0" stop-color="#aab9e1"/><stop offset="0.3" stop-color="#5B7FD6"/><stop offset="0.8" stop-color="#4865b3"/><stop offset="1" stop-color="#5172c5"/></radialGradient></defs>
 <g transform="translate(128 128)">
 <g transform="rotate(3)"><line x1="0" y1="-70" x2="0" y2="-78" stroke="#3f5aa4" stroke-width="3" stroke-linecap="round"/><ellipse cy="-82" rx="4.5" ry="5" fill="url(#hepatitis-b-ag)" stroke="#2f4386" stroke-width="1.2"/></g>
 <g transform="rotate(13)"><line x1="0" y1="-70" x2="0" y2="-78" stroke="#3f5aa4" stroke-width="3" stroke-linecap="round"/><ellipse cy="-82" rx="4.5" ry="5" fill="url(#hepatitis-b-ag)" stroke="#2f4386" stroke-width="1.2"/></g>
@@ -84,5 +84,5 @@
 <path d="M-24.17 6.39A25 25 0 1 1 19.12 16.11" fill="none" stroke="#a589d4" stroke-width="3" stroke-linecap="round"/>
 <circle cx="19.12" cy="16.11" r="5" fill="#9C7FD9" stroke="#59408c" stroke-width="1.2"/>
 </g>
-<ellipse cx="94" cy="86" rx="25" ry="13.05" transform="rotate(-30 94 86)" fill="url(#hepatitis-b-gloss)"/>
+<g fill="#fff" fill-opacity="0.131" transform="rotate(-30 94 86)"><ellipse cx="94" cy="86" rx="25" ry="13.05"/><ellipse cx="94" cy="86" rx="20.8" ry="10.86"/><ellipse cx="94" cy="86" rx="16.6" ry="8.67"/><ellipse cx="94" cy="86" rx="12.4" ry="6.47"/><ellipse cx="94" cy="86" rx="8.2" ry="4.28"/><ellipse cx="94" cy="86" rx="4" ry="2.09"/></g>
 </svg>

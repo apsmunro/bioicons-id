@@ -138,7 +138,21 @@ culture plates.
 Browser screenshots time out often. A reliable way to check icons is to put them on a slide with
 pptxgenjs and have the installed PowerPoint export it as a PNG (COM automation from PowerShell); this
 also proves they render in PowerPoint. PowerPoint for Windows renders all 163 icons correctly;
-Convert to Shape, Keynote and older Office are untested.
+Keynote and older Office are untested.
+
+## Convert to Shape (12 Nov 2026)
+
+The author tested PowerPoint's Convert to Shape and found shadows spilling and highlights turning
+solid white. STYLE.md's technical rules record what PowerPoint keeps and drops. The fix has two
+parts: `softEllipse` in the kit (sheens, soft shadows and dips as nested plain ellipses;
+`glossGradient` now only registers a sheen's strength), and `tools/convert-safe.js`, applied to
+every colour icon as it is written, which cuts clipped shapes to their outline with `paper` and
+`paperjs-offset` (dev dependencies: run `npm install` before `npm run all`). Two clip paths remain,
+in the meninges and the Gram stain slide; single-colour icons are not processed.
+
+Conversion can be run by automation (select the picture, `ExecuteMso('ObjectsUngroup')`), but
+PowerPoint shows a confirmation dialog that someone must click, and complex icons take about a
+minute each. Do not send keystrokes to the author's PowerPoint to answer it.
 
 ## Ideas not yet done
 

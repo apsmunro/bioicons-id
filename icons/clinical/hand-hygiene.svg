@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="hand-hygiene-title">
 <title id="hand-hygiene-title">Hand hygiene</title>
 <desc>An open hand among soap bubbles and water drops.</desc>
-<defs><radialGradient id="hand-hygiene-skin" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80"><stop offset="0" stop-color="#e6c1a9"/><stop offset="0.55" stop-color="#D9A07A"/><stop offset="1" stop-color="#bf8566"/></radialGradient></defs>
+<defs><radialGradient id="hand-hygiene-skin" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80"><stop offset="0" stop-color="#D9A07A"/><stop offset="0" stop-color="#e6c1a9"/><stop offset="0.55" stop-color="#D9A07A"/><stop offset="1" stop-color="#bf8566"/></radialGradient></defs>
 <path d="M100 122L96 50" stroke="#8b4e3d" stroke-width="23" stroke-linecap="round"/>
 <path d="M120 116L122 36" stroke="#8b4e3d" stroke-width="23" stroke-linecap="round"/>
 <path d="M140 118L148 46" stroke="#8b4e3d" stroke-width="23" stroke-linecap="round"/>

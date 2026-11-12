@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="hand-hygiene-brown-title">
 <title id="hand-hygiene-brown-title">Hand hygiene (brown skin tone)</title>
 <desc>An open hand among soap bubbles and water drops.</desc>
-<defs><radialGradient id="hand-hygiene-brown-skin" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80"><stop offset="0" stop-color="#c6a38a"/><stop offset="0.55" stop-color="#A8714B"/><stop offset="1" stop-color="#915f41"/></radialGradient></defs>
+<defs><radialGradient id="hand-hygiene-brown-skin" gradientUnits="userSpaceOnUse" cx="120" cy="120" r="130" fx="96" fy="80"><stop offset="0" stop-color="#A8714B"/><stop offset="0" stop-color="#c6a38a"/><stop offset="0.55" stop-color="#A8714B"/><stop offset="1" stop-color="#915f41"/></radialGradient></defs>
 <path d="M100 122L96 50" stroke="#643c2c" stroke-width="23" stroke-linecap="round"/>
 <path d="M120 116L122 36" stroke="#643c2c" stroke-width="23" stroke-linecap="round"/>
 <path d="M140 118L148 46" stroke="#643c2c" stroke-width="23" stroke-linecap="round"/>

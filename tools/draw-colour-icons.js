@@ -56,14 +56,13 @@ function staphylococcus(id) {
     ...[[88, 62, 26], [142, 56, 27], [192, 84, 26], [52, 112, 26], [210, 136, 24]].map(c => [...c, 'back', back]),
     ...[[110, 96, 30], [164, 106, 30], [74, 148, 30], [130, 152, 31], [186, 160, 28], [106, 200, 27], [156, 200, 26]].map(c => [...c, 'front', base]),
   ];
-  const defs = [K.formGradient(`${id}-front`, base), K.formGradient(`${id}-back`, back, { light: 0.3 }), K.glossGradient(`${id}-sheen`),
-    K.castGradient(`${id}-cast`, K.deepen(base, 0.7))];
+  const defs = [K.formGradient(`${id}-front`, base), K.formGradient(`${id}-back`, back, { light: 0.3 }), K.glossGradient(`${id}-sheen`)];
   const body = [];
   cocci.forEach(([x, y, r, layer, colour], i) => {
     if (i) {
       // Each coccus shades the ones already drawn beneath it.
       defs.push(`<clipPath id="${id}-under-${i}">` + cocci.slice(0, i).map(([ux, uy, ur]) => `<circle cx="${ux}" cy="${uy}" r="${ur + 1}"/>`).join('') + `</clipPath>`);
-      body.push(`<circle cx="${n(x + r * 0.14)}" cy="${n(y + r * 0.2)}" r="${n(r * 1.3)}" fill="url(#${id}-cast)" clip-path="url(#${id}-under-${i})"/>`);
+      body.push(`<g clip-path="url(#${id}-under-${i})">${K.castShadow(x + r * 0.14, y + r * 0.2, r * 1.3, r * 1.3, K.deepen(base, 0.7))}</g>`);
     }
     body.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-${layer})" stroke="${outline(colour)}" stroke-width="${STROKE}"/>` +
       K.sheen(`${id}-sheen`, x - r * 0.3, y - r * 0.36, r * 0.46, r * 0.3, -35));
@@ -1182,7 +1181,6 @@ function malaria(id) {
     `<circle cx="${x + 10}" cy="${y - 9}" r="5" fill="${chrom}" stroke="${outline(chrom)}" stroke-width="1"/>`;
   return {
     defs: [K.sphereGradient(`${id}-front`, rbc), K.sphereGradient(`${id}-back`, shade(rbc, 0.15)),
-      `<radialGradient id="${id}-pallor"><stop offset="0" stop-color="${tint(rbc, 0.35)}"/><stop offset="1" stop-color="${tint(rbc, 0.35)}" stop-opacity="0"/></radialGradient>`,
       K.glossGradient(`${id}-gloss`), surfaceClip(id, 'back', `<circle cx="196" cy="64" r="44"/>`)],
     body: [
       `<circle cx="196" cy="64" r="44" fill="url(#${id}-back)" stroke="${outline(shade(rbc, 0.15))}" stroke-width="${STROKE}"/>`,
@@ -1192,7 +1190,7 @@ function malaria(id) {
       // The red cell in front shades the one behind it.
       shadowsOn(id, 'back', [circleShape(112, 146, 86)], rbc, { offset: [6, 7], opacity: 0.34 }),
       `<circle cx="112" cy="146" r="86" fill="url(#${id}-front)" stroke="${outline(rbc)}" stroke-width="${STROKE}"/>`,
-      `<circle cx="112" cy="146" r="46" fill="url(#${id}-pallor)"/>`,
+      K.softEllipse(112, 146, 46, 46, tint(rbc, 0.35), 0.9),
       ring(84, 122), ring(140, 176), ring(150, 112),
       K.gloss(`${id}-gloss`, 66, 92, 26, 12),
     ],
@@ -1943,21 +1941,19 @@ function redBloodCells(id) {
     return `<g transform="${place(at)}">` +
       `<ellipse rx="${rx}" ry="${ry}" fill="url(#${id}-${grad})" stroke="${outline(colour)}" stroke-width="${STROKE}"/>` +
       // The central dip: shaded where the rim overhangs it (top left), catching light on the far wall.
-      `<ellipse rx="${n(rx * 0.56)}" ry="${n(ry * 0.52)}" fill="url(#${id}-dip)"/>` +
-      `<ellipse cx="${n(rx * 0.14)}" cy="${n(ry * 0.16)}" rx="${n(rx * 0.4)}" ry="${n(ry * 0.34)}" fill="url(#${id}-glow)"/>` +
+      K.softEllipse(0, 0, rx * 0.56, ry * 0.52, K.deepen(base, 0.38), 0.72, { toward: [-0.2, -0.24] }) +
+      K.sheen(`${id}-glow`, rx * 0.14, ry * 0.16, rx * 0.4, ry * 0.34, 0) +
       K.sheen(`${id}-sheen`, -rx * 0.5, -ry * 0.6, rx * 0.36, ry * 0.2, -8) + `</g>`;
   };
   return {
     defs: [
       K.formGradient(`${id}-front`, base), K.formGradient(`${id}-back`, back, { light: 0.3 }), K.glossGradient(`${id}-sheen`),
-      K.glossGradient(`${id}-glow`, 0.3), K.castGradient(`${id}-cast`, K.deepen(base, 0.75), 0.5, 0.7),
-      `<radialGradient id="${id}-dip" cx="0.4" cy="0.38" r="0.62"><stop offset="0" stop-color="${K.deepen(base, 0.4)}" stop-opacity="0.8"/>` +
-      `<stop offset="0.6" stop-color="${K.deepen(base, 0.35)}" stop-opacity="0.45"/><stop offset="1" stop-color="${K.deepen(base, 0.3)}" stop-opacity="0"/></radialGradient>`,
+      K.glossGradient(`${id}-glow`, 0.3),
       `<clipPath id="${id}-on-back"><ellipse rx="${backAt[2]}" ry="${backAt[3]}" transform="${place(backAt)}"/></clipPath>`,
     ],
     body: [
       cell(backAt, back, 'back'),
-      `<g clip-path="url(#${id}-on-back)"><ellipse rx="${frontAt[2] + 12}" ry="${frontAt[3] + 12}" transform="translate(${frontAt[0] + 5} ${frontAt[1] + 4}) rotate(${frontAt[4]})" fill="url(#${id}-cast)"/></g>`,
+      `<g clip-path="url(#${id}-on-back)"><g transform="translate(${frontAt[0] + 5} ${frontAt[1] + 4}) rotate(${frontAt[4]})">${K.castShadow(0, 0, frontAt[2] + 12, frontAt[3] + 12, K.deepen(base, 0.75), 0.5, 0.7)}</g></g>`,
       cell(frontAt, base, 'front'),
     ],
   };
@@ -3141,7 +3137,7 @@ const roundingGradient = (id, colour = GLASS_SHADE, strength = 1) =>
   `<stop offset="0.24" stop-color="${colour}" stop-opacity="0"/><stop offset="0.6" stop-color="${colour}" stop-opacity="0"/>` +
   `<stop offset="1" stop-color="${colour}" stop-opacity="${n(0.36 * strength)}"/></linearGradient>`;
 // The surface of a liquid seen slightly from above.
-const meniscus = (cx, y, rx, colour) => `<ellipse cx="${cx}" cy="${y}" rx="${rx}" ry="${n(Math.max(2, rx * 0.11))}" fill="${K.lift(colour, 0.5)}" stroke="${K.deepen(colour, 0.25)}" stroke-width="1"/>`;
+const meniscus = (cx, y, rx, colour) => { const ry = Math.max(2, rx * 0.11); return `<ellipse cx="${cx}" cy="${y}" rx="${rx}" ry="${n(ry)}" fill="${K.deepen(colour, 0.25)}"/><ellipse cx="${cx}" cy="${y}" rx="${n(rx - 1)}" ry="${n(ry - 0.9)}" fill="${K.lift(colour, 0.5)}"/>`; };
 // A syringe barrel lying along x, lit from the side y < 0: a shaded band and a streak of light.
 const barrelLight = (id, x0, x1, h) => `<rect x="${x0 + 3}" y="${n(h * 0.45)}" width="${x1 - x0 - 6}" height="${n(h * 0.5)}" rx="2" fill="${GLASS_SHADE}" opacity="0.16"/>` +
   K.sheen(`${id}-sheen`, (x0 + x1) / 2, -h * 0.55, (x1 - x0) * 0.44, h * 0.2, 0);
@@ -4710,18 +4706,19 @@ const DRAWINGS = {
   'vertical-transmission': verticalTransmission,
 };
 
+const { convertSafe } = require('./convert-safe');
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));
 for (const [id, draw] of Object.entries(DRAWINGS)) {
   const meta = catalogue.icons.find(icon => icon.id === id);
   if (!meta) throw new Error(`No catalogue entry for "${id}"`);
   const { defs, body } = draw(id);
-  K.writeIcon(ROOT, meta.file, K.svgDocument({ id, title: meta.name, description: meta.description, defs, body }));
+  K.writeIcon(ROOT, meta.file, convertSafe(K.svgDocument({ id, title: meta.name, description: meta.description, defs, body })));
   // Skin-tone versions of the people icons: redrawn with the palette's skin and hair swapped.
   for (const [toneId, file] of Object.entries(meta.toneFiles || {})) {
     const tone = K.SKIN_TONES.find(t => t.id === toneId), saved = [C.skin, C.hair];
     [C.skin, C.hair] = [tone.skin, tone.hair];
     const svgId = `${id}-${toneId}`, drawn = draw(svgId);
     [C.skin, C.hair] = saved;
-    K.writeIcon(ROOT, file, K.svgDocument({ id: svgId, title: `${meta.name} (${tone.label.toLowerCase()} skin tone)`, description: meta.description, ...drawn }));
+    K.writeIcon(ROOT, file, convertSafe(K.svgDocument({ id: svgId, title: `${meta.name} (${tone.label.toLowerCase()} skin tone)`, description: meta.description, ...drawn })));
   }
 }

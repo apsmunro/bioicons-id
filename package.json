@@ -8,5 +8,9 @@
     "build": "node tools/build-site.js",
     "all": "npm run draw && npm run build",
     "serve": "node tools/serve.js"
+  },
+  "devDependencies": {
+    "paper": "^0.17.0",
+    "paperjs-offset": "^2.2.2"
   }
 }

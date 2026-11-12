@@ -52,7 +52,8 @@ index.html, assets/              the gallery website
 1. Add both SVGs to `icons/<category>/`, following [STYLE.md](STYLE.md). They can be drawn
    in code (see `tools/`) or by hand in Inkscape, Illustrator or Affinity.
 2. Add an entry to `catalogue.json`.
-3. Rebuild the gallery data: `npm run build` (or `npm run all` to redraw the coded icons first).
+3. Rebuild the gallery data: `npm run build` (or `npm run all` to redraw the coded icons first;
+   run `npm install` once beforehand, as drawing needs two geometry libraries).
 4. Preview: `node tools/serve.js`, then open <http://localhost:8080>.
 5. Commit and push; GitHub Pages republishes the site within a minute or two.
 

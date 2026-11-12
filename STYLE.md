@@ -90,6 +90,17 @@ print, line-art slides, or matching a slide's accent colour.
 
 - Use only paths, basic shapes, linear and radial gradients, and clip paths.
   **No filters, blurs, masks or embedded images**: slide software renders them unreliably.
+- Colour icons must survive PowerPoint's **Convert to Shape**, which keeps linear gradients and
+  the opacity of a single shape but drops clip paths, flattens radial gradients to their first
+  stop, and ignores opacity set on a group. So:
+  - Anything soft-edged (a sheen, a soft shadow, a dip) is a `softEllipse`: nested plain
+    ellipses. Never a radial gradient that fades to transparent.
+  - Write clip paths freely in the drawing code; `tools/convert-safe.js` cuts each clipped
+    shape (and plain stroke) to its final outline when the icon is generated. Dashed strokes,
+    and rotated shapes with a gradient fill, cannot be cut: keep those out of clip paths.
+  - Radial shading still flattens on conversion; the same step makes it flatten to the part's
+    base colour.
+  - Put opacity on shapes, not on groups.
 - Every `id` inside an SVG starts with the icon's own id (for example `neutrophil-body`), so
   several icons pasted into one document never share gradient names.
 - File names are lowercase kebab-case: `icons/<category>/<icon-id>.svg`, with the
