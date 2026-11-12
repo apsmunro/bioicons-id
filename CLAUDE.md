@@ -110,7 +110,11 @@ Fungi and parasites are done (7 icons): candida (nucleus, and the bud on the mot
 cryptococcus, toxoplasma, leishmania and giardia (nuclei), malaria (front red cell on the back one)
 and schistosoma (female on male). The arthropods, hyphae and worms were left.
 
-Still to do: cast shadows for molecules, organs, treatment, resistance, clinical and transmission.
+Molecules: only the two with a whole cell got shadows (the phagocyte's nucleus in C3b opsonisation
+and Fc receptor). The rest are schematic diagrams of domains and membranes, where shadows would
+add clutter, so they were left on purpose.
+
+Still to do: cast shadows for organs, treatment, resistance, clinical and transmission.
 
 ## Ideas not yet done
 

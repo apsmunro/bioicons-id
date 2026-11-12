@@ -2327,6 +2327,8 @@ function c3bOpsonisation(id) {
     body: [
       // Phagocyte: a round body whose two arms are closing over the bacterium.
       `<path d="${K.phagocyteCup()}" fill="url(#${id}-cell)" stroke="${shade(cell, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(nucleus)), cell, [4, 6], 0.26),
       `<path d="${K.smoothClosedPath(nucleus)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
       ...[[96, 92], [44, 100], [100, 168], [40, 156]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.5" fill="${shade(cell, 0.35)}" opacity="0.8"/>`),
       // Complement receptors on the cup's inner face, each holding a C3b molecule.
@@ -2453,6 +2455,8 @@ function fcReceptor(id) {
       K.sphereGradient(`${id}-nucleus`, C.nucleus, { light: 0.45 }), K.sphereGradient(`${id}-bug`, bug), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${K.phagocyteCup(F)}" fill="url(#${id}-cell)" stroke="${shade(cell, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(nucleus)), cell, [4, 6], 0.26),
       `<path d="${K.smoothClosedPath(nucleus)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
       // Fcγ receptors on the cup's inner face, each holding the Fc of an antibody.
       ...angles.filter(cupped).map(a => { const [[x0, y0], [x1, y1]] = [at(a, F.ri + 1), at(a, stemR + 1)]; return K.pipe(`M${n(x0)} ${n(y0)}L${n(x1)} ${n(y1)}`, rc, 4); }),
