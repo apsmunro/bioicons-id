@@ -229,6 +229,7 @@
 <circle cx="188" cy="112" r="26" fill="#f4e4c5" stroke="#cca46f" stroke-width="1.2"/>
 <circle cx="88" cy="184" r="40" fill="#f4e4c5" stroke="#cca46f" stroke-width="1.2"/>
 <circle cx="66" cy="112" r="18" fill="#f4e4c5" stroke="#cca46f" stroke-width="1.2"/>
+<g transform="translate(1.1 1.65)"><path d="M137 70A9 9 0 1 0 119 70A9 9 0 1 0 137 70ZM197 112A9 9 0 1 0 179 112A9 9 0 1 0 197 112ZM177 182A9 9 0 1 0 159 182A9 9 0 1 0 177 182ZM97 184A9 9 0 1 0 79 184A9 9 0 1 0 97 184ZM75 112A9 9 0 1 0 57 112A9 9 0 1 0 75 112Z" fill="#703017" opacity="0.16"/></g><g transform="translate(2 3)"><path d="M137 70A9 9 0 1 0 119 70A9 9 0 1 0 137 70ZM197 112A9 9 0 1 0 179 112A9 9 0 1 0 197 112ZM177 182A9 9 0 1 0 159 182A9 9 0 1 0 177 182ZM97 184A9 9 0 1 0 79 184A9 9 0 1 0 97 184ZM75 112A9 9 0 1 0 57 112A9 9 0 1 0 75 112Z" fill="#703017" opacity="0.16"/></g>
 <circle cx="128" cy="70" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="128" cy="70" r="3.5" fill="#E3E8EC"/>
 <circle cx="188" cy="112" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="188" cy="112" r="3.5" fill="#E3E8EC"/>
 <circle cx="168" cy="182" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="168" cy="182" r="3.5" fill="#E3E8EC"/>

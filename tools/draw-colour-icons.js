@@ -2567,6 +2567,8 @@ function susceptibilityPlate(id) {
       ...lawn.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="1.3" fill="${shade(agar, 0.22)}" opacity="0.5"/>`),
       // Zones of inhibition: clear agar around each disc; the resistant disc has none.
       ...discs.filter(([, , z]) => z).map(([x, y, z]) => `<circle cx="${x}" cy="${y}" r="${z}" fill="${tint(agar, 0.5)}" stroke="${shade(agar, 0.18)}" stroke-width="1.2"/>`),
+      // The discs lie on the agar and shade it.
+      shadowOf(pathShape(discs.map(([x, y]) => ellipsePath(x, y, 9, 9)).join('')), agar, [2, 3], 0.32),
       ...discs.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="${x}" cy="${y}" r="3.5" fill="#E3E8EC"/>`),
       K.gloss(`${id}-gloss`, 78, 62, 36, 12, -40),
     ],
@@ -3147,6 +3149,8 @@ function vaccine(id) {
       `<rect x="50" y="146" width="48" height="38" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M50 155V148a2 2 0 0 1 2-2h44a2 2 0 0 1 2 2v7Z" fill="${cap}"/>`,
       ...[[164, 32], [172, 24]].map(([y, w]) => `<rect x="56" y="${y}" width="${w}" height="3.5" rx="1.75" fill="#B8C6D1"/>`),
+      // The plunger of the syringe lies in front of the vial and shades it.
+      `<g clip-path="url(#${id}-clip)">` + shadowOf(paint => `<path d="M-100 -4h50v8h-50ZM-106 -16h8v32h-8Z" transform="translate(160 140) rotate(-45)" ${paint}/>`, edge, [4, 6], 0.3) + `</g>`,
       `<path d="${vial}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<rect x="60" y="68" width="28" height="14" rx="3" fill="url(#${id}-crimp)" stroke="${shade('#B9C3CC', 0.35)}" stroke-width="2"/>`,
       `<rect x="56" y="50" width="36" height="20" rx="5" fill="url(#${id}-cap)" stroke="${outline(cap)}" stroke-width="2.5"/>`,
@@ -3462,9 +3466,12 @@ function carTCell(id) {
     body: [
       ...[toT - 70, toT - 35, toT, toT + 35, toT + 70, toT + 120, toT - 120, toT + 180].map(cd19),
       `<path d="${blob(gx, gy, gr, 5)}" fill="url(#${id}-b)" stroke="${shade(C.bLymphocyte, 0.32)}" stroke-width="2.5"/>`,
+      // Each nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(gx + 2, gy + 2, gr - 9), C.bLymphocyte, [2.5, 3.5], 0.26),
       `<circle cx="${gx + 2}" cy="${gy + 2}" r="${gr - 9}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2"/>`,
       ...T.cars.map(outside),
       `<path d="${blob(tx, ty, R, 6)}" fill="url(#${id}-t)" stroke="${shade(C.lymphocyte, 0.32)}" stroke-width="${STROKE}"/>`,
+      shadowOf(pathShape(blob(tx - 6, ty - 6, 30, 4)), C.lymphocyte, [5, 7], 0.26),
       `<path d="${blob(tx - 6, ty - 6, 30, 4)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...T.cars.map(inside),
       K.gloss(`${id}-gloss`, tx - 26, ty - 32, 16, 8),
@@ -3566,6 +3573,8 @@ function bloodAgarPlate(id) {
       streak([[100, 82], [130, 90], [110, 98], [148, 104], [124, 110], [170, 112]]),
       streak([[132, 132], [178, 128], [140, 144], [190, 140], [150, 156], [196, 150]]),
       ...colonies.filter(([, , r]) => r > 5).map(([x, y, r]) => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${n(r * 2.5)}" ry="${n(r * 1.3)}" fill="${tint(red, 0.45)}" opacity="0.6"/>`),
+      // Each colony is a dome and shades the agar beside it.
+      shadowOf(pathShape(colonies.map(([x, y, r]) => ellipsePath(n(x), n(y), r, n(r * 0.6))).join('')), red, [1.5, 2.2], 0.34),
       ...colonies.map(([x, y, r]) => `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${r}" ry="${n(r * 0.6)}" fill="url(#${id}-colony)" stroke="${shade(col, 0.3)}" stroke-width="0.8"/>`),
       `<path d="M24 112L24 136A104 56 0 0 0 232 136L232 112A104 56 0 0 1 24 112Z" fill="#DCE6ED" opacity="0.55" stroke="${glass}" stroke-width="2.5" stroke-linejoin="round"/>`,
       `<path d="M44 146A96 46 0 0 0 212 146" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>`,
@@ -4224,11 +4233,14 @@ function microscope(id) {
   const part = d => `<path d="${d}" fill="url(#${id}-body)" stroke="${outline(body)}" stroke-width="2.5" stroke-linejoin="round"/>`;
   return {
     defs: [K.sphereGradient(`${id}-body`, body, { light: 0.6, dark: 0.12 }), K.cylinderGradient(`${id}-dark`, dark, { horizontal: true }),
-      K.sphereGradient(`${id}-lamp`, C.lamp, { light: 0.7 }), K.sphereGradient(`${id}-knob`, dark, { light: 0.35 })],
+      K.sphereGradient(`${id}-lamp`, C.lamp, { light: 0.7 }), K.sphereGradient(`${id}-knob`, dark, { light: 0.35 }),
+      surfaceClip(id, 'arm', `<path d="${M.arm}"/>`)],
     body: [
       part(M.base),
       `<path d="M${lx - lr} ${ly}A${lr} ${lr} 0 0 1 ${lx + lr} ${ly}Z" fill="url(#${id}-lamp)" stroke="${shade(C.lamp, 0.4)}" stroke-width="2"/>`,
       part(M.arm),
+      // The head, the stage and the focus knob shade the arm behind them.
+      shadowsOn(id, 'arm', [pathShape(M.head), circleShape(kx, ky, kr), paint => `<rect x="${sx}" y="${sy}" width="${sw}" height="${sh}" rx="3" ${paint}/>`], body, { offset: [4, 6], opacity: 0.3 }),
       // The eyepiece, then the head over its base.
       K.pipe(M.eyepiece, dark, 16),
       `<rect x="80" y="14" width="22" height="12" rx="3" transform="rotate(-52 91 20)" fill="${shade(dark, 0.2)}" stroke="${outline(dark)}" stroke-width="2"/>`,
@@ -4378,9 +4390,12 @@ function bust(id, x, y, s) {
   const B = K.TRANSMISSION.bust, [hx, hy, hr] = B.head, fig = C.silhouette, w = n(STROKE / s);
   return `<g transform="translate(${x} ${y}) scale(${s})"><path d="${B.neck}" fill="${shade(fig, 0.15)}"/>` +
     `<path d="${B.shoulders}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${w}"/>` +
+    // The head shades the shoulders.
+    `<ellipse cx="3" cy="${hy + hr + 14}" rx="${hr}" ry="8" ${shadowOn(fig, 0.24)} clip-path="url(#${id}-on-shoulders)"/>` +
     `<circle cx="${hx}" cy="${hy}" r="${hr}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${w}"/></g>`;
 }
-const figureDefs = id => [K.sphereGradient(`${id}-figure`, C.silhouette, { light: 0.45 })];
+const figureDefs = id => [K.sphereGradient(`${id}-figure`, C.silhouette, { light: 0.45 }),
+  `<clipPath id="${id}-on-shoulders"><path d="${K.TRANSMISSION.bust.shoulders}"/></clipPath>`];
 const arrowMarks = ({ shaft, head }) => `<path d="${shaft}" fill="none" stroke="${C.arrow}" stroke-width="4.5" stroke-linecap="round"/>` +
   `<polygon points="${head}" fill="${C.arrow}" stroke="${C.arrow}" stroke-width="1.5" stroke-linejoin="round"/>`;
 // An open hand in the figures' colour, centred at (x, y), scaled by s and mirrored if flip.
@@ -4477,14 +4492,19 @@ function verticalTransmission(id) {
   const virion = ([x, y]) => `<path d="${Array.from({ length: 8 }, (_, k) => { const a = k * Math.PI / 4; return `M${n(x + 5 * Math.cos(a))} ${n(y + 5 * Math.sin(a))}L${n(x + 8 * Math.cos(a))} ${n(y + 8 * Math.sin(a))}`; }).join('')}" stroke="${shade(C.spike, 0.2)}" stroke-width="2" stroke-linecap="round"/>` +
     `<circle cx="${x}" cy="${y}" r="5" fill="${C.spike}" stroke="${outline(C.spike)}" stroke-width="1.2"/>`;
   return {
-    defs: [...figureDefs(id), K.sphereGradient(`${id}-uterus`, '#F4C9CF', { light: 0.5 }), K.sphereGradient(`${id}-fetus`, fetal, { light: 0.5 })],
+    defs: [...figureDefs(id), K.sphereGradient(`${id}-uterus`, '#F4C9CF', { light: 0.5 }), K.sphereGradient(`${id}-fetus`, fetal, { light: 0.5 }),
+      surfaceClip(id, 'body', `<path d="${V.body}"/>`), surfaceClip(id, 'uterus', `<ellipse cx="${ux}" cy="${uy}" rx="${urx}" ry="${ury}"/>`)],
     body: [
       `<path d="${V.body}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      // The head shades the neck and shoulders.
+      `<ellipse cx="${hx + 3}" cy="${hy + hr + 5}" rx="${hr}" ry="8" ${shadowOn(fig, 0.24)} clip-path="url(#${id}-on-body)"/>`,
       `<circle cx="${hx}" cy="${hy}" r="${hr}" fill="url(#${id}-figure)" stroke="${outline(fig)}" stroke-width="${STROKE}"/>`,
       // The uterus, with the placenta and a curled fetus.
       `<ellipse cx="${ux}" cy="${uy}" rx="${urx}" ry="${ury}" fill="url(#${id}-uterus)" stroke="${shade('#F4C9CF', 0.4)}" stroke-width="2"/>`,
       `<path d="${V.placenta}" fill="${C.placenta}" stroke="${outline(C.placenta)}" stroke-width="1.5"/>`,
       `<path d="${F.cord}" fill="none" stroke="${shade(C.cordJelly, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
+      // The fetus shades the wall of the uterus behind it.
+      shadowsOn(id, 'uterus', [pathShape(ellipsePath(fbx, fby, fbrx, fbry, fba) + ellipsePath(fhx, fhy, fhr, fhr))], '#F4C9CF', { offset: [3, 4], opacity: 0.26 }),
       `<ellipse cx="${fbx}" cy="${fby}" rx="${fbrx}" ry="${fbry}" transform="rotate(${fba} ${fbx} ${fby})" fill="url(#${id}-fetus)" stroke="${outline(fetal)}" stroke-width="2"/>`,
       `<circle cx="${fhx}" cy="${fhy}" r="${fhr}" fill="url(#${id}-fetus)" stroke="${outline(fetal)}" stroke-width="2"/>`,
       ...V.pathogens.map(virion),

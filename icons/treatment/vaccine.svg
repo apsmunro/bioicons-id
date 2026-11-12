@@ -10,6 +10,7 @@
 <path d="M50 155V148a2 2 0 0 1 2-2h44a2 2 0 0 1 2 2v7Z" fill="#3E8ED0"/>
 <rect x="56" y="164" width="32" height="3.5" rx="1.75" fill="#B8C6D1"/>
 <rect x="56" y="172" width="24" height="3.5" rx="1.75" fill="#B8C6D1"/>
+<g clip-path="url(#vaccine-clip)"><g transform="translate(2.2 3.3)"><path d="M-100 -4h50v8h-50ZM-106 -16h8v32h-8Z" transform="translate(160 140) rotate(-45)" fill="#2d3848" opacity="0.15"/></g><g transform="translate(4 6)"><path d="M-100 -4h50v8h-50ZM-106 -16h8v32h-8Z" transform="translate(160 140) rotate(-45)" fill="#2d3848" opacity="0.15"/></g></g>
 <path d="M44 108Q44 94 58 90L60 80L88 80L90 90Q104 94 104 108L104 200Q104 210 94 210L54 210Q44 210 44 200Z" fill="none" stroke="#8DA6B8" stroke-width="2.5" stroke-linejoin="round"/>
 <rect x="60" y="68" width="28" height="14" rx="3" fill="url(#vaccine-crimp)" stroke="#7e8893" stroke-width="2"/>
 <rect x="56" y="50" width="36" height="20" rx="5" fill="url(#vaccine-cap)" stroke="#214e7e" stroke-width="2.5"/>

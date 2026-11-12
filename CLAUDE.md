@@ -118,7 +118,12 @@ Organs: lymph node (follicles on the cortex), heart valve (vegetations on the cu
 (cord on the fetal surface) got shadows. The brain and heart are the author's drawings and were not
 touched; the cross-sections (skin, eye, ear, meninges, knee, bone) and the intestines were left.
 
-Still to do: cast shadows for treatment, resistance, clinical and transmission.
+The last four categories are done (10 icons), which completes the cast shadows. Treatment: vaccine
+(the syringe's plunger on the vial) and CAR T cell (nuclei). Resistance: susceptibility plate (discs
+on the agar). Clinical: blood agar plate (colonies) and microscope (head, stage and focus knob on the
+arm). Transmission: the head shades the shoulders in `bust` (droplet, airborne, vector-borne), and in
+vertical transmission the head shades the body and the fetus the wall of the uterus. Everything else
+in these categories is a single object, objects that sit apart, or a schematic diagram, and was left.
 
 ## Ideas not yet done
 
