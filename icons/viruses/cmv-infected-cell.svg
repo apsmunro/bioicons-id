@@ -10,6 +10,7 @@
 <circle cx="96" cy="194" r="4" fill="#5A2A82" opacity="0.8"/>
 <circle cx="172" cy="182" r="4.5" fill="#5A2A82" opacity="0.8"/>
 <circle cx="178" cy="80" r="3.5" fill="#5A2A82" opacity="0.8"/>
+<g transform="translate(2.75 3.85)"><ellipse cx="130" cy="122" rx="46" ry="40" transform="rotate(-10 130 122)" fill="#73295a" opacity="0.13"/></g><g transform="translate(5 7)"><ellipse cx="130" cy="122" rx="46" ry="40" transform="rotate(-10 130 122)" fill="#73295a" opacity="0.13"/></g>
 <ellipse cx="130" cy="122" rx="46" ry="40" transform="rotate(-10 130 122)" fill="#b8a3dd" stroke="#4a3076" stroke-width="4"/>
 <ellipse cx="130" cy="122" rx="28" ry="23" transform="rotate(-10 130 122)" fill="#F6EEF8"/>
 <ellipse cx="130" cy="122" rx="18" ry="14" transform="rotate(-10 130 122)" fill="url(#cmv-infected-cell-inclusion)" stroke="#431f61" stroke-width="1.5"/>

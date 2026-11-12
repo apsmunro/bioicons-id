@@ -101,7 +101,13 @@ Immune cells are done too (15 icons): each nucleus shades its cytoplasm with `sh
 `lobesShape` merging multilobed nuclei into one silhouette, and the T cell shades its target in
 CD8 killing. Platelets, diapedesis and the germinal centre were left: nothing large overlaps.
 
-Still to do: cast shadows for the other categories.
+Viruses are done (8 icons): a capsid or core shades the inside of its particle in herpesvirus, HIV,
+hepatitis B, hepatitis C, rotavirus and mpox (`capsidShape` gives the silhouette of a capsid drawn
+by `capsidFacets`); the face-on spikes shade the SARS-CoV-2 envelope; the nucleus shades the CMV
+cell. Surface views and particles whose genome is a loose ribbon were left.
+
+Still to do: cast shadows for fungi, parasites, molecules, organs, treatment, resistance, clinical
+and transmission.
 
 ## Ideas not yet done
 

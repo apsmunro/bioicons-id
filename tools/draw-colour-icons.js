@@ -574,6 +574,8 @@ function herpesvirus(id) {
       `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => R + 2 * Math.sin(4 * a)))}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
       `<circle cx="126" cy="126" r="68" fill="${C.tegument}" stroke="${shade(env, 0.12)}" stroke-width="1.5"/>`,
       ...grains.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="2.2" fill="${shade(C.tegument, 0.25)}" opacity="0.6"/>`),
+      // The capsid shades the tegument around it.
+      shadowOf(capsidShape(46, 122, 124), C.tegument, [4, 6], 0.26),
       ...capsidFacets(C.herpesCapsid, 46, 122, 124, 2.6),
       K.gloss(`${id}-gloss`, 80, 74, 22, 10),
     ],
@@ -624,6 +626,8 @@ function rotavirus(id) {
       `<circle cx="128" cy="128" r="${R}" fill="url(#${id}-outer)" stroke="${outline(outer)}" stroke-width="${STROKE}"/>`,
       `<circle cx="128" cy="128" r="${R - 14}" fill="url(#${id}-mid)" stroke="${shade(outer, 0.25)}" stroke-width="2"/>`,
       ...spokes,
+      // The core shades the middle layer around it.
+      shadowOf(circleShape(128, 128, 32), mid, [4, 6], 0.26),
       `<circle cx="128" cy="128" r="32" fill="url(#${id}-core)" stroke="${outline(core)}" stroke-width="2.5"/>`,
       K.gloss(`${id}-gloss`, 96, 92, 22, 10),
     ],
@@ -699,6 +703,8 @@ function sarsCov2(id) {
       ...back,
       `<circle r="${R}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
       ...dots.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3" fill="${C.membraneProtein}" stroke="${shade(C.membraneProtein, 0.3)}" stroke-width="1"/>`),
+      // The spikes facing the viewer shade the envelope beneath them.
+      shadowOf(paint => faceOn.map(([x, y]) => circleShape(x, y, 8)(paint)).join(''), env, [2.5, 4], 0.26),
       ...faceOn.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="8" fill="url(#${id}-spike)" stroke="${outline(sp)}" stroke-width="2"/>` +
         `<circle cx="${x}" cy="${y}" r="3" fill="${shade(sp, 0.3)}"/>`),
       K.gloss(`${id}-gloss`, -24, -32, 20, 11),
@@ -709,6 +715,13 @@ function sarsCov2(id) {
 }
 
 // Shaded icosahedral capsid with hexon capsomeres, circumradius S, centred on (cx, cy).
+// The silhouette of the capsid that capsidFacets draws, for casting its shadow.
+function capsidShape(S, cx = 128, cy = 128) {
+  const { vertices: V, visibleFaces } = K.icosahedron();
+  const d = visibleFaces.map(f => 'M' + f.idx.map(i => `${n(cx + S * V[i][0])} ${n(cy - S * V[i][1])}`).join('L') + 'Z').join('');
+  return pathShape(d);
+}
+
 function capsidFacets(base, S, cx = 128, cy = 128, capsomereR = 3.6) {
   const { vertices: V, visibleFaces } = K.icosahedron();
   const project = v => [cx + S * v[0], cy - S * v[1]];
@@ -780,6 +793,8 @@ function hiv(id) {
       `<path d="${K.smoothClosedPath(K.polarPoints(0, 0, a => R + 1.5 * Math.sin(4 * a + 0.6)))}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
       // Matrix layer under the envelope.
       `<circle r="${R - 7}" fill="none" stroke="${shade(env, 0.22)}" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>`,
+      // The capsid shades the inside of the envelope.
+      shadowOf(paint => `<path d="${K.HIV_CAPSID}" transform="translate(-2 4) rotate(-40)" ${paint}/>`, env, [4, 6], 0.26),
       `<g transform="translate(-2 4) rotate(-40)">`,
       `<path d="${K.HIV_CAPSID}" fill="url(#${id}-capsid)" stroke="${outline(cap)}" stroke-width="2.5" stroke-linejoin="round"/>`,
       `<path d="${rings}" fill="none" stroke="${shade(cap, 0.2)}" stroke-width="1.3" opacity="0.6"/>`,
@@ -837,6 +852,8 @@ function hepatitisB(id) {
       ...studs.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3.5" fill="url(#${id}-ag)" stroke="${outline(ag)}" stroke-width="1"/>`),
       `</g>`,
       // Icosahedral core (HBcAg) holding the partly double-stranded circular DNA and its polymerase.
+      // The core shades the inside of the envelope.
+      shadowOf(capsidShape(44, 128, 128), env, [4, 6], 0.26),
       ...capsidFacets(C.hbvCore, 44, 128, 128, 2.6),
       `<g transform="translate(128 128)">`,
       `<circle r="20" fill="none" stroke="${dna}" stroke-width="3"/>`,
@@ -867,6 +884,8 @@ function mpox(id) {
       ...knobs,
       `<path d="${K.smoothClosedPath(edge)}" fill="url(#${id}-membrane)" stroke="${outline(m)}" stroke-width="${STROKE}"/>`,
       `<path d="${K.smoothClosedPath(ring(9))}" fill="${tint(m, 0.45)}" stroke="${shade(m, 0.2)}" stroke-width="1.5"/>`,
+      // The core and lateral bodies shade the inside of the particle.
+      shadowOf(paint => `<path d="${X.core}${[-1, 1].map(k => ellipsePath(lx, k * ly, lrx, lry)).join('')}" ${paint}/>`, m, [3, 5], 0.26),
       ...[-1, 1].map(s => `<ellipse cx="${lx}" cy="${s * ly}" rx="${lrx}" ry="${lry}" fill="url(#${id}-lateral)" stroke="${outline(lb)}" stroke-width="2"/>`),
       `<path d="${X.core}" fill="url(#${id}-core)" stroke="${outline(core)}" stroke-width="2.5"/>`,
       `<path d="${K.smoothOpenPath(dna)}" fill="none" stroke="${tint(core, 0.5)}" stroke-width="2.5" stroke-linecap="round"/>`,
@@ -975,6 +994,8 @@ function hepatitisC(id) {
       `<circle cx="128" cy="128" r="${R}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="${STROKE}"/>`,
       `<circle cx="128" cy="128" r="${R - 7}" fill="none" stroke="${tint(env, 0.45)}" stroke-width="2" stroke-dasharray="3 4" stroke-linecap="round"/>`,
       // The core, holding the single-stranded RNA genome.
+      // The core shades the inside of the envelope.
+      shadowOf(circleShape(128, 128, H.core), env, [4, 6], 0.26),
       `<circle cx="128" cy="128" r="${H.core}" fill="url(#${id}-core)" stroke="${outline(core)}" stroke-width="2.5"/>`,
       `<path d="${K.hcvRna()}" fill="none" stroke="${shade(C.mrna, 0.25)}" stroke-width="2.5" stroke-linecap="round"/>`,
       K.gloss(`${id}-gloss`, 94, 88, 20, 9),
@@ -997,6 +1018,8 @@ function cmvCell(id) {
       `<path d="${blob(cx, cy, R, 6)}" fill="url(#${id}-cyto)" stroke="${shade(cyto, 0.32)}" stroke-width="${STROKE}"/>`,
       ...X.granules.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.cmvInclusion}" opacity="0.8"/>`),
       // Owl's eye: chromatin pushed to the nuclear rim, a clear halo, and the large inclusion.
+      // The swollen nucleus shades the cytoplasm.
+      shadowOf(paint => ell(nx, ny, nrx, nry, paint), cyto, [5, 7], 0.26),
       ell(nx, ny, nrx, nry, `fill="${tint(nuc, 0.45)}" stroke="${outline(nuc)}" stroke-width="4"`),
       ell(hx, hy, hrx, hry, `fill="${C.halo}"`),
       ell(ix, iy, irx, iry, `fill="url(#${id}-inclusion)" stroke="${shade(C.cmvInclusion, 0.3)}" stroke-width="1.5"`),
