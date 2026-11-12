@@ -12,6 +12,7 @@
 <path d="M123 70L124 206M133 70L132 206" stroke="#7292b7" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
 <ellipse cx="114" cy="146" rx="10" ry="4" transform="rotate(25 114 146)" fill="#5d7fa8"/>
 <ellipse cx="142" cy="146" rx="10" ry="4" transform="rotate(-25 142 146)" fill="#5d7fa8"/>
+<g transform="translate(1.65 2.2)"><path d="M106 107A17 12 90 1 0 106 73A17 12 90 1 0 106 107ZM150 107A17 12 90 1 0 150 73A17 12 90 1 0 150 107Z" fill="#204479" opacity="0.12"/></g><g transform="translate(3 4)"><path d="M106 107A17 12 90 1 0 106 73A17 12 90 1 0 106 107ZM150 107A17 12 90 1 0 150 73A17 12 90 1 0 150 107Z" fill="#204479" opacity="0.12"/></g>
 <ellipse cx="106" cy="90" rx="12" ry="17" fill="url(#giardia-nucleus)" stroke="#4a3076" stroke-width="2"/><circle cx="106" cy="91" r="4" fill="#583b8b"/>
 <ellipse cx="150" cy="90" rx="12" ry="17" fill="url(#giardia-nucleus)" stroke="#4a3076" stroke-width="2"/><circle cx="150" cy="91" r="4" fill="#583b8b"/>
 <ellipse cx="92" cy="62" rx="25" ry="13.05" transform="rotate(-30 92 62)" fill="url(#giardia-gloss)"/>

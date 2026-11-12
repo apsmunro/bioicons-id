@@ -1042,14 +1042,20 @@ function candida(id) {
   const granules = [[-36, 22], [-12, 32], [36, -26], [-50, -4], [44, 24]]
     .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3" fill="${shade(base, 0.3)}" opacity="0.55"/>`).join('');
   const mother = vacuole(14, 6, 26, 21) +
+    shadowOf(circleShape(-28, -16, 13), base, [3, 4], 0.26) +
     `<circle cx="-28" cy="-16" r="13" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="1.5"/>` +
     granules +
     `<circle cx="-44" cy="34" r="6" fill="none" stroke="${shade(base, 0.32)}" stroke-width="2.5"/>` +
     K.gloss(`${id}-gloss`, -30, -32, 24, 12);
   const bud = vacuole(4, 4, 13, 10) + K.gloss(`${id}-gloss`, -12, -12, 10, 6);
   return {
-    defs: [K.sphereGradient(`${id}-body`, base), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
-    body: [cell(102, 142, -15, 70, 58, mother), cell(188, 88, -35, 38, 31, bud)],
+    defs: [K.sphereGradient(`${id}-body`, base), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.glossGradient(`${id}-gloss`),
+      surfaceClip(id, 'mother', `<ellipse rx="70" ry="58" transform="translate(102 142) rotate(-15)"/>`)],
+    body: [
+      cell(102, 142, -15, 70, 58, mother),
+      shadowsOn(id, 'mother', [paint => `<ellipse rx="38" ry="31" transform="translate(188 88) rotate(-35)" ${paint}/>`], base, { offset: [4, 6], opacity: 0.3 }),
+      cell(188, 88, -35, 38, 31, bud),
+    ],
   };
 }
 
@@ -1095,7 +1101,7 @@ function cryptococcus(id) {
   });
   const cell = ([x, y, r], i) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>` +
     `<circle cx="${x}" cy="${y}" r="${r - 5}" fill="none" stroke="${tint(base, 0.5)}" stroke-width="1.8" opacity="0.7"/>` +
-    (i === 0 ? `<circle cx="${x - 14}" cy="${y - 10}" r="13" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="1.5"/>` +
+    (i === 0 ? shadowOf(circleShape(x - 14, y - 10, 13), base, [3, 4], 0.26) + `<circle cx="${x - 14}" cy="${y - 10}" r="13" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="1.5"/>` +
       `<ellipse cx="${x + 14}" cy="${y + 12}" rx="15" ry="12" fill="${tint(base, 0.72)}" stroke="${shade(base, 0.15)}" stroke-width="1.2"/>` +
       [[-24, 18], [2, 28], [24, -16]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="2.8" fill="${shade(base, 0.3)}" opacity="0.55"/>`).join('') : '') +
     K.gloss(`${id}-gloss`, x - r * 0.35, y - r * 0.42, r * 0.4, r * 0.2);
@@ -1177,12 +1183,14 @@ function malaria(id) {
   return {
     defs: [K.sphereGradient(`${id}-front`, rbc), K.sphereGradient(`${id}-back`, shade(rbc, 0.15)),
       `<radialGradient id="${id}-pallor"><stop offset="0" stop-color="${tint(rbc, 0.35)}"/><stop offset="1" stop-color="${tint(rbc, 0.35)}" stop-opacity="0"/></radialGradient>`,
-      K.glossGradient(`${id}-gloss`)],
+      K.glossGradient(`${id}-gloss`), surfaceClip(id, 'back', `<circle cx="196" cy="64" r="44"/>`)],
     body: [
       `<circle cx="196" cy="64" r="44" fill="url(#${id}-back)" stroke="${outline(shade(rbc, 0.15))}" stroke-width="${STROKE}"/>`,
       `<path d="M176 74C186 54 206 50 220 60" fill="none" stroke="${outline(p)}" stroke-width="15" stroke-linecap="round"/>`,
       `<path d="M176 74C186 54 206 50 220 60" fill="none" stroke="${p}" stroke-width="11" stroke-linecap="round"/>`,
       ...[[190, 60], [200, 56], [208, 58]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2" fill="${chrom}"/>`),
+      // The red cell in front shades the one behind it.
+      shadowsOn(id, 'back', [circleShape(112, 146, 86)], rbc, { offset: [6, 7], opacity: 0.34 }),
       `<circle cx="112" cy="146" r="86" fill="url(#${id}-front)" stroke="${outline(rbc)}" stroke-width="${STROKE}"/>`,
       `<circle cx="112" cy="146" r="46" fill="url(#${id}-pallor)"/>`,
       ring(84, 122), ring(140, 176), ring(150, 112),
@@ -1200,6 +1208,8 @@ function toxoplasma(id) {
       K.sphereGradient(`${id}-rho`, rho), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${body}" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(paint => `<ellipse cx="96" cy="168" rx="15" ry="21" transform="rotate(30 96 168)" ${paint}/>`, base, [3, 4], 0.26),
       `<ellipse cx="96" cy="168" rx="15" ry="21" transform="rotate(30 96 168)" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
       ...[[146, 104], [158, 94], [134, 116]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="4.5" ry="15" transform="rotate(54 ${x} ${y})" fill="url(#${id}-rho)" stroke="${outline(rho)}" stroke-width="1.2"/>`),
       ...[[182, 70], [190, 65], [176, 78], [186, 76], [196, 63], [170, 84]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="2" ry="4.5" transform="rotate(54 ${x} ${y})" fill="${mic}" stroke="${outline(mic)}" stroke-width="0.8"/>`),
@@ -1224,6 +1234,8 @@ function giardia(id) {
       // Axonemes running down the midline, and the two median bodies.
       `<path d="M123 70L124 206M133 70L132 206" stroke="${shade(base, 0.35)}" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>`,
       ...G.medianBodies.map(([x, y, a]) => `<ellipse cx="${x}" cy="${y}" rx="10" ry="4" transform="rotate(${a} ${x} ${y})" fill="${shade(base, 0.45)}"/>`),
+      // The nuclei shade the adhesive disc beneath them.
+      shadowOf(paint => `<path d="${G.nuclei.map(([x, y]) => ellipsePath(x, y, 17, 12, 90)).join('')}" ${paint}/>`, base, [3, 4], 0.24),
       ...G.nuclei.map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="12" ry="17" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2"/>` +
         `<circle cx="${x}" cy="${y + 1}" r="4" fill="${shade(nuc, 0.35)}"/>`),
       K.gloss(`${id}-gloss`, 92, 62, 20, 9),
@@ -1386,10 +1398,13 @@ function schistosoma(id) {
     return `M${n(x)} ${n(y)}L${n(x * 1.12)} ${n(y * 1.2)}`;
   }).join('');
   return {
-    defs: [K.sphereGradient(`${id}-male`, m, { light: 0.6, dark: 0.12 }), K.sphereGradient(`${id}-female`, f, { light: 0.4 }), K.sphereGradient(`${id}-egg`, egg, { light: 0.5 })],
+    defs: [K.sphereGradient(`${id}-male`, m, { light: 0.6, dark: 0.12 }), K.sphereGradient(`${id}-female`, f, { light: 0.4 }), K.sphereGradient(`${id}-egg`, egg, { light: 0.5 }),
+      surfaceClip(id, 'male', `<path d="${K.wormOutline(S.male, S.maleWidth)}"/>`)],
     body: [
       `<circle cx="${vx}" cy="${vy}" r="${vr}" fill="${shade(m, 0.08)}" stroke="${outline(m)}" stroke-width="2"/>`,
       `<path d="${K.wormOutline(S.male, S.maleWidth)}" fill="url(#${id}-male)" stroke="${outline(m)}" stroke-width="2.5" stroke-linejoin="round"/>`,
+      // The female shades the male she lies along.
+      shadowsOn(id, 'male', [pathShape(K.wormOutline(S.female, S.femaleWidth))], m, { offset: [3, 5], opacity: 0.3 }),
       `<path d="${K.wormOutline(S.female, S.femaleWidth)}" fill="url(#${id}-female)" stroke="${outline(f)}" stroke-width="2" stroke-linejoin="round"/>`,
       `<path d="${K.wormOutline(fold, t => 9 * Math.min(1, t / 0.06, (1 - t) / 0.06))}" fill="${m}" stroke="${shade(m, 0.3)}" stroke-width="1.5" stroke-linejoin="round"/>`,
       `<ellipse cx="${ox}" cy="${oy}" rx="${orx}" ry="${ory}" transform="rotate(${oa} ${ox} ${oy})" fill="${shade(m, 0.3)}" stroke="${outline(m)}" stroke-width="1.2"/>`,
@@ -1448,6 +1463,8 @@ function leishmania(id) {
       `<linearGradient id="${id}-wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.8"/><stop offset="1" stop-color="${C.wing}" stop-opacity="0.5"/></linearGradient>`],
     body: [
       `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-cell)" stroke="${shade(cell, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(kidney)), cell, [4, 6], 0.26),
       `<path d="${K.smoothClosedPath(kidney)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2.5"/>`,
       ...L.amastigotes.map(amastigote),
       // Sandfly, with its hairy wings raised over its back.

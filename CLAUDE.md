@@ -106,8 +106,11 @@ hepatitis B, hepatitis C, rotavirus and mpox (`capsidShape` gives the silhouette
 by `capsidFacets`); the face-on spikes shade the SARS-CoV-2 envelope; the nucleus shades the CMV
 cell. Surface views and particles whose genome is a loose ribbon were left.
 
-Still to do: cast shadows for fungi, parasites, molecules, organs, treatment, resistance, clinical
-and transmission.
+Fungi and parasites are done (7 icons): candida (nucleus, and the bud on the mother cell),
+cryptococcus, toxoplasma, leishmania and giardia (nuclei), malaria (front red cell on the back one)
+and schistosoma (female on male). The arthropods, hyphae and worms were left.
+
+Still to do: cast shadows for molecules, organs, treatment, resistance, clinical and transmission.
 
 ## Ideas not yet done
 
