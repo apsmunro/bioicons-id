@@ -38,6 +38,16 @@ const surfaceClip = (id, key, surface) => `<clipPath id="${id}-on-${key}">${surf
 const shadowsOn = (id, key, shapes, colour, { offset = [5, 7], opacity = 0.26 } = {}) =>
   `<g clip-path="url(#${id}-on-${key})">${shapes.map(shape => shadowOf(shape, colour, offset, opacity)).join('')}</g>`;
 
+// An ellipse as a path, so several can be merged into one silhouette: where they overlap, the
+// shadow of the group is no darker than elsewhere.
+function ellipsePath(cx, cy, rx, ry, deg = 0) {
+  const a = deg * Math.PI / 180, dx = rx * Math.cos(a), dy = rx * Math.sin(a);
+  return `M${n(cx + dx)} ${n(cy + dy)}A${rx} ${ry} ${deg} 1 0 ${n(cx - dx)} ${n(cy - dy)}A${rx} ${ry} ${deg} 1 0 ${n(cx + dx)} ${n(cy + dy)}Z`;
+}
+const lobesShape = lobes => paint => `<path d="${lobes.map(l => ellipsePath(...l)).join('')}" ${paint}/>`;
+const pathShape = d => paint => `<path d="${d}" ${paint}/>`;
+const circleShape = (x, y, r) => paint => `<circle cx="${x}" cy="${y}" r="${r}" ${paint}/>`;
+
 // ---------------------------------------------------------------- bacteria
 
 function staphylococcus(id) {
@@ -1465,6 +1475,8 @@ function neutrophil(id) {
     body: [
       `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-body)" stroke="${shade(base, 0.3)}" stroke-width="${STROKE}"/>`,
       ...granules.map(([x, y], i) => `<circle cx="${n(x)}" cy="${n(y)}" r="2.4" fill="${i % 2 ? mix(nuc, base, 0.45) : shade(base, 0.2)}" opacity="0.85"/>`),
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(lobesShape(lobes), base, [5, 7], 0.26),
       // Outline layer first, then fills, so lobes and strands join seamlessly.
       `<path d="${strand}" fill="none" stroke="${outline(nuc)}" stroke-width="14" stroke-linecap="round"/>`,
       ...lobes.map(l => lobe(l, `fill="${outline(nuc)}" stroke="${outline(nuc)}" stroke-width="5"`)),
@@ -1489,6 +1501,8 @@ function macrophage(id) {
     defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(kidney)), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(kidney)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       phagosome(164, 112, 21),
       `<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(164 112) rotate(30)" fill="${C.gramNegative}" stroke="${outline(C.gramNegative)}" stroke-width="1.5"/>`,
@@ -1546,6 +1560,8 @@ function bCell(id) {
     body: [
       ...receptors,
       `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 1.5 * Math.sin(5 * a + 0.7)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(K.polarPoints(cx - 5, cy - 4, a => 55 + 2 * Math.sin(3 * a + 0.3)))), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(K.polarPoints(cx - 5, cy - 4, a => 55 + 2 * Math.sin(3 * a + 0.3)))}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...chromatin,
       K.gloss(`${id}-gloss`, 98, 92, 22, 11),
@@ -1571,6 +1587,8 @@ function plasmaCell(id) {
       `<ellipse cx="${cx}" cy="${cy}" rx="90" ry="68" transform="rotate(-12 ${cx} ${cy})" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
       ...er,
       `<ellipse cx="114" cy="140" rx="20" ry="28" fill="${tint(base, 0.6)}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(nx, ny, 34), base, [5, 7], 0.26),
       `<circle cx="${nx}" cy="${ny}" r="34" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...clockFace,
       `<circle cx="${nx}" cy="${ny}" r="6" fill="${shade(nuc, 0.35)}" opacity="0.55"/>`,
@@ -1591,6 +1609,8 @@ function dendriticCell(id) {
     body: [
       `<path d="${K.smoothClosedPath(membrane)}" fill="url(#${id}-body)" stroke="${shade(base, 0.35)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       ...vesicles.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4.5" fill="${tint(base, 0.6)}" stroke="${shade(base, 0.25)}" stroke-width="1.2"/>`),
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(K.polarPoints(124, 132, a => 25 + 4 * Math.sin(3 * a + 1) + 2 * Math.sin(5 * a)))), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(K.polarPoints(124, 132, a => 25 + 4 * Math.sin(3 * a + 1) + 2 * Math.sin(5 * a)))}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       K.gloss(`${id}-gloss`, 108, 106, 14, 7),
     ],
@@ -1608,6 +1628,8 @@ function nkCell(id) {
       K.sphereGradient(`${id}-granule`, gr), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => 76 + 2 * Math.sin(6 * a + 0.2) + 1.5 * Math.sin(9 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(kidney)), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(kidney)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...granules.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="6.5" fill="url(#${id}-granule)" stroke="${outline(gr)}" stroke-width="1.2"/>`),
       K.gloss(`${id}-gloss`, 92, 86, 20, 10),
@@ -1631,6 +1653,8 @@ function monocyte(id) {
       `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => 84 + 3 * Math.sin(5 * a + 1) + 2 * Math.sin(8 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
       ...dots.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="1.7" fill="${shade(base, 0.3)}" opacity="0.6"/>`),
       ...[[176, 96, 7], [184, 150, 5], [92, 70, 6]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${tint(base, 0.7)}" stroke="${shade(base, 0.25)}" stroke-width="1.2"/>`),
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(nucleus)), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(nucleus)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       K.gloss(`${id}-gloss`, 82, 82, 22, 11),
     ],
@@ -1653,6 +1677,8 @@ function eosinophil(id) {
     body: [
       `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => 90 + 3 * Math.sin(6 * a + 0.5)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
       ...granules.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="4.2" fill="url(#${id}-granule)"/>`),
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(lobesShape(lobes), base, [5, 7], 0.26),
       `<path d="M98 118Q128 102 158 118" fill="none" stroke="${outline(nuc)}" stroke-width="13" stroke-linecap="round"/>`,
       ...lobes.map(l => lobe(l, `fill="${outline(nuc)}" stroke="${outline(nuc)}" stroke-width="5"`)),
       `<path d="M98 118Q128 102 158 118" fill="none" stroke="${nuc}" stroke-width="8" stroke-linecap="round"/>`,
@@ -1690,16 +1716,22 @@ function cd8Killing(id) {
     `<circle cx="${n(180 + 68 * Math.cos(a))}" cy="${n(130 + 68 * Math.sin(a))}" r="${r}" fill="url(#${id}-target)" stroke="${shade(target, 0.35)}" stroke-width="2"/>`);
   return {
     defs: [K.sphereGradient(`${id}-t`, t, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-target`, target, { light: 0.5, dark: 0.1 }),
-      K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.sphereGradient(`${id}-granule`, gr), K.sphereGradient(`${id}-virus`, virus)],
+      K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.sphereGradient(`${id}-granule`, gr), K.sphereGradient(`${id}-virus`, virus),
+      surfaceClip(id, 'target', `<path d="${K.smoothClosedPath(K.polarPoints(180, 130, a => 66 + 2 * Math.sin(5 * a)))}"/>`)],
     body: [
       // Target cell (dying: blebbing membrane, condensed nucleus) under the T cell at the synapse.
       ...blebs,
       `<path d="${K.smoothClosedPath(K.polarPoints(180, 130, a => 66 + 2 * Math.sin(5 * a)))}" fill="url(#${id}-target)" stroke="${shade(target, 0.35)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(196, 134, 20), target, [5, 7], 0.26),
       `<circle cx="196" cy="134" r="20" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2"/>`,
       ...[[214, 156], [178, 160]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-nucleus)"/>`),
       ...[[170, 96], [212, 104], [158, 166], [200, 182]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-virus)" stroke="${outline(virus)}" stroke-width="1.5" stroke-dasharray="2 1.5"/>`),
       ...[[138, 118], [142, 132], [138, 146]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="url(#${id}-granule)" stroke="${outline(gr)}" stroke-width="1"/>`),
+      shadowsOn(id, 'target', [pathShape(K.smoothClosedPath(K.polarPoints(80, 132, a => 52 + 1.5 * Math.sin(6 * a))))], target, { offset: [5, 6], opacity: 0.3 }),
       `<path d="${K.smoothClosedPath(K.polarPoints(80, 132, a => 52 + 1.5 * Math.sin(6 * a)))}" fill="url(#${id}-t)" stroke="${shade(t, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(70, 130, 35), t, [5, 7], 0.26),
       `<circle cx="70" cy="130" r="35" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...[[114, 112], [120, 126], [116, 140], [122, 152], [110, 124], [110, 150]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="url(#${id}-granule)" stroke="${outline(gr)}" stroke-width="1.2"/>`),
     ],
@@ -1723,6 +1755,8 @@ function mastCell(id) {
     body: [
       ...[200, 240, 280, 320].map(deg => `<g transform="rotate(${deg} ${cx} ${cy})">${miniAntibody(cx, cy - R - 3, 0)}</g>`),
       `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 2 * Math.sin(5 * a + 1) + 1.5 * Math.sin(9 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(100, 136, 24), base, [5, 7], 0.26),
       `<circle cx="100" cy="136" r="24" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>`,
       ...inside.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="4.2" fill="url(#${id}-granule)"/>`),
       ...released.map(([x, y], i) => `<circle cx="${n(x)}" cy="${n(y)}" r="4.2" fill="url(#${id}-granule)" opacity="${n(1 - (x - 196) / 70)}"/>`),
@@ -1767,6 +1801,8 @@ function nets(id) {
       ...strands.flatMap(pts => pts.filter((_, i) => i % 3 === 2).map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="2.3" fill="${tint(dna, 0.4)}"/>`)),
       ...caught,
       `<path d="${K.smoothClosedPath(K.polarPoints(70, 128, a => 50 + 2 * Math.sin(5 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.3)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(lobesShape(lobes), base, [5, 7], 0.26),
       ...lobes.map(([x, y, rx, ry, rot]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" fill="url(#${id}-nucleus)" stroke="${outline(dna)}" stroke-width="2"/>`),
     ],
   };
@@ -1793,6 +1829,8 @@ function treg(id) {
     body: [
       ...receptors,
       `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 1.5 * Math.sin(6 * a + 0.4)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(K.polarPoints(cx - 6, cy - 6, a => 52 + 2 * Math.sin(4 * a + 1)))), base, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(K.polarPoints(cx - 6, cy - 6, a => 52 + 2 * Math.sin(4 * a + 1)))}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...chromatin,
       K.gloss(`${id}-gloss`, 78, 92, 20, 10),
@@ -1816,6 +1854,8 @@ function basophil(id) {
       K.sphereGradient(`${id}-granule`, gr, { light: 0.35 }), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${K.smoothClosedPath(K.polarPoints(128, 128, a => 86 + 3 * Math.sin(6 * a + 0.8) + 1.5 * Math.sin(9 * a)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(lobesShape(lobes), base, [5, 7], 0.26),
       `<path d="${bridge}" fill="none" stroke="${outline(nuc)}" stroke-width="13" stroke-linecap="round"/>`,
       ...lobes.map(l => lobe(l, `fill="${outline(nuc)}" stroke="${outline(nuc)}" stroke-width="5"`)),
       `<path d="${bridge}" fill="none" stroke="${nuc}" stroke-width="8" stroke-linecap="round"/>`,
@@ -1841,8 +1881,12 @@ function immuneSynapse(id) {
       K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
     body: [
       `<path d="${K.synapseCell(176, 128, 52, 136, 1, dendrites)}" fill="url(#${id}-apc)" stroke="${shade(apc, 0.35)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(pathShape(K.smoothClosedPath(K.polarPoints(184, 132, a => 20 + 3 * Math.sin(3 * a + 1) + 2 * Math.sin(5 * a)))), apc, [5, 7], 0.26),
       `<path d="${K.smoothClosedPath(K.polarPoints(184, 132, a => 20 + 3 * Math.sin(3 * a + 1) + 2 * Math.sin(5 * a)))}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.2"/>`,
       `<path d="${K.synapseCell(72, 128, 56, 120, -1)}" fill="url(#${id}-t)" stroke="${shade(t, 0.32)}" stroke-width="${STROKE}"/>`,
+      // The nucleus shades the cytoplasm beside it.
+      shadowOf(circleShape(64, 126, 34), t, [5, 7], 0.26),
       `<circle cx="64" cy="126" r="34" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
       ...pairs,
       K.gloss(`${id}-gloss`, 50, 90, 16, 8), K.gloss(`${id}-gloss`, 168, 98, 12, 6),
@@ -1953,6 +1997,7 @@ function germinalCentre(id) {
 function thSubsets(id) {
   const T = K.TH_SUBSETS, [nx, ny, nr] = T.naive;
   const cell = (x, y, r, colour, grad) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-${grad})" stroke="${shade(colour, 0.32)}" stroke-width="${STROKE}"/>` +
+    shadowOf(circleShape(n(x - r * 0.1), n(y - r * 0.1), n(r * 0.62)), colour, [r * 0.08, r * 0.11], 0.26) +
     `<circle cx="${n(x - r * 0.1)}" cy="${n(y - r * 0.1)}" r="${n(r * 0.62)}" fill="url(#${id}-nucleus)" stroke="${outline(C.nucleus)}" stroke-width="2"/>` +
     K.gloss(`${id}-gloss`, x - r * 0.5, y - r * 0.55, r * 0.3, r * 0.15);
   const arrow = ([x, y]) => {

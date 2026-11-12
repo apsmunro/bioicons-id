@@ -89,6 +89,7 @@
 <circle cx="181.94" cy="72.42" r="4.2" fill="url(#eosinophil-granule)"/>
 <circle cx="198.42" cy="145.5" r="4.2" fill="url(#eosinophil-granule)"/>
 <circle cx="135.05" cy="139.38" r="4.2" fill="url(#eosinophil-granule)"/>
+<g transform="translate(2.75 3.85)"><path d="M123.37 108.77A27 22 -20 1 0 72.63 127.23A27 22 -20 1 0 123.37 108.77ZM183.37 127.23A27 22 20 1 0 132.63 108.77A27 22 20 1 0 183.37 127.23Z" fill="#8e2018" opacity="0.13"/></g><g transform="translate(5 7)"><path d="M123.37 108.77A27 22 -20 1 0 72.63 127.23A27 22 -20 1 0 123.37 108.77ZM183.37 127.23A27 22 20 1 0 132.63 108.77A27 22 20 1 0 183.37 127.23Z" fill="#8e2018" opacity="0.13"/></g>
 <path d="M98 118Q128 102 158 118" fill="none" stroke="#4a3076" stroke-width="13" stroke-linecap="round"/>
 <ellipse cx="98" cy="118" rx="27" ry="22" transform="rotate(-20 98 118)" fill="#4a3076" stroke="#4a3076" stroke-width="5"/>
 <ellipse cx="158" cy="118" rx="27" ry="22" transform="rotate(20 158 118)" fill="#4a3076" stroke="#4a3076" stroke-width="5"/>

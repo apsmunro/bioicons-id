@@ -97,6 +97,10 @@ Cast shadows are added a category at a time with two helpers at the top of the c
 enterococcus, M. tuberculosis, C. diphtheriae, listeria, salmonella, mycoplasma and chlamydia.
 Capsules are treated as a halo, not a surface, and spores inside a cell cast nothing.
 
+Immune cells are done too (15 icons): each nucleus shades its cytoplasm with `shadowOf`, with
+`lobesShape` merging multilobed nuclei into one silhouette, and the T cell shades its target in
+CD8 killing. Platelets, diapedesis and the germinal centre were left: nothing large overlaps.
+
 Still to do: cast shadows for the other categories.
 
 ## Ideas not yet done
