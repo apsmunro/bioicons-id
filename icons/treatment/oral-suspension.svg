@@ -2,15 +2,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="oral-suspension-title">
 <title id="oral-suspension-title">Oral antibiotic suspension</title>
 <desc>Amber medicine bottle with an oral dosing syringe, as used for liquid antibiotics in children.</desc>
-<defs><linearGradient id="oral-suspension-amber" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ae6824"/><stop offset="0.3" stop-color="#d59c5f"/><stop offset="0.7" stop-color="#C77B2A"/><stop offset="1" stop-color="#95541e"/></linearGradient><linearGradient id="oral-suspension-cap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4f3f1"/><stop offset="0.22" stop-color="#f7f5ef"/><stop offset="0.55" stop-color="#F2F2F2"/><stop offset="0.88" stop-color="#c1c1c1"/><stop offset="1" stop-color="#d9d9d9"/></linearGradient><linearGradient id="oral-suspension-rod" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c7dcd"/><stop offset="0.22" stop-color="#bda7d8"/><stop offset="0.55" stop-color="#8E6CC9"/><stop offset="0.88" stop-color="#7053a3"/><stop offset="1" stop-color="#7f5fb6"/></linearGradient></defs>
+<defs><linearGradient id="oral-suspension-amber" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#95541e"/><stop offset="0.14" stop-color="#C77B2A"/><stop offset="0.32" stop-color="#d8a164"/><stop offset="0.62" stop-color="#C77B2A"/><stop offset="1" stop-color="#743a17"/></linearGradient><linearGradient id="oral-suspension-round" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#42130b" stop-opacity="0.26"/><stop offset="0.24" stop-color="#42130b" stop-opacity="0"/><stop offset="0.6" stop-color="#42130b" stop-opacity="0"/><stop offset="1" stop-color="#42130b" stop-opacity="0.36"/></linearGradient><radialGradient id="oral-suspension-sheen"><stop offset="0" stop-color="#fff" stop-opacity="0.6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><linearGradient id="oral-suspension-cap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4f3f1"/><stop offset="0.22" stop-color="#f7f5ef"/><stop offset="0.55" stop-color="#F2F2F2"/><stop offset="0.88" stop-color="#c1c1c1"/><stop offset="1" stop-color="#d9d9d9"/></linearGradient><linearGradient id="oral-suspension-rod" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c7dcd"/><stop offset="0.22" stop-color="#bda7d8"/><stop offset="0.55" stop-color="#8E6CC9"/><stop offset="0.88" stop-color="#7053a3"/><stop offset="1" stop-color="#7f5fb6"/></linearGradient></defs>
 <path d="M62 104Q62 86 80 82L84 70L130 70L134 82Q152 86 152 104L152 216Q152 228 140 228L74 228Q62 228 62 216Z" fill="url(#oral-suspension-amber)" stroke="#773d17" stroke-width="2.5" stroke-linejoin="round"/>
-<rect x="70" y="96" width="6" height="120" rx="3" fill="#fff" opacity="0.35"/>
 <rect x="70" y="122" width="74" height="70" rx="3" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>
 <path d="M70 134V125a3 3 0 0 1 3-3h68a3 3 0 0 1 3 3v9Z" fill="#F2A541"/>
 <rect x="78" y="146" width="50" height="4" rx="2" fill="#B8C6D1"/>
 <rect x="78" y="156" width="40" height="4" rx="2" fill="#B8C6D1"/>
 <rect x="78" y="166" width="54" height="4" rx="2" fill="#B8C6D1"/>
 <rect x="78" y="176" width="34" height="4" rx="2" fill="#B8C6D1"/>
+<path d="M62 104Q62 86 80 82L84 70L130 70L134 82Q152 86 152 104L152 216Q152 228 140 228L74 228Q62 228 62 216Z" fill="url(#oral-suspension-round)"/>
+<ellipse cx="75" cy="156" rx="5" ry="62" transform="rotate(0 75 156)" fill="url(#oral-suspension-sheen)"/>
+<rect x="85" y="72" width="44" height="6" fill="#53200f" opacity="0.3"/>
 <rect x="78" y="34" width="58" height="38" rx="6" fill="url(#oral-suspension-cap)" stroke="#A7B1BA" stroke-width="2.5"/>
 <g stroke="#C6CED5" stroke-width="1.2"><line x1="84" y1="40" x2="84" y2="66"/><line x1="89" y1="40" x2="89" y2="66"/><line x1="94" y1="40" x2="94" y2="66"/><line x1="99" y1="40" x2="99" y2="66"/><line x1="104" y1="40" x2="104" y2="66"/><line x1="109" y1="40" x2="109" y2="66"/><line x1="114" y1="40" x2="114" y2="66"/><line x1="119" y1="40" x2="119" y2="66"/><line x1="124" y1="40" x2="124" y2="66"/><line x1="129" y1="40" x2="129" y2="66"/></g>
 <g transform="translate(196 132) rotate(12)">
@@ -23,6 +25,7 @@
 <g stroke="#8DA6B8" stroke-width="1.2"><line x1="0" y1="-60" x2="12" y2="-60"/><line x1="4" y1="-50" x2="12" y2="-50"/><line x1="0" y1="-40" x2="12" y2="-40"/><line x1="4" y1="-30" x2="12" y2="-30"/><line x1="0" y1="-20" x2="12" y2="-20"/><line x1="4" y1="-10" x2="12" y2="-10"/><line x1="0" y1="0" x2="12" y2="0"/><line x1="4" y1="10" x2="12" y2="10"/><line x1="0" y1="20" x2="12" y2="20"/><line x1="4" y1="30" x2="12" y2="30"/><line x1="0" y1="40" x2="12" y2="40"/></g>
 <rect x="-12" y="-70" width="24" height="120" rx="4" fill="none" stroke="#8DA6B8" stroke-width="2.5"/>
 <rect x="-20" y="-76" width="40" height="7" rx="3" fill="#EEF4F8" stroke="#8DA6B8" stroke-width="2"/>
-<rect x="-8" y="-64" width="4" height="108" rx="2" fill="#fff" opacity="0.5"/>
+<rect x="5" y="-67" width="6" height="114" rx="2" fill="#52687C" opacity="0.16"/>
+<ellipse cx="-6.5" cy="-10" rx="2.6" ry="54" transform="rotate(0 -6.5 -10)" fill="url(#oral-suspension-sheen)"/>
 </g>
 </svg>

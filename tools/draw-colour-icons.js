@@ -3128,27 +3128,43 @@ function meninges(id) {
 
 // --------------------------------------------------------------- treatment
 
+// Glass and clear plastic in the second shading model. The vessel takes a cool gradient
+// (glassGradient); its contents (liquid, label) are drawn flat; then the vessel's own shape is laid
+// over them filled with roundingGradient, which darkens both sides so everything inside curves
+// with the vessel; a soft streak of light (K.sheen) goes on last, on the lit side.
 const glassGradient = id =>
-  `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/>` +
-  `<stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient>`;
+  `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B4C6D3"/><stop offset="0.14" stop-color="#DDE8EF"/>` +
+  `<stop offset="0.32" stop-color="#FBFDFE"/><stop offset="0.6" stop-color="#E6EEF4"/><stop offset="0.86" stop-color="#C3D2DD"/><stop offset="1" stop-color="#A3B7C7"/></linearGradient>`;
+const GLASS_SHADE = '#52687C';
+const roundingGradient = (id, colour = GLASS_SHADE, strength = 1) =>
+  `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${colour}" stop-opacity="${n(0.26 * strength)}"/>` +
+  `<stop offset="0.24" stop-color="${colour}" stop-opacity="0"/><stop offset="0.6" stop-color="${colour}" stop-opacity="0"/>` +
+  `<stop offset="1" stop-color="${colour}" stop-opacity="${n(0.36 * strength)}"/></linearGradient>`;
+// The surface of a liquid seen slightly from above.
+const meniscus = (cx, y, rx, colour) => `<ellipse cx="${cx}" cy="${y}" rx="${rx}" ry="${n(Math.max(2, rx * 0.11))}" fill="${K.lift(colour, 0.5)}" stroke="${K.deepen(colour, 0.25)}" stroke-width="1"/>`;
+// A syringe barrel lying along x, lit from the side y < 0: a shaded band and a streak of light.
+const barrelLight = (id, x0, x1, h) => `<rect x="${x0 + 3}" y="${n(h * 0.45)}" width="${x1 - x0 - 6}" height="${n(h * 0.5)}" rx="2" fill="${GLASS_SHADE}" opacity="0.16"/>` +
+  K.sheen(`${id}-sheen`, (x0 + x1) / 2, -h * 0.55, (x1 - x0) * 0.44, h * 0.2, 0);
 
 function vaccine(id) {
   const edge = C.plasticEdge, cap = C.vialCap;
   const vial = 'M44 108Q44 94 58 90L60 80L88 80L90 90Q104 94 104 108L104 200Q104 210 94 210L54 210Q44 210 44 200Z';
   return {
     defs: [
-      `<clipPath id="${id}-clip"><path d="${vial}"/></clipPath>`, glassGradient(`${id}-glass`),
+      `<clipPath id="${id}-clip"><path d="${vial}"/></clipPath>`, glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75),
       K.cylinderGradient(`${id}-cap`, cap, { horizontal: true }), K.cylinderGradient(`${id}-crimp`, '#B9C3CC', { horizontal: true }),
       K.cylinderGradient(`${id}-rod`, C.plunger), K.cylinderGradient(`${id}-liquid`, C.fluid),
     ],
     body: [
       `<path d="${vial}" fill="url(#${id}-glass)"/>`,
       `<g clip-path="url(#${id}-clip)"><rect x="40" y="128" width="70" height="86" fill="${tint(C.fluid, 0.2)}"/>` +
-      `<line x1="40" y1="128" x2="108" y2="128" stroke="#fff" stroke-width="2" opacity="0.8"/></g>`,
-      `<rect x="50" y="98" width="5" height="100" rx="2.5" fill="#fff" opacity="0.5"/>`,
+      meniscus(74, 128, 30, C.fluid) + `</g>`,
       `<rect x="50" y="146" width="48" height="38" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M50 155V148a2 2 0 0 1 2-2h44a2 2 0 0 1 2 2v7Z" fill="${cap}"/>`,
       ...[[164, 32], [172, 24]].map(([y, w]) => `<rect x="56" y="${y}" width="${w}" height="3.5" rx="1.75" fill="#B8C6D1"/>`),
+      // The crimp shades the shoulder; the vial rounds off its liquid and label.
+      `<ellipse cx="77" cy="85" rx="17" ry="4.5" ${shadowOn(GLASS_SHADE, 0.3)} clip-path="url(#${id}-clip)"/>`,
+      `<path d="${vial}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 55, 148, 4, 52, 0),
       // The plunger of the syringe lies in front of the vial and shades it.
       `<g clip-path="url(#${id}-clip)">` + shadowOf(paint => `<path d="M-100 -4h50v8h-50ZM-106 -16h8v32h-8Z" transform="translate(160 140) rotate(-45)" ${paint}/>`, edge, [4, 6], 0.3) + `</g>`,
       `<path d="${vial}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
@@ -3167,7 +3183,7 @@ function vaccine(id) {
       `<g stroke="${edge}" stroke-width="1.2">` + Array.from({ length: 10 }, (_, i) => `<line x1="${-44 + i * 8}" y1="-14" x2="${-44 + i * 8}" y2="${i % 2 ? -9 : -5}"/>`).join('') + `</g>`,
       `<rect x="-56" y="-14" width="100" height="28" rx="4" fill="none" stroke="${edge}" stroke-width="2.5"/>`,
       `<rect x="-62" y="-24" width="7" height="48" rx="3" fill="${C.plastic}" stroke="${edge}" stroke-width="2"/>`,
-      `<rect x="-48" y="6" width="86" height="4" rx="2" fill="#fff" opacity="0.55"/>`,
+      barrelLight(id, -56, 44, 14),
       `</g>`,
     ],
   };
@@ -3178,16 +3194,19 @@ function oralSuspension(id) {
   const bottle = 'M62 104Q62 86 80 82L84 70L130 70L134 82Q152 86 152 104L152 216Q152 228 140 228L74 228Q62 228 62 216Z';
   return {
     defs: [
-      `<linearGradient id="${id}-amber" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${shade(amber, 0.15)}"/>` +
-      `<stop offset="0.3" stop-color="${tint(amber, 0.25)}"/><stop offset="0.7" stop-color="${amber}"/><stop offset="1" stop-color="${shade(amber, 0.3)}"/></linearGradient>`,
+      `<linearGradient id="${id}-amber" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${K.deepen(amber, 0.3)}"/><stop offset="0.14" stop-color="${amber}"/>` +
+      `<stop offset="0.32" stop-color="${K.lift(amber, 0.3)}"/><stop offset="0.62" stop-color="${amber}"/><stop offset="1" stop-color="${K.deepen(amber, 0.5)}"/></linearGradient>`,
+      roundingGradient(`${id}-round`, K.deepen(amber, 0.85)), K.glossGradient(`${id}-sheen`, 0.6),
       K.cylinderGradient(`${id}-cap`, '#F2F2F2', { horizontal: true }), K.cylinderGradient(`${id}-rod`, purple, { horizontal: true }),
     ],
     body: [
       `<path d="${bottle}" fill="url(#${id}-amber)" stroke="${outline(amber)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<rect x="70" y="96" width="6" height="120" rx="3" fill="#fff" opacity="0.35"/>`,
       `<rect x="70" y="122" width="74" height="70" rx="3" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M70 134V125a3 3 0 0 1 3-3h68a3 3 0 0 1 3 3v9Z" fill="${C.labelAccent}"/>`,
       ...[[146, 50], [156, 40], [166, 54], [176, 34]].map(([y, w]) => `<rect x="78" y="${y}" width="${w}" height="4" rx="2" fill="#B8C6D1"/>`),
+      // The bottle rounds off its label; the cap shades the neck.
+      `<path d="${bottle}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 75, 156, 5, 62, 0),
+      `<rect x="85" y="72" width="44" height="6" ${shadowOn(amber, 0.3)}/>`,
       `<rect x="78" y="34" width="58" height="38" rx="6" fill="url(#${id}-cap)" stroke="#A7B1BA" stroke-width="2.5"/>`,
       `<g stroke="#C6CED5" stroke-width="1.2">` + Array.from({ length: 10 }, (_, i) => `<line x1="${84 + i * 5}" y1="40" x2="${84 + i * 5}" y2="66"/>`).join('') + `</g>`,
       // Oral dosing syringe, tip down.
@@ -3201,7 +3220,7 @@ function oralSuspension(id) {
       `<g stroke="${edge}" stroke-width="1.2">` + Array.from({ length: 11 }, (_, i) => `<line x1="${i % 2 ? 4 : 0}" y1="${-60 + i * 10}" x2="12" y2="${-60 + i * 10}"/>`).join('') + `</g>`,
       `<rect x="-12" y="-70" width="24" height="120" rx="4" fill="none" stroke="${edge}" stroke-width="2.5"/>`,
       `<rect x="-20" y="-76" width="40" height="7" rx="3" fill="${C.plastic}" stroke="${edge}" stroke-width="2"/>`,
-      `<rect x="-8" y="-64" width="4" height="108" rx="2" fill="#fff" opacity="0.5"/>`,
+      `<rect x="5" y="-67" width="6" height="114" rx="2" fill="${GLASS_SHADE}" opacity="0.16"/>`, K.sheen(`${id}-sheen`, -6.5, -10, 2.6, 54, 0),
       `</g>`,
     ],
   };
@@ -3230,7 +3249,7 @@ function ivBag(id) {
   const tube = 'M121 234C121 248 146 250 166 242S204 228 222 236';
   return {
     defs: [
-      `<clipPath id="${id}-clip"><path d="${bag}"/></clipPath>`,
+      `<clipPath id="${id}-clip"><path d="${bag}"/></clipPath>`, roundingGradient(`${id}-round`, GLASS_SHADE, 0.7), K.glossGradient(`${id}-sheen`, 0.75),
       `<linearGradient id="${id}-fluid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${tint(C.fluid, 0.35)}"/>` +
       `<stop offset="0.5" stop-color="${C.fluid}"/><stop offset="1" stop-color="${shade(C.fluid, 0.08)}"/></linearGradient>`,
     ],
@@ -3250,8 +3269,8 @@ function ivBag(id) {
       `<rect x="90" y="96" width="62" height="58" rx="4" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M90 109V100a4 4 0 0 1 4-4h54a4 4 0 0 1 4 4v9Z" fill="${C.labelAccent}"/>`,
       ...[[118, 46], [128, 36], [138, 42]].map(([y, w]) => `<rect x="98" y="${y}" width="${w}" height="4" rx="2" fill="#B8C6D1"/>`),
+      `<path d="${bag}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 88, 108, 5.5, 66, 0),
       `<path d="${bag}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
-      `<rect x="84" y="40" width="7" height="136" rx="3.5" fill="#fff" opacity="0.55"/>`,
     ],
   };
 }
@@ -3377,7 +3396,7 @@ function monoclonalAntibody(id) {
   const S = K.MAB_SYRINGE, [x, y, a] = S.at, [b0, b1, h] = S.barrel, edge = C.plasticEdge;
   return {
     defs: [K.sphereGradient(`${id}-heavy`, C.heavyChain, { light: 0.5 }), K.sphereGradient(`${id}-light`, C.lightChain, { light: 0.5 }),
-      K.cylinderGradient(`${id}-rod`, C.plunger), K.cylinderGradient(`${id}-liquid`, C.fluid)],
+      K.cylinderGradient(`${id}-rod`, C.plunger), K.cylinderGradient(`${id}-liquid`, C.fluid), K.glossGradient(`${id}-sheen`, 0.75)],
     body: [
       `<g transform="translate(76 98) rotate(-16) scale(0.62)">${antibodyUnit(id)}</g>`,
       // Pre-filled syringe, needle towards the top right; antibody in the solution.
@@ -3394,7 +3413,7 @@ function monoclonalAntibody(id) {
       `<g stroke="${edge}" stroke-width="1.2">` + Array.from({ length: 8 }, (_, i) => `<line x1="${b0 + 18 + i * 10}" y1="${-h}" x2="${b0 + 18 + i * 10}" y2="${i % 2 ? -h + 4 : -h + 7}"/>`).join('') + `</g>`,
       `<rect x="${b0}" y="${-h}" width="${b1 - b0}" height="${2 * h}" rx="4" fill="none" stroke="${edge}" stroke-width="2.5"/>`,
       `<rect x="${b0 - 7}" y="-26" width="7" height="52" rx="3" fill="${C.plastic}" stroke="${edge}" stroke-width="2"/>`,
-      `<rect x="${b0 + 6}" y="${h - 6}" width="${b1 - b0 - 12}" height="3" rx="1.5" fill="#fff" opacity="0.55"/>`,
+      barrelLight(id, b0, b1, h),
       `</g>`,
     ],
   };
@@ -3420,7 +3439,7 @@ function nasalSprayVaccine(id) {
   return {
     defs: [`<linearGradient id="${id}-plume" x1="${n(tip[0])}" y1="${n(tip[1])}" x2="${n((l[0] + r[0]) / 2)}" y2="${n((l[1] + r[1]) / 2)}" gradientUnits="userSpaceOnUse">` +
       `<stop offset="0" stop-color="${tint(C.fluid, 0.2)}" stop-opacity="0.7"/><stop offset="1" stop-color="${tint(C.fluid, 0.5)}" stop-opacity="0"/></linearGradient>`,
-      glassGradient(`${id}-glass`), K.cylinderGradient(`${id}-clip`, C.vialCap, { horizontal: true }), K.cylinderGradient(`${id}-rod`, C.plunger, { horizontal: true }),
+      glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75), K.cylinderGradient(`${id}-clip`, C.vialCap, { horizontal: true }), K.cylinderGradient(`${id}-rod`, C.plunger, { horizontal: true }),
       K.sphereGradient(`${id}-flu`, flu)],
     body: [
       `<path d="M${n(tip[0])} ${n(tip[1])}L${n(l[0])} ${n(l[1])}A${reach} ${reach} 0 0 1 ${n(r[0])} ${n(r[1])}Z" fill="url(#${id}-plume)"/>`,
@@ -3432,7 +3451,7 @@ function nasalSprayVaccine(id) {
       `<rect x="${bx + 4}" y="${by + 30}" width="${bw - 8}" height="${bh - 36}" rx="2" fill="${tint(C.fluid, 0.15)}"/>`,
       `<rect x="${bx + 4}" y="${by + bh - 10}" width="${bw - 8}" height="8" rx="2" fill="${C.shoe}"/>`,
       `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="4" fill="none" stroke="${edge}" stroke-width="2.5"/>`,
-      `<rect x="${bx + 5}" y="${by + 6}" width="4" height="${bh - 14}" rx="2" fill="#fff" opacity="0.6"/>`,
+      `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="4" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, bx + 6.5, by + bh / 2, 2.8, bh * 0.44, 0),
       // The dose-divider clip on the plunger rod.
       `<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="3" fill="url(#${id}-clip)" stroke="${outline(C.vialCap)}" stroke-width="2"/>`,
       `<path d="${N.nozzle}" fill="${C.plastic}" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>`,
@@ -3513,15 +3532,14 @@ function bloodCultureBottle(id) {
   const bars = [2, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 2, 3, 1];
   let x = 99;
   const barcode = bars.map((w, i) => {
-    const r = `<rect x="${n(x)}" y="174" width="${n(w * 1.3)}" height="18" fill="#3A4650"/>`;
-    x += w * 1.3 + (i % 3 ? 1.6 : 2.4);
+    const r = `<rect x="${n(x)}" y="174" width="${n(w * 1.1)}" height="18" fill="#3A4650"/>`;
+    x += w * 1.1 + (i % 3 ? 1.3 : 1.9);
     return r;
   });
   return {
     defs: [
       `<clipPath id="${id}-clip"><path d="${glass}"/></clipPath>`,
-      `<linearGradient id="${id}-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D5E1E9"/>` +
-      `<stop offset="0.3" stop-color="#F7FBFD"/><stop offset="0.7" stop-color="#DCE6ED"/><stop offset="1" stop-color="#BACBD7"/></linearGradient>`,
+      glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75),
       `<linearGradient id="${id}-broth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${tint(C.broth, 0.15)}"/>` +
       `<stop offset="0.5" stop-color="${C.broth}"/><stop offset="1" stop-color="${shade(C.broth, 0.3)}"/></linearGradient>`,
       K.cylinderGradient(`${id}-cap`, capC, { horizontal: true }),
@@ -3530,13 +3548,15 @@ function bloodCultureBottle(id) {
     body: [
       `<path d="${glass}" fill="url(#${id}-glass)"/>`,
       `<g clip-path="url(#${id}-clip)"><rect x="76" y="118" width="104" height="124" fill="url(#${id}-broth)"/>` +
-      `<line x1="80" y1="118" x2="176" y2="118" stroke="${tint(C.broth, 0.35)}" stroke-width="2"/>` +
+      meniscus(128, 118, 46, C.broth) +
       `<ellipse cx="128" cy="229" rx="32" ry="5" fill="#6E8B7B"/></g>`,
-      `<rect x="90" y="84" width="7" height="140" rx="3.5" fill="#fff" opacity="0.5"/>`,
       `<rect x="90" y="134" width="76" height="66" rx="3" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M90 145V137a3 3 0 0 1 3-3h70a3 3 0 0 1 3 3v8Z" fill="${capC}"/>`,
       ...[[152, 50], [161, 38]].map(([y, w]) => `<rect x="98" y="${y}" width="${w}" height="4" rx="2" fill="#B8C6D1"/>`),
       ...barcode,
+      // The crimp shades the shoulder; the bottle rounds off its broth and label.
+      `<ellipse cx="129" cy="69" rx="27" ry="5" ${shadowOn(GLASS_SHADE, 0.3)} clip-path="url(#${id}-clip)"/>`,
+      `<path d="${glass}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 96, 152, 5.5, 70, 0),
       `<path d="${glass}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<rect x="100" y="46" width="56" height="18" rx="4" fill="url(#${id}-crimp)" stroke="${shade('#B9C3CC', 0.35)}" stroke-width="2"/>`,
       `<rect x="98" y="22" width="60" height="28" rx="6" fill="url(#${id}-cap)" stroke="${outline(capC)}" stroke-width="${STROKE}"/>`,
@@ -3758,14 +3778,14 @@ function baby(id) {
 function thermometer(id) {
   const red = C.mercury, edge = C.plasticEdge;
   return {
-    defs: [glassGradient(`${id}-glass`), K.sphereGradient(`${id}-bulb`, red), K.cylinderGradient(`${id}-column`, red, { horizontal: true })],
+    defs: [glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75), K.sphereGradient(`${id}-bulb`, red), K.cylinderGradient(`${id}-column`, red, { horizontal: true })],
     body: [
       `<g transform="translate(128 128) rotate(40)">`,
       `<rect x="-16" y="-100" width="32" height="172" rx="16" fill="url(#${id}-glass)" stroke="${edge}" stroke-width="${STROKE}"/>`,
       `<g stroke="${edge}" stroke-width="1.5">` + Array.from({ length: 16 }, (_, i) => `<line x1="${i % 2 ? 8 : 4}" y1="${-88 + i * 9}" x2="14" y2="${-88 + i * 9}"/>`).join('') + `</g>`,
       `<rect x="-5" y="-62" width="10" height="140" rx="5" fill="url(#${id}-column)"/>`,
+      `<rect x="-16" y="-100" width="32" height="172" rx="16" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, -9.5, -20, 3, 76, 0),
       `<circle cy="82" r="24" fill="url(#${id}-bulb)" stroke="${outline(red)}" stroke-width="${STROKE}"/>`,
-      `<rect x="-11" y="-92" width="4" height="150" rx="2" fill="#fff" opacity="0.5"/>`,
       `</g>`,
     ],
   };
@@ -3817,15 +3837,18 @@ function npSwab(id) {
     return `M${n(x)} ${n(y)}L${n(x + x / l * 3.5)} ${n(y + y / l * 3.5)}`;
   }).join('');
   return {
-    defs: [`<clipPath id="${id}-clip"><path d="${tube}"/></clipPath>`, glassGradient(`${id}-glass`),
+    defs: [`<clipPath id="${id}-clip"><path d="${tube}"/></clipPath>`, glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75),
       K.cylinderGradient(`${id}-cap`, cap, { horizontal: true }), K.sphereGradient(`${id}-tip`, tip, { light: 0.5 })],
     body: [
       `<path d="${tube}" fill="url(#${id}-glass)"/>`,
       `<g clip-path="url(#${id}-clip)"><rect x="146" y="164" width="60" height="70" fill="${C.medium}"/>` +
-      `<line x1="146" y1="164" x2="204" y2="164" stroke="#fff" stroke-width="2" opacity="0.7"/></g>`,
+      meniscus(175, 164, 24, C.medium) + `</g>`,
       `<rect x="156" y="104" width="38" height="44" rx="2" fill="#fff" stroke="#C9D6DF" stroke-width="1.5"/>`,
       `<path d="M156 113V106a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v7Z" fill="${cap}"/>`,
       ...[[122, 26], [130, 18]].map(([y, w]) => `<rect x="162" y="${y}" width="${w}" height="3.5" rx="1.75" fill="#B8C6D1"/>`),
+      // The cap shades the top of the tube; the tube rounds off its medium and label.
+      `<rect x="150" y="86" width="50" height="6" ${shadowOn(GLASS_SHADE, 0.28)}/>`,
+      `<path d="${tube}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 156.5, 152, 3.2, 60, 0),
       `<path d="${tube}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<rect x="146" y="50" width="58" height="36" rx="6" fill="url(#${id}-cap)" stroke="${outline(cap)}" stroke-width="${STROKE}"/>`,
       K.pipe('M40 30L114 198', '#E9EEF2', 6),
@@ -3839,7 +3862,7 @@ function npSwab(id) {
 function ivCannula(id) {
   const edge = C.plasticEdge, hub = C.vialCap, W = K.CANNULA;
   return {
-    defs: [glassGradient(`${id}-body`), K.cylinderGradient(`${id}-hub`, hub), K.sphereGradient(`${id}-wing`, tint(hub, 0.15), { light: 0.45 }),
+    defs: [glassGradient(`${id}-body`), K.glossGradient(`${id}-sheen`, 0.75), K.cylinderGradient(`${id}-hub`, hub), K.sphereGradient(`${id}-wing`, tint(hub, 0.15), { light: 0.45 }),
       K.sphereGradient(`${id}-port`, hub, { light: 0.5 }), K.cylinderGradient(`${id}-cap`, '#F2F2F2')],
     body: [
       `<g transform="translate(136 120) rotate(-35) scale(1.22)">`,
@@ -3850,7 +3873,7 @@ function ivCannula(id) {
         `<path d="${d}" fill="url(#${id}-wing)" stroke="${outline(hub)}" stroke-width="2" stroke-linejoin="round"/>`),
       `<path d="M-40 -9L-30 -11L-6 -11L-6 11L-30 11L-40 9Z" fill="url(#${id}-hub)" stroke="${outline(hub)}" stroke-width="2" stroke-linejoin="round"/>`,
       `<rect x="-8" y="-11" width="50" height="22" rx="5" fill="url(#${id}-body)" stroke="${edge}" stroke-width="2"/>`,
-      `<rect x="0" y="-7" width="36" height="3" rx="1.5" fill="#fff" opacity="0.7"/>`,
+      `<rect x="-5" y="4" width="44" height="6" rx="2" fill="${GLASS_SHADE}" opacity="0.16"/>`, K.sheen(`${id}-sheen`, 18, -6.5, 20, 2.8, 0),
       // Injection port, seen from above, with its hinged cap.
       `<circle cx="10" cy="0" r="12" fill="url(#${id}-port)" stroke="${outline(hub)}" stroke-width="2"/>`,
       `<circle cx="10" cy="0" r="6" fill="${shade(hub, 0.15)}" stroke="${outline(hub)}" stroke-width="1.2"/>`,
@@ -3890,13 +3913,15 @@ function urineDipstick(id) {
   const pot = 'M44 116H124V214Q124 228 110 228H58Q44 228 44 214Z';
   const pads = ['#B9A3D6', '#F2B8C6', '#F5C79E', '#C9DC7A', '#F2A541', '#5E9E5A', '#6FB7A8', '#E9A0A0', '#9FD5D1'];
   return {
-    defs: [`<clipPath id="${id}-clip"><path d="${pot}"/></clipPath>`, glassGradient(`${id}-glass`), K.cylinderGradient(`${id}-lid`, lid, { horizontal: true }),
+    defs: [`<clipPath id="${id}-clip"><path d="${pot}"/></clipPath>`, glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75), K.cylinderGradient(`${id}-lid`, lid, { horizontal: true }),
       `<linearGradient id="${id}-urine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${tint(urine, 0.25)}"/><stop offset="1" stop-color="${shade(urine, 0.12)}"/></linearGradient>`],
     body: [
       `<path d="${pot}" fill="url(#${id}-glass)"/>`,
       `<g clip-path="url(#${id}-clip)"><rect x="40" y="150" width="90" height="82" fill="url(#${id}-urine)"/>` +
-      `<line x1="40" y1="150" x2="128" y2="150" stroke="#fff" stroke-width="2" opacity="0.7"/></g>`,
-      `<rect x="52" y="122" width="6" height="96" rx="3" fill="#fff" opacity="0.5"/>`,
+      meniscus(84, 150, 39, urine) + `</g>`,
+      // The lid shades the rim; the pot rounds off the urine inside.
+      `<rect x="44" y="118" width="80" height="6" ${shadowOn(GLASS_SHADE, 0.28)}/>`,
+      `<path d="${pot}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 55, 170, 4.5, 46, 0),
       `<path d="${pot}" fill="none" stroke="${edge}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<rect x="38" y="94" width="92" height="24" rx="5" fill="url(#${id}-lid)" stroke="${outline(lid)}" stroke-width="2.5"/>`,
       `<path d="${Array.from({ length: 10 }, (_, i) => `M${46 + i * 8.5} 98V114`).join('')}" stroke="${shade(lid, 0.2)}" stroke-width="1.3"/>`,
@@ -3915,7 +3940,9 @@ function gramStainSlide(id) {
   const cocci = [[112, 60], [124, 54], [118, 70], [130, 66], [106, 72], [168, 112], [178, 104], [174, 120], [186, 114], [96, 118], [104, 126]];
   const rods = [[150, 58, 30], [166, 76, -20], [130, 104, 70], [102, 96, 10], [150, 132, -35], [188, 82, 50], [124, 132, 15]];
   return {
-    defs: [`<clipPath id="${id}-field"><circle cx="${fx}" cy="${fy}" r="${fr}"/></clipPath>`, glassGradient(`${id}-glass`),
+    defs: [`<clipPath id="${id}-field"><circle cx="${fx}" cy="${fy}" r="${fr}"/></clipPath>`, K.glossGradient(`${id}-sheen`, 0.75),
+      // A slide is flat glass: lit evenly, a little darker towards the far end.
+      `<linearGradient id="${id}-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7FBFD"/><stop offset="0.6" stop-color="#E6EEF4"/><stop offset="1" stop-color="#CFDCE6"/></linearGradient>`,
       K.sphereGradient(`${id}-pos`, pos), K.cylinderGradient(`${id}-neg`, neg)],
     body: [
       // Slide: frosted label end on the left, stained smear on the right.
@@ -3924,7 +3951,7 @@ function gramStainSlide(id) {
       `<rect x="23" y="165" width="52" height="52" fill="#DCE3E9"/>`,
       `<path d="${Array.from({ length: 6 }, (_, i) => `M${28 + i * 8} 170L${28 + i * 8 - 4} 212`).join('')}" stroke="#C9D3DB" stroke-width="1.5" stroke-linecap="round"/>`,
       `<path d="${K.smoothClosedPath(K.polarPoints(170, 191, a => K.ellipseRadius(40, 17, a) + 2 * Math.sin(6 * a), 60))}" fill="${smear}" opacity="0.85"/>`,
-      `<rect x="80" y="168" width="150" height="4" rx="2" fill="#fff" opacity="0.6"/>`,
+      K.sheen(`${id}-sheen`, 155, 170, 76, 3, 0),
       `</g>`,
       // Magnified field of the smear.
       `<path d="M150 184L${fx - 44} ${fy + 47}M188 180L${fx + 52} ${fy + 38}" stroke="${edge}" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>`,
@@ -3964,7 +3991,7 @@ function nebuliserMask(id) {
   const shape = 'M128 36C152 36 172 66 184 98C196 132 188 158 168 168C150 176 106 176 88 168C68 158 60 132 72 98C84 66 104 36 128 36Z';
   const pot = 'M106 186H150V214Q150 226 138 226H118Q106 226 106 214Z';
   return {
-    defs: [`<clipPath id="${id}-pot"><path d="${pot}"/></clipPath>`, glassGradient(`${id}-glass`), K.sphereGradient(`${id}-mask`, mask, { light: 0.6, dark: 0.1 })],
+    defs: [`<clipPath id="${id}-pot"><path d="${pot}"/></clipPath>`, glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75), K.sphereGradient(`${id}-mask`, mask, { light: 0.6, dark: 0.1 })],
     body: [
       K.pipe('M76 106C48 100 30 108 20 122', '#DDE3E8', 4), K.pipe(K.mirrorX('M76 106C48 100 30 108 20 122'), '#DDE3E8', 4),
       K.pipe('M128 224C128 240 170 242 196 232C218 224 230 210 234 196', tube, 7),
@@ -3972,6 +3999,7 @@ function nebuliserMask(id) {
       `<rect x="118" y="168" width="20" height="20" rx="3" fill="url(#${id}-glass)" stroke="${P}" stroke-width="2"/>`,
       `<path d="${pot}" fill="url(#${id}-glass)"/>`,
       `<g clip-path="url(#${id}-pot)"><rect x="100" y="204" width="56" height="26" fill="${C.fluid}"/></g>`,
+      `<path d="${pot}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, 111.5, 206, 2.4, 14, 0),
       `<path d="${pot}" fill="none" stroke="${P}" stroke-width="2.5"/>`,
       `<rect x="102" y="182" width="52" height="8" rx="3" fill="${tint(mask, 0.1)}" stroke="${edge}" stroke-width="2"/>`,
       `<path d="${shape}" fill="url(#${id}-mask)" opacity="0.8"/>`,
@@ -4023,16 +4051,16 @@ function pcrTube(id) {
     return `<line x1="${n(p[0])}" y1="${n(p[1])}" x2="${n(q[0])}" y2="${n(q[1])}" stroke="${['#F2A541', '#5DBB63', '#E5707A', '#5B8FD9'][k % 4]}" stroke-width="3" stroke-linecap="round"/>`;
   });
   return {
-    defs: [`<clipPath id="${id}-tube"><path d="${tube}"/></clipPath>`, glassGradient(`${id}-glass`), K.cylinderGradient(`${id}-cap`, C.plastic, { horizontal: true })],
+    defs: [`<clipPath id="${id}-tube"><path d="${tube}"/></clipPath>`, glassGradient(`${id}-glass`), roundingGradient(`${id}-round`), K.glossGradient(`${id}-sheen`, 0.75), K.cylinderGradient(`${id}-cap`, C.plastic, { horizontal: true })],
     body: [
       ...rungs,
       `<path d="${K.smoothOpenPath(s1)}" fill="none" stroke="${C.nucleus}" stroke-width="4.5" stroke-linecap="round"/>`,
       `<path d="${K.smoothOpenPath(s2)}" fill="none" stroke="${C.attachmentProtein}" stroke-width="4.5" stroke-linecap="round"/>`,
       `<g transform="translate(96 140) rotate(-10)">`,
       `<path d="${tube}" fill="url(#${id}-glass)"/>`,
-      `<g clip-path="url(#${id}-tube)"><rect x="-26" y="22" width="52" height="50" fill="${C.fluid}"/><line x1="-24" y1="22" x2="24" y2="22" stroke="#fff" stroke-width="2" opacity="0.7"/></g>`,
+      `<g clip-path="url(#${id}-tube)"><rect x="-26" y="22" width="52" height="50" fill="${C.fluid}"/>` + meniscus(0, 22, 16, C.fluid) + `</g>`,
+      `<path d="${tube}" fill="url(#${id}-round)"/>`, K.sheen(`${id}-sheen`, -14.5, -20, 3, 26, 0),
       `<path d="${tube}" fill="none" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>`,
-      `<rect x="-16" y="-44" width="5" height="44" rx="2.5" fill="#fff" opacity="0.6"/>`,
       `<rect x="-26" y="-62" width="52" height="12" rx="3" fill="url(#${id}-cap)" stroke="${edge}" stroke-width="2.5"/>`,
       // The hinged cap, open.
       `<path d="M-26 -58L-40 -66" stroke="${edge}" stroke-width="5" stroke-linecap="round"/>`,
@@ -4198,8 +4226,9 @@ function bloodBottles(id) {
     return `<path d="${tube}" fill="url(#${id}-glass)"/>` +
       `<path d="M${x - 12} 110L${x + 12} 110L${x + 12} 204Q${x + 12} 218 ${x} 218Q${x - 12} 218 ${x - 12} 204Z" fill="url(#${id}-blood)"/>` +
       label(x - 12, 124, 24, 46) +
+      `<rect x="${x - 12}" y="60" width="24" height="7" ${shadowOn(GLASS_SHADE, 0.28)}/>` +
+      `<path d="${tube}" fill="url(#${id}-round)"/>` + K.sheen(`${id}-sheen`, x - 6.5, 132, 2.6, 66, 0) +
       `<path d="${tube}" fill="none" stroke="${edge}" stroke-width="2.5" stroke-linejoin="round"/>` +
-      `<rect x="${x - 8}" y="66" width="4" height="40" rx="2" fill="#fff" opacity="0.6"/>` +
       `<rect x="${x - 15}" y="34" width="30" height="28" rx="5" fill="url(#${id}-${cap})" stroke="${outline(C[cap])}" stroke-width="2.5"/>` +
       `<path d="M${x - 8} 39V57M${x} 39V57M${x + 8} 39V57" stroke="${shade(C[cap], 0.2)}" stroke-width="2" stroke-linecap="round"/>`;
   };
@@ -4208,8 +4237,8 @@ function bloodBottles(id) {
     const tube = `M${x - 9} 160L${x - 9} 206Q${x - 9} 218 ${x} 218Q${x + 9} 218 ${x + 9} 206L${x + 9} 160Z`;
     return `<path d="${tube}" fill="url(#${id}-glass)"/>` +
       `<path d="M${x - 9} 184L${x + 9} 184L${x + 9} 206Q${x + 9} 218 ${x} 218Q${x - 9} 218 ${x - 9} 206Z" fill="url(#${id}-blood)"/>` +
+      `<path d="${tube}" fill="url(#${id}-round)"/>` + K.sheen(`${id}-sheen`, x - 5, 188, 2, 24, 0) +
       `<path d="${tube}" fill="none" stroke="${edge}" stroke-width="2.2" stroke-linejoin="round"/>` +
-      `<rect x="${x - 6}" y="164" width="3" height="18" rx="1.5" fill="#fff" opacity="0.6"/>` +
       `<path d="M${x + 10} 156C${x + 18} 154 ${x + 18} 144 ${x + 10} 142" fill="none" stroke="${outline(C[cap])}" stroke-width="4.5" stroke-linecap="round"/>` +
       `<path d="M${x + 10} 156C${x + 18} 154 ${x + 18} 144 ${x + 10} 142" fill="none" stroke="${C[cap]}" stroke-width="2.5" stroke-linecap="round"/>` +
       `<rect x="${x - 11}" y="152" width="22" height="9" rx="2" fill="url(#${id}-${cap})" stroke="${outline(C[cap])}" stroke-width="2"/>` +
@@ -4217,7 +4246,7 @@ function bloodBottles(id) {
   };
   const caps = [...new Set([...B.adult, ...B.paediatric].map(([, c]) => c))];
   return {
-    defs: [glassGradient(`${id}-glass`), ...caps.map(c => K.cylinderGradient(`${id}-${c}`, C[c], { horizontal: true })),
+    defs: [glassGradient(`${id}-glass`), roundingGradient(`${id}-round`, GLASS_SHADE, 0.8), K.glossGradient(`${id}-sheen`, 0.75), ...caps.map(c => K.cylinderGradient(`${id}-${c}`, C[c], { horizontal: true })),
       `<linearGradient id="${id}-blood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${shade(C.blood, 0.15)}"/>` +
       `<stop offset="0.35" stop-color="${tint(C.blood, 0.15)}"/><stop offset="1" stop-color="${shade(C.blood, 0.3)}"/></linearGradient>`],
     body: [

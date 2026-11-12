@@ -26,6 +26,12 @@ Every icon follows these rules so the set looks like one family on a slide.
 - Where one object lies over another, it casts a soft shadow on it: draw the upper shape
   again, offset down and to the right, filled with a `castGradient` or a low-opacity deep
   tone, and clipped to the shape beneath.
+- **Glass and clear plastic** (vials, bottles, tubes, pots, syringes): fill the vessel with
+  `glassGradient`, draw its contents flat (liquid, label), then lay the vessel's own shape over
+  them filled with `roundingGradient`, so everything inside curves with the vessel. Show the
+  surface of a liquid as a shallow ellipse (`meniscus`), finish with a long soft `sheen` on the
+  lit side, and let a cap or crimp shade the glass just below it. Syringe barrels use
+  `barrelLight`. Flat glass (a slide) and soft bags are not cylinders: shade them more gently.
 - Recessed or background parts use the base colour deepened by about 12%.
 
 ## Lines

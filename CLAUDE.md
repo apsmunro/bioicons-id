@@ -125,6 +125,21 @@ arm). Transmission: the head shades the shoulders in `bust` (droplet, airborne, 
 vertical transmission the head shades the body and the fetus the wall of the uterus. Everything else
 in these categories is a single object, objects that sit apart, or a schematic diagram, and was left.
 
+## Glass and plastic (12 Nov 2026)
+
+The glass and clear-plastic kit (14 icons) was reshaded with four helpers at the top of the treatment
+section of the colour script: `glassGradient`, `roundingGradient` (the vessel's shape laid over its
+contents, darkening both sides), `meniscus` and `barrelLight` (syringe barrels). Done: vaccine, oral
+suspension, IV bag, monoclonal antibody, nasal spray, blood culture bottle, blood bottles, NP swab,
+urine dipstick, nebuliser mask, PCR tube, thermometer, IV cannula and Gram stain slide (flat glass,
+its own gentle gradient). Left: the glass test (a see-through tumbler), the incubator hood and the
+culture plates.
+
+Browser screenshots time out often. A reliable way to check icons is to put them on a slide with
+pptxgenjs and have the installed PowerPoint export it as a PNG (COM automation from PowerShell); this
+also proves they render in PowerPoint. PowerPoint for Windows renders all 163 icons correctly;
+Convert to Shape, Keynote and older Office are untested.
+
 ## Ideas not yet done
 
 - The globe has lines of latitude and longitude but no continents; drawing coastlines accurately
