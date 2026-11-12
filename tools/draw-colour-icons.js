@@ -2876,6 +2876,8 @@ function lymphNode(id) {
       `<path d="${node}" fill="url(#${id}-node)" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
       `<path d="${node}" transform="translate(130 130) scale(0.92) translate(-130 -130)" fill="none" stroke="${tint(base, 0.45)}" stroke-width="2" opacity="0.8"/>`,
       `<path d="M128 130C150 128 170 132 186 136M126 146C150 150 170 150 188 146M130 114C150 112 166 118 186 126" fill="none" stroke="${shade(base, 0.22)}" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>`,
+      // Each follicle stands a little proud of the cortex and shades it.
+      shadowOf(paint => `<path d="${follicles.map(([x, y]) => ellipsePath(x, y, 15, 15)).join('')}" ${paint}/>`, base, [3, 4], 0.26),
       ...follicles.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="15" fill="url(#${id}-follicle)" stroke="${outline(f)}" stroke-width="1.5"/>` +
         `<circle cx="${x + 2}" cy="${y + 2}" r="7" fill="${tint(f, 0.55)}"/>`),
     ],
@@ -3048,7 +3050,8 @@ function placenta(id) {
   const helix = (phase, amp) => K.smoothOpenPath(frames.slice(3, N - 2).map(({ p, s, nx, ny }) => [p[0] + nx * amp * Math.sin(s / 12 + phase), p[1] + ny * amp * Math.sin(s / 12 + phase)]));
   const end = frames[N - 1], endDeg = n(Math.atan2(end.ny, end.nx) * 180 / Math.PI);
   return {
-    defs: [K.sphereGradient(`${id}-plate`, C.chorionicPlate, { light: 0.5 }), K.sphereGradient(`${id}-cord`, jelly, { light: 0.6 }), K.glossGradient(`${id}-gloss`)],
+    defs: [K.sphereGradient(`${id}-plate`, C.chorionicPlate, { light: 0.5 }), K.sphereGradient(`${id}-cord`, jelly, { light: 0.6 }), K.glossGradient(`${id}-gloss`),
+      surfaceClip(id, 'plate', `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"/>`)],
     body: [
       `<path d="${side}" fill="${shade(pl, 0.1)}" stroke="${outline(pl)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<path d="${grooves}" stroke="${shade(pl, 0.4)}" stroke-width="2" stroke-linecap="round"/>`,
@@ -3058,6 +3061,8 @@ function placenta(id) {
       ...P.vessels.map(([a, r]) => vessel(K.placentaVessel(a, r, 3), 4.5, oxy)),
       ...P.vessels.map(([a, r]) => vessel(K.placentaVessel(a, r, -3), 3.5, deoxy)),
       K.gloss(`${id}-gloss`, cx - 46, cy - 24, 30, 9, -8),
+      // The cord shades the fetal surface beneath it.
+      shadowsOn(id, 'plate', [pathShape(K.wormOutline(P.cord, () => P.cordWidth))], C.chorionicPlate, { offset: [7, 10], opacity: 0.3 }),
       `<ellipse cx="${P.insertion[0]}" cy="${P.insertion[1] + 2}" rx="17" ry="9" fill="${shade(jelly, 0.15)}" stroke="${shade(jelly, 0.4)}" stroke-width="2"/>`,
       `<path d="${K.wormOutline(P.cord, () => P.cordWidth)}" fill="url(#${id}-cord)" stroke="${shade(jelly, 0.4)}" stroke-width="2.5" stroke-linejoin="round"/>`,
       vessel(helix(0, 8), 5, deoxy), vessel(helix(2.1, 8), 5, deoxy), vessel(helix(4.2, 7), 6, oxy),
@@ -3081,6 +3086,8 @@ function heartValve(id) {
       // Three cusps meeting along their closure lines.
       ...sectors.map(([s, e]) => { const [p, q] = [at(s, inner), at(e, inner)]; return `<path d="M${cx} ${cy}L${p[0]} ${p[1]}A${inner} ${inner} 0 0 1 ${q[0]} ${q[1]}Z" fill="url(#${id}-cusp)" stroke="${shade(tissue, 0.3)}" stroke-width="2" stroke-linejoin="round"/>`; }),
       `<path d="${V.commissures.map(a => { const p = at(a, inner); return `M${cx} ${cy}L${p[0]} ${p[1]}`; }).join('')}" stroke="${shade(tissue, 0.45)}" stroke-width="3" stroke-linecap="round"/>`,
+      // The vegetations shade the cusps they sit on.
+      shadowOf(pathShape(V.vegetations.map((v, k) => K.vegetationPath(v, k + 1)).join('')), tissue, [3, 5], 0.3),
       // Vegetations on the closure lines, studded with bacteria.
       ...V.vegetations.map((v, k) => `<path d="${K.vegetationPath(v, k + 1)}" fill="url(#${id}-veg)" stroke="${outline(veg)}" stroke-width="2"/>` +
         Array.from({ length: Math.round(v[2] * 0.6) }, () => { const a = rand() * 2 * Math.PI, d = rand() * v[2] * 0.7; return `<circle cx="${n(v[0] + d * Math.cos(a))}" cy="${n(v[1] + d * Math.sin(a))}" r="2.2" fill="${C.gramPositive}" stroke="${outline(C.gramPositive)}" stroke-width="0.6"/>`; }).join('')),

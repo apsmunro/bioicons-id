@@ -114,7 +114,11 @@ Molecules: only the two with a whole cell got shadows (the phagocyte's nucleus i
 and Fc receptor). The rest are schematic diagrams of domains and membranes, where shadows would
 add clutter, so they were left on purpose.
 
-Still to do: cast shadows for organs, treatment, resistance, clinical and transmission.
+Organs: lymph node (follicles on the cortex), heart valve (vegetations on the cusps) and placenta
+(cord on the fetal surface) got shadows. The brain and heart are the author's drawings and were not
+touched; the cross-sections (skin, eye, ear, meninges, knee, bone) and the intestines were left.
+
+Still to do: cast shadows for treatment, resistance, clinical and transmission.
 
 ## Ideas not yet done
 
