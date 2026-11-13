@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="human-papillomavirus-mono-title">
+<title id="human-papillomavirus-mono-title">Human papillomavirus (single colour)</title>
+<desc>Non-enveloped capsid built from 72 knob-like pentamers of the L1 protein.</desc>
+<defs></defs>
+<circle cx="128" cy="128" r="74" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="162.77" cy="115.73" rx="9.5" ry="8.12" transform="rotate(70.56 162.77 115.73)" fill="#000000"/>
+<ellipse cx="92.79" cy="141.85" rx="9.5" ry="8.04" transform="rotate(248.52 92.79 141.85)" fill="#000000"/>
+<ellipse cx="152.19" cy="90.45" rx="9.5" ry="7.39" transform="rotate(32.79 152.19 90.45)" fill="#000000"/>
+<ellipse cx="102.33" cy="116.07" rx="9.5" ry="8.71" transform="rotate(-65.06 102.33 116.07)" fill="#000000"/>
+<ellipse cx="119.23" cy="87.38" rx="9.5" ry="7.71" transform="rotate(-12.18 119.23 87.38)" fill="#000000"/>
+<ellipse cx="136.18" cy="114.62" rx="9.5" ry="9.27" transform="rotate(31.44 136.18 114.62)" fill="#000000"/>
+<ellipse cx="89.11" cy="91.62" rx="9.5" ry="6.29" transform="rotate(-46.91 89.11 91.62)" fill="#000000"/>
+<ellipse cx="75.93" cy="123.09" rx="9.5" ry="6.43" transform="rotate(-84.62 75.93 123.09)" fill="#000000"/>
+<ellipse cx="179.1" cy="102.53" rx="9.5" ry="5.65" transform="rotate(63.51 179.1 102.53)" fill="#000000"/>
+<ellipse cx="103.41" cy="166.99" rx="9.5" ry="7.23" transform="rotate(212.24 103.41 166.99)" fill="#000000"/>
+<ellipse cx="76.6" cy="154.56" rx="9.5" ry="5.51" transform="rotate(242.67 76.6 154.56)" fill="#000000"/>
+<ellipse cx="166.55" cy="165.6" rx="9.5" ry="6.2" transform="rotate(134.28 166.55 165.6)" fill="#000000"/>
+<ellipse cx="179.72" cy="134.17" rx="9.5" ry="6.46" transform="rotate(96.8 179.72 134.17)" fill="#000000"/>
+<ellipse cx="153.19" cy="141.64" rx="9.5" ry="8.69" transform="rotate(118.43 153.19 141.64)" fill="#000000"/>
+<ellipse cx="136.35" cy="170.11" rx="9.5" ry="7.57" transform="rotate(168.78 136.35 170.11)" fill="#000000"/>
+<ellipse cx="119.31" cy="143.19" rx="9.5" ry="9.21" transform="rotate(209.76 119.31 143.19)" fill="#000000"/>
+</svg>

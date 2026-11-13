@@ -4538,6 +4538,209 @@ function verticalTransmission(id) {
   };
 }
 
+// ----------------------------------------------------------------- batch 9
+
+const arrowMark = a => `<path d="${a.shaft}" fill="none" stroke="${C.arrow}" stroke-width="4" stroke-linecap="round"/>` +
+  `<polygon points="${a.head}" fill="${C.arrow}" stroke="${C.arrow}" stroke-width="1.5" stroke-linejoin="round"/>`;
+
+// Epstein–Barr virus docking on a B cell through CD21, with the viral episome in the nucleus.
+function ebvBCell(id) {
+  const E = K.EBV, base = C.bLymphocyte, nuc = C.nucleus, env = C.herpesEnvelope, gp = C.penton, cap = C.herpesCapsid;
+  const [cx, cy, R] = E.cell, [nx, ny, nr] = E.nucleus, [ex, ey, er] = E.episome;
+  const nucleusPath = K.smoothClosedPath(K.polarPoints(nx, ny, a => nr + 2 * Math.sin(3 * a + 0.3)));
+  const receptors = E.receptors.map(deg => {
+    const a = deg * Math.PI / 180, at = d => `${n(cx + d * Math.cos(a))}" y1="${n(cy + d * Math.sin(a))}`;
+    return `<line x1="${at(R - 2)}" x2="${n(cx + (R + 8) * Math.cos(a))}" y2="${n(cy + (R + 8) * Math.sin(a))}" stroke="${outline(C.cd21)}" stroke-width="4.5" stroke-linecap="round"/>` +
+      `<circle cx="${n(cx + (R + 11) * Math.cos(a))}" cy="${n(cy + (R + 11) * Math.sin(a))}" r="4" fill="${C.cd21}" stroke="${outline(C.cd21)}" stroke-width="1.3"/>`;
+  });
+  const virion = ([x, y, r]) => {
+    const spikes = Array.from({ length: 10 }, (_, i) => {
+      const a = i * Math.PI / 5 + 0.3, [ux, uy] = [Math.cos(a), Math.sin(a)];
+      return `<line x1="${n(x + ux * (r - 1))}" y1="${n(y + uy * (r - 1))}" x2="${n(x + ux * (r + 4))}" y2="${n(y + uy * (r + 4))}" stroke="${shade(gp, 0.3)}" stroke-width="2" stroke-linecap="round"/>` +
+        `<circle cx="${n(x + ux * (r + 5.5))}" cy="${n(y + uy * (r + 5.5))}" r="2.6" fill="${gp}" stroke="${outline(gp)}" stroke-width="1"/>`;
+    }).join('');
+    const hex = Array.from({ length: 6 }, (_, i) => `${n(x + r * 0.5 * Math.cos(i * Math.PI / 3 + 0.5))},${n(y + r * 0.5 * Math.sin(i * Math.PI / 3 + 0.5))}`).join(' ');
+    return spikes + `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-env)" stroke="${outline(env)}" stroke-width="2"/>` +
+      `<circle cx="${x}" cy="${y}" r="${n(r * 0.76)}" fill="${C.tegument}" stroke="${shade(env, 0.12)}" stroke-width="1"/>` +
+      `<polygon points="${hex}" fill="url(#${id}-capsid)" stroke="${outline(cap)}" stroke-width="1.5" stroke-linejoin="round"/>`;
+  };
+  const rand = K.rng(41);
+  const chromatin = Array.from({ length: 9 }, () => {
+    const a = rand() * 2 * Math.PI, d = 24 + rand() * 14;
+    return `<ellipse cx="${n(nx + d * Math.cos(a))}" cy="${n(ny + d * Math.sin(a))}" rx="${n(4 + rand() * 3)}" ry="${n(3 + rand() * 3)}" fill="${shade(nuc, 0.3)}" opacity="0.3"/>`;
+  });
+  // The episome: a closed circle of viral DNA, drawn as a slightly wavy ring.
+  const episome = K.smoothClosedPath(K.polarPoints(ex, ey, a => er + 1.6 * Math.sin(7 * a), 56));
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }),
+      K.sphereGradient(`${id}-env`, env), K.sphereGradient(`${id}-capsid`, cap, { light: 0.5 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      ...receptors,
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => R + 1.5 * Math.sin(5 * a + 0.7)))}" fill="url(#${id}-body)" stroke="${shade(base, 0.32)}" stroke-width="${STROKE}"/>`,
+      shadowOf(pathShape(nucleusPath), base, [5, 7], 0.26),
+      `<path d="${nucleusPath}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.5"/>`,
+      ...chromatin,
+      `<path d="${episome}" fill="none" stroke="${outline(nuc)}" stroke-width="5.5"/>`,
+      `<path d="${episome}" fill="none" stroke="${K.lift(env, 0.3)}" stroke-width="3"/>`,
+      K.gloss(`${id}-gloss`, cx - 34, cy - 44, 20, 9),
+      ...E.virions.map(virion),
+    ],
+  };
+}
+
+// Papillomavirus: a naked capsid of 72 knobbly pentamers.
+function papillomavirus(id) {
+  const base = C.papillomavirus, R = 74, light = K.vec.unit([-0.45, 0.6, 0.75]);
+  const lit = (v, k = 0.55) => mix(shade(base, 0.3), tint(base, k), Math.max(0, K.vec.dot(v, light)));
+  const feature = (v, size, fill, stroke, r = R) => {
+    const [x, y] = [n(128 + r * v[0]), n(128 - r * v[1])], deg = n(Math.atan2(-v[1], v[0]) * 180 / Math.PI + 90);
+    return `<ellipse cx="${x}" cy="${y}" rx="${size}" ry="${n(size * Math.max(0.28, v[2]))}" transform="rotate(${deg} ${x} ${y})" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>`;
+  };
+  const knobs = K.papillomaCapsomeres().filter(v => v[2] > 0.02).sort((p, q) => p[2] - q[2]);
+  return {
+    defs: [K.sphereGradient(`${id}-shell`, K.deepen(base, 0.18), { light: 0.3 }), K.glossGradient(`${id}-gloss`, 0.4)],
+    body: [
+      `<circle cx="128" cy="128" r="${R}" fill="url(#${id}-shell)" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
+      // Each pentamer: a raised knob with a hollow at its centre.
+      ...knobs.map(v => feature(v, 12.5, lit(v), shade(base, 0.45)) + feature(v, 4, shade(lit(v), 0.28), 'none', R * 1.01)),
+      K.gloss(`${id}-gloss`, 98, 92, 22, 10),
+    ],
+  };
+}
+
+// Ebola virus: a filament curled into a crook, its helical nucleocapsid inside the envelope.
+function ebolaVirus(id) {
+  const E = K.EBOLA, env = C.filovirus, sp = C.spike, nc = C.nucleocapsid, h = E.width / 2;
+  const spikes = K.framesAlong(E.line, 9).map(({ p, nx, ny }) => [1, -1].map(s =>
+    `<line x1="${n(p[0] + s * nx * (h - 1))}" y1="${n(p[1] + s * ny * (h - 1))}" x2="${n(p[0] + s * nx * (h + 5))}" y2="${n(p[1] + s * ny * (h + 5))}" stroke="${shade(sp, 0.3)}" stroke-width="2.2" stroke-linecap="round"/>` +
+    `<circle cx="${n(p[0] + s * nx * (h + 7))}" cy="${n(p[1] + s * ny * (h + 7))}" r="3" fill="${sp}" stroke="${outline(sp)}" stroke-width="1"/>`).join(''));
+  const inner = K.framesAlong(E.line, 5).slice(2, -2), c = E.core / 2;
+  const core = 'M' + inner.map(({ p }) => `${n(p[0])} ${n(p[1])}`).join('L');
+  const turns = inner.map(({ p, nx, ny }) => `M${n(p[0] + nx * c)} ${n(p[1] + ny * c)}L${n(p[0] - nx * c)} ${n(p[1] - ny * c)}`).join('');
+  return {
+    defs: [],
+    body: [
+      ...spikes,
+      K.pipe(K.smoothOpenPath(E.line), env, E.width),
+      `<path d="${core}" fill="none" stroke="${outline(nc)}" stroke-width="${E.core + 3}" stroke-linecap="round" stroke-linejoin="round"/>`,
+      `<path d="${core}" fill="none" stroke="${nc}" stroke-width="${E.core}" stroke-linecap="round" stroke-linejoin="round"/>`,
+      `<path d="${turns}" stroke="${K.lift(nc, 0.5)}" stroke-width="1.6" stroke-linecap="round"/>`,
+    ],
+  };
+}
+
+// Helicobacter pylori: a helical rod with a tuft of sheathed flagella, each ending in a bulb.
+function helicobacterPylori(id) {
+  const H = K.HELICOBACTER, base = C.gramNegative, { body, pole } = K.helicobacterCell();
+  const flagella = H.flagella.map((tilt, i) => K.wavePoints(pole, tilt, { length: 60 - 5 * Math.abs(i - 2), amplitude: 4, wavelength: 26, phase: i * Math.PI }));
+  return {
+    defs: [],
+    body: [
+      `<g transform="translate(${H.centre[0]} ${H.centre[1]}) rotate(${H.angle})">`,
+      `<path d="${flagella.map(f => K.smoothOpenPath(f)).join('')}" fill="none" stroke="${shade(base, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
+      ...flagella.map(f => { const [x, y] = f[f.length - 1]; return `<circle cx="${n(x)}" cy="${n(y)}" r="4" fill="${shade(base, 0.12)}" stroke="${shade(base, 0.4)}" stroke-width="1.3"/>`; }),
+      K.pipe(K.smoothOpenPath(body), base, H.width),
+      `</g>`,
+    ],
+  };
+}
+
+// Haematopoietic stem cell: renewing itself (looped arrow) and giving rise to a myeloid and a
+// lymphoid progenitor.
+function haematopoieticStemCell(id) {
+  const S = K.STEM_CELL, [sx, sy, sr] = S.stem, nuc = C.nucleus;
+  const colours = { stem: C.stemCell, myeloid: C.neutrophil, lymphoid: C.lymphocyte };
+  // Nuclei: large and round in the stem cell and the lymphoid progenitor, indented in the myeloid one.
+  const nucleus = (x, y, r, kind) => kind === 'myeloid'
+    ? K.smoothClosedPath(K.polarPoints(0, 0, a => r * 0.66 - r * 0.3 * Math.exp(-(K.wrapAngle(a + 0.9) ** 2) / 0.3), 60).map(([px, py]) => [x - r * 0.08 + px, y + r * 0.04 + py]))
+    : K.smoothClosedPath(K.polarPoints(x - r * 0.06, y - r * 0.04, () => r * (kind === 'stem' ? 0.72 : 0.68), 48));
+  const cell = (x, y, r, kind) => `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-${kind})" stroke="${shade(colours[kind], 0.32)}" stroke-width="${STROKE}"/>` +
+    shadowOf(pathShape(nucleus(x, y, r, kind)), colours[kind], [r * 0.08, r * 0.11], 0.26) +
+    `<path d="${nucleus(x, y, r, kind)}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2"/>` +
+    K.gloss(`${id}-gloss`, x - r * 0.5, y - r * 0.55, r * 0.3, r * 0.15);
+  const toProgeny = ([x, y, r]) => {
+    const l = Math.hypot(x - sx, y - sy), [ux, uy] = [(x - sx) / l, (y - sy) / l];
+    return arrowMark(K.straightArrow([sx + ux * (sr + 8), sy + uy * (sr + 8)], [x - ux * (r + 8), y - uy * (r + 8)], 13));
+  };
+  return {
+    defs: [...Object.entries(colours).map(([kind, colour]) => K.sphereGradient(`${id}-${kind}`, colour, { light: 0.5, dark: 0.1 })),
+      K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }), K.glossGradient(`${id}-gloss`)],
+    body: [
+      arrowMark(K.renewalLoop()),
+      ...S.progeny.map(toProgeny),
+      cell(sx, sy, sr, 'stem'),
+      ...S.progeny.map(([x, y, r, kind]) => cell(x, y, r, kind)),
+    ],
+  };
+}
+
+// T-cell receptor complex: the alpha-beta receptor with CD3 epsilon-delta, gamma-epsilon and
+// zeta-zeta, whose tails carry the ITAMs (yellow).
+function tCellReceptor(id) {
+  const T = K.TCR, [top, bottom] = T.membrane;
+  const colours = { alpha: C.tcrAlpha, beta: C.tcrBeta, epsilon: C.cd3Epsilon, delta: C.cd3Delta, gamma: C.cd3Gamma, zeta: C.cd3Zeta };
+  const domain = ([x, y, rx, ry, rot, chain]) =>
+    `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" transform="rotate(${rot} ${x} ${y})" fill="url(#${id}-${chain})" stroke="${outline(colours[chain])}" stroke-width="2.2"/>`;
+  const itam = (x, y) => `<rect x="${x - 4.5}" y="${y - 4}" width="9" height="8" rx="3" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1.2"/>`;
+  const stalk = ([x, y0, y1, chain, itams]) => K.pipe(`M${x} ${y0}V${y1}`, colours[chain], chain === 'zeta' ? 4.5 : 6) + itams.map(y => itam(x, y)).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), ...Object.entries(colours).map(([chain, colour]) => K.sphereGradient(`${id}-${chain}`, colour, { light: 0.5 }))],
+    body: [
+
+      lipidBilayer(`${id}-lipid`, 24, 234, top, bottom),
+      ...T.stalks.map(stalk),
+      ...T.domains.slice(4).map(domain), ...T.domains.slice(0, 2).map(domain), ...T.domains.slice(2, 4).map(domain),
+    ],
+  };
+}
+
+// V(D)J recombination: the germline locus above, the rearranged gene below, and the excised circle.
+function vdjRecombination(id) {
+  const V = K.VDJ, colours = { v: C.geneV, d: C.geneD, j: C.geneJ, c: C.geneC };
+  const segment = (x, y, w, kind) => `<rect x="${x}" y="${y - V.heights[kind] / 2}" width="${w}" height="${V.heights[kind]}" rx="3" fill="url(#${id}-${kind})" stroke="${outline(colours[kind])}" stroke-width="2" stroke-linejoin="round"/>`;
+  const locus = ({ y, line: [x0, x1], segments }) => K.pipe(`M${x0} ${y}H${x1}`, C.fibre, 4) + segments.map(([x, w, kind]) => segment(x, y, w, kind)).join('');
+  const [cx, cy, r] = V.circle;
+  return {
+    defs: Object.entries(colours).map(([kind, colour]) => K.cylinderGradient(`${id}-${kind}`, colour)),
+    body: [
+      locus(V.germline),
+      arrowMark(K.straightArrow(...V.arrow, 14)),
+      // The DNA between the chosen segments leaves as a closed circle.
+      K.pipe(K.circlePath(cx, cy, r), C.fibre, 4),
+      ...V.excised.map(([deg, w, kind]) => `<g transform="rotate(${deg + 90} ${cx} ${cy})">${segment(cx - w / 2, cy - r, w, kind)}</g>`),
+      locus(V.rearranged),
+    ],
+  };
+}
+
+// Entamoeba histolytica trophozoite: clear pseudopod, granular endoplasm, a nucleus with a
+// central karyosome and a rim of chromatin, and ingested red blood cells.
+function entamoebaHistolytica(id) {
+  const E = K.ENTAMOEBA, base = C.amoeba, nuc = C.nucleus, [cx, cy] = E.centre, [nx, ny, nr] = E.nucleus;
+  const inside = ([x, y]) => { const a = Math.atan2(y - cy, x - cx); return Math.hypot(x - cx, y - cy) < 58 + 4 * Math.sin(3 * a + 1); };
+  const clearOf = ([x, y]) => Math.hypot(x - nx, y - ny) > nr + 5 && E.redCells.every(([rx, ry, rr]) => Math.hypot(x - rx, y - ry) > rr + 6);
+  const granules = K.scatter(53, 46, [40, 60, 200, 216], p => inside(p) && clearOf(p), (p, placed) => placed.every(q => Math.hypot(q[0] - p[0], q[1] - p[1]) > 9));
+  return {
+    defs: [K.sphereGradient(`${id}-body`, base, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-rbc`, C.erythrocyte, { light: 0.45 }), K.glossGradient(`${id}-gloss`, 0.5)],
+    body: [
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, E.radius, 96))}" fill="url(#${id}-body)" stroke="${shade(base, 0.38)}" stroke-width="${STROKE}"/>`,
+      // Endoplasm: the granular inner part, leaving the pseudopod and the rim clear.
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => 60 + 4 * Math.sin(3 * a + 1), 72))}" fill="${K.deepen(base, 0.16)}" opacity="0.45"/>`,
+      ...granules.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="1.8" fill="${shade(base, 0.4)}" opacity="0.6"/>`),
+      // Red cells in food vacuoles.
+      ...E.redCells.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r + 3.5}" fill="${tint(base, 0.6)}" stroke="${shade(base, 0.3)}" stroke-width="1.2"/>` +
+        `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-rbc)" stroke="${outline(C.erythrocyte)}" stroke-width="1.6"/>` +
+        `<circle cx="${n(x + r * 0.1)}" cy="${n(y + r * 0.1)}" r="${n(r * 0.38)}" fill="${shade(C.erythrocyte, 0.25)}" opacity="0.5"/>`),
+      // Nucleus: pale, ringed by fine peripheral chromatin, with a small central karyosome.
+      shadowOf(circleShape(nx, ny, nr), base, [4, 5], 0.24),
+      `<circle cx="${nx}" cy="${ny}" r="${nr}" fill="${tint(nuc, 0.72)}" stroke="${outline(nuc)}" stroke-width="2.2"/>`,
+      `<circle cx="${nx}" cy="${ny}" r="${nr - 3.5}" fill="none" stroke="${nuc}" stroke-width="2.6" stroke-dasharray="3 2.2"/>`,
+      `<circle cx="${nx}" cy="${ny}" r="3.6" fill="${shade(nuc, 0.2)}"/>`,
+      K.gloss(`${id}-gloss`, cx + 44, cy - 62, 16, 7, -40),
+    ],
+  };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -4704,6 +4907,14 @@ const DRAWINGS = {
   'faecal-oral-transmission': faecalOralTransmission,
   'vector-borne-transmission': vectorTransmission,
   'vertical-transmission': verticalTransmission,
+  'ebv-b-cell': ebvBCell,
+  'human-papillomavirus': papillomavirus,
+  'ebola-virus': ebolaVirus,
+  'helicobacter-pylori': helicobacterPylori,
+  'haematopoietic-stem-cell': haematopoieticStemCell,
+  't-cell-receptor': tCellReceptor,
+  'vdj-recombination': vdjRecombination,
+  'entamoeba-histolytica': entamoebaHistolytica,
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');

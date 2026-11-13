@@ -72,6 +72,14 @@ The transmission icons (droplet, airborne, contact, faecal–oral, vector-borne,
 with the author as one SVG per route, built from the same few parts in `TRANSMISSION` (kit): neutral
 head-and-shoulders figures (no skin, so no tone versions), the route's agent, and `curvedArrow`.
 
+### Batch 9 (13 Nov 2026)
+
+Eight icons, taking the library to 171: EBV infecting a B cell, human papillomavirus, Ebola virus,
+Helicobacter pylori, haematopoietic stem cell, T-cell receptor complex, V(D)J recombination and
+Entamoeba histolytica. Their geometry is in the kit's batch 9 section and their drawings in a
+batch 9 section at the end of each script. A separate VZV icon was dropped: its particle would
+be identical to the herpesvirus icon, which already carries the VZV and EBV search tags.
+
 ## Shading model (11 Nov 2026)
 
 All colour icons were moved to a second shading model, set in the kit: shadows mix towards a

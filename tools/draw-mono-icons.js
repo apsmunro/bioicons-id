@@ -2223,6 +2223,104 @@ function verticalTransmission() {
   ];
 }
 
+// ----------------------------------------------------------------- batch 9
+
+const arrowMark = a => `<path d="${a.shaft}" ${line(5)}/><polygon points="${a.head}" ${solid}/>`;
+
+function ebvBCell() {
+  const E = K.EBV, [cx, cy, R] = E.cell, [nx, ny, nr] = E.nucleus, [ex, ey, er] = E.episome;
+  const ring = r => `M${ex + r} ${ey}A${r} ${r} 0 1 0 ${ex - r} ${ey}A${r} ${r} 0 1 0 ${ex + r} ${ey}Z`;
+  const virion = ([x, y, r]) => {
+    const hex = Array.from({ length: 6 }, (_, i) => `${n(x + r * 0.42 * Math.cos(i * Math.PI / 3 + 0.5))},${n(y + r * 0.42 * Math.sin(i * Math.PI / 3 + 0.5))}`).join(' ');
+    return `<circle cx="${x}" cy="${y}" r="${r}" ${line(4)}/><polygon points="${hex}" ${solid}/>`;
+  };
+  return [
+    // CD21 receptors, left out where the docked virion sits.
+    ...E.receptors.filter(deg => deg !== -46).map(deg => {
+      const a = deg * Math.PI / 180;
+      return `<line x1="${n(cx + (R + 4) * Math.cos(a))}" y1="${n(cy + (R + 4) * Math.sin(a))}" x2="${n(cx + (R + 12) * Math.cos(a))}" y2="${n(cy + (R + 12) * Math.sin(a))}" ${line(4.5)}/>`;
+    }),
+    `<circle cx="${cx}" cy="${cy}" r="${R}" ${line(LINE)}/>`,
+    // The nucleus, with the episome cut out of it as a ring.
+    `<path d="${K.smoothClosedPath(K.polarPoints(nx, ny, a => nr - 2 + 2 * Math.sin(3 * a + 0.3)))}${ring(er + 3)}${ring(er - 3)}" fill-rule="evenodd" ${solid}/>`,
+    ...E.virions.map(virion),
+  ];
+}
+
+function papillomavirus() {
+  const R = 74;
+  const knob = v => {
+    const [x, y] = [n(128 + R * 0.96 * v[0]), n(128 - R * 0.96 * v[1])], deg = n(Math.atan2(-v[1], v[0]) * 180 / Math.PI + 90);
+    return `<ellipse cx="${x}" cy="${y}" rx="9.5" ry="${n(9.5 * v[2])}" transform="rotate(${deg} ${x} ${y})" ${solid}/>`;
+  };
+  return [`<circle cx="128" cy="128" r="${R}" ${line(8)}/>`, ...K.papillomaCapsomeres().filter(v => v[2] > 0.55).map(knob)];
+}
+
+function ebolaVirus() {
+  const E = K.EBOLA, h = 11;
+  const spikes = K.framesAlong(E.line, 14).map(({ p, nx, ny }) => [1, -1].map(s =>
+    `M${n(p[0] + s * nx * h)} ${n(p[1] + s * ny * h)}L${n(p[0] + s * nx * (h + 9))} ${n(p[1] + s * ny * (h + 9))}`).join('')).join('');
+  return [`<path d="${spikes}" ${line(4)}/>`, `<path d="${K.smoothOpenPath(E.line)}" ${line(22)}/>`];
+}
+
+function helicobacterPylori() {
+  const H = K.HELICOBACTER, { body, pole } = K.helicobacterCell();
+  const flagella = [-0.7, 0, 0.7].map((tilt, i) => K.wavePoints(pole, tilt, { length: 54 - 4 * Math.abs(i - 1), amplitude: 4, wavelength: 28, phase: i * Math.PI }));
+  return [
+    `<g transform="translate(${H.centre[0]} ${H.centre[1]}) rotate(${H.angle})">`,
+    `<path d="${flagella.map(f => K.smoothOpenPath(f)).join('')}" ${line(4)}/>`,
+    ...flagella.map(f => { const [x, y] = f[f.length - 1]; return `<circle cx="${n(x)}" cy="${n(y)}" r="5" ${solid}/>`; }),
+    `<path d="${K.smoothOpenPath(body)}" ${line(22)}/>`,
+    `</g>`,
+  ];
+}
+
+function haematopoieticStemCell() {
+  const S = K.STEM_CELL, [sx, sy, sr] = S.stem;
+  const nucleus = (x, y, r, kind) => kind === 'myeloid'
+    ? `<path d="${K.smoothClosedPath(K.polarPoints(0, 0, a => r * 0.56 - r * 0.3 * Math.exp(-(K.wrapAngle(a + 0.9) ** 2) / 0.3), 60).map(([px, py]) => [x - r * 0.04 + px, y + r * 0.02 + py]))}" ${solid}/>`
+    : `<circle cx="${x}" cy="${y}" r="${n(r * 0.56)}" ${solid}/>`;
+  const cell = (x, y, r, kind) => `<circle cx="${x}" cy="${y}" r="${r}" ${line(kind === 'stem' ? LINE : 7)}/>` + nucleus(x, y, r, kind);
+  const toProgeny = ([x, y, r]) => {
+    const l = Math.hypot(x - sx, y - sy), [ux, uy] = [(x - sx) / l, (y - sy) / l];
+    return arrowMark(K.straightArrow([sx + ux * (sr + 14), sy + uy * (sr + 14)], [x - ux * (r + 12), y - uy * (r + 12)], 13));
+  };
+  return [arrowMark(K.renewalLoop()), ...S.progeny.map(toProgeny), cell(sx, sy, sr, 'stem'), ...S.progeny.map(([x, y, r, kind]) => cell(x, y, r, kind))];
+}
+
+function tCellReceptor() {
+  const T = K.TCR, [top, bottom] = T.membrane;
+  return [
+    `<path d="M24 ${top}H232M24 ${bottom}H232" ${line(5)}/>`,
+    ...T.stalks.map(([x, y0, y1, chain, itams]) => `<path d="M${x} ${y0}V${y1}" ${line(chain === 'zeta' ? 4 : 5)}/>` +
+      itams.map(y => `<circle cx="${x}" cy="${y}" r="${chain === 'zeta' ? 4 : 5.5}" ${solid}/>`).join('')),
+    ...T.domains.map(([x, y, rx, ry, rot]) => `<ellipse cx="${x}" cy="${y}" rx="${rx - 2.5}" ry="${ry - 2.5}" transform="rotate(${rot} ${x} ${y})" ${solid}/>`),
+  ];
+}
+
+function vdjRecombination() {
+  const V = K.VDJ, [cx, cy, r] = V.circle;
+  const segment = (x, y, w, kind) => `<rect x="${x}" y="${y - V.heights[kind] / 2}" width="${w}" height="${V.heights[kind]}" rx="2" ${solid}/>`;
+  const locus = ({ y, line: [x0, x1], segments }) => `<path d="M${x0} ${y}H${x1}" ${line(5)}/>` + segments.map(([x, w, kind]) => segment(x, y, w, kind)).join('');
+  return [
+    locus(V.germline),
+    arrowMark(K.straightArrow(...V.arrow, 14)),
+    `<circle cx="${cx}" cy="${cy}" r="${r}" ${line(5)}/>`,
+    ...V.excised.map(([deg, w, kind]) => `<g transform="rotate(${deg + 90} ${cx} ${cy})">${segment(cx - w / 2, cy - r, w, kind)}</g>`),
+    locus(V.rearranged),
+  ];
+}
+
+function entamoebaHistolytica() {
+  const E = K.ENTAMOEBA, [cx, cy] = E.centre, [nx, ny, nr] = E.nucleus;
+  return [
+    `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => E.radius(a) - 3, 96))}" ${line(LINE)}/>`,
+    `<circle cx="${nx}" cy="${ny}" r="${nr - 2}" ${line(5)}/>`,
+    `<circle cx="${nx}" cy="${ny}" r="4.5" ${solid}/>`,
+    ...E.redCells.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r - 1}" ${solid}/>`),
+  ];
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -2389,6 +2487,14 @@ const DRAWINGS = {
   'faecal-oral-transmission': faecalOralTransmission,
   'vector-borne-transmission': vectorTransmission,
   'vertical-transmission': verticalTransmission,
+  'ebv-b-cell': ebvBCell,
+  'human-papillomavirus': papillomavirus,
+  'ebola-virus': ebolaVirus,
+  'helicobacter-pylori': helicobacterPylori,
+  'haematopoietic-stem-cell': haematopoieticStemCell,
+  't-cell-receptor': tCellReceptor,
+  'vdj-recombination': vdjRecombination,
+  'entamoeba-histolytica': entamoebaHistolytica,
 };
 
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));

@@ -1491,6 +1491,78 @@
       "monoFile": "icons/transmission/vertical-transmission-mono.svg",
       "description": "A pregnant person with pathogens crossing the placenta to the fetus.",
       "tags": ["vertical transmission", "mother-to-child transmission", "MTCT", "congenital infection", "transplacental", "in utero", "perinatal", "TORCH", "pregnancy", "fetus", "placenta", "transmission"]
+    },
+    {
+      "id": "ebv-b-cell",
+      "name": "Epstein–Barr virus infecting a B cell",
+      "category": "viruses",
+      "file": "icons/viruses/ebv-b-cell.svg",
+      "monoFile": "icons/viruses/ebv-b-cell-mono.svg",
+      "description": "Epstein–Barr virus particles binding CD21 on a B cell, with the viral episome (a closed circle of DNA) in the nucleus.",
+      "tags": ["EBV", "Epstein-Barr virus", "HHV-4", "glandular fever", "infectious mononucleosis", "mono", "B cell", "CD21", "episome", "latency", "PTLD", "lymphoma", "herpesvirus", "HLH"]
+    },
+    {
+      "id": "human-papillomavirus",
+      "name": "Human papillomavirus",
+      "category": "viruses",
+      "file": "icons/viruses/human-papillomavirus.svg",
+      "monoFile": "icons/viruses/human-papillomavirus-mono.svg",
+      "description": "Non-enveloped capsid built from 72 knob-like pentamers of the L1 protein.",
+      "tags": ["HPV", "papillomavirus", "human papillomavirus", "warts", "cervical cancer", "L1", "capsid", "virus-like particle", "VLP", "HPV vaccine", "DNA virus", "non-enveloped virus"]
+    },
+    {
+      "id": "ebola-virus",
+      "name": "Ebola virus",
+      "category": "viruses",
+      "file": "icons/viruses/ebola-virus.svg",
+      "monoFile": "icons/viruses/ebola-virus-mono.svg",
+      "description": "Filamentous enveloped virus curled into a crook, studded with glycoprotein spikes, with a helical nucleocapsid inside.",
+      "tags": ["Ebola", "Ebola virus", "EVD", "filovirus", "Marburg", "viral haemorrhagic fever", "VHF", "haemorrhagic fever", "HCID", "high consequence infectious disease", "RNA virus", "enveloped virus"]
+    },
+    {
+      "id": "helicobacter-pylori",
+      "name": "Helicobacter pylori",
+      "category": "bacteria",
+      "file": "icons/bacteria/helicobacter-pylori.svg",
+      "monoFile": "icons/bacteria/helicobacter-pylori-mono.svg",
+      "description": "Helical Gram-negative rod with a tuft of sheathed flagella at one pole.",
+      "tags": ["Helicobacter pylori", "H. pylori", "Helicobacter", "gram-negative", "spiral", "helical rod", "peptic ulcer", "gastritis", "stomach", "urease", "flagella", "bacterium"]
+    },
+    {
+      "id": "haematopoietic-stem-cell",
+      "name": "Haematopoietic stem cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/haematopoietic-stem-cell.svg",
+      "monoFile": "icons/immune-cells/haematopoietic-stem-cell-mono.svg",
+      "description": "Stem cell renewing itself (looped arrow) and giving rise to a myeloid and a lymphoid progenitor.",
+      "tags": ["HSC", "haematopoietic stem cell", "hematopoietic stem cell", "stem cell", "bone marrow", "haematopoiesis", "self-renewal", "progenitor", "myeloid", "lymphoid", "HSCT", "bone marrow transplant", "gene therapy", "CD34"]
+    },
+    {
+      "id": "t-cell-receptor",
+      "name": "T-cell receptor complex",
+      "category": "molecules",
+      "file": "icons/molecules/t-cell-receptor.svg",
+      "monoFile": "icons/molecules/t-cell-receptor-mono.svg",
+      "description": "αβ T-cell receptor at the membrane with CD3 εδ, γε and ζζ, whose cytoplasmic tails carry the ITAMs (yellow).",
+      "tags": ["TCR", "T-cell receptor", "T cell receptor", "CD3", "CD3 zeta", "ITAM", "TCR complex", "alpha beta", "signalling", "antigen recognition", "SCID", "adaptive immunity", "membrane"]
+    },
+    {
+      "id": "vdj-recombination",
+      "name": "V(D)J recombination",
+      "category": "molecules",
+      "file": "icons/molecules/vdj-recombination.svg",
+      "monoFile": "icons/molecules/vdj-recombination-mono.svg",
+      "description": "Germline locus with V (blue), D (green), J (orange) and C (purple) segments; one of each is joined to make the rearranged gene, and the DNA between them is excised as a circle.",
+      "tags": ["VDJ", "V(D)J recombination", "VDJ recombination", "RAG", "RAG1", "RAG2", "gene rearrangement", "immunoglobulin", "antibody diversity", "TCR", "TREC", "KREC", "SCID", "Omenn", "adaptive immunity"]
+    },
+    {
+      "id": "entamoeba-histolytica",
+      "name": "Entamoeba histolytica",
+      "category": "parasites",
+      "file": "icons/parasites/entamoeba-histolytica.svg",
+      "monoFile": "icons/parasites/entamoeba-histolytica-mono.svg",
+      "description": "Amoebic trophozoite with a broad clear pseudopod, a nucleus with a central karyosome, and ingested red blood cells.",
+      "tags": ["Entamoeba histolytica", "E. histolytica", "Entamoeba", "amoeba", "amoebiasis", "amoebic dysentery", "amoebic liver abscess", "trophozoite", "protozoa", "parasite", "bloody diarrhoea"]
     }
   ]
 }

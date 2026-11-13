@@ -271,6 +271,21 @@ const PALETTE = {
   sachet: '#5DA9E9',
   silhouette: '#8FA3B8', // the neutral figures in the transmission icons
   arrow: '#3E4A59',
+  papillomavirus: '#8CC084',
+  filovirus: '#9CCFCB',
+  stemCell: '#EFD98A',
+  amoeba: '#CFDDEA',
+  cd21: '#3E9C66',
+  tcrAlpha: '#4F86D9',
+  tcrBeta: '#6CC2B8',
+  cd3Epsilon: '#F28C6B',
+  cd3Delta: '#9CCF8A',
+  cd3Gamma: '#B39DDB',
+  cd3Zeta: '#8E6CC9',
+  geneV: '#4F86D9',
+  geneD: '#5DBB63',
+  geneJ: '#F2A541',
+  geneC: '#8E6CC9',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
@@ -1591,6 +1606,99 @@ const LIVER = {
   ligament: 'M146 57C146 92 140 126 134 160',
 };
 
+// ------------------------------------------------------------------ batch 9
+
+// Frames every `step` px along the smooth curve through pts: each point with its unit normal.
+function framesAlong(pts, step) {
+  const line = resample(densify(pts, 16), step);
+  return line.map((p, i) => {
+    const a = line[Math.max(0, i - 1)], b = line[Math.min(line.length - 1, i + 1)], l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
+    return { p, nx: -(b[1] - a[1]) / l, ny: (b[0] - a[0]) / l };
+  });
+}
+
+// Ebola virion: a long filament (centreline, envelope width, nucleocapsid width) curled into a
+// crook at one end.
+const EBOLA = { line: [[46, 218], [66, 182], [90, 148], [118, 116], [150, 88], [184, 68], [212, 78], [220, 108], [204, 132], [178, 136]], width: 26, core: 11 };
+
+// Helicobacter pylori: one helical rod (one and a half waves over its length 2 * half) with a
+// tuft of sheathed flagella at one pole, each leaving at the given tilt.
+const HELICOBACTER = { centre: [112, 142], angle: -30, half: 66, amp: 12, width: 26, flagella: [-0.7, -0.35, 0, 0.35, 0.7] };
+function helicobacterCell({ half, amp } = HELICOBACTER) {
+  const body = Array.from({ length: 37 }, (_, i) => { const t = -half + i * half / 18; return [t, amp * Math.sin(1.5 * Math.PI * t / half)]; });
+  return { body, pole: { x: half, y: -amp, nx: 1, ny: 0 } };
+}
+
+// Papillomavirus capsid (T = 7): 72 capsomeres on the unit sphere, 12 on the 5-fold vertices and
+// three inside each face, at the points of the skewed lattice.
+function papillomaCapsomeres() {
+  const { vertices: V } = icosahedron(), out = V.map(v => v);
+  for (let i = 0; i < 12; i++) for (let j = i + 1; j < 12; j++) for (let k = j + 1; k < 12; k++) {
+    const a = V[i];
+    let [b, c] = [V[j], V[k]];
+    if (Math.hypot(...vec.sub(a, b)) > 1.2 || Math.hypot(...vec.sub(a, c)) > 1.2 || Math.hypot(...vec.sub(b, c)) > 1.2) continue;
+    if (vec.dot(vec.cross(vec.sub(b, a), vec.sub(c, a)), a) < 0) [b, c] = [c, b];
+    for (const [wa, wb, wc] of [[2, 4, 1], [4, 1, 2], [1, 2, 4]]) out.push(vec.unit([0, 1, 2].map(d => (wa * a[d] + wb * b[d] + wc * c[d]) / 7)));
+  }
+  return out;
+}
+
+// Epstein–Barr virus and a B cell: the cell and its nucleus [x, y, r], the viral episome in the
+// nucleus, CD21 receptors (angles round the cell, degrees) and virions [x, y, r], the first docked.
+const EBV = {
+  cell: [110, 146, 72], nucleus: [102, 152, 46], episome: [100, 152, 15],
+  receptors: [-80, -63, -46, -29, -12, 5],
+  virions: [[178, 76, 20], [222, 132, 15], [136, 40, 14]],
+};
+
+// Haematopoietic stem cell: the stem cell [x, y, r], the loop of its self-renewal arrow
+// [x, y, r, start angle, end angle] (degrees, drawn anticlockwise) and its two progenitors.
+const STEM_CELL = {
+  stem: [122, 76, 40], loop: [180, 44, 20, 100, 212],
+  progeny: [[62, 198, 30, 'myeloid'], [190, 198, 30, 'lymphoid']],
+};
+// The self-renewal loop: an arc and the arrowhead at its end.
+function renewalLoop([cx, cy, r, from, to] = STEM_CELL.loop, size = 12) {
+  const at = deg => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+  const [x0, y0] = at(from), [x1, y1] = at(to + 14), t = to * Math.PI / 180, [ux, uy] = [Math.sin(t), -Math.cos(t)], w = size * 0.55;
+  const [tx, ty] = at(to), [bx, by] = [tx - ux * size * 0.4, ty - uy * size * 0.4], [px, py] = [tx + ux * size * 0.6, ty + uy * size * 0.6];
+  return {
+    shaft: `M${round(x0)} ${round(y0)}A${r} ${r} 0 1 0 ${round(x1)} ${round(y1)}`,
+    head: `${round(px)},${round(py)} ${round(bx - uy * w)},${round(by + ux * w)} ${round(bx + uy * w)},${round(by - ux * w)}`,
+  };
+}
+
+// T-cell receptor complex. Ig domains [x, y, rx, ry, tilt, chain]; chains through the membrane
+// [x, top, bottom, chain, ITAM heights]: TCR alpha and beta with short tails, CD3 epsilon-delta
+// and gamma-epsilon either side, and the zeta-zeta pair, almost all of it inside the cell.
+const TCR = {
+  membrane: [150, 176],
+  domains: [[106, 124, 15, 20, 0, 'alpha'], [150, 124, 15, 20, 0, 'beta'], [100, 80, 16, 21, 14, 'alpha'], [156, 80, 16, 21, -14, 'beta'],
+    [40, 126, 12, 16, 0, 'epsilon'], [66, 126, 12, 16, 0, 'delta'], [190, 126, 12, 16, 0, 'gamma'], [216, 126, 12, 16, 0, 'epsilon']],
+  stalks: [[106, 142, 192, 'alpha', []], [150, 142, 192, 'beta', []],
+    [40, 140, 222, 'epsilon', [204]], [66, 140, 222, 'delta', [204]], [190, 140, 222, 'gamma', [204]], [216, 140, 222, 'epsilon', [204]],
+    [122, 146, 238, 'zeta', [192, 208, 224]], [134, 146, 238, 'zeta', [200, 216, 232]]],
+};
+
+// V(D)J recombination. Gene segments [x, width, kind] on a line of DNA [x0, x1] at height y:
+// the germline locus, the rearranged gene (one V, D and J joined) and the excised circle
+// [x, y, r] carrying the segments that were cut out, at the given angles.
+const VDJ = {
+  heights: { v: 30, d: 16, j: 22, c: 30 },
+  germline: { y: 56, line: [18, 238], segments: [[24, 26, 'v'], [58, 26, 'v'], [92, 26, 'v'], [134, 10, 'd'], [152, 10, 'd'], [178, 9, 'j'], [195, 9, 'j'], [214, 20, 'c']] },
+  rearranged: { y: 206, line: [50, 206], segments: [[58, 26, 'v'], [94, 26, 'v'], [120, 12, 'd'], [132, 9, 'j'], [151, 9, 'j'], [172, 20, 'c']] },
+  arrow: [[84, 88], [84, 172]],
+  circle: [176, 130, 24], excised: [[-120, 26, 'v'], [-20, 10, 'd']],
+};
+
+// Entamoeba histolytica trophozoite: outline radius round its centre, with one broad pseudopod;
+// the nucleus [x, y, r] and ingested red cells [x, y, r].
+const ENTAMOEBA = {
+  centre: [120, 136],
+  radius: a => 66 + 30 * Math.exp(-(wrapAngle(a + 0.7) ** 2) / 0.3) + 6 * Math.sin(3 * a + 1) + 4 * Math.sin(5 * a),
+  nucleus: [96, 118, 19], redCells: [[150, 156, 12], [126, 174, 10], [118, 148, 8]],
+};
+
 // Deterministic pseudo-random numbers (mulberry32), so regenerated icons are identical.
 function rng(seed) {
   let a = seed >>> 0;
@@ -1640,4 +1748,5 @@ module.exports = {
   GERMINAL_CENTRE, TH_SUBSETS, subsetCytokines, cytokineShape, INTERFERON, COMPLEMENT, bouquet, FC_RECEPTOR, MRSA, CARBAPENEMASE,
   STEWARDSHIP, HEART_VALVE, vegetationPath, MENINGES, PIPETTE, WELL_PLATE, platePoint, plateWells, CENTRIFUGE, rotorSlots, ORS,
   sachetPath, dropPath, TRANSMISSION, LIVER,
+  framesAlong, EBOLA, HELICOBACTER, helicobacterCell, papillomaCapsomeres, EBV, STEM_CELL, renewalLoop, TCR, VDJ, ENTAMOEBA,
 };

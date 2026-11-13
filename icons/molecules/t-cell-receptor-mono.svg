@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t-cell-receptor-mono-title">
+<title id="t-cell-receptor-mono-title">T-cell receptor complex (single colour)</title>
+<desc>αβ T-cell receptor at the membrane with CD3 εδ, γε and ζζ, whose cytoplasmic tails carry the ITAMs (yellow).</desc>
+<defs></defs>
+<path d="M24 150H232M24 176H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M106 142V192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M150 142V192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M40 140V222" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="204" r="5.5" fill="#000000"/>
+<path d="M66 140V222" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="66" cy="204" r="5.5" fill="#000000"/>
+<path d="M190 140V222" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="190" cy="204" r="5.5" fill="#000000"/>
+<path d="M216 140V222" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="216" cy="204" r="5.5" fill="#000000"/>
+<path d="M122 146V238" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="122" cy="192" r="4" fill="#000000"/><circle cx="122" cy="208" r="4" fill="#000000"/><circle cx="122" cy="224" r="4" fill="#000000"/>
+<path d="M134 146V238" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="134" cy="200" r="4" fill="#000000"/><circle cx="134" cy="216" r="4" fill="#000000"/><circle cx="134" cy="232" r="4" fill="#000000"/>
+<ellipse cx="106" cy="124" rx="12.5" ry="17.5" transform="rotate(0 106 124)" fill="#000000"/>
+<ellipse cx="150" cy="124" rx="12.5" ry="17.5" transform="rotate(0 150 124)" fill="#000000"/>
+<ellipse cx="100" cy="80" rx="13.5" ry="18.5" transform="rotate(14 100 80)" fill="#000000"/>
+<ellipse cx="156" cy="80" rx="13.5" ry="18.5" transform="rotate(-14 156 80)" fill="#000000"/>
+<ellipse cx="40" cy="126" rx="9.5" ry="13.5" transform="rotate(0 40 126)" fill="#000000"/>
+<ellipse cx="66" cy="126" rx="9.5" ry="13.5" transform="rotate(0 66 126)" fill="#000000"/>
+<ellipse cx="190" cy="126" rx="9.5" ry="13.5" transform="rotate(0 190 126)" fill="#000000"/>
+<ellipse cx="216" cy="126" rx="9.5" ry="13.5" transform="rotate(0 216 126)" fill="#000000"/>
+</svg>
