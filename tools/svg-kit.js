@@ -368,9 +368,22 @@ function limbGradient(id, base) {
     `<stop offset="1" stop-color="${deepen(base, 0.24)}"/></linearGradient>`;
 }
 
-// A soft-edged ellipse built from plain ellipses nested inside one another, each a little
-// opaque, so it reaches `strength` in the middle. A radial gradient fading to transparent would
-// be smoother, but PowerPoint's Convert to Shape turns one into a solid patch.
+// Gradients made by helpers that do not know the icon's id: svgDocument names and places them.
+const PENDING = [];
+function pendingGradient(key, make) {
+  let i = PENDING.findIndex(p => p.key === key);
+  if (i < 0) i = PENDING.push({ key, make }) - 1;
+  return `url(#@fade${i})`;
+}
+// The fade shared by every ring of one colour in an icon, sized to each ring's own box.
+const softFill = colour => pendingGradient('soft' + colour, id => `<radialGradient id="${id}"><stop offset="0" stop-color="${colour}"/>` +
+  `<stop offset="0.45" stop-color="${colour}"/><stop offset="1" stop-color="${colour}" stop-opacity="0"/></radialGradient>`);
+
+// A soft-edged ellipse built from ellipses nested inside one another, each a little opaque, so
+// it reaches `strength` in the middle. Each ring is itself a radial fade (softFill), so as a
+// picture the rings merge into one smooth patch. PowerPoint's Convert to Shape flattens every
+// ring to its plain colour but keeps its opacity, leaving a stepped version of the same patch;
+// a single radial gradient fading to transparent would become a solid patch instead.
 // core: the inner fraction that is at full strength; toward: where the middle sits, as a
 // fraction of the radii off centre (for a highlight or dip that is not central).
 function softEllipse(cx, cy, rx, ry, colour, strength, { rotate = 0, core = 0, toward = [0, 0] } = {}) {
@@ -381,7 +394,7 @@ function softEllipse(cx, cy, rx, ry, colour, strength, { rotate = 0, core = 0, t
     return `<ellipse cx="${round(cx + toward[0] * rx * t)}" cy="${round(cy + toward[1] * ry * t)}" rx="${round(rx * k)}" ry="${round(ry * k)}"/>`;
   }).join('');
   const turn = rotate ? ` transform="rotate(${rotate} ${round(cx)} ${round(cy)})"` : '';
-  return `<g fill="${colour}" fill-opacity="${Math.round(alpha * 1000) / 1000}"${turn}>${rings}</g>`;
+  return `<g fill="${softFill(colour)}" fill-opacity="${Math.round(alpha * 1000) / 1000}"${turn}>${rings}</g>`;
 }
 
 // The strength of a sheen, registered under an id in an icon's defs and looked up by sheen().
@@ -1597,8 +1610,8 @@ function svgDocument({ id, title, description, defs, body }) {
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="${id}-title">
 <title id="${id}-title">${escapeXml(title)}</title>
 <desc>${escapeXml(description)}</desc>
-<defs>${defs.join('')}</defs>
-${body.join('\n')}
+<defs>${defs.join('')}${PENDING.splice(0).map((p, i) => p.make(`${id}-fade${i}`)).join('')}</defs>
+${body.join('\n').replace(/#@fade/g, `#${id}-fade`)}
 </svg>
 `;
 }

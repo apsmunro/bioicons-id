@@ -106,10 +106,13 @@ function strokeOutline(shape, attrs, scale) {
   return parts.map(p => PaperOffset.offsetStroke(p, half, options)).reduce((a, b) => a.unite(b, { insert: false }));
 }
 
+const softCuts = { count: 0 };
 function cut(leaf, clip) {
   const shape = geometry(leaf.node, false);
   shape.transform(leaf.matrix);
   const a = leaf.attrs, base = {};
+  // A soft ring's fade is sized to its own box, which cutting would change.
+  if (/-fade\d+\)$/.test(a.fill || '')) softCuts.count++;
   for (const [k, v] of Object.entries(a)) if (!GEOMETRY.has(k) && !k.startsWith('stroke')) base[k] = v;
   const piece = (item, attrs) => {
     const result = item.intersect(clip, { insert: false });
@@ -125,6 +128,17 @@ function cut(leaf, clip) {
     out += piece(strokeOutline(shape, a, Math.sqrt(Math.abs(leaf.matrix.a * leaf.matrix.d - leaf.matrix.b * leaf.matrix.c))), attrs);
   }
   return out;
+}
+
+// A soft patch (softEllipse in the kit): a group of rings sharing one fade. It cannot be cut,
+// as each ring's fade is sized to its own box, but if it lies wholly inside the clip it does not
+// need to be: it is written out as it is.
+const isSoft = node => node.tag === 'g' && /-fade\d+\)$/.test(node.attrs.fill || '') && node.children.length > 0;
+function softInside(node, clip) {
+  const outer = geometry(node.children[0]);
+  outer.transform(matrixOf(node.attrs.transform));
+  const kept = outer.intersect(clip, { insert: false });
+  return Math.abs(kept.area) >= Math.abs(outer.area) * 0.995;
 }
 
 function bakeClips(svg) {
@@ -147,6 +161,7 @@ function bakeClips(svg) {
       // Cut each child that can be cut; keep runs of the others inside the clip path, in order.
       const parts = [];
       for (const child of node.children) {
+        if (isSoft(child) && softInside(child, clip)) { parts.push({ text: svg.slice(child.start, child.end) }); continue; }
         const l = leaves(child, identity, {});
         if (l) parts.push({ text: l.map(leaf => cut(leaf, clip)).join('') });
         else if (parts.length && parts[parts.length - 1].kept) parts[parts.length - 1].text += svg.slice(child.start, child.end);
@@ -189,4 +204,4 @@ const remaining = svg => ({
   groupOpacity: (svg.match(/<g (?:[^>]* )?opacity="/g) || []).length,
 });
 
-module.exports = { convertSafe, remaining };
+module.exports = { convertSafe, remaining, softCuts };

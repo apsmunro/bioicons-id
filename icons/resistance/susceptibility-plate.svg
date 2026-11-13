@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="susceptibility-plate-title">
 <title id="susceptibility-plate-title">Antibiotic susceptibility plate</title>
 <desc>Disc diffusion plate: antibiotic discs on a bacterial lawn, with zones of inhibition of different sizes and one resistant disc with none.</desc>
-<defs><radialGradient id="susceptibility-plate-agar" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#E9C98B"/><stop offset="0" stop-color="#eed4a2"/><stop offset="0.3" stop-color="#E9C98B"/><stop offset="0.8" stop-color="#d0a973"/><stop offset="1" stop-color="#dcb97f"/></radialGradient></defs>
+<defs><radialGradient id="susceptibility-plate-agar" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#E9C98B"/><stop offset="0" stop-color="#eed4a2"/><stop offset="0.3" stop-color="#E9C98B"/><stop offset="0.8" stop-color="#d0a973"/><stop offset="1" stop-color="#dcb97f"/></radialGradient><radialGradient id="susceptibility-plate-fade0"><stop offset="0" stop-color="#fff"/><stop offset="0.45" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
 <circle cx="128" cy="128" r="110" fill="#E8EFF4" stroke="#8DA6B8" stroke-width="2.5"/>
 <circle cx="128" cy="128" r="101" fill="url(#susceptibility-plate-agar)" stroke="#b98c5d" stroke-width="1.5"/>
 <circle cx="131.05" cy="89.77" r="1.3" fill="#c69c69" opacity="0.5"/>
@@ -235,5 +235,5 @@
 <circle cx="168" cy="182" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="168" cy="182" r="3.5" fill="#E3E8EC"/>
 <circle cx="88" cy="184" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="88" cy="184" r="3.5" fill="#E3E8EC"/>
 <circle cx="66" cy="112" r="9" fill="#fff" stroke="#B8C6D1" stroke-width="1.5"/><circle cx="66" cy="112" r="3.5" fill="#E3E8EC"/>
-<g fill="#fff" fill-opacity="0.074" transform="rotate(-40 78 62)"><ellipse cx="78" cy="62" rx="45" ry="17.4"/><ellipse cx="78" cy="62" rx="41.22" ry="15.94"/><ellipse cx="78" cy="62" rx="37.44" ry="14.48"/><ellipse cx="78" cy="62" rx="33.66" ry="13.02"/><ellipse cx="78" cy="62" rx="29.88" ry="11.55"/><ellipse cx="78" cy="62" rx="26.1" ry="10.09"/><ellipse cx="78" cy="62" rx="22.32" ry="8.63"/><ellipse cx="78" cy="62" rx="18.54" ry="7.17"/><ellipse cx="78" cy="62" rx="14.76" ry="5.71"/><ellipse cx="78" cy="62" rx="10.98" ry="4.25"/><ellipse cx="78" cy="62" rx="7.2" ry="2.78"/></g>
+<g fill="url(#susceptibility-plate-fade0)" fill-opacity="0.074" transform="rotate(-40 78 62)"><ellipse cx="78" cy="62" rx="45" ry="17.4"/><ellipse cx="78" cy="62" rx="41.22" ry="15.94"/><ellipse cx="78" cy="62" rx="37.44" ry="14.48"/><ellipse cx="78" cy="62" rx="33.66" ry="13.02"/><ellipse cx="78" cy="62" rx="29.88" ry="11.55"/><ellipse cx="78" cy="62" rx="26.1" ry="10.09"/><ellipse cx="78" cy="62" rx="22.32" ry="8.63"/><ellipse cx="78" cy="62" rx="18.54" ry="7.17"/><ellipse cx="78" cy="62" rx="14.76" ry="5.71"/><ellipse cx="78" cy="62" rx="10.98" ry="4.25"/><ellipse cx="78" cy="62" rx="7.2" ry="2.78"/></g>
 </svg>

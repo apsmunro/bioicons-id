@@ -154,6 +154,18 @@ Conversion can be run by automation (select the picture, `ExecuteMso('ObjectsUng
 PowerPoint shows a confirmation dialog that someone must click, and complex icons take about a
 minute each. Do not send keystrokes to the author's PowerPoint to answer it.
 
+### Soft rings (13 Nov 2026)
+
+The nested plain ellipses showed as concentric rings, which the author disliked. Each ring of a
+`softEllipse` now has its own radial fade (`softFill`; one gradient per colour per icon, named by
+`svgDocument`), so the patch is smooth as a picture. The author tested conversion: PowerPoint
+flattens each ring but keeps its opacity, so the rings reappear only once converted, which the
+author accepts. A straight-line fade was tried and rejected: it can only be soft on one side.
+
+A soft patch cannot be cut to a clip path. `convert-safe.js` passes one through untouched if it
+lies wholly inside its clip; otherwise the colour script fails and names the icon. Shadows that
+must be trimmed to a shape (staphylococcus, red blood cells) use the stepped kind instead.
+
 ## Ideas not yet done
 
 - The globe has lines of latitude and longitude but no continents; drawing coastlines accurately

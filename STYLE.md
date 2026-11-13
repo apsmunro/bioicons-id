@@ -24,8 +24,8 @@ Every icon follows these rules so the set looks like one family on a slide.
     limbs and tapered parts.
   - A broad, soft `sheen` (or `gloss`) top left. Keep it soft: no small bright spots.
 - Where one object lies over another, it casts a soft shadow on it: draw the upper shape
-  again, offset down and to the right, filled with a `castGradient` or a low-opacity deep
-  tone, and clipped to the shape beneath.
+  again, offset down and to the right, filled with a low-opacity deep tone, and clipped to the
+  shape beneath (two copies at different offsets give the edge a step).
 - **Glass and clear plastic** (vials, bottles, tubes, pots, syringes): fill the vessel with
   `glassGradient`, draw its contents flat (liquid, label), then lay the vessel's own shape over
   them filled with `roundingGradient`, so everything inside curves with the vessel. Show the
@@ -93,8 +93,13 @@ print, line-art slides, or matching a slide's accent colour.
 - Colour icons must survive PowerPoint's **Convert to Shape**, which keeps linear gradients and
   the opacity of a single shape but drops clip paths, flattens radial gradients to their first
   stop, and ignores opacity set on a group. So:
-  - Anything soft-edged (a sheen, a soft shadow, a dip) is a `softEllipse`: nested plain
-    ellipses. Never a radial gradient that fades to transparent.
+  - Anything soft-edged (a sheen, a soft shadow, a dip) is a `softEllipse`: nested ellipses,
+    each a little opaque and each with its own soft edge. As a picture they merge into one
+    smooth patch; converted, each ring becomes a plain shape, so the patch turns into visible
+    steps rather than a solid blot. Never a single radial gradient that fades to transparent.
+  - A `softEllipse` cannot be cut to a clip path. Keep it wholly inside the shape it sits on
+    (the build fails and names the icon if one sticks out). For a shadow that must be trimmed
+    to the shape beneath, use the stepped kind (`shadowOf`, `stackShadows`, `shadowsOn`).
   - Write clip paths freely in the drawing code; `tools/convert-safe.js` cuts each clipped
     shape (and plain stroke) to its final outline when the icon is generated. Dashed strokes,
     and rotated shapes with a gradient fill, cannot be cut: keep those out of clip paths.

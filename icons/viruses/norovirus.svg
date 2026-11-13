@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="norovirus-title">
 <title id="norovirus-title">Norovirus</title>
 <desc>Non-enveloped calicivirus: an icosahedral capsid whose arch-like protruding dimers ring 32 cup-shaped depressions.</desc>
-<defs><radialGradient id="norovirus-shell" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#6979bb"/><stop offset="0" stop-color="#939dc9"/><stop offset="0.3" stop-color="#6979bb"/><stop offset="0.8" stop-color="#55629c"/><stop offset="1" stop-color="#5f6dab"/></radialGradient></defs>
+<defs><radialGradient id="norovirus-shell" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#6979bb"/><stop offset="0" stop-color="#939dc9"/><stop offset="0.3" stop-color="#6979bb"/><stop offset="0.8" stop-color="#55629c"/><stop offset="1" stop-color="#5f6dab"/></radialGradient><radialGradient id="norovirus-fade0"><stop offset="0" stop-color="#fff"/><stop offset="0.45" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
 <circle cx="128" cy="128" r="84" fill="url(#norovirus-shell)" stroke="#455396" stroke-width="2.5"/>
 <ellipse cx="61.96" cy="177.72" rx="10.5" ry="2.63" transform="rotate(233.03 61.96 177.72)" fill="#6e7ebb" stroke="#505b8e" stroke-width="1.2"/>
 <ellipse cx="45.65" cy="134.05" rx="10.5" ry="2.63" transform="rotate(265.8 45.65 134.05)" fill="#98a4d3" stroke="#6b74a3" stroke-width="1.2"/>
@@ -57,5 +57,5 @@
 <ellipse cx="155.08" cy="135.71" rx="10.5" ry="9.89" transform="rotate(105.88 155.08 135.71)" fill="#95a1d1" stroke="#6973a1" stroke-width="1.2"/>
 <ellipse cx="144.01" cy="106.07" rx="10.5" ry="9.94" transform="rotate(36.13 144.01 106.07)" fill="#b0bbe1" stroke="#7a84b1" stroke-width="1.2"/>
 <ellipse cx="127.69" cy="129.1" rx="10.5" ry="10.5" transform="rotate(195.55 127.69 129.1)" fill="#adb8df" stroke="#7982af" stroke-width="1.2"/>
-<g fill="#fff" fill-opacity="0.114" transform="rotate(-30 92 88)"><ellipse cx="92" cy="88" rx="27.5" ry="14.5"/><ellipse cx="92" cy="88" rx="23.65" ry="12.47"/><ellipse cx="92" cy="88" rx="19.8" ry="10.44"/><ellipse cx="92" cy="88" rx="15.95" ry="8.41"/><ellipse cx="92" cy="88" rx="12.1" ry="6.38"/><ellipse cx="92" cy="88" rx="8.25" ry="4.35"/><ellipse cx="92" cy="88" rx="4.4" ry="2.32"/></g>
+<g fill="url(#norovirus-fade0)" fill-opacity="0.114" transform="rotate(-30 92 88)"><ellipse cx="92" cy="88" rx="27.5" ry="14.5"/><ellipse cx="92" cy="88" rx="23.65" ry="12.47"/><ellipse cx="92" cy="88" rx="19.8" ry="10.44"/><ellipse cx="92" cy="88" rx="15.95" ry="8.41"/><ellipse cx="92" cy="88" rx="12.1" ry="6.38"/><ellipse cx="92" cy="88" rx="8.25" ry="4.35"/><ellipse cx="92" cy="88" rx="4.4" ry="2.32"/></g>
 </svg>

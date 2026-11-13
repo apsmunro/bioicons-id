@@ -62,7 +62,7 @@ function staphylococcus(id) {
     if (i) {
       // Each coccus shades the ones already drawn beneath it.
       defs.push(`<clipPath id="${id}-under-${i}">` + cocci.slice(0, i).map(([ux, uy, ur]) => `<circle cx="${ux}" cy="${uy}" r="${ur + 1}"/>`).join('') + `</clipPath>`);
-      body.push(`<g clip-path="url(#${id}-under-${i})">${K.castShadow(x + r * 0.14, y + r * 0.2, r * 1.3, r * 1.3, K.deepen(base, 0.7))}</g>`);
+      body.push(`<g clip-path="url(#${id}-under-${i})">${shadowOf(circleShape(x, y, r), base, [4, 6], 0.42)}</g>`);
     }
     body.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id}-${layer})" stroke="${outline(colour)}" stroke-width="${STROKE}"/>` +
       K.sheen(`${id}-sheen`, x - r * 0.3, y - r * 0.36, r * 0.46, r * 0.3, -35));
@@ -1941,8 +1941,8 @@ function redBloodCells(id) {
     return `<g transform="${place(at)}">` +
       `<ellipse rx="${rx}" ry="${ry}" fill="url(#${id}-${grad})" stroke="${outline(colour)}" stroke-width="${STROKE}"/>` +
       // The central dip: shaded where the rim overhangs it (top left), catching light on the far wall.
-      K.softEllipse(0, 0, rx * 0.56, ry * 0.52, K.deepen(base, 0.38), 0.72, { toward: [-0.2, -0.24] }) +
-      K.sheen(`${id}-glow`, rx * 0.14, ry * 0.16, rx * 0.4, ry * 0.34, 0) +
+      K.softEllipse(0, 0, rx * 0.72, ry * 0.68, K.deepen(base, 0.42), 0.74, { core: 0.5, toward: [-0.1, -0.14] }) +
+      K.sheen(`${id}-glow`, rx * 0.2, ry * 0.26, rx * 0.4, ry * 0.3, 0) +
       K.sheen(`${id}-sheen`, -rx * 0.5, -ry * 0.6, rx * 0.36, ry * 0.2, -8) + `</g>`;
   };
   return {
@@ -1953,7 +1953,7 @@ function redBloodCells(id) {
     ],
     body: [
       cell(backAt, back, 'back'),
-      `<g clip-path="url(#${id}-on-back)"><g transform="translate(${frontAt[0] + 5} ${frontAt[1] + 4}) rotate(${frontAt[4]})">${K.castShadow(0, 0, frontAt[2] + 12, frontAt[3] + 12, K.deepen(base, 0.75), 0.5, 0.7)}</g></g>`,
+      `<g clip-path="url(#${id}-on-back)"><g transform="translate(${frontAt[0] + 5} ${frontAt[1] + 4}) rotate(${frontAt[4]})">${[0.5, 1].map(s => `<ellipse rx="${frontAt[2] + 3 + 5 * s}" ry="${frontAt[3] + 3 + 5 * s}" fill="${K.deepen(base, 0.75)}" fill-opacity="0.22"/>`).join('')}</g></g>`,
       cell(frontAt, base, 'front'),
     ],
   };
@@ -2957,7 +2957,7 @@ function thymus(id) {
       `<path d="${lines}" fill="none" stroke="${K.deepen(base, 0.7)}" stroke-width="6" stroke-linecap="round" opacity="0.1" transform="translate(0 2)"/>`,
       `<path d="${lines}" fill="none" stroke="${shade(base, 0.36)}" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>`,
       `<path d="${lines}" fill="none" stroke="${K.lift(base, 0.7)}" stroke-width="1.2" stroke-linecap="round" opacity="0.5" transform="translate(0 2)"/>`,
-      K.sheen(`${id}-gloss`, cx - 10, 86, 10, 26, 0),
+      K.sheen(`${id}-gloss`, cx - 7, 90, 8, 21, 0),
       `</g>`,
       `<path d="${d}" fill="none" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
     ]),
@@ -4197,7 +4197,7 @@ function pregnantPerson(id) {
       `<path d="M114 64L131 64L133 90L112 90Z" fill="${K.deepen(skin, 0.2)}"/>`,
       `<path d="${dressPath}" fill="url(#${id}-dress)" stroke="${outline(dress)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
       `<g clip-path="url(#${id}-on-dress)">`,
-      K.sheen(`${id}-gloss`, 84, 146, 14, 24, 20),
+      K.sheen(`${id}-gloss`, 88, 146, 11, 21, 20),
       // The arm and hand shade the dress beneath them.
       stroke(arm, 14)(`stroke="${K.deepen(dress, 0.7)}" opacity="0.22" transform="translate(4 6)"`),
       `</g>`,
@@ -4706,19 +4706,28 @@ const DRAWINGS = {
   'vertical-transmission': verticalTransmission,
 };
 
-const { convertSafe } = require('./convert-safe');
+const { convertSafe, remaining, softCuts } = require('./convert-safe');
+// Soft shapes (softEllipse, sheen, castShadow) cannot be cut to a clip path: their fade is sized
+// to the whole ellipse. Icons that try are listed at the end, and the run fails.
+const clippedSoft = [];
+const finish = (svgId, svg) => {
+  const before = softCuts.count, out = convertSafe(svg);
+  if (softCuts.count > before || (remaining(out).clips && /clip-path="[^"]*"[^\n]*-fade\d/.test(out))) clippedSoft.push(svgId);
+  return out;
+};
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));
 for (const [id, draw] of Object.entries(DRAWINGS)) {
   const meta = catalogue.icons.find(icon => icon.id === id);
   if (!meta) throw new Error(`No catalogue entry for "${id}"`);
   const { defs, body } = draw(id);
-  K.writeIcon(ROOT, meta.file, convertSafe(K.svgDocument({ id, title: meta.name, description: meta.description, defs, body })));
+  K.writeIcon(ROOT, meta.file, finish(id, K.svgDocument({ id, title: meta.name, description: meta.description, defs, body })));
   // Skin-tone versions of the people icons: redrawn with the palette's skin and hair swapped.
   for (const [toneId, file] of Object.entries(meta.toneFiles || {})) {
     const tone = K.SKIN_TONES.find(t => t.id === toneId), saved = [C.skin, C.hair];
     [C.skin, C.hair] = [tone.skin, tone.hair];
     const svgId = `${id}-${toneId}`, drawn = draw(svgId);
     [C.skin, C.hair] = saved;
-    K.writeIcon(ROOT, file, convertSafe(K.svgDocument({ id: svgId, title: `${meta.name} (${tone.label.toLowerCase()} skin tone)`, description: meta.description, ...drawn })));
+    K.writeIcon(ROOT, file, finish(svgId, K.svgDocument({ id: svgId, title: `${meta.name} (${tone.label.toLowerCase()} skin tone)`, description: meta.description, ...drawn })));
   }
 }
+if (clippedSoft.length) { console.error(`Soft shapes inside a clip path: ${clippedSoft.join(', ')}`); process.exitCode = 1; }
