@@ -63,7 +63,7 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 ## Handover (16 Nov 2026): start here
 
 Everything is committed, merged into `main` and live. The library has 183 icons in 11 categories
-and 5 figures (batch 10, below, is the latest work). The sections below are in the
+and 6 figures (batch 10 and the antibody deficiency figure, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -86,7 +86,6 @@ Offered and not yet taken up:
 - More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell), routes of
   vertical infection.
 - Clinical signs: rashes on a torso in four skin tones.
-- The site's count line says "188 icons" and counts the five figures as icons.
 - Reshading the opaque clinical equipment; a see-through treatment for the glass test, incubator
   hood and culture plates.
 
@@ -109,6 +108,16 @@ pushed on the author's "Commit and push", given without comment on the drawings.
   (CD79, Syk, PLCγ2); the IL-12 loop is drawn at the level of cells, not molecules; the innate
   figure has no dendritic cell or link to adaptive immunity; the flow figure has no red-cell lysis
   or wash step.
+
+### Count line and antibody deficiency figure (16 Nov 2026)
+
+The site's count line now counts icons and figures separately ("183 icons and 6 figures"; "1 of 183
+icons and 1 of 6 figures" when filtered). A sixth figure, `antibody-deficiency-blocks`, pairs with
+`scid-blocks`: bone marrow (stem cell, V(D)J recombination, the BTK icon as the pre-B cell), a naive
+B cell, then the lymph node (CD40 ligand, germinal centre), plasma cells and IgG and IgA. The author
+has not reviewed the gene placements: BTK, IGHM, IGLL1, CD79A, CD79B and BLNK at the pre-B cell;
+CD40LG and CD40 at T-cell help; AICDA and UNG at class switching; NFKB1, NFKB2, CD19 and TNFRSF13B at
+the step to plasma and memory cells. Committed and pushed on "Commit and push", without comment.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

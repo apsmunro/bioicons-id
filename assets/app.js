@@ -77,7 +77,12 @@
       li.append(b);
       return li;
     }));
-    $('#count').textContent = `${shown.length} of ${lib.icons.length} icons`;
+    // Icons and figures are counted separately: "183 icons and 5 figures", or "12 of 183 icons…" when filtered.
+    const tally = (isFigure, word) => {
+      const total = lib.icons.filter(i => (i.category === 'figures') === isFigure).length, n = shown.filter(i => (i.category === 'figures') === isFigure).length;
+      return `${n === total ? total : `${n} of ${total}`} ${word}${total === 1 ? '' : 's'}`;
+    };
+    $('#count').textContent = `${tally(false, 'icon')} and ${tally(true, 'figure')}`;
     $('#empty').hidden = shown.length > 0;
   }
 

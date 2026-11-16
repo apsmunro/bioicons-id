@@ -103,6 +103,32 @@ const FIGURES = {
       ['CIITA, RFXANK, ZAP70', 1010, 384], ['FOXN1, 22q11 deletion', 548, 444],
     ],
   },
+  'antibody-deficiency-blocks': {
+    title: 'Where antibody deficiencies block B-cell development',
+    description: 'B-cell development from the bone marrow to antibody secretion, marked where inherited defects stop it: BTK and the parts of the pre-B-cell receptor (IGHM, IGLL1, CD79A, CD79B, BLNK) at the pre-B cell, causing agammaglobulinaemia; ' +
+      'CD40LG and CD40 at T-cell help, and AICDA and UNG at class switching, causing hyper-IgM syndromes; and NFKB1, NFKB2, CD19 and TNFRSF13B at the step to plasma cells and memory B cells, as in common variable immunodeficiency.',
+    width: 1200, height: 760,
+    regions: [[24, 24, 730, 356, 70, 'marrow'], [650, 396, 526, 330, 70, 'lymphNode']],
+    icons: [
+      ['haematopoietic-stem-cell', 115, 160, 170], ['vdj-recombination', 335, 160, 150], ['btk', 580, 160, 150], ['b-cell', 940, 160, 140],
+      ['cd40-ligand', 1020, 530, 150], ['germinal-centre', 780, 530, 180], ['plasma-cell', 500, 540, 150],
+      ['igg-antibody', 300, 500, 100, -15], ['iga-dimer', 170, 560, 120], ['igg-antibody', 310, 610, 96, 12],
+    ],
+    arrows: [
+      [[206, 160], [254, 160]], [[418, 160], [498, 160]], [[662, 160], [858, 160]], [[962, 288], [1004, 444]],
+      [[938, 530], [878, 530]], [[684, 534], [584, 534]], [[418, 540], [372, 540]],
+    ],
+    labels: [
+      ['Bone marrow', 335, 64], ['Haematopoietic|stem cell', 115, 272], ['Pro-B cell:|V(D)J recombination', 335, 268], ['Pre-B cell:|receptor signalling', 580, 268],
+      ['Naive B cell', 940, 262], ['Lymph node', 756, 434], ['T-cell help', 1020, 632], ['Class switching in|germinal centre', 780, 644],
+      ['Plasma cells and|memory B cells', 500, 644], ['IgG and IgA', 230, 700],
+    ],
+    blocks: [[650, 92], [1090, 462], [862, 450], [570, 472]],
+    alerts: [
+      ['BTK, IGHM, IGLL1,|CD79A, CD79B, BLNK', 580, 330], ['CD40LG, CD40', 1020, 666], ['AICDA, UNG', 780, 707],
+      ['NFKB1, NFKB2,|CD19, TNFRSF13B', 500, 707],
+    ],
+  },
   'innate-response-bacteria': {
     title: 'Innate immune response to bacterial infection',
     description: 'Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. ' +

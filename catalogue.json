@@ -1707,6 +1707,17 @@
       "tags": ["figure", "diagram", "pathway", "SCID", "severe combined immunodeficiency", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI", "IL2RG", "common gamma chain", "JAK3", "IL7R", "ADA", "RAG1", "RAG2", "Artemis", "DCLRE1C", "CD3", "ZAP70", "MHC class II deficiency", "FOXN1", "22q11", "DiGeorge", "AK2", "reticular dysgenesis", "thymus", "T-cell development", "newborn screening", "TREC"]
     },
     {
+      "id": "antibody-deficiency-blocks",
+      "name": "Where antibody deficiencies block B-cell development",
+      "category": "figures",
+      "file": "figures/antibody-deficiency-blocks.svg",
+      "monoFile": "figures/antibody-deficiency-blocks-mono.svg",
+      "labelledFile": "figures/antibody-deficiency-blocks-labelled.svg",
+      "labelledMonoFile": "figures/antibody-deficiency-blocks-mono-labelled.svg",
+      "description": "B-cell development from the bone marrow to antibody secretion, with barred rings where inherited defects stop it: BTK and the parts of the pre-B-cell receptor (IGHM, IGLL1, CD79A, CD79B, BLNK) at the pre-B cell, causing agammaglobulinaemia; CD40LG and CD40 at T-cell help, and AICDA and UNG at class switching, causing hyper-IgM syndromes; and NFKB1, NFKB2, CD19 and TNFRSF13B at the step to plasma cells and memory B cells, as in common variable immunodeficiency. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "antibody deficiency", "primary antibody deficiency", "PAD", "humoral immunodeficiency", "B-cell development", "agammaglobulinaemia", "agammaglobulinemia", "XLA", "X-linked agammaglobulinaemia", "BTK", "pre-B-cell receptor", "IGHM", "IGLL1", "CD79A", "CD79B", "BLNK", "hyper-IgM syndrome", "HIGM", "CD40LG", "CD40", "AICDA", "AID", "UNG", "class switch recombination", "CVID", "common variable immunodeficiency", "NFKB1", "NFKB2", "CD19", "TACI", "TNFRSF13B", "germinal centre", "plasma cell", "immunoglobulin replacement", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
       "id": "innate-response-bacteria",
       "name": "Innate response to bacterial infection",
       "category": "figures",
