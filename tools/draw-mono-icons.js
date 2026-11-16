@@ -777,11 +777,15 @@ function macrophage() {
   ];
 }
 
-function tCell() {
+// With a co-receptor, every other receptor is replaced by it: CD4 one long thick bar, CD8 a stalk
+// with a round head.
+function tCell(coreceptor) {
   const R = 72, cx = 128, cy = 128;
+  const glyph = coreceptor === 'cd4' ? `<line x1="${cx}" y1="${cy - R - 4}" x2="${cx}" y2="${cy - R - 26}" ${line(8)}/>`
+    : `<line x1="${cx}" y1="${cy - R - 4}" x2="${cx}" y2="${cy - R - 16}" ${line(5)}/><circle cx="${cx}" cy="${cy - R - 22}" r="7" ${solid}/>`;
   const receptors = Array.from({ length: 12 }, (_, i) =>
-    `<g transform="rotate(${i * 30 + 15} ${cx} ${cy})">` +
-    [-5, 5].map(dx => `<line x1="${cx + dx}" y1="${cy - R - 4}" x2="${cx + dx}" y2="${cy - R - 20}" ${line(5)}/>`).join('') + `</g>`);
+    `<g transform="rotate(${i * 30 + 15} ${cx} ${cy})">` + (coreceptor && i % 2 ? glyph :
+    [-5, 5].map(dx => `<line x1="${cx + dx}" y1="${cy - R - 4}" x2="${cx + dx}" y2="${cy - R - 20}" ${line(5)}/>`).join('')) + `</g>`);
   return [
     ...receptors,
     `<circle cx="${cx}" cy="${cy}" r="${R}" ${line(LINE)}/>`,
@@ -2495,6 +2499,8 @@ const DRAWINGS = {
   't-cell-receptor': tCellReceptor,
   'vdj-recombination': vdjRecombination,
   'entamoeba-histolytica': entamoebaHistolytica,
+  'cd4-t-cell': () => tCell('cd4'),
+  'cd8-t-cell': () => tCell('cd8'),
 };
 
 // Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.

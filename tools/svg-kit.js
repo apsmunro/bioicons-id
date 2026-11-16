@@ -286,6 +286,8 @@ const PALETTE = {
   geneD: '#5DBB63',
   geneJ: '#F2A541',
   geneC: '#8E6CC9',
+  cd4: '#F2A541',
+  cd8: '#D9567F',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each

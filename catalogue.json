@@ -1566,6 +1566,24 @@
       "tags": ["Entamoeba histolytica", "E. histolytica", "Entamoeba", "amoeba", "amoebiasis", "amoebic dysentery", "amoebic liver abscess", "trophozoite", "protozoa", "parasite", "bloody diarrhoea"]
     },
     {
+      "id": "cd4-t-cell",
+      "name": "CD4 T cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/cd4-t-cell.svg",
+      "monoFile": "icons/immune-cells/cd4-t-cell-mono.svg",
+      "description": "Helper T cell: surface T-cell receptors (green) alternating with the CD4 co-receptor, a single tall rod (orange).",
+      "tags": ["CD4", "CD4 T cell", "helper T cell", "T helper", "Th", "T lymphocyte", "co-receptor", "MHC class II", "HIV", "CD4 count", "lymphocyte", "adaptive immunity"]
+    },
+    {
+      "id": "cd8-t-cell",
+      "name": "CD8 T cell",
+      "category": "immune-cells",
+      "file": "icons/immune-cells/cd8-t-cell.svg",
+      "monoFile": "icons/immune-cells/cd8-t-cell-mono.svg",
+      "description": "Cytotoxic T cell: surface T-cell receptors (green) alternating with the CD8 co-receptor, a pair of short stalks with round heads (pink).",
+      "tags": ["CD8", "CD8 T cell", "cytotoxic T cell", "CTL", "killer T cell", "T lymphocyte", "co-receptor", "MHC class I", "lymphocyte", "adaptive immunity"]
+    },
+    {
       "id": "vaccine-response",
       "name": "Immune response to a vaccine",
       "category": "figures",
@@ -1586,6 +1604,17 @@
       "labelledMonoFile": "figures/t-cell-development-mono-labelled.svg",
       "description": "A haematopoietic stem cell from the bone marrow seeds the thymus, where early thymocytes rearrange their T-cell receptor genes by V(D)J recombination, express a T-cell receptor and are tested by positive and negative selection; the survivors leave as naive CD4 and CD8 T cells for the lymph nodes and spleen. Available with or without labels.",
       "tags": ["figure", "diagram", "pathway", "T-cell development", "thymus", "thymocyte", "thymic selection", "positive selection", "negative selection", "central tolerance", "V(D)J recombination", "TCR", "haematopoietic stem cell", "bone marrow", "naive T cell", "CD4", "CD8", "SCID", "primary immunodeficiency", "22q11", "DiGeorge"]
+    },
+    {
+      "id": "scid-blocks",
+      "name": "Where SCID blocks T-cell development",
+      "category": "figures",
+      "file": "figures/scid-blocks.svg",
+      "monoFile": "figures/scid-blocks-mono.svg",
+      "labelledFile": "figures/scid-blocks-labelled.svg",
+      "labelledMonoFile": "figures/scid-blocks-mono-labelled.svg",
+      "description": "T-cell development from the bone marrow through the thymus, with barred rings where inherited defects stop it: AK2 in the stem cell; IL2RG, JAK3, IL7R and ADA in the early thymocyte; RAG1, RAG2 and DCLRE1C (Artemis) at V(D)J recombination; the CD3 chains at the T-cell receptor; CIITA, RFXANK and ZAP70 at selection; and FOXN1 or 22q11 deletion in the thymus itself. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "SCID", "severe combined immunodeficiency", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI", "IL2RG", "common gamma chain", "JAK3", "IL7R", "ADA", "RAG1", "RAG2", "Artemis", "DCLRE1C", "CD3", "ZAP70", "MHC class II deficiency", "FOXN1", "22q11", "DiGeorge", "AK2", "reticular dysgenesis", "thymus", "T-cell development", "newborn screening", "TREC"]
     }
   ]
 }

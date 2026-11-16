@@ -15,6 +15,7 @@ const { PALETTE: C, INK, round: n } = K;
 const ROOT = path.join(__dirname, '..');
 const FONT = 'font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle"';
 const LINE_HEIGHT = 29;
+const ALERT = '#C0392B';
 const escapeText = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 // An icon placed with its centre at (x, y), `size` px across, turned by `rotate` degrees.
@@ -25,6 +26,8 @@ const place = ({ x, y, size, rotate = 0 }, inner) =>
 // tissues that steps happen inside; icons [icon id, x, y, size, rotate]; arrows
 // [[x0, y0], [x1, y1]], or [[x0, y0], [cx, cy], [x1, y1]] to bend towards a control point; and
 // labels [text, x, y] (centred on x, with y the baseline of the first line; | starts a new line).
+// blocks [x, y] mark where a pathway is interrupted (a barred ring), and alerts are labels for
+// them, such as gene names: set in red italics, so they still stand apart in single colour.
 const FIGURES = {
   'vaccine-response': {
     title: 'Immune response to a vaccine',
@@ -58,7 +61,7 @@ const FIGURES = {
     icons: [
       ['bone', 110, 118, 160], ['haematopoietic-stem-cell', 110, 400, 180],
       ['t-cell', 372, 190, 140], ['vdj-recombination', 575, 190, 150], ['t-cell-receptor', 775, 190, 150], ['immune-synapse', 1010, 220, 200],
-      ['t-cell', 962, 512, 130], ['t-cell', 1072, 530, 118],
+      ['cd4-t-cell', 962, 512, 130], ['cd8-t-cell', 1072, 530, 118],
       ['lymph-node', 700, 518, 150], ['spleen', 520, 518, 150],
     ],
     arrows: [
@@ -72,12 +75,44 @@ const FIGURES = {
       ['Naive CD4 and CD8 T cells', 1016, 624], ['Lymph nodes and spleen', 610, 624],
     ],
   },
+  'scid-blocks': {
+    title: 'Where severe combined immunodeficiency blocks T-cell development',
+    description: 'T-cell development from the bone marrow through the thymus, marked where inherited defects stop it: AK2 in the stem cell; IL2RG, JAK3, IL7R and ADA in the early thymocyte; ' +
+      'RAG1, RAG2 and DCLRE1C (Artemis) at V(D)J recombination; the CD3 chains at the T-cell receptor; CIITA, RFXANK and ZAP70 at selection; and FOXN1 or 22q11 deletion in the thymus itself.',
+    width: 1200, height: 712,
+    regions: [[262, 24, 918, 446, 70, 'thymus']],
+    icons: [
+      ['bone', 110, 118, 160], ['haematopoietic-stem-cell', 110, 400, 180],
+      ['t-cell', 372, 190, 140], ['vdj-recombination', 575, 190, 150], ['t-cell-receptor', 775, 190, 150], ['immune-synapse', 1010, 220, 200],
+      ['cd4-t-cell', 962, 584, 130], ['cd8-t-cell', 1072, 602, 118],
+      ['lymph-node', 700, 590, 150], ['spleen', 520, 590, 150],
+    ],
+    arrows: [
+      [[110, 240], [110, 300]], [[204, 372], [262, 300], [300, 222]],
+      [[450, 190], [492, 190]], [[658, 190], [698, 190]], [[854, 192], [902, 204]],
+      [[1010, 404], [1010, 504]], [[882, 590], [792, 590]],
+    ],
+    labels: [
+      ['Bone marrow', 110, 222], ['Haematopoietic|stem cell', 110, 516],
+      ['Early|thymocyte', 372, 294], ['V(D)J|recombination', 575, 294], ['T-cell|receptor', 775, 294], ['Positive and|negative selection', 1010, 66], ['Thymus', 330, 444],
+      ['Naive CD4 and CD8 T cells', 1016, 696], ['Lymph nodes and spleen', 610, 696],
+    ],
+    blocks: [[32, 330], [436, 126], [650, 126], [850, 126], [1116, 138], [398, 436]],
+    alerts: [
+      ['AK2', 110, 580], ['IL2RG, JAK3,|IL7R, ADA', 372, 360], ['RAG1, RAG2,|DCLRE1C', 575, 360], ['CD3D, CD3E,|CD247', 775, 360],
+      ['CIITA, RFXANK, ZAP70', 1010, 384], ['FOXN1, 22q11 deletion', 548, 444],
+    ],
+  },
 };
 
-function draw(id, { title, description, width, height, regions = [], icons, arrows, labels }) {
-  const text = fill => labels.map(([label, x, y]) => label.split('|').map((line, i) =>
-    `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} fill="${fill}">${escapeText(line)}</text>`).join('')).join('');
-  const withLabels = (svg, fill) => svg.replace('</svg>', `${text(fill)}</svg>`);
+function draw(id, { title, description, width, height, regions = [], icons, arrows, labels, blocks = [], alerts = [] }) {
+  const lines = (list, attrs) => list.map(([label, x, y]) => label.split('|').map((line, i) =>
+    `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} ${attrs}>${escapeText(line)}</text>`).join('')).join('');
+  const text = (fill, alertFill) => lines(labels, `fill="${fill}"`) + lines(alerts, `font-style="italic" fill="${alertFill}"`);
+  // A barred ring: the pathway stops here.
+  const block = ([x, y], stroke) => `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="${stroke}" stroke-width="6"/>` +
+    `<path d="M${x - 10.6} ${y - 10.6}L${x + 10.6} ${y + 10.6}" stroke="${stroke}" stroke-width="6"/>`;
+  const withLabels = (svg, fill, alertFill) => svg.replace('</svg>', `${text(fill, alertFill)}</svg>`);
   const marks = arrows.map(points => (points.length === 3 ? K.curvedArrow(...points, 22) : K.straightArrow(...points, 22)));
   const box = ([x, y, w, h, r]) => `x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}"`;
 
@@ -91,17 +126,19 @@ function draw(id, { title, description, width, height, regions = [], icons, arro
     defs.push(...drawn.defs);
     body.push(place({ x, y, size, rotate }, drawn.body.join('')));
   });
+  blocks.forEach(b => body.push(block(b, ALERT)));
   const full = colour.finish(id, K.svgDocument({ id, title, description, defs, body, width, height }));
   K.writeIcon(ROOT, `figures/${id}.svg`, full);
-  K.writeIcon(ROOT, `figures/${id}-labelled.svg`, withLabels(full, C.arrow));
+  K.writeIcon(ROOT, `figures/${id}-labelled.svg`, withLabels(full, C.arrow, ALERT));
 
   // Single colour.
-  const lines = regions.map(region => `<rect ${box(region)} fill="none" stroke="${INK}" stroke-width="5"/>`);
-  marks.forEach(a => lines.push(`<path d="${a.shaft}" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><polygon points="${a.head}" fill="${INK}"/>`));
-  icons.forEach(([icon, x, y, size, rotate]) => lines.push(place({ x, y, size, rotate }, mono.DRAWINGS[icon]().join(''))));
-  const plain = K.svgDocument({ id: `${id}-mono`, title: `${title} (single colour)`, description, defs: [], body: lines, width, height });
+  const marksAndIcons = regions.map(region => `<rect ${box(region)} fill="none" stroke="${INK}" stroke-width="5"/>`);
+  marks.forEach(a => marksAndIcons.push(`<path d="${a.shaft}" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><polygon points="${a.head}" fill="${INK}"/>`));
+  icons.forEach(([icon, x, y, size, rotate]) => marksAndIcons.push(place({ x, y, size, rotate }, mono.DRAWINGS[icon]().join(''))));
+  blocks.forEach(b => marksAndIcons.push(block(b, INK)));
+  const plain = K.svgDocument({ id: `${id}-mono`, title: `${title} (single colour)`, description, defs: [], body: marksAndIcons, width, height });
   K.writeIcon(ROOT, `figures/${id}-mono.svg`, plain);
-  K.writeIcon(ROOT, `figures/${id}-mono-labelled.svg`, withLabels(plain, INK));
+  K.writeIcon(ROOT, `figures/${id}-mono-labelled.svg`, withLabels(plain, INK, INK));
 }
 
 for (const [id, figure] of Object.entries(FIGURES)) draw(id, figure);

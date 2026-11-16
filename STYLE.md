@@ -96,6 +96,8 @@ canvas, joined by arrows, with pale rounded regions for the tissues that steps h
   without labels. Leave room for the labels in the layout even though one version omits them.
 - Labels are the one place text is allowed. They are plain SVG text in Arial, sentence case,
   British spelling, one size throughout, so they stay editable in slide software.
+- Where a figure shows a pathway being interrupted, mark the step with a barred ring and name the
+  cause beside it in red italics, so the two still differ from ordinary labels in single colour.
 - Read left to right, then down; keep arrows short and never let one cross another or an icon.
 
 ## Technical rules (so icons behave in PowerPoint, Keynote and Google Slides)

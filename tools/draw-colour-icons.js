@@ -1552,10 +1552,18 @@ function macrophage(id) {
   };
 }
 
-function tCell(id) {
+// A T cell. With a co-receptor ('cd4' or 'cd8'), every other receptor is replaced by it: CD4 a
+// single tall rod, CD8 a pair of short stalks with round heads.
+function tCell(id, coreceptor) {
   const base = C.lymphocyte, nuc = C.nucleus, R = 76, cx = 128, cy = 128;
   const receptors = [];
+  const co = coreceptor && C[coreceptor];
+  const glyph = !coreceptor ? '' : coreceptor === 'cd4'
+    ? `<rect x="${cx - 4}" y="${cy - R - 23}" width="8" height="27" rx="4" fill="url(#${id}-co)" stroke="${outline(co)}" stroke-width="1.2"/>`
+    : [-5.5, 5.5].map(dx => `<rect x="${cx + dx - 2}" y="${cy - R - 13}" width="4" height="17" rx="2" fill="${co}" stroke="${outline(co)}" stroke-width="1.2"/>` +
+      `<circle cx="${cx + dx}" cy="${cy - R - 16}" r="4.8" fill="url(#${id}-co)" stroke="${outline(co)}" stroke-width="1.2"/>`).join('');
   for (let i = 0; i < 14; i++) {
+    if (coreceptor && i % 2) { receptors.push(`<g transform="rotate(${n(i * 360 / 14 + 12)} ${cx} ${cy})">${glyph}</g>`); continue; }
     const chain = (x, colour) => `<rect x="${x}" y="${cy - R - 15}" width="6" height="19" rx="3" fill="url(#${id}-${colour})" stroke="${outline(C[colour])}" stroke-width="1.2"/>`;
     receptors.push(`<g transform="rotate(${n(i * 360 / 14 + 12)} ${cx} ${cy})">${chain(cx - 7, 'receptorA')}${chain(cx + 1, 'receptorB')}</g>`);
   }
@@ -1570,6 +1578,7 @@ function tCell(id) {
     defs: [
       K.formGradient(`${id}-body`, base, { light: 0.5, dark: 0.16 }), K.formGradient(`${id}-nucleus`, nuc, { light: 0.34, dark: 0.3 }),
       K.limbGradient(`${id}-receptorA`, C.receptorA), K.limbGradient(`${id}-receptorB`, C.receptorB), K.glossGradient(`${id}-sheen`, 0.5),
+      ...(coreceptor ? [K.limbGradient(`${id}-co`, co)] : []),
       `<clipPath id="${id}-in-body"><path d="${membrane}"/></clipPath>`, `<clipPath id="${id}-in-nucleus"><path d="${nucleus}"/></clipPath>`,
     ],
     body: [
@@ -4915,6 +4924,8 @@ const DRAWINGS = {
   't-cell-receptor': tCellReceptor,
   'vdj-recombination': vdjRecombination,
   'entamoeba-histolytica': entamoebaHistolytica,
+  'cd4-t-cell': id => tCell(id, 'cd4'),
+  'cd8-t-cell': id => tCell(id, 'cd8'),
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');

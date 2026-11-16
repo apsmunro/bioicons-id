@@ -97,6 +97,15 @@ T cells, lymph nodes and spleen). Arrows can bend (a third, middle point is the 
 a `|` in a label starts a new line. Check a figure by rendering its labelled versions in PowerPoint:
 labels run into each other easily, so prefer two short lines to one long one.
 
+The third figure, `scid-blocks`, is the thymus layout with `blocks` (barred rings where a defect
+stops the pathway) and `alerts` (gene names in red italics). The rings are part of the drawing, so
+they also appear in the unlabelled versions. The author has not yet reviewed which genes sit at
+which step.
+
+CD4 and CD8 T cells are icons of their own (`cd4-t-cell`, `cd8-t-cell`): `tCell` takes a co-receptor,
+which replaces every other receptor. CD4 is one tall orange rod, CD8 a pair of pink stalks with round
+heads; in single colour, a thick bar and a stalk with a round head.
+
 ## Shading model (11 Nov 2026)
 
 All colour icons were moved to a second shading model, set in the kit: shadows mix towards a
