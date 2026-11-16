@@ -60,6 +60,51 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 - Anatomy and science should be accurate; the author reviews closely and will push back on odd shapes.
 - People have no facial features. British spelling throughout.
 
+## Handover (16 Nov 2026): start here
+
+Everything is committed, merged into `main` and live at commit `ec9316b`; there are no other local
+branches. The library has 173 icons in 11 categories and 3 figures. The sections below are in the
+order the work was done, so the counts in "Status" are older than this.
+
+Done since batch 8, newest first:
+- CD4 and CD8 T cell icons, and the figure `scid-blocks`.
+- Figures: `vaccine-response` and `t-cell-development`, with a Figures category and a labels switch
+  on the site.
+- Batch 9: eight icons.
+- Soft rings, replacing the visible rings left by the Convert to Shape fix.
+- Convert to Shape fix; glass and plastic reshading; cast shadows for every category.
+
+Waiting on the author:
+- Convert to Shape has never been run on a figure. The open question is whether labels and gene
+  names come through as editable text. The author was asked to convert the labelled colour
+  `vaccine-response` from the live site and report back.
+- The gene-to-step placements in `scid-blocks` were pushed without comment from the author. Treat
+  them as unreviewed: gene symbols are used throughout (*DCLRE1C* for Artemis, *CD247* for CD3ζ),
+  ADA sits at the early thymocyte, and MHC class II deficiency and ZAP-70 sit at selection.
+
+Offered and not yet taken up:
+- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell), the innate
+  response to bacterial infection (all icons exist), routes of vertical infection.
+- A primary immunodeficiency icon set (NADPH oxidase, BTK, CD40–CD40L, IL-12/IFN-γ axis, perforin).
+- Clinical signs: rashes on a torso in four skin tones.
+- The site's count line says "176 icons" and counts the three figures as icons.
+- Reshading the opaque clinical equipment; a see-through treatment for the glass test, incubator
+  hood and culture plates.
+
+How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
+review of the pictures. Show every change as a PowerPoint-rendered picture before asking to
+commit. After a merge, list any leftover branch and untracked pictures and ask before deleting;
+delete only what was named.
+
+Practical notes for the build:
+- `npm run all` sometimes fails on Windows with `UNKNOWN: unknown error, open …svg`. It is a
+  transient file lock; run it again.
+- Do not patch files with `sed` or shell heredocs that contain backslashes: they were mangled more
+  than once. Use the Edit tool, or a small Node script with plain string replacement.
+- Pictures for the author are made by putting SVGs on a slide with pptxgenjs and exporting it
+  through PowerPoint's COM interface. The scripts lived in a session scratchpad and are gone;
+  they are a few lines each and quick to rewrite.
+
 ## Status (27 Oct 2026, batch 8)
 
 163 icons in 11 categories: bacteria 23, viruses 18, fungi 5, parasites & vectors 11, immune cells 20,
