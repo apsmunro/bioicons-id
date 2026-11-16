@@ -147,6 +147,23 @@ const FIGURES = {
       ['Normal', 1100, 118], ['Chronic|granulomatous|disease', 1100, 279], ['X-linked|carrier', 1100, 484],
     ],
   },
+  'vertical-infection-routes': {
+    title: 'Routes of vertical infection',
+    description: 'When and how infections pass from mother to child. Before birth, across the placenta: cytomegalovirus, toxoplasma, syphilis and parvovirus B19. ' +
+      'During birth, from the birth canal and blood: group B streptococcus, herpes simplex virus, HIV and hepatitis B. After birth, through breast milk: HIV and cytomegalovirus.',
+    width: 1200, height: 740,
+    icons: [
+      ['placenta', 130, 115, 160], ['cmv-infected-cell', 430, 115, 120], ['toxoplasma', 620, 115, 120], ['treponema', 810, 115, 120], ['parvovirus-b19', 1000, 115, 120],
+      ['newborn', 130, 350, 160], ['streptococcus', 430, 350, 120], ['herpesvirus', 620, 350, 120], ['hiv', 810, 350, 120], ['hepatitis-b', 1000, 350, 120],
+      ['parent-and-baby', 130, 585, 160], ['hiv', 430, 585, 120], ['cmv-infected-cell', 620, 585, 120],
+    ],
+    arrows: [[[236, 115], [336, 115]], [[236, 350], [336, 350]], [[236, 585], [336, 585]]],
+    labels: [
+      ['Before birth:|across the placenta', 130, 223], ['Cytomegalovirus', 430, 205], ['Toxoplasma', 620, 205], ['Syphilis', 810, 205], ['Parvovirus B19', 1000, 205],
+      ['During birth', 130, 458], ['Group B|streptococcus', 430, 440], ['Herpes simplex|virus', 620, 440], ['HIV', 810, 440], ['Hepatitis B', 1000, 440],
+      ['After birth:|breast milk', 130, 693], ['HIV', 430, 675], ['Cytomegalovirus', 620, 675],
+    ],
+  },
   'innate-response-bacteria': {
     title: 'Innate immune response to bacterial infection',
     description: 'Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. ' +

@@ -63,7 +63,7 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 ## Handover (16 Nov 2026): start here
 
 Everything is committed, merged into `main` and live. The library has 186 icons in 11 categories
-and 7 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
+and 8 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -83,8 +83,7 @@ Waiting on the author:
   ADA sits at the early thymocyte, and MHC class II deficiency and ZAP-70 sit at selection.
 
 Offered and not yet taken up:
-- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell), routes of
-  vertical infection.
+- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell).
 - Clinical signs: rashes on a torso in four skin tones.
 - Reshading the opaque clinical equipment; a see-through treatment for the glass test, incubator
   hood and culture plates.
@@ -131,6 +130,13 @@ the step to plasma and memory cells. Committed and pushed on "Commit and push", 
   is filtered, previous/next in the detail view (also the arrow keys), tags that search, and a how-to
   footer. Still static, with no external fonts or scripts. Committed and pushed on "Commit and push",
   without comment on the drawings or the design.
+
+### Routes of vertical infection (16 Nov 2026)
+
+An eighth figure, `vertical-infection-routes`, chosen on the author's "you choose": three rows (before birth across the
+placenta, during birth, after birth through breast milk), each a stage icon and its organisms. Rubella, Zika and
+listeria are left out; rubella and Zika have no icon. Committed and pushed on "Commit and push", without comment; only the
+labelled colour version was checked in PowerPoint.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

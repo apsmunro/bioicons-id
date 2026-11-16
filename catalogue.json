@@ -1756,6 +1756,17 @@
       "tags": ["figure", "diagram", "workflow", "DHR", "dihydrorhodamine", "dihydrorhodamine 123", "rhodamine", "chronic granulomatous disease", "CGD", "X-linked carrier", "neutrophil oxidative burst", "respiratory burst", "NADPH oxidase", "neutrophil function test", "PMA", "flow cytometry", "FACS", "histogram", "diagnosis", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
     },
     {
+      "id": "vertical-infection-routes",
+      "name": "Routes of vertical infection",
+      "category": "figures",
+      "file": "figures/vertical-infection-routes.svg",
+      "monoFile": "figures/vertical-infection-routes-mono.svg",
+      "labelledFile": "figures/vertical-infection-routes-labelled.svg",
+      "labelledMonoFile": "figures/vertical-infection-routes-mono-labelled.svg",
+      "description": "When and how infections pass from mother to child. Before birth, across the placenta: cytomegalovirus, toxoplasma, syphilis and parvovirus B19. During birth, from the birth canal and blood: group B streptococcus, herpes simplex virus, HIV and hepatitis B. After birth, through breast milk: HIV and cytomegalovirus. Available with or without labels.",
+      "tags": ["figure", "diagram", "vertical transmission", "mother-to-child transmission", "MTCT", "perinatal infection", "congenital infection", "TORCH", "transplacental", "in utero", "intrapartum", "postnatal", "breast milk", "breastfeeding", "placenta", "cytomegalovirus", "CMV", "cCMV", "toxoplasmosis", "congenital syphilis", "parvovirus B19", "group B streptococcus", "GBS", "herpes simplex", "HSV", "neonatal herpes", "HIV", "hepatitis B", "HBV", "newborn", "neonate", "pregnancy"]
+    },
+    {
       "id": "innate-response-bacteria",
       "name": "Innate response to bacterial infection",
       "category": "figures",
