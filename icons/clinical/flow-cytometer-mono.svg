@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="flow-cytometer-mono-title">
+<title id="flow-cytometer-mono-title">Flow cytometer (single colour)</title>
+<desc>Inside a flow cytometer: cells pass in single file down the flow cell and cross a laser. A detector in line with the beam measures forward scatter, and detectors to the side measure fluorescence of different colours.</desc>
+<defs></defs>
+<path d="M88 20H168V44L140 96V236H116V96L88 44Z" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="128" cy="32" r="5" fill="#000000"/>
+<circle cx="128" cy="52" r="5" fill="#000000"/>
+<circle cx="128" cy="80" r="5" fill="#000000"/>
+<circle cx="128" cy="110" r="5" fill="#000000"/>
+<circle cx="128" cy="144" r="6" fill="#000000"/>
+<circle cx="128" cy="180" r="5" fill="#000000"/>
+<circle cx="128" cy="212" r="5" fill="#000000"/>
+<rect x="21" y="128" width="40" height="32" rx="6" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M68 144H109" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M147 144H203M147 129L194 91M147 159L194 197" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="-8" y="-12" width="22" height="24" rx="5" transform="translate(220 144) rotate(0)" fill="#000000"/>
+<rect x="-8" y="-12" width="22" height="24" rx="5" transform="translate(208 80) rotate(-38)" fill="#000000"/>
+<rect x="-8" y="-12" width="22" height="24" rx="5" transform="translate(208 208) rotate(38)" fill="#000000"/>
+</svg>

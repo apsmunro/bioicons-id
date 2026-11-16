@@ -1584,6 +1584,96 @@
       "tags": ["CD8", "CD8 T cell", "cytotoxic T cell", "CTL", "killer T cell", "T lymphocyte", "co-receptor", "MHC class I", "lymphocyte", "adaptive immunity"]
     },
     {
+      "id": "nadph-oxidase",
+      "name": "NADPH oxidase",
+      "category": "molecules",
+      "file": "icons/molecules/nadph-oxidase.svg",
+      "monoFile": "icons/molecules/nadph-oxidase-mono.svg",
+      "description": "The phagocyte NADPH oxidase on a phagosome membrane: gp91phox (blue) and p22phox (teal) cross the membrane, with p47phox, p67phox, p40phox and Rac docked beneath. An electron passes up to oxygen, making superoxide (red, with a yellow spot) to kill the bacteria above. Defective in chronic granulomatous disease.",
+      "tags": ["NADPH oxidase", "NOX2", "phagocyte oxidase", "phox", "gp91phox", "CYBB", "p22phox", "CYBA", "p47phox", "NCF1", "p67phox", "NCF2", "p40phox", "NCF4", "Rac2", "respiratory burst", "oxidative burst", "superoxide", "reactive oxygen species", "ROS", "chronic granulomatous disease", "CGD", "DHR", "phagosome", "neutrophil", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "btk",
+      "name": "Bruton's tyrosine kinase (BTK)",
+      "category": "molecules",
+      "file": "icons/molecules/btk.svg",
+      "monoFile": "icons/molecules/btk-mono.svg",
+      "description": "B-cell receptor signalling: antigen (red) on membrane immunoglobulin signals through CD79a and CD79b, whose ITAMs (yellow) bind Syk (purple). Bruton's tyrosine kinase (orange), held at the membrane by its PH domain, then activates phospholipase C gamma 2 (teal). Absent in X-linked agammaglobulinaemia.",
+      "tags": ["BTK", "Bruton's tyrosine kinase", "Bruton", "X-linked agammaglobulinaemia", "XLA", "agammaglobulinemia", "B-cell receptor", "BCR", "BCR signalling", "CD79", "Ig alpha", "Ig beta", "Syk", "PLCG2", "phospholipase C", "ITAM", "kinase", "ibrutinib", "BTK inhibitor", "antibody deficiency", "B cell", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "cd40-ligand",
+      "name": "CD40 ligand and CD40",
+      "category": "molecules",
+      "file": "icons/molecules/cd40-ligand.svg",
+      "monoFile": "icons/molecules/cd40-ligand-mono.svg",
+      "description": "T-cell help for B cells: the trimeric CD40 ligand (orange) on an activated T cell (above) binds CD40 (green) on a B cell (below), whose tails recruit TRAF adaptors (purple). The signal drives class switching; it is lost in hyper-IgM syndrome.",
+      "tags": ["CD40", "CD40L", "CD40 ligand", "CD154", "CD40LG", "hyper-IgM syndrome", "hyper IgM", "HIGM", "class switch recombination", "class switching", "T-cell help", "co-stimulation", "TRAF", "TNF receptor", "germinal centre", "T cell", "B cell", "combined immunodeficiency", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "il12-ifn-gamma-axis",
+      "name": "IL-12 / interferon-gamma axis",
+      "category": "molecules",
+      "file": "icons/molecules/il12-ifn-gamma-axis.svg",
+      "monoFile": "icons/molecules/il12-ifn-gamma-axis-mono.svg",
+      "description": "A macrophage holding mycobacteria (red rods) releases IL-12 (amber circles), which acts on a T cell or NK cell; that cell answers with interferon gamma (blue diamonds), which activates the macrophage to kill. Each cell carries the receptor for the other signal. Defects cause Mendelian susceptibility to mycobacterial disease.",
+      "tags": ["IL-12", "interleukin 12", "IL-23", "interferon gamma", "IFN-gamma", "IFNG", "IFNGR1", "IFNGR2", "IL12B", "IL12RB1", "STAT1", "MSMD", "Mendelian susceptibility to mycobacterial disease", "mycobacteria", "BCG", "BCGosis", "non-tuberculous mycobacteria", "NTM", "salmonella", "macrophage activation", "Th1", "NK cell", "cytokine", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "perforin",
+      "name": "Perforin pore",
+      "category": "molecules",
+      "file": "icons/molecules/perforin.svg",
+      "monoFile": "icons/molecules/perforin-mono.svg",
+      "description": "A cytotoxic T cell or NK cell (above) empties a granule on to its target: perforin (blue) assembles into a pore in the target cell membrane and granzymes (red) pass through to trigger apoptosis. Perforin and the granule-release machinery are defective in familial haemophagocytic lymphohistiocytosis.",
+      "tags": ["perforin", "PRF1", "granzyme", "granzyme B", "cytotoxic granule", "lytic granule", "degranulation", "cytotoxicity", "pore", "haemophagocytic lymphohistiocytosis", "HLH", "familial HLH", "FHL", "hemophagocytic", "UNC13D", "Munc13-4", "STX11", "cytotoxic T cell", "CTL", "NK cell", "apoptosis", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "fluorescent-antibody",
+      "name": "Fluorescent antibody",
+      "category": "clinical",
+      "file": "icons/clinical/fluorescent-antibody.svg",
+      "monoFile": "icons/clinical/fluorescent-antibody-mono.svg",
+      "description": "An antibody carrying a fluorochrome (green), used to stain cells for flow cytometry and immunofluorescence.",
+      "tags": ["fluorescent antibody", "fluorochrome", "fluorophore", "conjugated antibody", "labelled antibody", "FITC", "PE", "APC", "flow cytometry", "FACS", "immunofluorescence", "staining", "immunophenotyping", "monoclonal antibody", "laboratory"]
+    },
+    {
+      "id": "stained-cell",
+      "name": "Antibody-stained cell",
+      "category": "clinical",
+      "file": "icons/clinical/stained-cell.svg",
+      "monoFile": "icons/clinical/stained-cell-mono.svg",
+      "description": "A lymphocyte whose surface markers are bound by antibodies carrying two different fluorochromes (green and orange), ready for flow cytometry.",
+      "tags": ["stained cell", "antibody staining", "surface staining", "surface marker", "CD marker", "immunophenotyping", "fluorochrome", "flow cytometry", "FACS", "lymphocyte subsets", "lymphocyte", "immunofluorescence", "laboratory"]
+    },
+    {
+      "id": "flow-cytometer",
+      "name": "Flow cytometer",
+      "category": "clinical",
+      "file": "icons/clinical/flow-cytometer.svg",
+      "monoFile": "icons/clinical/flow-cytometer-mono.svg",
+      "description": "Inside a flow cytometer: cells pass in single file down the flow cell and cross a laser. A detector in line with the beam measures forward scatter, and detectors to the side measure fluorescence of different colours.",
+      "tags": ["flow cytometer", "flow cytometry", "FACS", "cytometry", "laser", "flow cell", "sheath fluid", "hydrodynamic focusing", "forward scatter", "side scatter", "FSC", "SSC", "fluorescence", "detector", "photomultiplier", "immunophenotyping", "lymphocyte subsets", "laboratory"]
+    },
+    {
+      "id": "flow-dot-plot",
+      "name": "Flow cytometry dot plot",
+      "category": "clinical",
+      "file": "icons/clinical/flow-dot-plot.svg",
+      "monoFile": "icons/clinical/flow-dot-plot-mono.svg",
+      "description": "A flow cytometry dot plot of two markers with a quadrant gate: each dot is one cell, and the populations separate by which markers they carry (for example CD4 against CD8).",
+      "tags": ["dot plot", "scatter plot", "flow cytometry", "FACS", "gating", "gate", "quadrant", "lymphocyte subsets", "CD4", "CD8", "immunophenotyping", "bivariate plot", "data", "graph", "laboratory"]
+    },
+    {
+      "id": "flow-histogram",
+      "name": "Flow cytometry histogram",
+      "category": "clinical",
+      "file": "icons/clinical/flow-histogram.svg",
+      "monoFile": "icons/clinical/flow-histogram-mono.svg",
+      "description": "A flow cytometry histogram of one marker: an unstained or negative population (grey, left) and a stained or positive population (green, right), as in a dihydrorhodamine test.",
+      "tags": ["histogram", "flow cytometry", "FACS", "fluorescence intensity", "MFI", "positive", "negative", "unstained control", "DHR", "dihydrorhodamine", "neutrophil oxidative burst", "expression", "data", "graph", "laboratory"]
+    },
+    {
       "id": "vaccine-response",
       "name": "Immune response to a vaccine",
       "category": "figures",
@@ -1615,6 +1705,28 @@
       "labelledMonoFile": "figures/scid-blocks-mono-labelled.svg",
       "description": "T-cell development from the bone marrow through the thymus, with barred rings where inherited defects stop it: AK2 in the stem cell; IL2RG, JAK3, IL7R and ADA in the early thymocyte; RAG1, RAG2 and DCLRE1C (Artemis) at V(D)J recombination; the CD3 chains at the T-cell receptor; CIITA, RFXANK and ZAP70 at selection; and FOXN1 or 22q11 deletion in the thymus itself. Available with or without labels.",
       "tags": ["figure", "diagram", "pathway", "SCID", "severe combined immunodeficiency", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI", "IL2RG", "common gamma chain", "JAK3", "IL7R", "ADA", "RAG1", "RAG2", "Artemis", "DCLRE1C", "CD3", "ZAP70", "MHC class II deficiency", "FOXN1", "22q11", "DiGeorge", "AK2", "reticular dysgenesis", "thymus", "T-cell development", "newborn screening", "TREC"]
+    },
+    {
+      "id": "innate-response-bacteria",
+      "name": "Innate response to bacterial infection",
+      "category": "figures",
+      "file": "figures/innate-response-bacteria.svg",
+      "monoFile": "figures/innate-response-bacteria-mono.svg",
+      "labelledFile": "figures/innate-response-bacteria-labelled.svg",
+      "labelledMonoFile": "figures/innate-response-bacteria-mono-labelled.svg",
+      "description": "Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. Complement is activated on the bacteria and coats them with C3b. The two arms meet when phagocytes engulf the opsonised bacteria, killing them with the respiratory burst and trapping others in neutrophil extracellular traps. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "innate immunity", "innate immune response", "bacterial infection", "inflammation", "acute inflammation", "macrophage", "Toll-like receptor", "TLR", "pattern recognition", "PAMP", "cytokines", "chemokines", "neutrophil", "neutrophil recruitment", "diapedesis", "extravasation", "complement", "C3b", "opsonisation", "phagocytosis", "respiratory burst", "NADPH oxidase", "NETs", "neutrophil extracellular traps", "sepsis"]
+    },
+    {
+      "id": "flow-cytometry",
+      "name": "Flow cytometry",
+      "category": "figures",
+      "file": "figures/flow-cytometry.svg",
+      "monoFile": "figures/flow-cytometry-mono.svg",
+      "labelledFile": "figures/flow-cytometry-labelled.svg",
+      "labelledMonoFile": "figures/flow-cytometry-mono-labelled.svg",
+      "description": "How flow cytometry works: cells from a blood sample are stained with antibodies carrying fluorochromes, then passed in single file through a laser; detectors measure the scattered light and fluorescence of each cell, and the results are shown as dot plots and histograms. Available with or without labels.",
+      "tags": ["figure", "diagram", "workflow", "flow cytometry", "FACS", "cytometer", "immunophenotyping", "lymphocyte subsets", "fluorescent antibody", "fluorochrome", "staining", "laser", "forward scatter", "side scatter", "dot plot", "histogram", "gating", "CD4 count", "laboratory", "method"]
     }
   ]
 }

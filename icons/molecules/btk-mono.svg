@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="btk-mono-title">
+<title id="btk-mono-title">Bruton's tyrosine kinase (BTK) (single colour)</title>
+<desc>B-cell receptor signalling: antigen (red) on membrane immunoglobulin signals through CD79a and CD79b, whose ITAMs (yellow) bind Syk (purple). Bruton's tyrosine kinase (orange), held at the membrane by its PH domain, then activates phospholipase C gamma 2 (teal). Absent in X-linked agammaglobulinaemia.</desc>
+<defs></defs>
+<path d="M24 112H232M24 138H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M84 150V84M84 84L58 52M84 84L110 52" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="125" cy="38" r="11" fill="#000000"/>
+<path d="M140 102V167" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="140" cy="94" rx="7" ry="10" fill="#000000"/><circle cx="140" cy="156" r="5.5" fill="#000000"/>
+<path d="M160 102V167" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="160" cy="94" rx="7" ry="10" fill="#000000"/><circle cx="160" cy="156" r="5.5" fill="#000000"/>
+<ellipse cx="150" cy="182" rx="15" ry="8" fill="#000000"/>
+<ellipse cx="206" cy="156" rx="11" ry="8" fill="#000000"/>
+<ellipse cx="221" cy="176" rx="6" ry="5" fill="#000000"/>
+<ellipse cx="211" cy="193" rx="8" ry="7" fill="#000000"/>
+<ellipse cx="193" cy="208" rx="11" ry="8" transform="rotate(-20 193 208)" fill="#000000"/>
+<ellipse cx="184" cy="225" rx="13" ry="7" fill="#000000"/>
+<ellipse cx="124" cy="218" rx="18.5" ry="11.5" fill="#000000"/>
+<path d="M167 223Q158 221.5 154.33 220.89" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="149,220 158.69,216.6 157.06,226.36" fill="#000000"/>
+<path d="M99 218Q73.5 218 55.8 218" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="48,218 61,210.85 61,225.15" fill="#000000"/>
+</svg>

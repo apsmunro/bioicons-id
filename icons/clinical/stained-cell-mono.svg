@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="stained-cell-mono-title">
+<title id="stained-cell-mono-title">Antibody-stained cell (single colour)</title>
+<desc>A lymphocyte whose surface markers are bound by antibodies carrying two different fluorochromes (green and orange), ready for flow cytometry.</desc>
+<defs></defs>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(153.43 49.73) rotate(-162) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(194.58 79.63) rotate(-126) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(210.3 128) rotate(-90) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(194.58 176.37) rotate(-54) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(153.43 206.27) rotate(-18) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(102.57 206.27) rotate(18) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(61.42 176.37) rotate(54) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(45.7 128) rotate(90) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(61.42 79.63) rotate(126) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 6L0 -10M0 -10L-9 -20M0 -10L9 -20" transform="translate(102.57 49.73) rotate(162) scale(1.05)" fill="none" stroke="#000000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="157.54" cy="37.08" r="6.5" fill="#000000"/>
+<g transform="rotate(-126 205.34 71.81)"><polygon points="205.34,62.43 212.84,71.81 205.34,81.18 197.84,71.81" fill="#000000"/></g>
+<circle cx="223.6" cy="128" r="6.5" fill="#000000"/>
+<g transform="rotate(-54 205.34 184.19)"><polygon points="205.34,174.82 212.84,184.19 205.34,193.57 197.84,184.19" fill="#000000"/></g>
+<circle cx="157.54" cy="218.92" r="6.5" fill="#000000"/>
+<g transform="rotate(18 98.46 218.92)"><polygon points="98.46,209.55 105.96,218.92 98.46,228.3 90.96,218.92" fill="#000000"/></g>
+<circle cx="50.66" cy="184.19" r="6.5" fill="#000000"/>
+<g transform="rotate(90 32.4 128)"><polygon points="32.4,118.63 39.9,128 32.4,137.38 24.9,128" fill="#000000"/></g>
+<circle cx="50.66" cy="71.81" r="6.5" fill="#000000"/>
+<g transform="rotate(162 98.46 37.08)"><polygon points="98.46,27.7 105.96,37.08 98.46,46.45 90.96,37.08" fill="#000000"/></g>
+<circle cx="128" cy="128" r="50" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="125" cy="125" r="29" fill="#000000"/>
+</svg>

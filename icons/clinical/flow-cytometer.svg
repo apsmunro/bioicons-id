@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="flow-cytometer-title">
+<title id="flow-cytometer-title">Flow cytometer</title>
+<desc>Inside a flow cytometer: cells pass in single file down the flow cell and cross a laser. A detector in line with the beam measures forward scatter, and detectors to the side measure fluorescence of different colours.</desc>
+<defs><linearGradient id="flow-cytometer-metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c1c9d0"/><stop offset="0.22" stop-color="#d6d9d9"/><stop offset="0.55" stop-color="#B9C3CC"/><stop offset="0.88" stop-color="#919aa5"/><stop offset="1" stop-color="#a5afb8"/></linearGradient><linearGradient id="flow-cytometer-laser" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#555f6b"/><stop offset="0.22" stop-color="#8f9397"/><stop offset="0.55" stop-color="#3E4A59"/><stop offset="0.88" stop-color="#313a47"/><stop offset="1" stop-color="#384250"/></linearGradient><radialGradient id="flow-cytometer-cell" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#A9D2F0"/><stop offset="0" stop-color="#cfe3ee"/><stop offset="0.3" stop-color="#A9D2F0"/><stop offset="0.8" stop-color="#8bb4d8"/><stop offset="1" stop-color="#9ac3e4"/></radialGradient><radialGradient id="flow-cytometer-lit" cx="0.34" cy="0.3" r="0.8"><stop offset="0" stop-color="#4CC764"/><stop offset="0" stop-color="#b7e4b6"/><stop offset="0.3" stop-color="#4CC764"/><stop offset="0.8" stop-color="#43b25c"/><stop offset="1" stop-color="#47bc60"/></radialGradient><linearGradient id="flow-cytometer-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cde8f7"/><stop offset="0.3" stop-color="#ebf6fc"/><stop offset="1" stop-color="#c3e3f5"/></linearGradient><radialGradient id="flow-cytometer-fade0"><stop offset="0" stop-color="#82d68d"/><stop offset="0.45" stop-color="#82d68d"/><stop offset="1" stop-color="#82d68d" stop-opacity="0"/></radialGradient></defs>
+<path d="M140 144L206 144" stroke="#3FA9F5" stroke-width="4" stroke-linecap="round"/><path d="M140 144L206 144" stroke="#b2d8f0" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M138 136L194 91" stroke="#4CC764" stroke-width="4" stroke-linecap="round"/><path d="M138 136L194 91" stroke="#b7e4b6" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M138 152L194 197" stroke="#F2853A" stroke-width="4" stroke-linecap="round"/><path d="M138 152L194 197" stroke="#facaa5" stroke-width="1.4" stroke-linecap="round"/>
+<g transform="translate(220 144) rotate(0)"><rect x="-10" y="-14" width="26" height="28" rx="5" fill="url(#flow-cytometer-metal)" stroke="#69717d" stroke-width="2"/><rect x="-14" y="-10" width="7" height="20" rx="2.5" fill="#2779be" stroke="#69717d" stroke-width="1.5"/></g>
+<g transform="translate(208 80) rotate(-38)"><rect x="-10" y="-14" width="26" height="28" rx="5" fill="url(#flow-cytometer-metal)" stroke="#69717d" stroke-width="2"/><rect x="-14" y="-10" width="7" height="20" rx="2.5" fill="#3ea757" stroke="#69717d" stroke-width="1.5"/></g>
+<g transform="translate(208 208) rotate(38)"><rect x="-10" y="-14" width="26" height="28" rx="5" fill="url(#flow-cytometer-metal)" stroke="#69717d" stroke-width="2"/><rect x="-14" y="-10" width="7" height="20" rx="2.5" fill="#cd652c" stroke="#69717d" stroke-width="1.5"/></g>
+<path d="M64 144L116 144" stroke="#3FA9F5" stroke-width="6" stroke-linecap="round"/><path d="M64 144L116 144" stroke="#b2d8f0" stroke-width="2.1" stroke-linecap="round"/>
+<rect x="18" y="128" width="46" height="32" rx="6" fill="url(#flow-cytometer-laser)" stroke="#242b35" stroke-width="2.5"/>
+<rect x="60" y="138" width="7" height="12" rx="2" fill="#B9C3CC" stroke="#69717d" stroke-width="1.5"/>
+<circle cx="30" cy="138" r="3.5" fill="#3FA9F5"/>
+<path d="M88 20H168V44L140 96V236H116V96L88 44Z" fill="url(#flow-cytometer-glass)" stroke="#506071" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="124" y="58" width="8" height="178" fill="#f8d7de"/>
+<rect x="121" y="20" width="14" height="42" fill="#f8d7de" stroke="#506071" stroke-width="2"/>
+<path d="M119 20H137" stroke="#506071" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M117.5 144L138.5 144" stroke="#3FA9F5" stroke-width="5" stroke-linecap="round"/><path d="M117.5 144L138.5 144" stroke="#b2d8f0" stroke-width="1.75" stroke-linecap="round"/>
+<g fill="url(#flow-cytometer-fade0)" fill-opacity="0.142"><ellipse cx="128" cy="144" rx="17" ry="17"/><ellipse cx="128" cy="144" rx="14.14" ry="14.14"/><ellipse cx="128" cy="144" rx="11.29" ry="11.29"/><ellipse cx="128" cy="144" rx="8.43" ry="8.43"/><ellipse cx="128" cy="144" rx="5.58" ry="5.58"/><ellipse cx="128" cy="144" rx="2.72" ry="2.72"/></g>
+<circle cx="128" cy="32" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+<circle cx="128" cy="52" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+<circle cx="128" cy="80" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+<circle cx="128" cy="110" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+<circle cx="128" cy="144" r="6.5" fill="url(#flow-cytometer-lit)" stroke="#2a7945" stroke-width="1.6"/>
+<circle cx="128" cy="180" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+<circle cx="128" cy="212" r="6.5" fill="url(#flow-cytometer-cell)" stroke="#4d75a6" stroke-width="1.6"/>
+</svg>

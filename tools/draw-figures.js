@@ -103,6 +103,48 @@ const FIGURES = {
       ['CIITA, RFXANK, ZAP70', 1010, 384], ['FOXN1, 22q11 deletion', 548, 444],
     ],
   },
+  'innate-response-bacteria': {
+    title: 'Innate immune response to bacterial infection',
+    description: 'Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. ' +
+      'Complement is activated on the bacteria and coats them with C3b. The two arms meet when phagocytes engulf the opsonised bacteria, killing them with the respiratory burst and trapping others in neutrophil extracellular traps.',
+    width: 1200, height: 760,
+    icons: [
+      ['staphylococcus', 100, 330, 150],
+      ['toll-like-receptor', 310, 140, 150], ['macrophage', 540, 140, 165], ['neutrophil-diapedesis', 880, 150, 190],
+      ['complement-cascade', 430, 500, 160], ['c3b-opsonisation', 880, 500, 160],
+      ['nadph-oxidase', 1090, 392, 140], ['nets', 1090, 610, 140],
+    ],
+    arrows: [
+      [[150, 252], [232, 180]], [[176, 380], [342, 470]],
+      [[396, 140], [448, 140]], [[630, 148], [778, 148]], [[880, 326], [880, 412]],
+      [[518, 500], [790, 500]],
+      [[964, 478], [1014, 432]], [[964, 524], [1014, 578]],
+    ],
+    labels: [
+      ['Bacteria', 100, 432], ['Toll-like|receptors', 310, 250], ['Macrophage', 540, 250], ['Cytokines and|chemokines', 704, 92],
+      ['Neutrophils leave|the blood', 880, 280],
+      ['Complement|activation', 430, 612], ['C3b coats the bacteria', 654, 478], ['Phagocytosis', 880, 612],
+      ['Respiratory burst', 1090, 492], ['Neutrophil|extracellular traps', 1090, 712],
+    ],
+  },
+  'flow-cytometry': {
+    title: 'Flow cytometry',
+    description: 'How flow cytometry works: cells from a blood sample are stained with antibodies carrying fluorochromes, then passed in single file through a laser; ' +
+      'detectors measure the scattered light and fluorescence of each cell, and the results are shown as dot plots and histograms.',
+    width: 1200, height: 540,
+    icons: [
+      ['blood-bottles', 100, 280, 150], ['fluorescent-antibody', 310, 280, 140], ['stained-cell', 530, 280, 160], ['flow-cytometer', 790, 280, 230],
+      ['flow-dot-plot', 1070, 140, 170], ['flow-histogram', 1070, 400, 170],
+    ],
+    arrows: [
+      [[182, 280], [234, 280]], [[386, 280], [442, 280]], [[618, 280], [676, 280]],
+      [[908, 240], [976, 184]], [[908, 320], [976, 366]],
+    ],
+    labels: [
+      ['Blood sample', 100, 392], ['Fluorescent|antibodies', 310, 388], ['Stained cells', 530, 396], ['Flow cytometer', 790, 432],
+      ['Dot plot', 1070, 254], ['Histogram', 1070, 514],
+    ],
+  },
 };
 
 function draw(id, { title, description, width, height, regions = [], icons, arrows, labels, blocks = [], alerts = [] }) {

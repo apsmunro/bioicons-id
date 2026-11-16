@@ -2325,6 +2325,165 @@ function entamoebaHistolytica() {
   ];
 }
 
+// ---------------------------------------------------------------- batch 10
+// Primary immunodeficiency molecules and flow cytometry.
+
+// A solid domain [x, y, rx, ry, tilt], trimmed so that neighbours which touch in colour stay apart.
+const blobOf = ([x, y, rx, ry, rot = 0], trim = 2.5) =>
+  `<ellipse cx="${x}" cy="${y}" rx="${rx - trim}" ry="${ry - trim}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ''} ${solid}/>`;
+
+function nadphOxidase() {
+  const N = K.NADPH_OXIDASE, [top, bottom] = N.membrane, [y0, y1] = N.span, left = N.gp91[0] - 15, right = N.p22[1] + 15;
+  const helix = x => `<rect x="${x - 6.5}" y="${y0}" width="13" height="${y1 - y0}" rx="6.5" ${solid}/>`;
+  const molecule = ([x, y, deg]) => `<g transform="translate(${x} ${y}) rotate(${deg})"><circle cx="-5" cy="0" r="5.5" ${solid}/><circle cx="5" cy="0" r="5.5" ${solid}/></g>`;
+  return [
+    `<path d="M24 ${top}H${left}M${right} ${top}H232M24 ${bottom}H${left}M${right} ${bottom}H232" ${line(5)}/>`,
+    ...N.gp91.map(helix), ...N.p22.map(helix),
+    `<path d="${N.tail}" ${line(5)}/>`, `<path d="${N.anchor}" ${line(4)}/>`,
+    blobOf(N.lobe), blobOf(N.rac), blobOf(N.p67), blobOf(N.p47), blobOf(N.p40),
+    arrowMark(K.straightArrow([N.electron[0][0], N.electron[0][1] - 6], N.electron[1], 13)),
+    ...N.oxygen.map(molecule), ...N.superoxide.map(molecule),
+    ...N.cocci.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${N.coccus - 3}" ${solid}/>`),
+  ];
+}
+
+function btk() {
+  const B = K.BTK, [top, bottom] = B.membrane, [ix] = B.ig;
+  return [
+    `<path d="M24 ${top}H232M24 ${bottom}H232" ${line(5)}/>`,
+    // Membrane IgM as a Y with its stem through the membrane, holding an antigen.
+    `<path d="M${ix} ${B.igStalk[1]}V84M${ix} 84L${ix - 26} 52M${ix} 84L${ix + 26} 52" ${line(8)}/>`,
+    `<circle cx="${ix + 41}" cy="38" r="11" ${solid}/>`,
+    ...B.cd79.map(([x, y]) => `<path d="M${x} ${y + 8}V${B.cd79Stalk[1] - 5}" ${line(5)}/><ellipse cx="${x}" cy="${y}" rx="7" ry="10" ${solid}/><circle cx="${x}" cy="${B.itam}" r="5.5" ${solid}/>`),
+    blobOf(B.syk, 2),
+    ...B.domains.map(d => blobOf(d, 3)),
+    blobOf(B.plc),
+    arrowMark(K.straightArrow([B.arrows[0][0][0] + 2, B.arrows[0][0][1]], B.arrows[0][1], 9)), arrowMark(K.straightArrow(...B.arrows[1], 13)),
+  ];
+}
+
+function cd40Ligand() {
+  const D = K.CD40, [tTop, tBottom] = D.tCell, [bTop, bBottom] = D.bCell, [tailTop, tailBottom] = D.tail;
+  // The outer receptors stand a little further out than in colour, clear of the ligand.
+  const chains = D.receptors.map((crds, i) => crds.map(([x, y]) => [x + (i ? 7 : -7), y]));
+  return [
+    `<path d="M24 ${tTop}H232M24 ${tBottom}H232M24 ${bTop}H232M24 ${bBottom}H232" ${line(5)}/>`,
+    `<path d="${D.stalks.join('')}" ${line(5)}/>`,
+    `<path d="${D.lobes.map(([x, y, rx, ry, rot]) => {
+      const a = (rot + 90) * Math.PI / 180, dx = ry * Math.cos(a), dy = ry * Math.sin(a);
+      return `M${n(x + dx)} ${n(y + dy)}A${ry} ${rx} ${rot + 90} 1 0 ${n(x - dx)} ${n(y - dy)}A${ry} ${rx} ${rot + 90} 1 0 ${n(x + dx)} ${n(y + dy)}Z`;
+    }).join('')}" ${solid}/>`,
+    ...chains.map(crds => `<path d="M${crds.map(p => p.join(' ')).join('L')}V${tailBottom}" ${line(5)}/>` +
+      crds.map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="7" ry="7.5" ${solid}/>`).join('')),
+    // The third receptor stands behind the ligand: only its stalk shows.
+    `<path d="M${D.tails[2]} ${D.back[0][1] + 4}V${tailBottom}" ${line(5)}/>`,
+    ...[chains[0][3][0], chains[1][3][0], D.tails[2]].map((x, i) => `<ellipse cx="${x}" cy="${D.trafs[i][1] + 2}" rx="10" ry="7" ${solid}/>`),
+  ];
+}
+
+function il12IfnAxis() {
+  const X = K.IL12_AXIS, [mx, my] = X.macrophage, [tx, ty, tr] = X.tCell, [nx, ny] = X.tNucleus, [kx, ky] = X.nucleus;
+  const kidney = K.smoothClosedPath(K.polarPoints(0, 0, a => 15 - 6 * Math.exp(-(K.wrapAngle(a + 0.9) ** 2) / (2 * 0.32 ** 2)), 60).map(([x, y]) => [kx - 2 + 1.15 * x, ky + y]));
+  const receptors = (cx, cy, r, deg) => `<path d="${K.receptorPair(cx, cy, r, deg, 17, 5).map(([[x0, y0], [x1, y1]]) => `M${x0} ${y0}L${x1} ${y1}`).join('')}" ${line(4.5)}/>`;
+  return [
+    receptors(tx, ty, tr - 2, X.il12Receptor), receptors(mx, my, X.radius(X.ifnReceptor * Math.PI / 180) - 2, X.ifnReceptor),
+    `<path d="${K.smoothClosedPath(K.polarPoints(mx, my, a => X.radius(a) - 3, 96))}" ${line(8)}/>`,
+    `<path d="${kidney}" ${solid}/>`,
+    ...X.rods.map(([x, y, rot]) => `<rect x="-8.5" y="-3.5" width="17" height="7" rx="3.5" transform="translate(${x - 3} ${y - 2}) rotate(${rot})" ${solid}/>`),
+    `<circle cx="${tx}" cy="${ty}" r="${tr - 3}" ${line(8)}/>`,
+    `<circle cx="${nx}" cy="${ny}" r="23" ${solid}/>`,
+    arrowMark(K.curvedArrow(...X.il12.arrow, 12)), arrowMark(K.curvedArrow(...X.ifn.arrow, 12)),
+    ...X.il12.symbols.map(([x, y]) => `<${K.cytokineShape('circle', x, y, 6.5)} ${solid}/>`),
+    ...X.ifn.symbols.map(([x, y]) => `<${K.cytokineShape('diamond', x, y, 7)} ${solid}/>`),
+  ];
+}
+
+function perforinPore() {
+  const P = K.PERFORIN, [top, bottom] = P.membrane, { x, staves, pitch, top: pt, bottom: pb, rim: [rcx, rcy, rrx, rry] } = P.pore;
+  const left = x - 10, right = x + staves * pitch + 10;
+  return [
+    `<path d="${P.edge}" ${line(8)}/>`,
+    `<path d="M24 ${top}H${left}M${right} ${top}H232M24 ${bottom}H${left}M${right} ${bottom}H232" ${line(5)}/>`,
+    ...Array.from({ length: 7 }, (_, k) => `<line x1="${98 + k * 10}" y1="${pt + 6}" x2="${98 + k * 10}" y2="${pb}" ${line(5)}/>`),
+    `<ellipse cx="${rcx}" cy="${rcy}" rx="${rrx}" ry="${rry}" ${line(4)}/>`,
+    ...P.monomers.map(([mx, my, rot]) => `<ellipse cx="${mx}" cy="${my}" rx="4.5" ry="9" transform="rotate(${rot} ${mx} ${my})" ${solid}/>`),
+    ...P.granzymes.filter((_, i) => i !== 3).map(([gx, gy]) => `<circle cx="${gx}" cy="${gy}" r="4.5" ${solid}/>`),
+  ];
+}
+
+// A solid antibody with its hinge at (hx, hy), scaled by s: the shape of the colour icons' unit.
+function antibodySolid(hx, hy, s) {
+  const deg = 48, angle = deg * Math.PI / 180, out = [];
+  for (const side of [-1, 1]) {
+    const u = [side * Math.sin(angle), -Math.cos(angle)], o = [side * Math.cos(angle), Math.sin(angle)];
+    const at = (d, off) => [n(hx + s * (u[0] * d + o[0] * off)), n(hy + s * (u[1] * d + o[1] * off))];
+    const [x0, y0] = at(20, -13);
+    out.push(`<path d="M${x0} ${y0}Q${n(hx + side * 8 * s)} ${hy} ${n(hx + side * 14 * s)} ${n(hy + 6 * s)}" ${line(n(6 * s))}/>`);
+    out.push(...[at(36, -13), at(76, -13), at(36, 13), at(76, 13)].map(([x, y]) =>
+      `<ellipse cx="${x}" cy="${y}" rx="${n(10 * s)}" ry="${n(16 * s)}" transform="rotate(${side * deg} ${x} ${y})" ${solid}/>`));
+    out.push(...[22, 60].map(d => `<ellipse cx="${n(hx + side * 14 * s)}" cy="${n(hy + d * s)}" rx="${n(10 * s)}" ry="${n(16 * s)}" ${solid}/>`));
+  }
+  return out.join('');
+}
+
+function fluorescentAntibody() {
+  const F = K.FLUOR_ANTIBODY, [x, y, s] = F.at, [fx, fy, fr] = F.fluor;
+  return [
+    antibodySolid(x, y, s),
+    `<path d="${F.linker}" ${line(4.5)}/>`,
+    `<polygon points="${K.starPoints(fx, fy, fr + 2, (fr + 2) * 0.58)}" ${solid} stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>`,
+  ];
+}
+
+function stainedCell() {
+  const S = K.STAINED_CELL, [cx, cy] = S.centre, stem = S.R + 1 + 26 * S.scale, dot = stem + 6 * S.scale + 7;
+  const at = (deg, r) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+  const angles = Array.from({ length: S.antibodies }, (_, k) => k * 360 / S.antibodies - 72);
+  return [
+    ...angles.map(a => { const [x, y] = at(a, stem); return antibodyY(x, y, a - 90, S.scale); }),
+    // The two fluorochromes: round and diamond-shaped.
+    ...angles.map((a, k) => { const [x, y] = at(a, dot); return k % 2 ? `<g transform="rotate(${n(a - 90)} ${n(x)} ${n(y)})"><${K.cytokineShape('diamond', x, y, 7.5)} ${solid}/></g>` : `<circle cx="${n(x)}" cy="${n(y)}" r="6.5" ${solid}/>`; }),
+    `<circle cx="${cx}" cy="${cy}" r="${S.R - 4}" ${line(LINE)}/>`,
+    `<circle cx="${cx - 3}" cy="${cy - 3}" r="29" ${solid}/>`,
+  ];
+}
+
+function flowCytometer() {
+  const F = K.FLOW_CYTOMETER, [lx, ly, lw, lh] = F.laser;
+  const seg = ([[x0, y0], [x1, y1]]) => `M${x0} ${y0}L${x1} ${y1}`;
+  return [
+    `<path d="${F.cell}" ${line(6)}/>`,
+    ...F.cells.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${i === F.lit ? 6 : 5}" ${solid}/>`),
+    `<rect x="${lx + 3}" y="${ly}" width="${lw - 6}" height="${lh}" rx="6" ${line(6)}/>`,
+    `<path d="M${lx + lw + 4} 144H109" ${line(5)}/>`,
+    `<path d="M147 144H203${F.rays.map(([[x0, y0], [x1, y1]]) => `M${x0 + 9} ${y0 + (y1 > y0 ? 7 : -7)}L${x1} ${y1}`).join('')}" ${line(4)}/>`,
+    ...F.detectors.map(([x, y, rot]) => `<rect x="-8" y="-12" width="22" height="24" rx="5" transform="translate(${x} ${y}) rotate(${rot})" ${solid}/>`),
+  ];
+}
+
+// The axes of a flow cytometry plot, with tick marks.
+function plotAxes() {
+  const [x0, y0, x1, y1] = K.FLOW_PLOT.box;
+  const ticks = K.FLOW_PLOT.ticks.map(t => `M${n(x0 + t * (x1 - x0))} ${y1}v10M${x0} ${n(y1 - t * (y1 - y0))}h-10`).join('');
+  return `<path d="${ticks}" ${line(4)}/><path d="M${x0} ${y0}V${y1}H${x1}" ${line(7)}/>`;
+}
+
+function flowDotPlot() {
+  const P = K.FLOW_DOT_PLOT, [x0, y0, x1, y1] = K.FLOW_PLOT.box, [gx, gy] = P.gate, counts = [15, 19, 13, 2];
+  const events = P.populations.flatMap(([cx, cy, sx, sy], i) =>
+    K.scatter(41 + i, counts[i], [cx - 2.2 * sx, cy - 2.2 * sy, cx + 2.2 * sx, cy + 2.2 * sy], K.inEllipse(cx, cy, 2.2 * sx, 2.2 * sy), K.apart(10.5)));
+  return [
+    ...events.map(([x, y]) => `<circle cx="${n(x)}" cy="${n(y)}" r="3.4" ${solid}/>`),
+    `<path d="M${gx} ${y0 + 4}V${y1 - 12}M${x0 + 12} ${gy}H${x1 - 4}" ${line(3.5)}/>`,
+    plotAxes(),
+  ];
+}
+
+function flowHistogram() {
+  const [unstained, stained] = K.FLOW_HISTOGRAM.peaks;
+  return [`<path d="${K.histogramPeak(unstained, false)}" ${line(6)}/>`, `<path d="${K.histogramPeak(stained)}" ${solid}/>`, plotAxes()];
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -2501,6 +2660,16 @@ const DRAWINGS = {
   'entamoeba-histolytica': entamoebaHistolytica,
   'cd4-t-cell': () => tCell('cd4'),
   'cd8-t-cell': () => tCell('cd8'),
+  'nadph-oxidase': nadphOxidase,
+  'btk': btk,
+  'cd40-ligand': cd40Ligand,
+  'il12-ifn-gamma-axis': il12IfnAxis,
+  'perforin': perforinPore,
+  'fluorescent-antibody': fluorescentAntibody,
+  'stained-cell': stainedCell,
+  'flow-cytometer': flowCytometer,
+  'flow-dot-plot': flowDotPlot,
+  'flow-histogram': flowHistogram,
 };
 
 // Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.

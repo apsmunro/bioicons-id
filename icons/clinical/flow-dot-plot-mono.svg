@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="flow-dot-plot-mono-title">
+<title id="flow-dot-plot-mono-title">Flow cytometry dot plot (single colour)</title>
+<desc>A flow cytometry dot plot of two markers with a quadrant gate: each dot is one cell, and the populations separate by which markers they carry (for example CD4 against CD8).</desc>
+<defs></defs>
+<circle cx="113.17" cy="166.51" r="3.4" fill="#000000"/>
+<circle cx="98.87" cy="168.36" r="3.4" fill="#000000"/>
+<circle cx="60.8" cy="177.98" r="3.4" fill="#000000"/>
+<circle cx="79.54" cy="192.12" r="3.4" fill="#000000"/>
+<circle cx="83.82" cy="149.56" r="3.4" fill="#000000"/>
+<circle cx="74.35" cy="178.2" r="3.4" fill="#000000"/>
+<circle cx="110.43" cy="155.13" r="3.4" fill="#000000"/>
+<circle cx="71.28" cy="159.17" r="3.4" fill="#000000"/>
+<circle cx="88.65" cy="165.9" r="3.4" fill="#000000"/>
+<circle cx="114.9" cy="178.2" r="3.4" fill="#000000"/>
+<circle cx="94.14" cy="144.63" r="3.4" fill="#000000"/>
+<circle cx="96.44" cy="192.51" r="3.4" fill="#000000"/>
+<circle cx="105.06" cy="145.71" r="3.4" fill="#000000"/>
+<circle cx="78.06" cy="139.44" r="3.4" fill="#000000"/>
+<circle cx="88.65" cy="179.04" r="3.4" fill="#000000"/>
+<circle cx="94.23" cy="62.81" r="3.4" fill="#000000"/>
+<circle cx="109.71" cy="76.46" r="3.4" fill="#000000"/>
+<circle cx="67.97" cy="67.64" r="3.4" fill="#000000"/>
+<circle cx="110.51" cy="64.29" r="3.4" fill="#000000"/>
+<circle cx="72.6" cy="89.53" r="3.4" fill="#000000"/>
+<circle cx="103.14" cy="54.11" r="3.4" fill="#000000"/>
+<circle cx="99.5" cy="72.81" r="3.4" fill="#000000"/>
+<circle cx="57.44" cy="64.2" r="3.4" fill="#000000"/>
+<circle cx="93.69" cy="37.14" r="3.4" fill="#000000"/>
+<circle cx="73.64" cy="39.01" r="3.4" fill="#000000"/>
+<circle cx="87.24" cy="85.04" r="3.4" fill="#000000"/>
+<circle cx="70.11" cy="53.9" r="3.4" fill="#000000"/>
+<circle cx="102.7" cy="88.1" r="3.4" fill="#000000"/>
+<circle cx="88.49" cy="47.78" r="3.4" fill="#000000"/>
+<circle cx="79.4" cy="64.87" r="3.4" fill="#000000"/>
+<circle cx="61.98" cy="79.53" r="3.4" fill="#000000"/>
+<circle cx="114.79" cy="52.34" r="3.4" fill="#000000"/>
+<circle cx="107.83" cy="43.21" r="3.4" fill="#000000"/>
+<circle cx="92.46" cy="96.1" r="3.4" fill="#000000"/>
+<circle cx="191.81" cy="138.78" r="3.4" fill="#000000"/>
+<circle cx="213.39" cy="146.26" r="3.4" fill="#000000"/>
+<circle cx="175.19" cy="184.2" r="3.4" fill="#000000"/>
+<circle cx="187.3" cy="150.98" r="3.4" fill="#000000"/>
+<circle cx="181.53" cy="175.03" r="3.4" fill="#000000"/>
+<circle cx="202.31" cy="188.91" r="3.4" fill="#000000"/>
+<circle cx="216.79" cy="157.6" r="3.4" fill="#000000"/>
+<circle cx="198" cy="159.66" r="3.4" fill="#000000"/>
+<circle cx="209.66" cy="174.07" r="3.4" fill="#000000"/>
+<circle cx="190.78" cy="187.26" r="3.4" fill="#000000"/>
+<circle cx="162.69" cy="153.85" r="3.4" fill="#000000"/>
+<circle cx="179.56" cy="158.75" r="3.4" fill="#000000"/>
+<circle cx="180.17" cy="142.54" r="3.4" fill="#000000"/>
+<circle cx="215.58" cy="41.05" r="3.4" fill="#000000"/>
+<circle cx="198" cy="67.65" r="3.4" fill="#000000"/>
+<path d="M138 24V196M60 116H232" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M85.6 208v10M48 170.4h-10M123.2 208v10M48 132.8h-10M160.8 208v10M48 95.2h-10M198.4 208v10M48 57.6h-10M236 208v10M48 20h-10" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 20V208H236" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

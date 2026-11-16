@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="cd40-ligand-mono-title">
+<title id="cd40-ligand-mono-title">CD40 ligand and CD40 (single colour)</title>
+<desc>T-cell help for B cells: the trimeric CD40 ligand (orange) on an activated T cell (above) binds CD40 (green) on a B cell (below), whose tails recruit TRAF adaptors (purple). The signal drives class switching; it is lost in hyper-IgM syndrome.</desc>
+<defs></defs>
+<path d="M24 46H232M24 72H232M24 178H232M24 204H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M116 38V82Q116 94 119 100M128 38V98M140 38V82Q140 94 137 100" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107.18 135.67A22 16 100 1 0 114.82 92.33A22 16 100 1 0 107.18 135.67ZM148.82 135.67A22 16 80 1 0 141.18 92.33A22 16 80 1 0 148.82 135.67ZM128 142A22 16 90 1 0 128 98A22 16 90 1 0 128 142Z" fill="#000000"/>
+<path d="M81 108L82 127L85 146L89 165V216" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="81" cy="108" rx="7" ry="7.5" fill="#000000"/><ellipse cx="82" cy="127" rx="7" ry="7.5" fill="#000000"/><ellipse cx="85" cy="146" rx="7" ry="7.5" fill="#000000"/><ellipse cx="89" cy="165" rx="7" ry="7.5" fill="#000000"/>
+<path d="M175 108L174 127L171 146L167 165V216" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="175" cy="108" rx="7" ry="7.5" fill="#000000"/><ellipse cx="174" cy="127" rx="7" ry="7.5" fill="#000000"/><ellipse cx="171" cy="146" rx="7" ry="7.5" fill="#000000"/><ellipse cx="167" cy="165" rx="7" ry="7.5" fill="#000000"/>
+<path d="M128 154V216" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="89" cy="226" rx="10" ry="7" fill="#000000"/>
+<ellipse cx="167" cy="226" rx="10" ry="7" fill="#000000"/>
+<ellipse cx="128" cy="228" rx="10" ry="7" fill="#000000"/>
+</svg>

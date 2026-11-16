@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="perforin-mono-title">
+<title id="perforin-mono-title">Perforin pore (single colour)</title>
+<desc>A cytotoxic T cell or NK cell (above) empties a granule on to its target: perforin (blue) assembles into a pore in the target cell membrane and granzymes (red) pass through to trigger apoptosis. Perforin and the granule-release machinery are defective in familial haemophagocytic lymphohistiocytosis.</desc>
+<defs></defs>
+<path d="M16 50Q70 70 108 72A20 20 0 0 1 148 72Q190 70 240 50" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 156H84M172.39999999999998 156H232M24 182H84M172.39999999999998 182H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="98" y1="152" x2="98" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="108" y1="152" x2="108" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="118" y1="152" x2="118" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="128" y1="152" x2="128" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="138" y1="152" x2="138" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="148" y1="152" x2="148" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="158" y1="152" x2="158" y2="192" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="128" cy="146" rx="34" ry="9" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="120" cy="70" rx="4.5" ry="9" transform="rotate(20 120 70)" fill="#000000"/>
+<ellipse cx="143" cy="92" rx="4.5" ry="9" transform="rotate(-30 143 92)" fill="#000000"/>
+<ellipse cx="106" cy="98" rx="4.5" ry="9" transform="rotate(40 106 98)" fill="#000000"/>
+<ellipse cx="154" cy="120" rx="4.5" ry="9" transform="rotate(10 154 120)" fill="#000000"/>
+<ellipse cx="98" cy="126" rx="4.5" ry="9" transform="rotate(-25 98 126)" fill="#000000"/>
+<circle cx="137" cy="73" r="4.5" fill="#000000"/>
+<circle cx="122" cy="84" r="4.5" fill="#000000"/>
+<circle cx="130" cy="110" r="4.5" fill="#000000"/>
+<circle cx="122" cy="208" r="4.5" fill="#000000"/>
+<circle cx="141" cy="224" r="4.5" fill="#000000"/>
+<circle cx="106" cy="226" r="4.5" fill="#000000"/>
+</svg>

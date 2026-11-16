@@ -62,8 +62,8 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 
 ## Handover (16 Nov 2026): start here
 
-Everything is committed, merged into `main` and live at commit `ec9316b`; there are no other local
-branches. The library has 173 icons in 11 categories and 3 figures. The sections below are in the
+Everything is committed, merged into `main` and live. The library has 183 icons in 11 categories
+and 5 figures (batch 10, below, is the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -83,13 +83,32 @@ Waiting on the author:
   ADA sits at the early thymocyte, and MHC class II deficiency and ZAP-70 sit at selection.
 
 Offered and not yet taken up:
-- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell), the innate
-  response to bacterial infection (all icons exist), routes of vertical infection.
-- A primary immunodeficiency icon set (NADPH oxidase, BTK, CD40–CD40L, IL-12/IFN-γ axis, perforin).
+- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell), routes of
+  vertical infection.
 - Clinical signs: rashes on a torso in four skin tones.
-- The site's count line says "176 icons" and counts the three figures as icons.
+- The site's count line says "188 icons" and counts the five figures as icons.
 - Reshading the opaque clinical equipment; a see-through treatment for the glass test, incubator
   hood and culture plates.
+
+### Batch 10 (16 Nov 2026)
+
+Ten icons and two figures, taking the library to 183 icons and 5 figures. Committed, merged and
+pushed on the author's "Commit and push", given without comment on the drawings.
+
+- Primary immunodeficiency set (molecules): `nadph-oxidase`, `btk`, `cd40-ligand`,
+  `il12-ifn-gamma-axis`, `perforin`.
+- Flow cytometry set (clinical): `fluorescent-antibody`, `stained-cell`, `flow-cytometer`,
+  `flow-dot-plot`, `flow-histogram`. The plots sit on a pale panel; fluorochromes are green and
+  orange (`fluorGreen`, `fluorOrange`), and in single colour a circle and a diamond.
+- Figures: `innate-response-bacteria` (two arms from the bacteria, sensing and complement, meeting
+  at phagocytosis) and `flow-cytometry` (sample, antibodies, stained cell, cytometer, plots).
+- Geometry is in the kit's batch 10 section; drawings are in a batch 10 section at the end of each
+  icon script. In single colour the perforin icon leaves out the killer cell's granules: two dots
+  above its curved edge read as a face.
+- Choices the author has not commented on: BTK is shown inside B-cell receptor signalling
+  (CD79, Syk, PLCγ2); the IL-12 loop is drawn at the level of cells, not molecules; the innate
+  figure has no dendritic cell or link to adaptive immunity; the flow figure has no red-cell lysis
+  or wash step.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

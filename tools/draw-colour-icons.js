@@ -4750,6 +4750,274 @@ function entamoebaHistolytica(id) {
   };
 }
 
+// ---------------------------------------------------------------- batch 10
+// Primary immunodeficiency molecules and flow cytometry.
+
+// A rounded protein domain [x, y, rx, ry, tilt], shaded with the icon's gradient `grad`.
+const domainOf = (id, [x, y, rx, ry, rot = 0], colour, grad, width = 2.2) =>
+  `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}"${rot ? ` transform="rotate(${rot} ${x} ${y})"` : ''} fill="url(#${id}-${grad})" stroke="${outline(colour)}" stroke-width="${width}"/>`;
+const phosphateMark = (x, y, r = 4.2) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1.2"/>`;
+
+// NADPH oxidase (deficient in chronic granulomatous disease): gp91phox and p22phox in the
+// phagosome membrane, with p47phox, p67phox, p40phox and Rac docked on the cytosolic side. An
+// electron crosses to oxygen in the lumen, making superoxide (oxygen with a yellow spot).
+function nadphOxidase(id) {
+  const N = K.NADPH_OXIDASE, [top, bottom] = N.membrane, [y0, y1] = N.span;
+  const parts = { gp91: C.nox2, p22: C.p22phox, p47: C.p47phox, p67: C.p67phox, p40: C.p40phox, rac: C.rac };
+  const helix = (x, part, fill = `url(#${id}-${part}-helix)`) =>
+    `<rect x="${x - 7.5}" y="${y0}" width="15" height="${y1 - y0}" rx="7.5" fill="${fill}" stroke="${outline(parts[part])}" stroke-width="2"/>`;
+  const molecule = ([x, y, deg], charged) => `<g transform="translate(${x} ${y}) rotate(${deg})">` +
+    [-4.5, 4.5].map(dx => `<circle cx="${dx}" cy="0" r="5.5" fill="url(#${id}-oxygen)" stroke="${outline(C.oxygen)}" stroke-width="1.3"/>`).join('') +
+    (charged ? `<circle cx="10" cy="-7" r="3.4" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1"/>` : '') + `</g>`;
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-oxygen`, C.oxygen), K.sphereGradient(`${id}-coccus`, C.gramPositive), K.glossGradient(`${id}-gloss`, 0.5),
+      ...Object.entries(parts).map(([part, colour]) => K.sphereGradient(`${id}-${part}`, colour, { light: 0.5 })),
+      K.cylinderGradient(`${id}-gp91-helix`, C.nox2, { horizontal: true }), K.cylinderGradient(`${id}-p22-helix`, C.p22phox, { horizontal: true })],
+    body: [
+      ...N.cocci.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${N.coccus}" fill="url(#${id}-coccus)" stroke="${outline(C.gramPositive)}" stroke-width="${STROKE}"/>` + K.gloss(`${id}-gloss`, x - 6, y - 7, 6, 3.5)),
+      lipidBilayer(`${id}-lipid`, 24, 234, top, bottom),
+      // The helix at the back is in shadow; the electron passes in front of it.
+      helix(N.gp91Back, 'gp91', K.deepen(C.nox2, 0.3)),
+      ...N.gp91.map(x => helix(x, 'gp91')), ...N.p22.map(x => helix(x, 'p22')),
+      K.pipe(N.tail, C.p22phox, 5),
+      `<path d="${N.anchor}" stroke="${shade(C.lipidTail, 0.3)}" stroke-width="3" stroke-linecap="round"/>`,
+      domainOf(id, N.lobe, C.nox2, 'gp91'), domainOf(id, N.rac, C.rac, 'rac'),
+      domainOf(id, N.p67, C.p67phox, 'p67'), domainOf(id, N.p47, C.p47phox, 'p47'), domainOf(id, N.p40, C.p40phox, 'p40'),
+      arrowMark(K.straightArrow(...N.electron, 13)),
+      ...N.oxygen.map(m => molecule(m, false)), ...N.superoxide.map(m => molecule(m, true)),
+    ],
+  };
+}
+
+// Bruton's tyrosine kinase (deficient in X-linked agammaglobulinaemia). Antigen on membrane IgM
+// signals through CD79a and CD79b, whose ITAMs bind Syk; BTK (orange), held at the membrane by
+// its PH domain, then activates phospholipase C gamma 2.
+function btk(id) {
+  const B = K.BTK, [top, bottom] = B.membrane, [ix, iy, is] = B.ig, [ax, ay, ar] = B.antigen, [px, py] = B.pip3;
+  const chains = [C.cd79a, C.cd79b];
+  const backbone = `M${B.domains.map(([x, y]) => `${x} ${y}`).join('L')}`;
+  const [kx, ky] = B.domains[4];
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-heavy`, C.heavyChain, { light: 0.5 }), K.sphereGradient(`${id}-light`, C.lightChain, { light: 0.5 }),
+      K.sphereGradient(`${id}-antigen`, C.spike, { light: 0.5 }), K.sphereGradient(`${id}-cd79a`, C.cd79a, { light: 0.5 }), K.sphereGradient(`${id}-cd79b`, C.cd79b, { light: 0.5 }),
+      K.sphereGradient(`${id}-syk`, C.syk, { light: 0.5 }), K.sphereGradient(`${id}-btk`, C.btk, { light: 0.5 }), K.sphereGradient(`${id}-plc`, C.plcGamma, { light: 0.5 })],
+    body: [
+      lipidBilayer(`${id}-lipid`, 24, 234, top, bottom),
+      ...B.igStalks.map(x => K.pipe(`M${x} ${B.igStalk[0]}V${B.igStalk[1]}`, C.heavyChain, 5)),
+      ...B.cd79.map(([x], i) => K.pipe(`M${x} ${B.cd79Stalk[0]}V${B.cd79Stalk[1]}`, chains[i], 5) +
+        `<rect x="${x - 4.5}" y="${B.itam - 4}" width="9" height="8" rx="3" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1.2"/>`),
+      `<g transform="translate(${ix} ${iy}) scale(${is})">${antibodyUnit(id)}</g>`,
+      `<path d="${K.smoothClosedPath(K.polarPoints(ax, ay, a => ar * (1 + 0.14 * Math.sin(3 * a + 0.6)), 36))}" fill="url(#${id}-antigen)" stroke="${outline(C.spike)}" stroke-width="2"/>`,
+      ...B.cd79.map(([x, y], i) => domainOf(id, [x, y, 9, 12], chains[i], i ? 'cd79b' : 'cd79a')),
+      domainOf(id, B.syk, C.syk, 'syk'),
+      // PIP3 in the inner leaflet, where the PH domain docks.
+      phosphateMark(px, py, 5),
+      K.pipe(backbone, C.btk, 4),
+      ...B.domains.map(d => domainOf(id, d, C.btk, 'btk')),
+      phosphateMark(kx + 13, ky + 8, 3.8),
+      domainOf(id, B.plc, C.plcGamma, 'plc'),
+      arrowMark(K.straightArrow(...B.arrows[0], 9)), arrowMark(K.straightArrow(...B.arrows[1], 13)),
+    ],
+  };
+}
+
+// CD40 ligand on a T cell binding CD40 on a B cell (the interaction lost in hyper-IgM syndrome).
+// The trimeric ligand gathers three CD40 chains, whose tails recruit TRAF adaptors.
+function cd40Ligand(id) {
+  const D = K.CD40, [tTop, tBottom] = D.tCell, [bTop, bBottom] = D.bCell, L = C.cd40Ligand, R = C.cd40, [rx, ry] = D.crd;
+  const tMid = (tTop + tBottom) / 2, bMid = (bTop + bBottom) / 2;
+  const chain = (crds, grad, colour = R) => `<path d="M${crds.map(p => p.join(' ')).join('L')}" fill="none" stroke="${outline(colour)}" stroke-width="5" stroke-linecap="round"/>` +
+    crds.map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="url(#${id}-${grad})" stroke="${outline(colour)}" stroke-width="2"/>`).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-ligand`, L, { light: 0.5 }), K.sphereGradient(`${id}-cd40`, R, { light: 0.5 }),
+      K.sphereGradient(`${id}-cd40-back`, K.deepen(R, 0.25), { light: 0.3 }), K.sphereGradient(`${id}-traf`, C.traf, { light: 0.5 })],
+    body: [
+      // The cytoplasm of each cell, in its own colour: T cell above, B cell below.
+      `<path d="M16 ${tMid}V24Q16 16 24 16H232Q240 16 240 24V${tMid}Z" fill="${tint(C.lymphocyte, 0.45)}"/>`,
+      `<path d="M16 ${bMid}V232Q16 240 24 240H232Q240 240 240 232V${bMid}Z" fill="${tint(C.bLymphocyte, 0.4)}"/>`,
+      lipidBilayer(`${id}-lipid`, 24, 234, tTop, tBottom), lipidBilayer(`${id}-lipid`, 24, 234, bTop, bBottom),
+      ...D.tails.map(x => K.pipe(`M${x} ${D.tail[0]}V${D.tail[1]}`, R, 5)),
+      ...D.trafs.map(([x, y]) => domainOf(id, [x, y, 11, 8.5], C.traf, 'traf', 2)),
+      chain(D.back, 'cd40-back', K.deepen(R, 0.25)),
+      ...D.stalks.map(d => K.pipe(d, L, 5)),
+      ...D.receptors.map(crds => chain(crds, 'cd40')),
+      ...D.lobes.map(lobe => domainOf(id, lobe, L, 'ligand')),
+    ],
+  };
+}
+
+// The IL-12 / interferon-gamma axis (defective in Mendelian susceptibility to mycobacterial
+// disease): a macrophage holding mycobacteria releases IL-12 (circles), a T or NK cell answers
+// with interferon gamma (diamonds), and each cell carries the receptor for the other's signal.
+function il12IfnAxis(id) {
+  const X = K.IL12_AXIS, mac = C.macrophage, t = C.lymphocyte, nuc = C.nucleus, [mx, my] = X.macrophage, [tx, ty, tr] = X.tCell, [nx, ny, nr] = X.tNucleus;
+  const [px, py, pr] = X.phagosome, [kx, ky] = X.nucleus;
+  const membrane = K.smoothClosedPath(K.polarPoints(mx, my, X.radius, 96));
+  const kidney = K.smoothClosedPath(K.polarPoints(0, 0, a => 19 - 7 * Math.exp(-(K.wrapAngle(a + 0.9) ** 2) / (2 * 0.32 ** 2)), 60).map(([x, y]) => [kx + 1.15 * x, ky + y]));
+  const receptors = (cx, cy, r, deg) => K.receptorPair(cx, cy, r, deg).map(([[x0, y0], [x1, y1]], i) => K.pipe(`M${x0} ${y0}L${x1} ${y1}`, i ? C.receptorChainB : C.receptorChainA, 4)).join('');
+  const symbols = (list, kind, colour) => list.map(([x, y]) => `<${K.cytokineShape(kind, x, y, 7)} fill="url(#${id}-${kind})" stroke="${outline(colour)}" stroke-width="1.6" stroke-linejoin="round"/>`);
+  const ifnR = X.ifnReceptor * Math.PI / 180;
+  return {
+    defs: [K.sphereGradient(`${id}-mac`, mac, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-t`, t, { light: 0.5, dark: 0.1 }), K.sphereGradient(`${id}-nucleus`, nuc, { light: 0.45 }),
+      K.sphereGradient(`${id}-circle`, C.il12), K.sphereGradient(`${id}-diamond`, C.ifnGamma), K.glossGradient(`${id}-gloss`)],
+    body: [
+      receptors(tx, ty, tr, X.il12Receptor), receptors(mx, my, X.radius(ifnR), X.ifnReceptor),
+      `<path d="${membrane}" fill="url(#${id}-mac)" stroke="${shade(mac, 0.32)}" stroke-width="${STROKE}"/>`,
+      shadowOf(pathShape(kidney), mac, [4, 5], 0.26),
+      `<path d="${kidney}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.2"/>`,
+      // Mycobacteria surviving inside a phagosome.
+      `<circle cx="${px}" cy="${py}" r="${pr}" fill="${tint(mac, 0.78)}" stroke="${shade(mac, 0.22)}" stroke-width="1.5"/>`,
+      ...X.rods.map(([x, y, rot]) => `<rect x="-9" y="-3.5" width="18" height="7" rx="3.5" transform="translate(${x} ${y}) rotate(${rot})" fill="${C.acidFast}" stroke="${outline(C.acidFast)}" stroke-width="1.3"/>`),
+      K.gloss(`${id}-gloss`, mx - 22, my - 28, 13, 6),
+      `<path d="${K.smoothClosedPath(K.polarPoints(tx, ty, a => tr + 1.2 * Math.sin(6 * a)))}" fill="url(#${id}-t)" stroke="${shade(t, 0.32)}" stroke-width="${STROKE}"/>`,
+      shadowOf(circleShape(nx, ny, nr), t, [4, 5], 0.26),
+      `<circle cx="${nx}" cy="${ny}" r="${nr}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="2.2"/>`,
+      K.gloss(`${id}-gloss`, nx - 12, ny - 14, 9, 4.5),
+      arrowMark(K.curvedArrow(...X.il12.arrow, 12)), arrowMark(K.curvedArrow(...X.ifn.arrow, 12)),
+      ...symbols(X.il12.symbols, 'circle', C.il12), ...symbols(X.ifn.symbols, 'diamond', C.ifnGamma),
+    ],
+  };
+}
+
+// Perforin (deficient in familial haemophagocytic lymphohistiocytosis): a cytotoxic cell empties
+// a granule on to its target; perforin (blue) forms a pore and granzymes (red) pass through.
+function perforinPore(id) {
+  const P = K.PERFORIN, [top, bottom] = P.membrane, { x, staves, pitch, top: pt, bottom: pb, rim: [rcx, rcy, rrx, rry] } = P.pore, perf = C.perforin, gz = C.cytotoxicGranule, t = C.lymphocyte;
+  const mid = (top + bottom) / 2;
+  const barrel = Array.from({ length: staves }, (_, k) => {
+    const colour = mix(tint(perf, 0.35), shade(perf, 0.3), Math.abs(k / (staves - 1) - 0.3) / 0.7);
+    return `<rect x="${n(x + k * pitch)}" y="${pt}" width="7" height="${pb - pt}" rx="3.5" fill="${colour}" stroke="${outline(perf)}" stroke-width="1.2"/>`;
+  });
+  const granzyme = ([gx, gy]) => `<circle cx="${gx}" cy="${gy}" r="5" fill="url(#${id}-granzyme)" stroke="${outline(gz)}" stroke-width="1.3"/>`;
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-granzyme`, gz), K.sphereGradient(`${id}-perforin`, perf, { light: 0.5 }),
+      K.sphereGradient(`${id}-granule`, K.tint(gz, 0.35), { light: 0.4 }),
+      `<linearGradient id="${id}-killer" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${K.lift(t, 0.3)}"/><stop offset="1" stop-color="${K.deepen(t, 0.12)}"/></linearGradient>`],
+    body: [
+      // The target cell's cytoplasm, below its membrane.
+      `<path d="M16 ${mid}V232Q16 240 24 240H232Q240 240 240 232V${mid}Z" fill="${tint(C.targetCell, 0.35)}"/>`,
+      lipidBilayer(`${id}-lipid`, 24, x - 8, top, bottom), lipidBilayer(`${id}-lipid`, x + staves * pitch + 8, 234, top, bottom),
+      `<ellipse cx="${rcx}" cy="${rcy}" rx="${rrx}" ry="${rry}" fill="${shade(perf, 0.55)}"/>`,
+      granzyme(P.granzymes[3]),
+      ...barrel,
+      `<ellipse cx="${rcx}" cy="${rcy}" rx="${rrx}" ry="${rry}" fill="none" stroke="${outline(perf)}" stroke-width="2.5"/>`,
+      // The killer cell, with one granule open to the synapse.
+      `<path d="${P.killer}" fill="url(#${id}-killer)"/>`,
+      `<path d="${P.edge}" fill="none" stroke="${shade(t, 0.32)}" stroke-width="${STROKE}" stroke-linecap="round"/>`,
+      ...P.granules.map(([gx, gy, gr]) => `<circle cx="${gx}" cy="${gy}" r="${gr}" fill="url(#${id}-granule)" stroke="${outline(gz)}" stroke-width="1.8"/>` +
+        `<circle cx="${gx}" cy="${gy}" r="${n(gr * 0.45)}" fill="${shade(gz, 0.15)}" opacity="0.75"/>`),
+      ...P.monomers.map(([mx, my, rot]) => domainOf(id, [mx, my, 5, 9.5, rot], perf, 'perforin', 1.6)),
+      ...P.granzymes.filter((_, i) => i !== 3).map(granzyme),
+    ],
+  };
+}
+
+// An antibody carrying a fluorochrome, as used to stain cells for flow cytometry.
+function fluorescentAntibody(id) {
+  const F = K.FLUOR_ANTIBODY, [x, y, s] = F.at, [fx, fy, fr] = F.fluor, g = C.fluorGreen;
+  return {
+    defs: [K.sphereGradient(`${id}-heavy`, C.heavyChain, { light: 0.5 }), K.sphereGradient(`${id}-light`, C.lightChain, { light: 0.5 }), K.sphereGradient(`${id}-fluor`, g, { light: 0.75, dark: 0.1 })],
+    body: [
+      // The glow of the fluorochrome.
+      K.softEllipse(fx, fy, fr * 2.1, fr * 2.1, K.lift(g, 0.25), 0.5),
+      K.pipe(F.linker, C.fibre, 3),
+      `<g transform="translate(${x} ${y}) scale(${s})">${antibodyUnit(id)}</g>`,
+      `<polygon points="${K.starPoints(fx, fy, fr, fr * 0.58)}" fill="url(#${id}-fluor)" stroke="${outline(g)}" stroke-width="2.2" stroke-linejoin="round"/>`,
+      K.softEllipse(fx - 4, fy - 5, 7, 5, '#fff', 0.55, { rotate: -30 }),
+    ],
+  };
+}
+
+// A lymphocyte stained with antibodies carrying two different fluorochromes.
+function stainedCell(id) {
+  const S = K.STAINED_CELL, [cx, cy] = S.centre, base = C.lymphocyte, nuc = C.nucleus, stem = S.R + 1 + 26 * S.scale;
+  const dyes = [C.fluorGreen, C.fluorOrange];
+  const at = (deg, r) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+  const angles = Array.from({ length: S.antibodies }, (_, k) => k * 360 / S.antibodies - 72);
+  const dot = r => stem + 6 * S.scale + r;
+  return {
+    defs: [K.formGradient(`${id}-body`, base, { light: 0.5, dark: 0.16 }), K.formGradient(`${id}-nucleus`, nuc, { light: 0.34, dark: 0.3 }), K.glossGradient(`${id}-sheen`, 0.5),
+      ...dyes.map((dye, i) => K.sphereGradient(`${id}-dye${i}`, dye, { light: 0.75, dark: 0.1 }))],
+    body: [
+      ...angles.map((a, k) => { const [x, y] = at(a, dot(2)); return K.softEllipse(n(x), n(y), 13, 13, K.lift(dyes[k % 2], 0.25), 0.5); }),
+      ...angles.map(a => { const [x, y] = at(a, stem); return miniAntibody(x, y, a - 90, S.scale); }),
+      `<path d="${K.smoothClosedPath(K.polarPoints(cx, cy, a => S.R + 1.5 * Math.sin(6 * a)))}" fill="url(#${id}-body)" stroke="${outline(base)}" stroke-width="${STROKE}"/>`,
+      shadowOf(circleShape(cx - 4, cy - 4, S.nucleus), base, [4, 5], 0.26),
+      `<circle cx="${cx - 4}" cy="${cy - 4}" r="${S.nucleus}" fill="url(#${id}-nucleus)" stroke="${outline(nuc)}" stroke-width="${STROKE}"/>`,
+      K.sheen(`${id}-sheen`, cx - 18, cy - 20, 14, 7, -35),
+      ...angles.map((a, k) => { const [x, y] = at(a, dot(2)); return `<circle cx="${n(x)}" cy="${n(y)}" r="${S.fluor}" fill="url(#${id}-dye${k % 2})" stroke="${outline(dyes[k % 2])}" stroke-width="1.6"/>`; }),
+    ],
+  };
+}
+
+// The inside of a flow cytometer: cells in single file cross a laser; one detector in line with
+// the beam catches forward scatter, and two to the side catch fluorescence of different colours.
+function flowCytometer(id) {
+  const F = K.FLOW_CYTOMETER, [lx, ly, lw, lh] = F.laser, [n0, n1, ny0, ny1] = F.needle, [c0, c1] = F.core, glass = C.plasticEdge, cell = C.lymphocyte;
+  const [hx, hy] = F.cells[F.lit], dyes = [C.fluorGreen, C.fluorOrange];
+  const beam = ([[x0, y0], [x1, y1]], colour, width) => `<path d="M${x0} ${y0}L${x1} ${y1}" stroke="${colour}" stroke-width="${width}" stroke-linecap="round"/>` +
+    `<path d="M${x0} ${y0}L${x1} ${y1}" stroke="${K.lift(colour, 0.6)}" stroke-width="${n(width * 0.35)}" stroke-linecap="round"/>`;
+  const detector = ([x, y, rot], i) => `<g transform="translate(${x} ${y}) rotate(${rot})">` +
+    `<rect x="-10" y="-14" width="26" height="28" rx="5" fill="url(#${id}-metal)" stroke="${outline(C.metal)}" stroke-width="2"/>` +
+    `<rect x="-14" y="-10" width="7" height="20" rx="2.5" fill="${i ? K.deepen(dyes[i - 1], 0.2) : K.deepen(C.laser, 0.3)}" stroke="${outline(C.metal)}" stroke-width="1.5"/></g>`;
+  return {
+    defs: [K.cylinderGradient(`${id}-metal`, C.metal), K.cylinderGradient(`${id}-laser`, C.tubing), K.sphereGradient(`${id}-cell`, cell, { light: 0.55, dark: 0.12 }),
+      K.sphereGradient(`${id}-lit`, C.fluorGreen, { light: 0.75, dark: 0.1 }),
+      `<linearGradient id="${id}-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${tint(C.fluid, 0.5)}"/><stop offset="0.3" stop-color="${tint(C.fluid, 0.8)}"/><stop offset="1" stop-color="${tint(C.fluid, 0.4)}"/></linearGradient>`],
+    body: [
+      // The laser and its beam, which goes on (weaker) to the forward-scatter detector.
+      beam(F.forward, C.laser, 4), ...F.rays.map((ray, i) => beam(ray, dyes[i], 4)),
+      ...F.detectors.map(detector),
+      beam(F.beam, C.laser, 6),
+      `<rect x="${lx}" y="${ly}" width="${lw}" height="${lh}" rx="6" fill="url(#${id}-laser)" stroke="${outline(C.tubing)}" stroke-width="${STROKE}"/>`,
+      `<rect x="${lx + lw - 4}" y="${ly + lh / 2 - 6}" width="7" height="12" rx="2" fill="${C.metal}" stroke="${outline(C.metal)}" stroke-width="1.5"/>`,
+      `<circle cx="${lx + 12}" cy="${ly + 10}" r="3.5" fill="${C.laser}"/>`,
+      // The flow cell: sheath fluid round a thin core of sample.
+      `<path d="${F.cell}" fill="url(#${id}-glass)" stroke="${outline(glass)}" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+      `<rect x="${c0}" y="${ny1 - 4}" width="${c1 - c0}" height="${236 - ny1 + 4}" fill="${tint(C.medium, 0.45)}"/>`,
+      `<rect x="${n0}" y="${ny0}" width="${n1 - n0}" height="${ny1 - ny0}" fill="${tint(C.medium, 0.45)}" stroke="${outline(glass)}" stroke-width="2"/>`,
+      `<path d="M${n0 - 2} ${ny0}H${n1 + 2}" stroke="${outline(glass)}" stroke-width="${STROKE}" stroke-linecap="round"/>`,
+      // Where the laser crosses the stream, the stained cell lights up.
+      beam([[117.5, 144], [138.5, 144]], C.laser, 5),
+      K.softEllipse(hx, hy, 17, 17, K.lift(C.fluorGreen, 0.3), 0.6),
+      ...F.cells.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${F.r}" fill="url(#${id}-${i === F.lit ? 'lit' : 'cell'})" stroke="${outline(i === F.lit ? C.fluorGreen : cell)}" stroke-width="1.6"/>`),
+    ],
+  };
+}
+
+// The frame of a flow cytometry plot: a pale panel, two axes and their tick marks.
+function plotFrame() {
+  const [x0, y0, x1, y1] = K.FLOW_PLOT.box, ink = C.arrow;
+  const ticks = K.FLOW_PLOT.ticks.map(t => `M${n(x0 + t * (x1 - x0))} ${y1}v9M${x0} ${n(y1 - t * (y1 - y0))}h-9`).join('');
+  return {
+    panel: `<rect x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" fill="${C.plotPanel}" stroke="${tint(C.plasticEdge, 0.4)}" stroke-width="1.5"/>`,
+    axes: `<path d="${ticks}" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>` +
+      `<path d="M${x0} ${y0}V${y1}H${x1}" fill="none" stroke="${ink}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+  };
+}
+
+// A dot plot of two markers (here CD4 against CD8) with a quadrant gate.
+function flowDotPlot(id) {
+  const P = K.FLOW_DOT_PLOT, [x0, y0, x1, y1] = K.FLOW_PLOT.box, [gx, gy] = P.gate, frame = plotFrame();
+  return {
+    defs: [],
+    body: [
+      frame.panel,
+      ...P.populations.map((pop, i) => `<g fill="${K.deepen(C[pop[5]], 0.12)}">` + K.plotEvents(pop, 12 + 5 * i).map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.3" opacity="0.8"/>`).join('') + `</g>`),
+      `<path d="M${gx} ${y0 + 2}V${y1 - 2}M${x0 + 2} ${gy}H${x1 - 2}" stroke="${C.arrow}" stroke-width="2" stroke-linecap="round"/>`,
+      frame.axes,
+    ],
+  };
+}
+
+// A histogram of one marker: an unstained (grey) and a stained (green) population.
+function flowHistogram(id) {
+  const [unstained, stained] = K.FLOW_HISTOGRAM.peaks, frame = plotFrame(), grey = C.silhouette, g = C.fluorGreen;
+  const peak = (p, colour) => `<path d="${K.histogramPeak(p)}" fill="${tint(colour, 0.25)}" opacity="0.8" stroke="none"/>` +
+    `<path d="${K.histogramPeak(p, false)}" fill="none" stroke="${K.deepen(colour, 0.35)}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+  return { defs: [], body: [frame.panel, peak(unstained, grey), peak(stained, g), frame.axes] };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -4926,6 +5194,16 @@ const DRAWINGS = {
   'entamoeba-histolytica': entamoebaHistolytica,
   'cd4-t-cell': id => tCell(id, 'cd4'),
   'cd8-t-cell': id => tCell(id, 'cd8'),
+  'nadph-oxidase': nadphOxidase,
+  'btk': btk,
+  'cd40-ligand': cd40Ligand,
+  'il12-ifn-gamma-axis': il12IfnAxis,
+  'perforin': perforinPore,
+  'fluorescent-antibody': fluorescentAntibody,
+  'stained-cell': stainedCell,
+  'flow-cytometer': flowCytometer,
+  'flow-dot-plot': flowDotPlot,
+  'flow-histogram': flowHistogram,
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');

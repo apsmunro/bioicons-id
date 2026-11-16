@@ -288,6 +288,28 @@ const PALETTE = {
   geneC: '#8E6CC9',
   cd4: '#F2A541',
   cd8: '#D9567F',
+  nox2: '#4F86D9', // gp91phox
+  p22phox: '#6CC2B8',
+  p47phox: '#F2A541',
+  p67phox: '#9CCF8A',
+  p40phox: '#B39DDB',
+  rac: '#E5707A',
+  oxygen: '#D9473F',
+  btk: '#E58A3C',
+  syk: '#9C7FD9',
+  plcGamma: '#4DB6AC',
+  cd79a: '#F28C6B',
+  cd79b: '#9CCF8A',
+  cd40Ligand: '#E58A3C',
+  cd40: '#3E9C8F',
+  traf: '#9C7FD9',
+  il12: '#F2A541',
+  ifnGamma: '#5B7FD6',
+  perforin: '#6F9BE0',
+  fluorGreen: '#4CC764', // fluorochromes, as they are usually drawn: green (FITC) and orange (PE)
+  fluorOrange: '#F2853A',
+  laser: '#3FA9F5', // the 488 nm blue laser
+  plotPanel: '#FBFCFE',
 };
 
 // Skin and hair colours for the people icons. "medium" matches PALETTE and is used for each
@@ -1701,6 +1723,127 @@ const ENTAMOEBA = {
   nucleus: [96, 118, 19], redCells: [[150, 156, 12], [126, 174, 10], [118, 148, 8]],
 };
 
+// ----------------------------------------------------------------- batch 10
+// Primary immunodeficiency molecules and flow cytometry.
+
+// NADPH oxidase on a phagosome membrane: lumen above, cytosol below. gp91phox (NOX2) and p22phox
+// cross the membrane as helices (x positions, between the heights in `span`); gp91phox has a
+// cytosolic lobe, and p47phox, p67phox, p40phox and Rac [x, y, rx, ry, tilt] dock beneath. An
+// electron passes up between the helices to oxygen [x, y, tilt], making superoxide beside the cocci.
+const NADPH_OXIDASE = {
+  membrane: [116, 142], span: [104, 154],
+  gp91: [84, 124], gp91Back: 104, lobe: [104, 175, 31, 17, 0],
+  p22: [148, 166], tail: 'M166 154C166 168 176 166 182 176',
+  p47: [193, 190, 20, 14, -15], p67: [150, 205, 24, 15, 8], p40: [186, 222, 15, 11, 0], rac: [60, 180, 13, 11, 0], anchor: 'M60 169V146',
+  electron: [[104, 156], [104, 82]],
+  oxygen: [[48, 86, 25], [66, 52, -30]], superoxide: [[138, 62, -20], [160, 94, 30], [150, 32, 10]],
+  cocci: [[198, 50], [216, 82]], coccus: 17,
+};
+
+// Bruton's tyrosine kinase in B-cell receptor signalling. Membrane IgM [x, y of the hinge, scale]
+// holds an antigen [x, y, r]; CD79a and CD79b [x, y of the domain] carry ITAMs and bind Syk. BTK is
+// a chain of domains from the membrane down (PH on PIP3, SH3, SH2, then the two lobes of the
+// kinase) and acts on phospholipase C gamma 2.
+const BTK = {
+  membrane: [112, 138],
+  ig: [84, 62, 0.58], igStalks: [76, 92], igStalk: [104, 150], antigen: [137, 31, 12],
+  cd79: [[140, 94], [160, 94]], cd79Stalk: [106, 172], itam: 156, syk: [150, 182, 17, 10, 0],
+  pip3: [206, 141], domains: [[206, 156, 14, 11, 0], [221, 176, 9, 8, 0], [211, 193, 11, 10, 0], [193, 208, 14, 11, -20], [184, 225, 16, 10, 0]],
+  plc: [124, 218, 21, 14, 0], arrows: [[[165, 223], [149, 220]], [[99, 218], [48, 218]]],
+};
+
+// CD40 ligand on a T cell (above) binding CD40 on a B cell (below). The ligand is a trimer of
+// lobes [x, y, rx, ry, tilt] on three stalks; each CD40 is a chain of cysteine-rich domains
+// [x, y] (the third stands behind the ligand), with a TRAF adaptor [x, y] on its tail.
+const CD40 = {
+  tCell: [46, 72], bCell: [178, 204],
+  stalks: ['M116 38V82Q116 94 119 100', 'M128 38V98', 'M140 38V82Q140 94 137 100'],
+  lobes: [[111, 114, 16, 22, 10], [145, 114, 16, 22, -10], [128, 120, 16, 22, 0]],
+  receptors: [[[88, 108], [89, 127], [92, 146], [96, 165]], [[168, 108], [167, 127], [164, 146], [160, 165]]],
+  back: [[128, 150], [128, 166]], crd: [8.5, 11], tails: [96, 160, 128], tail: [174, 216], trafs: [[96, 224], [160, 224], [128, 226]],
+};
+
+// The IL-12 / interferon-gamma loop: an infected macrophage (left) makes IL-12, which acts on a
+// T cell or NK cell (right); that cell makes interferon gamma, which acts back on the macrophage.
+// Receptors are given as the angle (degrees) at which they sit on their cell.
+const IL12_AXIS = {
+  macrophage: [82, 134],
+  radius: a => 44 + 2.5 * Math.sin(7 * a) + [[3.3, 14, 0.25], [-2.0, 15, 0.22], [1.9, 14, 0.22], [-0.2, 7, 0.25]]
+    .reduce((sum, [c, h, w]) => sum + h * Math.exp(-(wrapAngle(a - c) ** 2) / (2 * w * w)), 0),
+  nucleus: [68, 118], phagosome: [86, 160, 16], rods: [[82, 156, 35], [91, 165, -25]],
+  tCell: [196, 128, 40], tNucleus: [193, 126, 28],
+  il12Receptor: -128, ifnReceptor: 40,
+  il12: { arrow: [[114, 88], [134, 60], [157, 77]], symbols: [[112, 56], [134, 38], [158, 48]] },
+  ifn: { arrow: [[167, 167], [150, 190], [133, 180]], symbols: [[176, 192], [152, 210], [126, 202]] },
+};
+// A pair of receptor chains standing on a cell at (cx, cy) with radius r, at the given angle:
+// the two bases and tips.
+function receptorPair(cx, cy, r, deg, length = 16, gap = 3.6) {
+  const a = deg * Math.PI / 180, [ux, uy] = [Math.cos(a), Math.sin(a)];
+  return [-1, 1].map(side => [[cx + ux * (r - 2) - uy * gap * side, cy + uy * (r - 2) + ux * gap * side],
+    [cx + ux * (r + length) - uy * gap * side, cy + uy * (r + length) + ux * gap * side]].map(p => p.map(round)));
+}
+
+// Perforin: a killer cell (top) empties a granule at the synapse; perforin monomers [x, y, tilt]
+// assemble into a pore in the target cell's membrane, and granzymes [x, y] pass through it.
+const PERFORIN = {
+  killer: 'M16 24Q16 16 24 16H232Q240 16 240 24V50Q190 70 148 72A20 20 0 0 0 108 72Q70 70 16 50Z',
+  edge: 'M16 50Q70 70 108 72A20 20 0 0 1 148 72Q190 70 240 50',
+  granules: [[52, 36, 11], [84, 45, 9], [174, 47, 10], [204, 34, 8]],
+  membrane: [156, 182], pore: { x: 94, staves: 9, pitch: 7.6, top: 146, bottom: 192, rim: [128, 146, 34, 9] },
+  monomers: [[120, 70, 20], [143, 92, -30], [106, 98, 40], [154, 120, 10], [98, 126, -25]],
+  granzymes: [[137, 73], [122, 84], [130, 110], [128, 142], [122, 208], [141, 224], [106, 226]],
+};
+
+// A fluorochrome-labelled antibody: the antibody [x, y of the hinge, scale] and the fluorochrome
+// [x, y, r] joined to its Fc.
+const FLUOR_ANTIBODY = { at: [108, 98, 0.92], fluor: [184, 192, 22], linker: 'M122 170Q148 172 166 182' };
+// A star with `points` points, as polygon points.
+const starPoints = (x, y, outer, inner, points = 8, turn = 0) => Array.from({ length: points * 2 }, (_, k) => {
+  const a = turn + k * Math.PI / points - Math.PI / 2, r = k % 2 ? inner : outer;
+  return `${round(x + r * Math.cos(a))},${round(y + r * Math.sin(a))}`;
+}).join(' ');
+
+// A cell stained with fluorescent antibodies of two colours, alternating round its surface.
+const STAINED_CELL = { centre: [128, 128], R: 54, nucleus: 37, antibodies: 10, scale: 1.05, fluor: 7 };
+
+// Flow cytometer: cells [x, y] pass in single file down a flow cell (the sample is injected
+// through a needle into the sheath fluid, which narrows it to a thin stream); a laser crosses
+// the stream, and detectors catch the forward scatter and, to the side, the fluorescence.
+const FLOW_CYTOMETER = {
+  cell: 'M88 20H168V44L140 96V236H116V96L88 44Z', needle: [121, 135, 20, 62], core: [124, 132],
+  cells: [[128, 32], [128, 52], [128, 80], [128, 110], [128, 144], [128, 180], [128, 212]], r: 6.5, lit: 4,
+  laser: [18, 128, 46, 32], beam: [[64, 144], [116, 144]], forward: [[140, 144], [206, 144]],
+  detectors: [[220, 144, 0], [208, 80, -38], [208, 208, 38]],
+  rays: [[[138, 136], [194, 91]], [[138, 152], [194, 197]]],
+};
+
+// Flow cytometry plots: the plotting area [x0, y0, x1, y1] and tick positions along each axis.
+const FLOW_PLOT = { box: [48, 20, 236, 208], ticks: [0.2, 0.4, 0.6, 0.8, 1] };
+// Dot plot of two markers: the quadrant gate [x, y] and populations [x, y, spread x, spread y,
+// number of events, colour].
+const FLOW_DOT_PLOT = {
+  gate: [138, 116],
+  populations: [[90, 166, 15, 13, 70, 'silhouette'], [88, 66, 14, 14, 85, 'cd4'], [190, 164, 14, 13, 55, 'cd8'], [186, 68, 20, 18, 9, 'kinase']],
+};
+// Events of one population, normally distributed (Box–Muller) and kept inside the plot.
+function plotEvents([cx, cy, sx, sy, count], seed, [x0, y0, x1, y1] = FLOW_PLOT.box) {
+  const rand = rng(seed), out = [];
+  for (let tries = 0; out.length < count && tries < 5000; tries++) {
+    const r = Math.sqrt(-2 * Math.log(1 - rand())), t = 2 * Math.PI * rand(), p = [cx + sx * r * Math.cos(t), cy + sy * r * Math.sin(t)];
+    if (p[0] > x0 + 6 && p[0] < x1 - 6 && p[1] > y0 + 6 && p[1] < y1 - 6) out.push(p.map(round));
+  }
+  return out;
+}
+// Histogram: two peaks [centre, width, height], unstained (left) and stained (right), as
+// outlines along the baseline of the plot.
+const FLOW_HISTOGRAM = { peaks: [[98, 13, 150], [186, 15, 118]] };
+function histogramPeak([c, s, h], closed = true, [x0, , x1, base] = FLOW_PLOT.box) {
+  const pts = [];
+  for (let x = Math.max(x0 + 4, c - 3.2 * s); x <= Math.min(x1 - 4, c + 3.2 * s); x += 2) pts.push([round(x), round(base - h * Math.exp(-((x - c) ** 2) / (2 * s * s)))]);
+  return `M${pts[0][0]} ${base}L${pts.map(p => p.join(' ')).join('L')}L${pts[pts.length - 1][0]} ${base}${closed ? 'Z' : ''}`;
+}
+
 // Deterministic pseudo-random numbers (mulberry32), so regenerated icons are identical.
 function rng(seed) {
   let a = seed >>> 0;
@@ -1751,4 +1894,6 @@ module.exports = {
   STEWARDSHIP, HEART_VALVE, vegetationPath, MENINGES, PIPETTE, WELL_PLATE, platePoint, plateWells, CENTRIFUGE, rotorSlots, ORS,
   sachetPath, dropPath, TRANSMISSION, LIVER,
   framesAlong, EBOLA, HELICOBACTER, helicobacterCell, papillomaCapsomeres, EBV, STEM_CELL, renewalLoop, TCR, VDJ, ENTAMOEBA,
+  NADPH_OXIDASE, BTK, CD40, IL12_AXIS, receptorPair, PERFORIN, FLUOR_ANTIBODY, starPoints, STAINED_CELL, FLOW_CYTOMETER,
+  FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
 };
