@@ -41,6 +41,8 @@ STYLE.md                         the house style every icon follows
 tools/svg-kit.js                 shared palette, gradients, geometry and drawing helpers
 tools/draw-colour-icons.js        code that draws the full-colour icons
 tools/draw-mono-icons.js         code that draws the single-colour icons
+tools/draw-figures.js            code that assembles the figures from the icons
+figures/<id>.svg                 figures (wide diagrams), each also as -labelled, -mono and -mono-labelled
 tools/build-site.js              bundles the catalogue and SVGs for the gallery
 tools/serve.js                   local preview server
 tools/sources/                   hand-drawn artwork that some icons are built from (e.g. the brain)

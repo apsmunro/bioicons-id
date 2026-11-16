@@ -80,6 +80,18 @@ Entamoeba histolytica. Their geometry is in the kit's batch 9 section and their 
 batch 9 section at the end of each script. A separate VZV icon was dropped: its particle would
 be identical to the herpesvirus icon, which already carries the VZV and EBV search tags.
 
+### Figures (16 Nov 2026)
+
+A new kind of item: wide diagrams assembled from the icons, in `figures/`, drawn by
+`tools/draw-figures.js` (part of `npm run all`). The first is `vaccine-response`. A figure is a list of
+icons with positions, arrows, regions (tissues drawn as pale rounded boxes) and labels; the icon
+scripts now export `DRAWINGS` and only write files when run directly, and `svgDocument` takes a
+width and height. The author asked for labels to be optional, so every figure is written with and
+without them (`-labelled`), in colour and single colour. On the site figures are the `figures`
+category: a catalogue entry adds `labelledFile` and `labelledMonoFile`, cards span two columns, and
+the detail view has a labels switch. Labels render in PowerPoint as a picture; whether they stay
+editable after Convert to Shape has not been tested.
+
 ## Shading model (11 Nov 2026)
 
 All colour icons were moved to a second shading model, set in the kit: shadows mix towards a

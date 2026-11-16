@@ -1713,9 +1713,9 @@ function rng(seed) {
 
 const escapeXml = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-function svgDocument({ id, title, description, defs, body }) {
+function svgDocument({ id, title, description, defs, body, width = 256, height = 256 }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="${id}-title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-labelledby="${id}-title">
 <title id="${id}-title">${escapeXml(title)}</title>
 <desc>${escapeXml(description)}</desc>
 <defs>${defs.join('')}${PENDING.splice(0).map((p, i) => p.make(`${id}-fade${i}`)).join('')}</defs>

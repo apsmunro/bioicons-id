@@ -116,6 +116,15 @@ button, input, select { font: inherit; color: inherit; }
 
 .thumb, .preview { display: block; aspect-ratio: 1; border-radius: 10px; }
 .thumb img, .preview img { width: 100%; height: 100%; object-fit: contain; padding: 8%; display: block; }
+/* Figures are wide: their cards span two columns and their detail view uses the full width. */
+.grid li.wide { grid-column: span 2; }
+.grid li.wide .card { height: 100%; }
+.wide .thumb { aspect-ratio: 2.1; }
+.wide .thumb img, .preview.wide img { padding: 4%; }
+.preview.wide { aspect-ratio: 1.74; }
+.detail:has(.preview.wide) { grid-template-columns: 1fr; }
+.segmented.labels[hidden] { display: none; }
+.info .segmented.labels { margin: 8px 0 4px; }
 
 [data-bg="light"] .thumb, .preview[data-bg="light"] { background: var(--thumb-light); box-shadow: inset 0 0 0 1px var(--border); }
 [data-bg="dark"] .thumb, .preview[data-bg="dark"] { background: var(--thumb-dark); }

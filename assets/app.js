@@ -24,14 +24,19 @@
     ink: /^#[0-9a-f]{6}$/.test(storage.get('icon-ink') || '') ? storage.get('icon-ink') : INK,
     // Skin tone for the people icons; "medium" is each icon's main file.
     tone: lib.skinTones.some(t => t.id === storage.get('icon-tone')) ? storage.get('icon-tone') : 'medium',
+    // Whether figures are shown and downloaded with their labels.
+    labels: storage.get('icon-labels') !== 'off',
   };
 
   const isMono = icon => state.variant === 'mono' && icon.monoSvg;
   const toned = icon => !isMono(icon) && icon.toneSvgs && icon.toneSvgs[state.tone];
-  const svgFor = icon => (isMono(icon) ? icon.monoSvg.split(INK).join(state.ink) : toned(icon) || icon.svg);
+  // Figures come with or without labels.
+  const labelled = icon => state.labels && icon.labelledSvg;
+  const svgFor = icon => (isMono(icon) ? ((labelled(icon) && icon.labelledMonoSvg) || icon.monoSvg).split(INK).join(state.ink)
+    : toned(icon) || (labelled(icon) ? icon.labelledSvg : icon.svg));
   const svgUrl = icon => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgFor(icon));
   const fileBase = icon => (isMono(icon) ? `${icon.id}-mono${state.ink === INK ? '' : '-' + state.ink.slice(1)}`
-    : toned(icon) ? `${icon.id}-${state.tone}` : icon.id);
+    : toned(icon) ? `${icon.id}-${state.tone}` : icon.id) + (labelled(icon) ? '-labelled' : '');
 
   for (const icon of lib.icons) {
     icon.searchText = [icon.name, icon.description, categoryLabel[icon.category], ...(icon.tags || [])]
@@ -59,6 +64,8 @@
     const shown = lib.icons.filter(matches);
     grid.replaceChildren(...shown.map(icon => {
       const li = document.createElement('li');
+      // Figures are wide, so their cards take two columns.
+      if (icon.aspect > 1.2) li.className = 'wide';
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'card';
@@ -123,10 +130,25 @@
     }));
   }
 
+  // The labels switch, shown in the detail view for figures.
+  function renderLabelsSwitch() {
+    const icon = state.current;
+    $('.labels').hidden = !(icon && icon.labelledSvg);
+    $('#detail-preview').classList.toggle('wide', Boolean(icon && icon.aspect > 1.2));
+    $$('[data-labels]').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.labels === 'on') === state.labels)));
+  }
+
+  function setLabels(on) {
+    state.labels = on;
+    storage.set('icon-labels', on ? 'on' : 'off');
+    refresh();
+  }
+
   function refresh() {
     $$('[data-variant]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.variant === state.variant)));
     renderInkPickers();
     renderTonePicker();
+    renderLabelsSwitch();
     renderGrid();
     if (state.current) $('#detail-img').src = svgUrl(state.current);
   }
@@ -171,6 +193,7 @@
       return li;
     }));
     renderTonePicker();
+    renderLabelsSwitch();
     say('');
     history.replaceState(null, '', '#' + icon.id);
     if (!dialog.open) dialog.showModal();
@@ -199,8 +222,10 @@
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        canvas.width = canvas.height = size;
-        canvas.getContext('2d').drawImage(img, 0, 0, size, size);
+        // `size` is the width; figures are wider than they are tall.
+        canvas.width = size;
+        canvas.height = Math.round(size / (icon.aspect || 1));
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
         canvas.toBlob(b => (b ? resolve(b) : reject(new Error('PNG export failed'))), 'image/png');
       };
       img.onerror = () => reject(new Error('Could not render the SVG'));
@@ -218,7 +243,7 @@
     const icon = state.current, size = Number($('#png-size').value);
     try {
       save(await pngBlob(icon, size), `${fileBase(icon)}-${size}px.png`);
-      say(`PNG (${size} × ${size}) downloaded.`);
+      say(`PNG (${size} × ${Math.round(size / (icon.aspect || 1))}) downloaded.`);
     } catch (err) {
       say(err.message);
     }
@@ -248,6 +273,7 @@
   });
   $$('button[data-bg]').forEach(b => b.addEventListener('click', () => setBackground(b.dataset.bg)));
   $$('button[data-variant]').forEach(b => b.addEventListener('click', () => setVariant(b.dataset.variant)));
+  $$('button[data-labels]').forEach(b => b.addEventListener('click', () => setLabels(b.dataset.labels === 'on')));
 
   const { name, licence, licenceUrl } = lib.library;
   $('#licence').innerHTML = `Free to use for any purpose, with no permission or credit needed ` +

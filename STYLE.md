@@ -86,6 +86,18 @@ print, line-art slides, or matching a slide's accent colour.
 - Simplify: keep the features that identify the subject (multilobed nucleus, spikes, flagella)
   and drop the rest. The icon should still read at 32 px.
 
+## Figures
+
+Figures are wide diagrams assembled from the icons (`tools/draw-figures.js`): icons placed on a
+canvas, joined by arrows, with pale rounded regions for the tissues that steps happen inside.
+
+- A figure reuses the icons' own drawings, never a redrawn copy, so it changes when they do.
+- Each figure is written four times from one layout: colour and single colour, each with and
+  without labels. Leave room for the labels in the layout even though one version omits them.
+- Labels are the one place text is allowed. They are plain SVG text in Arial, sentence case,
+  British spelling, one size throughout, so they stay editable in slide software.
+- Read left to right, then down; keep arrows short and never let one cross another or an icon.
+
 ## Technical rules (so icons behave in PowerPoint, Keynote and Google Slides)
 
 - Use only paths, basic shapes, linear and radial gradients, and clip paths.

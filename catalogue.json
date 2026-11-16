@@ -15,7 +15,8 @@
     { "id": "treatment", "label": "Treatment" },
     { "id": "resistance", "label": "Antimicrobial resistance" },
     { "id": "clinical", "label": "Clinical & lab" },
-    { "id": "transmission", "label": "Transmission" }
+    { "id": "transmission", "label": "Transmission" },
+    { "id": "figures", "label": "Figures" }
   ],
   "icons": [
     {
@@ -1563,6 +1564,17 @@
       "monoFile": "icons/parasites/entamoeba-histolytica-mono.svg",
       "description": "Amoebic trophozoite with a broad clear pseudopod, a nucleus with a central karyosome, and ingested red blood cells.",
       "tags": ["Entamoeba histolytica", "E. histolytica", "Entamoeba", "amoeba", "amoebiasis", "amoebic dysentery", "amoebic liver abscess", "trophozoite", "protozoa", "parasite", "bloody diarrhoea"]
+    },
+    {
+      "id": "vaccine-response",
+      "name": "Immune response to a vaccine",
+      "category": "figures",
+      "file": "figures/vaccine-response.svg",
+      "monoFile": "figures/vaccine-response-mono.svg",
+      "labelledFile": "figures/vaccine-response-labelled.svg",
+      "labelledMonoFile": "figures/vaccine-response-mono-labelled.svg",
+      "description": "A vaccine is taken up by a dendritic cell, which travels to a lymph node and activates a helper T cell; the T cell helps a B cell, which enters a germinal centre and gives rise to memory B cells and to plasma cells, which secrete antibodies. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "vaccine", "vaccination", "immunisation", "immune response", "adaptive immunity", "dendritic cell", "lymph node", "T cell help", "germinal centre", "plasma cell", "memory B cell", "antibody", "humoral immunity"]
     }
   ]
 }

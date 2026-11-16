@@ -2497,6 +2497,9 @@ const DRAWINGS = {
   'entamoeba-histolytica': entamoebaHistolytica,
 };
 
+// Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.
+module.exports = { DRAWINGS };
+if (require.main === module) {
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'catalogue.json'), 'utf8'));
 for (const [id, draw] of Object.entries(DRAWINGS)) {
   const meta = catalogue.icons.find(icon => icon.id === id);
@@ -2505,4 +2508,5 @@ for (const [id, draw] of Object.entries(DRAWINGS)) {
   K.writeIcon(ROOT, meta.monoFile, K.svgDocument({
     id: svgId, title: `${meta.name} (single colour)`, description: meta.description, defs: [], body: draw(),
   }));
+}
 }

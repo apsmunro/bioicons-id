@@ -20,7 +20,11 @@ const icons = catalogue.icons.map(icon => {
   const svg = readSvg(icon, icon.file);
   const monoSvg = icon.monoFile ? readSvg(icon, icon.monoFile) : null;
   const toneSvgs = icon.toneFiles ? Object.fromEntries(Object.entries(icon.toneFiles).map(([tone, f]) => [tone, readSvg(icon, f)])) : undefined;
-  return { ...icon, svg, monoSvg, toneSvgs };
+  // Figures also come with labels, and are wider than they are tall.
+  const labelledSvg = icon.labelledFile ? readSvg(icon, icon.labelledFile) : undefined;
+  const labelledMonoSvg = icon.labelledMonoFile ? readSvg(icon, icon.labelledMonoFile) : undefined;
+  const [, width, height] = svg.match(/viewBox="0 0 (\d+) (\d+)"/).map(Number);
+  return { ...icon, svg, monoSvg, toneSvgs, labelledSvg, labelledMonoSvg, aspect: width / height };
 });
 
 function readSvg(icon, relative) {
