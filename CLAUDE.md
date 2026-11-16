@@ -92,6 +92,11 @@ category: a catalogue entry adds `labelledFile` and `labelledMonoFile`, cards sp
 the detail view has a labels switch. Labels render in PowerPoint as a picture; whether they stay
 editable after Convert to Shape has not been tested.
 
+The second figure is `t-cell-development` (bone marrow, stem cell, the thymus as a region, naive
+T cells, lymph nodes and spleen). Arrows can bend (a third, middle point is the control point) and
+a `|` in a label starts a new line. Check a figure by rendering its labelled versions in PowerPoint:
+labels run into each other easily, so prefer two short lines to one long one.
+
 ## Shading model (11 Nov 2026)
 
 All colour icons were moved to a second shading model, set in the kit: shadows mix towards a

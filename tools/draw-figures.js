@@ -14,6 +14,7 @@ const { PALETTE: C, INK, round: n } = K;
 
 const ROOT = path.join(__dirname, '..');
 const FONT = 'font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle"';
+const LINE_HEIGHT = 29;
 const escapeText = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 // An icon placed with its centre at (x, y), `size` px across, turned by `rotate` degrees.
@@ -22,7 +23,8 @@ const place = ({ x, y, size, rotate = 0 }, inner) =>
 
 // Each figure: canvas size; regions [x, y, width, height, corner radius, palette colour], the
 // tissues that steps happen inside; icons [icon id, x, y, size, rotate]; arrows
-// [[x0, y0], [x1, y1]]; and labels [text, x, y] (centred on x, with y the baseline).
+// [[x0, y0], [x1, y1]], or [[x0, y0], [cx, cy], [x1, y1]] to bend towards a control point; and
+// labels [text, x, y] (centred on x, with y the baseline of the first line; | starts a new line).
 const FIGURES = {
   'vaccine-response': {
     title: 'Immune response to a vaccine',
@@ -47,12 +49,36 @@ const FIGURES = {
       ['Memory B cell', 1080, 672], ['Plasma cell', 850, 672], ['Antibodies', 474, 680],
     ],
   },
+  't-cell-development': {
+    title: 'T-cell development in the thymus',
+    description: 'A haematopoietic stem cell from the bone marrow seeds the thymus, where early thymocytes rearrange their T-cell receptor genes by V(D)J recombination, ' +
+      'express a T-cell receptor and are tested by positive and negative selection; the survivors leave as naive CD4 and CD8 T cells for the lymph nodes and spleen.',
+    width: 1200, height: 640,
+    regions: [[262, 24, 918, 374, 70, 'thymus']],
+    icons: [
+      ['bone', 110, 118, 160], ['haematopoietic-stem-cell', 110, 400, 180],
+      ['t-cell', 372, 190, 140], ['vdj-recombination', 575, 190, 150], ['t-cell-receptor', 775, 190, 150], ['immune-synapse', 1010, 220, 200],
+      ['t-cell', 962, 512, 130], ['t-cell', 1072, 530, 118],
+      ['lymph-node', 700, 518, 150], ['spleen', 520, 518, 150],
+    ],
+    arrows: [
+      [[110, 240], [110, 300]], [[204, 372], [262, 300], [300, 222]],
+      [[450, 190], [492, 190]], [[658, 190], [698, 190]], [[854, 192], [902, 204]],
+      [[1010, 330], [1010, 432]], [[882, 518], [792, 518]],
+    ],
+    labels: [
+      ['Bone marrow', 110, 222], ['Haematopoietic|stem cell', 110, 516],
+      ['Early|thymocyte', 372, 294], ['V(D)J|recombination', 575, 294], ['T-cell|receptor', 775, 294], ['Positive and|negative selection', 1010, 66], ['Thymus', 344, 374],
+      ['Naive CD4 and CD8 T cells', 1016, 624], ['Lymph nodes and spleen', 610, 624],
+    ],
+  },
 };
 
 function draw(id, { title, description, width, height, regions = [], icons, arrows, labels }) {
-  const text = fill => labels.map(([label, x, y]) => `<text x="${x}" y="${y}" ${FONT} fill="${fill}">${escapeText(label)}</text>`).join('');
+  const text = fill => labels.map(([label, x, y]) => label.split('|').map((line, i) =>
+    `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} fill="${fill}">${escapeText(line)}</text>`).join('')).join('');
   const withLabels = (svg, fill) => svg.replace('</svg>', `${text(fill)}</svg>`);
-  const marks = arrows.map(([p, q]) => K.straightArrow(p, q, 22));
+  const marks = arrows.map(points => (points.length === 3 ? K.curvedArrow(...points, 22) : K.straightArrow(...points, 22)));
   const box = ([x, y, w, h, r]) => `x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}"`;
 
   // Full colour: each icon is drawn under its own id, so no two share a gradient.

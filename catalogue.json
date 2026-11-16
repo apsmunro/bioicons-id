@@ -1575,6 +1575,17 @@
       "labelledMonoFile": "figures/vaccine-response-mono-labelled.svg",
       "description": "A vaccine is taken up by a dendritic cell, which travels to a lymph node and activates a helper T cell; the T cell helps a B cell, which enters a germinal centre and gives rise to memory B cells and to plasma cells, which secrete antibodies. Available with or without labels.",
       "tags": ["figure", "diagram", "pathway", "vaccine", "vaccination", "immunisation", "immune response", "adaptive immunity", "dendritic cell", "lymph node", "T cell help", "germinal centre", "plasma cell", "memory B cell", "antibody", "humoral immunity"]
+    },
+    {
+      "id": "t-cell-development",
+      "name": "T-cell development in the thymus",
+      "category": "figures",
+      "file": "figures/t-cell-development.svg",
+      "monoFile": "figures/t-cell-development-mono.svg",
+      "labelledFile": "figures/t-cell-development-labelled.svg",
+      "labelledMonoFile": "figures/t-cell-development-mono-labelled.svg",
+      "description": "A haematopoietic stem cell from the bone marrow seeds the thymus, where early thymocytes rearrange their T-cell receptor genes by V(D)J recombination, express a T-cell receptor and are tested by positive and negative selection; the survivors leave as naive CD4 and CD8 T cells for the lymph nodes and spleen. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "T-cell development", "thymus", "thymocyte", "thymic selection", "positive selection", "negative selection", "central tolerance", "V(D)J recombination", "TCR", "haematopoietic stem cell", "bone marrow", "naive T cell", "CD4", "CD8", "SCID", "primary immunodeficiency", "22q11", "DiGeorge"]
     }
   ]
 }
