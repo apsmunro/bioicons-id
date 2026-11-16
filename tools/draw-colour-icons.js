@@ -5010,12 +5010,38 @@ function flowDotPlot(id) {
   };
 }
 
-// A histogram of one marker: an unstained (grey) and a stained (green) population.
-function flowHistogram(id) {
-  const [unstained, stained] = K.FLOW_HISTOGRAM.peaks, frame = plotFrame(), grey = C.silhouette, g = C.fluorGreen;
+// The pre-B-cell receptor: two mu heavy chains (blue), each paired with a surrogate light chain
+// of VpreB (teal) and lambda 5 (amber) in place of a light chain, beside CD79a and CD79b with
+// their ITAMs (yellow). It signals without antigen.
+function preBCellReceptor(id) {
+  const P = K.PRE_BCR, [top, bottom] = P.membrane, [hx, hy, s] = P.ig, chains = [C.cd79a, C.cd79b];
+  const deg = 48, angle = deg * Math.PI / 180;
+  // VpreB takes the place of the light chain's variable domain, at the tip of each arm.
+  const vPreB = [-1, 1].map(side => {
+    const u = [side * Math.sin(angle), -Math.cos(angle)], o = [side * Math.cos(angle), Math.sin(angle)], x = n(u[0] * 76 + o[0] * 13), y = n(u[1] * 76 + o[1] * 13);
+    return `<ellipse cx="${x}" cy="${y}" rx="12.5" ry="19" transform="rotate(${side * deg} ${x} ${y})" fill="url(#${id}-vpreb)" stroke="${outline(C.vPreB)}" stroke-width="4"/>`;
+  }).join('');
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.sphereGradient(`${id}-heavy`, C.heavyChain, { light: 0.5 }), K.sphereGradient(`${id}-light`, C.lambda5, { light: 0.5 }),
+      K.sphereGradient(`${id}-vpreb`, C.vPreB, { light: 0.5 }), K.sphereGradient(`${id}-cd79a`, C.cd79a, { light: 0.5 }), K.sphereGradient(`${id}-cd79b`, C.cd79b, { light: 0.5 })],
+    body: [
+      lipidBilayer(`${id}-lipid`, 24, 234, top, bottom),
+      ...P.igStalks.map(x => K.pipe(`M${x} ${P.igStalk[0]}V${P.igStalk[1]}`, C.heavyChain, 6)),
+      ...P.cd79.map(([x], i) => K.pipe(`M${x} ${P.cd79Stalk[0]}V${P.cd79Stalk[1]}`, chains[i], 6) +
+        `<rect x="${x - 5}" y="${P.itam - 4.5}" width="10" height="9" rx="3" fill="${C.phosphate}" stroke="${outline(C.phosphate)}" stroke-width="1.2"/>`),
+      `<g transform="translate(${hx} ${hy}) scale(${s})">${antibodyUnit(id, P.fc)}${vPreB}</g>`,
+      ...P.cd79.map(([x, y], i) => domainOf(id, [x, y, 11, 15], chains[i], i ? 'cd79b' : 'cd79a')),
+    ],
+  };
+}
+
+// A histogram of one marker: an unstained (grey) population and one or more stained (green)
+// ones. The same drawing gives the dihydrorhodamine test: normal, absent and carrier patterns.
+function flowHistogram(id, peaks = K.FLOW_HISTOGRAM.peaks) {
+  const [unstained, ...stained] = peaks, frame = plotFrame(), grey = C.silhouette, g = C.fluorGreen;
   const peak = (p, colour) => `<path d="${K.histogramPeak(p)}" fill="${tint(colour, 0.25)}" opacity="0.8" stroke="none"/>` +
     `<path d="${K.histogramPeak(p, false)}" fill="none" stroke="${K.deepen(colour, 0.35)}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
-  return { defs: [], body: [frame.panel, peak(unstained, grey), peak(stained, g), frame.axes] };
+  return { defs: [], body: [frame.panel, peak(unstained, grey), ...stained.map(p => peak(p, g)), frame.axes] };
 }
 
 // ------------------------------------------------------------------------
@@ -5203,7 +5229,10 @@ const DRAWINGS = {
   'stained-cell': stainedCell,
   'flow-cytometer': flowCytometer,
   'flow-dot-plot': flowDotPlot,
-  'flow-histogram': flowHistogram,
+  'flow-histogram': id => flowHistogram(id),
+  'pre-b-cell-receptor': preBCellReceptor,
+  'dhr-cgd': id => flowHistogram(id, K.FLOW_HISTOGRAM.cgd),
+  'dhr-carrier': id => flowHistogram(id, K.FLOW_HISTOGRAM.carrier),
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');

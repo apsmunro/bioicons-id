@@ -110,7 +110,7 @@ const FIGURES = {
     width: 1200, height: 760,
     regions: [[24, 24, 730, 356, 70, 'marrow'], [650, 396, 526, 330, 70, 'lymphNode']],
     icons: [
-      ['haematopoietic-stem-cell', 115, 160, 170], ['vdj-recombination', 335, 160, 150], ['btk', 580, 160, 150], ['b-cell', 940, 160, 140],
+      ['haematopoietic-stem-cell', 115, 160, 170], ['vdj-recombination', 335, 160, 150], ['pre-b-cell-receptor', 580, 160, 150], ['b-cell', 940, 160, 140],
       ['cd40-ligand', 1020, 530, 150], ['germinal-centre', 780, 530, 180], ['plasma-cell', 500, 540, 150],
       ['igg-antibody', 300, 500, 100, -15], ['iga-dimer', 170, 560, 120], ['igg-antibody', 310, 610, 96, 12],
     ],
@@ -119,7 +119,7 @@ const FIGURES = {
       [[938, 530], [878, 530]], [[684, 534], [584, 534]], [[418, 540], [372, 540]],
     ],
     labels: [
-      ['Bone marrow', 335, 64], ['Haematopoietic|stem cell', 115, 272], ['Pro-B cell:|V(D)J recombination', 335, 268], ['Pre-B cell:|receptor signalling', 580, 268],
+      ['Bone marrow', 335, 64], ['Haematopoietic|stem cell', 115, 272], ['Pro-B cell:|V(D)J recombination', 335, 268], ['Pre-B cell:|pre-B-cell receptor', 580, 268],
       ['Naive B cell', 940, 262], ['Lymph node', 756, 434], ['T-cell help', 1020, 632], ['Class switching in|germinal centre', 780, 644],
       ['Plasma cells and|memory B cells', 500, 644], ['IgG and IgA', 230, 700],
     ],
@@ -127,6 +127,24 @@ const FIGURES = {
     alerts: [
       ['BTK, IGHM, IGLL1,|CD79A, CD79B, BLNK', 580, 330], ['CD40LG, CD40', 1020, 666], ['AICDA, UNG', 780, 707],
       ['NFKB1, NFKB2,|CD19, TNFRSF13B', 500, 707],
+    ],
+  },
+  'dihydrorhodamine-test': {
+    title: 'The dihydrorhodamine test for chronic granulomatous disease',
+    description: 'Neutrophils are loaded with dihydrorhodamine and stimulated; the respiratory burst of the NADPH oxidase oxidises the dye to fluorescent rhodamine, which a flow cytometer measures. ' +
+      'Normal neutrophils all shift to bright fluorescence; in chronic granulomatous disease they do not shift; an X-linked carrier has two populations.',
+    width: 1200, height: 600,
+    icons: [
+      ['neutrophil', 100, 300, 150], ['nadph-oxidase', 340, 300, 160], ['flow-cytometer', 610, 300, 220],
+      ['flow-histogram', 920, 110, 150], ['dhr-cgd', 920, 300, 150], ['dhr-carrier', 920, 490, 150],
+    ],
+    arrows: [
+      [[184, 300], [250, 300]], [[430, 300], [498, 300]],
+      [[724, 262], [834, 138]], [[730, 300], [834, 300]], [[724, 338], [834, 462]],
+    ],
+    labels: [
+      ['Neutrophils', 100, 404], ['The respiratory burst|oxidises dihydrorhodamine', 340, 414], ['Flow cytometer', 610, 446],
+      ['Normal', 1100, 118], ['Chronic|granulomatous|disease', 1100, 279], ['X-linked|carrier', 1100, 484],
     ],
   },
   'innate-response-bacteria': {

@@ -53,7 +53,9 @@
     chips.replaceChildren(...[{ id: 'all', label: 'All' }, ...used].map(c => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.textContent = c.label;
+      const count = document.createElement('span');
+      count.textContent = c.id === 'all' ? lib.icons.length : lib.icons.filter(i => i.category === c.id).length;
+      b.append(c.label, count);
       b.setAttribute('aria-pressed', String(c.id === state.category));
       b.addEventListener('click', () => { state.category = c.id; renderChips(); renderGrid(); });
       return b;
@@ -61,8 +63,13 @@
   }
 
   function renderGrid() {
+    // With nothing filtered, the library is shown category by category, each under a heading.
+    const grouped = state.category === 'all' && !state.query, order = lib.categories.map(c => c.id);
     const shown = lib.icons.filter(matches);
-    grid.replaceChildren(...shown.map(icon => {
+    if (grouped) shown.sort((a, b) => order.indexOf(a.category) - order.indexOf(b.category));
+    state.shown = shown;
+    grid.classList.toggle('grouped', grouped);
+    grid.replaceChildren(...shown.flatMap((icon, i) => {
       const li = document.createElement('li');
       // Figures are wide, so their cards take two columns.
       if (icon.aspect > 1.2) li.className = 'wide';
@@ -75,7 +82,13 @@
       b.querySelector('.cat').textContent = categoryLabel[icon.category];
       b.addEventListener('click', () => openIcon(icon));
       li.append(b);
-      return li;
+      if (!grouped || (i && shown[i - 1].category === icon.category)) return [li];
+      const heading = document.createElement('li');
+      heading.className = 'group';
+      heading.innerHTML = '<h2></h2><span></span>';
+      heading.querySelector('h2').textContent = categoryLabel[icon.category];
+      heading.querySelector('span').textContent = shown.filter(other => other.category === icon.category).length;
+      return [heading, li];
     }));
     // Icons and figures are counted separately: "183 icons and 5 figures", or "12 of 183 icons…" when filtered.
     const tally = (isFigure, word) => {
@@ -193,8 +206,12 @@
     $('#detail-name').textContent = icon.name;
     $('#detail-desc').textContent = icon.description;
     $('#detail-tags').replaceChildren(...(icon.tags || []).map(t => {
-      const li = document.createElement('li');
-      li.textContent = t;
+      const li = document.createElement('li'), b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = t;
+      b.title = `Search for “${t}”`;
+      b.addEventListener('click', () => searchFor(t));
+      li.append(b);
       return li;
     }));
     renderTonePicker();
@@ -203,6 +220,25 @@
     history.replaceState(null, '', '#' + icon.id);
     if (!dialog.open) dialog.showModal();
   }
+
+  // A tag searches the whole library for itself.
+  function searchFor(text) {
+    dialog.close();
+    search.value = text;
+    state.query = text.trim().toLowerCase();
+    state.category = 'all';
+    renderChips();
+    renderGrid();
+    $('#browse').scrollIntoView();
+  }
+
+  // The previous or next icon among those shown.
+  function step(by) {
+    const list = state.shown || [], at = list.indexOf(state.current);
+    if (list.length) openIcon(list[(at + by + list.length) % list.length]);
+  }
+  $('#prev').addEventListener('click', () => step(-1));
+  $('#next').addEventListener('click', () => step(1));
 
   dialog.addEventListener('close', () => {
     state.current = null;
@@ -275,6 +311,7 @@
   search.addEventListener('input', () => { state.query = search.value.trim().toLowerCase(); renderGrid(); });
   document.addEventListener('keydown', e => {
     if (e.key === '/' && document.activeElement !== search && !dialog.open) { e.preventDefault(); search.focus(); }
+    if (dialog.open && (e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !/^(SELECT|INPUT)$/.test(document.activeElement.tagName)) step(e.key === 'ArrowLeft' ? -1 : 1);
   });
   $$('button[data-bg]').forEach(b => b.addEventListener('click', () => setBackground(b.dataset.bg)));
   $$('button[data-variant]').forEach(b => b.addEventListener('click', () => setVariant(b.dataset.variant)));
@@ -283,6 +320,29 @@
   const { name, licence, licenceUrl } = lib.library;
   $('#licence').innerHTML = `Free to use for any purpose, with no permission or credit needed ` +
     `(<a href="${licenceUrl}">${licence}</a>). A mention of “${name}” is always appreciated.`;
+
+  // The numbers under the title.
+  const figures = lib.icons.filter(i => i.category === 'figures').length;
+  $('#stats').replaceChildren(...[[lib.icons.length - figures, 'icons'], [figures, 'figures'], [lib.categories.length - 1, 'categories'], [2, 'styles each']].map(([value, label]) => {
+    const li = document.createElement('li');
+    li.innerHTML = '<strong></strong><span></span>';
+    li.querySelector('strong').textContent = value;
+    li.querySelector('span').textContent = label;
+    return li;
+  }));
+
+  // A few icons floating beside the title: [id, left, top, width (% of the showcase), tilt, delay].
+  const SHOWCASE = [['sars-cov-2', 30, 26, 40, 3, 0], ['neutrophil', 2, 8, 27, -4, -2], ['igg-antibody', 70, 4, 26, 5, -4], ['bacteriophage', 74, 44, 24, -3, -1],
+    ['staphylococcus', 4, 54, 25, 4, -5], ['t-cell', 52, 70, 24, -5, -3], ['vaccine', 27, 73, 21, 3, -6], ['macrophage', 40, 0, 22, -3, -2.5]];
+  $('#showcase').replaceChildren(...SHOWCASE.flatMap(([id, x, y, s, r, d]) => {
+    const icon = lib.icons.find(i => i.id === id);
+    if (!icon) return [];
+    const img = document.createElement('img');
+    img.alt = '';
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(icon.svg);
+    img.style.cssText = `--x:${x}%;--y:${y}%;--s:${s}%;--r:${r}deg;--d:${d}s`;
+    return [img];
+  }));
 
   setBackground(storage.get('icon-bg') || 'light');
   renderChips();

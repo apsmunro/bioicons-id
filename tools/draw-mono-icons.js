@@ -2412,7 +2412,7 @@ function perforinPore() {
 }
 
 // A solid antibody with its hinge at (hx, hy), scaled by s: the shape of the colour icons' unit.
-function antibodySolid(hx, hy, s) {
+function antibodySolid(hx, hy, s, fcDepths = [22, 60]) {
   const deg = 48, angle = deg * Math.PI / 180, out = [];
   for (const side of [-1, 1]) {
     const u = [side * Math.sin(angle), -Math.cos(angle)], o = [side * Math.cos(angle), Math.sin(angle)];
@@ -2421,7 +2421,7 @@ function antibodySolid(hx, hy, s) {
     out.push(`<path d="M${x0} ${y0}Q${n(hx + side * 8 * s)} ${hy} ${n(hx + side * 14 * s)} ${n(hy + 6 * s)}" ${line(n(6 * s))}/>`);
     out.push(...[at(36, -13), at(76, -13), at(36, 13), at(76, 13)].map(([x, y]) =>
       `<ellipse cx="${x}" cy="${y}" rx="${n(10 * s)}" ry="${n(16 * s)}" transform="rotate(${side * deg} ${x} ${y})" ${solid}/>`));
-    out.push(...[22, 60].map(d => `<ellipse cx="${n(hx + side * 14 * s)}" cy="${n(hy + d * s)}" rx="${n(10 * s)}" ry="${n(16 * s)}" ${solid}/>`));
+    out.push(...fcDepths.map(d => `<ellipse cx="${n(hx + side * 14 * s)}" cy="${n(hy + d * s)}" rx="${n(10 * s)}" ry="${n(16 * s)}" ${solid}/>`));
   }
   return out.join('');
 }
@@ -2479,9 +2479,19 @@ function flowDotPlot() {
   ];
 }
 
-function flowHistogram() {
-  const [unstained, stained] = K.FLOW_HISTOGRAM.peaks;
-  return [`<path d="${K.histogramPeak(unstained, false)}" ${line(6)}/>`, `<path d="${K.histogramPeak(stained)}" ${solid}/>`, plotAxes()];
+function preBCellReceptor() {
+  const P = K.PRE_BCR, [top, bottom] = P.membrane, [hx, hy, s] = P.ig;
+  return [
+    `<path d="M24 ${top}H232M24 ${bottom}H232" ${line(5)}/>`,
+    antibodySolid(hx, hy, s, P.fc),
+    `<path d="${P.igStalks.map(x => `M${x} ${P.igStalk[0] + 4}V${P.igStalk[1]}`).join('')}" ${line(5)}/>`,
+    ...P.cd79.map(([x, y]) => `<path d="M${x} ${y + 10}V${P.cd79Stalk[1]}" ${line(5)}/><ellipse cx="${x}" cy="${y}" rx="8.5" ry="12.5" ${solid}/><circle cx="${x}" cy="${P.itam}" r="6" ${solid}/>`),
+  ];
+}
+
+function flowHistogram(peaks = K.FLOW_HISTOGRAM.peaks) {
+  const [unstained, ...stained] = peaks;
+  return [`<path d="${K.histogramPeak(unstained, false)}" ${line(6)}/>`, ...stained.map(p => `<path d="${K.histogramPeak(p)}" ${solid}/>`), plotAxes()];
 }
 
 // ------------------------------------------------------------------------
@@ -2669,7 +2679,10 @@ const DRAWINGS = {
   'stained-cell': stainedCell,
   'flow-cytometer': flowCytometer,
   'flow-dot-plot': flowDotPlot,
-  'flow-histogram': flowHistogram,
+  'flow-histogram': () => flowHistogram(),
+  'pre-b-cell-receptor': preBCellReceptor,
+  'dhr-cgd': () => flowHistogram(K.FLOW_HISTOGRAM.cgd),
+  'dhr-carrier': () => flowHistogram(K.FLOW_HISTOGRAM.carrier),
 };
 
 // Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.

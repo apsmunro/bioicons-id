@@ -62,8 +62,8 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 
 ## Handover (16 Nov 2026): start here
 
-Everything is committed, merged into `main` and live. The library has 183 icons in 11 categories
-and 6 figures (batch 10 and the antibody deficiency figure, below, are the latest work). The sections below are in the
+Everything is committed, merged into `main` and live. The library has 186 icons in 11 categories
+and 7 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -118,6 +118,19 @@ B cell, then the lymph node (CD40 ligand, germinal centre), plasma cells and IgG
 has not reviewed the gene placements: BTK, IGHM, IGLL1, CD79A, CD79B and BLNK at the pre-B cell;
 CD40LG and CD40 at T-cell help; AICDA and UNG at class switching; NFKB1, NFKB2, CD19 and TNFRSF13B at
 the step to plasma and memory cells. Committed and pushed on "Commit and push", without comment.
+
+### Pre-B-cell receptor, dihydrorhodamine test and site redesign (16 Nov 2026)
+
+- Icons (186 in all): `pre-b-cell-receptor` (mu heavy chains with VpreB and lambda 5, CD79a/b; it replaces the
+  BTK icon at the pre-B step of `antibody-deficiency-blocks`), and `dhr-cgd` and `dhr-carrier`, which are
+  `flowHistogram` drawn with other peaks (`FLOW_HISTOGRAM.cgd` and `.carrier` in the kit).
+- Figure (7 in all): `dihydrorhodamine-test` (neutrophil, NADPH oxidase, flow cytometer, then the normal,
+  CGD and X-linked carrier histograms).
+- Site: a hero with numbers and a showcase of floating icons (`SHOWCASE` in `assets/app.js`), sticky
+  controls, category chips with counts, the whole library grouped under category headings when nothing
+  is filtered, previous/next in the detail view (also the arrow keys), tags that search, and a how-to
+  footer. Still static, with no external fonts or scripts. Committed and pushed on "Commit and push",
+  without comment on the drawings or the design.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

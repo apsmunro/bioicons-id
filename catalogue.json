@@ -1674,6 +1674,33 @@
       "tags": ["histogram", "flow cytometry", "FACS", "fluorescence intensity", "MFI", "positive", "negative", "unstained control", "DHR", "dihydrorhodamine", "neutrophil oxidative burst", "expression", "data", "graph", "laboratory"]
     },
     {
+      "id": "pre-b-cell-receptor",
+      "name": "Pre-B-cell receptor",
+      "category": "molecules",
+      "file": "icons/molecules/pre-b-cell-receptor.svg",
+      "monoFile": "icons/molecules/pre-b-cell-receptor-mono.svg",
+      "description": "The pre-B-cell receptor: two mu heavy chains (blue), each paired with a surrogate light chain of VpreB (teal) and lambda 5 (amber) in place of a light chain, beside CD79a and CD79b with their ITAMs (yellow). It signals without antigen and lets a pre-B cell go on developing; defects in its parts cause agammaglobulinaemia.",
+      "tags": ["pre-B-cell receptor", "pre-BCR", "pre-B cell", "surrogate light chain", "VpreB", "lambda 5", "IGLL1", "mu heavy chain", "IGHM", "CD79A", "CD79B", "Ig alpha", "Ig beta", "ITAM", "B-cell development", "agammaglobulinaemia", "agammaglobulinemia", "BTK", "XLA", "BLNK", "bone marrow", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "dhr-cgd",
+      "name": "DHR test: chronic granulomatous disease",
+      "category": "clinical",
+      "file": "icons/clinical/dhr-cgd.svg",
+      "monoFile": "icons/clinical/dhr-cgd-mono.svg",
+      "description": "A dihydrorhodamine test in chronic granulomatous disease: the stimulated neutrophils (green) barely shift from the unstimulated ones (grey), because they make no respiratory burst.",
+      "tags": ["DHR", "dihydrorhodamine", "dihydrorhodamine 123", "chronic granulomatous disease", "CGD", "neutrophil oxidative burst", "respiratory burst", "NADPH oxidase", "neutrophil function test", "histogram", "flow cytometry", "FACS", "abnormal", "absent burst", "primary immunodeficiency", "PID", "laboratory"]
+    },
+    {
+      "id": "dhr-carrier",
+      "name": "DHR test: X-linked carrier",
+      "category": "clinical",
+      "file": "icons/clinical/dhr-carrier.svg",
+      "monoFile": "icons/clinical/dhr-carrier-mono.svg",
+      "description": "A dihydrorhodamine test in a carrier of X-linked chronic granulomatous disease: two populations of stimulated neutrophils (green), one that shifts and one that does not, reflecting X-inactivation.",
+      "tags": ["DHR", "dihydrorhodamine", "dihydrorhodamine 123", "carrier", "X-linked carrier", "X-linked CGD", "chronic granulomatous disease", "CGD", "CYBB", "gp91phox", "X-inactivation", "lyonisation", "mosaic", "bimodal", "neutrophil oxidative burst", "respiratory burst", "histogram", "flow cytometry", "FACS", "laboratory"]
+    },
+    {
       "id": "vaccine-response",
       "name": "Immune response to a vaccine",
       "category": "figures",
@@ -1716,6 +1743,17 @@
       "labelledMonoFile": "figures/antibody-deficiency-blocks-mono-labelled.svg",
       "description": "B-cell development from the bone marrow to antibody secretion, with barred rings where inherited defects stop it: BTK and the parts of the pre-B-cell receptor (IGHM, IGLL1, CD79A, CD79B, BLNK) at the pre-B cell, causing agammaglobulinaemia; CD40LG and CD40 at T-cell help, and AICDA and UNG at class switching, causing hyper-IgM syndromes; and NFKB1, NFKB2, CD19 and TNFRSF13B at the step to plasma cells and memory B cells, as in common variable immunodeficiency. Available with or without labels.",
       "tags": ["figure", "diagram", "pathway", "antibody deficiency", "primary antibody deficiency", "PAD", "humoral immunodeficiency", "B-cell development", "agammaglobulinaemia", "agammaglobulinemia", "XLA", "X-linked agammaglobulinaemia", "BTK", "pre-B-cell receptor", "IGHM", "IGLL1", "CD79A", "CD79B", "BLNK", "hyper-IgM syndrome", "HIGM", "CD40LG", "CD40", "AICDA", "AID", "UNG", "class switch recombination", "CVID", "common variable immunodeficiency", "NFKB1", "NFKB2", "CD19", "TACI", "TNFRSF13B", "germinal centre", "plasma cell", "immunoglobulin replacement", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "dihydrorhodamine-test",
+      "name": "Dihydrorhodamine test for CGD",
+      "category": "figures",
+      "file": "figures/dihydrorhodamine-test.svg",
+      "monoFile": "figures/dihydrorhodamine-test-mono.svg",
+      "labelledFile": "figures/dihydrorhodamine-test-labelled.svg",
+      "labelledMonoFile": "figures/dihydrorhodamine-test-mono-labelled.svg",
+      "description": "Neutrophils are loaded with dihydrorhodamine and stimulated; the respiratory burst of the NADPH oxidase oxidises the dye to fluorescent rhodamine, which a flow cytometer measures. Normal neutrophils all shift to bright fluorescence; in chronic granulomatous disease they do not shift; an X-linked carrier has two populations. Available with or without labels.",
+      "tags": ["figure", "diagram", "workflow", "DHR", "dihydrorhodamine", "dihydrorhodamine 123", "rhodamine", "chronic granulomatous disease", "CGD", "X-linked carrier", "neutrophil oxidative burst", "respiratory burst", "NADPH oxidase", "neutrophil function test", "PMA", "flow cytometry", "FACS", "histogram", "diagnosis", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
     },
     {
       "id": "innate-response-bacteria",

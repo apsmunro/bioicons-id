@@ -306,6 +306,8 @@ const PALETTE = {
   il12: '#F2A541',
   ifnGamma: '#5B7FD6',
   perforin: '#6F9BE0',
+  vPreB: '#6CC2B8', // the surrogate light chain: VpreB and lambda 5
+  lambda5: '#F2A541',
   fluorGreen: '#4CC764', // fluorochromes, as they are usually drawn: green (FITC) and orange (PE)
   fluorOrange: '#F2853A',
   laser: '#3FA9F5', // the 488 nm blue laser
@@ -1795,6 +1797,13 @@ const PERFORIN = {
   granzymes: [[137, 73], [122, 84], [130, 110], [128, 142], [122, 208], [141, 224], [106, 226]],
 };
 
+// The pre-B-cell receptor: membrane mu heavy chains [x, y of the hinge, scale] with three constant
+// domains below the hinge (depths in `fc`), beside CD79a and CD79b [x, y of the domain].
+const PRE_BCR = {
+  membrane: [160, 186], ig: [100, 70, 0.74], fc: [22, 60, 98], igStalks: [90, 110], igStalk: [152, 204],
+  cd79: [[172, 134], [198, 134]], cd79Stalk: [148, 230], itam: 210,
+};
+
 // A fluorochrome-labelled antibody: the antibody [x, y of the hinge, scale] and the fluorochrome
 // [x, y, r] joined to its Fc.
 const FLUOR_ANTIBODY = { at: [108, 98, 0.92], fluor: [184, 192, 22], linker: 'M122 170Q148 172 166 182' };
@@ -1837,7 +1846,13 @@ function plotEvents([cx, cy, sx, sy, count], seed, [x0, y0, x1, y1] = FLOW_PLOT.
 }
 // Histogram: two peaks [centre, width, height], unstained (left) and stained (right), as
 // outlines along the baseline of the plot.
-const FLOW_HISTOGRAM = { peaks: [[98, 13, 150], [186, 15, 118]] };
+// `cgd` and `carrier` are the dihydrorhodamine test in chronic granulomatous disease (the stimulated
+// cells do not shift) and in an X-linked carrier (two populations).
+const FLOW_HISTOGRAM = {
+  peaks: [[98, 13, 150], [186, 15, 118]],
+  cgd: [[98, 13, 150], [116, 14, 112]],
+  carrier: [[98, 13, 150], [118, 13, 64], [190, 15, 64]],
+};
 function histogramPeak([c, s, h], closed = true, [x0, , x1, base] = FLOW_PLOT.box) {
   const pts = [];
   for (let x = Math.max(x0 + 4, c - 3.2 * s); x <= Math.min(x1 - 4, c + 3.2 * s); x += 2) pts.push([round(x), round(base - h * Math.exp(-((x - c) ** 2) / (2 * s * s)))]);
@@ -1895,5 +1910,5 @@ module.exports = {
   sachetPath, dropPath, TRANSMISSION, LIVER,
   framesAlong, EBOLA, HELICOBACTER, helicobacterCell, papillomaCapsomeres, EBV, STEM_CELL, renewalLoop, TCR, VDJ, ENTAMOEBA,
   NADPH_OXIDASE, BTK, CD40, IL12_AXIS, receptorPair, PERFORIN, FLUOR_ANTIBODY, starPoints, STAINED_CELL, FLOW_CYTOMETER,
-  FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
+  PRE_BCR, FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
 };

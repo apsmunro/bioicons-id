@@ -9,14 +9,31 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header class="site-header">
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Free to use · public domain · no credit needed</p>
+      <h1>ID &amp; Immunology <span>Icons</span></h1>
+      <p class="tagline">Scientific illustrations of pathogens, immune cells, molecules and treatments, drawn for slides, posters and papers. Every icon comes in full colour and in a single colour you choose.</p>
+      <ul id="stats" class="stats"></ul>
+      <div class="hero-actions">
+        <a class="button primary" href="#browse">Browse the library</a>
+        <a class="button" href="https://github.com/apsmunro/bioicons-id">View on GitHub</a>
+      </div>
+    </div>
+    <div id="showcase" class="showcase" aria-hidden="true"></div>
+  </div>
+</header>
+
+<div id="browse" class="controls">
   <div class="wrap">
-    <h1>ID &amp; Immunology Icons</h1>
-    <p class="tagline">Free illustrations of pathogens, immune cells and treatments for slides, posters and papers.</p>
     <div class="toolbar">
       <label class="search">
         <span class="visually-hidden">Search icons</span>
-        <input id="search" type="search" placeholder="Search, e.g. gram-negative, PMN, IV…" autocomplete="off">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+        <input id="search" type="search" placeholder="Search, e.g. gram-negative, PMN, CGD, flow cytometry…" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
       </label>
       <div class="segmented" role="group" aria-label="Icon style">
         <button type="button" data-variant="colour" aria-pressed="true">Full colour</button>
@@ -31,7 +48,7 @@
     <div class="ink" role="group" aria-label="Single-colour ink" hidden></div>
     <nav id="categories" class="chips" aria-label="Categories"></nav>
   </div>
-</header>
+</div>
 
 <main class="wrap">
   <p id="count" class="count" aria-live="polite"></p>
@@ -39,15 +56,25 @@
   <p id="empty" class="empty" hidden>No icons match that search.</p>
 </main>
 
-<footer class="wrap site-footer">
-  <p id="licence"></p>
-  <p><strong>In PowerPoint:</strong> download the SVG and drag it onto a slide, or use “Copy image” and paste.
-    Single-colour SVGs can be recoloured directly with <em>Graphics Fill</em>; to recolour parts of a
-    full-colour icon, right-click it and choose <em>Convert to Shape</em>.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <h2>Using the icons</h2>
+    <ul class="howto">
+      <li><strong>On a slide</strong><p>Download the SVG and drag it on to a slide, or use “Copy image” and paste. SVGs stay sharp at any size.</p></li>
+      <li><strong>Recolour</strong><p>Single-colour SVGs take any colour with <em>Graphics Fill</em>. To recolour parts of a full-colour icon, right-click it and choose <em>Convert to Shape</em>.</p></li>
+      <li><strong>Posters and print</strong><p>Use the SVG, or a 2048–4096 px PNG. Figures come with or without labels, so you can add your own.</p></li>
+    </ul>
+    <p id="licence"></p>
+    <p>Missing an organism, cell or drug? <a href="https://github.com/apsmunro/bioicons-id/issues">Ask for it on GitHub</a>.</p>
+  </div>
 </footer>
 
 <dialog id="detail" aria-labelledby="detail-name">
-  <form method="dialog" class="close-form"><button class="close" aria-label="Close">×</button></form>
+  <form method="dialog" class="dialog-nav">
+    <button type="button" id="prev" aria-label="Previous" title="Previous (←)">‹</button>
+    <button type="button" id="next" aria-label="Next" title="Next (→)">›</button>
+    <button class="close" aria-label="Close" title="Close (Esc)">×</button>
+  </form>
   <div class="detail">
     <div id="detail-preview" class="preview" data-bg="light"><img id="detail-img" alt=""></div>
     <div class="info">
