@@ -1876,6 +1876,31 @@ const BACTERIAL_CELL = {
   polysome: { y: 166, from: 60, to: 124, ribosomes: [72, 92, 112] },
   ribosomes: [[164, 90, 20], [54, 142, -15], [206, 132, 35], [172, 132, -10]],
   folate: [[152, 166], [174, 166], [196, 160]],
+  // The Gram-negative envelope, depths in from the outside: the outer membrane (its two leaflets),
+  // the thin peptidoglycan wall in the periplasm, and the inner membrane; porins at fractions of the
+  // way round the outer membrane. The contents are drawn smaller (scale) to fit inside.
+  gramNegative: { outer: [2.5, 7.5], wall: 14.75, inner: [19.5, 24], scale: 0.86, porins: [0.07, 0.24, 0.42, 0.56, 0.75, 0.9] },
+};
+// A point a fraction u of the way round a stadium (clockwise from its top-left corner), with the
+// direction (degrees) of the outward normal there.
+function onStadium(cx, cy, s, R, u) {
+  let d = u * (4 * s + 2 * Math.PI * R);
+  if (d < 2 * s) return [cx - s + d, cy - R, -90];
+  d -= 2 * s;
+  if (d < Math.PI * R) { const a = -Math.PI / 2 + d / R; return [cx + s + R * Math.cos(a), cy + R * Math.sin(a), a * 180 / Math.PI]; }
+  d -= Math.PI * R;
+  if (d < 2 * s) return [cx + s - d, cy + R, 90];
+  d -= 2 * s;
+  const a = Math.PI / 2 + d / R;
+  return [cx - s + R * Math.cos(a), cy + R * Math.sin(a), a * 180 / Math.PI];
+}
+
+// Porin loss: a Gram-negative outer membrane (heights of its two leaflets) with one porin letting
+// drug through and the outline of one that was lost, where drug bounces off; pills [x, y, tilt].
+const PORIN_LOSS = {
+  membrane: [112, 138], porin: 70, ghost: 182,
+  through: [[70, 66, 90], [70, 125, 90], [70, 190, 90]],
+  outside: [[134, 54, 40], [226, 48, -40]], bounce: [[148, 68], [182, 134], [214, 66]],
 };
 const stadiumPath = (cx, cy, s, r) => `M${round(cx - s)} ${round(cy - r)}H${round(cx + s)}A${round(r)} ${round(r)} 0 0 1 ${round(cx + s)} ${round(cy + r)}` +
   `H${round(cx - s)}A${round(r)} ${round(r)} 0 0 1 ${round(cx - s)} ${round(cy - r)}Z`;
@@ -1933,5 +1958,5 @@ module.exports = {
   sachetPath, dropPath, TRANSMISSION, LIVER,
   framesAlong, EBOLA, HELICOBACTER, helicobacterCell, papillomaCapsomeres, EBV, STEM_CELL, renewalLoop, TCR, VDJ, ENTAMOEBA,
   NADPH_OXIDASE, BTK, CD40, IL12_AXIS, receptorPair, PERFORIN, FLUOR_ANTIBODY, starPoints, STAINED_CELL, FLOW_CYTOMETER,
-  BACTERIAL_CELL, stadiumPath, nucleoidLoops, PRE_BCR, FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
+  BACTERIAL_CELL, stadiumPath, nucleoidLoops, onStadium, PORIN_LOSS, PRE_BCR, FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
 };

@@ -2515,6 +2515,29 @@ function bacterialCell() {
   ];
 }
 
+function gramNegativeCell() {
+  const B = K.BACTERIAL_CELL, G = B.gramNegative, [cx, cy] = B.centre, { half: s, r } = B;
+  const ring = R => K.stadiumPath(cx, cy, s, R);
+  const porin = u => { const [x, y, deg] = K.onStadium(cx, cy, s, r - 3, u); return `<rect x="-5.5" y="-6" width="11" height="12" rx="3" transform="translate(${n(x)} ${n(y)}) rotate(${n(deg + 90)})" ${solid}/>`; };
+  return [
+    `<path d="${ring(r - 3)}" ${line(5)}/>`, ...G.porins.map(porin),
+    `<path d="${ring(r - 13.5)}" ${line(3)}/>`,
+    `<path d="${ring(r - 21)}" ${line(4)}/>`,
+    `<g transform="translate(${cx} ${cy}) scale(${G.scale}) translate(${-cx} ${-cy})">${bacterialCell().slice(2).join('')}</g>`,
+  ];
+}
+
+function porinLoss() {
+  const P = K.PORIN_LOSS, [top, bottom] = P.membrane, x = P.porin, g = P.ghost;
+  return [
+    `<path d="M24 ${top}H${x - 20}M${x + 20} ${top}H232M24 ${bottom}H${x - 20}M${x + 20} ${bottom}H232" ${line(5)}/>`,
+    `<path d="M${x - 12} ${top - 10}V${bottom + 10}M${x + 12} ${top - 10}V${bottom + 10}" ${line(5)}/>`,
+    `<rect x="${g - 15}" y="${top - 12}" width="30" height="${bottom - top + 24}" rx="8" ${line(4)} stroke-dasharray="6 6"/>`,
+    arrowMark(K.curvedArrow(...P.bounce, 13)),
+    ...[...P.through, ...P.outside].map(([px, py, rot]) => pillShape(px, py, rot)),
+  ];
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -2705,6 +2728,8 @@ const DRAWINGS = {
   'dhr-cgd': () => flowHistogram(K.FLOW_HISTOGRAM.cgd),
   'dhr-carrier': () => flowHistogram(K.FLOW_HISTOGRAM.carrier),
   'bacterial-cell': bacterialCell,
+  'gram-negative-cell': gramNegativeCell,
+  'porin-loss': porinLoss,
 };
 
 // Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.

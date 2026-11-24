@@ -62,8 +62,8 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 
 ## Handover (16 Nov 2026): start here
 
-Everything is committed, merged into `main` and live. The library has 187 icons in 11 categories
-and 11 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
+Everything is committed, merged into `main` and live. The library has 189 icons in 11 categories
+and 12 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -152,6 +152,19 @@ labelled colour version was checked in PowerPoint.
   respiratory burst; in HLH, LYST and AP3B1 at granule formation, RAB27A with UNC13D, STX11 and STXBP2 at docking and fusion, and PRF1 on its own at the perforin step, which the author asked to stand out; the syndromes (FHL2 to 5, Griscelli 2, Chédiak–Higashi, Hermansky–Pudlak 2) sit in plain text under the genes, also at the author's request); the cell is a generic rod with no outer
   membrane, so polymyxins point at the cell membrane. Committed and pushed on "Commit and push"; the author asked for PRF1 to
   stand out and for the FHL numbers, and otherwise did not comment on the science.
+
+### Gram-negative cell and complement deficiency (24 Nov 2026)
+
+- Icons (189 in all): `gram-negative-cell` (LPS, outer membrane with porins, thin peptidoglycan in the
+  periplasm, inner membrane; the contents of `bacterial-cell` drawn at `gramNegative.scale` inside, taken
+  from that drawing so the two stay in step) and `porin-loss` (resistance: drug through a porin, bouncing
+  off where one was lost). `onStadium` in the kit places things round a stadium.
+- `antibiotic-targets` now uses the Gram-negative cell: polymyxins at the outer membrane; daptomycin and
+  glycopeptides marked "(Gram-positives)"; porin loss added as a fifth resistance mechanism.
+- Figure (12 in all): `complement-blocks` (the cascade icon with leaders to its three pathways, then C3b
+  and the membrane attack complex; genes in red, what each deficiency causes in plain text). Unreviewed:
+  MBL2/MASP2 as "infections in early childhood", CFH/CFI with C3, and eculizumab under C5 to C9. Committed and pushed
+  on "Commit and push", without comment on the science.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

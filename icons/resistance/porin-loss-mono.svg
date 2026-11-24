@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="porin-loss-mono-title">
+<title id="porin-loss-mono-title">Porin loss (single colour)</title>
+<desc>Resistance by reduced entry: an antibiotic passes into a Gram-negative bacterium through a porin in the outer membrane (left), but where a porin has been lost (dashed outline, right) it is kept out.</desc>
+<defs></defs>
+<path d="M24 112H50M90 112H232M24 138H50M90 138H232" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M58 102V148M82 102V148" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="167" y="100" width="30" height="50" rx="8" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6"/>
+<path d="M148 68Q182 134 210.68 73.06" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polygon points="214,66 214.93,80.81 202,74.72" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(70 66) rotate(90)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(70 125) rotate(90)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(70 190) rotate(90)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(134 54) rotate(40)" fill="#000000"/>
+<rect x="-11" y="-5" width="22" height="10" rx="5" transform="translate(226 48) rotate(-40)" fill="#000000"/>
+</svg>

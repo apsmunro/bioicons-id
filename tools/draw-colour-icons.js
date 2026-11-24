@@ -5080,6 +5080,58 @@ function bacterialCell(id) {
   };
 }
 
+// A Gram-negative bacterium cut open: lipopolysaccharide (green) on the outer membrane, porins (blue
+// barrels) through it, the thin peptidoglycan wall in the pink periplasm, and the inner membrane;
+// inside, the same contents as the cell above, drawn a little smaller.
+function gramNegativeCell(id) {
+  const B = K.BACTERIAL_CELL, G = B.gramNegative, [cx, cy] = B.centre, { half: s, r } = B, neg = C.gramNegative, por = C.porin;
+  const ring = R => K.stadiumPath(cx, cy, s, R);
+  const inner = bacterialCell(id), start = inner.body.findIndex(p => p.includes(`stroke="${C.nucleus}"`));
+  const heads = d => `<path d="${ring(r - d)}" fill="none" stroke="${C.lipidHead}" stroke-width="3.4" stroke-dasharray="0 5" stroke-linecap="round"/>`;
+  const bilayer = ([a, b]) => `<path d="${ring(r - (a + b) / 2)}" fill="none" stroke="${C.lipidTail}" stroke-width="3.5" opacity="0.6"/>` + heads(a) + heads(b);
+  const porin = u => {
+    const [x, y, deg] = K.onStadium(cx, cy, s, r - (G.outer[0] + G.outer[1]) / 2, u);
+    return `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(deg + 90)})"><rect x="-6" y="-7.5" width="12" height="15" rx="4" fill="url(#${id}-porin)" stroke="${outline(por)}" stroke-width="1.4"/>` +
+      `<rect x="-2" y="-6" width="4" height="12" rx="2" fill="${tint(por, 0.6)}"/></g>`;
+  };
+  return {
+    defs: [...inner.defs, K.cylinderGradient(`${id}-porin`, por, { horizontal: true })],
+    body: [
+      // Lipopolysaccharide: short sugar chains standing out from the outer membrane.
+      `<path d="${ring(r + 1.8)}" fill="none" stroke="${C.glycan}" stroke-width="3.6" stroke-dasharray="1.2 4.2"/>`,
+      `<path d="${ring(r)}" fill="${tint(neg, 0.72)}" stroke="${outline(neg)}" stroke-width="1.6"/>`,
+      // The thin peptidoglycan wall, its cross-links as ticks.
+      `<path d="${ring(r - G.wall)}" fill="none" stroke="${neg}" stroke-width="3.5"/>`,
+      `<path d="${ring(r - G.wall)}" fill="none" stroke="${K.deepen(neg, 0.35)}" stroke-width="3.5" stroke-dasharray="1.2 4" opacity="0.6"/>`,
+      `<path d="${ring(r - (G.inner[0] + G.inner[1]) / 2)}" fill="url(#${id}-cyto)"/>`,
+      bilayer(G.outer), bilayer(G.inner),
+      ...G.porins.map(porin),
+      K.sheen(`${id}-sheen`, 74, 96, 16, 6, -10),
+      `<g transform="translate(${cx} ${cy}) scale(${G.scale}) translate(${-cx} ${-cy})">${inner.body.slice(start).join('')}</g>`,
+    ],
+  };
+}
+
+// Porin loss: drug passes through a porin in the outer membrane (left), but where a porin has been
+// lost (its outline, right) it bounces off.
+function porinLoss(id) {
+  const P = K.PORIN_LOSS, [top, bottom] = P.membrane, por = C.porin, x = P.porin, g = P.ghost;
+  const barrel = (bx, attrs) => `<rect x="${bx - 15}" y="${top - 10}" width="30" height="${bottom - top + 20}" rx="8" ${attrs}/>`;
+  return {
+    defs: [K.sphereGradient(`${id}-lipid`, C.lipidHead), K.cylinderGradient(`${id}-porin`, por, { horizontal: true }), ...pillGradients(id)],
+    body: [
+      // The periplasm, below the outer membrane.
+      `<path d="M16 ${bottom}H240V224Q240 232 232 232H24Q16 232 16 224Z" fill="${tint(C.gramNegative, 0.78)}"/>`,
+      lipidBilayer(`${id}-lipid`, 24, x - 20, top, bottom), lipidBilayer(`${id}-lipid`, x + 20, 234, top, bottom),
+      barrel(x, `fill="url(#${id}-porin)" stroke="${outline(por)}" stroke-width="2"`),
+      `<rect x="${x - 7}" y="${top - 6}" width="14" height="${bottom - top + 12}" rx="5" fill="${tint(por, 0.65)}"/>`,
+      barrel(g, `fill="none" stroke="${outline(por)}" stroke-width="2.5" stroke-dasharray="5 4"`),
+      arrowMark(K.curvedArrow(...P.bounce, 13)),
+      ...[...P.through, ...P.outside].map(([px, py, rot]) => pill(id, px, py, rot)),
+    ],
+  };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -5270,6 +5322,8 @@ const DRAWINGS = {
   'dhr-cgd': id => flowHistogram(id, K.FLOW_HISTOGRAM.cgd),
   'dhr-carrier': id => flowHistogram(id, K.FLOW_HISTOGRAM.carrier),
   'bacterial-cell': bacterialCell,
+  'gram-negative-cell': gramNegativeCell,
+  'porin-loss': porinLoss,
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');

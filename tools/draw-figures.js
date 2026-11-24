@@ -30,7 +30,11 @@ const place = ({ x, y, size, rotate = 0 }, inner) =>
 // them, such as gene names: set in red italics, so they still stand apart in single colour.
 // A point on an icon placed at [x, y, size], given in the icon's own 256 px coordinates.
 const onIcon = ([x, y, size], [u, v]) => [n(x + (u - 128) * size / 256), n(y + (v - 128) * size / 256)];
-const CELL = [440, 380, 440], BC = K.BACTERIAL_CELL, membraneDepth = BC.centre[1] - BC.r + (BC.membrane[0] + BC.membrane[1]) / 2;
+// The antibiotic figure uses the Gram-negative cell, whose contents are drawn smaller (inCell), and whose
+// envelope layers lie at depths in from the top of the cell (envelope).
+const CELL = [440, 380, 440], BC = K.BACTERIAL_CELL, GN = BC.gramNegative;
+const inCell = ([u, v]) => [128 + GN.scale * (u - 128), 128 + GN.scale * (v - 128)];
+const envelope = (u, depth) => [u, BC.centre[1] - BC.r + depth];
 
 // leaders: thin lines from a label to the part it names, ending in a dot; drawn with the labels.
 const FIGURES = {
@@ -171,29 +175,50 @@ const FIGURES = {
   },
   'antibiotic-targets': {
     title: 'Antibiotic targets and resistance',
-    description: 'Where the main classes of antibiotic act on a bacterial cell: the cell wall (beta-lactams, glycopeptides), the cell membrane (polymyxins, daptomycin), DNA replication (quinolones), ' +
-      'protein synthesis on the ribosome (aminoglycosides, macrolides, tetracyclines) and folate synthesis (trimethoprim, sulfonamides); and four ways bacteria resist: enzymes that break the drug down, ' +
-      'efflux pumps, an altered target, and resistance genes passed between bacteria on plasmids.',
+    description: 'Where the main classes of antibiotic act on a Gram-negative bacterial cell: the outer membrane (polymyxins), the cell wall (beta-lactams; glycopeptides in Gram-positives), ' +
+      'the cell membrane (daptomycin, in Gram-positives), DNA replication (quinolones), protein synthesis on the ribosome (aminoglycosides, macrolides, tetracyclines) and folate synthesis ' +
+      '(trimethoprim, sulfonamides); and five ways bacteria resist: enzymes that break the drug down, efflux pumps, an altered target, fewer porins, and resistance genes passed on plasmids.',
     width: 1400, height: 700,
     regions: [[1000, 40, 376, 640, 50, 'mhAgar']],
     icons: [
-      ['bacterial-cell', ...CELL],
-      ['beta-lactamase', 1094, 210, 140], ['efflux-pump', 1282, 210, 140], ['mrsa', 1094, 470, 140], ['plasmid-transfer', 1282, 470, 140],
+      ['gram-negative-cell', ...CELL],
+      ['beta-lactamase', 1094, 175, 110], ['efflux-pump', 1282, 175, 110], ['mrsa', 1094, 365, 110], ['porin-loss', 1282, 365, 110], ['plasmid-transfer', 1188, 555, 110],
     ],
     arrows: [],
     labels: [
       ['Where antibiotics act', 440, 70], ['How bacteria resist', 1188, 92],
-      ['Cell membrane:|polymyxins,|daptomycin', 130, 160], ['DNA replication:|quinolones', 130, 345], ['Protein synthesis:|aminoglycosides,|macrolides,|tetracyclines', 130, 480],
-      ['Cell wall:|beta-lactams,|glycopeptides', 820, 160], ['Plasmid:|resistance genes', 820, 330], ['Folate synthesis:|trimethoprim,|sulfonamides', 820, 480],
-      ['Enzymes break|down the drug', 1094, 305], ['Pumps push|the drug out', 1282, 305], ['The target|changes', 1094, 565], ['Genes spread|on plasmids', 1282, 565],
+      ['Cell membrane:|daptomycin|(Gram-positives)', 130, 150], ['DNA replication:|quinolones', 130, 345], ['Protein synthesis:|aminoglycosides,|macrolides,|tetracyclines', 130, 480],
+      ['Outer membrane:|polymyxins', 820, 112], ['Cell wall:|beta-lactams,|glycopeptides|(Gram-positives)', 820, 205], ['Plasmid:|resistance genes', 820, 382], ['Folate synthesis:|trimethoprim,|sulfonamides', 820, 490],
+      ['Enzymes break|down the drug', 1094, 255], ['Pumps push|the drug out', 1282, 255], ['The target|changes', 1094, 445], ['Fewer porins|let less in', 1282, 445], ['Genes spread|on plasmids', 1188, 635],
     ],
     leaders: [
-      [[236, 152], onIcon(CELL, [92, membraneDepth])],
-      [[236, 352], onIcon(CELL, BC.dna(Math.PI))],
-      [[244, 474], onIcon(CELL, [BC.polysome.ribosomes[0], BC.polysome.y - 4])],
-      [[712, 152], onIcon(CELL, [164, BC.centre[1] - BC.r + BC.wall / 2])],
-      [[706, 322], onIcon(CELL, [BC.plasmid[0] + BC.plasmid[2], BC.plasmid[1]])],
-      [[704, 472], onIcon(CELL, BC.folate[2])],
+      [[236, 150], onIcon(CELL, envelope(92, (GN.inner[0] + GN.inner[1]) / 2))],
+      [[236, 352], onIcon(CELL, inCell(BC.dna(Math.PI)))],
+      [[244, 474], onIcon(CELL, inCell([BC.polysome.ribosomes[0], BC.polysome.y - 4]))],
+      [[716, 105], onIcon(CELL, envelope(150, (GN.outer[0] + GN.outer[1]) / 2))],
+      [[716, 235], onIcon(CELL, envelope(164, GN.wall))],
+      [[706, 377], onIcon(CELL, inCell([BC.plasmid[0] + BC.plasmid[2], BC.plasmid[1]]))],
+      [[704, 482], onIcon(CELL, inCell(BC.folate[2]))],
+    ],
+  },
+  'complement-blocks': {
+    title: 'Where complement deficiencies block the pathway',
+    description: 'The classical, lectin and alternative pathways converge on C3; C3b coats bacteria for phagocytosis, and C5 to C9 form the membrane attack complex. Barred rings mark where inherited ' +
+      'deficiencies stop each step, with what they cause: C1Q, C1R, C1S, C4 and C2 (lupus-like disease, encapsulated bacteria); MBL2 and MASP2 (infections in early childhood); CFB, CFD and CFP ' +
+      '(meningococcal disease); C3, CFH and CFI (severe pyogenic infections); and C5 to C9 (recurrent meningococcal disease, as also seen with eculizumab).',
+    width: 1320, height: 700,
+    icons: [['complement-cascade', 360, 250, 320], ['c3b-opsonisation', 880, 260, 210], ['complement-mac', 1170, 260, 210]],
+    arrows: [[[534, 214], [766, 250]], [[990, 260], [1062, 260]]],
+    labels: [
+      ['Classical pathway', 140, 470], ['Lectin pathway', 380, 470], ['Alternative pathway', 630, 470], ['C3b coats|the bacteria', 880, 470], ['Membrane attack|complex', 1170, 470],
+      // What each deficiency causes, in plain text under its genes.
+      ['Lupus-like disease;|encapsulated bacteria', 140, 604], ['Infections in|early childhood', 380, 604], ['Meningococcal|disease', 630, 604],
+      ['Severe pyogenic|infections', 880, 604], ['Recurrent|meningococcal disease|(also eculizumab)', 1170, 604],
+    ],
+    leaders: [[[140, 446], onIcon([360, 250, 320], [56, 150])], [[380, 446], onIcon([360, 250, 320], [128, 176])], [[630, 446], onIcon([360, 250, 320], [200, 167])]],
+    blocks: [[265, 462], [490, 462], [767, 462], [970, 462], [1287, 462]],
+    alerts: [
+      ['C1Q, C1R, C1S,|C4, C2', 140, 536], ['MBL2, MASP2', 380, 536], ['CFB, CFD, CFP', 630, 536], ['C3, CFH, CFI', 880, 536], ['C5, C6, C7,|C8, C9', 1170, 536],
     ],
   },
   'msmd-blocks': {
