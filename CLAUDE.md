@@ -62,8 +62,8 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 
 ## Handover (16 Nov 2026): start here
 
-Everything is committed, merged into `main` and live. The library has 186 icons in 11 categories
-and 8 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
+Everything is committed, merged into `main` and live. The library has 187 icons in 11 categories
+and 11 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -83,7 +83,6 @@ Waiting on the author:
   ADA sits at the early thymocyte, and MHC class II deficiency and ZAP-70 sit at selection.
 
 Offered and not yet taken up:
-- More figures: antibiotic targets and resistance (needs a new cutaway bacterial cell).
 - Clinical signs: rashes on a torso in four skin tones.
 - Reshading the opaque clinical equipment; a see-through treatment for the glass test, incubator
   hood and culture plates.
@@ -137,6 +136,22 @@ An eighth figure, `vertical-infection-routes`, chosen on the author's "you choos
 placenta, during birth, after birth through breast milk), each a stage icon and its organisms. Rubella, Zika and
 listeria are left out; rubella and Zika have no icon. Committed and pushed on "Commit and push", without comment; only the
 labelled colour version was checked in PowerPoint.
+
+### Antibiotic targets and two immunodeficiency figures (24 Nov 2026)
+
+- Icon (187 in all): `bacterial-cell`, a rod cut open (wall with peptidoglycan ticks, membrane bilayer, the
+  chromosome as one strand coiled into loops, plasmid, ribosomes and a polysome, three folate steps).
+  Geometry in `BACTERIAL_CELL` (kit, batch 11 section), with `stadiumPath` and `nucleoidLoops`.
+- Figures (11 in all): `antibiotic-targets` (the cell with drug classes at their targets, and four resistance
+  icons in a box), `msmd-blocks` (the IL-12 / interferon-γ loop with gene defects) and `hlh-blocks`
+  (granule movement and fusion with gene defects, then what happens when killing fails).
+- Figures can now have `leaders`: thin lines from a label to the part it names, ending in a dot. They are
+  drawn with the labels, so they vanish from the unlabelled versions. `onIcon` in the figure script turns
+  an icon's own 256 px coordinates into figure coordinates.
+- Unreviewed choices: the gene placements in both figures (IRF8 and IKBKG at IL-12 production, CYBB at the
+  respiratory burst; in HLH, LYST and AP3B1 at granule formation, RAB27A with UNC13D, STX11 and STXBP2 at docking and fusion, and PRF1 on its own at the perforin step, which the author asked to stand out; the syndromes (FHL2 to 5, Griscelli 2, Chédiak–Higashi, Hermansky–Pudlak 2) sit in plain text under the genes, also at the author's request); the cell is a generic rod with no outer
+  membrane, so polymyxins point at the cell membrane. Committed and pushed on "Commit and push"; the author asked for PRF1 to
+  stand out and for the FHL numbers, and otherwise did not comment on the science.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close
 review of the pictures. Show every change as a PowerPoint-rendered picture before asking to

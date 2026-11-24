@@ -28,6 +28,11 @@ const place = ({ x, y, size, rotate = 0 }, inner) =>
 // labels [text, x, y] (centred on x, with y the baseline of the first line; | starts a new line).
 // blocks [x, y] mark where a pathway is interrupted (a barred ring), and alerts are labels for
 // them, such as gene names: set in red italics, so they still stand apart in single colour.
+// A point on an icon placed at [x, y, size], given in the icon's own 256 px coordinates.
+const onIcon = ([x, y, size], [u, v]) => [n(x + (u - 128) * size / 256), n(y + (v - 128) * size / 256)];
+const CELL = [440, 380, 440], BC = K.BACTERIAL_CELL, membraneDepth = BC.centre[1] - BC.r + (BC.membrane[0] + BC.membrane[1]) / 2;
+
+// leaders: thin lines from a label to the part it names, ending in a dot; drawn with the labels.
 const FIGURES = {
   'vaccine-response': {
     title: 'Immune response to a vaccine',
@@ -164,6 +169,83 @@ const FIGURES = {
       ['After birth:|breast milk', 130, 693], ['HIV', 430, 675], ['Cytomegalovirus', 620, 675],
     ],
   },
+  'antibiotic-targets': {
+    title: 'Antibiotic targets and resistance',
+    description: 'Where the main classes of antibiotic act on a bacterial cell: the cell wall (beta-lactams, glycopeptides), the cell membrane (polymyxins, daptomycin), DNA replication (quinolones), ' +
+      'protein synthesis on the ribosome (aminoglycosides, macrolides, tetracyclines) and folate synthesis (trimethoprim, sulfonamides); and four ways bacteria resist: enzymes that break the drug down, ' +
+      'efflux pumps, an altered target, and resistance genes passed between bacteria on plasmids.',
+    width: 1400, height: 700,
+    regions: [[1000, 40, 376, 640, 50, 'mhAgar']],
+    icons: [
+      ['bacterial-cell', ...CELL],
+      ['beta-lactamase', 1094, 210, 140], ['efflux-pump', 1282, 210, 140], ['mrsa', 1094, 470, 140], ['plasmid-transfer', 1282, 470, 140],
+    ],
+    arrows: [],
+    labels: [
+      ['Where antibiotics act', 440, 70], ['How bacteria resist', 1188, 92],
+      ['Cell membrane:|polymyxins,|daptomycin', 130, 160], ['DNA replication:|quinolones', 130, 345], ['Protein synthesis:|aminoglycosides,|macrolides,|tetracyclines', 130, 480],
+      ['Cell wall:|beta-lactams,|glycopeptides', 820, 160], ['Plasmid:|resistance genes', 820, 330], ['Folate synthesis:|trimethoprim,|sulfonamides', 820, 480],
+      ['Enzymes break|down the drug', 1094, 305], ['Pumps push|the drug out', 1282, 305], ['The target|changes', 1094, 565], ['Genes spread|on plasmids', 1282, 565],
+    ],
+    leaders: [
+      [[236, 152], onIcon(CELL, [92, membraneDepth])],
+      [[236, 352], onIcon(CELL, BC.dna(Math.PI))],
+      [[244, 474], onIcon(CELL, [BC.polysome.ribosomes[0], BC.polysome.y - 4])],
+      [[712, 152], onIcon(CELL, [164, BC.centre[1] - BC.r + BC.wall / 2])],
+      [[706, 322], onIcon(CELL, [BC.plasmid[0] + BC.plasmid[2], BC.plasmid[1]])],
+      [[704, 472], onIcon(CELL, BC.folate[2])],
+    ],
+  },
+  'msmd-blocks': {
+    title: 'Where defects in the IL-12 / interferon-gamma axis cause MSMD',
+    description: 'The loop between macrophages and T cells or NK cells that controls mycobacteria, marked where inherited defects cause Mendelian susceptibility to mycobacterial disease: ' +
+      'IL12B, IKBKG (NEMO) and IRF8 in making IL-12; IL12RB1 and TYK2 at the IL-12 receptor; IFNG and ISG15 in making interferon gamma; IFNGR1, IFNGR2 and JAK1 at the interferon-gamma receptor; ' +
+      'STAT1 in activating the macrophage; and CYBB in the respiratory burst that kills the mycobacteria.',
+    width: 1200, height: 750,
+    icons: [
+      ['mycobacterium-tuberculosis', 120, 150, 140], ['macrophage', 400, 150, 160], ['cytokine-receptor', 680, 150, 150], ['t-cell', 960, 150, 150],
+      ['cytokine-receptor', 960, 520, 150], ['macrophage', 680, 520, 160], ['nadph-oxidase', 400, 520, 150],
+    ],
+    arrows: [
+      [[198, 150], [312, 150]], [[486, 150], [596, 150]], [[762, 150], [876, 150]], [[960, 342], [960, 436]],
+      [[876, 520], [766, 520]], [[592, 520], [484, 520]],
+    ],
+    labels: [
+      ['Mycobacteria', 120, 252], ['Macrophage|makes IL-12', 400, 255], ['IL-12|receptor', 680, 255], ['T cell or NK cell|makes interferon-γ', 960, 255],
+      ['Interferon-γ|receptor', 960, 625], ['Macrophage is|activated', 680, 625], ['Respiratory burst|kills mycobacteria', 400, 625],
+    ],
+    blocks: [[478, 80], [752, 82], [1036, 82], [1036, 452], [760, 450], [476, 452]],
+    alerts: [
+      ['IL12B, IKBKG,|IRF8', 400, 322], ['IL12RB1,|TYK2', 680, 322], ['IFNG, ISG15', 960, 322],
+      ['IFNGR1, IFNGR2,|JAK1', 960, 692], ['STAT1', 680, 692], ['CYBB', 400, 692],
+    ],
+  },
+  'hlh-blocks': {
+    title: 'Where defects in cytotoxic killing cause familial HLH',
+    description: 'An NK cell or cytotoxic T cell kills an EBV-infected cell: its granules form and move to the synapse, dock and fuse there, and release perforin, which makes pores in the target. ' +
+      'Inherited defects stop each step: LYST and AP3B1 in forming and moving the granules; RAB27A, UNC13D, STX11 and STXBP2 in docking and fusion; and PRF1, perforin itself. ' +
+      'When killing fails, the killer cells stay activated, interferon gamma activates macrophages, and macrophages engulf blood cells: haemophagocytic lymphohistiocytosis.',
+    width: 1200, height: 770,
+    regions: [[24, 452, 836, 300, 60, 'complement']],
+    icons: [
+      ['ebv-b-cell', 120, 150, 150], ['nk-cell', 400, 150, 150], ['immune-synapse', 680, 150, 160], ['perforin', 960, 150, 150],
+      ['cd8-killing', 1050, 580, 150], ['t-cell', 720, 590, 140], ['macrophage', 450, 590, 150], ['red-blood-cells', 170, 590, 140],
+    ],
+    arrows: [
+      [[198, 150], [318, 150]], [[478, 150], [592, 150]], [[766, 150], [876, 150]],
+      [[1000, 386], [1036, 494]], [[934, 386], [934, 590], [804, 590]],
+      [[648, 590], [532, 590]], [[370, 590], [250, 590]],
+    ],
+    labels: [
+      ['EBV-infected|B cell', 120, 255], ['NK cell or T cell:|granules form', 400, 255], ['Granules dock|and fuse', 680, 262], ['Perforin|makes pores', 960, 255],
+      // The syndromes, in plain text under the genes that cause them.
+      ['Chédiak–Higashi,|Hermansky–Pudlak 2', 400, 358], ['FHL3, FHL4, FHL5;|Griscelli 2', 680, 395], ['FHL2', 960, 358],
+      ['Infected cell|dies', 1050, 682], ['When killing fails', 440, 492],
+      ['T cells and NK cells|stay activated', 720, 690], ['Interferon-γ|activates macrophages', 450, 690], ['Macrophages engulf|blood cells', 170, 690],
+    ],
+    blocks: [[478, 80], [765, 80], [1040, 82]],
+    alerts: [['LYST, AP3B1', 400, 322], ['RAB27A, UNC13D,|STX11, STXBP2', 680, 330], ['PRF1', 960, 322]],
+  },
   'innate-response-bacteria': {
     title: 'Innate immune response to bacterial infection',
     description: 'Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. ' +
@@ -208,14 +290,17 @@ const FIGURES = {
   },
 };
 
-function draw(id, { title, description, width, height, regions = [], icons, arrows, labels, blocks = [], alerts = [] }) {
+function draw(id, { title, description, width, height, regions = [], icons, arrows, labels, blocks = [], alerts = [], leaders = [] }) {
   const lines = (list, attrs) => list.map(([label, x, y]) => label.split('|').map((line, i) =>
     `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} ${attrs}>${escapeText(line)}</text>`).join('')).join('');
   const text = (fill, alertFill) => lines(labels, `fill="${fill}"`) + lines(alerts, `font-style="italic" fill="${alertFill}"`);
   // A barred ring: the pathway stops here.
   const block = ([x, y], stroke) => `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="${stroke}" stroke-width="6"/>` +
     `<path d="M${x - 10.6} ${y - 10.6}L${x + 10.6} ${y + 10.6}" stroke="${stroke}" stroke-width="6"/>`;
-  const withLabels = (svg, fill, alertFill) => svg.replace('</svg>', `${text(fill, alertFill)}</svg>`);
+  // Leaders: a thin line from a label to the part it names, ending in a dot (ringed in white in colour).
+  const leaderMarks = (fill, halo) => leaders.map(([[x0, y0], [x1, y1]]) => `<path d="M${x0} ${y0}L${x1} ${y1}" stroke="${fill}" stroke-width="2.5" stroke-linecap="round"/>` +
+    (halo ? `<circle cx="${x1}" cy="${y1}" r="7" fill="${halo}"/>` : '') + `<circle cx="${x1}" cy="${y1}" r="5" fill="${fill}"/>`).join('');
+  const withLabels = (svg, fill, alertFill, halo) => svg.replace('</svg>', `${leaderMarks(fill, halo)}${text(fill, alertFill)}</svg>`);
   const marks = arrows.map(points => (points.length === 3 ? K.curvedArrow(...points, 22) : K.straightArrow(...points, 22)));
   const box = ([x, y, w, h, r]) => `x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}"`;
 
@@ -232,7 +317,7 @@ function draw(id, { title, description, width, height, regions = [], icons, arro
   blocks.forEach(b => body.push(block(b, ALERT)));
   const full = colour.finish(id, K.svgDocument({ id, title, description, defs, body, width, height }));
   K.writeIcon(ROOT, `figures/${id}.svg`, full);
-  K.writeIcon(ROOT, `figures/${id}-labelled.svg`, withLabels(full, C.arrow, ALERT));
+  K.writeIcon(ROOT, `figures/${id}-labelled.svg`, withLabels(full, C.arrow, ALERT, '#ffffff'));
 
   // Single colour.
   const marksAndIcons = regions.map(region => `<rect ${box(region)} fill="none" stroke="${INK}" stroke-width="5"/>`);

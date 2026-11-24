@@ -2494,6 +2494,27 @@ function flowHistogram(peaks = K.FLOW_HISTOGRAM.peaks) {
   return [`<path d="${K.histogramPeak(unstained, false)}" ${line(6)}/>`, ...stained.map(p => `<path d="${K.histogramPeak(p)}" ${solid}/>`), plotAxes()];
 }
 
+// ----------------------------------------------------------------- batch 11
+
+function bacterialCell() {
+  const B = K.BACTERIAL_CELL, [cx, cy] = B.centre, { half: s, r } = B, [px, py, pr] = B.plasmid;
+  const ring = R => K.stadiumPath(cx, cy, s, R);
+  const [p, q] = [[px + pr * Math.cos(-2.2), py + pr * Math.sin(-2.2)], [px + pr * Math.cos(-0.6), py + pr * Math.sin(-0.6)]];
+  const { y: my, from, to, ribosomes } = B.polysome;
+  const mrna = K.smoothOpenPath(Array.from({ length: 17 }, (_, i) => [from + i * (to - from) / 16, my + 2.5 * Math.sin(i * 1.1)]));
+  const ribosome = ([x, y, rot = 0]) => `<g transform="translate(${x} ${y})${rot ? ` rotate(${rot})` : ''}"><ellipse cx="0" cy="-2" rx="7" ry="5.5" ${solid}/><ellipse cx="0" cy="5" rx="5.5" ry="3.5" ${solid}/></g>`;
+  return [
+    `<path d="${ring(r - 5)}" ${line(LINE)}/>`,
+    `<path d="${ring(r - 17)}" ${line(4)}/>`,
+    ...K.nucleoidLoops().map(d => `<path d="${d}" ${line(3.5)}/>`),
+    `<circle cx="${px}" cy="${py}" r="${pr}" ${line(4)}/><path d="M${n(p[0])} ${n(p[1])}A${pr} ${pr} 0 0 1 ${n(q[0])} ${n(q[1])}" ${line(8)}/>`,
+    `<path d="${mrna}" ${line(3)}/>`,
+    ...ribosomes.map(x => ribosome([x, my - 1.5])), ...B.ribosomes.map(ribosome),
+    `<path d="M${B.folate.map(pt => pt.join(' ')).join('L')}" ${line(3)}/>`,
+    ...B.folate.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5.5" ${solid}/>`),
+  ];
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -2683,6 +2704,7 @@ const DRAWINGS = {
   'pre-b-cell-receptor': preBCellReceptor,
   'dhr-cgd': () => flowHistogram(K.FLOW_HISTOGRAM.cgd),
   'dhr-carrier': () => flowHistogram(K.FLOW_HISTOGRAM.carrier),
+  'bacterial-cell': bacterialCell,
 };
 
 // Other scripts (the figures) reuse the drawings; the icons are only written when this file is run.

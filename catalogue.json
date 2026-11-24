@@ -1701,6 +1701,15 @@
       "tags": ["DHR", "dihydrorhodamine", "dihydrorhodamine 123", "carrier", "X-linked carrier", "X-linked CGD", "chronic granulomatous disease", "CGD", "CYBB", "gp91phox", "X-inactivation", "lyonisation", "mosaic", "bimodal", "neutrophil oxidative burst", "respiratory burst", "histogram", "flow cytometry", "FACS", "laboratory"]
     },
     {
+      "id": "bacterial-cell",
+      "name": "Bacterial cell (cutaway)",
+      "category": "bacteria",
+      "file": "icons/bacteria/bacterial-cell.svg",
+      "monoFile": "icons/bacteria/bacterial-cell-mono.svg",
+      "description": "A rod-shaped bacterium cut open: the cell wall (violet, with peptidoglycan cross-links), the cell membrane, the nucleoid (purple DNA), a plasmid, ribosomes (blue; some on mRNA) and the steps of folate synthesis (green). Made to show where antibiotics act.",
+      "tags": ["bacterial cell", "bacterium", "cutaway", "cross-section", "cell structure", "bacterial anatomy", "cell wall", "peptidoglycan", "cell membrane", "cytoplasmic membrane", "nucleoid", "chromosome", "DNA", "plasmid", "ribosome", "70S", "polysome", "mRNA", "folate synthesis", "antibiotic targets", "mechanism of action", "prokaryote"]
+    },
+    {
       "id": "vaccine-response",
       "name": "Immune response to a vaccine",
       "category": "figures",
@@ -1765,6 +1774,39 @@
       "labelledMonoFile": "figures/vertical-infection-routes-mono-labelled.svg",
       "description": "When and how infections pass from mother to child. Before birth, across the placenta: cytomegalovirus, toxoplasma, syphilis and parvovirus B19. During birth, from the birth canal and blood: group B streptococcus, herpes simplex virus, HIV and hepatitis B. After birth, through breast milk: HIV and cytomegalovirus. Available with or without labels.",
       "tags": ["figure", "diagram", "vertical transmission", "mother-to-child transmission", "MTCT", "perinatal infection", "congenital infection", "TORCH", "transplacental", "in utero", "intrapartum", "postnatal", "breast milk", "breastfeeding", "placenta", "cytomegalovirus", "CMV", "cCMV", "toxoplasmosis", "congenital syphilis", "parvovirus B19", "group B streptococcus", "GBS", "herpes simplex", "HSV", "neonatal herpes", "HIV", "hepatitis B", "HBV", "newborn", "neonate", "pregnancy"]
+    },
+    {
+      "id": "antibiotic-targets",
+      "name": "Antibiotic targets and resistance",
+      "category": "figures",
+      "file": "figures/antibiotic-targets.svg",
+      "monoFile": "figures/antibiotic-targets-mono.svg",
+      "labelledFile": "figures/antibiotic-targets-labelled.svg",
+      "labelledMonoFile": "figures/antibiotic-targets-mono-labelled.svg",
+      "description": "Where the main classes of antibiotic act on a bacterial cell: the cell wall (beta-lactams, glycopeptides), the cell membrane (polymyxins, daptomycin), DNA replication (quinolones), protein synthesis on the ribosome (aminoglycosides, macrolides, tetracyclines) and folate synthesis (trimethoprim, sulfonamides); and four ways bacteria resist: enzymes that break the drug down, efflux pumps, an altered target, and resistance genes passed between bacteria on plasmids. Available with or without labels.",
+      "tags": ["figure", "diagram", "antibiotics", "antibiotic targets", "mechanism of action", "antimicrobial resistance", "AMR", "beta-lactam", "penicillin", "cephalosporin", "carbapenem", "glycopeptide", "vancomycin", "teicoplanin", "polymyxin", "colistin", "daptomycin", "quinolone", "fluoroquinolone", "ciprofloxacin", "DNA gyrase", "aminoglycoside", "gentamicin", "macrolide", "azithromycin", "tetracycline", "doxycycline", "trimethoprim", "sulfonamide", "co-trimoxazole", "folate", "ribosome", "cell wall", "beta-lactamase", "efflux pump", "MRSA", "PBP2a", "plasmid", "horizontal gene transfer", "stewardship"]
+    },
+    {
+      "id": "msmd-blocks",
+      "name": "Where IL-12 / interferon-gamma defects cause MSMD",
+      "category": "figures",
+      "file": "figures/msmd-blocks.svg",
+      "monoFile": "figures/msmd-blocks-mono.svg",
+      "labelledFile": "figures/msmd-blocks-labelled.svg",
+      "labelledMonoFile": "figures/msmd-blocks-mono-labelled.svg",
+      "description": "The loop between macrophages and T cells or NK cells that controls mycobacteria, with barred rings where inherited defects cause Mendelian susceptibility to mycobacterial disease: IL12B, IKBKG (NEMO) and IRF8 in making IL-12; IL12RB1 and TYK2 at the IL-12 receptor; IFNG and ISG15 in making interferon gamma; IFNGR1, IFNGR2 and JAK1 at the interferon-gamma receptor; STAT1 in activating the macrophage; and CYBB in the respiratory burst. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "MSMD", "Mendelian susceptibility to mycobacterial disease", "IL-12", "interleukin 12", "interferon gamma", "IFN-gamma", "IL12B", "IL12RB1", "TYK2", "IFNG", "ISG15", "IFNGR1", "IFNGR2", "JAK1", "STAT1", "IRF8", "IKBKG", "NEMO", "CYBB", "mycobacteria", "BCG", "BCGosis", "non-tuberculous mycobacteria", "NTM", "salmonella", "macrophage activation", "interferon-gamma therapy", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
+    },
+    {
+      "id": "hlh-blocks",
+      "name": "Where cytotoxic killing defects cause familial HLH",
+      "category": "figures",
+      "file": "figures/hlh-blocks.svg",
+      "monoFile": "figures/hlh-blocks-mono.svg",
+      "labelledFile": "figures/hlh-blocks-labelled.svg",
+      "labelledMonoFile": "figures/hlh-blocks-mono-labelled.svg",
+      "description": "An NK cell or cytotoxic T cell kills an EBV-infected cell: its granules form and move to the synapse, dock and fuse there, and release perforin, which makes pores in the target. Barred rings mark where inherited defects stop each step: LYST and AP3B1 in forming and moving the granules (Chédiak–Higashi syndrome, Hermansky–Pudlak syndrome type 2); RAB27A, UNC13D, STX11 and STXBP2 in docking and fusion (Griscelli syndrome type 2, FHL3, FHL4, FHL5); and PRF1, perforin itself (FHL2). When killing fails, killer cells stay activated, interferon gamma activates macrophages, and macrophages engulf blood cells. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "HLH", "FHL2", "FHL3", "FHL4", "FHL5", "perforin deficiency", "haemophagocytic lymphohistiocytosis", "hemophagocytic", "familial HLH", "FHL", "primary HLH", "haemophagocytosis", "perforin", "PRF1", "UNC13D", "Munc13-4", "STX11", "syntaxin 11", "STXBP2", "Munc18-2", "RAB27A", "Griscelli syndrome", "LYST", "Chediak-Higashi syndrome", "AP3B1", "Hermansky-Pudlak syndrome", "cytotoxic granule", "degranulation", "NK cell", "cytotoxic T cell", "EBV", "Epstein-Barr virus", "interferon gamma", "cytokine storm", "macrophage activation", "emapalumab", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
     },
     {
       "id": "innate-response-bacteria",

@@ -308,6 +308,10 @@ const PALETTE = {
   perforin: '#6F9BE0',
   vPreB: '#6CC2B8', // the surrogate light chain: VpreB and lambda 5
   lambda5: '#F2A541',
+  cellWall: '#A98BE0',
+  cytoplasm: '#F4EEFA',
+  ribosomeLarge: '#4FA3C7',
+  ribosomeSmall: '#9ED2EA',
   fluorGreen: '#4CC764', // fluorochromes, as they are usually drawn: green (FITC) and orange (PE)
   fluorOrange: '#F2853A',
   laser: '#3FA9F5', // the 488 nm blue laser
@@ -1859,6 +1863,25 @@ function histogramPeak([c, s, h], closed = true, [x0, , x1, base] = FLOW_PLOT.bo
   return `M${pts[0][0]} ${base}L${pts.map(p => p.join(' ')).join('L')}L${pts[pts.length - 1][0]} ${base}${closed ? 'Z' : ''}`;
 }
 
+// ----------------------------------------------------------------- batch 11
+// A rod-shaped bacterium cut open: a stadium (half the straight length, radius) whose wall and
+// membrane (depths in from the outside) enclose the nucleoid (the chromosome coiled into loops;
+// dna gives a point on it at each angle t), a plasmid [x, y, r], a polysome (ribosomes on mRNA at height y)
+// and free ribosomes [x, y, tilt], and three steps of folate synthesis [x, y].
+const BACTERIAL_CELL = {
+  centre: [128, 128], half: 44, r: 68, wall: 9, membrane: [11.5, 16],
+  nucleoid: [114, 116],
+  dna: t => [114 + 24 * Math.cos(t) + 9 * Math.cos(8 * t), 116 + 0.72 * (24 * Math.sin(t) + 9 * Math.sin(8 * t))],
+  plasmid: [190, 104, 11],
+  polysome: { y: 166, from: 60, to: 124, ribosomes: [72, 92, 112] },
+  ribosomes: [[164, 90, 20], [54, 142, -15], [206, 132, 35], [172, 132, -10]],
+  folate: [[152, 166], [174, 166], [196, 160]],
+};
+const stadiumPath = (cx, cy, s, r) => `M${round(cx - s)} ${round(cy - r)}H${round(cx + s)}A${round(r)} ${round(r)} 0 0 1 ${round(cx + s)} ${round(cy + r)}` +
+  `H${round(cx - s)}A${round(r)} ${round(r)} 0 0 1 ${round(cx - s)} ${round(cy - r)}Z`;
+// The nucleoid: the chromosome as one closed strand coiled into loops.
+const nucleoidLoops = ({ dna } = BACTERIAL_CELL) => [smoothClosedPath(Array.from({ length: 240 }, (_, i) => dna(i / 240 * 2 * Math.PI)))];
+
 // Deterministic pseudo-random numbers (mulberry32), so regenerated icons are identical.
 function rng(seed) {
   let a = seed >>> 0;
@@ -1910,5 +1933,5 @@ module.exports = {
   sachetPath, dropPath, TRANSMISSION, LIVER,
   framesAlong, EBOLA, HELICOBACTER, helicobacterCell, papillomaCapsomeres, EBV, STEM_CELL, renewalLoop, TCR, VDJ, ENTAMOEBA,
   NADPH_OXIDASE, BTK, CD40, IL12_AXIS, receptorPair, PERFORIN, FLUOR_ANTIBODY, starPoints, STAINED_CELL, FLOW_CYTOMETER,
-  PRE_BCR, FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
+  BACTERIAL_CELL, stadiumPath, nucleoidLoops, PRE_BCR, FLOW_PLOT, FLOW_DOT_PLOT, plotEvents, FLOW_HISTOGRAM, histogramPeak, apart, inEllipse,
 };

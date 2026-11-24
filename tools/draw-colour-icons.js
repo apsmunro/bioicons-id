@@ -5044,6 +5044,42 @@ function flowHistogram(id, peaks = K.FLOW_HISTOGRAM.peaks) {
   return { defs: [], body: [frame.panel, peak(unstained, grey), ...stained.map(p => peak(p, g)), frame.axes] };
 }
 
+// ----------------------------------------------------------------- batch 11
+
+// A bacterium cut open to show where antibiotics act: the cell wall (violet, its peptidoglycan
+// cross-links as ticks), the cell membrane (a bilayer of lipid heads), the nucleoid (purple DNA),
+// a plasmid, ribosomes (blue; some on mRNA as a polysome) and the steps of folate synthesis (green).
+function bacterialCell(id) {
+  const B = K.BACTERIAL_CELL, [cx, cy] = B.centre, { half: s, r } = B, wall = C.cellWall;
+  const ring = R => K.stadiumPath(cx, cy, s, R);
+  const ribosome = ([x, y, rot = 0]) => `<g transform="translate(${x} ${y})${rot ? ` rotate(${rot})` : ''}">` +
+    `<ellipse cx="0" cy="-2" rx="7" ry="5.5" fill="url(#${id}-large)" stroke="${outline(C.ribosomeLarge)}" stroke-width="1.2"/>` +
+    `<ellipse cx="0" cy="5" rx="5.5" ry="3.5" fill="url(#${id}-small)" stroke="${outline(C.ribosomeSmall)}" stroke-width="1.2"/></g>`;
+  const { y: my, from, to, ribosomes } = B.polysome;
+  const mrna = K.smoothOpenPath(Array.from({ length: 17 }, (_, i) => [from + i * (to - from) / 16, my + 2.5 * Math.sin(i * 1.1)]));
+  return {
+    defs: [K.cylinderGradient(`${id}-wall`, wall), K.formGradient(`${id}-cyto`, C.cytoplasm, { light: 0.5, dark: 0.1 }),
+      K.sphereGradient(`${id}-large`, C.ribosomeLarge), K.sphereGradient(`${id}-small`, C.ribosomeSmall), K.sphereGradient(`${id}-folate`, C.glycan),
+      K.glossGradient(`${id}-sheen`, 0.5)],
+    body: [
+      `<path d="${ring(r)}" fill="url(#${id}-wall)" stroke="${outline(wall)}" stroke-width="${STROKE}"/>`,
+      // Peptidoglycan: cross-links across the wall.
+      `<path d="${ring(r - B.wall / 2)}" fill="none" stroke="${K.deepen(wall, 0.3)}" stroke-width="${B.wall - 3}" stroke-dasharray="1.4 4.6" opacity="0.55"/>`,
+      `<path d="${ring(r - B.wall)}" fill="url(#${id}-cyto)" stroke="${outline(wall)}" stroke-width="1.4"/>`,
+      // The cell membrane: a bilayer of lipid heads just inside the wall.
+      `<path d="${ring(r - (B.membrane[0] + B.membrane[1]) / 2)}" fill="none" stroke="${C.lipidTail}" stroke-width="3.5" opacity="0.6"/>`,
+      ...B.membrane.map(d => `<path d="${ring(r - d)}" fill="none" stroke="${C.lipidHead}" stroke-width="3.4" stroke-dasharray="0 5" stroke-linecap="round"/>`),
+      K.sheen(`${id}-sheen`, 70, 90, 18, 7, -10),
+      ...K.nucleoidLoops().map(d => `<path d="${d}" fill="none" stroke="${C.nucleus}" stroke-width="2.8" stroke-linejoin="round"/>`),
+      plasmid(...B.plasmid, C.attachmentProtein, C.spike),
+      `<path d="${mrna}" fill="none" stroke="${C.mrna}" stroke-width="2.2" stroke-linecap="round"/>`,
+      ...ribosomes.map(x => ribosome([x, my - 1.5])), ...B.ribosomes.map(ribosome),
+      `<path d="M${B.folate.map(p => p.join(' ')).join('L')}" fill="none" stroke="${K.deepen(C.glycan, 0.3)}" stroke-width="2"/>`,
+      ...B.folate.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${5 + i * 0.6}" fill="url(#${id}-folate)" stroke="${outline(C.glycan)}" stroke-width="1.3"/>`),
+    ],
+  };
+}
+
 // ------------------------------------------------------------------------
 
 const DRAWINGS = {
@@ -5233,6 +5269,7 @@ const DRAWINGS = {
   'pre-b-cell-receptor': preBCellReceptor,
   'dhr-cgd': id => flowHistogram(id, K.FLOW_HISTOGRAM.cgd),
   'dhr-carrier': id => flowHistogram(id, K.FLOW_HISTOGRAM.carrier),
+  'bacterial-cell': bacterialCell,
 };
 
 const { convertSafe, remaining, softCuts } = require('./convert-safe');
