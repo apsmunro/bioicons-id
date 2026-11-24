@@ -63,7 +63,7 @@ The brain and heart are built from the author's own Inkscape drawings in `tools/
 ## Handover (16 Nov 2026): start here
 
 Everything is committed, merged into `main` and live. The library has 189 icons in 11 categories
-and 12 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
+and 14 figures (the sections from batch 10 onwards, below, are the latest work). The sections below are in the
 order the work was done, so the counts in "Status" are older than this.
 
 Done since batch 8, newest first:
@@ -164,6 +164,16 @@ labelled colour version was checked in PowerPoint.
 - Figure (12 in all): `complement-blocks` (the cascade icon with leaders to its three pathways, then C3b
   and the membrane attack complex; genes in red, what each deficiency causes in plain text). Unreviewed:
   MBL2/MASP2 as "infections in early childhood", CFH/CFI with C3, and eculizumab under C5 to C9. Committed and pushed
+  on "Commit and push", without comment on the science.
+
+### Neonatal sepsis and meningitis (24 Nov 2026)
+
+- Figures (14 in all): `neonatal-sepsis` (early onset from the mother: GBS, E. coli, Listeria; late onset from
+  lines and the unit, with the incubator as the preterm baby: staphylococci, Gram-negatives, Candida) and
+  `meningitis-pathogenesis` (droplets and carriage, bloodstream, meninges, neutrophils in CSF, lumbar puncture;
+  then the usual causes in newborns and in older children). Both use existing icons only.
+- Figure labels can now set words in italics with `*text*` (for species names); no existing label changed.
+- The gallery was checked in the browser for everything from the antibiotic figure onwards. Committed and pushed
   on "Commit and push", without comment on the science.
 
 How the author works: short go-aheads ("Crack on!", "Commit and push", "You choose"), and close

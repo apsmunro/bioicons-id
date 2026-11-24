@@ -271,6 +271,44 @@ const FIGURES = {
     blocks: [[478, 80], [765, 80], [1040, 82]],
     alerts: [['LYST, AP3B1', 400, 322], ['RAB27A, UNC13D,|STX11, STXBP2', 680, 330], ['PRF1', 960, 322]],
   },
+  'neonatal-sepsis': {
+    title: 'Neonatal sepsis by age of onset',
+    description: 'Early-onset sepsis, in the first 72 hours, comes from the mother around birth: usually group B streptococcus, Escherichia coli or Listeria monocytogenes. ' +
+      'Late-onset sepsis, after 72 hours, is linked to central lines, devices and the neonatal unit, especially in preterm babies: usually coagulase-negative staphylococci or Staphylococcus aureus, ' +
+      'Gram-negative bacilli such as Klebsiella and E. coli, or Candida.',
+    width: 1200, height: 780,
+    regions: [[24, 20, 1152, 360, 60, 'lymph'], [24, 400, 1152, 360, 60, 'cartilage']],
+    icons: [
+      ['pregnant-person', 130, 190, 160], ['newborn', 370, 190, 150], ['streptococcus', 640, 190, 130], ['escherichia-coli', 860, 190, 130], ['listeria', 1070, 190, 130],
+      ['picc-line', 130, 570, 150], ['incubator', 370, 570, 160], ['staphylococcus', 640, 570, 130], ['klebsiella', 860, 570, 130], ['candida', 1070, 570, 130],
+    ],
+    arrows: [[[215, 190], [292, 190]], [[212, 570], [292, 570]]],
+    labels: [
+      ['Early onset (first 72 hours): from the mother around birth', 600, 64], ['Late onset (after 72 hours): from lines, devices and the neonatal unit', 600, 444],
+      ['Mother: birth|canal and blood', 130, 300], ['Newborn', 370, 300], ['Group B|streptococcus', 640, 300], ['*Escherichia coli*', 860, 300], ['*Listeria*|*monocytogenes*', 1070, 300],
+      ['Central lines|and devices', 130, 680], ['Preterm baby|in an incubator', 370, 680], ['Staphylococci|(CoNS, *S. aureus*)', 640, 680], ['Gram-negatives:|*Klebsiella*, *E. coli*', 860, 680], ['*Candida*', 1070, 680],
+    ],
+  },
+  'meningitis-pathogenesis': {
+    title: 'How bacterial meningitis develops',
+    description: 'Bacteria spread in droplets and are carried in the nose and throat; some invade the bloodstream, cross into the meninges, and draw neutrophils into the cerebrospinal fluid, ' +
+      'which a lumbar puncture samples. The usual causes differ with age: group B streptococcus, Escherichia coli and Listeria in newborns; meningococcus, pneumococcus and Haemophilus influenzae type b in older babies and children.',
+    width: 1200, height: 720,
+    regions: [[24, 400, 560, 300, 50, 'lymph'], [616, 400, 560, 300, 50, 'cartilage']],
+    icons: [
+      ['droplet-transmission', 110, 170, 170], ['red-blood-cells', 340, 170, 140], ['meninges', 580, 170, 170], ['neutrophil', 820, 170, 140], ['lumbar-puncture', 1070, 170, 160],
+      ['streptococcus', 120, 545, 115], ['escherichia-coli', 304, 545, 115], ['listeria', 488, 545, 115],
+      ['meningococcus', 712, 545, 115], ['pneumococcus', 896, 545, 115], ['haemophilus', 1080, 545, 115],
+    ],
+    arrows: [[[192, 170], [258, 170]], [[422, 170], [498, 170]], [[662, 170], [738, 170]], [[902, 170], [988, 170]]],
+    labels: [
+      ['Spread in droplets;|carried in the nose', 110, 290], ['Invades the|bloodstream', 340, 290], ['Crosses into|the meninges', 580, 290],
+      ['Neutrophils flood|the CSF', 820, 290], ['Lumbar puncture|confirms it', 1070, 290],
+      ['In newborns', 304, 442], ['In older babies and children', 896, 442],
+      ['Group B|streptococcus', 120, 640], ['*E. coli*', 304, 640], ['*Listeria*', 488, 640],
+      ['Meningococcus', 712, 640], ['Pneumococcus', 896, 640], ['*H. influenzae*|type b', 1080, 640],
+    ],
+  },
   'innate-response-bacteria': {
     title: 'Innate immune response to bacterial infection',
     description: 'Bacteria entering a tissue set off two arms of innate immunity. Macrophages recognise them through Toll-like receptors and release cytokines and chemokines, which bring neutrophils out of the blood. ' +
@@ -316,8 +354,10 @@ const FIGURES = {
 };
 
 function draw(id, { title, description, width, height, regions = [], icons, arrows, labels, blocks = [], alerts = [], leaders = [] }) {
+  // In a label, | starts a new line and *text* is set in italics (for the names of species).
+  const italics = s => s.replace(/\*([^*]+)\*/g, '<tspan font-style="italic">$1</tspan>');
   const lines = (list, attrs) => list.map(([label, x, y]) => label.split('|').map((line, i) =>
-    `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} ${attrs}>${escapeText(line)}</text>`).join('')).join('');
+    `<text x="${x}" y="${y + i * LINE_HEIGHT}" ${FONT} ${attrs}>${italics(escapeText(line))}</text>`).join('')).join('');
   const text = (fill, alertFill) => lines(labels, `fill="${fill}"`) + lines(alerts, `font-style="italic" fill="${alertFill}"`);
   // A barred ring: the pathway stops here.
   const block = ([x, y], stroke) => `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="${stroke}" stroke-width="6"/>` +

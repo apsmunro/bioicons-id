@@ -1838,6 +1838,28 @@
       "tags": ["figure", "diagram", "pathway", "complement", "complement deficiency", "classical pathway", "lectin pathway", "alternative pathway", "C1q", "C1r", "C1s", "C2", "C4", "C3", "C5", "C6", "C7", "C8", "C9", "terminal complement", "membrane attack complex", "MAC", "MBL", "mannose-binding lectin", "MASP2", "factor B", "factor D", "properdin", "factor H", "factor I", "SLE", "lupus", "meningococcus", "Neisseria", "pneumococcus", "encapsulated bacteria", "CH50", "AH50", "eculizumab", "opsonisation", "primary immunodeficiency", "PID", "inborn errors of immunity", "IEI"]
     },
     {
+      "id": "neonatal-sepsis",
+      "name": "Neonatal sepsis by age of onset",
+      "category": "figures",
+      "file": "figures/neonatal-sepsis.svg",
+      "monoFile": "figures/neonatal-sepsis-mono.svg",
+      "labelledFile": "figures/neonatal-sepsis-labelled.svg",
+      "labelledMonoFile": "figures/neonatal-sepsis-mono-labelled.svg",
+      "description": "Early-onset sepsis, in the first 72 hours, comes from the mother around birth: usually group B streptococcus, Escherichia coli or Listeria monocytogenes. Late-onset sepsis, after 72 hours, is linked to central lines, devices and the neonatal unit, especially in preterm babies: usually coagulase-negative staphylococci or Staphylococcus aureus, Gram-negative bacilli such as Klebsiella and E. coli, or Candida. Available with or without labels.",
+      "tags": ["figure", "diagram", "neonatal sepsis", "sepsis", "newborn", "neonate", "NICU", "neonatal unit", "early-onset sepsis", "EOS", "late-onset sepsis", "LOS", "group B streptococcus", "GBS", "Streptococcus agalactiae", "E. coli", "Escherichia coli", "Listeria", "coagulase-negative staphylococci", "CoNS", "Staphylococcus aureus", "Klebsiella", "Gram-negative", "Candida", "central line", "CLABSI", "PICC", "preterm", "prematurity", "intrapartum antibiotic prophylaxis", "vertical transmission"]
+    },
+    {
+      "id": "meningitis-pathogenesis",
+      "name": "How bacterial meningitis develops",
+      "category": "figures",
+      "file": "figures/meningitis-pathogenesis.svg",
+      "monoFile": "figures/meningitis-pathogenesis-mono.svg",
+      "labelledFile": "figures/meningitis-pathogenesis-labelled.svg",
+      "labelledMonoFile": "figures/meningitis-pathogenesis-mono-labelled.svg",
+      "description": "Bacteria spread in droplets and are carried in the nose and throat; some invade the bloodstream, cross into the meninges, and draw neutrophils into the cerebrospinal fluid, which a lumbar puncture samples. The usual causes differ with age: group B streptococcus, Escherichia coli and Listeria in newborns; meningococcus, pneumococcus and Haemophilus influenzae type b in older babies and children. Available with or without labels.",
+      "tags": ["figure", "diagram", "pathway", "meningitis", "bacterial meningitis", "pathogenesis", "nasopharyngeal carriage", "colonisation", "bacteraemia", "blood-brain barrier", "meninges", "CSF", "cerebrospinal fluid", "pleocytosis", "neutrophils", "lumbar puncture", "LP", "meningococcus", "Neisseria meningitidis", "pneumococcus", "Streptococcus pneumoniae", "Haemophilus influenzae type b", "Hib", "group B streptococcus", "GBS", "E. coli", "Listeria", "neonatal meningitis", "conjugate vaccine"]
+    },
+    {
       "id": "innate-response-bacteria",
       "name": "Innate response to bacterial infection",
       "category": "figures",
